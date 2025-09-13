@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOL 224: Anatomy & Physiology II - Course Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        .item-list {
+            list-style: none;
+        }
+
+        .item-list li {
+            margin-bottom: 8px;
+        }
+
+        .item-link {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #495057;
+            transition: all 0.3s ease;
+            border-left: 4px solid #e9ecef;
+        }
+
+        .item-link:hover {
+            background: #e9ecef;
+            border-left-color: #667eea;
+            color: #2c3e50;
+        }
+
+        .item-icon {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .status {
+            margin-left: auto;
+            font-size: 0.9em;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .status.available {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.coming-soon {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status.in-progress {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .quick-access {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .quick-access h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .quick-link {
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+
+        .quick-link:hover {
+            background: #764ba2;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BIOL 224</h1>
+            <p class="subtitle">Anatomy & Physiology II</p>
+            <p>Your complete study hub for mastering human anatomy and physiology</p>
+        </header>
+
+        <div class="grid">
+            <!-- Exams Section -->
+            <div class="section">
+                <h2>
+                    <span class="section-icon">📝</span>
+                    Exams
+                </h2>
+                <ul class="item-list">
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">1️⃣</span>
+                            Exam 1 - Cardiovascular System
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">2️⃣</span>
+                            Exam 2 - Respiratory System
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">3️⃣</span>
+                            Exam 3 - Digestive System
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">4️⃣</span>
+                            Exam 4 - Urinary & Reproductive Systems
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Practicals Section -->
+            <div class="section">
+                <h2>
+                    <span class="section-icon">🔬</span>
+                    Practicals
+                </h2>
+                <ul class="item-list">
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">🫀</span>
+                            Practical 1 - Heart & Blood Vessels
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">🫁</span>
+                            Practical 2 - Lungs & Airways
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">🍎</span>
+                            Practical 3 - Digestive Organs
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">🏃</span>
+                            Practical 4 - Kidneys & Reproductive
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Practice Quizzes Section -->
+            <div class="section">
+                <h2>
+                    <span class="section-icon">🧠</span>
+                    Practice Quizzes
+                </h2>
+                <ul class="item-list">
+                    <li>
+                        <a href="index.html" class="item-link">
+                            <span class="item-icon">⚡</span>
+                            Interactive Quiz System
+                            <span class="status available">Available</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">🎯</span>
+                            Chapter Review Quizzes
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">🔄</span>
+                            Cumulative Practice Tests
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Study Aids Section -->
+            <div class="section">
+                <h2>
+                    <span class="section-icon">📚</span>
+                    Study Aids
+                </h2>
+                <ul class="item-list">
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">🗂️</span>
+                            Flashcards
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">🗺️</span>
+                            Concept Maps
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">📊</span>
+                            Study Progress Tracker
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">📖</span>
+                            Quick Reference Guides
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Lab Resources Section -->
+            <div class="section">
+                <h2>
+                    <span class="section-icon">🔬</span>
+                    Lab Resources
+                </h2>
+                <ul class="item-list">
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">📷</span>
+                            Anatomy Photo Library
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">🎥</span>
+                            Dissection Videos
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">📋</span>
+                            Lab Protocols
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Reference Materials Section -->
+            <div class="section">
+                <h2>
+                    <span class="section-icon">📖</span>
+                    Reference Materials
+                </h2>
+                <ul class="item-list">
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">📑</span>
+                            Course Syllabus
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">📅</span>
+                            Study Schedule
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link">
+                            <span class="item-icon">📝</span>
+                            Study Tips & Strategies
+                            <span class="status coming-soon">Coming Soon</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quick-access">
+            <h2>⚡ Quick Access</h2>
+            <div class="quick-links">
+                <a href="index.html" class="quick-link">Start Quiz</a>
+                <a href="#" class="quick-link">Today's Study Plan</a>
+                <a href="#" class="quick-link">Progress Dashboard</a>
+                <a href="#" class="quick-link">Recent Notes</a>
+                <a href="#" class="quick-link">Upcoming Deadlines</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
