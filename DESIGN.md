@@ -1,8 +1,8 @@
-# A&P 224 Interactive Quiz System - Design Document
+# Interactive Quiz System - Design Document
 
 ## Project Overview
 
-An interactive quiz system designed to emulate the Anatomy & Physiology 224 exam format. The system supports three question types matching the actual exam structure and avoids context/character limits through modular data loading.
+An interactive quiz system that supports multiple question types and employs modular data loading.
 
 ## Exam Format Requirements
 
@@ -152,7 +152,7 @@ quiz:
 ```
 
 ## Success Criteria
-- Accurate emulation of A&P 224 exam format
+- Multiple question types to test knowledge
 - Seamless navigation between question types
 - Reliable progress saving and results tracking
 - Mobile-friendly responsive design

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam 1 Practice Test</title>
+    <title>A&P II - Exam 1 v.2 Practice Test</title>
     <link rel="stylesheet" href="css/quiz.css">
 </head>
 <body>
     <div class="header">
         <div class="header-content">
-            <h1>Exam 1 Practice Test</h1>
+            <h1>Exam 1 v.2 Practice Test</h1>
             <div class="progress" id="progress">Loading...</div>
         </div>
     </div>
@@ -43,7 +43,7 @@
         // Load quiz data from YAML file
         async function loadQuizData() {
             try {
-                const response = await fetch('data/exam1-practice.yml');
+                const response = await fetch('data/exam1-practice-v2.yml');
                 const yamlText = await response.text();
                 quizData = jsyaml.load(yamlText);
                 
@@ -280,6 +280,16 @@
                 } else {
                     // Highlight correct answer even if not selected
                     allOptions[correctAnswer].closest('.option').classList.add('correct');
+                }
+                
+                // Add explanation if available
+                if (question.info) {
+                    const questionCard = document.querySelector(`input[name="q${index}"]`).closest('.question-card');
+                    const infoDiv = document.createElement('div');
+                    infoDiv.className = 'question-info';
+                    infoDiv.style.cssText = 'margin-top: 12px; padding: 12px; background-color: #f0f9ff; border-left: 4px solid #0369a1; border-radius: 4px; font-size: 0.9rem; color: #1e40af;';
+                    infoDiv.textContent = question.info;
+                    questionCard.appendChild(infoDiv);
                 }
             });
             

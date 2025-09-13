@@ -1,0 +1,268 @@
+title: "Exam 1 v2 Practice Test"
+description: "Variation of practice test covering the Endocrine, Lymphatic, and Immune Systems"
+
+multipleChoice:
+    
+  - question: "How are the nervous system and endocrine system similar?"
+    options:
+      - "Effects of both the nervous system and the endocrine system are immediate and short-lasting."
+      - "The nervous system works antagonistically to the endocrine system to achieve homeostasis."
+      - "Cells of both the nervous system and the endocrine system release chemicals to communicate with cells."
+      - "Both the nervous system and the endocrine system operate over a series of neurons to directly affect target cells."
+    correct: 2
+    
+  - question: "Which of the following secretes antibodies?"
+    options:
+      - "antigen-presenting cells"
+      - "plasma cells"
+      - "dendritic cells"
+      - "memory B cells"
+    correct: 1
+
+  - question: "The pituitary hormone that promotes testosterone development in testes and egg release in ovaries is"
+    options:
+      - "TSH"
+      - "ACTH"
+      - "FSH"
+      - "LH"
+    correct: 3
+    info: luteinizing hormone stimulates: 1. ovulation, 2. production of progesterone in ovaries, and 3. production of testosterone in testes
+    
+  - question: "Which of the following is NOT a basic function of the lymphatic system?"
+    options:
+      - "absorption of dietary fats"
+      - "regulation of calcium ion concentration in the blood"
+      - "regulation of interstitial fluid volume"
+      - "immune functions"
+    correct: 1
+    
+  - question: "All of the following are true of steroid hormones except that they"
+    options:
+      - "are produced by the adrenal medulla."
+      - "are derived from cholesterol."
+      - "are produced by reproductive glands."
+      - "bind to receptors within the cell."
+      - "are lipids."
+    correct: 0
+    
+  - question: "Increasing levels of blood glucose stimulate the release of insulin. This type of stimulation is known as:"
+    options:
+      - "neural stimulation."
+      - "hormonal stimulation."
+      - "humoral stimulation."
+    correct: 2
+    
+  - question: "During the inflammatory response, what do neutrophils accomplish when they migrate to areas of damaged tissue?"
+    options:
+      - "Neutrophils interfere with the ability of viruses or bacteria to infect other cells."
+      - "Neutrophils are potent vasodilators."
+      - "Neutrophils increase capillary permeability."
+      - "Neutrophils destroy bacteria and other cellular debris."
+    correct: 3
+    
+  - question: "What type of tissue makes up the anterior pituitary gland?"
+    options:
+      - "epithelial tissue"
+      - "loose adipose connective tissue"
+      - "nervous tissue"
+      - "dense elastic connective tissue"
+    correct: 0
+    
+  - question: "What type of immunity exists even in the absence of a stimulus?"
+    options:
+      - "cell-mediated immunity"
+      - "specific immunity"
+      - "innate immunity"
+      - "adaptive immunity"
+    correct: 2
+    
+  - question: "Which hormones elevate blood sugar?"
+    options:
+      - "Insulin"
+      - "Aldosterone"
+      - "Cortisol"
+      - "Prolactin"
+      - "Parathyroid hormone"
+    correct: 2
+    
+  - question: "What does thyrotropin-releasing hormone target?"
+    options:
+      - "anterior pituitary"
+      - "hypothalamus"
+      - "posterior pituitary"
+      - "thyroid gland"
+    correct: 0
+    
+  - question: "A short-term (direct) effect of growth hormone is:"
+    options:
+      - "the stimulation of glucose uptake by cells."
+      - "protein synthesis."
+      - "the production of insulin-like growth factor (IGF)."
+      - "fat breakdown."
+    correct: 3
+    
+  - question: "Which of the following is NOT a main effect of the T3/T4?"
+    options:
+      - "promotion of growth and development"
+      - "regulation of blood calcium levels"
+      - "synergism with the sympathetic nervous system"
+      - "regulation of the metabolic rate and thermoregulation"
+    correct: 1
+    
+  - question: "What best describes lymphatic capillaries?"
+    options:
+      - "impermeable"
+      - "transport blood"
+      - "extremely permeable"
+      - "two-way circuit to and from the heart"
+    correct: 2
+    
+  - question: "Averie has high blood pressure. The hypersecretion of which hormone could lead to his condition?"
+    options:
+      - "calcitonin"
+      - "atrial natriuretic hormone"
+      - "aldosterone"
+      - "glucagon"
+    correct: 2
+    
+  - question: "What is NOT a responsibility of insulin?"
+    options:
+      - "gluconeogenesis"
+      - "promotion of satiety"
+      - "glycogen synthesis by the liver"
+      - "synthesis of fats from carbohydrates and lipids"
+    correct: 0
+    
+  - question: "Where are pathogens filtered from lymph?"
+    options:
+      - "lymph nodes"
+      - "tonsils"
+      - "spleen"
+      - "lacteals"
+    correct: 0
+    
+  - question: "Which hormones work synergistically to retain water?"
+    options:
+      - "aldosterone and atrial natriuretic peptide (ANP)"
+      - "antidiuretic hormone (ADH) and aldosterone"
+      - "aldosterone and cortisol"
+      - "atrial natriuretic peptide (ANP) and antidiuretic hormone (ADH)"
+    correct: 1
+    
+  - question: "What of the following confers passive immunity?"
+    options:
+      - "antivenom against snake venom"
+      - "viral infection"
+      - "vaccination"
+      - "bacterial infection"
+    correct: 0
+    
+  - question: "Mental and physical sluggishness and low body temperature may be signs of"
+    options:
+      - "hyperthyroidism."
+      - "hypothyroidism."
+      - "hyperparathyroidism."
+      - "hypoparathyroidism."
+    correct: 1
+    
+  - question: "Damage to cells of the zona fasciculata of the adrenal cortex would result in"
+    options:
+      - "the loss of axillary and pubic hair."
+      - "increased volume of urine formation."
+      - "decreased levels of sodium ion in the blood."
+      - "decreased ability to convert amino acids to glucose."
+      - "increased water retention."
+    correct: 3
+    
+  - question: "Negative feedback inhibition occurs when __________."
+    options:
+      - "thyrotropin-releasing hormone (TRH) causes the anterior pituitary to release thyroid-stimulating hormone (TSH)"
+      - "thyrotropin-releasing hormone (TRH) targets the thyroid gland"
+      - "thyroid-stimulating hormone (TSH) targets the thyroid gland"
+      - "thyroid hormone (T3/T4) targets the anterior pituitary"
+    correct: 3
+    
+  - question: "Diabetes insipidus is caused from?"
+    options:
+      - "Lack of insulin production"
+      - "Cells not reacting to insulin"
+      - "Hypersecretion of ADH"
+      - "Hyposecretion of ADH"
+    correct: 3
+    
+  - question: "Gonadotropin releasing hormone targets the ________ to release ____________."
+    options:
+      - "Gonads; estrogen/progesterone"
+      - "Gonads, LH/FSH"
+      - "Anterior pituitary; estrogen/progesterone"
+      - "Anterior pituitary; LH/FSH"
+    correct: 3
+    
+  - question: "B cells become _________ when they attach to an antigen and __________ when a Helper T cell releases cytokines on them."
+    options:
+      - "Stimulated; Sensitized"
+      - "Activated; Stimulated"
+      - "Sensitized; Activated"
+      - "Activated; Sensitized"
+    correct: 2
+    
+  - question: "Which of the following, if removed from a 2-year-old child, would be the most serious?"
+    options:
+      - "Lymph nodes"
+      - "Spleen"
+      - "Tonsils"
+      - "Thymus"
+    correct: 3
+
+trueMakeTrue:
+  - statement: "Lymphocytes are made in the ***secondary*** lymphatic organs."
+    isTrue: false
+    correctWord: "primary"
+    points: 2.5
+    
+  - statement: "***IgM*** is the first antibody secreted by plasma cells when the body is invaded by a pathogen."
+    isTrue: true
+    correctWord: ""
+    points: 2.5
+    
+  - statement: "The ***posterior pituitary*** makes oxytocin and anti-diuretic hormone."
+    isTrue: false  
+    correctWord: "Hypothalamus"
+    points: 2.5
+    
+  - statement: "***Interferons*** would be used to prevent viral replication."
+    isTrue: true
+    correctWord: ""
+    points: 2.5
+
+essay:
+  - question: "Can hormones target all cells of the body? Explain."
+    answer: "No, hormones are not able to target all cells of the body. Hormones are only able to affect particular cells known as target cells. Target cells contain specific proteins, referred to as receptors, to which hormones can bind."
+    points: 7
+    
+  - question: "Discuss the relationship between growth hormone (GH) and insulin-like growth factor (IGF)."
+    answer: "Growth hormone (GH) acts on the liver and other target tissues to promote the release of insulin-like growth factor (IGF). IGF carries out the long-term effects of GH. IGF acts on nearly every cell type in the body, and triggers rapid protein synthesis and cell division. IGF also decreases blood glucose concentration by stimulating glucose uptake by cells, an action opposite to acute GH release."
+    points: 7
+    
+  - question: "Alcohol inhibits the release of antidiuretic hormone (ADH, or vasopressin) from the posterior pituitary. Determine why alcohol is a poor choice for rehydration when we are thirsty."
+    answer: "The primary effect of ADH is to increase the amount of water retained by the kidneys in response to increasing solute concentration in the blood. A lack of ADH can occur when alcohol is consumed. An insufficient amount of ADH increases the risk for dehydration since the body is unable to retain most of the water that is consumed."
+    points: 10
+    
+  - question: "List the cardinal signs of inflammation and what causes them."
+    answer: "The cardinal signs of inflammation are redness, heat, swelling (edema), and pain. Redness and heat are caused by hyperemia (increased blood flow to the area caused by vasodilation from the release of histamines). Swelling is caused by increased capillary permeability (to allow for phagocytes to get to the site of infection). Pain is caused by bradykinin and prostaglandins."
+    points: 12
+    
+  - question: "Nicole contracted the measles since she did not receive a vaccine. For each person, determine if active immunity or passive immunity is involved and explain why Clark benefitted from the vaccine."
+    answer: "Both Clark and Nicole received active immunity through their contact with the measles virus. Active immunity may be received naturally through exposure to an antigen via infection or artificially via a vaccination. It results in the production of memory cells and large numbers of antibodies and is, therefore, relatively long-lasting, ranging from years to a lifetime. The benefit for Clark is he did not have to experience the disease to form immunological memory against it."
+    points: 12
+    
+  - question: "Explain how a pathogen is recognized and attacked by BOTH the cell mediated and humoral responses. Include in your answer: the major cells, their jobs (chemical agents of attack), cytokines (interleukins), memory cells, MHC I and II, APC's, antibodies, effector cells). Also include in your answer how HIV impacts this system."
+    answer: |
+      Cell Mediated: If the pathogen enters a body cell, the MHC I presents the antigen. A cytotoxic T cell will bind to the cell (needs activation and costimulation too), release perforins and/or induce apoptosis to kill the diseased cell. The cytotoxic T cell had to be activated by a Helper T cell and will divide into effector cells and memory cells.
+
+      Antibody Mediated: When pathogens are still in the body fluids, a B cell will attach to the antigen of the pathogen (sensitization), become activated by a helper T cell and divide to produce plasma cells and memory cells. The plasma cells will produce antibodies that will perform functions to decrease the possibility of those pathogens entering cells. These actions include: agglutination (clump cells), precipitation (clump antigens), neutralization (prevent toxins from spreading), opsonization (buttering them up for macrophages), complement activation (classical way), and stimulating inflammation.
+
+      Helper T cells bind to an antigen on an MHC II molecule on an antigen-presenting cell. They release a co-stimulator and become activated. Once activated, they will secrete cytokines (interleukins) to activate macrophages, cytotoxic T cells, and B cells. They are necessary to help activate all of the immune responses.
+
+      HIV invades Helper T cells, which are responsible for activating both the cell-mediated and the humoral response. Our bodies will then kill those Helper T cells, which in turn makes it more difficult to mount an immune response to anything. Most individuals die from opportunistic infections that normal immune systems could destroy.
+    points: 16 
