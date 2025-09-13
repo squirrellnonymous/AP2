@@ -191,7 +191,7 @@
                         <div class="essay-grading" id="essay-grading-${index}" style="display: none;">
                             <h4>Self-Grading:</h4>
                             <div class="points-input-container">
-                                <input type="number" class="points-input" name="essay-points-${index}" min="0" max="${item.points}" placeholder="${item.points}">
+                                <input type="number" class="points-input" name="essay-points-${index}" min="0" max="${item.points}" value="0">
                                 <span class="points-label">/ ${item.points} points</span>
                             </div>
                             <textarea class="essay-notes" name="essay-notes-${index}" placeholder="Notes for yourself (optional)..."></textarea>
@@ -226,7 +226,7 @@
                 sections.push(`${essayCount} Essay (${essayPoints} pts)`);
             }
             
-            const progressText = `${totalQuestions} Questions: ${sections.join(', ')}<br>${totalPoints} Total Points`;
+            const progressText = `${totalPoints} Points<br>${sections.join('<br>')}`;
             document.getElementById('progress').innerHTML = progressText;
             
             // Add click handlers to option labels
@@ -325,8 +325,19 @@
             // Show essay sample answers and grading interface
             if (quizData.essay && quizData.essay.length > 0) {
                 quizData.essay.forEach((item, index) => {
+                    const textarea = document.querySelector(`textarea[name="essay${index}"]`);
                     const answerElement = document.getElementById(`essay-answer-${index}`);
                     const gradingElement = document.getElementById(`essay-grading-${index}`);
+                    
+                    // Make textarea read-only and expand to show full content
+                    if (textarea) {
+                        textarea.readOnly = true;
+                        textarea.style.minHeight = 'auto';
+                        textarea.style.height = Math.max(textarea.scrollHeight, 120) + 'px';
+                        textarea.style.backgroundColor = '#f8fafc';
+                        textarea.style.cursor = 'default';
+                    }
+                    
                     if (answerElement) {
                         answerElement.style.display = 'block';
                     }
@@ -342,13 +353,14 @@
             const totalScore = mcScore + tmtScore;
             const percentage = Math.round((totalScore / gradedPoints) * 100);
             
-            let scoreDisplay = `Graded Score: ${totalScore}/${gradedPoints} (${percentage}%)`;
-            if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) {
-                scoreDisplay += `<br><small>Multiple Choice: ${mcScore}/${questions.length} | True/Make True: ${tmtScore}/${tmtMaxPoints}</small>`;
-            }
             if (quizData.essay && quizData.essay.length > 0) {
-                scoreDisplay += `<br><small>Essay questions: Grade yourself using the sample answers</small>`;
+                scoreDisplay = `ACTION REQUIRED<br>Review and self-evaluate your essay responses before calculating your score.`;
                 document.getElementById('calculate-final-score').style.display = 'block';
+            } else {
+                scoreDisplay = `Partial Score ACTION REQUIRED<br>${totalScore}/${gradedPoints} (${percentage}%)`;
+                if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) {
+                    scoreDisplay += `<br><small>Multiple Choice: ${mcScore}/${questions.length}<br>True/Make True: ${tmtScore}/${tmtMaxPoints}</small>`;
+                }
             }
             
             document.getElementById('score').innerHTML = scoreDisplay;

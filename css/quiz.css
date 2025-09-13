@@ -25,9 +25,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: left;
 }
 
 h1 {
