@@ -244,7 +244,13 @@ questions:
     
   - id: 41
     image: "images/practical/41.png"
-    question: "sample"
+    question: "extra credit part a. name this part of the microscope"
+    answer: "answer"
+    points: 1
+
+  - id: 42
+    image: "images/practical/42.png"
+    question: "extra credit part b. name this part of the microscope"
     answer: "answer"
     points: 1
 # - id: 3
