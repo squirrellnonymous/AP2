@@ -249,7 +249,47 @@
         function checkAnswers() {
             if (!quizData || !quizData.multipleChoice) return;
             
+            // Check for blank answers before proceeding
             const questions = quizData.multipleChoice;
+            let blankMC = 0;
+            let blankTMT = 0;
+            let blankEssay = 0;
+            
+            // Count blank multiple choice
+            questions.forEach((question, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (!selected) blankMC++;
+            });
+            
+            // Count blank true/make true
+            if (quizData.trueMakeTrue) {
+                quizData.trueMakeTrue.forEach((item, index) => {
+                    const input = document.querySelector(`input[name="tmt${index}"]`);
+                    if (!input || !input.value.trim()) blankTMT++;
+                });
+            }
+            
+            // Count blank essays
+            if (quizData.essay) {
+                quizData.essay.forEach((item, index) => {
+                    const textarea = document.querySelector(`textarea[name="essay${index}"]`);
+                    if (!textarea || !textarea.value.trim()) blankEssay++;
+                });
+            }
+            
+            // Show warning if there are blank answers
+            if (blankMC > 0 || blankTMT > 0 || blankEssay > 0) {
+                let warningMessage = "You have unanswered questions:\n\n";
+                if (blankMC > 0) warningMessage += `• ${blankMC} Multiple Choice question${blankMC > 1 ? 's' : ''}\n`;
+                if (blankTMT > 0) warningMessage += `• ${blankTMT} True/Make True question${blankTMT > 1 ? 's' : ''}\n`;
+                if (blankEssay > 0) warningMessage += `• ${blankEssay} Essay question${blankEssay > 1 ? 's' : ''}\n`;
+                warningMessage += "\nDo you want to submit anyway?";
+                
+                if (!confirm(warningMessage)) {
+                    return; // Cancel submission
+                }
+            }
+            
             let mcScore = 0;
             let tmtScore = 0;
             
