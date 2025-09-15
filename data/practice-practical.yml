@@ -88,8 +88,8 @@ questions:
     
   - id: 15
     image: "images/practical/15.png"
-    question: ""
-    answer: ""
+    question: "what is the organ/gland labeled X"
+    answer: ["spleen", "the spleen"]
     points: 1
     
   - id: 16

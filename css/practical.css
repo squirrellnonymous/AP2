@@ -191,6 +191,16 @@
     margin-bottom: 16px;
 }
 
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-controls .submit-button {
+    margin-top: 0;
+}
+
 .answer-sheet h2 {
     font-size: 1.25rem;
     font-weight: 600;
