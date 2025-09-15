@@ -29,7 +29,7 @@
                         <button id="prev-btn" class="nav-inline nav-left" onclick="previousImage()">‹</button>
                         <div class="answer-center">
                             <button id="inline-question-number" class="inline-number" onclick="scrollToAnswerSheet()">1</button>
-                            <input type="text" id="inline-answer-input" class="inline-input" placeholder="Type your answer..." oninput="syncAnswer()" />
+                            <input type="text" id="inline-answer-input" class="inline-input" placeholder="Type your answer..." oninput="syncAnswer()" onkeydown="handleEnterKey(event)" autocorrect="off" autocapitalize="off" spellcheck="false" />
                         </div>
                         <button id="next-btn" class="nav-inline nav-right" onclick="nextImage()">›</button>
                     </div>
@@ -100,7 +100,7 @@
                 answerItem.className = 'answer-item';
                 answerItem.innerHTML = `
                     <button class="answer-number" onclick="goToImage(${i - 1})" tabindex="-1">${i}</button>
-                    <input type="text" name="answer${i}" onfocus="goToImage(${i - 1})" tabindex="${i}" />
+                    <input type="text" name="answer${i}" readonly onclick="goToQuestionAndFocus(${i - 1})" tabindex="${i}" />
                 `;
                 
                 // Distribute vertically: 1-21 in left column, 22-42 in right column
@@ -151,6 +151,18 @@
         function goToImage(index) {
             if (index >= 0 && index < 42) {
                 showImage(index);
+            }
+        }
+        
+        function goToQuestionAndFocus(index) {
+            if (index >= 0 && index < 42) {
+                showImage(index);
+                // Scroll to the image container
+                document.querySelector('.image-container').scrollIntoView({ behavior: 'smooth' });
+                // Focus the inline answer input after scrolling
+                setTimeout(() => {
+                    document.getElementById('inline-answer-input').focus();
+                }, 300);
             }
         }
         
@@ -280,6 +292,13 @@
         
         function scrollToAnswerSheet() {
             document.querySelector('.answer-sheet').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function handleEnterKey(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent form submission
+                nextImage(); // Move to next question
+            }
         }
         
         function showQuestionPopup(questionNum, questionText, correction, imagePath) {

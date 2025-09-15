@@ -147,31 +147,35 @@
 
 /* Inline Navigation */
 .nav-inline {
-    width: 32px;
-    height: 32px;
-    border: 1.5px solid #e5e7eb;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #6366f1;
     border-radius: 50%;
     background-color: #ffffff;
-    color: #374151;
-    font-size: 1.2rem;
-    font-weight: 500;
+    color: #6366f1;
+    font-size: 1.4rem;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .nav-inline:hover:not(:disabled) {
-    border-color: #6366f1;
-    background-color: #eef2ff;
-    color: #6366f1;
+    background-color: #6366f1;
+    color: white;
+    transform: scale(1.05);
 }
 
 .nav-inline:disabled {
     opacity: 0.3;
     cursor: not-allowed;
+    transform: none;
+    border-color: #e5e7eb;
+    color: #9ca3af;
 }
 
 /* Answer Sheet */
@@ -277,6 +281,17 @@
     border-color: #6366f1;
     outline: none;
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.answer-item input[readonly] {
+    background-color: #f8fafc;
+    cursor: pointer;
+    user-select: none;
+}
+
+.answer-item input[readonly]:hover {
+    border-color: #6366f1;
+    background-color: #eef2ff;
 }
 
 /* Result states for answer circles */
