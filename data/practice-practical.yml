@@ -220,26 +220,26 @@ questions:
     
   - id: 37
     image: "images/practical/37.png"
-    question: "placeholder (the answer is x)"
-    answer: "x"
+    question: "name a hormone secreted by this organ"
+    answer: ["atrial naturiuretic hormone", "atrial naturiuretic peptide"]
     points: 1
     
   - id: 38
     image: "images/practical/38.png"
-    question: "placeholder (the answer is x)"
-    answer: "x"
+    question: "Name a hormone secreted from this tissue."
+    answer: "leptin"
     points: 1
     
   - id: 39
     image: "images/practical/39.png"
-    question: "placeholder (the answer is x)"
-    answer: "x"
+    question: "Is this hormone hydrophobic or hydrophilic?"
+    answer: "hydrophobic"
     points: 1
     
   - id: 40
     image: "images/practical/40.png"
-    question: "placeholder (the answer is x)"
-    answer: "x"
+    question: "Name the gland/organ circled in violet"
+    answer: ["thymus gland", "thumus"]
     points: 1
     
   - id: 41

@@ -236,16 +236,23 @@
                 const input = document.querySelector(`input[name="answer${questionNum}"]`);
                 const circle = document.querySelectorAll('.answer-number')[index];
                 
-                // Normalize answers by removing leading articles
+                // Normalize answers by removing leading articles and standardizing numerals
                 const normalizeAnswer = (answer) => {
-                    const normalized = answer.toLowerCase().trim();
+                    let normalized = answer.toLowerCase().trim();
+                    
+                    // Remove leading articles
                     if (normalized.startsWith('the ')) {
-                        return normalized.substring(4);
+                        normalized = normalized.substring(4);
                     } else if (normalized.startsWith('an ')) {
-                        return normalized.substring(3);
+                        normalized = normalized.substring(3);
                     } else if (normalized.startsWith('a ')) {
-                        return normalized.substring(2);
+                        normalized = normalized.substring(2);
                     }
+                    
+                    // Convert Roman numerals to Arabic numerals
+                    normalized = normalized.replace(/\bii\b/g, '2');
+                    normalized = normalized.replace(/\bi\b/g, '1');
+                    
                     return normalized;
                 };
                 
