@@ -81,18 +81,7 @@
     display: flex;
     align-items: center;
     margin: 16px 0;
-    position: relative;
     justify-content: center;
-}
-
-.nav-left {
-    position: absolute;
-    left: 0;
-}
-
-.nav-right {
-    position: absolute;
-    right: 0;
 }
 
 .answer-center {
@@ -101,24 +90,57 @@
     gap: 8px;
 }
 
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+    gap: 16px;
+}
+
+.nav-btn {
+    padding: 10px 16px;
+    border: 2px solid #6366f1;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #6366f1;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn:hover:not(:disabled) {
+    background-color: #6366f1;
+    color: white;
+    transform: scale(1.02);
+}
+
+.nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+    border-color: #e5e7eb;
+    color: #9ca3af;
+}
+
 .inline-number {
     font-weight: 500;
-    color: #6366f1;
+    color: #6b7280;
     width: 32px;
     height: 32px;
-    border: 2px solid #c7d2fe;
+    border: 2px solid #d1d5db;
     border-radius: 50%;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    cursor: default;
     font-size: 1rem;
-}
-
-.inline-number:hover {
-    border-color: #6366f1;
 }
 
 .inline-input {
@@ -129,7 +151,7 @@
     font-family: 'Kalam', cursive;
     transition: border-color 0.2s ease;
     min-height: 44px;
-    width: 200px;
+    width: 300px;
 }
 
 .inline-input:focus {
@@ -557,12 +579,17 @@
         grid-template-columns: 1fr;
     }
     
-    .navigation {
-        flex-direction: column;
-        align-items: center;
+    .navigation-buttons {
+        margin: 16px 0;
     }
     
-    .navigation button {
-        width: 200px;
+    .nav-btn {
+        min-width: 100px;
+        padding: 12px 20px;
+        font-size: 1.1rem;
+    }
+    
+    .inline-input {
+        width: 250px;
     }
 }

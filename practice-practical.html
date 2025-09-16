@@ -26,12 +26,14 @@
                     <img id="current-image" src="" alt="Practical question" />
                     <div id="current-question-text" class="question-text"></div>
                     <div class="inline-answer">
-                        <button id="prev-btn" class="nav-inline nav-left" onclick="previousImage()">‹</button>
                         <div class="answer-center">
                             <button id="inline-question-number" class="inline-number" onclick="scrollToAnswerSheet()">1</button>
                             <input type="text" id="inline-answer-input" class="inline-input" placeholder="Type your answer..." oninput="syncAnswer()" onkeydown="handleEnterKey(event)" autocorrect="off" autocapitalize="off" spellcheck="false" />
                         </div>
-                        <button id="next-btn" class="nav-inline nav-right" onclick="nextImage()">›</button>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button id="prev-btn" class="nav-btn nav-prev" onclick="previousImage()">‹</button>
+                        <button id="next-btn" class="nav-btn nav-next" onclick="nextImage()">Next ›</button>
                     </div>
                     <div class="image-counter">
                         Question <span id="current-question">1</span> of 42
@@ -130,7 +132,7 @@
             if (question) {
                 document.getElementById('current-image').src = question.image;
                 document.getElementById('current-question').textContent = index + 1;
-                document.getElementById('current-question-text').textContent = question.question || '';
+                document.getElementById('current-question-text').innerHTML = question.question || '';
                 
                 // Update inline answer elements
                 document.getElementById('inline-question-number').textContent = index + 1;
@@ -219,10 +221,21 @@
                 const input = document.querySelector(`input[name="answer${questionNum}"]`);
                 const circle = document.querySelectorAll('.answer-number')[index];
                 
+                // Normalize answers by removing leading "the "
+                const normalizeAnswer = (answer) => {
+                    const normalized = answer.toLowerCase().trim();
+                    return normalized.startsWith('the ') ? normalized.substring(4) : normalized;
+                };
+                
+                const normalizedStudentAnswer = normalizeAnswer(studentAnswer);
+                
                 // Handle multiple correct answers or single answer
                 const isCorrect = Array.isArray(correctAnswer) 
-                    ? correctAnswer.some(ans => studentAnswer.toLowerCase() === ans.toLowerCase())
-                    : studentAnswer.toLowerCase() === correctAnswer.toLowerCase();
+                    ? correctAnswer.some(ans => {
+                        const normalizedCorrect = normalizeAnswer(ans);
+                        return normalizedStudentAnswer === normalizedCorrect;
+                    })
+                    : normalizedStudentAnswer === normalizeAnswer(correctAnswer);
                 
                 if (circle) {
                     if (isCorrect) {

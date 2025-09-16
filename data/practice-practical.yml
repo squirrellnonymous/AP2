@@ -10,7 +10,7 @@ questions:
     
   - id: 2
     image: "images/practical/02.png"
-    question: "What is the structure labeled X on the model?"
+    question: "What is the structure labeled <strong>X</strong> on the model?"
     answer: "lymph node cortex"
     points: 1
 
@@ -53,7 +53,7 @@ questions:
   - id: 9
     image: "images/practical/09.png"
     question: "what organ/gland is the tissue from"
-    answer: ["spleen", "the spleen"]
+    answer: ["spleen"]
     points: 1
     
   - id: 10
@@ -89,19 +89,19 @@ questions:
   - id: 15
     image: "images/practical/15.png"
     question: "what is the organ/gland labeled X?"
-    answer: ["spleen", "the spleen"]
+    answer: ["spleen"]
     points: 1
     
   - id: 16
     image: "images/practical/16.png"
     question: "Name a hormone secreted by the region labeled X."
-    answer: "cortisol"
+    answer: ["cortisol", "glucocorticoids", "cortisone", "corticosterone"]
     points: 1
     
   - id: 17
     image: "images/practical/17.png"
     question: "Name the gland pointed to in the illustration."
-    answer: "parathyroid gland"
+    answer: ["parathyroid", "parathyroid gland"]
     points: 1
     
   - id: 18
@@ -113,7 +113,7 @@ questions:
   - id: 19
     image: "images/practical/19.png"
     question: "Name the organ/gland where this tissue is found."
-    answer: ["parathyroid", "the parathyroid", "parathyroid gland", "the parathyroid gland"]
+    answer: ["parathyroid", "parathyroid gland"]
     points: 1
     
   - id: 20
