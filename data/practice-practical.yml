@@ -155,7 +155,7 @@ questions:
   - id: 26
     image: "images/practical/26.png"
     question: "What is the gland that this tissue is from?"
-    answer: "thymus"
+    answer: ["thymus", "thymus gland"]
     points: 1
     
   - id: 27
@@ -244,13 +244,13 @@ questions:
     
   - id: 41
     image: "images/practical/41.png"
-    question: "extra credit part a. name this part of the microscope"
+    question: "extra credit #a. name this part of the microscope"
     answer: "observation tube"
     points: 1
 
   - id: 42
     image: "images/practical/42.png"
-    question: "extra credit part b. name this part of the microscope"
+    question: "extra credit #b. name this part of the microscope"
     answer: "objective"
     points: 1
 # - id: 3
