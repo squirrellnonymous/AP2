@@ -196,26 +196,26 @@ questions:
     
   - id: 33
     image: "images/practical/33.png"
-    question: "placeholder (the answer is x)"
-    answer: "x"
+    question: "Complete the cascade"
+    answer: "anterior pituitary"
     points: 1
     
   - id: 34
     image: "images/practical/34.png"
-    question: "placeholder (the answer is x)"
-    answer: "x"
+    question: "Which antibody is the first to respond?"
+    answer: "IgM"
     points: 1
     
   - id: 35
     image: "images/practical/35.png"
-    question: "placeholder (the answer is x)"
-    answer: "x"
+    question: "Which antibody can cross the placenta?"
+    answer: "IgG"
     points: 1
     
   - id: 36
     image: "images/practical/36.png"
-    question: "placeholder (the answer is x)"
-    answer: "x"
+    question: "Which antibody is found in breastmilk?"
+    answer: "IgA"
     points: 1
     
   - id: 37

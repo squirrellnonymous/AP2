@@ -62,11 +62,26 @@
         let practicalData = null;
         let currentImageIndex = 0;
         
+        // Fisher-Yates shuffle algorithm
+        function shuffleArray(array) {
+            const shuffled = [...array]; // Create a copy
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
         async function loadPractical() {
             try {
                 const response = await fetch('data/practice-practical.yml');
                 const yamlText = await response.text();
                 practicalData = jsyaml.load(yamlText);
+                
+                // Shuffle the questions
+                if (practicalData && practicalData.questions) {
+                    practicalData.questions = shuffleArray(practicalData.questions);
+                }
             } catch (error) {
                 console.log('Using fallback data');
                 // Fallback data structure
@@ -221,10 +236,17 @@
                 const input = document.querySelector(`input[name="answer${questionNum}"]`);
                 const circle = document.querySelectorAll('.answer-number')[index];
                 
-                // Normalize answers by removing leading "the "
+                // Normalize answers by removing leading articles
                 const normalizeAnswer = (answer) => {
                     const normalized = answer.toLowerCase().trim();
-                    return normalized.startsWith('the ') ? normalized.substring(4) : normalized;
+                    if (normalized.startsWith('the ')) {
+                        return normalized.substring(4);
+                    } else if (normalized.startsWith('an ')) {
+                        return normalized.substring(3);
+                    } else if (normalized.startsWith('a ')) {
+                        return normalized.substring(2);
+                    }
+                    return normalized;
                 };
                 
                 const normalizedStudentAnswer = normalizeAnswer(studentAnswer);
