@@ -167,7 +167,7 @@ questions:
   - id: 28
     image: "images/practical/28.png"
     question: "What is this area of tissue called?"
-    answer: "islets of langerhans"
+    answer: ["islets of langerhans", "islet of langerhans", "beta cells"]
     points: 1
     
   - id: 29
@@ -191,7 +191,7 @@ questions:
   - id: 32
     image: "images/practical/32.png"
     question: "Clark has a c-peptide level of 3 ng/ml (high level) and a high level of glucose in his urine. What condition do you suspect?"
-    answer: ["type I diabetes mellitus", "diabetes mellitus type 1", "type 1 diabetes"]
+    answer: ["type II diabetes mellitus", "diabetes mellitus type 2", "type 2 diabetes"]
     points: 1
     
   - id: 33
