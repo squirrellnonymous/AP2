@@ -221,7 +221,7 @@ questions:
   - id: 37
     image: "images/practical/37.png"
     question: "name a hormone secreted by this organ"
-    answer: ["atrial naturiuretic hormone", "atrial naturiuretic peptide"]
+    answer: ["atrial natriuretic hormone", "atrial natriuretic peptide"]
     points: 1
     
   - id: 38
@@ -239,7 +239,7 @@ questions:
   - id: 40
     image: "images/practical/40.png"
     question: "Name the gland/organ circled in violet"
-    answer: ["thymus gland", "thumus"]
+    answer: ["thymus gland", "thymus"]
     points: 1
     
   - id: 41
