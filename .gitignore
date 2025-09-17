@@ -55,3 +55,6 @@ tests/
 # Build outputs (if you ever add build tools)
 dist/
 build/
+
+# PDF files
+pdf/

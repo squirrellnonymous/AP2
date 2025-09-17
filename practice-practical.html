@@ -414,6 +414,53 @@
             resultsCircles.insertAdjacentElement('afterend', detailDiv);
         }
         
+        // Smart arrow key navigation
+        document.addEventListener('keydown', function(event) {
+            // Only handle arrow keys
+            if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
+                return;
+            }
+            
+            const inlineInput = document.getElementById('inline-answer-input');
+            const isInputFocused = document.activeElement === inlineInput;
+            
+            let shouldNavigate = false;
+            
+            if (!isInputFocused) {
+                // Input not focused - always allow navigation
+                shouldNavigate = true;
+            } else {
+                // Input is focused - check cursor position
+                const cursorPosition = inlineInput.selectionStart;
+                const textLength = inlineInput.value.length;
+                
+                if (event.key === 'ArrowLeft' && cursorPosition === 0) {
+                    // At beginning of text, allow left navigation
+                    shouldNavigate = true;
+                } else if (event.key === 'ArrowRight' && cursorPosition === textLength) {
+                    // At end of text, allow right navigation
+                    shouldNavigate = true;
+                }
+            }
+            
+            if (shouldNavigate) {
+                event.preventDefault(); // Prevent default arrow behavior
+                
+                if (event.key === 'ArrowLeft') {
+                    previousImage();
+                } else if (event.key === 'ArrowRight') {
+                    nextImage();
+                }
+                
+                // Focus the input after navigation if it was focused before
+                if (isInputFocused) {
+                    setTimeout(() => {
+                        document.getElementById('inline-answer-input').focus();
+                    }, 0);
+                }
+            }
+        });
+        
         // Load YAML parser
         const script = document.createElement('script');
         script.src = 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js';
