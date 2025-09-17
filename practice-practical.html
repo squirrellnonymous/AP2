@@ -61,6 +61,7 @@
     <script>
         let practicalData = null;
         let currentImageIndex = 0;
+        let preloadedImages = new Map(); // Cache for preloaded images
         
         // Fisher-Yates shuffle algorithm
         function shuffleArray(array) {
@@ -144,8 +145,12 @@
             currentImageIndex = index;
             const question = practicalData.questions[index];
             
+            // Clear the current image immediately to prevent old image showing
+            const imageElement = document.getElementById('current-image');
+            imageElement.src = '';
+            
             if (question) {
-                document.getElementById('current-image').src = question.image;
+                imageElement.src = question.image;
                 document.getElementById('current-question').textContent = index + 1;
                 document.getElementById('current-question-text').innerHTML = question.question || '';
                 
@@ -163,6 +168,41 @@
             document.querySelectorAll('.answer-number').forEach((btn, i) => {
                 btn.classList.toggle('active', i === index);
             });
+            
+            // Preload adjacent images
+            preloadAdjacentImages(index);
+        }
+        
+        function preloadImage(imagePath) {
+            if (!imagePath || preloadedImages.has(imagePath)) {
+                return; // Already preloaded or no path
+            }
+            
+            const img = new Image();
+            img.onload = () => {
+                preloadedImages.set(imagePath, img);
+            };
+            img.src = imagePath;
+        }
+        
+        function preloadAdjacentImages(currentIndex) {
+            if (!practicalData || !practicalData.questions) return;
+            
+            // Preload previous image
+            if (currentIndex > 0) {
+                const prevQuestion = practicalData.questions[currentIndex - 1];
+                if (prevQuestion && prevQuestion.image) {
+                    preloadImage(prevQuestion.image);
+                }
+            }
+            
+            // Preload next image
+            if (currentIndex < practicalData.questions.length - 1) {
+                const nextQuestion = practicalData.questions[currentIndex + 1];
+                if (nextQuestion && nextQuestion.image) {
+                    preloadImage(nextQuestion.image);
+                }
+            }
         }
         
         function goToImage(index) {
