@@ -1,0 +1,569 @@
+title: "BIOL 224 Exam 1 Practice Test (Answer Key)"
+description: "Practice exam covering Endocrine, Lymphatic, and Immune Systems based on Spring 2024 Exam 1"
+
+definitions:
+  - id: 1
+    term: "Homeostasis"
+    sentence: "The process by which an organism maintains a _____ internal environment despite changes in _____ conditions."
+    blanks: ["stable", "external"]
+    word_bank: ["stable", "external", "rapid", "internal", "extreme", "variable"]
+    points: 2
+
+  - id: 2
+    term: "Hypophyseal Portal System"
+    sentence: "A network of _____ vessels connecting the hypothalamus and _____ gland, allowing hormones to travel directly between them."
+    blanks: ["blood", "pituitary"]
+    word_bank: ["blood", "pituitary", "lymphatic", "thyroid", "nerve", "adrenal"]
+    points: 2
+
+  - id: 3
+    term: "Parathyroid Glands"
+    sentence: "Small glands located on the _____ that regulate _____ levels in the blood through parathyroid hormone (PTH) secretion."
+    blanks: ["thyroid", "calcium"]
+    word_bank: ["thyroid", "calcium", "adrenal", "sodium", "liver", "potassium"]
+    points: 2
+
+  - id: 4
+    term: "Glucocorticoids"
+    sentence: "A class of _____ hormones produced by the adrenal _____ that regulate metabolism, inflammation, and stress responses."
+    blanks: ["steroid", "cortex"]
+    word_bank: ["steroid", "cortex", "protein", "medulla", "peptide", "nucleus"]
+    points: 2
+
+  - id: 5
+    term: "Lymphocytes"
+    sentence: "White blood cells that are key players in the _____ response, including B cells, T cells, and _____ cells."
+    blanks: ["immune", "NK"]
+    word_bank: ["immune", "NK", "nervous", "plasma", "inflammatory", "stem"]
+    points: 2
+
+  - id: 6
+    term: "Immunity"
+    sentence: "The body's ability to _____ or eliminate potentially harmful foreign materials or _____ cells."
+    blanks: ["resist", "abnormal"]
+    word_bank: ["resist", "abnormal", "absorb", "normal", "produce", "healthy"]
+    points: 2
+
+  - id: 7
+    term: "Immune Surveillance"
+    sentence: "The immune system's process of _____ for and eliminating abnormal or _____ cells."
+    blanks: ["monitoring", "malignant"]
+    word_bank: ["monitoring", "malignant", "producing", "healthy", "creating", "beneficial"]
+    points: 2
+
+  - id: 8
+    term: "Inflammation"
+    sentence: "A localized response to injury or infection, characterized by redness, heat, _____, and _____."
+    blanks: ["swelling", "pain"]
+    word_bank: ["swelling", "pain", "cooling", "numbness", "shrinking", "itching"]
+    points: 2
+
+  - id: 9
+    term: "Antigen"
+    sentence: "Any substance recognized by the immune system as _____, which can provoke an immune _____."
+    blanks: ["foreign", "response"]
+    word_bank: ["foreign", "response", "familiar", "suppression", "self", "reaction"]
+    points: 2
+
+  - id: 10
+    term: "Immunocompetence"
+    sentence: "The ability of the immune system to _____ and respond effectively to _____."
+    blanks: ["recognize", "antigens"]
+    word_bank: ["recognize", "antigens", "ignore", "hormones", "destroy", "nutrients"]
+    points: 2
+
+questions:
+  - id: 1
+    question: "Which of the following is true of the endocrine system?"
+    options:
+      A: "It responds rapidly to stimuli."
+      B: "It responds specifically to digestive stimuli."
+      C: "It communicates by the release of neurotransmitters."
+      D: "It responds with motor output."
+      E: "It responds slowly but effectively for maintaining homeostatic functions."
+    correct_answer: "E"
+    points: 2
+
+  - id: 2
+    question: "Endocrine cells"
+    options:
+      A: "are a type of nerve cell."
+      B: "release their secretions onto an epithelial surface."
+      C: "release their secretions directly into body fluids such as blood."
+      D: "contain few vesicles."
+      E: "are modified connective tissue cells."
+    correct_answer: "C"
+    points: 2
+
+  - id: 3
+    question: "Hormones known as \"catecholamines\" are"
+    options:
+      A: "lipids."
+      B: "peptides."
+      C: "steroids."
+      D: "derivatives of the amino acid tyrosine."
+      E: "derivatives of reproductive glands."
+    correct_answer: "D"
+    points: 2
+
+  - id: 4
+    question: "Steroid hormones"
+    options:
+      A: "are proteins."
+      B: "cannot diffuse through cell membranes."
+      C: "bind to receptors in the nucleus of their target cells."
+      D: "act on target cells by activating second messenger cascades."
+      E: "are transported in the blood dissolved in the plasma."
+    correct_answer: "C"
+    points: 2
+
+  - id: 5
+    question: "After a steroid hormone binds to its receptor to form an active complex,"
+    options:
+      A: "adenyl cyclase is activated."
+      B: "cyclic nucleotides are formed."
+      C: "G proteins are phosphylated."
+      D: "gene transcription is initiated."
+      E: "protein kinases are activated."
+    correct_answer: "D"
+    points: 2
+
+  - id: 6
+    question: "The hypothalamus acts as both a neural and a(n) ________ organ."
+    options:
+      A: "endocrine"
+      B: "cardiovascular"
+      C: "renal"
+      D: "muscular"
+      E: "hepatic"
+    correct_answer: "A"
+    points: 2
+
+  - id: 7
+    question: "When a catecholamine or peptide hormone binds to receptors on the surface of a cell, the"
+    options:
+      A: "hormone receptor complex moves into the cytoplasm."
+      B: "cell membrane becomes depolarized."
+      C: "second messenger appears in the cytoplasm."
+      D: "cell becomes inactive."
+      E: "hormone is transported to the nucleus where it alters the activity of DNA."
+    correct_answer: "C"
+    points: 2
+
+  - id: 8
+    question: "Which of the following is not true regarding target cells of the endocrine system?"
+    options:
+      A: "They have receptors for a specific hormone."
+      B: "They can be anywhere in the body."
+      C: "They are associated with synapses."
+      D: "They can respond to more than one hormone if they have receptors for each one."
+      E: "If a target cell lacks receptors for a hormone then it cannot bind that hormone."
+    correct_answer: "C"
+    points: 2
+
+  - id: 9
+    question: "Which option below is an example of paracrine signaling?"
+    options:
+      A: "Somatostatin inhibiting the release of GH."
+      B: "Inhibin inhibiting the release of LH."
+      C: "Somatostatin inhibiting the release of insulin and glucagon."
+      D: "Thyroid hormone inhibiting the release of TSH."
+      E: "Melatonin regulating the circadian rhythm"
+    correct_answer: "C"
+    points: 2
+
+  - id: 10
+    question: "Hormonal actions on cells affect all of the following except"
+    options:
+      A: "quantities of enzymes."
+      B: "activities of enzymes."
+      C: "synthesis of enzymes."
+      D: "gating of ion channels."
+      E: "thickness of the plasma membrane."
+    correct_answer: "E"
+    points: 2
+
+  - id: 11
+    question: "Which of the following hormones is/are water soluble and therefore bind(s) to extracellular receptors?"
+    options:
+      A: "insulin"
+      B: "epinephrine"
+      C: "cortisol"
+      D: "calcitriol"
+      E: "insulin and epinephrine"
+    correct_answer: "E"
+    points: 2
+
+  - id: 12
+    question: "Which of the following is not a characteristic of the second-messenger mechanism of hormone action?"
+    options:
+      A: "Hormone effects are amplified."
+      B: "G proteins and cAMP are used."
+      C: "Receptors are on the cell surface."
+      D: "Cellular operations are altered by direct stimulation of a gene."
+      E: "Kinases may phosphorylate proteins."
+    correct_answer: "D"
+    points: 2
+
+  - id: 13
+    question: "One cause for insulin resistance in non-insulin dependent (Type II) diabetes is"
+    options:
+      A: "insulin receptor up-regulation."
+      B: "decreased insulin secretion."
+      C: "decreased cortisol secretion."
+      D: "insulin receptor down-regulation."
+      E: "cortisol receptor up-regulation."
+    correct_answer: "D"
+    points: 2
+
+  - id: 14
+    question: "Upon binding of a single first messenger to a plasma membrane, thousands of second messengers may become activated. This effect is known as"
+    options:
+      A: "receptor down-regulation."
+      B: "receptor up-regulation."
+      C: "amplification."
+      D: "humoral stimuli."
+      E: "synergism."
+    correct_answer: "C"
+    points: 2
+
+  - id: 15
+    question: "The main action of antidiuretic hormone is"
+    options:
+      A: "increased water conservation by kidneys."
+      B: "to stimulate kidney cells to secrete renin."
+      C: "increase urine output to remove excess fluid."
+      D: "increased blood pressure by increased Na+ reabsorption."
+      E: "inhibition of aldosterone."
+    correct_answer: "A"
+    points: 2
+
+  - id: 16
+    question: "Which of the following elements is necessary for the production of thyroid hormone?"
+    options:
+      A: "sodium"
+      B: "iodine"
+      C: "potassium"
+      D: "iron"
+      E: "colloid"
+    correct_answer: "B"
+    points: 2
+
+  - id: 17
+    question: "Where does the chemical reaction between thyroglobulin and iodine take place?"
+    options:
+      A: "in lysosomes"
+      B: "in rough endoplasmic reticulum"
+      C: "in the follicle cavity"
+      D: "in pinocytotic vesicles"
+      E: "in apical microvilli"
+    correct_answer: "C"
+    points: 2
+
+  - id: 18
+    question: "A hormone that helps to regulate the sodium ion content of the body is"
+    options:
+      A: "cortisol."
+      B: "parathormone."
+      C: "thymosin."
+      D: "somatotropin."
+      E: "aldosterone."
+    correct_answer: "E"
+    points: 2
+
+  - id: 19
+    question: "Which of the following hormones increases and prolongs effects of the sympathetic nervous system?"
+    options:
+      A: "cortisol"
+      B: "parathyroid hormone"
+      C: "insulin"
+      D: "growth hormone"
+      E: "acetylcholine"
+    correct_answer: "A"
+    points: 2
+
+  - id: 20
+    question: "If a diabetic patient received too much insulin, the low blood sugar could be corrected by injecting"
+    options:
+      A: "glucagon."
+      B: "GHIH."
+      C: "thyroid hormone."
+      D: "aldosterone."
+      E: "antidiuretic hormone."
+    correct_answer: "A"
+    points: 2
+
+  - id: 21
+    question: "The heart secretes which hormone?"
+    options:
+      A: "progesterone."
+      B: "oxytocin."
+      C: "thymosin."
+      D: "thyroxine."
+      E: "atrial natriuretic peptide."
+    correct_answer: "E"
+    points: 2
+
+  - id: 22
+    question: "The primary function of the lymphatic system is"
+    options:
+      A: "the transport of hormones."
+      B: "circulation of nutrients and dissolved gases."
+      C: "defending the body against both external and internal threats."
+      D: "the production and distribution of plasma proteins."
+      E: "the production and maturation of leukocytes."
+    correct_answer: "C"
+    points: 2
+
+  - id: 23
+    question: "The lymphatic system is composed of all of the following except"
+    options:
+      A: "lymphatic vessels."
+      B: "the venae cavae."
+      C: "the spleen."
+      D: "lymph nodes."
+      E: "lymph."
+    correct_answer: "B"
+    points: 2
+
+  - id: 24
+    question: "________ are large lymphatic nodules that are located in the walls of the pharynx."
+    options:
+      A: "Tonsils"
+      B: "Peyer's patches"
+      C: "Lymph nodes"
+      D: "Immune complexes"
+      E: "Spleens"
+    correct_answer: "A"
+    points: 2
+
+  - id: 25
+    question: "Which class of cells is particularly abundant in the red pulp of the spleen?"
+    options:
+      A: "T lymphocytes"
+      B: "macrophages"
+      C: "B lymphocytes"
+      D: "neutrophils"
+      E: "Natural Killer cells"
+    correct_answer: "B"
+    points: 2
+
+  - id: 26
+    question: "Dividing lymphocytes can be found in the ________ of the lymphatic nodule."
+    options:
+      A: "sinus regions"
+      B: "germinal center"
+      C: "cortical layer"
+      D: "capsular space"
+      E: "stroma"
+    correct_answer: "B"
+    points: 2
+
+  - id: 27
+    question: "Stem cells that can form all types of lymphocytes are concentrated in the"
+    options:
+      A: "circulation."
+      B: "thymus."
+      C: "red bone marrow."
+      D: "spleen."
+      E: "yellow marrow."
+    correct_answer: "C"
+    points: 2
+
+  - id: 28
+    question: "T cells develop from stem cells in the"
+    options:
+      A: "bone marrow."
+      B: "liver."
+      C: "spleen."
+      D: "thymus."
+      E: "kidneys."
+    correct_answer: "D"
+    points: 2
+
+  - id: 29
+    question: "The primary lymphoid tissues include"
+    options:
+      A: "the bone marrow."
+      B: "the thymus."
+      C: "the bone marrow and thymus."
+      D: "the lymph nodes and tonsils."
+      E: "the bone marrow, thymus, spleen and lymph nodes."
+    correct_answer: "C"
+    points: 2
+
+  - id: 30
+    question: "The cells directly responsible for cellular immunity are the ________ cells."
+    options:
+      A: "dendritic"
+      B: "plasma"
+      C: "helper T"
+      D: "cytotoxic T"
+      E: "suppressor T"
+    correct_answer: "D"
+    points: 2
+
+  - id: 31
+    question: "The cells responsible for humoral (or antibody mediated) immunity are the ________ cells."
+    options:
+      A: "NK"
+      B: "B"
+      C: "helper T"
+      D: "cytotoxic T"
+      E: "suppressor T"
+    correct_answer: "B"
+    points: 2
+
+  - id: 32
+    question: "Which of the following is not a lymphocyte?"
+    options:
+      A: "NK cells"
+      B: "plasma cells"
+      C: "memory T cells"
+      D: "dendritic cell"
+      E: "suppressor T cells"
+    correct_answer: "D"
+    points: 2
+
+  - id: 33
+    question: "The body's innate defenses include all of the following except"
+    options:
+      A: "the skin."
+      B: "complement."
+      C: "interferon."
+      D: "inflammation."
+      E: "antibodies."
+    correct_answer: "E"
+    points: 2
+
+  - id: 34
+    question: "NK cells use ________ to lyse abnormal cells."
+    options:
+      A: "pyrogen"
+      B: "perforin"
+      C: "interferon"
+      D: "complement"
+      E: "phagocytosis"
+    correct_answer: "B"
+    points: 2
+
+  - id: 35
+    question: "Immunity that is genetically determined and present at birth is called ________ immunity."
+    options:
+      A: "active"
+      B: "natural passive"
+      C: "passive"
+      D: "auto"
+      E: "innate"
+    correct_answer: "E"
+    points: 2
+
+  - id: 36
+    question: "In an experimental situation, a rabbit is exposed to a viral antigen to which it makes antibodies. These antibodies are then purified and injected into a human with the same viral disease. This is an example of"
+    options:
+      A: "innate immunity."
+      B: "active immunization."
+      C: "passive immunization."
+      D: "natural immunity."
+      E: "alloimmunity."
+    correct_answer: "C"
+    points: 2
+
+  - id: 37
+    question: "When an antigen is bound to a Class II MHC protein, it can activate a ________ cell."
+    options:
+      A: "plasma"
+      B: "helper T"
+      C: "NK"
+      D: "suppressor T"
+      E: "cytotoxic T"
+    correct_answer: "B"
+    points: 2
+
+  - id: 38
+    question: "CD8 markers are to ________ T cells as CD4 markers are to ________ T cells."
+    options:
+      A: "suppressor; cytoxic"
+      B: "cytoxic; helper"
+      C: "helper; suppressor"
+      D: "NK; cytoxic"
+      E: "plasma; NK"
+    correct_answer: "B"
+    points: 2
+
+  - id: 39
+    question: "An abnormal cell would be identified by the immune system because it showed"
+    options:
+      A: "Class I MHC proteins."
+      B: "Class II MHC proteins."
+      C: "Class I MHC proteins with an antigen bound."
+      D: "Class II MHC proteins with an antigen bound."
+      E: "a CD3 receptor complex in the membrane."
+    correct_answer: "C"
+    points: 2
+
+  - id: 40
+    question: "All of the following are true of the secondary response of humoral immunity except that it"
+    options:
+      A: "depends on memory B cells."
+      B: "results in much higher antibody titers than in the primary response."
+      C: "results in much quicker rise in antibody titers."
+      D: "produces more effective antibodies."
+      E: "weakens quickly because memory B cells only survive for a year or two."
+    correct_answer: "E"
+    points: 2
+
+  - id: 41
+    question: "Immunoglobulins that attach to and sensitize mast cells and basophils are"
+    options:
+      A: "IgA."
+      B: "IgD."
+      C: "IgE."
+      D: "IgG."
+      E: "IgM."
+    correct_answer: "C"
+    points: 2
+
+  - id: 42
+    question: "B cells are primarily activated by the activities of"
+    options:
+      A: "antigens."
+      B: "antibodies."
+      C: "helper T cells."
+      D: "macrophages."
+      E: "plasma cells."
+    correct_answer: "C"
+    points: 2
+
+  - id: 43
+    question: "The process by which antibodies bind to antigenic sites on viruses or toxins, rendering them incapable of binding to other cells, is called"
+    options:
+      A: "opsonization."
+      B: "activation."
+      C: "agglutination."
+      D: "precipitation."
+      E: "neutralization."
+    correct_answer: "E"
+    points: 2
+
+  - id: 44
+    question: "When antigens bind to inactive B cells and are brought into the cell by endocytosis to be displayed on the Class II MHC proteins this results in ________ of the B cells."
+    options:
+      A: "activation"
+      B: "sensitization"
+      C: "co-stimulation"
+      D: "cloning"
+      E: "division"
+    correct_answer: "B"
+    points: 2
+
+  - id: 45
+    question: "When the immune response mistakenly targets normal body cells and tissues, a(n) ________ develops."
+    options:
+      A: "autoimmune disease"
+      B: "immunodeficiency disease"
+      C: "allergic response"
+      D: "cross-reaction"
+      E: "agglutination reaction"
+    correct_answer: "A"
+    points: 2

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Flashcards - BIOL 224</title>
+    <link rel="stylesheet" href="css/flashcards.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Study Flashcards</h1>
+            <div class="progress" id="progress">Loading...</div>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading">Loading flashcards...</div>
+
+        <!-- Flashcard App -->
+        <div id="flashcard-app" class="hidden">
+            <!-- Controls -->
+            <div class="controls">
+                <button class="control-btn" onclick="shuffleCards()">🔀 Shuffle</button>
+                <span id="card-counter">1 / 15</span>
+                <button class="control-btn" onclick="toggleExtraInfo()">💡 Show Details</button>
+            </div>
+
+            <!-- Simple Flashcard -->
+            <div class="flashcard" onclick="flipCard()">
+                <!-- Term Side -->
+                <div id="term-side">
+                    <div class="term" id="term">Homeostasis</div>
+                    <p style="color: #6b7280; margin-top: 20px;">Click to see definition</p>
+                </div>
+
+                <!-- Definition Side -->
+                <div id="definition-side" class="hidden">
+                    <div class="definition" id="definition">The process by which an organism maintains a stable internal environment despite changes in external conditions.</div>
+
+                    <!-- Extra Info (optional) -->
+                    <div id="extra-info" class="extra-info hidden">
+                        <div class="breakdown" id="breakdown">Breaking it down: 'Homeo' means same/similar, 'stasis' means standing or staying.</div>
+                        <div class="example" id="example"><strong>Example:</strong> Like how your body keeps its temperature at 98.6°F whether you're in hot sun or cold snow.</div>
+                    </div>
+
+                    <p style="color: #6b7280; margin-top: 20px;">Click for next card</p>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="navigation">
+                <button class="nav-btn" id="prev-btn" onclick="previousCard()">← Previous</button>
+                <button class="nav-btn" id="next-btn" onclick="nextCard()">Next →</button>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script>
+        // Simple variables
+        let cards = [];
+        let currentIndex = 0;
+        let showingDefinition = false;
+        let showExtraInfo = false;
+
+        // Load flashcards
+        async function loadFlashcards() {
+            try {
+                const response = await fetch('data/flashcards.yml');
+                const yamlText = await response.text();
+                const data = jsyaml.load(yamlText);
+
+                cards = data.flashcards;
+                document.getElementById('progress').textContent = `${cards.length} Cards`;
+
+                showCard();
+
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('flashcard-app').classList.remove('hidden');
+
+            } catch (error) {
+                console.error('Error loading flashcards:', error);
+                document.getElementById('loading').textContent = 'Error loading flashcards';
+            }
+        }
+
+        // Show current card
+        function showCard() {
+            if (!cards || cards.length === 0) return;
+
+            const card = cards[currentIndex];
+
+            // Update content
+            document.getElementById('term').textContent = card.term;
+            document.getElementById('definition').textContent = card.definition;
+            document.getElementById('breakdown').textContent = card.breakdown;
+            document.getElementById('example').innerHTML = `<strong>Example:</strong> ${card.example}`;
+
+            // Reset to term side
+            showingDefinition = false;
+            document.getElementById('term-side').classList.remove('hidden');
+            document.getElementById('definition-side').classList.add('hidden');
+
+            // Update counter
+            document.getElementById('card-counter').textContent = `${currentIndex + 1} / ${cards.length}`;
+
+            // Update navigation
+            document.getElementById('prev-btn').disabled = currentIndex === 0;
+            document.getElementById('next-btn').disabled = currentIndex === cards.length - 1;
+
+            // Update extra info visibility
+            document.getElementById('extra-info').classList.toggle('hidden', !showExtraInfo);
+        }
+
+        // Flip card (term <-> definition)
+        function flipCard() {
+            if (!showingDefinition) {
+                // Show definition
+                document.getElementById('term-side').classList.add('hidden');
+                document.getElementById('definition-side').classList.remove('hidden');
+                showingDefinition = true;
+            } else {
+                // Go to next card
+                nextCard();
+            }
+        }
+
+        // Navigation
+        function nextCard() {
+            if (currentIndex < cards.length - 1) {
+                currentIndex++;
+                showCard();
+            }
+        }
+
+        function previousCard() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showCard();
+            }
+        }
+
+        // Shuffle cards
+        function shuffleCards() {
+            for (let i = cards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cards[i], cards[j]] = [cards[j], cards[i]];
+            }
+            currentIndex = 0;
+            showCard();
+        }
+
+        // Toggle extra info
+        function toggleExtraInfo() {
+            showExtraInfo = !showExtraInfo;
+            const btn = event.target;
+
+            if (showExtraInfo) {
+                btn.textContent = '💡 Hide Details';
+                document.getElementById('extra-info').classList.remove('hidden');
+            } else {
+                btn.textContent = '💡 Show Details';
+                document.getElementById('extra-info').classList.add('hidden');
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') previousCard();
+            if (e.key === 'ArrowRight') nextCard();
+            if (e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                flipCard();
+            }
+        });
+
+        // Load cards when page loads
+        loadFlashcards();
+    </script>
+</body>
+</html>
