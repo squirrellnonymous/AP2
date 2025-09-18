@@ -153,9 +153,52 @@ h1 {
     cursor: not-allowed;
 }
 
+/* Swipe Instructions */
+.swipe-instructions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.swipe-option {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.swipe-left {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.swipe-right {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+.swipe-option span {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.swipe-option small {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
 /* States */
 .hidden {
     display: none !important;
+}
+
+/* Swipe animations */
+.flashcard.swiping {
+    transition: none !important;
 }
 
 /* Back link */
