@@ -46,10 +46,10 @@
 
                     <!-- Swipe Instructions -->
                     <div class="swipe-instructions">
-                        <div class="swipe-option swipe-left">
+                        <div class="swipe-option swipe-left" onclick="event.stopPropagation(); swipeLeft();">
                             <span>👈 💔 Need to review</span>
                         </div>
-                        <div class="swipe-option swipe-right">
+                        <div class="swipe-option swipe-right" onclick="event.stopPropagation(); swipeRight();">
                             <span>👉 ✅ I know it!</span>
                         </div>
                     </div>
@@ -69,6 +69,26 @@
                 <button class="control-btn" onclick="hideListView()">← Back to Cards</button>
             </div>
             <div id="card-list"></div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results" class="hidden">
+            <div class="results-well">
+                <div class="results-content">
+                    <h2>All done</h2>
+                    <div class="score-tally">
+                        <div class="tally-line">Cards known: <span id="known-count">4</span></div>
+                        <div class="tally-line">To review: <span id="missed-count">2</span></div>
+                    </div>
+                    <div class="results-actions">
+                        <button class="control-btn" id="review-missed-btn" onclick="reviewMissed()">Review missed cards</button>
+                        <button class="control-btn" onclick="startOver()">Start over</button>
+                        <a href="../index.html" class="control-btn back-btn">Done</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Spacer to match navigation height -->
+            <div class="results-spacer"></div>
         </div>
 
         <a href="../index.html" class="back-link">← Back to Home</a>

@@ -4,114 +4,55 @@ color_theme: "blue"
 
 flashcards:
   - id: 1
-    term: "Neutrophils"
+    term: "Identify the formed element"
+    image: "leukocytes/01.jpg"
+    answer: "Neutrophil"
     keywords: ["most abundant", "polymorphonuclear", "PMN", "first responders", "bacterial infections"]
     definition: "The most abundant white blood cells (50-70%), first responders to bacterial infections with multilobed nuclei."
     breakdown: "Named for their neutral-staining granules. 'Neutro' means neutral, 'phil' means loving. They love neutral dyes!"
     example: "When you get a cut and bacteria try to invade, neutrophils are the first soldiers to arrive at the battle scene."
 
   - id: 2
-    term: "Lymphocytes"
+    term: "Identify the formed element"
+    image: "leukocytes/02.jpg"
+    answer: "Thrombocytes"
+    keywords: ["platelets", "blood clotting", "hemostasis", "cell fragments", "megakaryocytes"]
+    definition: "Cell fragments (platelets) essential for blood clotting and hemostasis, derived from megakaryocytes in bone marrow."
+    breakdown: "'Thrombo' means clot, 'cyte' means cell. These aren't actually whole cells but fragments that stick together to form clots."
+    example: "When you get a paper cut, thrombocytes (platelets) quickly stick to the damaged blood vessel and clump together to stop the bleeding."
+
+  - id: 3
+    term: "Identify the formed element"
+    image: "leukocytes/03.jpg"
+    answer: "Lymphocyte"
     keywords: ["B cells", "T cells", "NK cells", "adaptive immunity", "memory"]
     definition: "White blood cells responsible for adaptive immunity, including B cells, T cells, and natural killer (NK) cells."
     breakdown: "'Lympho' refers to lymph fluid, 'cyte' means cell. These are the smart cells that remember past infections."
     example: "B cells make antibodies like custom-made keys, T cells kill infected cells directly, and NK cells patrol for anything suspicious."
 
-  - id: 3
-    term: "Monocytes"
+  - id: 4
+    term: "Identify the formed element"
+    image: "leukocytes/04.jpg"
+    answer: "Basophil"
+    keywords: ["least common", "histamine", "heparin", "allergic reactions", "mast cells", "blue granules"]
+    definition: "The least common white blood cells with blue-staining granules that release histamine during allergic reactions, closely related to tissue mast cells."
+    breakdown: "'Basic' refers to basic (alkaline) dyes that stain their granules blue. They're like circulating versions of mast cells."
+    example: "When you're allergic to cats, basophils release histamine that makes your eyes water and nose run, working alongside mast cells in tissues."
+
+  - id: 5
+    term: "Identify the formed element"
+    image: "leukocytes/05.jpg"
+    answer: "Monocyte"
     keywords: ["largest", "macrophages", "dendritic cells", "antigen presentation", "tissue repair"]
     definition: "The largest white blood cells that differentiate into macrophages and dendritic cells in tissues."
     breakdown: "'Mono' means one, referring to their single large nucleus. They're like the heavy machinery of the immune system."
     example: "Think of them as construction workers that become either cleanup crews (macrophages) or information specialists (dendritic cells)."
 
-  - id: 4
-    term: "Eosinophils"
-    keywords: ["allergic reactions", "parasitic infections", "pink granules", "histamine"]
-    definition: "White blood cells with pink-staining granules that respond to allergic reactions and parasitic infections."
-    breakdown: "'Eosin' is a pink dye, 'phil' means loving. These cells love pink dye because of their granules!"
-    example: "During an allergic reaction to peanuts, eosinophils release chemicals that cause inflammation and symptoms."
-
-  - id: 5
-    term: "Basophils"
-    keywords: ["least common", "histamine", "heparin", "allergic reactions", "blue granules"]
-    definition: "The least common white blood cells with blue-staining granules that release histamine during allergic reactions."
-    breakdown: "'Basic' refers to basic (alkaline) dyes that stain their granules blue. They're the rarest but mighty!"
-    example: "When you're allergic to cats, basophils release histamine that makes your eyes water and nose run."
-
   - id: 6
-    term: "Macrophages"
-    keywords: ["big eaters", "phagocytosis", "antigen presentation", "tissue cleanup"]
-    definition: "Large phagocytic cells that engulf pathogens, dead cells, and debris while presenting antigens to other immune cells."
-    breakdown: "'Macro' means big, 'phage' means eater. They're literally the big eaters of the immune system!"
-    example: "Like Pac-Man, macrophages gobble up bacteria, dead cells, and trash in your tissues."
-
-  - id: 7
-    term: "T Helper Cells (CD4+)"
-    keywords: ["CD4", "coordinate", "cytokines", "HIV target", "immune response"]
-    definition: "T lymphocytes that coordinate immune responses by releasing cytokines and activating other immune cells."
-    breakdown: "They're like the generals of the immune army, giving orders to other soldiers but not fighting directly."
-    example: "When you get a flu shot, T helper cells coordinate the response to make sure B cells produce the right antibodies."
-
-  - id: 8
-    term: "Cytotoxic T Cells (CD8+)"
-    keywords: ["CD8", "killer cells", "infected cells", "cancer cells", "cell-mediated immunity"]
-    definition: "T lymphocytes that directly kill infected cells, cancer cells, and foreign cells by releasing toxic substances."
-    breakdown: "'Cyto' means cell, 'toxic' means poison. These are the assassins that poison bad cells."
-    example: "If a cell gets infected with a virus, cytotoxic T cells will find it and inject it with lethal chemicals."
-
-  - id: 9
-    term: "B Cells"
-    keywords: ["antibodies", "plasma cells", "memory cells", "humoral immunity", "bone marrow"]
-    definition: "Lymphocytes that produce antibodies and differentiate into plasma cells and memory cells for long-term immunity."
-    breakdown: "'B' stands for bone marrow, where they mature. They're the antibody factories of the immune system."
-    example: "After you get chickenpox, B cells create memory cells that remember the virus for life, preventing reinfection."
-
-  - id: 10
-    term: "Natural Killer (NK) Cells"
-    keywords: ["innate immunity", "virus-infected cells", "tumor cells", "no memory", "immediate response"]
-    definition: "Lymphocytes that kill virus-infected and tumor cells without prior sensitization, part of innate immunity."
-    breakdown: "They're natural-born killers that don't need training - they attack anything that looks abnormal."
-    example: "NK cells patrol your body like security guards, instantly attacking cells that don't display proper ID badges."
-
-  - id: 11
-    term: "Dendritic Cells"
-    keywords: ["antigen presentation", "T cell activation", "branched", "immune surveillance"]
-    definition: "Antigen-presenting cells with branched projections that capture antigens and present them to T cells."
-    breakdown: "'Dendritic' means tree-like branches. They look like trees and act like information highways."
-    example: "Dendritic cells are like spies that capture enemy information and report back to headquarters (lymph nodes)."
-
-  - id: 12
-    term: "Granulocytes"
-    keywords: ["granules", "neutrophils", "eosinophils", "basophils", "cytoplasmic granules"]
-    definition: "White blood cells containing visible granules in their cytoplasm, including neutrophils, eosinophils, and basophils."
-    breakdown: "'Granulo' means containing granules - little storage compartments full of chemical weapons."
-    example: "Like soldiers carrying different types of ammunition, granulocytes have granules with different chemical weapons."
-
-  - id: 13
-    term: "Agranulocytes"
-    keywords: ["no granules", "lymphocytes", "monocytes", "clear cytoplasm"]
-    definition: "White blood cells without visible granules in their cytoplasm, including lymphocytes and monocytes."
-    breakdown: "'A' means without, so these cells don't have the visible storage granules that granulocytes have."
-    example: "Agranulocytes are like minimalist soldiers - they carry their weapons in invisible backpacks."
-
-  - id: 14
-    term: "Phagocytosis"
-    keywords: ["cell eating", "engulfing", "macrophages", "neutrophils", "immune defense"]
-    definition: "The process by which cells engulf and digest pathogens, debris, or other particles."
-    breakdown: "'Phago' means eating, 'cytosis' means cell process. It's literally cell-eating!"
-    example: "When bacteria invade, neutrophils perform phagocytosis - they surround and swallow the bacteria whole."
-
-  - id: 15
-    term: "Leukopenia"
-    keywords: ["low white blood cell count", "immunocompromised", "infection risk", "chemotherapy"]
-    definition: "A condition characterized by abnormally low white blood cell count, increasing infection risk."
-    breakdown: "'Leuko' means white (cells), 'penia' means deficiency. Not enough white blood cell soldiers!"
-    example: "Cancer patients undergoing chemotherapy often develop leukopenia, making them vulnerable to infections."
-
-  - id: 16
     term: "Identify the formed element"
-    image: "leukocytes/01.jpg"
+    image: "leukocytes/06.jpg"
+    answer: "Eosinophil"
     keywords: ["eosinophil", "bilobed nucleus", "pink granules", "allergic reactions"]
-    definition: "**Eosinophil**\n\nA white blood cell with characteristic pink-staining granules and typically a bilobed nucleus."
+    definition: "White blood cell with characteristic pink-staining granules and typically a bilobed nucleus."
     breakdown: "Look for the distinctive bright pink/red granules that fill the cytoplasm and the often bilobed (two-part) nucleus."
     example: "This eosinophil is identified by its pink-staining granules (eosinophilic granules) that respond to eosin dye, and its characteristic bilobed nucleus."

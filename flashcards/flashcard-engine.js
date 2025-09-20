@@ -2,12 +2,14 @@
 // Simple variables
 let cards = [];
 let allCards = []; // Original deck
-let reviewPile = []; // Cards to review soon
-let knownPile = []; // Cards known well (review later)
+let knownCards = []; // Cards student knows
+let missedCards = []; // Cards student needs to review
 let currentIndex = 0;
 let showingDefinition = false;
 let showExtraInfo = false;
 let flashcardSet = null; // Metadata about current set
+let studyMode = 'initial'; // 'initial' or 'review'
+let cardsReviewed = 0; // Track how many cards have been swiped
 
 // Touch/swipe variables
 let startX = 0;
@@ -45,6 +47,9 @@ async function loadFlashcards() {
         allCards = [...data.flashcards];
         cards = [...data.flashcards]; // Current deck
 
+        // Always shuffle on load
+        shuffleCards();
+
         setupTouchEvents();
         showCard();
 
@@ -66,7 +71,18 @@ function showCard() {
 
     // Update content
     document.getElementById('term').textContent = card.term;
-    document.getElementById('definition').textContent = card.definition;
+
+    // Handle answer + definition or just definition
+    let definitionContent = '';
+    if (card.answer) {
+        definitionContent = `<strong>${card.answer}</strong><br>${card.definition}`;
+    } else {
+        definitionContent = card.definition;
+    }
+    // Apply markdown formatting
+    definitionContent = definitionContent.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+    document.getElementById('definition').innerHTML = definitionContent;
+
     document.getElementById('breakdown').textContent = card.breakdown || '';
     document.getElementById('example').innerHTML = card.example ? `<strong>Example:</strong> ${card.example}` : '';
 
@@ -85,12 +101,18 @@ function showCard() {
     document.getElementById('term-side').classList.remove('hidden');
     document.getElementById('definition-side').classList.add('hidden');
 
-    // Update counter
-    document.getElementById('card-counter').textContent = `${currentIndex + 1} / ${cards.length}`;
+    // Update counter - show total count
+    document.getElementById('card-counter').textContent = `${allCards.length} cards`;
 
     // Update navigation
-    document.getElementById('prev-btn').disabled = currentIndex === 0;
-    document.getElementById('next-btn').disabled = currentIndex === cards.length - 1;
+    if (studyMode === 'initial') {
+        // Disable navigation buttons during initial study - force swiping
+        document.getElementById('prev-btn').disabled = true;
+        document.getElementById('next-btn').disabled = true;
+    } else {
+        document.getElementById('prev-btn').disabled = currentIndex === 0;
+        document.getElementById('next-btn').disabled = currentIndex === cards.length - 1;
+    }
 
     // Update extra info visibility
     document.getElementById('extra-info').classList.toggle('hidden', !showExtraInfo);
@@ -228,40 +250,101 @@ function resetCardPosition() {
     cardElement.style.transform = 'translateX(0) rotate(0deg)';
     cardElement.style.opacity = '1';
     cardElement.style.borderLeft = 'none';
+    cardElement.style.transition = 'opacity 0.2s ease';
     currentX = 0;
     currentY = 0;
 }
 
 // Swipe left - "Need to review"
 function swipeLeft() {
-    // Add to review pile (see again soon)
+    console.log('swipeLeft() called');
     const currentCard = cards[currentIndex];
-    reviewPile.push(currentCard);
 
-    // Animate out
-    cardElement.style.transform = 'translateX(-100vw) rotate(-30deg)';
+    if (studyMode === 'initial') {
+        // Add to missed cards for review
+        missedCards.push(currentCard);
+        cardsReviewed++;
+        console.log('Swiped left - missed cards:', missedCards.length, 'reviewed:', cardsReviewed);
+    } else if (studyMode === 'review') {
+        // In review mode, still needs review - keep in missed cards
+        console.log('Still needs review in review mode');
+    }
+
+    // Animate like a real swipe - start slow, then accelerate
+    cardElement.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease';
+    cardElement.style.transform = 'translateX(-120vw) rotate(-30deg)';
     cardElement.style.opacity = '0';
 
     setTimeout(() => {
-        removeCurrentCard();
-        nextCardAfterSwipe();
-    }, 300);
+        // Reset position instantly, then fade in new card
+        cardElement.style.transition = 'none';
+        cardElement.style.transform = 'translateX(0) rotate(0deg)';
+        cardElement.style.opacity = '0';
+        cardElement.style.borderLeft = 'none';
+
+        advanceCard();
+
+        // Quick fade in
+        setTimeout(() => {
+            cardElement.style.transition = 'opacity 0.15s ease';
+            cardElement.style.opacity = '1';
+        }, 50);
+    }, 400);
 }
 
 // Swipe right - "I know this well"
 function swipeRight() {
-    // Add to known pile (review much later)
+    console.log('swipeRight() called');
     const currentCard = cards[currentIndex];
-    knownPile.push(currentCard);
 
-    // Animate out
-    cardElement.style.transform = 'translateX(100vw) rotate(30deg)';
+    if (studyMode === 'initial') {
+        // Add to known cards
+        knownCards.push(currentCard);
+        cardsReviewed++;
+        console.log('Swiped right - known cards:', knownCards.length, 'reviewed:', cardsReviewed);
+    } else if (studyMode === 'review') {
+        // In review mode, now knows it - remove from missed cards
+        const cardIndex = missedCards.findIndex(card => card.id === currentCard.id);
+        if (cardIndex > -1) {
+            missedCards.splice(cardIndex, 1);
+            console.log('Removed from missed cards, remaining:', missedCards.length);
+        }
+
+        // Also remove from current review deck
+        cards.splice(currentIndex, 1);
+        if (currentIndex >= cards.length && cards.length > 0) {
+            currentIndex = 0;
+        }
+
+        // If no more cards to review, go back to results
+        if (cards.length === 0) {
+            setTimeout(() => {
+                showResults();
+            }, 400);
+            return;
+        }
+    }
+
+    // Animate like a real swipe - start slow, then accelerate
+    cardElement.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease';
+    cardElement.style.transform = 'translateX(120vw) rotate(30deg)';
     cardElement.style.opacity = '0';
 
     setTimeout(() => {
-        removeCurrentCard();
-        nextCardAfterSwipe();
-    }, 300);
+        // Reset position instantly, then fade in new card
+        cardElement.style.transition = 'none';
+        cardElement.style.transform = 'translateX(0) rotate(0deg)';
+        cardElement.style.opacity = '0';
+        cardElement.style.borderLeft = 'none';
+
+        advanceCard();
+
+        // Quick fade in
+        setTimeout(() => {
+            cardElement.style.transition = 'opacity 0.15s ease';
+            cardElement.style.opacity = '1';
+        }, 50);
+    }, 400);
 }
 
 // Remove current card from deck
@@ -308,11 +391,44 @@ function nextCardAfterSwipe() {
     }
 }
 
+// Smart card advancement
+function advanceCard() {
+    console.log('advanceCard called - currentIndex:', currentIndex, 'cards.length:', cards.length, 'studyMode:', studyMode, 'cardsReviewed:', cardsReviewed);
+
+    if (currentIndex < cards.length - 1) {
+        // Move to next card
+        currentIndex++;
+        console.log('Moving to next card, new index:', currentIndex);
+        showCard();
+    } else if (studyMode === 'initial' && cardsReviewed >= allCards.length) {
+        // Completed initial review - show results
+        console.log('All cards reviewed, showing results');
+        showResults();
+    } else if (studyMode === 'review') {
+        // In review mode, loop through missed cards
+        currentIndex = 0;
+        showCard();
+    } else {
+        // Safety fallback
+        console.log('Safety fallback - showing results');
+        showResults();
+    }
+}
+
 // Navigation
 function nextCard() {
+    // In initial mode, force user to swipe (make a decision)
+    if (studyMode === 'initial') {
+        // Don't allow skipping - user must swipe to make a decision
+        return;
+    }
+
     if (currentIndex < cards.length - 1) {
         currentIndex++;
         showCard();
+    } else {
+        // Reached the end - show results
+        showResults();
     }
 }
 
@@ -374,6 +490,68 @@ function showListView() {
 function hideListView() {
     document.getElementById('list-view').classList.add('hidden');
     document.getElementById('flashcard-app').classList.remove('hidden');
+}
+
+// Results Screen functions
+function showResults() {
+    document.getElementById('flashcard-app').classList.add('hidden');
+    document.getElementById('results').classList.remove('hidden');
+
+    // Debug logging
+    console.log('Known cards:', knownCards.length, knownCards);
+    console.log('Missed cards:', missedCards.length, missedCards);
+    console.log('Cards reviewed:', cardsReviewed);
+
+    // Update tally counts
+    document.getElementById('known-count').textContent = knownCards.length;
+    document.getElementById('missed-count').textContent = missedCards.length;
+
+    // Show/hide review missed button
+    const reviewBtn = document.getElementById('review-missed-btn');
+    if (missedCards.length > 0) {
+        reviewBtn.style.display = 'inline-block';
+        reviewBtn.textContent = `Review missed cards`;
+    } else {
+        reviewBtn.style.display = 'none';
+    }
+
+    // Make sure other buttons are visible
+    const startOverBtn = document.querySelector('button[onclick="startOver()"]');
+    const doneBtn = document.querySelector('a[href="../index.html"]');
+    if (startOverBtn) startOverBtn.style.display = 'inline-block';
+    if (doneBtn) doneBtn.style.display = 'inline-block';
+}
+
+function reviewMissed() {
+    if (missedCards.length === 0) return;
+
+    // Set up review mode
+    studyMode = 'review';
+    cards = [...missedCards];
+    currentIndex = 0;
+
+    // Hide results, show flashcards
+    document.getElementById('results').classList.add('hidden');
+    document.getElementById('flashcard-app').classList.remove('hidden');
+
+    showCard();
+}
+
+function startOver() {
+    // Reset everything
+    studyMode = 'initial';
+    knownCards = [];
+    missedCards = [];
+    cardsReviewed = 0;
+    currentIndex = 0;
+    cards = [...allCards];
+
+    // Shuffle and start fresh
+    shuffleCards();
+
+    document.getElementById('results').classList.add('hidden');
+    document.getElementById('flashcard-app').classList.remove('hidden');
+    showCard();
 }
 
 // Keyboard shortcuts
