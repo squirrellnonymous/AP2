@@ -26,7 +26,7 @@ flashcards:
     image: "leukocytes/03.jpg"
     answer: "Lymphocyte"
     keywords: ["B cells", "T cells", "NK cells", "adaptive immunity", "memory"]
-    definition: "White blood cells responsible for adaptive immunity, including B cells, T cells, and natural killer (NK) cells."
+    definition: "White blood cells that differentiate into B cells, T cells, and natural killer (NK) cells for adaptive and innate immunity."
     breakdown: "'Lympho' refers to lymph fluid, 'cyte' means cell. These are the smart cells that remember past infections."
     example: "B cells make antibodies like custom-made keys, T cells kill infected cells directly, and NK cells patrol for anything suspicious."
 

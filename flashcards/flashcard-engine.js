@@ -27,10 +27,35 @@ function getFlashcardSet() {
 // Load flashcards
 async function loadFlashcards() {
     try {
+        console.log('Starting to load flashcards...');
+        console.log('Current URL:', window.location.href);
+
         const setName = getFlashcardSet();
-        const response = await fetch(`sets/${setName}.yml`);
+        console.log('Set name:', setName);
+
+        // Check if js-yaml is loaded first
+        if (typeof jsyaml === 'undefined') {
+            throw new Error('js-yaml library not loaded - CDN may be blocked');
+        }
+        console.log('js-yaml loaded successfully');
+
+        const fetchUrl = `sets/${setName}.yml`;
+        console.log('Fetching:', fetchUrl);
+
+        const response = await fetch(fetchUrl);
+        console.log('Fetch response status:', response.status);
+        console.log('Response OK:', response.ok);
+
+        if (!response.ok) {
+            throw new Error(`Fetch failed: ${response.status} ${response.statusText}`);
+        }
+
         const yamlText = await response.text();
+        console.log('YAML text length:', yamlText.length);
+        console.log('First 100 chars:', yamlText.substring(0, 100));
+
         const data = jsyaml.load(yamlText);
+        console.log('Parsed data cards count:', data.flashcards?.length);
 
         // Store set metadata
         flashcardSet = {
@@ -58,7 +83,13 @@ async function loadFlashcards() {
 
     } catch (error) {
         console.error('Error loading flashcards:', error);
-        document.getElementById('loading').textContent = `Error loading flashcard set. Make sure the set exists.`;
+        document.getElementById('loading').innerHTML = `
+            <div>Error loading flashcard set</div>
+            <div style="font-size: 0.8rem; margin-top: 10px;">
+                Error: ${error.message}<br>
+                Check console for details
+            </div>
+        `;
     }
 }
 
@@ -145,6 +176,9 @@ function setupTouchEvents() {
 // Touch start
 function handleTouchStart(e) {
     if (!showingDefinition) return; // Only swipe on definition side
+
+    // Don't start dragging if touching a button
+    if (e.target.closest('.swipe-option')) return;
 
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
