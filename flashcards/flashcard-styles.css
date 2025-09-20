@@ -84,9 +84,6 @@ h1 {
     position: relative;
 }
 
-.flashcard:hover {
-    transform: translateY(-4px);
-}
 
 /* Term content wrapper */
 .term-content {
@@ -139,25 +136,6 @@ h1 {
     color: #1a1a1a;
 }
 
-/* Extra info */
-.extra-info {
-    margin-top: 20px;
-    padding: 20px;
-    background: #f8fafc;
-    border-radius: 12px;
-    border-left: 4px solid #6366f1;
-}
-
-.breakdown {
-    font-size: 1rem;
-    color: #374151;
-    margin-bottom: 15px;
-}
-
-.example {
-    font-size: 1rem;
-    color: #374151;
-}
 
 /* Navigation */
 .navigation {
@@ -236,6 +214,17 @@ h1 {
 .swipe-option span {
     display: block;
     font-size: 0.9rem;
+    font-weight: 500;
+    color: #475569;
+}
+
+.swipe-emoji {
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.swipe-text {
+    font-size: 0.8rem;
     font-weight: 500;
     color: #475569;
 }
@@ -326,6 +315,10 @@ h1 {
     cursor: pointer;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .list-item:hover {
@@ -333,17 +326,18 @@ h1 {
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
 }
 
+.list-image {
+    max-width: 150px;
+    max-height: 120px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
 .list-term {
     font-size: 1.3rem;
     font-weight: 700;
     color: #1a1a1a;
-    margin-bottom: 8px;
-}
-
-.list-definition {
-    font-size: 1rem;
-    color: #374151;
-    line-height: 1.5;
+    text-align: center;
 }
 
 /* Swipe animations */
@@ -378,7 +372,7 @@ h1 {
 
     .flashcard {
         padding: 40px 20px;
-        min-height: 250px;
+        height: 450px;
     }
 
     .term {
@@ -390,12 +384,38 @@ h1 {
     }
 
     .controls {
-        flex-direction: column;
-        align-items: center;
+        gap: 10px;
+    }
+
+    .control-btn {
+        font-size: 0.8rem;
+        padding: 8px 12px;
     }
 
     .navigation {
+        gap: 15px;
+    }
+
+    .nav-btn {
+        font-size: 0.9rem;
+        padding: 10px 18px;
+    }
+
+    .swipe-option {
+        display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 12px 8px;
+        text-align: center;
+    }
+
+    .swipe-emoji {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+    }
+
+    .swipe-text {
+        font-size: 0.75rem;
+        line-height: 1.2;
     }
 }

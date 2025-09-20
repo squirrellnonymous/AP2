@@ -6,7 +6,6 @@ let knownCards = []; // Cards student knows
 let missedCards = []; // Cards student needs to review
 let currentIndex = 0;
 let showingDefinition = false;
-let showExtraInfo = false;
 let flashcardSet = null; // Metadata about current set
 let studyMode = 'initial'; // 'initial' or 'review'
 let cardsReviewed = 0; // Track how many cards have been swiped
@@ -83,8 +82,6 @@ function showCard() {
     definitionContent = definitionContent.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
     document.getElementById('definition').innerHTML = definitionContent;
 
-    document.getElementById('breakdown').textContent = card.breakdown || '';
-    document.getElementById('example').innerHTML = card.example ? `<strong>Example:</strong> ${card.example}` : '';
 
     // Handle images
     const termImage = document.getElementById('term-image');
@@ -114,8 +111,6 @@ function showCard() {
         document.getElementById('next-btn').disabled = currentIndex === cards.length - 1;
     }
 
-    // Update extra info visibility
-    document.getElementById('extra-info').classList.toggle('hidden', !showExtraInfo);
 }
 
 // Flip card (term <-> definition)
@@ -449,19 +444,6 @@ function shuffleCards() {
     showCard();
 }
 
-// Toggle extra info
-function toggleExtraInfo() {
-    showExtraInfo = !showExtraInfo;
-    const btn = event.target;
-
-    if (showExtraInfo) {
-        btn.textContent = '💡 Hide Details';
-        document.getElementById('extra-info').classList.remove('hidden');
-    } else {
-        btn.textContent = '💡 Show Details';
-        document.getElementById('extra-info').classList.add('hidden');
-    }
-}
 
 // List view functions
 function showListView() {
@@ -474,9 +456,15 @@ function showListView() {
     allCards.forEach((card, index) => {
         const cardItem = document.createElement('div');
         cardItem.className = 'list-item';
+
+        let imageHtml = '';
+        if (card.image) {
+            imageHtml = `<img src="../images/${card.image}" alt="${card.term}" class="list-image">`;
+        }
+
         cardItem.innerHTML = `
+            ${imageHtml}
             <div class="list-term">${card.term}</div>
-            <div class="list-definition">${card.definition}</div>
         `;
         cardItem.onclick = () => {
             currentIndex = cards.findIndex(c => c.id === card.id);

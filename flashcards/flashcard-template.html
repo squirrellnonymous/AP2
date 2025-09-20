@@ -20,7 +20,6 @@
             <div class="controls">
                 <button class="control-btn" onclick="shuffleCards()">🔀 Shuffle</button>
                 <button class="control-btn" id="card-counter" onclick="showListView()">1 / 15</button>
-                <button class="control-btn" onclick="toggleExtraInfo()">💡 Show Details</button>
             </div>
 
             <!-- Simple Flashcard -->
@@ -38,19 +37,16 @@
                 <div id="definition-side" class="hidden">
                     <div class="definition" id="definition">Loading...</div>
 
-                    <!-- Extra Info (optional) -->
-                    <div id="extra-info" class="extra-info hidden">
-                        <div class="breakdown" id="breakdown">Loading...</div>
-                        <div class="example" id="example">Loading...</div>
-                    </div>
 
                     <!-- Swipe Instructions -->
                     <div class="swipe-instructions">
                         <div class="swipe-option swipe-left" onclick="event.stopPropagation(); swipeLeft();">
-                            <span>👈 💔 Need to review</span>
+                            <div class="swipe-emoji">👈 💔</div>
+                            <div class="swipe-text">Need to review</div>
                         </div>
                         <div class="swipe-option swipe-right" onclick="event.stopPropagation(); swipeRight();">
-                            <span>👉 ✅ I know it!</span>
+                            <div class="swipe-emoji">✅ 👉</div>
+                            <div class="swipe-text">I know it!</div>
                         </div>
                     </div>
                 </div>
