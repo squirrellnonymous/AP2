@@ -9,10 +9,7 @@
 <body>
     <div class="container">
         <!-- Header -->
-        <div class="header">
-            <h1>Study Flashcards</h1>
-            <div class="progress" id="progress">Loading...</div>
-        </div>
+        <div class="progress" id="progress">Loading...</div>
 
         <!-- Loading -->
         <div id="loading">Loading flashcards...</div>
@@ -22,7 +19,7 @@
             <!-- Controls -->
             <div class="controls">
                 <button class="control-btn" onclick="shuffleCards()">🔀 Shuffle</button>
-                <span id="card-counter">1 / 15</span>
+                <button class="control-btn" id="card-counter" onclick="showListView()">1 / 15</button>
                 <button class="control-btn" onclick="toggleExtraInfo()">💡 Show Details</button>
             </div>
 
@@ -47,12 +44,10 @@
                     <!-- Swipe Instructions -->
                     <div class="swipe-instructions">
                         <div class="swipe-option swipe-left">
-                            <span>👈 Swipe Left</span>
-                            <small>I know this!</small>
+                            <span>👈 💔 Need to review</span>
                         </div>
                         <div class="swipe-option swipe-right">
-                            <span>👉 Swipe Right</span>
-                            <small>Need to review</small>
+                            <span>👉 ✅ I know it!</span>
                         </div>
                     </div>
                 </div>
@@ -63,6 +58,14 @@
                 <button class="nav-btn" id="prev-btn" onclick="previousCard()">← Previous</button>
                 <button class="nav-btn" id="next-btn" onclick="nextCard()">Next →</button>
             </div>
+        </div>
+
+        <!-- List View -->
+        <div id="list-view" class="hidden">
+            <div class="controls">
+                <button class="control-btn" onclick="hideListView()">← Back to Cards</button>
+            </div>
+            <div id="card-list"></div>
         </div>
 
         <a href="index.html" class="back-link">← Back to Home</a>
@@ -96,12 +99,12 @@
 
                 allCards = [...data.flashcards];
                 cards = [...data.flashcards]; // Current deck
-                document.getElementById('progress').textContent = `${cards.length} Cards`;
 
                 setupTouchEvents();
                 showCard();
 
                 document.getElementById('loading').classList.add('hidden');
+                document.getElementById('progress').classList.add('hidden');
                 document.getElementById('flashcard-app').classList.remove('hidden');
 
             } catch (error) {
@@ -200,9 +203,9 @@
             const threshold = 100;
             if (Math.abs(currentX) > threshold) {
                 if (currentX > 0) {
-                    swipeRight(); // Need to review
+                    swipeRight(); // Know it well
                 } else {
-                    swipeLeft(); // Know it well
+                    swipeLeft(); // Need to review
                 }
             } else {
                 // Snap back
@@ -274,11 +277,11 @@
             currentY = 0;
         }
 
-        // Swipe left - "I know this well"
+        // Swipe left - "Need to review"
         function swipeLeft() {
-            // Add to known pile (review much later)
+            // Add to review pile (see again soon)
             const currentCard = cards[currentIndex];
-            knownPile.push(currentCard);
+            reviewPile.push(currentCard);
 
             // Animate out
             cardElement.style.transform = 'translateX(-100vw) rotate(-30deg)';
@@ -290,11 +293,11 @@
             }, 300);
         }
 
-        // Swipe right - "Need to review this"
+        // Swipe right - "I know this well"
         function swipeRight() {
-            // Add to review pile (see again soon)
+            // Add to known pile (review much later)
             const currentCard = cards[currentIndex];
-            reviewPile.push(currentCard);
+            knownPile.push(currentCard);
 
             // Animate out
             cardElement.style.transform = 'translateX(100vw) rotate(30deg)';
@@ -387,6 +390,35 @@
                 btn.textContent = '💡 Show Details';
                 document.getElementById('extra-info').classList.add('hidden');
             }
+        }
+
+        // List view functions
+        function showListView() {
+            document.getElementById('flashcard-app').classList.add('hidden');
+            document.getElementById('list-view').classList.remove('hidden');
+
+            const listContainer = document.getElementById('card-list');
+            listContainer.innerHTML = '';
+
+            allCards.forEach((card, index) => {
+                const cardItem = document.createElement('div');
+                cardItem.className = 'list-item';
+                cardItem.innerHTML = `
+                    <div class="list-term">${card.term}</div>
+                    <div class="list-definition">${card.definition}</div>
+                `;
+                cardItem.onclick = () => {
+                    currentIndex = cards.findIndex(c => c.id === card.id);
+                    if (currentIndex === -1) currentIndex = 0;
+                    hideListView();
+                };
+                listContainer.appendChild(cardItem);
+            });
+        }
+
+        function hideListView() {
+            document.getElementById('list-view').classList.add('hidden');
+            document.getElementById('flashcard-app').classList.remove('hidden');
         }
 
         // Keyboard shortcuts

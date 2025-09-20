@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Study Flashcards - BIOL 224</title>
+    <link rel="stylesheet" href="flashcard-styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="progress" id="progress">Loading...</div>
+
+        <!-- Loading -->
+        <div id="loading">Loading flashcards...</div>
+
+        <!-- Flashcard App -->
+        <div id="flashcard-app" class="hidden">
+            <!-- Controls -->
+            <div class="controls">
+                <button class="control-btn" onclick="shuffleCards()">🔀 Shuffle</button>
+                <button class="control-btn" id="card-counter" onclick="showListView()">1 / 15</button>
+                <button class="control-btn" onclick="toggleExtraInfo()">💡 Show Details</button>
+            </div>
+
+            <!-- Simple Flashcard -->
+            <div class="flashcard" onclick="flipCard()">
+                <!-- Term Side -->
+                <div id="term-side">
+                    <div class="term-content">
+                        <img id="term-image" class="term-image hidden" src="" alt="">
+                        <div class="term" id="term">Loading...</div>
+                    </div>
+                    <div class="click-instruction">Click to see definition</div>
+                </div>
+
+                <!-- Definition Side -->
+                <div id="definition-side" class="hidden">
+                    <div class="definition" id="definition">Loading...</div>
+
+                    <!-- Extra Info (optional) -->
+                    <div id="extra-info" class="extra-info hidden">
+                        <div class="breakdown" id="breakdown">Loading...</div>
+                        <div class="example" id="example">Loading...</div>
+                    </div>
+
+                    <!-- Swipe Instructions -->
+                    <div class="swipe-instructions">
+                        <div class="swipe-option swipe-left">
+                            <span>👈 💔 Need to review</span>
+                        </div>
+                        <div class="swipe-option swipe-right">
+                            <span>👉 ✅ I know it!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="navigation">
+                <button class="nav-btn" id="prev-btn" onclick="previousCard()">← Previous</button>
+                <button class="nav-btn" id="next-btn" onclick="nextCard()">Next →</button>
+            </div>
+        </div>
+
+        <!-- List View -->
+        <div id="list-view" class="hidden">
+            <div class="controls">
+                <button class="control-btn" onclick="hideListView()">← Back to Cards</button>
+            </div>
+            <div id="card-list"></div>
+        </div>
+
+        <a href="../index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script src="flashcard-engine.js"></script>
+</body>
+</html>

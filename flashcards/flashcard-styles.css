@@ -72,20 +72,29 @@ h1 {
 .flashcard {
     background: white;
     border-radius: 16px;
-    padding: 60px 40px;
+    padding: 40px;
     margin-bottom: 30px;
-    min-height: 300px;
+    height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease;
+    position: relative;
 }
 
 .flashcard:hover {
     transform: translateY(-4px);
+}
+
+/* Term content wrapper */
+.term-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
 /* Term display */
@@ -93,7 +102,21 @@ h1 {
     font-size: 2.5rem;
     font-weight: 700;
     color: #1a1a1a;
-    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Term image */
+.term-image {
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
+/* Smaller text when image is present */
+.term-content:has(.term-image:not(.hidden)) .term {
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 /* Definition display */
@@ -102,6 +125,10 @@ h1 {
     color: #374151;
     line-height: 1.6;
     margin-bottom: 20px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 /* Extra info */
@@ -153,11 +180,34 @@ h1 {
     cursor: not-allowed;
 }
 
+/* Term and definition side layouts */
+#term-side, #definition-side {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#term-side {
+    align-items: center;
+}
+
+/* Click instruction (mirrors swipe buttons) */
+.click-instruction {
+    color: #6b7280;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
 /* Swipe Instructions */
 .swipe-instructions {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: auto;
+    margin-bottom: 0;
     gap: 15px;
 }
 
