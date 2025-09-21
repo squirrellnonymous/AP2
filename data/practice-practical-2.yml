@@ -3,257 +3,257 @@ description: "Blood, Heart, & Circulatory System identification practical coveri
 
 questions:
   - id: 1
-    image: "images/practical-2/01.png"
-    question: "What is the tissue/structure?"
-    answer: "sample answer"
+    image: "images/practical-2/01.jpg"
+    question: "What is the formed element"
+    answer: ["neutrophils", "neutrophil"]
     points: 1
-
+    
   - id: 2
-    image: "images/practical-2/02.png"
-    question: "What is the structure labeled X on the model?"
-    answer: "sample answer"
+    image: "images/practical-2/02.jpg"
+    question: "What is the formed element"
+    answer: ["thrombocytes", "platelets"]
     points: 1
 
   - id: 3
-    image: "images/practical-2/03.png"
-    question: "What is the structure labeled Y on the model?"
-    answer: "sample answer"
+    image: "images/practical-2/03.jpg"
+    question: "What is the formed element"
+    answer: ["lymphocyte", "lymphocytes"]
     points: 1
-
+    
   - id: 4
-    image: "images/practical-2/04.png"
-    question: "What is the chamber labeled X?"
-    answer: "sample answer"
-    points: 1
-
+    image: "images/practical-2/04.jpg"
+    question: "What is the formed element"
+    answer: "basophil"
+    points: 1  
+    
   - id: 5
-    image: "images/practical-2/05.png"
-    question: "Name the structure labeled X"
-    answer: "sample answer"
+    image: "images/practical-2/05.jpg"
+    question: "What is the formed element"
+    answer: "monocyte"
     points: 1
-
+    
   - id: 6
-    image: "images/practical-2/06.png"
-    question: "Name the vessel labeled Y"
-    answer: "sample answer"
+    image: "images/practical-2/06.jpg"
+    question: "What is the formed element"
+    answer: ["eosinophil"]
     points: 1
-
+    
   - id: 7
-    image: "images/practical-2/07.png"
-    question: "What type of blood vessel is this?"
-    answer: "sample answer"
+    image: "images/practical-2/07.jpg"
+    question: "What is the formed element"
+    answer: "basophil"
     points: 1
-
+    
   - id: 8
-    image: "images/practical-2/08.png"
-    question: "What is the tissue/structure?"
-    answer: "sample answer"
+    image: "images/practical-2/08.jpg"
+    question: "what is the tissue/structure?"
+    answer: ["neutrophil"]
     points: 1
 
   - id: 9
-    image: "images/practical-2/09.png"
+    image: "images/practical-2/09.jpg"
     question: "What organ/tissue is this from?"
     answer: "sample answer"
     points: 1
 
   - id: 10
-    image: "images/practical-2/10.png"
+    image: "images/practical-2/10.jpg"
     question: "What is the structure labeled X?"
     answer: "sample answer"
     points: 1
 
   - id: 11
-    image: "images/practical-2/11.png"
+    image: "images/practical-2/11.jpg"
     question: "Name the structure(s) labeled Y?"
     answer: "sample answer"
     points: 1
 
   - id: 12
-    image: "images/practical-2/12.png"
+    image: "images/practical-2/12.jpg"
     question: "Which layer of the heart wall is this tissue from?"
     answer: "sample answer"
     points: 1
 
   - id: 13
-    image: "images/practical-2/13.png"
+    image: "images/practical-2/13.jpg"
     question: "Name the structure(s) labeled X?"
     answer: "sample answer"
     points: 1
 
   - id: 14
-    image: "images/practical-2/14.png"
+    image: "images/practical-2/14.jpg"
     question: "Name the valve labeled Y?"
     answer: "sample answer"
     points: 1
 
   - id: 15
-    image: "images/practical-2/15.png"
+    image: "images/practical-2/15.jpg"
     question: "What is the vessel labeled X?"
     answer: "sample answer"
     points: 1
 
   - id: 16
-    image: "images/practical-2/16.png"
+    image: "images/practical-2/16.jpg"
     question: "Name the blood cell type labeled X."
     answer: "sample answer"
     points: 1
 
   - id: 17
-    image: "images/practical-2/17.png"
+    image: "images/practical-2/17.jpg"
     question: "Name the blood cell type pointed to in the illustration."
     answer: "sample answer"
     points: 1
 
   - id: 18
-    image: "images/practical-2/18.png"
+    image: "images/practical-2/18.jpg"
     question: "Name the structure where this tissue is found."
     answer: "sample answer"
     points: 1
 
   - id: 19
-    image: "images/practical-2/19.png"
+    image: "images/practical-2/19.jpg"
     question: "Name the vessel/structure where this tissue is found."
     answer: "sample answer"
     points: 1
 
   - id: 20
-    image: "images/practical-2/20.png"
+    image: "images/practical-2/20.jpg"
     question: "What phase of the cardiac cycle is shown?"
     answer: "sample answer"
     points: 1
 
   - id: 21
-    image: "images/practical-2/21.png"
+    image: "images/practical-2/21.jpg"
     question: "What is the normal range for this measurement?"
     answer: "sample answer"
     points: 1
 
   - id: 22
-    image: "images/practical-2/22.png"
+    image: "images/practical-2/22.jpg"
     question: "What is the structure labeled Y?"
     answer: "sample answer"
     points: 1
 
   - id: 23
-    image: "images/practical-2/23.png"
+    image: "images/practical-2/23.jpg"
     question: "Name the vessel/structure where this tissue is found."
     answer: "sample answer"
     points: 1
 
   - id: 24
-    image: "images/practical-2/24.png"
+    image: "images/practical-2/24.jpg"
     question: "What is the name of the structure labeled X?"
     answer: "sample answer"
     points: 1
 
   - id: 25
-    image: "images/practical-2/25.png"
+    image: "images/practical-2/25.jpg"
     question: "Name the hormone/factor released from this organ"
     answer: "sample answer"
     points: 1
 
   - id: 26
-    image: "images/practical-2/26.png"
+    image: "images/practical-2/26.jpg"
     question: "What is the vessel that this tissue is from?"
     answer: "sample answer"
     points: 1
 
   - id: 27
-    image: "images/practical-2/27.png"
+    image: "images/practical-2/27.jpg"
     question: "What is the structure?"
     answer: "sample answer"
     points: 1
 
   - id: 28
-    image: "images/practical-2/28.png"
+    image: "images/practical-2/28.jpg"
     question: "What is this area of tissue called?"
     answer: "sample answer"
     points: 1
 
   - id: 29
-    image: "images/practical-2/29.png"
+    image: "images/practical-2/29.jpg"
     question: "What is the vessel labeled X?"
     answer: "sample answer"
     points: 1
 
   - id: 30
-    image: "images/practical-2/30.png"
+    image: "images/practical-2/30.jpg"
     question: "What is the structure circled in pink?"
     answer: "sample answer"
     points: 1
 
   - id: 31
-    image: "images/practical-2/31.png"
+    image: "images/practical-2/31.jpg"
     question: "What is the structure (indicated by pink arrow)"
     answer: "sample answer"
     points: 1
 
   - id: 32
-    image: "images/practical-2/32.png"
+    image: "images/practical-2/32.jpg"
     question: "A patient has a heart rate of 45 bpm. What condition do you suspect?"
     answer: "sample answer"
     points: 1
 
   - id: 33
-    image: "images/practical-2/33.png"
+    image: "images/practical-2/33.jpg"
     question: "Complete the pathway"
     answer: "sample answer"
     points: 1
 
   - id: 34
-    image: "images/practical-2/34.png"
+    image: "images/practical-2/34.jpg"
     question: "Which blood type is the universal donor?"
     answer: "sample answer"
     points: 1
 
   - id: 35
-    image: "images/practical-2/35.png"
+    image: "images/practical-2/35.jpg"
     question: "Which blood type is the universal recipient?"
     answer: "sample answer"
     points: 1
 
   - id: 36
-    image: "images/practical-2/36.png"
+    image: "images/practical-2/36.jpg"
     question: "What is the normal hematocrit range for males?"
     answer: "sample answer"
     points: 1
 
   - id: 37
-    image: "images/practical-2/37.png"
+    image: "images/practical-2/37.jpg"
     question: "Name a hormone secreted by this organ"
     answer: "sample answer"
     points: 1
 
   - id: 38
-    image: "images/practical-2/38.png"
+    image: "images/practical-2/38.jpg"
     question: "Name the phase of hemostasis shown."
     answer: "sample answer"
     points: 1
 
   - id: 39
-    image: "images/practical-2/39.png"
+    image: "images/practical-2/39.jpg"
     question: "What is the normal blood pressure range?"
     answer: "sample answer"
     points: 1
 
   - id: 40
-    image: "images/practical-2/40.png"
+    image: "images/practical-2/40.jpg"
     question: "Name the vessel/structure circled in violet"
     answer: "sample answer"
     points: 1
 
   - id: 41
-    image: "images/practical-2/41.png"
+    image: "images/practical-2/41.jpg"
     question: "Extra credit #a. Name this ECG wave"
     answer: "sample answer"
     points: 1
 
   - id: 42
-    image: "images/practical-2/42.png"
+    image: "images/practical-2/42.jpg"
     question: "Extra credit #b. Name this heart sound"
     answer: "sample answer"
     points: 1
 
 # Upload your images to: /images/practical-2/
-# Name them: 01.png, 02.png, 03.png, etc. (up to 42.png)
+# Name them: 01.jpg, 02.jpg, 03.jpg, etc. (up to 42.jpg)
 # Then update this YAML file with the correct answers

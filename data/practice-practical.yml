@@ -221,7 +221,7 @@ questions:
   - id: 37
     image: "images/practical/37.png"
     question: "name a hormone secreted by this organ"
-    answer: ["atrial natriuretic hormone", "atrial natriuretic peptide"]
+    answer: ["atrial natriuretic hormone", "atrial naturiuretic peptide"]
     points: 1
     
   - id: 38

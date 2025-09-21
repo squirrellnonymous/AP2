@@ -4,7 +4,7 @@ color_theme: "blue"
 
 flashcards:
   - id: 1
-    term: "Identify the formed element"
+    term: "Identify the formed element?"
     image: "leukocytes/01.jpg"
     answer: "Neutrophil"
     keywords: ["most abundant", "polymorphonuclear", "PMN", "first responders", "bacterial infections"]
@@ -13,7 +13,7 @@ flashcards:
     example: "When you get a cut and bacteria try to invade, neutrophils are the first soldiers to arrive at the battle scene."
 
   - id: 2
-    term: "Identify the formed element"
+    term: "What's the formed element?"
     image: "leukocytes/02.jpg"
     answer: "Thrombocytes"
     keywords: ["platelets", "blood clotting", "hemostasis", "cell fragments", "megakaryocytes"]
@@ -22,7 +22,7 @@ flashcards:
     example: "When you get a paper cut, thrombocytes (platelets) quickly stick to the damaged blood vessel and clump together to stop the bleeding."
 
   - id: 3
-    term: "Identify the formed element"
+    term: "Identify the formed element?"
     image: "leukocytes/03.jpg"
     answer: "Lymphocyte"
     keywords: ["B cells", "T cells", "NK cells", "adaptive immunity", "memory"]
@@ -31,7 +31,7 @@ flashcards:
     example: "B cells make antibodies like custom-made keys, T cells kill infected cells directly, and NK cells patrol for anything suspicious."
 
   - id: 4
-    term: "Identify the formed element"
+    term: "What's the formed element?"
     image: "leukocytes/04.jpg"
     answer: "Basophil"
     keywords: ["least common", "histamine", "heparin", "allergic reactions", "mast cells", "blue granules"]
@@ -40,7 +40,7 @@ flashcards:
     example: "When you're allergic to cats, basophils release histamine that makes your eyes water and nose run, working alongside mast cells in tissues."
 
   - id: 5
-    term: "Identify the formed element"
+    term: "Identify the formed element?"
     image: "leukocytes/05.jpg"
     answer: "Monocyte"
     keywords: ["largest", "macrophages", "dendritic cells", "antigen presentation", "tissue repair"]
@@ -49,10 +49,28 @@ flashcards:
     example: "Think of them as construction workers that become either cleanup crews (macrophages) or information specialists (dendritic cells)."
 
   - id: 6
-    term: "Identify the formed element"
+    term: "What's the formed element?"
     image: "leukocytes/06.jpg"
     answer: "Eosinophil"
     keywords: ["eosinophil", "bilobed nucleus", "pink granules", "allergic reactions"]
     definition: "White blood cell with characteristic pink-staining granules and typically a bilobed nucleus."
     breakdown: "Look for the distinctive bright pink/red granules that fill the cytoplasm and the often bilobed (two-part) nucleus."
     example: "This eosinophil is identified by its pink-staining granules (eosinophilic granules) that respond to eosin dye, and its characteristic bilobed nucleus."
+
+  - id: 7
+    term: "Name the formed element?"
+    image: "leukocytes/07.jpg"
+    answer: "blank"
+    keywords: ["blank"]
+    definition: "blank"
+    breakdown: "blank"
+    example: "blank"
+
+  - id: 8
+    term: "Name the formed element?"
+    image: "leukocytes/08.jpg"
+    answer: "blank"
+    keywords: ["blank"]
+    definition: "blank"
+    breakdown: "blank"
+    example: "blank"
