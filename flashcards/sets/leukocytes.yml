@@ -60,17 +60,17 @@ flashcards:
   - id: 7
     term: "Name the formed element?"
     image: "leukocytes/07.jpg"
-    answer: "blank"
+    answer: "basophil"
     keywords: ["blank"]
-    definition: "blank"
+    definition: "releases histamine during allergic reactions"
     breakdown: "blank"
     example: "blank"
 
   - id: 8
     term: "Name the formed element?"
     image: "leukocytes/08.jpg"
-    answer: "blank"
+    answer: "neutrophil"
     keywords: ["blank"]
-    definition: "blank"
+    definition: "first responders to bacterial infections"
     breakdown: "blank"
     example: "blank"
