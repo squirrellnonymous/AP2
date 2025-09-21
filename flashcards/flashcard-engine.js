@@ -24,6 +24,7 @@ function getFlashcardSet() {
     return urlParams.get('set') || 'anatomy-basics'; // Default set
 }
 
+
 // Load flashcards
 async function loadFlashcards() {
     try {
@@ -71,11 +72,11 @@ async function loadFlashcards() {
         allCards = [...data.flashcards];
         cards = [...data.flashcards]; // Current deck
 
+        // Setup touch events first
+        setupTouchEvents();
+
         // Always shuffle on load
         shuffleCards();
-
-        setupTouchEvents();
-        showCard();
 
         document.getElementById('loading').classList.add('hidden');
         document.getElementById('progress').classList.add('hidden');
@@ -114,43 +115,57 @@ function showCard() {
     document.getElementById('definition').innerHTML = definitionContent;
 
 
-    // Handle images
+    // Handle images - preload to prevent flash
     const termImage = document.getElementById('term-image');
+
     if (card.image) {
-        termImage.src = `../images/${card.image}`;
-        termImage.alt = card.term;
-        termImage.classList.remove('hidden');
+        // Hide image immediately to prevent flash
+        termImage.classList.add('hidden');
+
+        // Create new image to preload
+        const newImg = new Image();
+        newImg.onload = () => {
+            // Only update and show after new image is loaded
+            termImage.src = newImg.src;
+            termImage.alt = card.term;
+            termImage.classList.remove('hidden');
+        };
+        newImg.src = `../images/${card.image}`;
     } else {
         termImage.classList.add('hidden');
     }
 
-    // Reset to term side
+    // Reset to term side immediately (no animation)
     showingDefinition = false;
-    document.getElementById('term-side').classList.remove('hidden');
-    document.getElementById('definition-side').classList.add('hidden');
+    const flipCardInner = cardElement.querySelector('.flip-card-inner');
+
+    // Temporarily disable ALL transitions to prevent unwanted animations
+    cardElement.style.transition = 'none';
+    flipCardInner.style.transition = 'none';
+    cardElement.classList.remove('flipped');
+
+    // Re-enable transitions after reset
+    setTimeout(() => {
+        cardElement.style.transition = '';
+        flipCardInner.style.transition = 'transform 0.6s';
+    }, 10);
 
     // Update counter - show total count
     document.getElementById('card-counter').textContent = `${allCards.length} cards`;
 
-    // Update navigation
-    if (studyMode === 'initial') {
-        // Disable navigation buttons during initial study - force swiping
-        document.getElementById('prev-btn').disabled = true;
-        document.getElementById('next-btn').disabled = true;
-    } else {
-        document.getElementById('prev-btn').disabled = currentIndex === 0;
-        document.getElementById('next-btn').disabled = currentIndex === cards.length - 1;
-    }
+    // Update navigation - Previous enabled if showing definition OR can go back
+    document.getElementById('prev-btn').disabled = !showingDefinition && currentIndex === 0;
+    document.getElementById('next-btn').disabled = currentIndex === cards.length - 1;
 
 }
 
 // Flip card (term <-> definition)
 function flipCard() {
     if (!showingDefinition) {
-        // Show definition
-        document.getElementById('term-side').classList.add('hidden');
-        document.getElementById('definition-side').classList.remove('hidden');
+        // Simple flip using proven W3Schools method
+        cardElement.classList.add('flipped');
         showingDefinition = true;
+        document.getElementById('prev-btn').disabled = false;
     } else {
         // Go to next card
         nextCard();
@@ -159,7 +174,7 @@ function flipCard() {
 
 // Setup touch events for swiping
 function setupTouchEvents() {
-    cardElement = document.querySelector('.flashcard');
+    cardElement = document.querySelector('.flip-card');
 
     // Touch events
     cardElement.addEventListener('touchstart', handleTouchStart, { passive: false });
@@ -305,19 +320,20 @@ function swipeLeft() {
     cardElement.style.opacity = '0';
 
     setTimeout(() => {
-        // Reset position instantly, then fade in new card
+        // Reset position instantly, then advance to new card
         cardElement.style.transition = 'none';
         cardElement.style.transform = 'translateX(0) rotate(0deg)';
-        cardElement.style.opacity = '0';
+        cardElement.style.opacity = '1';
         cardElement.style.borderLeft = 'none';
 
-        advanceCard();
-
-        // Quick fade in
+        // Clear swipe-related styles completely
         setTimeout(() => {
-            cardElement.style.transition = 'opacity 0.15s ease';
-            cardElement.style.opacity = '1';
-        }, 50);
+            cardElement.style.transition = '';
+            cardElement.style.transform = '';
+            cardElement.style.opacity = '';
+        }, 10);
+
+        advanceCard();
     }, 400);
 }
 
@@ -332,11 +348,12 @@ function swipeRight() {
         cardsReviewed++;
         console.log('Swiped right - known cards:', knownCards.length, 'reviewed:', cardsReviewed);
     } else if (studyMode === 'review') {
-        // In review mode, now knows it - remove from missed cards
+        // In review mode, now knows it - remove from missed cards and add to known
         const cardIndex = missedCards.findIndex(card => card.id === currentCard.id);
         if (cardIndex > -1) {
             missedCards.splice(cardIndex, 1);
-            console.log('Removed from missed cards, remaining:', missedCards.length);
+            knownCards.push(currentCard);
+            console.log('Moved from missed to known - missed:', missedCards.length, 'known:', knownCards.length);
         }
 
         // Also remove from current review deck
@@ -360,19 +377,20 @@ function swipeRight() {
     cardElement.style.opacity = '0';
 
     setTimeout(() => {
-        // Reset position instantly, then fade in new card
+        // Reset position instantly, then advance to new card
         cardElement.style.transition = 'none';
         cardElement.style.transform = 'translateX(0) rotate(0deg)';
-        cardElement.style.opacity = '0';
+        cardElement.style.opacity = '1';
         cardElement.style.borderLeft = 'none';
 
-        advanceCard();
-
-        // Quick fade in
+        // Clear swipe-related styles completely
         setTimeout(() => {
-            cardElement.style.transition = 'opacity 0.15s ease';
-            cardElement.style.opacity = '1';
-        }, 50);
+            cardElement.style.transition = '';
+            cardElement.style.transform = '';
+            cardElement.style.opacity = '';
+        }, 10);
+
+        advanceCard();
     }, 400);
 }
 
@@ -446,25 +464,25 @@ function advanceCard() {
 
 // Navigation
 function nextCard() {
-    // In initial mode, force user to swipe (make a decision)
-    if (studyMode === 'initial') {
-        // Don't allow skipping - user must swipe to make a decision
-        return;
-    }
-
     if (currentIndex < cards.length - 1) {
         currentIndex++;
         showCard();
-    } else {
-        // Reached the end - show results
-        showResults();
     }
 }
 
 function previousCard() {
-    if (currentIndex > 0) {
-        currentIndex--;
-        showCard();
+    // If showing definition, flip back to term first
+    if (showingDefinition) {
+        // Simple flip back
+        cardElement.classList.remove('flipped');
+        showingDefinition = false;
+        document.getElementById('prev-btn').disabled = currentIndex === 0;
+    } else {
+        // Already showing term, go to previous card
+        if (currentIndex > 0) {
+            currentIndex--;
+            showCard();
+        }
     }
 }
 

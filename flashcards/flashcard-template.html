@@ -23,30 +23,29 @@
             </div>
 
             <!-- Simple Flashcard -->
-            <div class="flashcard" onclick="flipCard()">
-                <!-- Term Side -->
-                <div id="term-side">
-                    <div class="term-content">
-                        <img id="term-image" class="term-image hidden" src="" alt="">
-                        <div class="term" id="term">Loading...</div>
-                    </div>
-                    <div class="click-instruction">Click to see definition</div>
-                </div>
-
-                <!-- Definition Side -->
-                <div id="definition-side" class="hidden">
-                    <div class="definition" id="definition">Loading...</div>
-
-
-                    <!-- Swipe Instructions -->
-                    <div class="swipe-instructions">
-                        <div class="swipe-option swipe-left" onclick="event.stopPropagation(); swipeLeft();">
-                            <div class="swipe-emoji">👈 💔</div>
-                            <div class="swipe-text">Need to review</div>
+            <div class="flip-card" onclick="flipCard()">
+                <div class="flip-card-inner">
+                    <!-- Front Side -->
+                    <div class="flip-card-front">
+                        <div class="term-content">
+                            <img id="term-image" class="term-image hidden" src="" alt="">
+                            <div class="term" id="term">Loading...</div>
                         </div>
-                        <div class="swipe-option swipe-right" onclick="event.stopPropagation(); swipeRight();">
-                            <div class="swipe-emoji">✅ 👉</div>
-                            <div class="swipe-text">I know it!</div>
+                        <div class="click-instruction">Click to see definition</div>
+                    </div>
+
+                    <!-- Back Side -->
+                    <div class="flip-card-back">
+                        <div class="definition" id="definition">Loading...</div>
+                        <div class="swipe-instructions">
+                            <div class="swipe-option swipe-left" onclick="event.stopPropagation(); swipeLeft();">
+                                <div class="swipe-emoji">👈 💔</div>
+                                <div class="swipe-text">Need to review</div>
+                            </div>
+                            <div class="swipe-option swipe-right" onclick="event.stopPropagation(); swipeRight();">
+                                <div class="swipe-emoji">✅ 👉</div>
+                                <div class="swipe-text">I know it!</div>
+                            </div>
                         </div>
                     </div>
                 </div>
