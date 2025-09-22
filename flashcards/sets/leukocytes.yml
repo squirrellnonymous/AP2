@@ -58,19 +58,19 @@ flashcards:
     example: "This eosinophil is identified by its pink-staining granules (eosinophilic granules) that respond to eosin dye, and its characteristic bilobed nucleus."
 
   - id: 7
-    term: "Name the formed element?"
+    term: "What's a function?"
     image: "leukocytes/07.jpg"
-    answer: "basophil"
+    answer: "Basophil"
     keywords: ["blank"]
     definition: "releases histamine during allergic reactions"
     breakdown: "blank"
     example: "blank"
 
   - id: 8
-    term: "Name the formed element?"
+    term: "Name an action/function of this leukocyte?"
     image: "leukocytes/08.jpg"
-    answer: "neutrophil"
-    keywords: ["blank"]
+    answer: "Neutrophil"
+    keywords: ["leukocytes"]
     definition: "first responders to bacterial infections"
     breakdown: "blank"
     example: "blank"
