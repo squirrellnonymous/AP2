@@ -7,28 +7,28 @@ questions:
     question: "Identify the formed element?"
     answer: "Neutrophil"
     definition: "The most abundant white blood cells, first responders to bacterial infections with multilobed nuclei."
-    tags: ["leukocytes"]
+    tags: ["formed-elements", "leukocytes"]
 
   - id: 2
     image: "practical-2/02.jpg"
     question: "What's the formed element?"
     answer: ["Thrombocyte","Thrombocytes","platelets","platelet"]
     definition: "Cell fragments (platelets) essential for blood clotting and hemostasis, derived from megakaryocytes in bone marrow."
-    tags: ["platelets", "blood-clotting"]
+    tags: ["formed-elements", "platelets", "blood-clotting"]
 
   - id: 3
     image: "practical-2/03.jpg"
     question: "Identify the formed element?"
     answer: "Lymphocyte"
     definition: "White blood cells that differentiate into B cells, T cells, and natural killer (NK) cells for adaptive and innate immunity."
-    tags: ["leukocytes"]
+    tags: ["formed-elements", "leukocytes"]
 
   - id: 4
     image: "practical-2/04.jpg"
     question: "What's the formed element?"
     answer: "Basophil"
     definition: "The least common white blood cells with blue-staining granules that release histamine during allergic reactions, closely related to tissue mast cells."
-    tags: ["leukocytes"]
+    tags: ["formed-elements", "leukocytes"]
 
   - id: 5
     image: "practical-2/05.jpg"
@@ -36,28 +36,28 @@ questions:
     answer: "Monocyte"
     definition: "The largest white blood cells that differentiate into macrophages and dendritic cells in tissues."
     breakdown: "'Mono' means one, referring to their single large nucleus. They're like the heavy machinery of the immune system."
-    tags: ["leukocytes"]
+    tags: ["formed-elements", "leukocytes"]
 
   - id: 6
     image: "practical-2/06.jpg"
     question: "What's the formed element?"
     answer: "Eosinophil"
     definition: "White blood cell with characteristic pink-staining granules and typically a bilobed nucleus."
-    tags: ["leukocytes"]
+    tags: ["formed-elements", "leukocytes"]
 
   - id: 7
     image: "practical-2/07.jpg"
     question: "What chemical signal does this formed element release?"
     answer: ["Histamine", "Histamines"]
     definition: "Releases histamine during allergic reactions"
-    tags: ["leukocytes"]
+    tags: ["formed-elements", "leukocytes"]
 
   - id: 8
     image: "practical-2/08.jpg"
     question: "Name a type of pathogen this formed element responds to."
     answer: ["bacteria", "bacterial"]
     definition: "First responders to bacterial infections"
-    tags: ["leukocytes"]
+    tags: ["formed-elements", "leukocytes"]
 
 
 # Upload your images to: /images/practical-2/

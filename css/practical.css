@@ -4,6 +4,36 @@
 /* Import handwriting font */
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap');
 
+/* Header overrides for practical pages */
+.header-content {
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.home-link {
+    position: absolute;
+    left: 0;
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: color 0.2s ease;
+}
+
+.home-link:hover {
+    color: #374151;
+}
+
+.header-content h1 {
+    flex: 1;
+    margin: 0;
+    text-align: center;
+}
+
 /* Practical-specific styles */
 .practical-content {
     margin-bottom: 32px;

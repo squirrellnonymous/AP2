@@ -1,13 +1,30 @@
 # Working Design Document
 
 ## Current Status
-- **Working**: Leukocytes flashcards work perfectly (don't touch!)
+- **Working**: Leukocytes flashcards work well and have been shared (don't touch!)
 - **Completed**:
-  - practice-practical-2.yml structure and leukocytes content (8 items)
-  - Dynamic 40-question answer sheet with auto-disable for unavailable questions
-  - Content-driven navigation (keyboard, buttons) respects available question count
-  - All image loading fixed with proper paths
-- **In Progress**: Building tag-based flashcard sets from the practical data (images and yml)
+   - practical is in a shareable state for other students, just needs fine tuning and more features
+- **What's Next**: 
+   - Add more practical data (erythrocytes, functions, most to least common, the heart) - Arena
+      - tagged (leukocytes, unit-2, ... heart, )
+   - Building tag-based flashcard sets from the practical data (images and yml)
+   - fine tune the animations
+      - fix image loading glitches
+         - loading image ..just gray...
+         - preload images in the background (up to 5 images ahead?)
+      - start fresh with each new card (no flipping in that reveals the answer)
+         - clear the state after the last card so it's always just a new card from the pile with the question (no animation)
+      - dark mode based on system (is that possible in a browser)
+   - fine tune the buttons and focus colors
+      - main text entry field should be more prominent
+      - answer sheet fields should be less prominent (still clickable)
+   - improve normalizer to support plural when appropriate, maybe specify with "(s)" after the word [e.g. "neutrophil(s)"] in the yml?
+   - fine results view
+      - no purple/selected number in the answer sheet (just the green, yellow, or red result colors)
+      - when something was spelled wrong show the modal with the answer in black on a yellow bg instead of in red
+      - in correct answers with OR, put OR in dark gray instead of red, green, blk or whatever color (it's too much color... maybe we should even consider showing the first possibility on its own line and then showing the other possibilies in a different way... just feels like it came from a robot as it is and if it's wrong feels like a blood bath)
+
+   
 - **Goal**: Single source of truth for content with flexible flashcard generation
 
 ## Practical-First Content Architecture
@@ -93,11 +110,9 @@ Flashcard URLs: `?source=practical-2&tags=leukocytes` or `?source=practical-5&ta
 ## Big Picture Todo List
 
 1. Content Clean Up
-- [ ] Create practical-2.yml with tag-based structure (Arena)
-- [ ] Remove placeholder content from practical files (Claude and Arena)
   - Replace "blank" with empty quotes `""`
   - Code can check `if (item.answer === "" || !item.answer)` to disable items
-- [ ] Clean up images and existing practical yml files (Arena)
+  
 - **Note: Keep existing `leukocytes.yml` flashcard set untouched**
 
 2. Build New Parallel System
