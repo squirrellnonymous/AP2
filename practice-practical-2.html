@@ -10,7 +10,7 @@
     <div class="header">
         <div class="header-content">
             <h1>Practice Practical #2</h1>
-            <div class="progress" id="progress">42 Questions</div>
+            <div class="progress" id="progress">40 Questions</div>
         </div>
     </div>
 
@@ -113,16 +113,27 @@
             leftColumn.className = 'answer-column';
             rightColumn.className = 'answer-column';
 
-            for (let i = 1; i <= 42; i++) {
+            const totalQuestions = 40;
+            const availableQuestions = practicalData.questions.length;
+            console.log('Available questions:', availableQuestions, 'Total questions:', totalQuestions);
+
+            for (let i = 1; i <= totalQuestions; i++) {
                 const answerItem = document.createElement('div');
-                answerItem.className = 'answer-item';
+                const isDisabled = i > availableQuestions;
+
+                answerItem.className = `answer-item ${isDisabled ? 'disabled' : ''}`;
                 answerItem.innerHTML = `
-                    <button class="answer-number" onclick="goToImage(${i - 1})" tabindex="-1">${i}</button>
-                    <input type="text" name="answer${i}" readonly onclick="goToQuestionAndFocus(${i - 1})" tabindex="${i}" />
+                    <button class="answer-number ${isDisabled ? 'disabled' : ''}"
+                            onclick="${isDisabled ? '' : `goToImage(${i - 1})`}"
+                            tabindex="-1">${i}</button>
+                    <input type="text" name="answer${i}"
+                           ${isDisabled ? 'disabled' : 'readonly'}
+                           onclick="${isDisabled ? '' : `goToQuestionAndFocus(${i - 1})`}"
+                           tabindex="${isDisabled ? '-1' : i}" />
                 `;
 
-                // Distribute vertically: 1-21 in left column, 22-42 in right column
-                if (i <= 21) {
+                // Distribute vertically: 1-20 in left column, 21-40 in right column
+                if (i <= 20) {
                     leftColumn.appendChild(answerItem);
                 } else {
                     rightColumn.appendChild(answerItem);
@@ -150,7 +161,7 @@
             imageElement.src = '';
 
             if (question) {
-                imageElement.src = question.image;
+                imageElement.src = `images/${question.image}`;
                 document.getElementById('current-question').textContent = index + 1;
                 document.getElementById('current-question-text').innerHTML = question.question || '';
 
@@ -161,8 +172,9 @@
             }
 
             // Update navigation buttons
+            const maxIndex = practicalData ? practicalData.questions.length - 1 : 0;
             document.getElementById('prev-btn').disabled = index === 0;
-            document.getElementById('next-btn').disabled = index >= 41;
+            document.getElementById('next-btn').disabled = index >= maxIndex;
 
             // Update answer sheet number highlighting
             document.querySelectorAll('.answer-number').forEach((btn, i) => {
@@ -182,7 +194,7 @@
             img.onload = () => {
                 preloadedImages.set(imagePath, img);
             };
-            img.src = imagePath;
+            img.src = `images/${imagePath}`;
         }
 
         function preloadAdjacentImages(currentIndex) {
@@ -230,7 +242,8 @@
         }
 
         function nextImage() {
-            if (currentImageIndex < 41) {
+            const maxIndex = practicalData ? practicalData.questions.length - 1 : 0;
+            if (currentImageIndex < maxIndex) {
                 showImage(currentImageIndex + 1);
             }
         }
@@ -243,7 +256,9 @@
             let blankCount = 0;
             const blankQuestions = [];
 
-            for (let i = 1; i <= 42; i++) {
+            const availableQuestions = practicalData.questions.length;
+
+            for (let i = 1; i <= availableQuestions; i++) {
                 const input = document.querySelector(`input[name="answer${i}"]`);
                 const answer = input ? input.value.trim() : '';
                 answers[i] = answer;
@@ -400,7 +415,7 @@
                         <button class="close-popup" onclick="this.parentElement.parentElement.parentElement.remove()">×</button>
                     </div>
                     ${imagePath ? `<div class="popup-image">
-                        <img src="${imagePath}" alt="Question ${questionNum} image" />
+                        <img src="images/${imagePath}" alt="Question ${questionNum} image" />
                     </div>` : ''}
                     <div class="popup-question">${questionText || 'What is the tissue/structure?'}</div>
                     ${correction ? `<div class="popup-correction">
@@ -441,7 +456,7 @@
             detailDiv.innerHTML = `
                 <div class="detail-content">
                     <div class="detail-image">
-                        <img src="${question.image}" alt="Question ${questionNum}" />
+                        <img src="images/${question.image}" alt="Question ${questionNum}" />
                     </div>
                     <div class="detail-info">
                         <strong>Question ${questionNum}:</strong> ${question.question || 'What is the tissue/structure?'}

@@ -335,6 +335,24 @@
     color: #6b7280;
 }
 
+/* Disabled answer items */
+.answer-item.disabled {
+    opacity: 0.4;
+}
+
+.answer-number.disabled {
+    background-color: #f9fafb;
+    border-color: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.answer-item input:disabled {
+    background-color: #f9fafb;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
 /* Answer display elements */
 .answer-display {
     flex: 1;
