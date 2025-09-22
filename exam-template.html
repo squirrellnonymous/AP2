@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Practice Test</title>
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <a href="index.html" class="home-link">← Home</a>
+            <div class="header-center">
+                <h1 id="quiz-title">Practice Test</h1>
+                <div class="progress" id="progress">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            Loading quiz questions...
+        </div>
+
+        <form id="quiz-form" style="display: none;">
+            <div id="questions-container"></div>
+            <div id="true-make-true-container"></div>
+            <div id="essay-container"></div>
+            <button type="button" class="submit-button" onclick="checkAnswers()">Submit Quiz</button>
+        </form>
+
+        <div id="results" class="results" style="display:none;">
+            <h2>Quiz Results</h2>
+            <div id="score" class="score"></div>
+            <button type="button" id="calculate-final-score" class="submit-button" onclick="calculateFinalScore()" style="display: none; margin-top: 16px;">Calculate Final Score (with Essays)</button>
+            <div id="final-score" class="score" style="display: none; margin-top: 16px;"></div>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script>
+        let quizData = null;
+
+        // Get exam name from URL parameter
+        function getExamName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('exam') || 'exam1-practice'; // Default exam
+        }
+
+        // Load quiz data from YAML file
+        async function loadQuizData() {
+            const examName = getExamName();
+            try {
+                const response = await fetch(`data/${examName}.yml`);
+                const yamlText = await response.text();
+                quizData = jsyaml.load(yamlText);
+
+                // Update page title and header
+                if (quizData.title) {
+                    document.getElementById('page-title').textContent = quizData.title;
+                    document.getElementById('quiz-title').innerHTML = quizData.title;
+                }
+
+                renderQuiz();
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('quiz-form').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error loading quiz data:', error);
+                document.getElementById('loading').innerHTML = `
+                    <div style="color: #ef4444; text-align: center;">
+                        <h3>Error Loading Quiz</h3>
+                        <p>Could not load quiz data for "${examName}"</p>
+                        <p>Please check that the file exists at: data/${examName}.yml</p>
+                        <a href="index.html" style="color: #3b82f6;">← Back to Home</a>
+                    </div>
+                `;
+            }
+        }
+
+        function renderQuiz() {
+            if (!quizData || !quizData.multipleChoice) return;
+
+            const container = document.getElementById('questions-container');
+            const questions = quizData.multipleChoice;
+
+            // Render multiple choice questions
+            questions.forEach((question, index) => {
+                const questionCard = document.createElement('div');
+                questionCard.className = 'question-card';
+
+                questionCard.innerHTML = `
+                    <div class="question-number">Question ${index + 1}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">
+                        ${question.options.map((option, optionIndex) => `
+                            <label class="option">
+                                <input type="radio" name="q${index}" value="${optionIndex}">
+                                <span class="option-text">${option}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+
+                container.appendChild(questionCard);
+            });
+
+            // Render True/Make True section if it exists
+            if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) {
+                const tmtContainer = document.getElementById('true-make-true-container');
+                tmtContainer.className = 'true-make-true-section';
+
+                const sectionTitle = document.createElement('div');
+                sectionTitle.className = 'section-title';
+                sectionTitle.textContent = 'Part II: True/Make True';
+                tmtContainer.appendChild(sectionTitle);
+
+                const instructions = document.createElement('div');
+                instructions.style.textAlign = 'center';
+                instructions.style.marginBottom = '20px';
+                instructions.style.color = '#6b7280';
+                instructions.style.fontSize = '0.9rem';
+                instructions.innerHTML = 'If the statement is true, write "True". If false, write the word that makes it true.';
+                tmtContainer.appendChild(instructions);
+
+                quizData.trueMakeTrue.forEach((item, index) => {
+                    const tmtCard = document.createElement('div');
+                    tmtCard.className = 'true-make-true-card';
+
+                    // Process statement to highlight bold/italic words
+                    let processedStatement = item.statement.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
+
+                    tmtCard.innerHTML = `
+                        <div class="question-number">Statement ${index + 1} (${item.points || 1} points)</div>
+                        <div class="statement-container">
+                            <input type="text" class="answer-input" name="tmt${index}" placeholder="Your answer..." autocomplete="off" data-1p-ignore autocorrect="off" autocapitalize="none" spellcheck="false">
+                            <div class="statement-text">${processedStatement}</div>
+                        </div>
+                        <div class="feedback-text" id="tmt-feedback-${index}" style="display: none;"></div>
+                    `;
+
+                    tmtContainer.appendChild(tmtCard);
+                });
+            }
+
+            // Render Essay section if it exists
+            if (quizData.essay && quizData.essay.length > 0) {
+                const essayContainer = document.getElementById('essay-container');
+                essayContainer.className = 'essay-section';
+
+                const sectionTitle = document.createElement('div');
+                sectionTitle.className = 'section-title';
+                sectionTitle.textContent = 'Part III: Short/Long Answer';
+                essayContainer.appendChild(sectionTitle);
+
+                const instructions = document.createElement('div');
+                instructions.style.textAlign = 'center';
+                instructions.style.marginBottom = '20px';
+                instructions.style.color = '#6b7280';
+                instructions.style.fontSize = '0.9rem';
+                instructions.innerHTML = 'Please answer all of the following questions in complete sentences.';
+                essayContainer.appendChild(instructions);
+
+                quizData.essay.forEach((item, index) => {
+                    const essayCard = document.createElement('div');
+                    essayCard.className = 'essay-card';
+
+                    essayCard.innerHTML = `
+                        <div class="question-number">Question ${index + 1} (${item.points} points)</div>
+                        <div class="essay-question">${item.question}</div>
+                        <textarea class="essay-textarea" name="essay${index}" placeholder="Write your answer here..." autocomplete="off" data-1p-ignore autocorrect="off" spellcheck="true"></textarea>
+                        <div class="essay-answer" id="essay-answer-${index}" style="display: none;">
+                            <h4>Sample Answer:</h4>
+                            <div class="essay-answer-text">${item.answer}</div>
+                        </div>
+                        <div class="essay-grading" id="essay-grading-${index}" style="display: none;">
+                            <h4>Self-Grading:</h4>
+                            <div class="points-input-container">
+                                <input type="number" class="points-input" name="essay-points-${index}" min="0" max="${item.points}" value="0">
+                                <span class="points-label">/ ${item.points} points</span>
+                            </div>
+                            <textarea class="essay-notes" name="essay-notes-${index}" placeholder="Notes for yourself (optional)..."></textarea>
+                        </div>
+                    `;
+
+                    essayContainer.appendChild(essayCard);
+                });
+            }
+
+            // Update progress with detailed breakdown
+            const mcCount = questions.length;
+            const tmtCount = quizData.trueMakeTrue ? quizData.trueMakeTrue.length : 0;
+            const essayCount = quizData.essay ? quizData.essay.length : 0;
+            const totalQuestions = mcCount + tmtCount + essayCount;
+
+            // Calculate total points
+            const mcPoints = mcCount; // 1 point each
+            const tmtPoints = quizData.trueMakeTrue ? quizData.trueMakeTrue.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
+            const essayPoints = quizData.essay ? quizData.essay.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
+            const totalPoints = mcPoints + tmtPoints + essayPoints;
+
+            let sections = [];
+
+            if (mcCount > 0) {
+                sections.push(`${mcCount} Multiple Choice (${mcPoints} pts)`);
+            }
+            if (tmtCount > 0) {
+                sections.push(`${tmtCount} True/Make True (${tmtPoints} pts)`);
+            }
+            if (essayCount > 0) {
+                sections.push(`${essayCount} Essay (${essayPoints} pts)`);
+            }
+
+            const progressText = `${totalPoints} Points<br>${sections.join('<br>')}`;
+            document.getElementById('progress').innerHTML = progressText;
+
+            // Add click handlers to option labels
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const radio = this.querySelector('input[type="radio"]');
+                    const name = radio.name;
+
+                    // Remove selected class from all options with same name
+                    document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+                        input.closest('.option').classList.remove('selected');
+                    });
+
+                    // Add selected class to this option
+                    this.classList.add('selected');
+                });
+            });
+        }
+
+        function checkAnswers() {
+            if (!quizData || !quizData.multipleChoice) return;
+
+            // Check for blank answers before proceeding
+            const questions = quizData.multipleChoice;
+            let blankMC = 0;
+            let blankTMT = 0;
+            let blankEssay = 0;
+
+            // Count blank multiple choice
+            questions.forEach((question, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (!selected) blankMC++;
+            });
+
+            // Count blank true/make true
+            if (quizData.trueMakeTrue) {
+                quizData.trueMakeTrue.forEach((item, index) => {
+                    const input = document.querySelector(`input[name="tmt${index}"]`);
+                    if (!input || !input.value.trim()) blankTMT++;
+                });
+            }
+
+            // Count blank essays
+            if (quizData.essay) {
+                quizData.essay.forEach((item, index) => {
+                    const textarea = document.querySelector(`textarea[name="essay${index}"]`);
+                    if (!textarea || !textarea.value.trim()) blankEssay++;
+                });
+            }
+
+            // Show warning if there are blank answers
+            if (blankMC > 0 || blankTMT > 0 || blankEssay > 0) {
+                let warningMessage = "You have unanswered questions:\n\n";
+                if (blankMC > 0) warningMessage += `• ${blankMC} Multiple Choice question${blankMC > 1 ? 's' : ''}\n`;
+                if (blankTMT > 0) warningMessage += `• ${blankTMT} True/Make True question${blankTMT > 1 ? 's' : ''}\n`;
+                if (blankEssay > 0) warningMessage += `• ${blankEssay} Essay question${blankEssay > 1 ? 's' : ''}\n`;
+                warningMessage += "\nDo you want to submit anyway?";
+
+                if (!confirm(warningMessage)) {
+                    return; // Cancel submission
+                }
+            }
+
+            let mcScore = 0;
+            let tmtScore = 0;
+
+            // Check multiple choice questions
+            questions.forEach((question, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                const allOptions = document.querySelectorAll(`input[name="q${index}"]`);
+                const correctAnswer = question.correct;
+
+                if (selected) {
+                    const answer = parseInt(selected.value);
+
+                    // Style all options based on correctness
+                    allOptions.forEach((option, optionIndex) => {
+                        const optionElement = option.closest('.option');
+                        optionElement.classList.remove('selected');
+
+                        if (optionIndex === correctAnswer) {
+                            optionElement.classList.add('correct');
+                        } else if (option.checked && optionIndex !== correctAnswer) {
+                            optionElement.classList.add('incorrect');
+                        }
+                    });
+
+                    if (answer === correctAnswer) {
+                        mcScore++;
+                    }
+                } else {
+                    // Highlight correct answer even if not selected
+                    allOptions[correctAnswer].closest('.option').classList.add('correct');
+                }
+            });
+
+            // Check True/Make True questions
+            if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) {
+                quizData.trueMakeTrue.forEach((item, index) => {
+                    const input = document.querySelector(`input[name="tmt${index}"]`);
+                    const feedbackElement = document.getElementById(`tmt-feedback-${index}`);
+
+                    if (input && feedbackElement) {
+                        const userAnswer = input.value.trim().toLowerCase();
+                        let isCorrect = false;
+
+                        if (item.isTrue) {
+                            // Statement is true, accept "true" or "t"
+                            isCorrect = userAnswer === 'true' || userAnswer === 't';
+                        } else {
+                            // Statement is false, check if they provided the correct word
+                            const correctWords = Array.isArray(item.correctWord) ? item.correctWord : [item.correctWord];
+                            isCorrect = correctWords.some(word => userAnswer === word.toLowerCase());
+                        }
+
+                        if (isCorrect) {
+                            tmtScore += (item.points || 1);
+                            input.classList.add('correct');
+                            feedbackElement.textContent = 'Correct!';
+                            feedbackElement.className = 'feedback-text correct';
+                        } else {
+                            input.classList.add('incorrect');
+                            if (item.isTrue) {
+                                feedbackElement.innerHTML = '<span style="color: #ef4444;">Incorrect.</span> <span style="color: #10b981;">True</span>';
+                            } else {
+                                const correctWords = Array.isArray(item.correctWord) ? item.correctWord : [item.correctWord];
+                                feedbackElement.innerHTML = `<span style="color: #ef4444;">Incorrect.</span> <span style="color: #10b981;">${correctWords.join(' or ')}</span>`;
+                            }
+                            feedbackElement.className = 'feedback-text';
+                        }
+
+                        feedbackElement.style.display = 'block';
+                    }
+                });
+            }
+
+            // Show essay sample answers and grading interface
+            if (quizData.essay && quizData.essay.length > 0) {
+                quizData.essay.forEach((item, index) => {
+                    const textarea = document.querySelector(`textarea[name="essay${index}"]`);
+                    const answerElement = document.getElementById(`essay-answer-${index}`);
+                    const gradingElement = document.getElementById(`essay-grading-${index}`);
+
+                    // Make textarea read-only and expand to show full content
+                    if (textarea) {
+                        textarea.readOnly = true;
+                        textarea.style.minHeight = 'auto';
+                        textarea.style.height = Math.max(textarea.scrollHeight, 120) + 'px';
+                        textarea.style.backgroundColor = '#f8fafc';
+                        textarea.style.cursor = 'default';
+                    }
+
+                    if (answerElement) {
+                        answerElement.style.display = 'block';
+                    }
+                    if (gradingElement) {
+                        gradingElement.style.display = 'block';
+                    }
+                });
+            }
+
+            // Calculate total score (only MC and TMT are graded)
+            const tmtMaxPoints = quizData.trueMakeTrue ? quizData.trueMakeTrue.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
+            const gradedPoints = questions.length + tmtMaxPoints;
+            const totalScore = mcScore + tmtScore;
+            const percentage = Math.round((totalScore / gradedPoints) * 100);
+
+            let scoreDisplay;
+            if (quizData.essay && quizData.essay.length > 0) {
+                scoreDisplay = `ACTION REQUIRED<br>Review and self-evaluate your essay responses before calculating your score.`;
+                document.getElementById('calculate-final-score').style.display = 'block';
+            } else {
+                scoreDisplay = `Score: ${totalScore}/${gradedPoints} (${percentage}%)`;
+                if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) {
+                    scoreDisplay += `<br><small>Multiple Choice: ${mcScore}/${questions.length}<br>True/Make True: ${tmtScore}/${tmtMaxPoints}</small>`;
+                }
+            }
+
+            document.getElementById('score').innerHTML = scoreDisplay;
+            document.getElementById('results').style.display = 'block';
+            document.querySelector('.submit-button').disabled = true;
+            document.querySelector('.submit-button').textContent = 'Quiz Completed';
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function calculateFinalScore() {
+            if (!quizData || !quizData.essay) return;
+
+            let essayScore = 0;
+            let essayMaxPoints = 0;
+            let incompleteGrading = false;
+
+            quizData.essay.forEach((item, index) => {
+                essayMaxPoints += item.points;
+                const pointsInput = document.querySelector(`input[name="essay-points-${index}"]`);
+
+                if (pointsInput && pointsInput.value !== '') {
+                    const points = parseInt(pointsInput.value) || 0;
+                    essayScore += Math.min(Math.max(points, 0), item.points); // Clamp between 0 and max points
+                } else {
+                    incompleteGrading = true;
+                }
+            });
+
+            if (incompleteGrading) {
+                alert('Please enter points for all essay questions before calculating final score.');
+                return;
+            }
+
+            // Get existing MC and TMT scores
+            const questions = quizData.multipleChoice || [];
+            const tmtQuestions = quizData.trueMakeTrue || [];
+
+            let mcScore = 0, tmtScore = 0;
+
+            // Recalculate MC score
+            questions.forEach((question, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selected && parseInt(selected.value) === question.correct) {
+                    mcScore++;
+                }
+            });
+
+            // Recalculate TMT score
+            tmtQuestions.forEach((item, index) => {
+                const input = document.querySelector(`input[name="tmt${index}"]`);
+                if (input) {
+                    const userAnswer = input.value.trim().toLowerCase();
+                    let isCorrect = false;
+
+                    if (item.isTrue) {
+                        isCorrect = userAnswer === 'true' || userAnswer === 't';
+                    } else {
+                        const correctWords = Array.isArray(item.correctWord) ? item.correctWord : [item.correctWord];
+                        isCorrect = correctWords.some(word => userAnswer === word.toLowerCase());
+                    }
+
+                    if (isCorrect) tmtScore += (item.points || 1);
+                }
+            });
+
+            // Calculate final totals
+            const tmtMaxPoints = tmtQuestions.reduce((sum, item) => sum + (item.points || 1), 0);
+            const totalScore = mcScore + tmtScore + essayScore;
+            const maxScore = questions.length + tmtMaxPoints + essayMaxPoints;
+            const finalPercentage = Math.round((totalScore / maxScore) * 100);
+
+            let finalScoreDisplay = `Final Score: ${totalScore}/${maxScore} (${finalPercentage}%)`;
+            finalScoreDisplay += `<br><small>Multiple Choice: ${mcScore}/${questions.length} | True/Make True: ${tmtScore}/${tmtMaxPoints} | Essays: ${essayScore}/${essayMaxPoints}</small>`;
+
+            document.getElementById('final-score').innerHTML = finalScoreDisplay;
+            document.getElementById('final-score').style.display = 'block';
+            document.getElementById('calculate-final-score').textContent = 'Recalculate Final Score';
+        }
+
+        // Load quiz when page loads
+        document.addEventListener('DOMContentLoaded', loadQuizData);
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+title: "Anatomy & Physiology II - Study Flashcards"
+description: "Interactive flashcards for key definitions and concepts"
+
+flashcards:
+  - id: 1
+    term: "Homeostasis"
+    keywords: ["stable", "internal environment", "external changes", "regulation"]
+    definition: "The process by which an organism maintains a stable internal environment despite changes in external conditions."
+    breakdown: "Breaking it down: 'Homeo' means same/similar, 'stasis' means standing or staying. Together they mean keeping things the same inside your body even when the outside world changes."
+    example: "Like how your body keeps its temperature at 98.6°F whether you're in the hot sun or cold snow."
+
+  - id: 2
+    term: "Hypophyseal Portal System"
+    keywords: ["blood vessels", "hypothalamus", "pituitary gland", "direct transport"]
+    definition: "A network of blood vessels connecting the hypothalamus and pituitary gland, allowing hormones to travel directly between them."
+    breakdown: "'Hypophyseal' refers to the pituitary gland (hypophysis). A 'portal system' is a special blood vessel network that connects two organs directly."
+    example: "Think of it as a private highway between the brain's control center (hypothalamus) and the master gland (pituitary)."
+
+  - id: 3
+    term: "Parathyroid Glands"
+    keywords: ["small glands", "thyroid", "calcium levels", "PTH", "parathyroid hormone"]
+    definition: "Small glands located on the thyroid that regulate calcium levels in the blood through parathyroid hormone (PTH) secretion."
+    breakdown: "'Para' means beside or near, so these are the glands that sit beside the thyroid. They're tiny but crucial for calcium balance."
+    example: "Like tiny calcium managers sitting on top of your thyroid, making sure your bones and muscles get the right amount of calcium."
+
+  - id: 4
+    term: "Glucocorticoids"
+    keywords: ["steroid hormones", "adrenal cortex", "metabolism", "inflammation", "stress response"]
+    definition: "A class of steroid hormones produced by the adrenal cortex that regulate metabolism, inflammation, and stress responses."
+    breakdown: "'Gluco' refers to glucose/sugar, 'corticoid' means from the cortex (outer layer of adrenal gland). These hormones help manage sugar and stress."
+    example: "Cortisol is the most famous glucocorticoid - it's your body's natural stress hormone that helps you handle emergencies."
+
+  - id: 5
+    term: "Lymphocytes"
+    keywords: ["white blood cells", "immune response", "B cells", "T cells", "NK cells"]
+    definition: "White blood cells that are key players in the immune response, including B cells, T cells, and NK cells."
+    breakdown: "'Lympho' refers to lymph (clear fluid in immune system), 'cyte' means cell. These are the main soldiers of your immune army."
+    example: "B cells make antibodies, T cells kill infected cells, and NK cells are like special forces that attack anything suspicious."
+
+  - id: 6
+    term: "Immunity"
+    keywords: ["resist", "eliminate", "foreign materials", "abnormal cells", "protection"]
+    definition: "The body's ability to resist or eliminate potentially harmful foreign materials or abnormal cells."
+    breakdown: "From Latin 'immunitas' meaning exemption or freedom from. It's your body's defense system against invaders."
+    example: "Like having a security system that recognizes and removes intruders (bacteria, viruses) while leaving residents (your cells) alone."
+
+  - id: 7
+    term: "Immune Surveillance"
+    keywords: ["monitoring", "eliminating", "abnormal cells", "malignant cells", "patrol"]
+    definition: "The immune system's process of monitoring for and eliminating abnormal or malignant cells."
+    breakdown: "'Surveillance' means to watch over or monitor. Your immune system is constantly patrolling your body looking for trouble."
+    example: "Like security guards doing rounds in a building, checking for anything that doesn't belong or looks suspicious."
+
+  - id: 8
+    term: "Inflammation"
+    keywords: ["localized response", "injury", "infection", "redness", "heat", "swelling", "pain"]
+    definition: "A localized response to injury or infection, characterized by redness, heat, swelling, and pain."
+    breakdown: "From Latin 'inflammare' meaning to set on fire. The area literally becomes red, hot, swollen, and painful - the four classic signs."
+    example: "When you get a splinter, the area around it becomes red, hot, swollen, and sore - that's inflammation bringing help to fight infection."
+
+  - id: 9
+    term: "Antigen"
+    keywords: ["foreign substance", "immune system", "recognition", "immune response", "trigger"]
+    definition: "Any substance recognized by the immune system as foreign, which can provoke an immune response."
+    breakdown: "'Anti' means against, 'gen' means generate. An antigen generates an immune response against it."
+    example: "Pollen, bacteria, viruses, or even organ transplants can be antigens - anything your immune system sees as 'not you.'"
+
+  - id: 10
+    term: "Immunocompetence"
+    keywords: ["ability", "recognize", "respond effectively", "antigens", "functional immunity"]
+    definition: "The ability of the immune system to recognize and respond effectively to antigens."
+    breakdown: "'Immuno' refers to immunity, 'competence' means capability or ability. It's how well your immune system can do its job."
+    example: "A baby's immune system has low immunocompetence (still learning), while a healthy adult has full immunocompetence."
+
+  # Additional important terms from the exam
+  - id: 11
+    term: "Catecholamines"
+    keywords: ["amino acid derivatives", "tyrosine", "epinephrine", "norepinephrine", "fight or flight"]
+    definition: "Hormones derived from the amino acid tyrosine, including epinephrine and norepinephrine."
+    breakdown: "'Catechol' is a chemical structure, 'amine' refers to the nitrogen group. These are the fight-or-flight hormones."
+    example: "When you're scared, catecholamines like adrenaline (epinephrine) make your heart race and give you energy to run."
+
+  - id: 12
+    term: "Steroid Hormones"
+    keywords: ["lipid-based", "cholesterol", "nucleus receptors", "gene transcription", "fat-soluble"]
+    definition: "Fat-soluble hormones derived from cholesterol that can pass through cell membranes and bind to nuclear receptors."
+    breakdown: "Made from cholesterol (a steroid), these hormones can slip through cell membranes like oil through paper and work directly on DNA."
+    example: "Testosterone, estrogen, and cortisol are steroid hormones that change how genes are expressed in cells."
+
+  - id: 13
+    term: "Second Messenger System"
+    keywords: ["hormone signaling", "cell surface receptors", "amplification", "cAMP", "cascade"]
+    definition: "A signaling system where hormones bind to surface receptors and trigger internal messengers to amplify the signal."
+    breakdown: "The hormone is the 'first messenger,' then it triggers 'second messengers' inside the cell to spread the message."
+    example: "Like a whisper that starts an avalanche - one hormone molecule can trigger thousands of second messengers inside the cell."
+
+  - id: 14
+    term: "Aldosterone"
+    keywords: ["mineralocorticoid", "sodium regulation", "kidney", "blood pressure", "electrolyte balance"]
+    definition: "A hormone that regulates sodium and potassium levels in the body, affecting blood pressure and fluid balance."
+    breakdown: "A steroid hormone from the adrenal cortex that acts like a sodium manager, controlling salt and water balance."
+    example: "When you're dehydrated, aldosterone tells your kidneys to save sodium and water, helping maintain blood pressure."
+
+  - id: 15
+    term: "Atrial Natriuretic Peptide (ANP)"
+    keywords: ["heart hormone", "sodium excretion", "blood pressure reduction", "diuretic", "natriuresis"]
+    definition: "A hormone secreted by the heart that promotes sodium excretion and reduces blood pressure."
+    breakdown: "'Atrial' means from the heart's atria, 'natriuretic' means sodium-excreting. The heart's way of lowering blood pressure."
+    example: "When blood pressure gets too high, your heart releases ANP to tell the kidneys 'dump some salt and water to reduce the pressure.'"

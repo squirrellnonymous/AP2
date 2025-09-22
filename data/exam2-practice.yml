@@ -1,0 +1,209 @@
+title: "Unit 2 Practice Exam — Blood<span style='color: #9ca3af'>, Heart, and Blood Vessels</span>"
+description: "Practice test covering Blood, Heart, and Vessels"
+
+multipleChoice:
+  - question: "What is the tissue type of blood, and why is it classified this way?"
+    options:
+      - "Epithelial tissue, because it forms the lining of blood&nbsp;vessels."
+      - "Nervous tissue, because it transports chemical&nbsp;signals."
+      - "Muscular tissue, because it maintains heart&nbsp;function."
+      - "Connective tissue, because it acts as a connector, carrying hormones from one place to&nbsp;another."
+    correct: 3
+    tags: ["unit-2", "blood"]
+
+  - question: "What percentage of blood volume is typically comprised of plasma?"
+    options:
+      - "Approximately 1%, known as the buffy&nbsp;coat."
+      - "Approximately 90%, which is mostly&nbsp;water."
+      - "Approximately 55%, which is the liquid extracellular&nbsp;matrix."
+      - "Approximately 45%, known as the&nbsp;hematocrit."
+    correct: 2
+    tags: ["unit-2", "blood"]
+
+  - question: "What function of Albumins is critical for preventing swelling (edema)?"
+    options:
+      - "Breaking down bilirubin waste&nbsp;products."
+      - "Creating osmotic pressure to keep water in the&nbsp;bloodstream."
+      - "Transporting oxygen to muscle&nbsp;tissue."
+      - "Activating fibrinogen for the clotting&nbsp;cascade."
+    correct: 1
+    tags: ["unit-2", "blood"]
+
+  - question: "Which statement accurately describes fibrinogen?"
+    options:
+      - "It is an active protein used immediately in gas&nbsp;exchange."
+      - "It is an inactive precursor protein that is involved in the clotting&nbsp;process."
+      - "It is an immunoglobulin that provides immunity against foreign&nbsp;antigens."
+      - "It is a transport protein primarily responsible for moving hydrophobic&nbsp;hormones."
+    correct: 1
+    tags: ["unit-2", "blood"]
+
+  - question: "What is the significance of mature erythrocytes (RBCs) lacking mitochondria?"
+    options:
+      - "It makes the RBCs flexible, allowing them to pass through&nbsp;capillaries."
+      - "It prevents the RBCs from consuming the oxygen they are supposed to&nbsp;transport."
+      - "It allows the cell to carry 250 million molecules of&nbsp;hemoglobin."
+      - "It enables the kidney to recycle the cell after 120&nbsp;days."
+    correct: 1
+    tags: ["unit-2", "blood"]
+
+  - question: "What hormone promotes red blood cell production, and what organ secretes it?"
+    options:
+      - "Testosterone (an androgen) secreted by the&nbsp;testes."
+      - "Erythropoietin (EPO) secreted by the&nbsp;kidney."
+      - "Albumin secreted by the&nbsp;liver."
+      - "Bilirubin secreted by the&nbsp;gallbladder."
+    correct: 1
+    tags: ["unit-2", "blood"]
+
+  - question: "What blood condition is characterized by high blood volume, high blood pressure, and high viscosity?"
+    options:
+      - "Anemia."
+      - "Jaundice."
+      - "Polycythemia."
+      - "Hypoxemia."
+    correct: 2
+    tags: ["unit-2", "blood"]
+
+  - question: "If a person is Type A blood, what antibodies do they have circulating in their plasma?"
+    options:
+      - "Anti A antibodies."
+      - "Anti B antibodies."
+      - "Both Anti A and Anti B&nbsp;antibodies."
+      - "No antibodies."
+    correct: 1
+    tags: ["unit-2", "blood"]
+
+  - question: "Why is Type AB blood considered the universal acceptor?"
+    options:
+      - "Because it possesses the ability to form Anti A and Anti B antibodies immediately upon&nbsp;exposure."
+      - "Because its antigens will agglutinate with any donor blood."
+      - "Because it makes no Anti A or Anti B antibodies, so it will not attack incoming red blood&nbsp;cells."
+      - "Because it has no antigens on its surface, allowing it to donate to&nbsp;anyone."
+    correct: 2
+    tags: ["unit-2", "blood"]
+
+
+  - question: "What is the term for a person who has one dominant gene and one recessive gene for a trait, such as the I<sup>A</sup>i genotype for Type A blood?"
+    options:
+      - "Homozygous recessive."
+      - "Codominant."
+      - "Heterozygous (or heerzis)."
+      - "Polycythemic."
+    correct: 2
+    tags: ["unit-2", "blood"]
+
+  - question: "What is the narrow, slightly alkaline pH range required for human blood?"
+    options:
+      - "7.00–7.10"
+      - "7.35–7.45"
+      - "7.80–8.00"
+      - "6.90–7.20"
+    correct: 1
+    tags: ["unit-2", "blood"]
+
+  - question: "What two components primarily determine the viscosity (thickness) of blood?"
+    options:
+      - "Hemoglobin and iron."
+      - "Leukocytes and platelets."
+      - "Water and plasma proteins."
+      - "Solutes and waste products."
+    correct: 2
+    tags: ["unit-2", "blood"]
+
+  - question: "The swelling of the abdomen (edema/ascites) seen in patients with liver cirrhosis is primarily due to the liver's inability to adequately produce which substance?"
+    options:
+      - "Erythrocytes."
+      - "Bilirubin."
+      - "Albumin and Globulins."
+      - "Carbon monoxide."
+    correct: 2
+    tags: ["unit-2", "blood"]
+
+  - question: "Why are erythrocytes, leukocytes, and platelets collectively called 'formed elements'?"
+    options:
+      - "They are all produced in the kidney."
+      - "They are fully functional, true cells."
+      - "Technically, most are not true cells (e.g., erythrocytes lack a nucleus, platelets are&nbsp;fragments)."
+      - "They are only formed after birth."
+    correct: 2
+    tags: ["unit-2", "blood"]
+
+  - question: "Where does hematopoiesis occur, and approximately how long does it take to replace formed elements after blood donation?"
+    options:
+      - "In the liver; about 24 hours."
+      - "In the spleen; about 120 days."
+      - "In the red bone marrow; about a&nbsp;month."
+      - "In the kidney; about one week."
+    correct: 2
+    tags: ["unit-2", "blood"]
+
+  - question: "Bilirubin, which causes the yellowish color in jaundice and contributes to the color of urine and feces, is a waste product resulting from the breakdown of what part of the erythrocyte?"
+    options:
+      - "The globin protein."
+      - "The mitochondria."
+      - "The heme group."
+      - "The nucleus."
+    correct: 2
+    tags: ["unit-2", "blood"]
+
+  - question: "Anemia (too few red blood cells) results in what combined effect on blood volume, pressure, and viscosity?"
+    options:
+      - "All three factors are high."
+      - "Volume and pressure are low, viscosity is high."
+      - "All three factors are low (watery blood)."
+      - "Volume and pressure are high, viscosity is low."
+    correct: 2
+    tags: ["unit-2", "blood"]
+
+  - question: "Why do babies with Hemolytic Disease of the Newborn (HDN) often present with an enlarged spleen and jaundice?"
+    options:
+      - "The mother's antibodies cause high viscosity, damaging the organs."
+      - "The liver is working overtime to produce fibrinogen."
+      - "The spleen is working overtime to clean the blood of mass erythrocyte waste, causing bilirubin buildup (jaundice)."
+      - "The kidney is failing to produce Erythropoietin."
+    correct: 2
+    tags: ["unit-2", "blood"]
+
+  - question: "In blood typing, if agglutination (clumping) occurs in the well containing Anti B antibodies, what is indicated about the person's blood?"
+    options:
+      - "They lack the B&nbsp;antigen."
+      - "They are Rh negative."
+      - "They have the B&nbsp;antigen."
+      - "They are the universal donor."
+    correct: 2
+    tags: ["unit-2", "blood"]
+
+  - question: "Which of the following is a possible genotype for an Rh positive individual (where D is the dominant allele)?"
+    options:
+      - "Little i, little i (ii)"
+      - "Big D, little D (Dd)"
+      - "Little D, little D (dd)"
+      - "Big A, little i (I<sup>A</sup>i)"
+    correct: 1
+    tags: ["unit-2", "blood"]
+
+
+
+
+
+trueMakeTrue:
+  - statement: "The formed element that carries gasses is an ***eosinophil***."
+    isTrue: false
+    correctWord: ["erythrocyte", "red blood cell"]
+    points: 2.5
+    tags: ["unit-2", "blood"]
+    
+
+
+essay:
+  - question: "People who get cirrhosis (fibrosis) of the liver often get swelling of the abdomen (ascites), edema, and easily bruise. Why might that be the case?"
+    answer: "Their damaged liver can't produce enough albumin or fibrinogen. Inadequate albumin leads to swelling and edema which is apparent as swelling of the abdomen. Low fibrinogen leads to not enough clotting and they get bruising from even minor tissue damage."
+    points: 5
+    tags: ["unit-2", "blood"]
+
+  - question: "When does an Rh negative person (Rh-) begin to produce anti-D antibodies? Explain why this timing is different from the ABO blood group system."
+    answer: "Rh negative people only begin to produce anti-D antibodies after initial exposure to Rh positive blood. This is different from the ABO system because people are born with ABO antibodies without any prior exposure. The Rh system requires sensitization - the first exposure creates memory cells that will produce antibodies upon subsequent exposures."
+    points: 5
+    tags: ["unit-2", "blood"]
+
