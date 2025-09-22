@@ -7,7 +7,7 @@
   - Dynamic 40-question answer sheet with auto-disable for unavailable questions
   - Content-driven navigation (keyboard, buttons) respects available question count
   - All image loading fixed with proper paths
-- **In Progress**: Building tag-based practical system for Unit 2
+- **In Progress**: Building tag-based flashcard sets from the practical data (images and yml)
 - **Goal**: Single source of truth for content with flexible flashcard generation
 
 ## Practical-First Content Architecture
@@ -25,7 +25,7 @@ Build practical-2 as the primary content source, then generate flashcards from i
 2. **Flashcards**: Generated from practical-2 enabled items
    - Use wide images as-is on desktop
    - CSS cropping to square on mobile only
-   - Extract leukocyte items specifically
+   - Plan to extract by tag once more content is added to the practical data (e.g. structures of the heart, vessels)
 
 ### Data Structure
 ```yaml
@@ -42,15 +42,11 @@ questions:
 ## Working Plan
 
 ### Phase 1: Update Practical-2 Structure
-1. **Update practical-2.yml structure** to include tags system
-   - Add `tags: []` field to each item
-   - Migrate existing leukocyte content from flashcards
-   - Use comprehensive tagging (e.g., "leukocytes", "granulocytes", "blood-cells")
+1. **Update practical-2.yml structure** - done enough for now
+   - Use comprehensive tagging (e.g., "unit-2", "leukocytes", "blood-cells")
 
-2. **Content migration help**
-   - Extract content from current leukocytes.yml
-   - Reformat into new practical-2 structure
-   - Ensure all flashcard fields (definition, breakdown, example) are preserved
+2. **Content migration help** - done
+
 
 ### Phase 2: Build Flashcard Generator
 3. **Create flashcard generation script**

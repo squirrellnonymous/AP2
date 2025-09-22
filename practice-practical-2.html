@@ -291,6 +291,38 @@
                 const input = document.querySelector(`input[name="answer${questionNum}"]`);
                 const circle = document.querySelectorAll('.answer-number')[index];
 
+                // Calculate Levenshtein distance for similarity comparison
+                const getLevenshteinDistance = (str1, str2) => {
+                    const matrix = Array(str2.length + 1).fill(null).map(() => Array(str1.length + 1).fill(null));
+
+                    for (let i = 0; i <= str1.length; i++) matrix[0][i] = i;
+                    for (let j = 0; j <= str2.length; j++) matrix[j][0] = j;
+
+                    for (let j = 1; j <= str2.length; j++) {
+                        for (let i = 1; i <= str1.length; i++) {
+                            if (str1[i - 1] === str2[j - 1]) {
+                                matrix[j][i] = matrix[j - 1][i - 1];
+                            } else {
+                                matrix[j][i] = Math.min(
+                                    matrix[j - 1][i] + 1,     // deletion
+                                    matrix[j][i - 1] + 1,     // insertion
+                                    matrix[j - 1][i - 1] + 1  // substitution
+                                );
+                            }
+                        }
+                    }
+
+                    return matrix[str2.length][str1.length];
+                };
+
+                // Calculate similarity score (0-1) based on edit distance
+                const getSimilarityScore = (str1, str2) => {
+                    const maxLength = Math.max(str1.length, str2.length);
+                    if (maxLength === 0) return 1;
+                    const distance = getLevenshteinDistance(str1, str2);
+                    return 1 - (distance / maxLength);
+                };
+
                 // Normalize answers by removing leading articles and standardizing numerals
                 const normalizeAnswer = (answer) => {
                     let normalized = answer.toLowerCase().trim();
@@ -313,18 +345,42 @@
 
                 const normalizedStudentAnswer = normalizeAnswer(studentAnswer);
 
-                // Handle multiple correct answers or single answer
-                const isCorrect = Array.isArray(correctAnswer)
-                    ? correctAnswer.some(ans => {
+                // Determine scoring (exact match, partial credit, or incorrect)
+                let answerResult = { isCorrect: false, isPartial: false, points: 0 };
+
+                if (Array.isArray(correctAnswer)) {
+                    // Handle multiple correct answers
+                    for (const ans of correctAnswer) {
                         const normalizedCorrect = normalizeAnswer(ans);
-                        return normalizedStudentAnswer === normalizedCorrect;
-                    })
-                    : normalizedStudentAnswer === normalizeAnswer(correctAnswer);
+                        if (normalizedStudentAnswer === normalizedCorrect) {
+                            answerResult = { isCorrect: true, isPartial: false, points: 1 };
+                            break;
+                        } else {
+                            const similarity = getSimilarityScore(normalizedStudentAnswer, normalizedCorrect);
+                            // Consider it a close match if similarity is >= 0.75 (adjustable threshold)
+                            if (similarity >= 0.75 && similarity < 1) {
+                                answerResult = { isCorrect: false, isPartial: true, points: 0.5 };
+                            }
+                        }
+                    }
+                } else {
+                    // Handle single correct answer
+                    const normalizedCorrect = normalizeAnswer(correctAnswer);
+                    if (normalizedStudentAnswer === normalizedCorrect) {
+                        answerResult = { isCorrect: true, isPartial: false, points: 1 };
+                    } else {
+                        const similarity = getSimilarityScore(normalizedStudentAnswer, normalizedCorrect);
+                        if (similarity >= 0.75 && similarity < 1) {
+                            answerResult = { isCorrect: false, isPartial: true, points: 0.5 };
+                        }
+                    }
+                }
 
                 if (circle) {
-                    if (isCorrect) {
+                    score += answerResult.points; // Add points (0, 0.5, or 1)
+
+                    if (answerResult.isCorrect) {
                         circle.classList.add('result-correct');
-                        score++;
                         // Convert to display element
                         if (input) {
                             const displayDiv = document.createElement('div');
@@ -332,6 +388,22 @@
                             displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span>`;
                             displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, null, question.image);
                             displayDiv.style.cursor = 'pointer';
+                            input.parentNode.replaceChild(displayDiv, input);
+                        }
+                    } else if (answerResult.isPartial) {
+                        circle.classList.add('result-partial');
+                        // Convert to display element with partial credit indicator
+                        if (input) {
+                            const displayAnswer = Array.isArray(correctAnswer)
+                                ? correctAnswer.join(' OR ')
+                                : correctAnswer;
+
+                            const displayDiv = document.createElement('div');
+                            displayDiv.className = 'answer-display partial';
+                            displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span><span class="partial-indicator">(0.5)</span>`;
+                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, displayAnswer, question.image);
+                            displayDiv.style.cursor = 'pointer';
+                            displayDiv.title = 'Click to see question and correction - Partial credit for close answer';
                             input.parentNode.replaceChild(displayDiv, input);
                         }
                     } else if (studentAnswer) {
