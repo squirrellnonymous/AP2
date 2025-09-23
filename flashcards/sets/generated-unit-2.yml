@@ -1,0 +1,152 @@
+title: 'Generated from Practice Practical #2'
+description: Blood, Heart, & Blood Vessels
+color_theme: blue
+flashcards:
+  - id: 1
+    term: Identify the white blood cell.
+    image: practical-2/01.jpg
+    answer: Neutrophil
+    keywords:
+      - Neutrophil
+    definition: The most abundant white blood cells, first responders to bacterial infections with multilobed nuclei.
+    breakdown: ''
+    example: ''
+  - id: 2
+    term: What's the formed element?
+    image: practical-2/02.jpg
+    answer: Thrombocyte
+    keywords:
+      - Thrombocyte
+      - Thrombocytes
+      - platelets
+      - platelet
+    definition: >-
+      Cell fragments (platelets) essential for blood clotting and hemostasis, derived from megakaryocytes in bone
+      marrow.
+    breakdown: ''
+    example: ''
+  - id: 3
+    term: Identify the leukocyte.
+    image: practical-2/03.jpg
+    answer: Lymphocyte
+    keywords:
+      - Lymphocyte
+    definition: >-
+      White blood cells that differentiate into B cells, T cells, and natural killer (NK) cells for adaptive and innate
+      immunity.
+    breakdown: ''
+    example: ''
+  - id: 4
+    term: What's the type of WBC?
+    image: practical-2/04.jpg
+    answer: Basophil
+    keywords:
+      - Basophil
+    definition: >-
+      The least common white blood cells with blue-staining granules that release histamine during allergic reactions,
+      closely related to tissue mast cells.
+    breakdown: ''
+    example: ''
+  - id: 5
+    term: Identify the leukocyte.
+    image: practical-2/05.jpg
+    answer: Monocyte
+    keywords:
+      - Monocyte
+    definition: The largest white blood cells that differentiate into macrophages and dendritic cells in tissues.
+    breakdown: '''Mono'' means one, referring to their single large nucleus. They''re like the heavy machinery of the immune system.'
+    example: ''
+  - id: 6
+    term: Which WBC is this?
+    image: practical-2/06.jpg
+    answer: Eosinophil
+    keywords:
+      - Eosinophil
+    definition: White blood cell with characteristic pink-staining granules and typically a bilobed nucleus.
+    breakdown: ''
+    example: ''
+  - id: 7
+    term: What chemical signal does this formed element release?
+    image: practical-2/07.jpg
+    answer: Histamine
+    keywords:
+      - Histamine
+      - Histamines
+    definition: Releases histamine during allergic reactions
+    breakdown: ''
+    example: ''
+  - id: 8
+    term: Name a type of pathogen this formed element responds to.
+    image: practical-2/08.jpg
+    answer: bacteria
+    keywords:
+      - bacteria
+      - bacterial
+    definition: First responders to bacterial infections
+    breakdown: ''
+    example: ''
+  - id: 9
+    term: Name the missing factor or precurssor.
+    image: practical-2/09.jpg
+    answer: Prothrombin Factor 2
+    keywords:
+      - Prothrombin Factor 2
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 10
+    term: What is the condition shown by this tissue sample?
+    image: practical-2/10.jpg
+    answer: Sickle Cell Anemia
+    keywords:
+      - Sickle Cell Anemia
+      - Sickle-Cell Anemia
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 11
+    term: What is the condition shown by this tissue sample?
+    image: practical-2/11.jpg
+    answer: Thrombocytosis
+    keywords:
+      - Thrombocytosis
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 12
+    term: What is the condition indicated by this tissue sample?
+    image: practical-2/12.jpg
+    answer: Leukemia
+    keywords:
+      - Leukemia
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 13
+    term: Which blood type is indicated by the test?
+    image: practical-2/13.jpg
+    answer: B-
+    keywords:
+      - B-
+      - B
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 14
+    term: Which blood type is indicated by the test?
+    image: practical-2/14.jpg
+    answer: AB+
+    keywords:
+      - AB+
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 15
+    term: What anitbodies?
+    image: practical-2/15.jpg
+    answer: Anti-B antibodies
+    keywords:
+      - Anti-B antibodies
+    definition: ''
+    breakdown: ''
+    example: ''

@@ -24,6 +24,15 @@ function getFlashcardSet() {
     return urlParams.get('set') || 'anatomy-basics'; // Default set
 }
 
+// Get practical source and tags from URL parameters
+function getPracticalParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return {
+        source: urlParams.get('source'),
+        tags: urlParams.get('tags') ? urlParams.get('tags').split(',').map(tag => tag.trim()) : null
+    };
+}
+
 
 // Load flashcards
 async function loadFlashcards() {
@@ -31,31 +40,82 @@ async function loadFlashcards() {
         console.log('Starting to load flashcards...');
         console.log('Current URL:', window.location.href);
 
-        const setName = getFlashcardSet();
-        console.log('Set name:', setName);
-
         // Check if js-yaml is loaded first
         if (typeof jsyaml === 'undefined') {
             throw new Error('js-yaml library not loaded - CDN may be blocked');
         }
         console.log('js-yaml loaded successfully');
 
-        const fetchUrl = `sets/${setName}.yml`;
-        console.log('Fetching:', fetchUrl);
+        // Check if we're loading from practical data or flashcard set
+        const practicalParams = getPracticalParams();
+        let data;
 
-        const response = await fetch(fetchUrl);
-        console.log('Fetch response status:', response.status);
-        console.log('Response OK:', response.ok);
+        if (practicalParams.source) {
+            // Load from practical data
+            console.log('Loading from practical source:', practicalParams.source);
+            console.log('Filtering by tags:', practicalParams.tags);
 
-        if (!response.ok) {
-            throw new Error(`Fetch failed: ${response.status} ${response.statusText}`);
+            const fetchUrl = `../data/practice-${practicalParams.source}.yml`;
+            console.log('Fetching practical data:', fetchUrl);
+
+            const response = await fetch(fetchUrl);
+            if (!response.ok) {
+                throw new Error(`Fetch failed: ${response.status} ${response.statusText}`);
+            }
+
+            const yamlText = await response.text();
+            const practicalData = jsyaml.load(yamlText);
+
+            // Filter questions by tags if specified
+            let filteredQuestions = practicalData.questions;
+            if (practicalParams.tags && practicalParams.tags.length > 0) {
+                filteredQuestions = practicalData.questions.filter(question => {
+                    if (!question.tags || question.tags.length === 0) return false;
+                    return practicalParams.tags.some(tag => question.tags.includes(tag));
+                });
+            }
+
+            // Convert to flashcard format
+            data = {
+                title: `${practicalData.title} - Dynamic Set`,
+                description: practicalData.description,
+                color_theme: 'blue',
+                flashcards: filteredQuestions.map(q => ({
+                    id: q.id,
+                    term: q.question,
+                    image: q.image,
+                    answer: Array.isArray(q.answer) ? q.answer[0] : q.answer,
+                    keywords: Array.isArray(q.answer) ? q.answer : [q.answer],
+                    definition: q.definition || "",
+                    breakdown: q.breakdown || "",
+                    example: ""
+                }))
+            };
+
+            console.log(`Loaded ${filteredQuestions.length} cards from ${practicalData.questions.length} total questions`);
+        } else {
+            // Load from flashcard set (existing behavior)
+            const setName = getFlashcardSet();
+            console.log('Set name:', setName);
+
+            const fetchUrl = `sets/${setName}.yml`;
+            console.log('Fetching:', fetchUrl);
+
+            const response = await fetch(fetchUrl);
+            console.log('Fetch response status:', response.status);
+            console.log('Response OK:', response.ok);
+
+            if (!response.ok) {
+                throw new Error(`Fetch failed: ${response.status} ${response.statusText}`);
+            }
+
+            const yamlText = await response.text();
+            console.log('YAML text length:', yamlText.length);
+            console.log('First 100 chars:', yamlText.substring(0, 100));
+
+            data = jsyaml.load(yamlText);
         }
 
-        const yamlText = await response.text();
-        console.log('YAML text length:', yamlText.length);
-        console.log('First 100 chars:', yamlText.substring(0, 100));
-
-        const data = jsyaml.load(yamlText);
         console.log('Parsed data cards count:', data.flashcards?.length);
 
         // Store set metadata
@@ -153,44 +213,60 @@ function showCard() {
     // Update counter - show total count
     document.getElementById('card-counter').textContent = `${allCards.length} cards`;
 
-    // Update navigation - Previous enabled if showing definition OR can go back
-    document.getElementById('prev-btn').disabled = !showingDefinition && currentIndex === 0;
-    document.getElementById('next-btn').disabled = currentIndex === cards.length - 1;
+    // Update navigation buttons
+    updateNavigationButtons();
 
 }
 
-// Flip card (term <-> definition)
+// Update navigation button states
+function updateNavigationButtons() {
+    // Previous button: always enabled unless on first card AND showing term
+    document.getElementById('prev-btn').disabled = currentIndex === 0 && !showingDefinition;
+
+    // Next button: disabled only when on last card
+    document.getElementById('next-btn').disabled = currentIndex === cards.length - 1;
+}
+
+// Flip card (term <-> definition) - now just flips, doesn't advance
 function flipCard() {
     if (!showingDefinition) {
-        // Simple flip using proven W3Schools method
+        // Flip to show definition
         cardElement.classList.add('flipped');
         showingDefinition = true;
-        document.getElementById('prev-btn').disabled = false;
     } else {
-        // Go to next card
-        nextCard();
+        // Flip back to show term
+        cardElement.classList.remove('flipped');
+        showingDefinition = false;
     }
+
+    // Update navigation buttons
+    updateNavigationButtons();
 }
 
 // Setup touch events for swiping
 function setupTouchEvents() {
     cardElement = document.querySelector('.flip-card');
 
-    // Touch events
+    // Touch events for mobile swiping
     cardElement.addEventListener('touchstart', handleTouchStart, { passive: false });
     cardElement.addEventListener('touchmove', handleTouchMove, { passive: false });
     cardElement.addEventListener('touchend', handleTouchEnd, { passive: false });
 
-    // Mouse events for desktop
-    cardElement.addEventListener('mousedown', handleMouseDown);
-    cardElement.addEventListener('mousemove', handleMouseMove);
-    cardElement.addEventListener('mouseup', handleMouseUp);
-    cardElement.addEventListener('mouseleave', handleMouseUp);
+    // Desktop uses click (HTML onclick) + navigation buttons - no mouse dragging needed
 }
 
-// Touch start
+// Handle card click for flipping
+function handleCardClick(e) {
+    // Don't flip if clicking on a button
+    if (e.target.closest('.swipe-option') || e.target.closest('button')) return;
+
+    console.log('Card clicked - flipping');
+    flipCard();
+}
+
+// Touch start - only works on back side (definition showing)
 function handleTouchStart(e) {
-    if (!showingDefinition) return; // Only swipe on definition side
+    if (!showingDefinition) return; // Only swipe when showing definition
 
     // Don't start dragging if touching a button
     if (e.target.closest('.swipe-option')) return;
@@ -236,53 +312,64 @@ function handleTouchEnd(e) {
 
 // Mouse events (for desktop)
 function handleMouseDown(e) {
-    if (!showingDefinition) return;
-
     startX = e.clientX;
     startY = e.clientY;
-    isDragging = true;
+    isDragging = false; // Will become true only if actual dragging occurs
     cardElement.style.transition = 'none';
     e.preventDefault();
 }
 
 function handleMouseMove(e) {
-    if (!isDragging || !showingDefinition) return;
+    // Only process mouse move if mouse is pressed down
+    if (e.buttons === 0) return; // No mouse button pressed
 
-    currentX = e.clientX - startX;
-    currentY = e.clientY - startY;
-    updateCardPosition();
+    const deltaX = e.clientX - startX;
+    const deltaY = e.clientY - startY;
+
+    // If movement exceeds threshold, start dragging (lower threshold for more responsiveness)
+    if (!isDragging && Math.abs(deltaX) > 5) {
+        isDragging = true;
+    }
+
+    if (isDragging) {
+        currentX = deltaX;
+        currentY = deltaY;
+        updateCardPosition();
+    }
 }
 
 function handleMouseUp(e) {
-    if (!isDragging || !showingDefinition) return;
+    if (isDragging) {
+        isDragging = false;
+        cardElement.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
 
-    isDragging = false;
-    cardElement.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-
-    const threshold = 100;
-    if (Math.abs(currentX) > threshold) {
-        if (currentX > 0) {
-            swipeRight();
+        const threshold = 100;
+        if (Math.abs(currentX) > threshold) {
+            if (currentX > 0) {
+                swipeRight();
+            } else {
+                swipeLeft();
+            }
         } else {
-            swipeLeft();
+            resetCardPosition();
         }
-    } else {
-        resetCardPosition();
     }
+    // Click handling is now done by handleCardClick
 }
 
 // Update card position during drag
 function updateCardPosition() {
-    const rotation = currentX * 0.1; // Slight rotation
-    const opacity = 1 - Math.abs(currentX) / 300;
+    // More responsive movement - follow finger/mouse more naturally
+    const rotation = currentX * 0.08; // Reduced rotation for smoother feel
+    const opacity = 1 - Math.abs(currentX) / 400; // Slower opacity fade
 
     cardElement.style.transform = `translateX(${currentX}px) rotate(${rotation}deg)`;
-    cardElement.style.opacity = Math.max(0.3, opacity);
+    cardElement.style.opacity = Math.max(0.5, opacity); // Less dramatic opacity change
 
-    // Color feedback
-    if (currentX > 50) {
+    // Color feedback with lower threshold
+    if (currentX > 30) {
         cardElement.style.borderLeft = '4px solid #10b981'; // Green for "know it"
-    } else if (currentX < -50) {
+    } else if (currentX < -30) {
         cardElement.style.borderLeft = '4px solid #ef4444'; // Red for "review"
     } else {
         cardElement.style.borderLeft = 'none';
@@ -297,6 +384,7 @@ function resetCardPosition() {
     cardElement.style.transition = 'opacity 0.2s ease';
     currentX = 0;
     currentY = 0;
+    isDragging = false; // Make sure we're not stuck in drag state
 }
 
 // Swipe left - "Need to review"

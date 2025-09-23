@@ -21,7 +21,11 @@
 - Dynamic Flashcards
    - Build tag-based flashcard sets from the practical data (images and yml)
       - dark mode based on system...
-      - fine tune the animations
+      - fine tune animations and interactions
+         - tap on card to flip (both side)
+         - stay on the same card with the availability to flip front to back as many times as you want until you advance by swiping or pressing a button
+         - new card loads face down under the card that will get swiped and then becomes visible after the swipe
+         - no way to skip a card? ...maybe we should add a skip button in the middle? 
       - fix image loading glitches
          - loading image ..just gray...
          - preload images in the background (up to 5 images ahead?)
@@ -116,26 +120,22 @@ Flashcard URLs: `?source=practical-2&tags=leukocytes` or `?source=practical-5&ta
 - **Mobile-first images**: 1024x760 wide images, crop to square on mobile only
 
 ## Big Picture Todo List
-
-1. Content Clean Up
-  - Replace "blank" with empty quotes `""`
-  - Code can check `if (item.answer === "" || !item.answer)` to disable items
   
 - **Note: Keep existing `leukocytes.yml` flashcard set untouched**
 
-2. Build New Parallel System
+Build New Parallel System
 - [ ] Build flashcard generator script for tag-based filtering
 - [ ] Generator creates new sets (e.g., `generated-leukocytes.yml`, `blood-components.yml`)
 - [ ] Update flashcard engine for wide images
 - [ ] Add mobile CSS cropping for flashcards
 - [ ] Test practical-2 with enabled/disabled states
 
-3. Make the practical more realistic
+Make the practical more realistic
 - [ ] last question is a two point extra credit
 - [ ] fourty questions plus one extra credit question 
 - [ ] more than 41 items can exist in the yml file and we pull strategically to create a good mix of topics
 
-4. Let's consider an interface for students to submit question content (could be a github issue since I'm not sure I want a database... but maybe I want a database?)
+Let's consider an interface for students to submit question content (could be a github issue since I'm not sure I want a database... but maybe I want a database?)
 
-5. Work on the score and let students know by topic how they did... maybe suggest a set of flashcards just for them. 
+Work on the score and let students know by topic how they did... maybe suggest a set of flashcards just for them. 
 

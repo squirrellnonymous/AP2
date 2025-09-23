@@ -4,7 +4,7 @@ description: "Blood, Heart, & Blood Vessels"
 questions:
   - id: 1
     image: "practical-2/01.jpg"
-    question: "Identify the formed element?"
+    question: "Identify the white blood cell."
     answer: "Neutrophil"
     definition: "The most abundant white blood cells, first responders to bacterial infections with multilobed nuclei."
     tags: ["formed-elements", "leukocytes", "blood"]
@@ -18,21 +18,21 @@ questions:
 
   - id: 3
     image: "practical-2/03.jpg"
-    question: "Identify the formed element?"
+    question: "Identify the leukocyte."
     answer: "Lymphocyte"
     definition: "White blood cells that differentiate into B cells, T cells, and natural killer (NK) cells for adaptive and innate immunity."
     tags: ["formed-elements", "leukocytes", "blood"]
 
   - id: 4
     image: "practical-2/04.jpg"
-    question: "What's the formed element?"
+    question: "What's the type of WBC?"
     answer: "Basophil"
     definition: "The least common white blood cells with blue-staining granules that release histamine during allergic reactions, closely related to tissue mast cells."
     tags: ["formed-elements", "leukocytes", "blood"]
 
   - id: 5
     image: "practical-2/05.jpg"
-    question: "Identify the formed element?"
+    question: "Identify the leukocyte."
     answer: "Monocyte"
     definition: "The largest white blood cells that differentiate into macrophages and dendritic cells in tissues."
     breakdown: "'Mono' means one, referring to their single large nucleus. They're like the heavy machinery of the immune system."
@@ -40,7 +40,7 @@ questions:
 
   - id: 6
     image: "practical-2/06.jpg"
-    question: "What's the formed element?"
+    question: "Which WBC is this?"
     answer: "Eosinophil"
     definition: "White blood cell with characteristic pink-staining granules and typically a bilobed nucleus."
     tags: ["formed-elements", "leukocytes", "blood"]
