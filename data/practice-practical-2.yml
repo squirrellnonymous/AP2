@@ -104,7 +104,7 @@ questions:
   - id: 15
     image: "practical-2/15.jpg"
     question: "What anitbodies?"
-    answer: ["Anti-B and Anti-D antibodies", "Anti-B antibodies and Anti-D antibodies", "Antibodies against B antigen and D antigen", "Anti-B and Anti-Rh(D) antibodies", "Anti-B and Anti-RhD antibodies", "Anti-B (naturally occurring) and Anti-D (if exposed)", "Anti-B antibodies (natural) and Anti-D antibodies (acquired)", "Antibodies to B and D antigens", "Anti-B IgM and Anti-D IgG antibodies", "B and D antigen antibodies", "Anti-B (always present) and Anti-D (potentially present)", "Antibodies against B and Rh-positive antigens", "Anti-B naturally, Anti-D if sensitized", "B-antigen antibodies and D-antigen antibodies", "Anti-B and Anti-Rh antibodies"]
+    answer: ["Anti-B antibodies"]
     definition: ""
     tags: ["blood"]
 
