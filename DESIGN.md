@@ -2,19 +2,13 @@
 
 ## Current Status
 - **Working**: Leukocytes flashcards work well and have been shared (don't touch!)
-- **Completed**:
-   - practical is in a shareable state for other students, just needs fine tuning and more features
+
 - **What's Next**: 
-   - Add more practical data (erythrocytes, functions, most to least common, the heart) - Arena
-      - tagged (leukocytes, unit-2, ... heart, )
-   - Building tag-based flashcard sets from the practical data (images and yml)
-   - fine tune the animations
-      - fix image loading glitches
-         - loading image ..just gray...
-         - preload images in the background (up to 5 images ahead?)
-      - start fresh with each new card (no flipping in that reveals the answer)
-         - clear the state after the last card so it's always just a new card from the pile with the question (no animation)
-      - dark mode based on system (is that possible in a browser)
+
+- Unit Tests? suggestion from boyfriend... what do you think?
+   
+- Practical fine tuning:
+   - dark mode based on system (is that possible in a browser)
    - fine tune the buttons and focus colors
       - main text entry field should be more prominent
       - answer sheet fields should be less prominent (still clickable)
@@ -23,6 +17,20 @@
       - no purple/selected number in the answer sheet (just the green, yellow, or red result colors)
       - when something was spelled wrong show the modal with the answer in black on a yellow bg instead of in red
       - in correct answers with OR, put OR in dark gray instead of red, green, blk or whatever color (it's too much color... maybe we should even consider showing the first possibility on its own line and then showing the other possibilies in a different way... just feels like it came from a robot as it is and if it's wrong feels like a blood bath)
+
+- Dynamic Flashcards
+   - Build tag-based flashcard sets from the practical data (images and yml)
+      - dark mode based on system...
+      - fine tune the animations
+      - fix image loading glitches
+         - loading image ..just gray...
+         - preload images in the background (up to 5 images ahead?)
+      - start fresh with each new card (no flipping in that reveals the answer)
+         - clear the state after the last card so it's always just a new card from the pile with the question (no animation)
+      
+
+- **Completed**:
+   - practical is in a shareable state for other students and has been shared, just needs fine tuning and more features
 
    
 - **Goal**: Single source of truth for content with flexible flashcard generation

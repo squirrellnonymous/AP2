@@ -7,28 +7,28 @@ questions:
     question: "Identify the formed element?"
     answer: "Neutrophil"
     definition: "The most abundant white blood cells, first responders to bacterial infections with multilobed nuclei."
-    tags: ["formed-elements", "leukocytes"]
+    tags: ["formed-elements", "leukocytes", "blood"]
 
   - id: 2
     image: "practical-2/02.jpg"
     question: "What's the formed element?"
     answer: ["Thrombocyte","Thrombocytes","platelets","platelet"]
     definition: "Cell fragments (platelets) essential for blood clotting and hemostasis, derived from megakaryocytes in bone marrow."
-    tags: ["formed-elements", "platelets", "blood-clotting"]
+    tags: ["formed-elements", "platelets", "blood-clotting", "blood"]
 
   - id: 3
     image: "practical-2/03.jpg"
     question: "Identify the formed element?"
     answer: "Lymphocyte"
     definition: "White blood cells that differentiate into B cells, T cells, and natural killer (NK) cells for adaptive and innate immunity."
-    tags: ["formed-elements", "leukocytes"]
+    tags: ["formed-elements", "leukocytes", "blood"]
 
   - id: 4
     image: "practical-2/04.jpg"
     question: "What's the formed element?"
     answer: "Basophil"
     definition: "The least common white blood cells with blue-staining granules that release histamine during allergic reactions, closely related to tissue mast cells."
-    tags: ["formed-elements", "leukocytes"]
+    tags: ["formed-elements", "leukocytes", "blood"]
 
   - id: 5
     image: "practical-2/05.jpg"
@@ -36,28 +36,78 @@ questions:
     answer: "Monocyte"
     definition: "The largest white blood cells that differentiate into macrophages and dendritic cells in tissues."
     breakdown: "'Mono' means one, referring to their single large nucleus. They're like the heavy machinery of the immune system."
-    tags: ["formed-elements", "leukocytes"]
+    tags: ["formed-elements", "leukocytes", "blood"]
 
   - id: 6
     image: "practical-2/06.jpg"
     question: "What's the formed element?"
     answer: "Eosinophil"
     definition: "White blood cell with characteristic pink-staining granules and typically a bilobed nucleus."
-    tags: ["formed-elements", "leukocytes"]
+    tags: ["formed-elements", "leukocytes", "blood"]
 
   - id: 7
     image: "practical-2/07.jpg"
     question: "What chemical signal does this formed element release?"
     answer: ["Histamine", "Histamines"]
     definition: "Releases histamine during allergic reactions"
-    tags: ["formed-elements", "leukocytes"]
+    tags: ["formed-elements", "leukocytes", "blood"]
 
   - id: 8
     image: "practical-2/08.jpg"
     question: "Name a type of pathogen this formed element responds to."
     answer: ["bacteria", "bacterial"]
     definition: "First responders to bacterial infections"
-    tags: ["formed-elements", "leukocytes"]
+    tags: ["formed-elements", "leukocytes", "blood"]
+
+  - id: 9
+    image: "practical-2/09.jpg"
+    question: "Name the missing factor or precurssor."
+    answer: ["Prothrombin Factor 2"]
+    definition: ""
+    tags: ["clotting", "blood", "platelets"]
+
+  - id: 10
+    image: "practical-2/10.jpg"
+    question: "What is the condition shown by this tissue sample?"
+    answer: ["Sickle Cell Anemia", "Sickle-Cell Anemia"]
+    definition: ""
+    tags: ["anemia", "blood"]
+
+  - id: 11
+    image: "practical-2/11.jpg"
+    question: "What is the condition shown by this tissue sample?"
+    answer: ["Thrombocytosis"]
+    definition: ""
+    tags: ["blood"]
+
+  - id: 12
+    image: "practical-2/12.jpg"
+    question: "What is the condition indicated by this tissue sample?"
+    answer: ["Leukemia"]
+    definition: ""
+    tags: ["blood"]
+
+  - id: 13
+    image: "practical-2/13.jpg"
+    question: "Which blood type is indicated by the test?"
+    answer: ["B-", "B"]
+    definition: ""
+    tags: ["blood"]
+
+  - id: 14
+    image: "practical-2/14.jpg"
+    question: "Which blood type is indicated by the test?"
+    answer: ["AB+"]
+    definition: ""
+    tags: ["blood"]
+
+  - id: 15
+    image: "practical-2/14.jpg"
+    question: "What anitbodies?"
+    answer: ["Anti-B and Anti-D antibodies", "Anti-B antibodies and Anti-D antibodies", "Antibodies against B antigen and D antigen", "Anti-B and Anti-Rh(D) antibodies", "Anti-B and Anti-RhD antibodies", "Anti-B (naturally occurring) and Anti-D (if exposed)", "Anti-B antibodies (natural) and Anti-D antibodies (acquired)", "Antibodies to B and D antigens", "Anti-B IgM and Anti-D IgG antibodies", "B and D antigen antibodies", "Anti-B (always present) and Anti-D (potentially present)", "Antibodies against B and Rh-positive antigens", "Anti-B naturally, Anti-D if sensitized", "B-antigen antibodies and D-antigen antibodies", "Anti-B and Anti-Rh antibodies"]
+    definition: ""
+    tags: ["blood"]
+
 
 
 # Upload your images to: /images/practical-2/
