@@ -10,6 +10,13 @@ let flashcardSet = null; // Metadata about current set
 let studyMode = 'initial'; // 'initial' or 'review'
 let cardsReviewed = 0; // Track how many cards have been swiped
 
+// Image preloading
+let preloadedImages = new Map(); // Cache for preloaded images
+
+// State management
+let eventsSetup = false; // Prevent duplicate event listeners
+let hasEverFlipped = false; // Track if user has ever flipped a card
+
 // Touch/swipe variables
 let startX = 0;
 let startY = 0;
@@ -37,6 +44,18 @@ function getPracticalParams() {
 // Load flashcards
 async function loadFlashcards() {
     try {
+        // Show flashcard app immediately with placeholder
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('flashcard-app').classList.remove('hidden');
+
+        // Make sure the image element is visible and showing placeholder with loading overlay
+        const termImage = document.getElementById('term-image');
+        const loadingOverlay = document.getElementById('image-loading-overlay');
+        termImage.src = '../images/0.jpg';
+        termImage.alt = 'Loading...';
+        termImage.classList.remove('hidden');
+        loadingOverlay.style.display = 'block';
+
         console.log('Starting to load flashcards...');
         console.log('Current URL:', window.location.href);
 
@@ -138,9 +157,8 @@ async function loadFlashcards() {
         // Always shuffle on load
         shuffleCards();
 
-        document.getElementById('loading').classList.add('hidden');
+        // App already shown above, just hide progress
         document.getElementById('progress').classList.add('hidden');
-        document.getElementById('flashcard-app').classList.remove('hidden');
 
     } catch (error) {
         console.error('Error loading flashcards:', error);
@@ -154,11 +172,68 @@ async function loadFlashcards() {
     }
 }
 
+// CLEAN SLATE: Reset card to front state with no residual flip behavior
+function resetCardToFront() {
+    // Initialize cardElement if needed
+    if (!cardElement) {
+        cardElement = document.querySelector('.flip-card');
+    }
+
+    if (!cardElement) return;
+
+    const flipCardInner = cardElement.querySelector('.flip-card-inner');
+
+    // 1. Reset all state variables immediately
+    showingDefinition = false;
+    isDragging = false;
+    currentX = 0;
+    currentY = 0;
+
+    // 2. Disable ALL transitions to prevent any animation during reset
+    cardElement.style.transition = 'none';
+    if (flipCardInner) flipCardInner.style.transition = 'none';
+
+    // 3. Remove all flip-related classes and styles
+    cardElement.classList.remove('flipped');
+    cardElement.style.transform = '';
+    cardElement.style.opacity = '';
+    cardElement.style.borderLeft = '';
+
+    // 4. Clear any swipe-related transforms that might be lingering
+    if (flipCardInner) {
+        flipCardInner.style.transform = '';
+    }
+
+    // 5. Force a reflow to ensure changes take effect
+    cardElement.offsetHeight;
+
+    // 6. Re-enable transitions after a brief delay (after content is loaded)
+    setTimeout(() => {
+        cardElement.style.transition = '';
+        if (flipCardInner) {
+            flipCardInner.style.transition = 'transform 0.6s';
+        }
+    }, 50);
+}
+
 // Show current card
 function showCard() {
     if (!cards || cards.length === 0) return;
 
     const card = cards[currentIndex];
+
+    // CLEAN SLATE APPROACH: Complete state reset before any content changes
+    resetCardToFront();
+
+    // Reset swipe button state for new card
+    resetSwipeButtons();
+
+    // Immediately clear the previous image to prevent flash
+    const termImage = document.getElementById('term-image');
+    const loadingOverlay = document.getElementById('image-loading-overlay');
+    termImage.src = '../images/0.jpg';
+    termImage.alt = 'Loading...';
+    loadingOverlay.style.display = 'block';
 
     // Update content
     document.getElementById('term').textContent = card.term;
@@ -175,40 +250,41 @@ function showCard() {
     document.getElementById('definition').innerHTML = definitionContent;
 
 
-    // Handle images - preload to prevent flash
-    const termImage = document.getElementById('term-image');
-
+    // Handle images - placeholder already set above
     if (card.image) {
-        // Hide image immediately to prevent flash
-        termImage.classList.add('hidden');
+        const imagePath = `../images/${card.image}`;
+        termImage.classList.remove('hidden');
 
-        // Create new image to preload
-        const newImg = new Image();
-        newImg.onload = () => {
-            // Only update and show after new image is loaded
-            termImage.src = newImg.src;
-            termImage.alt = card.term;
-            termImage.classList.remove('hidden');
-        };
-        newImg.src = `../images/${card.image}`;
+        // Check if image is already preloaded
+        if (preloadedImages.has(imagePath)) {
+            // Use preloaded image immediately (after placeholder is set)
+            setTimeout(() => {
+                termImage.src = preloadedImages.get(imagePath).src;
+                termImage.alt = card.term;
+                loadingOverlay.style.display = 'none'; // Hide loading overlay
+            }, 1); // Tiny delay to ensure placeholder shows first
+        } else {
+            // Create new image to load
+            const newImg = new Image();
+            newImg.onload = () => {
+                // Cache the loaded image
+                preloadedImages.set(imagePath, newImg);
+                // Update display
+                termImage.src = newImg.src;
+                termImage.alt = card.term;
+                loadingOverlay.style.display = 'none'; // Hide loading overlay
+            };
+            newImg.src = imagePath;
+        }
     } else {
         termImage.classList.add('hidden');
+        loadingOverlay.style.display = 'none'; // Hide loading overlay for cards without images
     }
 
-    // Reset to term side immediately (no animation)
-    showingDefinition = false;
-    const flipCardInner = cardElement.querySelector('.flip-card-inner');
+    // Preload next few images in background
+    preloadNextImages();
 
-    // Temporarily disable ALL transitions to prevent unwanted animations
-    cardElement.style.transition = 'none';
-    flipCardInner.style.transition = 'none';
-    cardElement.classList.remove('flipped');
-
-    // Re-enable transitions after reset
-    setTimeout(() => {
-        cardElement.style.transition = '';
-        flipCardInner.style.transition = 'transform 0.6s';
-    }, 10);
+    // Flip reset already handled at the beginning of function
 
     // Update counter - show total count
     document.getElementById('card-counter').textContent = `${allCards.length} cards`;
@@ -216,6 +292,32 @@ function showCard() {
     // Update navigation buttons
     updateNavigationButtons();
 
+    // Card setup complete
+
+}
+
+// Preload next few images in background
+function preloadNextImages() {
+    const preloadCount = 3; // Preload next 3 images
+
+    for (let i = 1; i <= preloadCount; i++) {
+        const nextIndex = currentIndex + i;
+        if (nextIndex < cards.length) {
+            const nextCard = cards[nextIndex];
+            if (nextCard.image) {
+                const imagePath = `../images/${nextCard.image}`;
+
+                // Only preload if not already cached
+                if (!preloadedImages.has(imagePath)) {
+                    const preloadImg = new Image();
+                    preloadImg.onload = () => {
+                        preloadedImages.set(imagePath, preloadImg);
+                    };
+                    preloadImg.src = imagePath;
+                }
+            }
+        }
+    }
 }
 
 // Update navigation button states
@@ -227,12 +329,15 @@ function updateNavigationButtons() {
     document.getElementById('next-btn').disabled = currentIndex === cards.length - 1;
 }
 
-// Flip card (term <-> definition) - now just flips, doesn't advance
+// Flip card (term <-> definition)
 function flipCard() {
     if (!showingDefinition) {
         // Flip to show definition
         cardElement.classList.add('flipped');
         showingDefinition = true;
+
+        // Enable swipe options after flip
+        enableSwipeButtons();
     } else {
         // Flip back to show term
         cardElement.classList.remove('flipped');
@@ -243,8 +348,38 @@ function flipCard() {
     updateNavigationButtons();
 }
 
+// Reset swipe buttons for new card
+function resetSwipeButtons() {
+    if (!hasEverFlipped) return; // Don't show buttons until first flip ever
+
+    const swipeOptions = document.getElementById('swipe-options');
+    const leftBtn = document.getElementById('swipe-left-btn');
+    const rightBtn = document.getElementById('swipe-right-btn');
+
+    // Show buttons but disabled for new card
+    swipeOptions.classList.remove('invisible');
+    swipeOptions.classList.remove('hidden');
+    leftBtn.classList.add('disabled');
+    rightBtn.classList.add('disabled');
+}
+
+// Enable swipe buttons after first flip
+function enableSwipeButtons() {
+    const swipeOptions = document.getElementById('swipe-options');
+    const leftBtn = document.getElementById('swipe-left-btn');
+    const rightBtn = document.getElementById('swipe-right-btn');
+
+    hasEverFlipped = true;
+    swipeOptions.classList.remove('invisible');
+    swipeOptions.classList.remove('hidden');
+    leftBtn.classList.remove('disabled');
+    rightBtn.classList.remove('disabled');
+}
+
 // Setup touch events for swiping
 function setupTouchEvents() {
+    if (eventsSetup) return; // Prevent duplicate setup
+
     cardElement = document.querySelector('.flip-card');
 
     // Touch events for mobile swiping
@@ -252,15 +387,24 @@ function setupTouchEvents() {
     cardElement.addEventListener('touchmove', handleTouchMove, { passive: false });
     cardElement.addEventListener('touchend', handleTouchEnd, { passive: false });
 
-    // Desktop uses click (HTML onclick) + navigation buttons - no mouse dragging needed
+    // Use event delegation for click handling - attach to stable container
+    document.querySelector('.container').addEventListener('click', function(e) {
+        // Only handle clicks on the flip-card or its children
+        if (e.target.closest('.flip-card')) {
+            handleCardClick(e);
+        }
+    });
+
+    eventsSetup = true;
 }
 
 // Handle card click for flipping
 function handleCardClick(e) {
-    // Don't flip if clicking on a button
-    if (e.target.closest('.swipe-option') || e.target.closest('button')) return;
+    // Don't flip if clicking on a navigation button
+    if (e.target.closest('button')) {
+        return;
+    }
 
-    console.log('Card clicked - flipping');
     flipCard();
 }
 
@@ -534,7 +678,7 @@ function advanceCard() {
         // Move to next card
         currentIndex++;
         console.log('Moving to next card, new index:', currentIndex);
-        showCard();
+        showCard(); // showCard() handles complete state reset
     } else if (studyMode === 'initial' && cardsReviewed >= allCards.length) {
         // Completed initial review - show results
         console.log('All cards reviewed, showing results');
@@ -542,7 +686,7 @@ function advanceCard() {
     } else if (studyMode === 'review') {
         // In review mode, loop through missed cards
         currentIndex = 0;
-        showCard();
+        showCard(); // showCard() handles complete state reset
     } else {
         // Safety fallback
         console.log('Safety fallback - showing results');
@@ -554,22 +698,21 @@ function advanceCard() {
 function nextCard() {
     if (currentIndex < cards.length - 1) {
         currentIndex++;
-        showCard();
+        showCard(); // showCard() handles complete state reset
     }
 }
 
 function previousCard() {
     // If showing definition, flip back to term first
     if (showingDefinition) {
-        // Simple flip back
-        cardElement.classList.remove('flipped');
-        showingDefinition = false;
-        document.getElementById('prev-btn').disabled = currentIndex === 0;
+        // Use clean slate reset instead of manual flip
+        resetCardToFront();
+        updateNavigationButtons();
     } else {
         // Already showing term, go to previous card
         if (currentIndex > 0) {
             currentIndex--;
-            showCard();
+            showCard(); // showCard() handles complete state reset
         }
     }
 }
@@ -581,7 +724,7 @@ function shuffleCards() {
         [cards[i], cards[j]] = [cards[j], cards[i]];
     }
     currentIndex = 0;
-    showCard();
+    showCard(); // showCard() handles complete state reset
 }
 
 
@@ -618,6 +761,9 @@ function showListView() {
 function hideListView() {
     document.getElementById('list-view').classList.add('hidden');
     document.getElementById('flashcard-app').classList.remove('hidden');
+    // Ensure clean state when returning from list view
+    resetCardToFront();
+    updateNavigationButtons();
 }
 
 // Results Screen functions
@@ -662,7 +808,7 @@ function reviewMissed() {
     document.getElementById('results').classList.add('hidden');
     document.getElementById('flashcard-app').classList.remove('hidden');
 
-    showCard();
+    showCard(); // showCard() handles complete state reset
 }
 
 function startOver() {
@@ -675,11 +821,10 @@ function startOver() {
     cards = [...allCards];
 
     // Shuffle and start fresh
-    shuffleCards();
+    shuffleCards(); // shuffleCards() calls showCard() which handles complete state reset
 
     document.getElementById('results').classList.add('hidden');
     document.getElementById('flashcard-app').classList.remove('hidden');
-    showCard();
 }
 
 // Keyboard shortcuts

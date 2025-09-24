@@ -69,7 +69,7 @@ questions:
   - id: 10
     image: "practical-2/10.jpg"
     question: "What is the condition shown by this tissue sample?"
-    answer: ["Sickle Cell Anemia", "Sickle-Cell Anemia"]
+    answer: ["Sickle-Cell Anemia", "Sickle Cell Anemia"]
     definition: ""
     tags: ["anemia", "blood"]
 

@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon">🌙</span>
+    </button>
     <div class="container">
         <h1>Anatomy & Physiology II</h1>
         
@@ -16,18 +19,66 @@
             <!-- <a href="exam1-practice.html" class="link">Exam 1 Practice Test (am)</a>
             <a href="exam1-practice-key.html" class="link">Exam 1 Practice Test (pm)</a> -->
             <a href="practice-practical.html" class="link">📝 Practice Practical #1</a>
-            <!-- <a href="flashcards-prototype.html" class="link">Study Flashcards (half-baked)</a> 
-            <a href="flashcards/flashcard-template.html?set=anatomy-basics" class="link">Tinder for Flashcards</a> -->
+            
         </div>
 
         <h2>Blood, Heart, & Circulatory System</h2>
 
         <div class="links">
             <a href="practice-practical-2.html" class="link">📝 Practice Practical #2</a>
-            <a href="flashcards/flashcard-template.html?set=leukocytes" class="link">✅ Flashcards: Leukocytes</a>
+            <!-- <a href="flashcards/flashcard-template.html?set=leukocytes" class="link">✅ Flashcards: Leukocytes</a> -->
+            <a href="flashcards/flashcard-template.html?source=practical-2&tags=blood" class="link">✅ Dynamic Flashcards</a>
+            <!-- <a href="flashcards/flashcard-template.html?set=anatomy-basics" class="link">Tinder for Flashcards</a> -->
             <a href="exam-template.html?exam=exam2-practice" class="link">📋 Exam 2 Practice Test</a>
 
         </div>
     </div>
+
+    <script>
+        // Dark mode functionality
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const toggleIcon = document.querySelector('.toggle-icon');
+        const body = document.body;
+
+        // Function to get preferred theme
+        function getPreferredTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                return savedTheme;
+            }
+            // Check system preference
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        // Function to apply theme
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                toggleIcon.textContent = '☀️';
+            } else {
+                body.classList.remove('dark-mode');
+                toggleIcon.textContent = '🌙';
+            }
+        }
+
+        // Apply initial theme
+        const currentTheme = getPreferredTheme();
+        applyTheme(currentTheme);
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // Only auto-switch if user hasn't set a preference
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
 </body>
 </html>

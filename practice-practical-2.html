@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="css/practical.css">
 </head>
 <body>
+    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon">🌙</span>
+    </button>
     <div class="header">
         <div class="header-content">
             <a href="index.html" class="home-link">← Home</a>
@@ -586,6 +589,51 @@
                     }, 0);
                 }
             }
+        });
+
+        // Dark mode functionality
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const toggleIcon = document.querySelector('.toggle-icon');
+        const body = document.body;
+
+        // Function to get preferred theme
+        function getPreferredTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                return savedTheme;
+            }
+            // Check system preference
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        // Function to apply theme
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                toggleIcon.textContent = '☀️';
+            } else {
+                body.classList.remove('dark-mode');
+                toggleIcon.textContent = '🌙';
+            }
+        }
+
+        // Apply initial theme
+        const currentTheme = getPreferredTheme();
+        applyTheme(currentTheme);
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // Only auto-switch if user hasn't set a preference
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
         });
 
         // Load YAML parser

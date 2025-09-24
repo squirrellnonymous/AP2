@@ -75,7 +75,9 @@ h1 {
     width: 100%;
     height: 500px;
     perspective: 1000px;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10;
 }
 
 .flip-card-inner {
@@ -117,7 +119,8 @@ h1 {
     transform: rotateY(180deg);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Definition styling */
@@ -148,12 +151,35 @@ h1 {
     text-align: center;
 }
 
+/* Image container for positioning overlay */
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
 /* Term image */
 .term-image {
     max-width: 100%;
-    max-height: 250px;
+    max-height: 350px;
     border-radius: 8px;
     border: 1px solid #d1d5db;
+    display: block;
+}
+
+/* Loading overlay */
+.image-loading-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    pointer-events: none;
+    z-index: 10;
 }
 
 /* Smaller text when image is present */
@@ -216,46 +242,72 @@ h1 {
 .swipe-instructions {
     display: flex;
     justify-content: space-between;
-    margin-top: auto;
-    margin-bottom: 0;
+    margin-top: 10px;
+    margin-bottom: 20px;
     gap: 15px;
+    position: relative;
+    z-index: 1;
 }
 
 .swipe-option {
     flex: 1;
     text-align: center;
-    padding: 10px 12px;
-    border-radius: 8px;
-    background: rgba(148, 163, 184, 0.15);
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #6b46c1, #4c1d95);
+    border: 1px solid #7c3aed;
+    box-shadow:
+        0 4px 15px rgba(139, 92, 246, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-}
-
-.swipe-option:hover {
-    background: rgba(148, 163, 184, 0.25);
-}
-
-.swipe-option span {
-    display: block;
+    cursor: pointer;
+    user-select: none;
+    color: white;
     font-size: 0.9rem;
-    font-weight: 500;
-    color: #475569;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.swipe-emoji {
-    font-size: 1rem;
-    margin-bottom: 4px;
+.swipe-option:hover:not(.disabled) {
+    background: linear-gradient(145deg, #7c3aed, #5b21b6);
+    box-shadow:
+        0 6px 20px rgba(139, 92, 246, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
 }
 
-.swipe-text {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: #475569;
+.swipe-option:active:not(.disabled) {
+    transform: translateY(0);
+    box-shadow:
+        0 2px 8px rgba(139, 92, 246, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Disabled swipe option styling */
+.swipe-option.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+    background: linear-gradient(145deg, #6b7280, #4b5563);
+    border-color: #6b7280;
+    color: #d1d5db;
+    box-shadow:
+        0 2px 8px rgba(75, 85, 99, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* States */
 .hidden {
     display: none !important;
+}
+
+.invisible {
+    visibility: hidden !important;
 }
 
 /* Results Screen */

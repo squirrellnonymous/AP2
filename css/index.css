@@ -64,13 +64,84 @@ h2 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Dark mode toggle */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    z-index: 1000;
+}
+
+.dark-mode-toggle:hover {
+    border-color: #9ca3af;
+    background-color: #f9fafb;
+    transform: scale(1.1);
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+
+body.dark-mode h1 {
+    color: #f1f5f9;
+}
+
+body.dark-mode h2 {
+    color: #94a3b8;
+}
+
+body.dark-mode .link {
+    background-color: #1e293b;
+    border-color: #374151;
+    color: #e2e8f0;
+}
+
+body.dark-mode .link:hover {
+    background-color: #334155;
+    border-color: #6b7280;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .dark-mode-toggle {
+    background-color: #1e293b;
+    border-color: #374151;
+    color: #e2e8f0;
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background-color: #334155;
+    border-color: #6b7280;
+}
+
 @media (max-width: 640px) {
     h1 {
         font-size: 2rem;
     }
-    
+
     .link {
         width: 100%;
         max-width: 280px;
+    }
+
+    .dark-mode-toggle {
+        top: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
     }
 }
