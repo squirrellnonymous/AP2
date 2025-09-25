@@ -236,37 +236,37 @@ questions:
 
   - id: 34
     image: "practical-2/34.jpg"
-    question: ""
-    answer: [""]
+    question: "What is the region"
+    answer: ["apex", "apex of the heart", "heart apex"]
     definition: ""
     tags: ["heart"]
 
   - id: 35
     image: "practical-2/35.jpg"
-    question: ""
-    answer: [""]
+    question: "Name the vessel."
+    answer: ["left subclavian artery"]
     definition: ""
     tags: ["heart"]
 
   - id: 36
     image: "practical-2/36.jpg"
-    question: ""
-    answer: [""]
+    question: "Name the vessel."
+    answer: ["left common corotid artery"]
     definition: ""
     tags: ["heart"]
 
   - id: 37
     image: "practical-2/37.jpg"
-    question: ""
-    answer: [""]
+    question: "Name the vessel"
+    answer: ["pulmonary trunk"]
     definition: ""
     tags: ["heart"]
 
   - id: 38
     image: "practical-2/38.jpg"
-    question: ""
-    answer: [""]
-    definition: ""
+    question: "What is the highlighted region measuring?"
+    answer: ["ventricular depolarization", "qrs complex ventricular depoloarization", "qrs: ventricular depoloarization"]
+    definition: "The QRS complex represents a measurement of ventricular depolarization"
     tags: ["heart"]
 
   - id: 39
@@ -278,15 +278,15 @@ questions:
 
   - id: 40
     image: "practical-2/40.jpg"
-    question: ""
-    answer: [""]
+    question: "What does the highlighted region represent?"
+    answer: ["atrial depolarization", "p wave atrial depoloarization", "p: atrial depoloarization"]
     definition: ""
     tags: ["heart"]
 
   - id: 41
     image: "practical-2/41.jpg"
-    question: ""
-    answer: [""]
+    question: "What does the highlighted region represent?"
+    answer: ["ventricular repolarization", "t wave ventricular repoloarization", "t: atrial repoloarization"]
     definition: ""
     tags: ["heart"]
 
@@ -315,6 +315,20 @@ questions:
     image: "practical-2/45.jpg"
     question: "Name the structure."
     answer: ["myocardium", "myocardium {heart muscle)"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 46
+    image: "practical-2/46.jpg"
+    question: "Name a layer that secretes fluid."
+    answer: ["epicardium", "visceral pericardium"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 47
+    image: "practical-2/47.jpg"
+    question: "What is the function of the secretion in this layer"
+    answer: ["lubrication", "allows heart to beat with minimal friction", "reduces friction", "lowers friction", "increases lubrication", "lubricant"]
     definition: ""
     tags: ["heart"]
 

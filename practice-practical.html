@@ -102,48 +102,76 @@
         
         function renderPractical() {
             if (!practicalData) return;
-            
-            
+
+            // Filter out blank/placeholder questions for display
+            const validQuestions = practicalData.questions.filter(question => {
+                const hasQuestion = question.question && question.question.trim() !== '';
+                const hasAnswer = question.answer && (
+                    Array.isArray(question.answer)
+                        ? question.answer.some(ans => ans && ans.trim() !== '')
+                        : question.answer.trim() !== ''
+                );
+                return hasQuestion && hasAnswer;
+            });
+
+            // Randomly select up to 40 questions from valid questions
+            let selectedQuestions = validQuestions;
+            if (validQuestions.length > 40) {
+                selectedQuestions = shuffleArray(validQuestions).slice(0, 40);
+            }
+
+            // Update practicalData to only include selected questions
+            practicalData.validQuestions = selectedQuestions;
+            const totalQuestions = selectedQuestions.length;
+            console.log('Valid questions:', totalQuestions);
+
+            // Update header with correct count
+            const progressElement = document.getElementById('progress');
+            if (progressElement) {
+                progressElement.textContent = `${totalQuestions} Questions`;
+            }
+
             // Generate answer sheet
             const answersGrid = document.querySelector('.answers-grid');
-            
+
             // Create two columns
             const leftColumn = document.createElement('div');
             const rightColumn = document.createElement('div');
             leftColumn.className = 'answer-column';
             rightColumn.className = 'answer-column';
-            
-            for (let i = 1; i <= 42; i++) {
+
+            for (let i = 1; i <= totalQuestions; i++) {
                 const answerItem = document.createElement('div');
                 answerItem.className = 'answer-item';
                 answerItem.innerHTML = `
                     <button class="answer-number" onclick="goToImage(${i - 1})" tabindex="-1">${i}</button>
                     <input type="text" name="answer${i}" readonly onclick="goToQuestionAndFocus(${i - 1})" tabindex="${i}" />
                 `;
-                
-                // Distribute vertically: 1-21 in left column, 22-42 in right column
-                if (i <= 21) {
+
+                // Distribute based on total questions
+                const midpoint = Math.ceil(totalQuestions / 2);
+                if (i <= midpoint) {
                     leftColumn.appendChild(answerItem);
                 } else {
                     rightColumn.appendChild(answerItem);
                 }
             }
-            
+
             answersGrid.appendChild(leftColumn);
             answersGrid.appendChild(rightColumn);
-            
+
             // Show first image
             showImage(0);
-            
+
             document.getElementById('loading').style.display = 'none';
             document.getElementById('practical-content').style.display = 'block';
         }
         
         function showImage(index) {
-            if (!practicalData || !practicalData.questions) return;
+            if (!practicalData || !practicalData.validQuestions) return;
             
             currentImageIndex = index;
-            const question = practicalData.questions[index];
+            const question = practicalData.validQuestions[index];
             
             // Clear the current image immediately to prevent old image showing
             const imageElement = document.getElementById('current-image');

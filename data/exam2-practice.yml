@@ -4,28 +4,28 @@ description: "Practice test covering Blood, Heart, and Vessels"
 multipleChoice:
   - question: "What is the tissue type of blood, and why is it classified this way?"
     options:
-      - "Epithelial tissue, because it forms the lining of blood&nbsp;vessels."
-      - "Nervous tissue, because it transports chemical&nbsp;signals."
-      - "Muscular tissue, because it maintains heart&nbsp;function."
-      - "Connective tissue, because it acts as a connector, carrying hormones from one place to&nbsp;another."
+      - "Epithelial tissue"
+      - "Nervous tissue"
+      - "Muscle tissue"
+      - "Connective tissue"
     correct: 3
     tags: ["unit-2", "blood"]
 
   - question: "What percentage of blood volume is typically comprised of plasma?"
     options:
-      - "Approximately 1%, known as the buffy&nbsp;coat."
-      - "Approximately 90%, which is mostly&nbsp;water."
-      - "Approximately 55%, which is the liquid extracellular&nbsp;matrix."
-      - "Approximately 45%, known as the&nbsp;hematocrit."
+      - "Approximately 1%, known as the buffy coat."
+      - "Approximately 90%, which is mostly water."
+      - "Approximately 55%, which is the liquid extracellular matrix."
+      - "Approximately 45%, known as the hematocrit."
     correct: 2
     tags: ["unit-2", "blood"]
 
   - question: "What function of Albumins is critical for preventing swelling (edema)?"
     options:
-      - "Breaking down bilirubin waste&nbsp;products."
-      - "Creating osmotic pressure to keep water in the&nbsp;bloodstream."
-      - "Transporting oxygen to muscle&nbsp;tissue."
-      - "Activating fibrinogen for the clotting&nbsp;cascade."
+      - "Breaking down bilirubin waste products."
+      - "Creating osmotic pressure to keep water in the bloodstream."
+      - "Transporting oxygen to muscle tissue."
+      - "Activating fibrinogen for the clotting cascade."
     correct: 1
     tags: ["unit-2", "blood"]
 

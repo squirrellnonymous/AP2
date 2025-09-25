@@ -117,9 +117,15 @@
                 return hasQuestion && hasAnswer;
             });
 
-            // Update practicalData to only include valid questions
-            practicalData.validQuestions = validQuestions;
-            const totalQuestions = validQuestions.length;
+            // Randomly select up to 40 questions from valid questions
+            let selectedQuestions = validQuestions;
+            if (validQuestions.length > 40) {
+                selectedQuestions = shuffleArray(validQuestions).slice(0, 40);
+            }
+
+            // Update practicalData to only include selected questions
+            practicalData.validQuestions = selectedQuestions;
+            const totalQuestions = selectedQuestions.length;
             console.log('Valid questions:', totalQuestions);
 
             // Update header with correct count
