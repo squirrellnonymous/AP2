@@ -106,6 +106,27 @@
         function renderPractical() {
             if (!practicalData) return;
 
+            // Filter out blank/placeholder questions for display
+            const validQuestions = practicalData.questions.filter(question => {
+                const hasQuestion = question.question && question.question.trim() !== '';
+                const hasAnswer = question.answer && (
+                    Array.isArray(question.answer)
+                        ? question.answer.some(ans => ans && ans.trim() !== '')
+                        : question.answer.trim() !== ''
+                );
+                return hasQuestion && hasAnswer;
+            });
+
+            // Update practicalData to only include valid questions
+            practicalData.validQuestions = validQuestions;
+            const totalQuestions = validQuestions.length;
+            console.log('Valid questions:', totalQuestions);
+
+            // Update header with correct count
+            const progressElement = document.querySelector('.header-content h1');
+            if (progressElement) {
+                progressElement.textContent = `Practice Practical #2 (${totalQuestions} Questions)`;
+            }
 
             // Generate answer sheet
             const answersGrid = document.querySelector('.answers-grid');
@@ -116,27 +137,22 @@
             leftColumn.className = 'answer-column';
             rightColumn.className = 'answer-column';
 
-            const totalQuestions = 40;
-            const availableQuestions = practicalData.questions.length;
-            console.log('Available questions:', availableQuestions, 'Total questions:', totalQuestions);
-
             for (let i = 1; i <= totalQuestions; i++) {
                 const answerItem = document.createElement('div');
-                const isDisabled = i > availableQuestions;
-
-                answerItem.className = `answer-item ${isDisabled ? 'disabled' : ''}`;
+                answerItem.className = 'answer-item';
                 answerItem.innerHTML = `
-                    <button class="answer-number ${isDisabled ? 'disabled' : ''}"
-                            onclick="${isDisabled ? '' : `goToImage(${i - 1})`}"
+                    <button class="answer-number"
+                            onclick="goToImage(${i - 1})"
                             tabindex="-1">${i}</button>
                     <input type="text" name="answer${i}"
-                           ${isDisabled ? 'disabled' : 'readonly'}
-                           onclick="${isDisabled ? '' : `goToQuestionAndFocus(${i - 1})`}"
-                           tabindex="${isDisabled ? '-1' : i}" />
+                           readonly
+                           onclick="goToQuestionAndFocus(${i - 1})"
+                           tabindex="${i}" />
                 `;
 
-                // Distribute vertically: 1-20 in left column, 21-40 in right column
-                if (i <= 20) {
+                // Distribute based on total questions
+                const midpoint = Math.ceil(totalQuestions / 2);
+                if (i <= midpoint) {
                     leftColumn.appendChild(answerItem);
                 } else {
                     rightColumn.appendChild(answerItem);
@@ -154,10 +170,10 @@
         }
 
         function showImage(index) {
-            if (!practicalData || !practicalData.questions) return;
+            if (!practicalData || !practicalData.validQuestions) return;
 
             currentImageIndex = index;
-            const question = practicalData.questions[index];
+            const question = practicalData.validQuestions[index];
 
             // Clear the current image immediately to prevent old image showing
             const imageElement = document.getElementById('current-image');
@@ -175,9 +191,13 @@
             }
 
             // Update navigation buttons
-            const maxIndex = practicalData ? practicalData.questions.length - 1 : 0;
+            const maxIndex = practicalData.validQuestions.length - 1;
             document.getElementById('prev-btn').disabled = index === 0;
             document.getElementById('next-btn').disabled = index >= maxIndex;
+
+            // Update image counter
+            document.getElementById('current-question').textContent = index + 1;
+            document.querySelector('.image-counter').innerHTML = `Question <span id="current-question">${index + 1}</span> of ${practicalData.validQuestions.length}`;
 
             // Update answer sheet number highlighting
             document.querySelectorAll('.answer-number').forEach((btn, i) => {
@@ -201,19 +221,19 @@
         }
 
         function preloadAdjacentImages(currentIndex) {
-            if (!practicalData || !practicalData.questions) return;
+            if (!practicalData || !practicalData.validQuestions) return;
 
             // Preload previous image
             if (currentIndex > 0) {
-                const prevQuestion = practicalData.questions[currentIndex - 1];
+                const prevQuestion = practicalData.validQuestions[currentIndex - 1];
                 if (prevQuestion && prevQuestion.image) {
                     preloadImage(prevQuestion.image);
                 }
             }
 
             // Preload next image
-            if (currentIndex < practicalData.questions.length - 1) {
-                const nextQuestion = practicalData.questions[currentIndex + 1];
+            if (currentIndex < practicalData.validQuestions.length - 1) {
+                const nextQuestion = practicalData.validQuestions[currentIndex + 1];
                 if (nextQuestion && nextQuestion.image) {
                     preloadImage(nextQuestion.image);
                 }
@@ -221,13 +241,13 @@
         }
 
         function goToImage(index) {
-            if (index >= 0 && index < 42) {
+            if (practicalData && practicalData.validQuestions && index >= 0 && index < practicalData.validQuestions.length) {
                 showImage(index);
             }
         }
 
         function goToQuestionAndFocus(index) {
-            if (index >= 0 && index < 42) {
+            if (practicalData && practicalData.validQuestions && index >= 0 && index < practicalData.validQuestions.length) {
                 showImage(index);
                 // Scroll to the image container
                 document.querySelector('.image-container').scrollIntoView({ behavior: 'smooth' });
@@ -245,7 +265,7 @@
         }
 
         function nextImage() {
-            const maxIndex = practicalData ? practicalData.questions.length - 1 : 0;
+            const maxIndex = practicalData && practicalData.validQuestions ? practicalData.validQuestions.length - 1 : 0;
             if (currentImageIndex < maxIndex) {
                 showImage(currentImageIndex + 1);
             }
@@ -259,7 +279,7 @@
             let blankCount = 0;
             const blankQuestions = [];
 
-            const availableQuestions = practicalData.questions.length;
+            const availableQuestions = practicalData.validQuestions.length;
 
             for (let i = 1; i <= availableQuestions; i++) {
                 const input = document.querySelector(`input[name="answer${i}"]`);
@@ -283,16 +303,49 @@
                 }
             }
 
+            // Filter out blank/placeholder questions
+            const validQuestions = practicalData.questions.filter(question => {
+                const hasQuestion = question.question && question.question.trim() !== '';
+                const hasAnswer = question.answer && (
+                    Array.isArray(question.answer)
+                        ? question.answer.some(ans => ans && ans.trim() !== '')
+                        : question.answer.trim() !== ''
+                );
+                return hasQuestion && hasAnswer;
+            });
+
             // Score and update answer sheet
             let score = 0;
-            let total = practicalData.questions.length;
+            let total = practicalData.validQuestions.length;
 
-            practicalData.questions.forEach((question, index) => {
+            practicalData.validQuestions.forEach((question, index) => {
                 const questionNum = index + 1;
                 const studentAnswer = answers[questionNum] || '';
                 const correctAnswer = question.answer || '';
                 const input = document.querySelector(`input[name="answer${questionNum}"]`);
                 const circle = document.querySelectorAll('.answer-number')[index];
+
+                // Skip blank/placeholder questions for scoring
+                const hasValidQuestion = question.question && question.question.trim() !== '';
+                const hasValidAnswer = question.answer && (
+                    Array.isArray(question.answer)
+                        ? question.answer.some(ans => ans && ans.trim() !== '')
+                        : question.answer.trim() !== ''
+                );
+
+                if (!hasValidQuestion || !hasValidAnswer) {
+                    // Just mark as disabled but don't score
+                    if (circle) {
+                        circle.classList.add('disabled');
+                        if (input) {
+                            const displayDiv = document.createElement('div');
+                            displayDiv.className = 'answer-display disabled';
+                            displayDiv.innerHTML = '<span class="placeholder-text">Placeholder</span>';
+                            input.parentNode.replaceChild(displayDiv, input);
+                        }
+                    }
+                    return; // Skip scoring for this question
+                }
 
                 // Calculate Levenshtein distance for similarity comparison
                 const getLevenshteinDistance = (str1, str2) => {

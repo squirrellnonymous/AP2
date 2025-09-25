@@ -41,7 +41,7 @@ questions:
   - id: 6
     image: "practical-2/06.jpg"
     question: "Which WBC is this?"
-    answer: "Eosinophil"
+    answer: ["Eosinophil", "eosinophils"]
     definition: "White blood cell with characteristic pink-staining granules and typically a bilobed nucleus."
     tags: ["formed-elements", "leukocytes", "blood"]
 
@@ -55,7 +55,7 @@ questions:
   - id: 8
     image: "practical-2/08.jpg"
     question: "Name a type of pathogen this formed element responds to."
-    answer: ["bacteria", "bacterial"]
+    answer: ["bacteria", "bacterial", "bacterial infection"]
     definition: "First responders to bacterial infections"
     tags: ["formed-elements", "leukocytes", "blood"]
 
@@ -90,23 +90,234 @@ questions:
   - id: 13
     image: "practical-2/13.jpg"
     question: "Which blood type is indicated by the test?"
-    answer: ["B-", "B"]
+    answer: ["B-", "B -", "B"]
     definition: ""
     tags: ["blood"]
 
   - id: 14
     image: "practical-2/14.jpg"
     question: "Which blood type is indicated by the test?"
-    answer: ["AB+"]
+    answer: ["AB+", "AB +"]
     definition: ""
     tags: ["blood"]
 
   - id: 15
     image: "practical-2/15.jpg"
     question: "What anitbodies?"
-    answer: ["Anti-B antibodies"]
+    answer: ["Anti-B antibodies", "antibodies against B antigens"]
     definition: ""
     tags: ["blood"]
+
+  - id: 16
+    image: "practical-2/16.jpg"
+    question: "Name the structure."
+    answer: ["ascending aorta"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 17
+    image: "practical-2/17.jpg"
+    question: "Name the area."
+    answer: ["pericardial cavity"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 18
+    image: "practical-2/18.jpg"
+    question: "Name the structure."
+    answer: ["endocardium"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 19
+    image: "practical-2/19.jpg"
+    question: "Name the structure."
+    answer: ["visceral pericardium", "epicardium"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 20
+    image: "practical-2/20.jpg"
+    question: "What is underneath this structure?"
+    answer: ["right atrium"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 21
+    image: "practical-2/21.jpg"
+    question: "Name the structure."
+    answer: ["left atrium"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 22
+    image: "practical-2/22.jpg"
+    question: "name the structure."
+    answer: ["right pulmonary arteries", "right pulmonary artery"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 23
+    image: "practical-2/23.jpg"
+    question: "Name the structure."
+    answer: ["left pulmonary artery"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 24
+    image: "practical-2/24.jpg"
+    question: "What's the area (underneath the vessel)"
+    answer: ["coronary sulcus"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 25
+    image: "practical-2/25.jpg"
+    question: "Name the structure."
+    answer: ["papillary muscle", "papillary muscles"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 26
+    image: "practical-2/26.jpg"
+    question: "Name the structure."
+    answer: ["fossa ovalis"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 27
+    image: "practical-2/27.jpg"
+    question: "Name the structure"
+    answer: ["tricuspid valve", "right atrioventricular valve"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 28
+    image: "practical-2/28.jpg"
+    question: "Name the structure"
+    answer: ["bicuspid valve", "left atrioventricular valve", "mitrial valve"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 29
+    image: "practical-2/29.jpg"
+    question: "Name the structure."
+    answer: ["aortic semilunar valve"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 30
+    image: "practical-2/30.jpg"
+    question: "Name the muscles found in this region."
+    answer: ["pectinate muscles"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 31
+    image: "practical-2/31.jpg"
+    question: "Name the structure."
+    answer: ["chordae tendineae"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 32
+    image: "practical-2/32.jpg"
+    question: "Name the structure."
+    answer: ["interventricular septum"]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 33
+    image: "practical-2/33.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 34
+    image: "practical-2/34.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 35
+    image: "practical-2/35.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 36
+    image: "practical-2/36.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 37
+    image: "practical-2/37.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 38
+    image: "practical-2/38.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 39
+    image: "practical-2/39.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 40
+    image: "practical-2/40.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 41
+    image: "practical-2/41.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 42
+    image: "practical-2/42.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 43
+    image: "practical-2/43.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 44
+    image: "practical-2/44.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
+  - id: 45
+    image: "practical-2/45.jpg"
+    question: ""
+    answer: [""]
+    definition: ""
+    tags: ["heart"]
+
 
 
 
