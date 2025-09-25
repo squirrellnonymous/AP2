@@ -94,9 +94,12 @@
 }
 
 .image-content img {
-    max-width: 100%;
-    max-height: 500px;
+    width: 100%;
+    max-width: 600px;
+    height: 450px;
+    object-fit: cover;
     border-radius: 4px;
+    border: 3px solid #e5e7eb;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -160,17 +163,29 @@
 
 .inline-number {
     font-weight: 500;
-    color: #6b7280;
+    color: white;
     width: 32px;
     height: 32px;
-    border: 2px solid #d1d5db;
+    border: 2px solid #6366f1;
     border-radius: 50%;
-    background-color: white;
+    background-color: #6366f1;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: default;
+    cursor: pointer;
+    transition: all 0.2s ease;
     font-size: 1rem;
+}
+
+.inline-number:hover {
+    border-color: #4338ca;
+    background-color: #4338ca;
+}
+
+.inline-number.active {
+    background-color: #4338ca;
+    color: white;
+    border-color: #4338ca;
 }
 
 .inline-input {
@@ -293,29 +308,30 @@
 }
 
 .answer-item .answer-number {
-    font-weight: 500;
-    color: #6366f1;
-    width: 32px;
-    height: 32px;
-    border: 2px solid #c7d2fe;
+    font-weight: 400;
+    color: #6b7280;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #d1d5db;
     border-radius: 50%;
-    background-color: white;
+    background-color: #f8fafc;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-size: 1rem;
+    font-size: 0.875rem;
 }
 
 .answer-item .answer-number:hover {
-    border-color: #6366f1;
+    border-color: #9ca3af;
+    background-color: #f1f5f9;
 }
 
 .answer-item .answer-number.active {
-    background-color: #6366f1;
-    color: white;
-    border-color: #6366f1;
+    background-color: #e5e7eb;
+    color: #374151;
+    border-color: #9ca3af;
 }
 
 .answer-item input {
@@ -723,18 +739,20 @@ body.dark-mode .image-container {
 
 body.dark-mode .question-text {
     color: #e2e8f0;
-    background-color: #334155;
+    background-color: transparent;
 }
 
 body.dark-mode .inline-input {
-    background-color: #334155;
-    border-color: #475569;
-    color: #e2e8f0;
+    background-color: #ffffff;
+    border-color: #3b82f6;
+    color: #1f2937;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
 }
 
 body.dark-mode .inline-input:focus {
-    border-color: #3b82f6;
-    background-color: #475569;
+    border-color: #2563eb;
+    background-color: #f9fafb;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25), 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 body.dark-mode .nav-btn {
@@ -756,15 +774,26 @@ body.dark-mode .answer-sheet h2 {
     color: #f1f5f9;
 }
 
-body.dark-mode .answer-input {
-    background-color: #334155;
-    border-color: #475569;
-    color: #e2e8f0;
+body.dark-mode .answer-item input {
+    background-color: #0f172a;
+    border-color: #334155;
+    color: #94a3b8;
 }
 
-body.dark-mode .answer-input:focus {
-    border-color: #3b82f6;
-    background-color: #475569;
+body.dark-mode .answer-item input:focus {
+    border-color: #475569;
+    background-color: #1e293b;
+    box-shadow: 0 0 0 2px rgba(71, 85, 105, 0.2);
+}
+
+body.dark-mode .answer-item input[readonly] {
+    background-color: #0f172a;
+    border-color: #1e293b;
+}
+
+body.dark-mode .answer-item input[readonly]:hover {
+    border-color: #334155;
+    background-color: #1e293b;
 }
 
 body.dark-mode .submit-button {
@@ -796,11 +825,35 @@ body.dark-mode .image-counter {
 }
 
 body.dark-mode .inline-number {
-    background-color: #475569;
-    color: #e2e8f0;
-    border-color: #64748b;
+    background-color: #6366f1;
+    color: white;
+    border-color: #6366f1;
 }
 
 body.dark-mode .inline-number:hover {
-    background-color: #64748b;
+    border-color: #4338ca;
+    background-color: #4338ca;
+}
+
+body.dark-mode .inline-number.active {
+    background-color: #4338ca;
+    color: white;
+    border-color: #4338ca;
+}
+
+body.dark-mode .answer-item .answer-number {
+    background-color: #0f172a;
+    color: #64748b;
+    border-color: #1e293b;
+}
+
+body.dark-mode .answer-item .answer-number:hover {
+    border-color: #334155;
+    background-color: #1e293b;
+}
+
+body.dark-mode .answer-item .answer-number.active {
+    background-color: #334155;
+    color: #94a3b8;
+    border-color: #475569;
 }

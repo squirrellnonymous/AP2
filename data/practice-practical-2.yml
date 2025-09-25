@@ -229,8 +229,8 @@ questions:
 
   - id: 33
     image: "practical-2/33.jpg"
-    question: ""
-    answer: [""]
+    question: "Name the structure."
+    answer: ["brachiocephalic trunk"]
     definition: ""
     tags: ["heart"]
 
@@ -306,15 +306,15 @@ questions:
 
   - id: 44
     image: "practical-2/44.jpg"
-    question: ""
-    answer: [""]
+    question: "Name the structure."
+    answer: ["Parietal pericardium"]
     definition: ""
     tags: ["heart"]
 
   - id: 45
     image: "practical-2/45.jpg"
-    question: ""
-    answer: [""]
+    question: "Name the structure."
+    answer: ["myocardium", "myocardium {heart muscle)"]
     definition: ""
     tags: ["heart"]
 
