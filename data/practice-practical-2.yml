@@ -271,22 +271,22 @@ questions:
 
   - id: 39
     image: "practical-2/39.jpg"
-    question: ""
-    answer: [""]
+    question: "What does the highlighted region represent?"
+    answer: ["atrial depolarization", "p wave atrial depoloarization", "p: atrial depoloarization"]
     definition: ""
     tags: ["heart"]
 
   - id: 40
     image: "practical-2/40.jpg"
     question: "What does the highlighted region represent?"
-    answer: ["atrial depolarization", "p wave atrial depoloarization", "p: atrial depoloarization"]
+    answer: ["ventricular repolarization", "t wave ventricular repoloarization", "t: atrial repoloarization"]
     definition: ""
     tags: ["heart"]
 
   - id: 41
     image: "practical-2/41.jpg"
-    question: "What does the highlighted region represent?"
-    answer: ["ventricular repolarization", "t wave ventricular repoloarization", "t: atrial repoloarization"]
+    question: ""
+    answer: [""]
     definition: ""
     tags: ["heart"]
 
