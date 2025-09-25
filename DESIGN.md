@@ -132,8 +132,9 @@ Build New Parallel System
 
 Make the practical more realistic
 - [ ] last question is a two point extra credit
-- [ ] fourty questions plus one extra credit question 
-- [ ] more than 41 items can exist in the yml file and we pull strategically to create a good mix of topics
+- [ ] fourty questions plus one extra credit question
+- [x] more than 41 items can exist in the yml file and we pull strategically to create a good mix of topics
+- [ ] **Add more diverse tags** - current tags are too broad (mostly "blood", "heart", "leukocytes"). Need more specific tags like "cardiac-chambers", "valves", "vessels", "ecg", "blood-cells", "blood-disorders" to enable better question distribution across topics
 
 Let's consider an interface for students to submit question content (could be a github issue since I'm not sure I want a database... but maybe I want a database?)
 

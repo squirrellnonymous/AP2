@@ -14,6 +14,7 @@
         <div class="header-content">
             <a href="index.html" class="home-link">← Home</a>
             <h1>Practice Practical #2</h1>
+            <div class="question-count"></div>
         </div>
     </div>
 
@@ -87,6 +88,7 @@
                     practicalData.questions = shuffleArray(practicalData.questions);
                 }
             } catch (error) {
+                console.error('Error loading YAML:', error);
                 console.log('Using fallback data');
                 // Fallback data structure
                 practicalData = {
@@ -106,7 +108,7 @@
         function renderPractical() {
             if (!practicalData) return;
 
-            // Filter out blank/placeholder questions for display
+            // Filter out blank/placeholder questions and extra-credit questions for display
             const validQuestions = practicalData.questions.filter(question => {
                 const hasQuestion = question.question && question.question.trim() !== '';
                 const hasAnswer = question.answer && (
@@ -114,7 +116,8 @@
                         ? question.answer.some(ans => ans && ans.trim() !== '')
                         : question.answer.trim() !== ''
                 );
-                return hasQuestion && hasAnswer;
+                const isNotExtraCredit = !question.tags || !question.tags.includes('extra-credit');
+                return hasQuestion && hasAnswer && isNotExtraCredit;
             });
 
             // Randomly select up to 40 questions from valid questions
@@ -129,13 +132,14 @@
             console.log('Valid questions:', totalQuestions);
 
             // Update header with correct count
-            const progressElement = document.querySelector('.header-content h1');
-            if (progressElement) {
-                progressElement.textContent = `Practice Practical #2 (${totalQuestions} Questions)`;
+            const countElement = document.querySelector('.question-count');
+            if (countElement) {
+                countElement.textContent = `${totalQuestions} Questions`;
             }
 
             // Generate answer sheet
             const answersGrid = document.querySelector('.answers-grid');
+            answersGrid.innerHTML = ''; // Clear existing content
 
             // Create two columns
             const leftColumn = document.createElement('div');
@@ -168,6 +172,49 @@
             answersGrid.appendChild(leftColumn);
             answersGrid.appendChild(rightColumn);
 
+            // Add extra credit section
+            const extraCreditQuestions = practicalData.questions.filter(question => {
+                const hasQuestion = question.question && question.question.trim() !== '';
+                const hasAnswer = question.answer && (
+                    Array.isArray(question.answer)
+                        ? question.answer.some(ans => ans && ans.trim() !== '')
+                        : question.answer.trim() !== ''
+                );
+                const isExtraCredit = question.tags && question.tags.includes('extra-credit');
+                return hasQuestion && hasAnswer && isExtraCredit;
+            });
+
+            if (extraCreditQuestions.length > 0) {
+                const extraCreditSection = document.createElement('div');
+                extraCreditSection.className = 'extra-credit-section';
+                extraCreditSection.innerHTML = `
+                    <div class="extra-credit-header">Extra Credit</div>
+                    <div class="extra-credit-questions"></div>
+                `;
+
+                const extraCreditContainer = extraCreditSection.querySelector('.extra-credit-questions');
+                extraCreditQuestions.forEach((question, index) => {
+                    const extraCreditItem = document.createElement('div');
+                    extraCreditItem.className = 'extra-credit-item';
+                    extraCreditItem.innerHTML = `
+                        <button class="extra-credit-button"
+                                onclick="showExtraCreditImage(${index})"
+                                tabindex="-1">EC</button>
+                        <input type="text" name="extra-credit-${index}"
+                               class="extra-credit-input"
+                               readonly
+                               onclick="showExtraCreditImage(${index})"
+                               tabindex="${totalQuestions + index + 1}" />
+                    `;
+                    extraCreditContainer.appendChild(extraCreditItem);
+                });
+
+                answersGrid.appendChild(extraCreditSection);
+
+                // Store extra credit questions for later use
+                practicalData.extraCreditQuestions = extraCreditQuestions;
+            }
+
             // Show first image
             showImage(0);
 
@@ -178,6 +225,11 @@
         function showImage(index) {
             if (!practicalData || !practicalData.validQuestions) return;
 
+            // Reset extra credit state when viewing regular questions
+            console.log('Resetting extra credit state, going to regular question', index + 1);
+            isViewingExtraCredit = false;
+            currentExtraCreditIndex = -1;
+
             currentImageIndex = index;
             const question = practicalData.validQuestions[index];
 
@@ -187,23 +239,34 @@
 
             if (question) {
                 imageElement.src = `images/${question.image}`;
-                document.getElementById('current-question').textContent = index + 1;
                 document.getElementById('current-question-text').innerHTML = question.question || '';
 
                 // Update inline answer elements
-                document.getElementById('inline-question-number').textContent = index + 1;
+                const inlineNumber = document.getElementById('inline-question-number');
+                const inlineInput = document.getElementById('inline-answer-input');
+                console.log('Updating inline elements - question number:', index + 1);
+                inlineNumber.textContent = index + 1;
                 const currentAnswer = document.querySelector(`input[name="answer${index + 1}"]`);
-                document.getElementById('inline-answer-input').value = currentAnswer ? currentAnswer.value : '';
+                inlineInput.value = currentAnswer ? currentAnswer.value : '';
+                inlineInput.placeholder = 'Type your answer...'; // Reset placeholder
             }
 
             // Update navigation buttons
             const maxIndex = practicalData.validQuestions.length - 1;
+            const hasExtraCredit = practicalData && practicalData.extraCreditQuestions && practicalData.extraCreditQuestions.length > 0;
+
             document.getElementById('prev-btn').disabled = index === 0;
-            document.getElementById('next-btn').disabled = index >= maxIndex;
+            document.getElementById('next-btn').disabled = index >= maxIndex && !hasExtraCredit;
+
+            // Clear prominent styling for regular questions
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            prevBtn.classList.remove('prominent');
+            nextBtn.classList.remove('prominent');
 
             // Update image counter
-            document.getElementById('current-question').textContent = index + 1;
-            document.querySelector('.image-counter').innerHTML = `Question <span id="current-question">${index + 1}</span> of ${practicalData.validQuestions.length}`;
+            const totalQuestions = practicalData.validQuestions.length;
+            document.querySelector('.image-counter').innerHTML = `Question <span id="current-question">${index + 1}</span> of ${totalQuestions}`;
 
             // Update answer sheet number highlighting
             document.querySelectorAll('.answer-number').forEach((btn, i) => {
@@ -252,6 +315,65 @@
             }
         }
 
+        function showExtraCreditImage(extraCreditIndex) {
+            if (!practicalData || !practicalData.extraCreditQuestions) return;
+
+            const question = practicalData.extraCreditQuestions[extraCreditIndex];
+            if (!question) return;
+
+            // Update tracking variables
+            isViewingExtraCredit = true;
+            currentExtraCreditIndex = extraCreditIndex;
+
+            // Update main image
+            const imageElement = document.getElementById('current-image');
+            imageElement.src = '';
+            const imagePath = `images/${question.image}`;
+            console.log('Loading extra credit image:', imagePath);
+            imageElement.src = imagePath;
+
+            // Update question text for extra credit
+            document.getElementById('current-question-text').innerHTML = question.question || 'Extra Credit Question';
+
+            // Update image counter for extra credit
+            document.querySelector('.image-counter').innerHTML = `Extra Credit Question`;
+
+            // Clear regular answer highlighting
+            document.querySelectorAll('.answer-number').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Highlight extra credit button
+            document.querySelectorAll('.extra-credit-button').forEach((btn, i) => {
+                btn.classList.toggle('active', i === extraCreditIndex);
+            });
+
+            // Update inline answer section
+            const inlineNumber = document.getElementById('inline-question-number');
+            const inlineInput = document.getElementById('inline-answer-input');
+            if (inlineNumber && inlineInput) {
+                inlineNumber.textContent = 'EC';
+                inlineInput.value = document.querySelector(`input[name="extra-credit-${extraCreditIndex}"]`).value || '';
+                inlineInput.placeholder = 'Extra credit answer...';
+            }
+
+            // Update navigation buttons for extra credit
+            const isLastExtraCredit = extraCreditIndex >= (practicalData.extraCreditQuestions.length - 1);
+            document.getElementById('prev-btn').disabled = false; // Can always go back from EC
+            document.getElementById('next-btn').disabled = isLastExtraCredit; // Disable if on last EC
+
+            // Make previous button prominent when at end of extra credit
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            if (isLastExtraCredit) {
+                prevBtn.classList.add('prominent');
+                nextBtn.classList.remove('prominent');
+            } else {
+                prevBtn.classList.remove('prominent');
+                nextBtn.classList.remove('prominent');
+            }
+        }
+
         function goToQuestionAndFocus(index) {
             if (practicalData && practicalData.validQuestions && index >= 0 && index < practicalData.validQuestions.length) {
                 showImage(index);
@@ -264,16 +386,42 @@
             }
         }
 
+        let currentExtraCreditIndex = -1; // -1 means not viewing extra credit
+        let isViewingExtraCredit = false;
+
         function previousImage() {
-            if (currentImageIndex > 0) {
+            if (isViewingExtraCredit) {
+                if (currentExtraCreditIndex > 0) {
+                    // Previous extra credit question
+                    showExtraCreditImage(currentExtraCreditIndex - 1);
+                } else {
+                    // Go back to last regular question
+                    isViewingExtraCredit = false;
+                    currentExtraCreditIndex = -1;
+                    const lastRegularIndex = practicalData && practicalData.validQuestions ? practicalData.validQuestions.length - 1 : 0;
+                    showImage(lastRegularIndex);
+                }
+            } else if (currentImageIndex > 0) {
                 showImage(currentImageIndex - 1);
             }
         }
 
         function nextImage() {
             const maxIndex = practicalData && practicalData.validQuestions ? practicalData.validQuestions.length - 1 : 0;
-            if (currentImageIndex < maxIndex) {
+            const hasExtraCredit = practicalData && practicalData.extraCreditQuestions && practicalData.extraCreditQuestions.length > 0;
+
+            if (isViewingExtraCredit) {
+                const maxExtraCreditIndex = practicalData.extraCreditQuestions.length - 1;
+                if (currentExtraCreditIndex < maxExtraCreditIndex) {
+                    // Next extra credit question
+                    showExtraCreditImage(currentExtraCreditIndex + 1);
+                }
+                // If at last extra credit, stay there (no wrap around)
+            } else if (currentImageIndex < maxIndex) {
                 showImage(currentImageIndex + 1);
+            } else if (hasExtraCredit && currentImageIndex === maxIndex) {
+                // At last regular question, move to first extra credit
+                showExtraCreditImage(0);
             }
         }
 
@@ -513,11 +661,20 @@
 
         function syncAnswer() {
             const inlineInput = document.getElementById('inline-answer-input');
-            const currentQuestionNum = currentImageIndex + 1;
-            const answerSheetInput = document.querySelector(`input[name="answer${currentQuestionNum}"]`);
 
-            if (answerSheetInput) {
-                answerSheetInput.value = inlineInput.value;
+            if (isViewingExtraCredit) {
+                // Sync with extra credit input
+                const extraCreditInput = document.querySelector(`input[name="extra-credit-${currentExtraCreditIndex}"]`);
+                if (extraCreditInput) {
+                    extraCreditInput.value = inlineInput.value;
+                }
+            } else {
+                // Sync with regular answer input
+                const currentQuestionNum = currentImageIndex + 1;
+                const answerSheetInput = document.querySelector(`input[name="answer${currentQuestionNum}"]`);
+                if (answerSheetInput) {
+                    answerSheetInput.value = inlineInput.value;
+                }
             }
         }
 

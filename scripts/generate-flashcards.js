@@ -34,18 +34,26 @@ function loadPracticalData(sourceName) {
 }
 
 function filterByTags(questions, targetTags) {
-  if (!targetTags || targetTags.length === 0) {
-    return questions;
+  let filteredQuestions = questions;
+
+  if (targetTags && targetTags.length > 0) {
+    filteredQuestions = questions.filter(question => {
+      if (!question.tags || question.tags.length === 0) {
+        return false;
+      }
+      // Check if question has ANY of the target tags
+      return targetTags.some(tag => question.tags.includes(tag));
+    });
   }
 
-  return questions.filter(question => {
-    if (!question.tags || question.tags.length === 0) {
-      return false;
-    }
+  // Always exclude extra-credit questions unless explicitly requested
+  if (!targetTags || !targetTags.includes('extra-credit')) {
+    filteredQuestions = filteredQuestions.filter(question => {
+      return !question.tags || !question.tags.includes('extra-credit');
+    });
+  }
 
-    // Check if question has ANY of the target tags
-    return targetTags.some(tag => question.tags.includes(tag));
-  });
+  return filteredQuestions;
 }
 
 function convertToFlashcardFormat(practicalData, filteredQuestions) {

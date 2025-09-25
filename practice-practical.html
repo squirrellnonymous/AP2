@@ -103,7 +103,7 @@
         function renderPractical() {
             if (!practicalData) return;
 
-            // Filter out blank/placeholder questions for display
+            // Filter out blank/placeholder questions and extra-credit questions for display
             const validQuestions = practicalData.questions.filter(question => {
                 const hasQuestion = question.question && question.question.trim() !== '';
                 const hasAnswer = question.answer && (
@@ -111,7 +111,8 @@
                         ? question.answer.some(ans => ans && ans.trim() !== '')
                         : question.answer.trim() !== ''
                 );
-                return hasQuestion && hasAnswer;
+                const isNotExtraCredit = !question.tags || !question.tags.includes('extra-credit');
+                return hasQuestion && hasAnswer && isNotExtraCredit;
             });
 
             // Randomly select up to 40 questions from valid questions
@@ -133,6 +134,7 @@
 
             // Generate answer sheet
             const answersGrid = document.querySelector('.answers-grid');
+            answersGrid.innerHTML = ''; // Clear existing content
 
             // Create two columns
             const leftColumn = document.createElement('div');

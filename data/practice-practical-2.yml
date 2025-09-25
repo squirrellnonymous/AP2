@@ -138,7 +138,7 @@ questions:
 
   - id: 20
     image: "practical-2/20.jpg"
-    question: "What is underneath this structure?"
+    question: "What is underneath the structure labeled Y?"
     answer: ["right atrium"]
     definition: ""
     tags: ["heart"]
@@ -331,6 +331,13 @@ questions:
     answer: ["lubrication", "allows heart to beat with minimal friction", "reduces friction", "lowers friction", "increases lubrication", "lubricant"]
     definition: ""
     tags: ["heart"]
+
+  - id: 48
+    image: "practical-2/48.jpg"
+    question: "Name one of the circuits."
+    answer: ["systemic circuit", "pulmonary circuit"]
+    definition: ""
+    tags: ["heart", "extra-credit"]
 
 
 

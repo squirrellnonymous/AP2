@@ -94,6 +94,13 @@ async function loadFlashcards() {
                 });
             }
 
+            // Always exclude extra-credit questions unless explicitly requested
+            if (!practicalParams.tags || !practicalParams.tags.includes('extra-credit')) {
+                filteredQuestions = filteredQuestions.filter(question => {
+                    return !question.tags || !question.tags.includes('extra-credit');
+                });
+            }
+
             // Convert to flashcard format
             data = {
                 title: `${practicalData.title} - Dynamic Set`,
