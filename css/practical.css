@@ -674,17 +674,34 @@
         gap: 4px;
         padding: 12px;
     }
-    
+
     .image-number {
         width: 32px;
         height: 32px;
         font-size: 0.875rem;
     }
-    
+
+    /* Fix mobile image display */
+    .image-container {
+        padding: 12px;
+    }
+
+    .image-content {
+        max-width: 100%;
+    }
+
+    .image-content img {
+        height: auto;
+        min-height: 200px;
+        max-height: 70vh;
+        width: 100%;
+        object-fit: contain;
+    }
+
     .answers-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .navigation-buttons {
         margin: 16px 0;
     }
