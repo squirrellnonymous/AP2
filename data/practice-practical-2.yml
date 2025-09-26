@@ -167,7 +167,7 @@ questions:
   - id: 24
     image: "practical-2/24.jpg"
     question: "What's the area (underneath the vessel)"
-    answer: ["coronary sulcus"]
+    answer: ["coronary sinus"]
     definition: ""
     tags: ["heart"]
 
