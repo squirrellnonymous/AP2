@@ -719,7 +719,7 @@
 
 /* Dark mode toggle */
 .dark-mode-toggle {
-    position: fixed;
+    position: absolute;
     top: 20px;
     right: 20px;
     background: none;
