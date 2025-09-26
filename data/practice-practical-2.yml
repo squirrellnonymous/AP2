@@ -1,5 +1,5 @@
 title: "Practice Practical #2"
-description: "Blood, Heart, & Blood Vessels"
+description: "Blood & the Heart"
 
 questions:
   - id: 1
@@ -285,22 +285,22 @@ questions:
 
   - id: 41
     image: "practical-2/41.jpg"
-    question: ""
-    answer: [""]
+    question: "Name the structure."
+    answer: ["intercalated disc", "intercalated discs"]
     definition: ""
     tags: ["heart"]
 
   - id: 42
     image: "practical-2/42.jpg"
-    question: ""
-    answer: [""]
+    question: "Name the tissue"
+    answer: ["normal cardiac tissue", "heart muscle", "cardiac muscle", "myocardium"]
     definition: ""
     tags: ["heart"]
 
   - id: 43
     image: "practical-2/43.jpg"
     question: ""
-    answer: [""]
+    answer: ["infarcted cardiac tissue", "infarcted heart muscle", "infarcted cardiac muscle", "cardiac muscle (infarcted)"]
     definition: ""
     tags: ["heart"]
 
@@ -343,6 +343,13 @@ questions:
     image: "practical-2/49.jpg"
     question: "What's the word?"
     answer: ["anastomoses"]
+    definition: ""
+    tags: ["heart", "extra-credit"]
+
+  - id: 50
+    image: "practical-2/50.jpg"
+    question: "name the type of dysrhythmia?"
+    answer: ["ventricular fibrullation"]
     definition: ""
     tags: ["heart", "extra-credit"]
 
