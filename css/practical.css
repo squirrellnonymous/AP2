@@ -1032,6 +1032,52 @@ body.dark-mode .extra-credit-input[readonly]:hover {
     background-color: #1e293b;
 }
 
+/* Extra credit button result states */
+.extra-credit-button.result-correct {
+    background-color: #10b981;
+    border-color: #059669;
+    color: white;
+}
+
+.extra-credit-button.result-partial {
+    background-color: #f59e0b;
+    border-color: #d97706;
+    color: white;
+}
+
+.extra-credit-button.result-incorrect {
+    background-color: #ef4444;
+    border-color: #dc2626;
+    color: white;
+}
+
+.extra-credit-button.result-unanswered {
+    background-color: #6b7280;
+    border-color: #4b5563;
+    color: white;
+}
+
+/* Dark mode extra credit button result states */
+body.dark-mode .extra-credit-button.result-correct {
+    background-color: #059669;
+    border-color: #047857;
+}
+
+body.dark-mode .extra-credit-button.result-partial {
+    background-color: #d97706;
+    border-color: #b45309;
+}
+
+body.dark-mode .extra-credit-button.result-incorrect {
+    background-color: #dc2626;
+    border-color: #b91c1c;
+}
+
+body.dark-mode .extra-credit-button.result-unanswered {
+    background-color: #4b5563;
+    border-color: #374151;
+}
+
 
 /* Prominent navigation button styling */
 .navigation-buttons button.prominent {

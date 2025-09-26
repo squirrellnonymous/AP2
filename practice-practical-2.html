@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practice Practical #2</title>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Practice Practical #2 - Blood, Heart, & Blood Vessels">
+    <meta property="og:description" content="Interactive anatomy practical covering blood components, heart structures, and cardiovascular system identification">
+    <meta property="og:image" content="images/practical-2/33.jpg">
+    <meta property="og:url" content="practice-practical-2.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Practice Practical #2 - Blood, Heart, & Blood Vessels">
+    <meta name="twitter:description" content="Interactive anatomy practical covering blood components, heart structures, and cardiovascular system identification">
+    <meta name="twitter:image" content="images/practical-2/33.jpg">
+
     <link rel="stylesheet" href="css/practical.css">
 </head>
 <body>
@@ -75,6 +87,33 @@
                 [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
             }
             return shuffled;
+        }
+
+        function hasConflictingAnatomicalTerms(studentAnswer, correctAnswer) {
+            const student = studentAnswer.toLowerCase();
+            const correct = correctAnswer.toLowerCase();
+
+            // Define conflicting pairs - if student answer contains one term but correct contains the other
+            const conflictingPairs = [
+                ['bicuspid', 'tricuspid'],
+                ['left', 'right'],
+                ['superior', 'inferior'],
+                ['anterior', 'posterior'],
+                ['atrial', 'ventricular'],
+                ['systemic', 'pulmonary'],
+                ['artery', 'vein'],
+                ['ascending', 'descending']
+            ];
+
+            for (const [term1, term2] of conflictingPairs) {
+                // If student used term1 but correct answer has term2, or vice versa
+                if ((student.includes(term1) && correct.includes(term2)) ||
+                    (student.includes(term2) && correct.includes(term1))) {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         async function loadPractical() {
@@ -172,8 +211,8 @@
             answersGrid.appendChild(leftColumn);
             answersGrid.appendChild(rightColumn);
 
-            // Add extra credit section
-            const extraCreditQuestions = practicalData.questions.filter(question => {
+            // Add extra credit section (randomly select only one if multiple exist)
+            const allExtraCreditQuestions = practicalData.questions.filter(question => {
                 const hasQuestion = question.question && question.question.trim() !== '';
                 const hasAnswer = question.answer && (
                     Array.isArray(question.answer)
@@ -183,6 +222,11 @@
                 const isExtraCredit = question.tags && question.tags.includes('extra-credit');
                 return hasQuestion && hasAnswer && isExtraCredit;
             });
+
+            // Randomly select only one extra credit question
+            const extraCreditQuestions = allExtraCreditQuestions.length > 0
+                ? [allExtraCreditQuestions[Math.floor(Math.random() * allExtraCreditQuestions.length)]]
+                : [];
 
             if (extraCreditQuestions.length > 0) {
                 const extraCreditSection = document.createElement('div');
@@ -362,16 +406,17 @@
             document.getElementById('prev-btn').disabled = false; // Can always go back from EC
             document.getElementById('next-btn').disabled = isLastExtraCredit; // Disable if on last EC
 
-            // Make previous button prominent when at end of extra credit
+            // Clear any prominent styling (removed distracting styling)
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
-            if (isLastExtraCredit) {
-                prevBtn.classList.add('prominent');
-                nextBtn.classList.remove('prominent');
-            } else {
-                prevBtn.classList.remove('prominent');
-                nextBtn.classList.remove('prominent');
-            }
+            prevBtn.classList.remove('prominent');
+            nextBtn.classList.remove('prominent');
+
+            // Scroll to the image container and focus the inline input
+            document.querySelector('.image-container').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                document.getElementById('inline-answer-input').focus();
+            }, 300);
         }
 
         function goToQuestionAndFocus(index) {
@@ -568,7 +613,8 @@
                         } else {
                             const similarity = getSimilarityScore(normalizedStudentAnswer, normalizedCorrect);
                             // Consider it a close match if similarity is >= 0.75 (adjustable threshold)
-                            if (similarity >= 0.75 && similarity < 1) {
+                            // But exclude cases where student used a conflicting anatomical term
+                            if (similarity >= 0.75 && similarity < 1 && !hasConflictingAnatomicalTerms(studentAnswer, ans)) {
                                 answerResult = { isCorrect: false, isPartial: true, points: 0.5 };
                             }
                         }
@@ -580,7 +626,8 @@
                         answerResult = { isCorrect: true, isPartial: false, points: 1 };
                     } else {
                         const similarity = getSimilarityScore(normalizedStudentAnswer, normalizedCorrect);
-                        if (similarity >= 0.75 && similarity < 1) {
+                        // But exclude cases where student used a conflicting anatomical term
+                        if (similarity >= 0.75 && similarity < 1 && !hasConflictingAnatomicalTerms(studentAnswer, correctAnswer)) {
                             answerResult = { isCorrect: false, isPartial: true, points: 0.5 };
                         }
                     }
@@ -650,11 +697,139 @@
                 }
             });
 
-            const percentage = total > 0 ? Math.round((score / total) * 100) : 0;
+            // Score extra credit questions
+            let extraCreditScore = 0;
+            if (practicalData.extraCreditQuestions && practicalData.extraCreditQuestions.length > 0) {
+                practicalData.extraCreditQuestions.forEach((question, index) => {
+                    const input = document.querySelector(`input[name="extra-credit-${index}"]`);
+                    const button = document.querySelectorAll('.extra-credit-button')[index];
+                    const studentAnswer = input ? input.value.trim() : '';
+                    const correctAnswer = question.answer || '';
 
-            document.getElementById('final-score').innerHTML = `
-                <strong>Final Score: ${score}/${total} (${percentage}%)</strong>
-            `;
+                    // Calculate Levenshtein distance for similarity comparison (same function as above)
+                    const getLevenshteinDistance = (str1, str2) => {
+                        const matrix = Array(str2.length + 1).fill(null).map(() => Array(str1.length + 1).fill(null));
+
+                        for (let i = 0; i <= str1.length; i++) matrix[0][i] = i;
+                        for (let j = 0; j <= str2.length; j++) matrix[j][0] = j;
+
+                        for (let j = 1; j <= str2.length; j++) {
+                            for (let i = 1; i <= str1.length; i++) {
+                                if (str1[i - 1] === str2[j - 1]) {
+                                    matrix[j][i] = matrix[j - 1][i - 1];
+                                } else {
+                                    matrix[j][i] = Math.min(
+                                        matrix[j - 1][i] + 1,     // deletion
+                                        matrix[j][i - 1] + 1,     // insertion
+                                        matrix[j - 1][i - 1] + 1  // substitution
+                                    );
+                                }
+                            }
+                        }
+                        return matrix[str2.length][str1.length];
+                    };
+
+                    let answerResult = { isCorrect: false, isPartial: false, points: 0 };
+
+                    if (Array.isArray(correctAnswer)) {
+                        // Multiple acceptable answers
+                        for (const correct of correctAnswer) {
+                            if (studentAnswer.toLowerCase() === correct.toLowerCase()) {
+                                answerResult = { isCorrect: true, isPartial: false, points: 1 };
+                                break;
+                            } else {
+                                // Check similarity (allow minor typos)
+                                const distance = getLevenshteinDistance(studentAnswer.toLowerCase(), correct.toLowerCase());
+                                const similarity = (correct.length - distance) / correct.length;
+                                if (similarity >= 0.8 && !hasConflictingAnatomicalTerms(studentAnswer, correct)) {
+                                    answerResult = { isCorrect: false, isPartial: true, points: 0.5 };
+                                }
+                            }
+                        }
+                    } else {
+                        // Single correct answer
+                        if (studentAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                            answerResult = { isCorrect: true, isPartial: false, points: 1 };
+                        } else {
+                            const distance = getLevenshteinDistance(studentAnswer.toLowerCase(), correctAnswer.toLowerCase());
+                            const similarity = (correctAnswer.length - distance) / correctAnswer.length;
+                            if (similarity >= 0.8 && !hasConflictingAnatomicalTerms(studentAnswer, correctAnswer)) {
+                                answerResult = { isCorrect: false, isPartial: true, points: 0.5 };
+                            }
+                        }
+                    }
+
+                    // Apply visual feedback to extra credit
+                    if (answerResult.isCorrect) {
+                        button.classList.add('result-correct');
+                        if (input) {
+                            const displayDiv = document.createElement('div');
+                            displayDiv.className = 'answer-display correct';
+                            displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span> <span class="checkmark">✓</span>`;
+                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, studentAnswer, question.image);
+                            displayDiv.style.cursor = 'pointer';
+                            displayDiv.title = 'Click to see question and your answer';
+                            input.parentNode.replaceChild(displayDiv, input);
+                        }
+                    } else if (answerResult.isPartial) {
+                        button.classList.add('result-partial');
+                        if (input) {
+                            const displayAnswer = Array.isArray(correctAnswer)
+                                ? correctAnswer.join(' OR ')
+                                : correctAnswer;
+                            const displayDiv = document.createElement('div');
+                            displayDiv.className = 'answer-display partial';
+                            displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span> <span class="partial-credit">½</span><br><small class="correct-answer">Correct: ${displayAnswer}</small>`;
+                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, studentAnswer, question.image);
+                            displayDiv.style.cursor = 'pointer';
+                            displayDiv.title = 'Click to see question and correction';
+                            input.parentNode.replaceChild(displayDiv, input);
+                        }
+                    } else if (studentAnswer) {
+                        button.classList.add('result-incorrect');
+                        if (input) {
+                            const displayAnswer = Array.isArray(correctAnswer)
+                                ? correctAnswer.join(' OR ')
+                                : correctAnswer;
+                            const displayDiv = document.createElement('div');
+                            displayDiv.className = 'answer-display incorrect';
+                            displayDiv.innerHTML = `<span class="student-answer incorrect">${studentAnswer}</span> <span class="cross">✗</span><br><small class="correct-answer">Correct: ${displayAnswer}</small>`;
+                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, studentAnswer, question.image);
+                            displayDiv.style.cursor = 'pointer';
+                            displayDiv.title = 'Click to see question and correction';
+                            input.parentNode.replaceChild(displayDiv, input);
+                        }
+                    } else {
+                        button.classList.add('result-unanswered');
+                        if (input) {
+                            const displayAnswer = Array.isArray(correctAnswer)
+                                ? correctAnswer.join(' OR ')
+                                : correctAnswer;
+                            const displayDiv = document.createElement('div');
+                            displayDiv.className = 'answer-display unanswered';
+                            displayDiv.innerHTML = `<span class="correct-answer">${displayAnswer}</span>`;
+                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, null, question.image);
+                            displayDiv.style.cursor = 'pointer';
+                            input.parentNode.replaceChild(displayDiv, input);
+                        }
+                    }
+
+                    // Add extra credit points (worth 2 points instead of 1)
+                    if (answerResult.isCorrect) {
+                        extraCreditScore += 2; // Full extra credit
+                    } else if (answerResult.isPartial) {
+                        extraCreditScore += 1; // Partial extra credit
+                    }
+                });
+            }
+
+            const totalWithEC = score + extraCreditScore;
+            const totalPercentage = total > 0 ? Math.round((totalWithEC / total) * 100) : 0;
+            const basePercentage = total > 0 ? Math.round((score / total) * 100) : 0;
+
+            document.getElementById('final-score').innerHTML = extraCreditScore > 0
+                ? `<strong>Final Score: ${score}+${extraCreditScore}/${total} (${totalPercentage}%)</strong>`
+                : `<strong>Final Score: ${score}/${total} (${basePercentage}%)</strong>`;
             document.getElementById('final-score').style.display = 'block';
             document.querySelector('.submit-button').style.display = 'none';
         }

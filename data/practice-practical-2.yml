@@ -265,21 +265,21 @@ questions:
   - id: 38
     image: "practical-2/38.jpg"
     question: "What is the highlighted region measuring?"
-    answer: ["ventricular depolarization", "qrs complex ventricular depoloarization", "qrs: ventricular depoloarization"]
+    answer: ["ventricular depolarization", "qrs complex ventricular depolarization", "qrs: ventricular depolarization"]
     definition: "The QRS complex represents a measurement of ventricular depolarization"
     tags: ["heart"]
 
   - id: 39
     image: "practical-2/39.jpg"
     question: "What does the highlighted region represent?"
-    answer: ["atrial depolarization", "p wave atrial depoloarization", "p: atrial depoloarization"]
+    answer: ["atrial depolarization", "p wave atrial depolarization", "p: atrial depolarization"]
     definition: ""
     tags: ["heart"]
 
   - id: 40
     image: "practical-2/40.jpg"
     question: "What does the highlighted region represent?"
-    answer: ["ventricular repolarization", "t wave ventricular repoloarization", "t: atrial repoloarization"]
+    answer: ["ventricular repolarization", "t wave ventricular repolarization", "t: atrial repolarization"]
     definition: ""
     tags: ["heart"]
 
@@ -336,6 +336,13 @@ questions:
     image: "practical-2/48.jpg"
     question: "Name one of the circuits."
     answer: ["systemic circuit", "pulmonary circuit"]
+    definition: ""
+    tags: ["heart", "extra-credit"]
+
+  - id: 49
+    image: "practical-2/49.jpg"
+    question: "What's the word?"
+    answer: ["anastomoses"]
     definition: ""
     tags: ["heart", "extra-credit"]
 
