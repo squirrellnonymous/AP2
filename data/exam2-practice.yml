@@ -2,7 +2,7 @@ title: "Unit 2 Practice Exam — Blood<span style='color: #9ca3af'>, Heart, and 
 description: "Practice test covering Blood, Heart, and Vessels"
 
 multipleChoice:
-  - question: "What is the tissue type of blood, and why is it classified this way?"
+  - question: "What is the tissue type of blood?"
     options:
       - "Epithelial tissue"
       - "Nervous tissue"
@@ -18,15 +18,6 @@ multipleChoice:
       - "Approximately 55%, which is the liquid extracellular matrix."
       - "Approximately 45%, known as the hematocrit."
     correct: 2
-    tags: ["unit-2", "blood"]
-
-  - question: "What function of Albumins is critical for preventing swelling (edema)?"
-    options:
-      - "Breaking down bilirubin waste products."
-      - "Creating osmotic pressure to keep water in the bloodstream."
-      - "Transporting oxygen to muscle tissue."
-      - "Activating fibrinogen for the clotting cascade."
-    correct: 1
     tags: ["unit-2", "blood"]
 
   - question: "Which statement accurately describes fibrinogen?"
@@ -49,27 +40,27 @@ multipleChoice:
 
   - question: "What hormone promotes red blood cell production, and what organ secretes it?"
     options:
-      - "Testosterone (an androgen) secreted by the&nbsp;testes."
-      - "Erythropoietin (EPO) secreted by the&nbsp;kidney."
-      - "Albumin secreted by the&nbsp;liver."
-      - "Bilirubin secreted by the&nbsp;gallbladder."
+      - "Testosterone secreted by the testes."
+      - "Erythropoietin secreted by the kidney."
+      - "Albumin secreted by the liver."
+      - "Bilirubin secreted by the gallbladder."
     correct: 1
     tags: ["unit-2", "blood"]
 
   - question: "What blood condition is characterized by high blood volume, high blood pressure, and high viscosity?"
     options:
-      - "Anemia."
-      - "Jaundice."
-      - "Polycythemia."
-      - "Hypoxemia."
+      - "Anemia"
+      - "Jaundice"
+      - "Polycythemia"
+      - "Hypoxemia"
     correct: 2
     tags: ["unit-2", "blood"]
 
   - question: "If a person is Type A blood, what antibodies do they have circulating in their plasma?"
     options:
-      - "Anti A antibodies."
-      - "Anti B antibodies."
-      - "Both Anti A and Anti B&nbsp;antibodies."
+      - "Anti-A antibodies."
+      - "Anti-B antibodies."
+      - "Both Anti-A and Anti-B antibodies."
       - "No antibodies."
     correct: 1
     tags: ["unit-2", "blood"]
@@ -195,6 +186,17 @@ trueMakeTrue:
     tags: ["unit-2", "blood"]
     
 
+
+table:
+  - question: "Name three blood plasma proteins and list a function of each."
+    headers: ["Plasma Protein", "Function"]
+    answer: [
+      ["albumin", "osmotic pressure, hormone transport"],
+      ["globulins", "antibodies, immune response"],
+      ["fibrinogen", "blood clotting, coagulation"]
+    ]
+    points: 6
+    tags: ["unit-2", "blood", "plasma-proteins"]
 
 essay:
   - question: "People who get cirrhosis (fibrosis) of the liver often get swelling of the abdomen (ascites), edema, and easily bruise. Why might that be the case?"

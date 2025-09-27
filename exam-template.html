@@ -25,6 +25,7 @@
         <form id="quiz-form" style="display: none;">
             <div id="questions-container"></div>
             <div id="true-make-true-container"></div>
+            <div id="table-container"></div>
             <div id="essay-container"></div>
             <button type="button" class="submit-button" onclick="checkAnswers()">Submit Quiz</button>
         </form>
@@ -145,14 +146,16 @@
                 });
             }
 
-            // Render Essay section if it exists
-            if (quizData.essay && quizData.essay.length > 0) {
+            // Render Essay/Table section if either exists
+            if ((quizData.essay && quizData.essay.length > 0) || (quizData.table && quizData.table.length > 0)) {
                 const essayContainer = document.getElementById('essay-container');
                 essayContainer.className = 'essay-section';
 
                 const sectionTitle = document.createElement('div');
                 sectionTitle.className = 'section-title';
-                sectionTitle.textContent = 'Part III: Short/Long Answer';
+                let partNumber = 'II';
+                if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) partNumber = 'III';
+                sectionTitle.textContent = `Part ${partNumber}: Short/Long Answer`;
                 essayContainer.appendChild(sectionTitle);
 
                 const instructions = document.createElement('div');
@@ -160,35 +163,155 @@
                 instructions.style.marginBottom = '20px';
                 instructions.style.color = '#6b7280';
                 instructions.style.fontSize = '0.9rem';
-                instructions.innerHTML = 'Please answer all of the following questions in complete sentences.';
+                instructions.innerHTML = 'Please answer all of the following questions.';
                 essayContainer.appendChild(instructions);
 
-                quizData.essay.forEach((item, index) => {
-                    const essayCard = document.createElement('div');
-                    essayCard.className = 'essay-card';
+                let questionCounter = 1;
 
-                    essayCard.innerHTML = `
-                        <div class="question-number">Question ${index + 1} (${item.points} points)</div>
-                        <div class="essay-question">${item.question}</div>
-                        <textarea class="essay-textarea" name="essay${index}" placeholder="Write your answer here..." autocomplete="off" data-1p-ignore autocorrect="off" spellcheck="true"></textarea>
-                        <div class="essay-answer" id="essay-answer-${index}" style="display: none;">
-                            <h4>Sample Answer:</h4>
-                            <div class="essay-answer-text">${item.answer}</div>
-                        </div>
-                        <div class="essay-grading" id="essay-grading-${index}" style="display: none;">
-                            <h4>Self-Grading:</h4>
-                            <div class="points-input-container">
-                                <input type="number" class="points-input" name="essay-points-${index}" min="0" max="${item.points}" value="0">
-                                <span class="points-label">/ ${item.points} points</span>
+                // Render table questions first
+                if (quizData.table && quizData.table.length > 0) {
+                    quizData.table.forEach((item, index) => {
+                        const tableCard = document.createElement('div');
+                        tableCard.className = 'table-card';
+
+                        const headers = item.headers || ['Column 1', 'Column 2'];
+                        const numRows = item.answer ? item.answer.length : 3;
+
+                        let tableHTML = `
+                            <div class="question-number">Question ${questionCounter} (${item.points} points)</div>
+                            <div class="table-question">${item.question}</div>
+                            <div class="table-answer-container">
+                                <table class="answer-table">
+                                    <thead>
+                                        <tr>
+                                            ${headers.map(header => `<th>${header}</th>`).join('')}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                        `;
+
+                        for (let row = 0; row < numRows; row++) {
+                            tableHTML += '<tr>';
+                            headers.forEach((header, col) => {
+                                tableHTML += `<td><input type="text" name="table${index}-${row}-${col}" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="handleTableNavigation(event, ${index}, ${row}, ${col}, ${numRows}, ${headers.length})" /></td>`;
+                            });
+                            tableHTML += '</tr>';
+                        }
+
+                        tableHTML += `
+                                    </tbody>
+                                </table>
                             </div>
-                            <textarea class="essay-notes" name="essay-notes-${index}" placeholder="Notes for yourself (optional)..."></textarea>
-                        </div>
-                    `;
+                            <div class="table-answer" id="table-answer-${index}" style="display: none;">
+                                <h4>Sample Answer:</h4>
+                                <table class="sample-answer-table">
+                                    <thead>
+                                        <tr>
+                                            ${headers.map(header => `<th>${header}</th>`).join('')}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${item.answer.map(row =>
+                                            `<tr>${Array.isArray(row) ? row.map(cell => `<td>${cell}</td>`).join('') : `<td colspan="${headers.length}">${row}</td>`}</tr>`
+                                        ).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table-grading" id="table-grading-${index}" style="display: none;">
+                                <h4>Self-Grading:</h4>
+                                <div class="points-input-container">
+                                    <input type="number" class="points-input" name="table-points-${index}" min="0" max="${item.points}" value="0">
+                                    <span class="points-label">/ ${item.points} points</span>
+                                </div>
+                                <textarea class="table-notes" name="table-notes-${index}" placeholder="Notes for yourself (optional)..."></textarea>
+                            </div>
+                        `;
 
-                    essayContainer.appendChild(essayCard);
-                });
+                        tableCard.innerHTML = tableHTML;
+                        essayContainer.appendChild(tableCard);
+                        questionCounter++;
+                    });
+                }
+
+                // Render essay questions after table questions
+                if (quizData.essay && quizData.essay.length > 0) {
+                    quizData.essay.forEach((item, index) => {
+                        const essayCard = document.createElement('div');
+                        essayCard.className = 'essay-card';
+
+                        essayCard.innerHTML = `
+                            <div class="question-number">Question ${questionCounter} (${item.points} points)</div>
+                            <div class="essay-question">${item.question}</div>
+                            <textarea class="essay-textarea" name="essay${index}" placeholder="Write your answer here..." autocomplete="off" data-1p-ignore autocorrect="off" spellcheck="true"></textarea>
+                            <div class="essay-answer" id="essay-answer-${index}" style="display: none;">
+                                <h4>Sample Answer:</h4>
+                                <div class="essay-answer-text">${item.answer}</div>
+                            </div>
+                            <div class="essay-grading" id="essay-grading-${index}" style="display: none;">
+                                <h4>Self-Grading:</h4>
+                                <div class="points-input-container">
+                                    <input type="number" class="points-input" name="essay-points-${index}" min="0" max="${item.points}" value="0">
+                                    <span class="points-label">/ ${item.points} points</span>
+                                </div>
+                                <textarea class="essay-notes" name="essay-notes-${index}" placeholder="Notes for yourself (optional)..."></textarea>
+                            </div>
+                        `;
+
+                        essayContainer.appendChild(essayCard);
+                        questionCounter++;
+                    });
+                }
             }
 
+        }
+
+        function handleTableNavigation(event, tableIndex, currentRow, currentCol, totalRows, totalCols) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+
+                let nextRow = currentRow;
+                let nextCol = currentCol + 1;
+
+                // If we're at the end of a row, move to next row, first column
+                if (nextCol >= totalCols) {
+                    nextRow = currentRow + 1;
+                    nextCol = 0;
+                }
+
+                // If we're at the end of the table, move to next question
+                if (nextRow >= totalRows) {
+                    // Try to find the next focusable element (next question)
+                    const currentTableCard = event.target.closest('.table-card');
+                    const allCards = document.querySelectorAll('.essay-card, .table-card');
+
+                    let foundCurrent = false;
+                    for (let card of allCards) {
+                        if (foundCurrent) {
+                            // Focus the first input/textarea in the next card
+                            const nextInput = card.querySelector('input, textarea');
+                            if (nextInput) {
+                                nextInput.focus();
+                                return;
+                            }
+                        }
+                        if (card === currentTableCard) {
+                            foundCurrent = true;
+                        }
+                    }
+
+                    // If no next question found, do nothing (stay in current cell)
+                    return;
+                }
+
+                // Move to the next cell in the table
+                const nextInput = document.querySelector(`input[name="table${tableIndex}-${nextRow}-${nextCol}"]`);
+                if (nextInput) {
+                    nextInput.focus();
+                }
+            }
+        }
+
+        function calculateFinalScore() {
             // Update progress with detailed breakdown
             const mcCount = questions.length;
             const tmtCount = quizData.trueMakeTrue ? quizData.trueMakeTrue.length : 0;
@@ -240,6 +363,7 @@
             const questions = quizData.multipleChoice;
             let blankMC = 0;
             let blankTMT = 0;
+            let blankTable = 0;
             let blankEssay = 0;
 
             // Count blank multiple choice
@@ -256,6 +380,28 @@
                 });
             }
 
+            // Count blank table questions
+            if (quizData.table) {
+                quizData.table.forEach((item, index) => {
+                    const headers = item.headers || ['Column 1', 'Column 2'];
+                    const numRows = item.answer ? item.answer.length : 3;
+                    let hasAnyInput = false;
+
+                    for (let row = 0; row < numRows; row++) {
+                        for (let col = 0; col < headers.length; col++) {
+                            const input = document.querySelector(`input[name="table${index}-${row}-${col}"]`);
+                            if (input && input.value.trim()) {
+                                hasAnyInput = true;
+                                break;
+                            }
+                        }
+                        if (hasAnyInput) break;
+                    }
+
+                    if (!hasAnyInput) blankTable++;
+                });
+            }
+
             // Count blank essays
             if (quizData.essay) {
                 quizData.essay.forEach((item, index) => {
@@ -265,10 +411,11 @@
             }
 
             // Show warning if there are blank answers
-            if (blankMC > 0 || blankTMT > 0 || blankEssay > 0) {
+            if (blankMC > 0 || blankTMT > 0 || blankTable > 0 || blankEssay > 0) {
                 let warningMessage = "You have unanswered questions:\n\n";
                 if (blankMC > 0) warningMessage += `• ${blankMC} Multiple Choice question${blankMC > 1 ? 's' : ''}\n`;
                 if (blankTMT > 0) warningMessage += `• ${blankTMT} True/Make True question${blankTMT > 1 ? 's' : ''}\n`;
+                if (blankTable > 0) warningMessage += `• ${blankTable} Table question${blankTable > 1 ? 's' : ''}\n`;
                 if (blankEssay > 0) warningMessage += `• ${blankEssay} Essay question${blankEssay > 1 ? 's' : ''}\n`;
                 warningMessage += "\nDo you want to submit anyway?";
 
@@ -347,6 +494,24 @@
 
                         feedbackElement.style.display = 'block';
                     }
+                });
+            }
+
+            // Show table answers and grading interface
+            if (quizData.table && quizData.table.length > 0) {
+                quizData.table.forEach((item, index) => {
+                    const answerElement = document.getElementById(`table-answer-${index}`);
+                    const gradingElement = document.getElementById(`table-grading-${index}`);
+
+                    // Make table inputs read-only
+                    const tableInputs = document.querySelectorAll(`input[name^="table${index}-"]`);
+                    tableInputs.forEach(input => {
+                        input.readOnly = true;
+                    });
+
+                    // Show correct answers and grading interface
+                    if (answerElement) answerElement.style.display = 'block';
+                    if (gradingElement) gradingElement.style.display = 'block';
                 });
             }
 
