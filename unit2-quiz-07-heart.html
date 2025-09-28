@@ -86,9 +86,9 @@
                 const yamlText = await response.text();
                 const practicalData = jsyaml.load(yamlText);
 
-                // Filter questions with "heart-lp-4" or "heart-lp-5" tags
-                const heartQuestions = practicalData.questions.filter(question =>
-                    question.tags && (question.tags.includes('heart-lp-4') || question.tags.includes('heart-lp-5')) &&
+                // Filter questions by lab page tags
+                const lp4Questions = practicalData.questions.filter(question =>
+                    question.tags && question.tags.includes('heart-lp-4') &&
                     question.question && question.question.trim() !== '' &&
                     question.answer && (
                         Array.isArray(question.answer)
@@ -97,8 +97,22 @@
                     )
                 );
 
-                // Randomly select 4 questions
-                const selectedQuestions = shuffleArray(heartQuestions).slice(0, 4);
+                const lp5Questions = practicalData.questions.filter(question =>
+                    question.tags && question.tags.includes('heart-lp-5') &&
+                    question.question && question.question.trim() !== '' &&
+                    question.answer && (
+                        Array.isArray(question.answer)
+                            ? question.answer.some(ans => ans && ans.trim() !== '')
+                            : question.answer.trim() !== ''
+                    )
+                );
+
+                // Select 2 questions from each lab page
+                const selectedLp4 = shuffleArray(lp4Questions).slice(0, 2);
+                const selectedLp5 = shuffleArray(lp5Questions).slice(0, 2);
+
+                // Combine and shuffle the final selection
+                const selectedQuestions = shuffleArray([...selectedLp4, ...selectedLp5]);
 
                 quizData = {
                     title: "Heart Quiz",
