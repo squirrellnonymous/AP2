@@ -22,6 +22,76 @@ body {
     text-align: center;
 }
 
+/* Header content area */
+.flashcard-header {
+    position: relative;
+    padding: 20px 40px;
+    margin: -20px -20px 30px -20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Back link */
+.flashcard-header .back-link {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    transition: color 0.2s ease;
+}
+
+.flashcard-header .back-link:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Center the deck info */
+.deck-info {
+    text-align: center;
+}
+
+.deck-info h1 {
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.deck-info .card-count {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .flashcard-header {
+        padding: 15px 20px;
+        margin-bottom: 20px;
+    }
+
+    .flashcard-header .back-link {
+        left: 20px;
+        font-size: 0.8rem;
+    }
+
+    .deck-info h1 {
+        font-size: 1.3rem;
+    }
+
+    .deck-info .card-count {
+        font-size: 0.8rem;
+    }
+}
+
 /* Header */
 .header {
     background: rgba(255, 255, 255, 0.1);
@@ -289,16 +359,9 @@ h1 {
 
 /* Disabled swipe option styling */
 .swipe-option.disabled {
-    opacity: 0.5;
+    opacity: 0.3;
     pointer-events: none;
     cursor: not-allowed;
-    background: linear-gradient(145deg, #6b7280, #4b5563);
-    border-color: #6b7280;
-    color: #d1d5db;
-    box-shadow:
-        0 2px 8px rgba(75, 85, 99, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* States */
@@ -422,8 +485,8 @@ h1 {
     transition: none !important;
 }
 
-/* Back link */
-.back-link {
+/* Back link at bottom of page */
+.back-link:not(.flashcard-header .back-link) {
     display: inline-block;
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
@@ -436,7 +499,7 @@ h1 {
     top: 0;
 }
 
-.back-link:hover {
+.back-link:not(.flashcard-header .back-link):hover {
     color: white;
     background: rgba(255, 255, 255, 0.2);
 }

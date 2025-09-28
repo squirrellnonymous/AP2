@@ -1,84 +1,11 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Import shared styles */
+@import url('shared.css');
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    line-height: 1.6;
-    color: #1a1a1a;
-    background-color: #f8fafc;
-    min-height: 100vh;
-}
-
-/* Header */
-.header {
-    background-color: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
-    padding: 16px 0;
-    position: static;
-}
-
-.header-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.home-link {
-    color: #6b7280;
-    text-decoration: none;
-    font-size: 0.875rem;
-    position: absolute;
-    left: 20px;
-}
-
-.home-link:hover {
-    color: #8b5cf6;
-}
-
-.header-center {
-    flex: 1;
-    text-align: center;
-}
-
-h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1a1a1a;
-}
-
-.progress {
-    font-size: 0.875rem;
-    color: #6b7280;
-}
-
-/* Container */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 32px 24px;
-}
-
-.loading {
-    text-align: center;
-    padding: 64px 20px;
-    color: #6b7280;
-}
+/* Quiz-specific styles */
 
 /* Question Cards */
 .question-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 16px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+    /* Extends card-base from shared.css */
 }
 
 .question-number {
@@ -88,11 +15,8 @@ h1 {
     margin-bottom: 8px;
 }
 
+/* Question text overrides for quiz */
 .question-text {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 16px;
-    color: #1a1a1a;
     max-width: 600px;
     text-wrap: pretty;
 }
@@ -161,21 +85,10 @@ h1 {
     margin-top: 24px;
 }
 
-.section-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 16px;
-    text-align: center;
-}
+/* Section title uses shared styles */
 
 .true-make-true-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 16px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+    /* Extends card-base from shared.css */
 }
 
 .statement-container {
@@ -185,30 +98,7 @@ h1 {
     margin-bottom: 16px;
 }
 
-.answer-input {
-    padding: 12px 16px;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 8px;
-    font-size: 1rem;
-    width: 200px;
-    transition: border-color 0.2s ease;
-}
-
-.answer-input:focus {
-    border-color: #6366f1;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-}
-
-.answer-input.correct {
-    border-color: #10b981;
-    background-color: #ecfdf5;
-}
-
-.answer-input.incorrect {
-    border-color: #ef4444;
-    background-color: #fef2f2;
-}
+/* Answer input uses shared styles */
 
 .statement-text {
     font-size: 1rem;
@@ -235,12 +125,7 @@ h1 {
 }
 
 .essay-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 16px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+    /* Extends card-base from shared.css */
 }
 
 .essay-question {
@@ -350,90 +235,11 @@ h1 {
     box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
 }
 
-/* Buttons */
-.submit-button {
-    background-color: #6366f1;
-    color: white;
-    border: none;
-    padding: 14px 24px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-top: 24px;
-    width: 100%;
-}
+/* Submit button uses shared styles */
 
-.submit-button:hover {
-    background-color: #4f46e5;
-}
+/* Results section uses shared styles */
 
-.submit-button:disabled {
-    background-color: #9ca3af;
-    cursor: not-allowed;
-}
-
-/* Results */
-.results {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 32px;
-    margin-top: 24px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
-}
-
-.results h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: #1a1a1a;
-}
-
-.score {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 24px;
-    padding: 16px;
-    border-radius: 8px;
-    background-color: #f0f9ff;
-    color: #0369a1;
-    text-align: center;
-}
-
-.back-link {
-    display: inline-flex;
-    align-items: center;
-    padding: 12px 24px;
-    text-decoration: none;
-    color: #6b7280;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    transition: all 0.2s ease;
-    margin-top: 32px;
-}
-
-.back-link:hover {
-    color: #374151;
-    border-color: #9ca3af;
-}
-
-/* Animations */
-.screen {
-    display: none;
-    animation: fadeIn 0.3s ease-in;
-}
-
-.screen.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* Animations use shared styles */
 
 /* Section Headers */
 .section-header {
@@ -524,16 +330,7 @@ h1 {
     letter-spacing: -0.025em;
 }
 
-.points {
-    font-size: 0.75rem;
-    color: #6366f1;
-    background: linear-gradient(135deg, #eef2ff, #ddd6fe);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+/* Points badge uses shared styles */
 
 .definition-sentence {
     font-size: 1.1rem;

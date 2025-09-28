@@ -71,21 +71,21 @@ questions:
     question: "What is the condition shown by this tissue sample?"
     answer: ["Sickle-Cell Anemia", "Sickle Cell Anemia"]
     definition: ""
-    tags: ["anemia", "blood"]
+    tags: ["anemia", "blood", "blood-disorder"]
 
   - id: 11
     image: "practical-2/11.jpg"
     question: "What is the condition shown by this tissue sample?"
     answer: ["Thrombocytosis"]
     definition: ""
-    tags: ["blood"]
+    tags: ["blood", "blood-disorder", "platelet-disorder"]
 
   - id: 12
     image: "practical-2/12.jpg"
     question: "What is the condition indicated by this tissue sample?"
     answer: ["Leukemia"]
     definition: ""
-    tags: ["blood"]
+    tags: ["blood", "blood-disorder", "leukocyte-disorder"]
 
   - id: 13
     image: "practical-2/13.jpg"
@@ -127,14 +127,14 @@ questions:
     question: "Name the structure."
     answer: ["endocardium"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-layers"]
 
   - id: 19
     image: "practical-2/19.jpg"
     question: "Name the structure."
     answer: ["visceral pericardium", "epicardium"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-layers"]
 
   - id: 20
     image: "practical-2/20.jpg"
@@ -167,8 +167,8 @@ questions:
   - id: 24
     image: "practical-2/24.jpg"
     question: "What's the area (underneath the vessel)"
-    answer: ["coronary sinus"]
-    definition: ""
+    answer: ["coronary sulcus"]
+    definition: "The coronary sinus is a vein that sits in the coronary sulcus (a valley)."
     tags: ["heart", "heart-lp-5"]
 
   - id: 25
@@ -190,7 +190,7 @@ questions:
     question: "Name the structure"
     answer: ["tricuspid valve", "right atrioventricular valve"]
     definition: ""
-    tags: ["heart", "heart-lp-4"]
+    tags: ["heart", "heart-lp-4", "valve"]
 
   - id: 28
     image: "practical-2/28.jpg"
@@ -204,7 +204,7 @@ questions:
     question: "Name the structure."
     answer: ["aortic semilunar valve"]
     definition: ""
-    tags: ["heart", "anatomy", "heart-lp-4"]
+    tags: ["heart", "anatomy", "heart-lp-4", "valve"]
 
   - id: 30
     image: "practical-2/30.jpg"
@@ -295,7 +295,7 @@ questions:
     question: "Name the tissue"
     answer: ["normal cardiac tissue", "heart muscle", "cardiac muscle", "myocardium"]
     definition: ""
-    tags: ["heart", "tissue"]
+    tags: ["heart", "tissue", "heart-layers"]
 
   - id: 43
     image: "practical-2/43.jpg"
@@ -309,21 +309,21 @@ questions:
     question: "Name the structure."
     answer: ["Parietal pericardium"]
     definition: ""
-    tags: ["heart", "membranes"]
+    tags: ["heart", "membranes", "heart-layers"]
 
   - id: 45
     image: "practical-2/45.jpg"
     question: "Name the structure."
     answer: ["myocardium", "myocardium {heart muscle)"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-layers"]
 
   - id: 46
     image: "practical-2/46.jpg"
     question: "Name a layer that secretes fluid."
     answer: ["epicardium", "visceral pericardium"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-layers"]
 
   - id: 47
     image: "practical-2/47.jpg"

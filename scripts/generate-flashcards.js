@@ -23,7 +23,7 @@ function parseArgs() {
 }
 
 function loadPracticalData(sourceName) {
-  const filePath = path.join(__dirname, '..', 'data', `practice-${sourceName}.yml`);
+  const filePath = path.join(__dirname, '..', 'data', `${sourceName}.yml`);
 
   if (!fs.existsSync(filePath)) {
     throw new Error(`Source file not found: ${filePath}`);

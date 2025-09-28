@@ -40,6 +40,58 @@ function getPracticalParams() {
     };
 }
 
+// Generate descriptive deck title based on tags
+function generateDeckTitle(tags, cardCount) {
+    if (!tags || tags.length === 0) {
+        return `Complete Study Set`;
+    }
+
+    const titleMap = {
+        'valve': 'Heart Valves',
+        'blood-disorder': 'Blood Disorders',
+        'leukocytes': 'White Blood Cells (Leukocytes)',
+        'coronary-circulation': 'Coronary Circulation',
+        'ekg': 'EKG & Cardiac Rhythms',
+        'heart-lp-4': 'Heart Anatomy - Lab Practical 4',
+        'heart-lp-5': 'Advanced Heart & Circulation',
+        'heart-layers': 'Heart Layers & Tissues',
+        'tissue': 'Heart Tissues & Layers',
+        'membranes': 'Heart Membranes',
+        'formed-elements': 'Blood & Formed Elements',
+        'platelets': 'Platelets',
+        'blood-clotting': 'Blood Clotting',
+        'anemia': 'Anemia',
+        'platelet-disorder': 'Platelet Disorders',
+        'leukocyte-disorder': 'Leukocyte Disorders'
+    };
+
+    // Try to find the most specific tag first
+    for (const tag of tags) {
+        if (titleMap[tag]) {
+            return titleMap[tag];
+        }
+    }
+
+    // Create meaningful titles from common tag combinations
+    if (tags.includes('heart') && tags.includes('anatomy')) {
+        return `Heart Anatomy`;
+    } else if (tags.includes('heart')) {
+        return `Heart Study`;
+    } else if (tags.includes('blood')) {
+        return `Blood Study`;
+    } else if (tags.includes('leukocytes') && tags.includes('formed-elements')) {
+        return `White Blood Cells`;
+    }
+
+    // Final fallback - capitalize and clean up tag names
+    const cleanTags = tags.map(tag => {
+        return tag.replace(/-/g, ' ')
+                  .replace(/\b\w/g, l => l.toUpperCase());
+    });
+
+    return cleanTags.length === 1 ? cleanTags[0] : `${cleanTags.join(' & ')} Study`;
+}
+
 
 // Load flashcards
 async function loadFlashcards() {
@@ -107,9 +159,12 @@ async function loadFlashcards() {
                 });
             }
 
+            // Generate descriptive title based on tags
+            const deckTitle = generateDeckTitle(practicalParams.tags, filteredQuestions.length);
+
             // Convert to flashcard format
             data = {
-                title: `${practicalData.title} - Dynamic Set`,
+                title: deckTitle,
                 description: practicalData.description,
                 color_theme: 'blue',
                 flashcards: filteredQuestions.map(q => ({
@@ -160,6 +215,19 @@ async function loadFlashcards() {
         // Update page title
         document.getElementById('page-title').textContent = flashcardSet.title;
         document.title = flashcardSet.title;
+
+        // Update deck title in header
+        const deckTitleElement = document.getElementById('deck-title');
+        if (deckTitleElement) {
+            deckTitleElement.textContent = flashcardSet.title;
+        }
+
+        // Update card count in header
+        const cardCountElement = document.getElementById('card-count');
+        if (cardCountElement) {
+            const cardCount = data.flashcards?.length || 0;
+            cardCountElement.textContent = `${cardCount} flashcard${cardCount !== 1 ? 's' : ''}`;
+        }
 
         allCards = [...data.flashcards];
         cards = [...data.flashcards]; // Current deck

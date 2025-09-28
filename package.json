@@ -6,7 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "validate-yaml": "node scripts/validate-yaml.js",
-    "validate": "npm run validate-yaml"
+    "validate": "npm run validate-yaml",
+    "build:leukocytes": "node scripts/generate-flashcards.js --source unit2-practical --tags leukocytes,formed-elements --output unit2-leukocytes",
+    "build:heart-anatomy": "node scripts/generate-flashcards.js --source unit2-practical --tags heart,anatomy --output unit2-heart-anatomy",
+    "build:heart-circulation": "node scripts/generate-flashcards.js --source unit2-practical --tags coronary-circulation,heart-lp-5 --output unit2-heart-circulation",
+    "build:ekg": "node scripts/generate-flashcards.js --source unit2-practical --tags ekg --output unit2-ekg",
+    "build:blood-disorders": "node scripts/generate-flashcards.js --source unit2-practical --tags anemia,blood --output unit2-blood-disorders",
+    "build:all-unit2": "npm run build:leukocytes && npm run build:heart-anatomy && npm run build:heart-circulation && npm run build:ekg && npm run build:blood-disorders",
+    "dev": "python3 -m http.server 8000"
   },
   "keywords": [],
   "author": "",

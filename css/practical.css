@@ -1,5 +1,5 @@
-/* Import base quiz styles */
-@import url('quiz.css');
+/* Import shared styles */
+@import url('shared.css');
 
 /* Import handwriting font */
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap');
@@ -84,9 +84,7 @@
     justify-content: center;
     margin-bottom: 24px;
     padding: 16px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    /* Uses card-base styles from shared.css */
 }
 
 .image-number {
@@ -118,11 +116,9 @@
 /* Image display */
 .image-container {
     margin-bottom: 24px;
-    background-color: #ffffff;
     border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    /* Uses card-base styles from shared.css */
 }
 
 .image-content {
@@ -297,12 +293,10 @@
 
 /* Answer Sheet */
 .answer-sheet {
-    background-color: #ffffff;
     border-radius: 12px;
     padding: 24px;
     margin-bottom: 24px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+    /* Uses card-base styles from shared.css */
 }
 
 .answer-sheet-header {

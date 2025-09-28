@@ -8,20 +8,20 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <div class="progress" id="progress">Loading...</div>
+        <!-- Header with Title and Back Link -->
+        <div class="flashcard-header">
+            <a href="../flashcard-decks.html" class="back-link">← Decks</a>
+            <div class="deck-info">
+                <h1 id="deck-title">Loading Deck...</h1>
+                <div class="card-count" id="card-count">Loading...</div>
+            </div>
+        </div>
 
         <!-- Loading -->
         <div id="loading">Loading flashcards...</div>
 
         <!-- Flashcard App -->
         <div id="flashcard-app" class="hidden">
-            <!-- Controls -->
-            <div class="controls">
-                <button class="control-btn" onclick="shuffleCards()">🔀 Shuffle</button>
-                <button class="control-btn" id="card-counter" onclick="showListView()">1 / 15</button>
-            </div>
-
             <!-- Simple Flashcard -->
             <div class="flip-card">
                 <div class="flip-card-inner">
@@ -56,7 +56,7 @@
             </div>
 
             <!-- Navigation -->
-            <div class="navigation">
+            <div class="navigation hidden">
                 <button class="nav-btn" id="prev-btn" onclick="previousCard()">← Previous</button>
                 <button class="nav-btn" id="next-btn" onclick="nextCard()">Next →</button>
             </div>
@@ -90,7 +90,6 @@
             <div class="results-spacer"></div>
         </div>
 
-        <a href="../index.html" class="back-link">← Back to Home</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>

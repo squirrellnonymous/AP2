@@ -1,0 +1,408 @@
+title: 'Generated from Practice Practical #2'
+description: Blood & the Heart
+color_theme: blue
+flashcards:
+  - id: 16
+    term: Name the structure.
+    image: practical-2/16.jpg
+    answer: ascending aorta
+    keywords:
+      - ascending aorta
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 17
+    term: Name the area.
+    image: practical-2/17.jpg
+    answer: pericardial cavity
+    keywords:
+      - pericardial cavity
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 18
+    term: Name the structure.
+    image: practical-2/18.jpg
+    answer: endocardium
+    keywords:
+      - endocardium
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 19
+    term: Name the structure.
+    image: practical-2/19.jpg
+    answer: visceral pericardium
+    keywords:
+      - visceral pericardium
+      - epicardium
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 20
+    term: What is underneath the structure labeled Y?
+    image: practical-2/20.jpg
+    answer: right atrium
+    keywords:
+      - right atrium
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 21
+    term: Name the structure.
+    image: practical-2/21.jpg
+    answer: left atrium
+    keywords:
+      - left atrium
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 22
+    term: name the structure.
+    image: practical-2/22.jpg
+    answer: right pulmonary arteries
+    keywords:
+      - right pulmonary arteries
+      - right pulmonary artery
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 23
+    term: Name the structure.
+    image: practical-2/23.jpg
+    answer: left pulmonary artery
+    keywords:
+      - left pulmonary artery
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 24
+    term: What's the area (underneath the vessel)
+    image: practical-2/24.jpg
+    answer: coronary sulcus
+    keywords:
+      - coronary sulcus
+    definition: The coronary sinus is a vein that sits in the coronary sulcus (a valley).
+    breakdown: ''
+    example: ''
+  - id: 25
+    term: Name the structure.
+    image: practical-2/25.jpg
+    answer: papillary muscle
+    keywords:
+      - papillary muscle
+      - papillary muscles
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 26
+    term: Name the structure.
+    image: practical-2/26.jpg
+    answer: fossa ovalis
+    keywords:
+      - fossa ovalis
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 27
+    term: Name the structure
+    image: practical-2/27.jpg
+    answer: tricuspid valve
+    keywords:
+      - tricuspid valve
+      - right atrioventricular valve
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 28
+    term: Name the structure
+    image: practical-2/28.jpg
+    answer: bicuspid valve
+    keywords:
+      - bicuspid valve
+      - left atrioventricular valve
+      - mitrial valve
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 29
+    term: Name the structure.
+    image: practical-2/29.jpg
+    answer: aortic semilunar valve
+    keywords:
+      - aortic semilunar valve
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 30
+    term: Name the muscles found in this region.
+    image: practical-2/30.jpg
+    answer: pectinate muscles
+    keywords:
+      - pectinate muscles
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 31
+    term: Name the structure.
+    image: practical-2/31.jpg
+    answer: chordae tendineae
+    keywords:
+      - chordae tendineae
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 32
+    term: Name the structure.
+    image: practical-2/32.jpg
+    answer: interventricular septum
+    keywords:
+      - interventricular septum
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 33
+    term: Name the structure.
+    image: practical-2/33.jpg
+    answer: brachiocephalic trunk
+    keywords:
+      - brachiocephalic trunk
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 34
+    term: What is the region
+    image: practical-2/34.jpg
+    answer: apex
+    keywords:
+      - apex
+      - apex of the heart
+      - heart apex
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 35
+    term: Name the vessel.
+    image: practical-2/35.jpg
+    answer: left subclavian artery
+    keywords:
+      - left subclavian artery
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 36
+    term: Name the vessel.
+    image: practical-2/36.jpg
+    answer: left common corotid artery
+    keywords:
+      - left common corotid artery
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 37
+    term: Name the vessel
+    image: practical-2/37.jpg
+    answer: pulmonary trunk
+    keywords:
+      - pulmonary trunk
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 38
+    term: What is the highlighted region measuring?
+    image: practical-2/38.jpg
+    answer: ventricular depolarization
+    keywords:
+      - ventricular depolarization
+      - qrs complex ventricular depolarization
+      - 'qrs: ventricular depolarization'
+    definition: The QRS complex represents a measurement of ventricular depolarization
+    breakdown: ''
+    example: ''
+  - id: 39
+    term: What does the highlighted region represent?
+    image: practical-2/39.jpg
+    answer: atrial depolarization
+    keywords:
+      - atrial depolarization
+      - p wave atrial depolarization
+      - 'p: atrial depolarization'
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 40
+    term: What does the highlighted region represent?
+    image: practical-2/40.jpg
+    answer: ventricular repolarization
+    keywords:
+      - ventricular repolarization
+      - t wave ventricular repolarization
+      - 't: atrial repolarization'
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 41
+    term: Name the structure.
+    image: practical-2/41.jpg
+    answer: intercalated disc
+    keywords:
+      - intercalated disc
+      - intercalated discs
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 42
+    term: Name the tissue
+    image: practical-2/42.jpg
+    answer: normal cardiac tissue
+    keywords:
+      - normal cardiac tissue
+      - heart muscle
+      - cardiac muscle
+      - myocardium
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 43
+    term: ''
+    image: practical-2/43.jpg
+    answer: infarcted cardiac tissue
+    keywords:
+      - infarcted cardiac tissue
+      - infarcted heart muscle
+      - infarcted cardiac muscle
+      - cardiac muscle (infarcted)
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 44
+    term: Name the structure.
+    image: practical-2/44.jpg
+    answer: Parietal pericardium
+    keywords:
+      - Parietal pericardium
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 45
+    term: Name the structure.
+    image: practical-2/45.jpg
+    answer: myocardium
+    keywords:
+      - myocardium
+      - myocardium {heart muscle)
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 46
+    term: Name a layer that secretes fluid.
+    image: practical-2/46.jpg
+    answer: epicardium
+    keywords:
+      - epicardium
+      - visceral pericardium
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 47
+    term: What is the function of the secretion in this layer
+    image: practical-2/47.jpg
+    answer: lubrication
+    keywords:
+      - lubrication
+      - allows heart to beat with minimal friction
+      - reduces friction
+      - lowers friction
+      - increases lubrication
+      - lubricant
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 51
+    term: Name the indicated structure (red vessel).
+    image: practical-2/51.jpg
+    answer: left coronary artery
+    keywords:
+      - left coronary artery
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 52
+    term: Name the (red) vessel.
+    image: practical-2/52.jpg
+    answer: anterior interventricular artery
+    keywords:
+      - anterior interventricular artery
+      - left anterior descending artery
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 53
+    term: Name the (red) vessel.
+    image: practical-2/53.jpg
+    answer: circumflex branch of the left coronary artery
+    keywords:
+      - circumflex branch of the left coronary artery
+      - left circumflex coronary artery
+      - left circumflex artery
+    definition: >-
+      This artery branches off from the left coronary artery and goes around (circumflex ... like circle) the heart. It
+      runs between the left atrium and the left ventricle.
+    breakdown: ''
+    example: ''
+  - id: 54
+    term: Name the (red) vessel.
+    image: practical-2/54.jpg
+    answer: marginal branch of the left coronary artery
+    keywords:
+      - marginal branch of the left coronary artery
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 55
+    term: What is the (red) vessel?
+    image: practical-2/55.jpg
+    answer: right coronary artery
+    keywords:
+      - right coronary artery
+    definition: >-
+      The right coronary artery branches off of the aorta and runs between the right atrium and ventricle to deliver
+      freshly oxygenated blood. Coronary means crown-like (Latin)
+    breakdown: ''
+    example: ''
+  - id: 56
+    term: What is the (red) vessel?
+    image: practical-2/56.jpg
+    answer: marginal branch of the right coronary artery
+    keywords:
+      - marginal branch of the right coronary artery
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 57
+    term: Name this (red) vessel on the back side of the heart.
+    image: practical-2/57.jpg
+    answer: posterior interventricular artery
+    keywords:
+      - posterior interventricular artery
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 58
+    term: Name this (blue) vessel.
+    image: practical-2/58.jpg
+    answer: great cardiac vein
+    keywords:
+      - great cardiac vein
+    definition: ''
+    breakdown: ''
+    example: ''
+  - id: 59
+    term: Name this (blue) vessel.
+    image: practical-2/59.jpg
+    answer: posterior interventricular vein
+    keywords:
+      - posterior interventricular vein
+    definition: ''
+    breakdown: ''
+    example: ''
