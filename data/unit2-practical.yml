@@ -113,7 +113,7 @@ questions:
     question: "Name the structure."
     answer: ["ascending aorta"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-lp-4"]
 
   - id: 17
     image: "practical-2/17.jpg"
@@ -141,175 +141,175 @@ questions:
     question: "What is underneath the structure labeled Y?"
     answer: ["right atrium"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-lp-4"]
 
   - id: 21
     image: "practical-2/21.jpg"
     question: "Name the structure."
     answer: ["left atrium"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-lp-4"]
 
   - id: 22
     image: "practical-2/22.jpg"
     question: "name the structure."
     answer: ["right pulmonary arteries", "right pulmonary artery"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-lp-4"]
 
   - id: 23
     image: "practical-2/23.jpg"
     question: "Name the structure."
     answer: ["left pulmonary artery"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-lp-4"]
 
   - id: 24
     image: "practical-2/24.jpg"
     question: "What's the area (underneath the vessel)"
     answer: ["coronary sinus"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-lp-5"]
 
   - id: 25
     image: "practical-2/25.jpg"
     question: "Name the structure."
     answer: ["papillary muscle", "papillary muscles"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-lp-4"]
 
   - id: 26
     image: "practical-2/26.jpg"
     question: "Name the structure."
     answer: ["fossa ovalis"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-lp-4"]
 
   - id: 27
     image: "practical-2/27.jpg"
     question: "Name the structure"
     answer: ["tricuspid valve", "right atrioventricular valve"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "heart-lp-4"]
 
   - id: 28
     image: "practical-2/28.jpg"
     question: "Name the structure"
     answer: ["bicuspid valve", "left atrioventricular valve", "mitrial valve"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "anatomy", "valve", "heart-lp-4"]
 
   - id: 29
     image: "practical-2/29.jpg"
     question: "Name the structure."
     answer: ["aortic semilunar valve"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "anatomy", "heart-lp-4"]
 
   - id: 30
     image: "practical-2/30.jpg"
     question: "Name the muscles found in this region."
     answer: ["pectinate muscles"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "anatomy", "heart-lp-4"]
 
   - id: 31
     image: "practical-2/31.jpg"
     question: "Name the structure."
     answer: ["chordae tendineae"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "anatomy", "heart-lp-4"]
 
   - id: 32
     image: "practical-2/32.jpg"
     question: "Name the structure."
     answer: ["interventricular septum"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "anatomy", "heart-lp-4"]
 
   - id: 33
     image: "practical-2/33.jpg"
     question: "Name the structure."
     answer: ["brachiocephalic trunk"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "anatomy", "heart-lp-4"]
 
   - id: 34
     image: "practical-2/34.jpg"
     question: "What is the region"
     answer: ["apex", "apex of the heart", "heart apex"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "anatomy", "heart-lp-4"]
 
   - id: 35
     image: "practical-2/35.jpg"
     question: "Name the vessel."
     answer: ["left subclavian artery"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "artery", "heart-lp-4"]
 
   - id: 36
     image: "practical-2/36.jpg"
     question: "Name the vessel."
     answer: ["left common corotid artery"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "anatomy", "heart-lp-4"]
 
   - id: 37
     image: "practical-2/37.jpg"
     question: "Name the vessel"
     answer: ["pulmonary trunk"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "anatomy", "heart-lp-4"]
 
   - id: 38
     image: "practical-2/38.jpg"
     question: "What is the highlighted region measuring?"
     answer: ["ventricular depolarization", "qrs complex ventricular depolarization", "qrs: ventricular depolarization"]
     definition: "The QRS complex represents a measurement of ventricular depolarization"
-    tags: ["heart"]
+    tags: ["heart", "ekg"]
 
   - id: 39
     image: "practical-2/39.jpg"
     question: "What does the highlighted region represent?"
     answer: ["atrial depolarization", "p wave atrial depolarization", "p: atrial depolarization"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "ekg"]
 
   - id: 40
     image: "practical-2/40.jpg"
     question: "What does the highlighted region represent?"
     answer: ["ventricular repolarization", "t wave ventricular repolarization", "t: atrial repolarization"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "ekg"]
 
   - id: 41
     image: "practical-2/41.jpg"
     question: "Name the structure."
     answer: ["intercalated disc", "intercalated discs"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "tissue"]
 
   - id: 42
     image: "practical-2/42.jpg"
     question: "Name the tissue"
     answer: ["normal cardiac tissue", "heart muscle", "cardiac muscle", "myocardium"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "tissue"]
 
   - id: 43
     image: "practical-2/43.jpg"
     question: ""
     answer: ["infarcted cardiac tissue", "infarcted heart muscle", "infarcted cardiac muscle", "cardiac muscle (infarcted)"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "tissue"]
 
   - id: 44
     image: "practical-2/44.jpg"
     question: "Name the structure."
     answer: ["Parietal pericardium"]
     definition: ""
-    tags: ["heart"]
+    tags: ["heart", "membranes"]
 
   - id: 45
     image: "practical-2/45.jpg"
@@ -352,6 +352,69 @@ questions:
     answer: ["ventricular fibrullation"]
     definition: ""
     tags: ["heart", "extra-credit"]
+
+  - id: 51
+    image: "practical-2/51.jpg"
+    question: "Name the indicated structure (red vessel)."
+    answer: ["left coronary artery"]
+    definition: ""
+    tags: ["heart", "heart-lp-5", "coronary-circulation"]
+
+  - id: 52
+    image: "practical-2/52.jpg"
+    question: "Name the (red) vessel."
+    answer: ["anterior interventricular artery", "left anterior descending artery"]
+    definition: ""
+    tags: ["heart", "heart-lp-5", "coronary-circulation"]
+
+  - id: 53
+    image: "practical-2/53.jpg"
+    question: "Name the (red) vessel."
+    answer: ["circumflex branch of the left coronary artery", "left circumflex coronary artery", "left circumflex artery"]
+    definition: "This artery branches off from the left coronary artery and goes around (circumflex ... like circle) the heart. It runs between the left atrium and the left ventricle."
+    tags: ["heart", "heart-lp-5", "coronary-circulation"]
+
+  - id: 54
+    image: "practical-2/54.jpg"
+    question:  "Name the (red) vessel."
+    answer: ["marginal branch of the left coronary artery"]
+    definition: ""
+    tags: ["heart", "heart-lp-5", "coronary-circulation"]
+
+  - id: 55
+    image: "practical-2/55.jpg"
+    question: "What is the (red) vessel?"
+    answer: ["right coronary artery"]
+    definition: "The right coronary artery branches off of the aorta and runs between the right atrium and ventricle to deliver freshly oxygenated blood. Coronary means crown-like (Latin)"
+    tags: ["heart", "heart-lp-5", "coronary-circulation"]
+
+  - id: 56
+    image: "practical-2/56.jpg"
+    question: "What is the (red) vessel?"
+    answer: ["marginal branch of the right coronary artery"]
+    definition: ""
+    tags: ["heart", "heart-lp-5", "coronary-circulation"]
+
+  - id: 57
+    image: "practical-2/57.jpg"
+    question: "Name this (red) vessel on the back side of the heart."
+    answer: ["posterior interventricular artery"]
+    definition: ""
+    tags: ["heart", "heart-lp-5", "coronary-circulation"]
+
+  - id: 58
+    image: "practical-2/58.jpg"
+    question: "Name this (blue) vessel."
+    answer: ["great cardiac vein"]
+    definition: ""
+    tags: ["heart", "heart-lp-5", "coronary-circulation"]
+
+  - id: 59
+    image: "practical-2/59.jpg"
+    question: "Name this (blue) vessel."
+    answer: ["posterior interventricular vein"]
+    definition: ""
+    tags: ["heart", "heart-lp-5", "coronary-circulation"]
 
 
 

@@ -4,6 +4,35 @@
 /* Import handwriting font */
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap');
 
+/* Submit button styling for navigation */
+.nav-submit {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.nav-submit:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.nav-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+/* Dark mode submit button */
+.dark-mode .nav-submit {
+    background-color: #10b981;
+}
+
+.dark-mode .nav-submit:hover {
+    background-color: #059669;
+}
+
 /* Header overrides for practical pages */
 .header-content {
     display: flex;
