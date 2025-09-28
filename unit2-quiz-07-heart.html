@@ -15,6 +15,7 @@
     </button>
     <div class="header">
         <div class="header-content">
+            <a href="index.html" class="home-link">← Home</a>
             <h1>Heart Quiz</h1>
             <div class="progress" id="progress">4 Questions</div>
         </div>
@@ -201,16 +202,11 @@
             const isLastQuestion = index >= quizData.questions.length - 1;
             document.getElementById('next-btn').disabled = isLastQuestion;
 
-            // Show/hide submit button based on whether we're at the last question
+            // Keep next button visible but disabled at the last question
             const nextBtn = document.getElementById('next-btn');
             const submitBtn = document.getElementById('inline-submit-btn');
-            if (isLastQuestion) {
-                nextBtn.style.display = 'none';
-                submitBtn.style.display = 'block';
-            } else {
-                nextBtn.style.display = 'block';
-                submitBtn.style.display = 'none';
-            }
+            nextBtn.style.display = 'block';
+            submitBtn.style.display = 'none';
 
             // Update answer sheet number highlighting
             document.querySelectorAll('.answer-number').forEach((btn, i) => {

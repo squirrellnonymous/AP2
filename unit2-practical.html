@@ -304,16 +304,11 @@
             const isLastQuestion = index >= maxIndex && !hasExtraCredit;
             document.getElementById('next-btn').disabled = isLastQuestion;
 
-            // Show/hide submit button based on whether we're at the last question
+            // Keep next button visible but disabled at the last question
             const nextBtn = document.getElementById('next-btn');
             const submitBtn = document.getElementById('inline-submit-btn');
-            if (isLastQuestion) {
-                nextBtn.style.display = 'none';
-                submitBtn.style.display = 'block';
-            } else {
-                nextBtn.style.display = 'block';
-                submitBtn.style.display = 'none';
-            }
+            nextBtn.style.display = 'block';
+            submitBtn.style.display = 'none';
 
             // Clear prominent styling for regular questions
             const prevBtn = document.getElementById('prev-btn');
@@ -418,16 +413,11 @@
             document.getElementById('prev-btn').disabled = false; // Can always go back from EC
             document.getElementById('next-btn').disabled = isLastExtraCredit; // Disable if on last EC
 
-            // Show/hide submit button for extra credit
+            // Keep next button visible but disabled for extra credit
             const nextBtn = document.getElementById('next-btn');
             const submitBtn = document.getElementById('inline-submit-btn');
-            if (isLastExtraCredit) {
-                nextBtn.style.display = 'none';
-                submitBtn.style.display = 'block';
-            } else {
-                nextBtn.style.display = 'block';
-                submitBtn.style.display = 'none';
-            }
+            nextBtn.style.display = 'block';
+            submitBtn.style.display = 'none';
 
             // Clear any prominent styling (removed distracting styling)
             const prevBtn = document.getElementById('prev-btn');

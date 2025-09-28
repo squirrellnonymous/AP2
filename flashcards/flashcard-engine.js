@@ -74,7 +74,13 @@ async function loadFlashcards() {
             console.log('Loading from practical source:', practicalParams.source);
             console.log('Filtering by tags:', practicalParams.tags);
 
-            const fetchUrl = `../data/practice-${practicalParams.source}.yml`;
+            // Map source parameter to actual filename
+            const sourceMap = {
+                'practical-2': 'unit2-practical',
+                'practical': 'practice-practical'
+            };
+            const actualFilename = sourceMap[practicalParams.source] || practicalParams.source;
+            const fetchUrl = `../data/${actualFilename}.yml`;
             console.log('Fetching practical data:', fetchUrl);
 
             const response = await fetch(fetchUrl);
@@ -124,7 +130,7 @@ async function loadFlashcards() {
             const setName = getFlashcardSet();
             console.log('Set name:', setName);
 
-            const fetchUrl = `sets/${setName}.yml`;
+            const fetchUrl = `flashcards/sets/${setName}.yml`;
             console.log('Fetching:', fetchUrl);
 
             const response = await fetch(fetchUrl);
