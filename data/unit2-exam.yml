@@ -1,4 +1,4 @@
-title: "Unit 2 Practice Exam — Blood<span style='color: #9ca3af'>, Heart, and Blood Vessels</span>"
+title: "Unit 2 Practice Exam — Blood, Heart, <span style='color: #9ca3af'>and Blood Vessels</span>"
 description: "Practice test covering Blood, Heart, and Vessels"
 
 multipleChoice:
@@ -174,9 +174,122 @@ multipleChoice:
     correct: 1
     tags: ["unit-2", "blood"]
 
+  - question: "During the ventricular ejection phase, pressure in the ventricles is greater than:"
+    options:
+      - "Only aorta and pulmonary trunk"
+      - "Only atria"
+      - "Atria, aorta, and pulmonary trunk"
+      - "Nothing"
+    correct: 2
+    tags: ["unit-2", "heart", "cardiac-cycle"]
 
+  - question: "Aldosterone _____ blood volume and therefore _____ cardiac output."
+    options:
+      - "decreases; increases"
+      - "decreases; decreases"
+      - "increases; increases"
+      - "increases; decreases"
+    correct: 2
+    tags: ["unit-2", "heart", "hormones"]
 
+  - question: "Approximately 70-80 percent of ventricular filling occurs during:"
+    options:
+      - "atrial diastole"
+      - "isovolumetric contraction"
+      - "ventricular systole"
+      - "atrial systole"
+    correct: 0
+    tags: ["unit-2", "heart", "cardiac-cycle"]
 
+  - question: "During full depolarization in pacemaker cells, _____ rushes into the cell."
+    options:
+      - "Nonspecific cations"
+      - "Calcium"
+      - "Potassium"
+      - "Sodium"
+    correct: 1
+    tags: ["unit-2", "heart", "electrophysiology"]
+
+  - question: "Which of the following statements are true?"
+    options:
+      - "The endocardium performs the work of the heart."
+      - "Papillary muscles prevent the AV valves from prolapsing (bulging) excessively into the atria when the ventricles contract."
+      - "Venae cavae and pulmonary arteries carry oxygen rich blood."
+      - "The ventricles are almost empty at the end of ventricular diastole."
+    correct: 1
+    tags: ["unit-2", "heart", "anatomy"]
+
+  - question: "Which of the following, if increased, would also increase cardiac output?"
+    options:
+      - "End diastolic volume"
+      - "Afterload"
+      - "Vagus nerve stimulation"
+      - "Release of atrial natriuretic hormone"
+    correct: 0
+    tags: ["unit-2", "heart", "cardiac-output"]
+
+  - question: "At the end of ventricular systole, the ventricles contain the least volume of blood at any point in the cardiac cycle. That volume is referred to as the:"
+    options:
+      - "end systolic volume"
+      - "end diastolic volume"
+      - "ejection fraction"
+      - "stroke volume"
+    correct: 0
+    tags: ["unit-2", "heart", "cardiac-cycle"]
+
+  - question: "The ST segment of an ECG represents what event?"
+    options:
+      - "Ventricular plateau phase"
+      - "Ventricular depolarization"
+      - "Atrial depolarization"
+      - "Time for signal to get from SA node to ventricles"
+    correct: 0
+    tags: ["unit-2", "heart", "ecg"]
+
+  - question: "The plateau phase is caused by what?"
+    options:
+      - "Potassium rushing in and calcium rushing out"
+      - "Calcium rushing in and potassium rushing out"
+      - "Sodium rushing in and potassium rushing out"
+      - "Potassium rushing in and sodium rushing out"
+    correct: 1
+    tags: ["unit-2", "heart", "electrophysiology"]
+
+  - question: "The slow depolarization phase of pacemaker action potentials is caused by what?"
+    options:
+      - "Cation inflow"
+      - "K+ inflow"
+      - "K+ outflow"
+      - "Cation outflow"
+    correct: 0
+    tags: ["unit-2", "heart", "electrophysiology"]
+
+  - question: "The initial phase of ventricular contraction in which tension and pressure in the ventricle increases, but no blood is pumped or ejected from the heart is referred to as:"
+    options:
+      - "bradycardia"
+      - "diastole"
+      - "syncope"
+      - "isovolumetric contraction"
+    correct: 3
+    tags: ["unit-2", "heart", "cardiac-cycle"]
+
+  - question: "In the rapid depolarization phase of contractile cells, _____ rushes into the cell."
+    options:
+      - "Calcium"
+      - "Potassium"
+      - "Nonspecific cations"
+      - "Sodium"
+    correct: 3
+    tags: ["unit-2", "heart", "electrophysiology"]
+
+  - question: "Which is NOT true for cardiac muscle?"
+    options:
+      - "Cardiac myocytes are capable of autorhythmicity"
+      - "Cardiac myocytes depend on anaerobic metabolism"
+      - "Cardiac myocytes have a long refractory period"
+      - "Cardiac myocytes usually have a single nucleus"
+    correct: 1
+    tags: ["unit-2", "heart", "muscle-properties"]
 
 trueMakeTrue:
   - statement: "The formed element that carries gasses is an ***eosinophil***."

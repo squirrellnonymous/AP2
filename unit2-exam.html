@@ -43,6 +43,7 @@
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <script>
         let quizData = null;
+        let selectedQuestions = null;
 
         // Load quiz data from YAML file
         async function loadQuizData() {
@@ -78,10 +79,24 @@
             if (!quizData || !quizData.multipleChoice) return;
 
             const container = document.getElementById('questions-container');
-            const questions = quizData.multipleChoice;
+            const allQuestions = quizData.multipleChoice;
+
+            // Separate questions by category and randomly select from each
+            const bloodQuestions = allQuestions.filter(q => q.tags && q.tags.includes('blood'));
+            const heartQuestions = allQuestions.filter(q => q.tags && q.tags.includes('heart'));
+
+            // Randomly select 15 blood questions and 12 heart questions
+            const shuffledBlood = [...bloodQuestions].sort(() => 0.5 - Math.random());
+            const shuffledHeart = [...heartQuestions].sort(() => 0.5 - Math.random());
+
+            const selectedBlood = shuffledBlood.slice(0, Math.min(15, bloodQuestions.length));
+            const selectedHeart = shuffledHeart.slice(0, Math.min(12, heartQuestions.length));
+
+            // Combine and shuffle the final selection
+            selectedQuestions = [...selectedBlood, ...selectedHeart].sort(() => 0.5 - Math.random());
 
             // Render multiple choice questions
-            questions.forEach((question, index) => {
+            selectedQuestions.forEach((question, index) => {
                 const questionCard = document.createElement('div');
                 questionCard.className = 'question-card';
 
@@ -306,7 +321,7 @@
 
         function calculateFinalScore() {
             // Update progress with detailed breakdown
-            const mcCount = questions.length;
+            const mcCount = selectedQuestions.length;
             const tmtCount = quizData.trueMakeTrue ? quizData.trueMakeTrue.length : 0;
             const essayCount = quizData.essay ? quizData.essay.length : 0;
             const totalQuestions = mcCount + tmtCount + essayCount;
@@ -350,10 +365,10 @@
         }
 
         function checkAnswers() {
-            if (!quizData || !quizData.multipleChoice) return;
+            if (!quizData || !selectedQuestions) return;
 
             // Check for blank answers before proceeding
-            const questions = quizData.multipleChoice;
+            const questions = selectedQuestions;
             let blankMC = 0;
             let blankTMT = 0;
             let blankTable = 0;
@@ -589,7 +604,7 @@
             }
 
             // Get existing MC and TMT scores
-            const questions = quizData.multipleChoice || [];
+            const questions = selectedQuestions || [];
             const tmtQuestions = quizData.trueMakeTrue || [];
 
             let mcScore = 0, tmtScore = 0;
