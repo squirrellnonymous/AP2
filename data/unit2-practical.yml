@@ -405,7 +405,7 @@ questions:
   - id: 58
     image: "practical-2/58.jpg"
     question: "Name this (blue) vessel."
-    answer: ["great cardiac vein"]
+    answer: ["coronary sinus"]
     definition: ""
     tags: ["heart", "heart-lp-5", "coronary-circulation"]
 
@@ -413,6 +413,20 @@ questions:
     image: "practical-2/59.jpg"
     question: "Name this (blue) vessel."
     answer: ["posterior interventricular vein"]
+    definition: ""
+    tags: ["heart", "heart-lp-5", "coronary-circulation"]
+
+  - id: 60
+    image: "practical-2/60.jpg"
+    question: "Name the structure."
+    answer: ["trabeculea carneae"]
+    definition: ""
+    tags: ["heart", "heart-lp-4", "heart-anatomy"]
+
+  - id: 61
+    image: "practical-2/61.jpg"
+    question: "Name this (blue) vessel."
+    answer: ["great cardiac vein"]
     definition: ""
     tags: ["heart", "heart-lp-5", "coronary-circulation"]
 
