@@ -271,7 +271,6 @@
             if (!practicalData || !practicalData.validQuestions) return;
 
             // Reset extra credit state when viewing regular questions
-            console.log('Resetting extra credit state, going to regular question', index + 1);
             isViewingExtraCredit = false;
             currentExtraCreditIndex = -1;
 
@@ -289,7 +288,6 @@
                 // Update inline answer elements
                 const inlineNumber = document.getElementById('inline-question-number');
                 const inlineInput = document.getElementById('inline-answer-input');
-                console.log('Updating inline elements - question number:', index + 1);
                 inlineNumber.textContent = index + 1;
                 const currentAnswer = document.querySelector(`input[name="answer${index + 1}"]`);
                 inlineInput.value = currentAnswer ? currentAnswer.value : '';
@@ -380,7 +378,6 @@
             const imageElement = document.getElementById('current-image');
             imageElement.src = '';
             const imagePath = `images/${question.image}`;
-            console.log('Loading extra credit image:', imagePath);
             imageElement.src = imagePath;
 
             // Update question text for extra credit

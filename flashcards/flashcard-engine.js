@@ -36,7 +36,8 @@ function getPracticalParams() {
     const urlParams = new URLSearchParams(window.location.search);
     return {
         source: urlParams.get('source'),
-        tags: urlParams.get('tags') ? urlParams.get('tags').split(',').map(tag => tag.trim()) : null
+        tags: urlParams.get('tags') ? urlParams.get('tags').split(',').map(tag => tag.trim()) : null,
+        title: urlParams.get('title')
     };
 }
 
@@ -108,14 +109,11 @@ async function loadFlashcards() {
         termImage.classList.remove('hidden');
         loadingOverlay.style.display = 'block';
 
-        console.log('Starting to load flashcards...');
-        console.log('Current URL:', window.location.href);
 
         // Check if js-yaml is loaded first
         if (typeof jsyaml === 'undefined') {
             throw new Error('js-yaml library not loaded - CDN may be blocked');
         }
-        console.log('js-yaml loaded successfully');
 
         // Check if we're loading from practical data or flashcard set
         const practicalParams = getPracticalParams();
@@ -123,8 +121,6 @@ async function loadFlashcards() {
 
         if (practicalParams.source) {
             // Load from practical data
-            console.log('Loading from practical source:', practicalParams.source);
-            console.log('Filtering by tags:', practicalParams.tags);
 
             // Map source parameter to actual filename
             const sourceMap = {
@@ -133,7 +129,6 @@ async function loadFlashcards() {
             };
             const actualFilename = sourceMap[practicalParams.source] || practicalParams.source;
             const fetchUrl = `../data/${actualFilename}.yml`;
-            console.log('Fetching practical data:', fetchUrl);
 
             const response = await fetch(fetchUrl);
             if (!response.ok) {
@@ -159,8 +154,8 @@ async function loadFlashcards() {
                 });
             }
 
-            // Generate descriptive title based on tags
-            const deckTitle = generateDeckTitle(practicalParams.tags, filteredQuestions.length);
+            // Use provided title or generate descriptive title based on tags
+            const deckTitle = practicalParams.title || generateDeckTitle(practicalParams.tags, filteredQuestions.length);
 
             // Convert to flashcard format
             data = {
@@ -179,31 +174,22 @@ async function loadFlashcards() {
                 }))
             };
 
-            console.log(`Loaded ${filteredQuestions.length} cards from ${practicalData.questions.length} total questions`);
         } else {
             // Load from flashcard set (existing behavior)
             const setName = getFlashcardSet();
-            console.log('Set name:', setName);
-
             const fetchUrl = `flashcards/sets/${setName}.yml`;
-            console.log('Fetching:', fetchUrl);
 
             const response = await fetch(fetchUrl);
-            console.log('Fetch response status:', response.status);
-            console.log('Response OK:', response.ok);
 
             if (!response.ok) {
                 throw new Error(`Fetch failed: ${response.status} ${response.statusText}`);
             }
 
             const yamlText = await response.text();
-            console.log('YAML text length:', yamlText.length);
-            console.log('First 100 chars:', yamlText.substring(0, 100));
 
             data = jsyaml.load(yamlText);
         }
 
-        console.log('Parsed data cards count:', data.flashcards?.length);
 
         // Store set metadata
         flashcardSet = {
@@ -239,7 +225,10 @@ async function loadFlashcards() {
         shuffleCards();
 
         // App already shown above, just hide progress
-        document.getElementById('progress').classList.add('hidden');
+        const progressElement = document.getElementById('progress');
+        if (progressElement) {
+            progressElement.classList.add('hidden');
+        }
 
     } catch (error) {
         console.error('Error loading flashcards:', error);
@@ -368,7 +357,10 @@ function showCard() {
     // Flip reset already handled at the beginning of function
 
     // Update counter - show total count
-    document.getElementById('card-counter').textContent = `${allCards.length} cards`;
+    const cardCountElement = document.getElementById('card-count');
+    if (cardCountElement) {
+        cardCountElement.textContent = `${allCards.length} cards`;
+    }
 
     // Update navigation buttons
     updateNavigationButtons();
@@ -614,17 +606,14 @@ function resetCardPosition() {
 
 // Swipe left - "Need to review"
 function swipeLeft() {
-    console.log('swipeLeft() called');
     const currentCard = cards[currentIndex];
 
     if (studyMode === 'initial') {
         // Add to missed cards for review
         missedCards.push(currentCard);
         cardsReviewed++;
-        console.log('Swiped left - missed cards:', missedCards.length, 'reviewed:', cardsReviewed);
     } else if (studyMode === 'review') {
         // In review mode, still needs review - keep in missed cards
-        console.log('Still needs review in review mode');
     }
 
     // Animate like a real swipe - start slow, then accelerate
@@ -652,21 +641,18 @@ function swipeLeft() {
 
 // Swipe right - "I know this well"
 function swipeRight() {
-    console.log('swipeRight() called');
     const currentCard = cards[currentIndex];
 
     if (studyMode === 'initial') {
         // Add to known cards
         knownCards.push(currentCard);
         cardsReviewed++;
-        console.log('Swiped right - known cards:', knownCards.length, 'reviewed:', cardsReviewed);
     } else if (studyMode === 'review') {
         // In review mode, now knows it - remove from missed cards and add to known
         const cardIndex = missedCards.findIndex(card => card.id === currentCard.id);
         if (cardIndex > -1) {
             missedCards.splice(cardIndex, 1);
             knownCards.push(currentCard);
-            console.log('Moved from missed to known - missed:', missedCards.length, 'known:', knownCards.length);
         }
 
         // Also remove from current review deck
@@ -753,16 +739,13 @@ function nextCardAfterSwipe() {
 
 // Smart card advancement
 function advanceCard() {
-    console.log('advanceCard called - currentIndex:', currentIndex, 'cards.length:', cards.length, 'studyMode:', studyMode, 'cardsReviewed:', cardsReviewed);
 
     if (currentIndex < cards.length - 1) {
         // Move to next card
         currentIndex++;
-        console.log('Moving to next card, new index:', currentIndex);
         showCard(); // showCard() handles complete state reset
     } else if (studyMode === 'initial' && cardsReviewed >= allCards.length) {
         // Completed initial review - show results
-        console.log('All cards reviewed, showing results');
         showResults();
     } else if (studyMode === 'review') {
         // In review mode, loop through missed cards
@@ -770,7 +753,6 @@ function advanceCard() {
         showCard(); // showCard() handles complete state reset
     } else {
         // Safety fallback
-        console.log('Safety fallback - showing results');
         showResults();
     }
 }
@@ -852,10 +834,6 @@ function showResults() {
     document.getElementById('flashcard-app').classList.add('hidden');
     document.getElementById('results').classList.remove('hidden');
 
-    // Debug logging
-    console.log('Known cards:', knownCards.length, knownCards);
-    console.log('Missed cards:', missedCards.length, missedCards);
-    console.log('Cards reviewed:', cardsReviewed);
 
     // Update tally counts
     document.getElementById('known-count').textContent = knownCards.length;

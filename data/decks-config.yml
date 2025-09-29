@@ -1,0 +1,49 @@
+title: "Unit 2 Flashcard Decks"
+description: "Blood, Heart, & Circulatory System Study Decks"
+
+sections:
+  - name: "🩸 Blood"
+    decks:
+      - id: "leukocytes"
+        title: "🔬 Leukocytes (White Blood Cells)"
+        description: "Master the different types of white blood cells: neutrophils, lymphocytes, monocytes, eosinophils, and basophils."
+        source: "practical-2"
+        tags: ["leukocytes", "formed-elements"]
+
+      - id: "blood-disorders"
+        title: "🩸 Blood Disorders"
+        description: "Study blood conditions including sickle cell anemia, thrombocytosis, and leukemia from tissue samples."
+        source: "practical-2"
+        tags: ["blood-disorder"]
+
+  - name: "🫀 Heart"
+    decks:
+      - id: "heart-anatomy"
+        title: "🫶 Heart Anatomy: Internal Structures"
+        description: "Study heart chambers, valves, and internal anatomical features from lab practical images."
+        source: "practical-2"
+        tags: ["heart-lp-4"]
+
+      - id: "heart-layers"
+        title: "🥪 Heart Layers & Tissues"
+        description: "Learn the three heart wall layers: epicardium, myocardium, endocardium, plus pericardial membranes."
+        source: "unit2-practical"
+        tags: ["heart-layers"]
+
+      - id: "coronary-circulation"
+        title: "👑 Coronary Circulation"
+        description: "Focus on coronary arteries and veins: left and right coronary systems, interventricular branches, and cardiac veins."
+        source: "practical-2"
+        tags: ["coronary-circulation", "heart-lp-5"]
+
+      - id: "electrophysiology"
+        title: "📈 Electrophysiology"
+        description: "EKG waves: P wave (atrial depolarization), QRS complex (ventricular depolarization), and T wave."
+        source: "practical-2"
+        tags: ["ekg"]
+
+      - id: "complete-heart"
+        title: "💗 Complete Heart"
+        description: "<strong>Full deck:</strong> All heart structures combined for comprehensive review. Use after studying individual topics."
+        source: "practical-2"
+        tags: ["heart", "anatomy"]

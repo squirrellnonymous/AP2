@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Flashcards - Unit 2</title>
     <link rel="stylesheet" href="css/shared.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <style>
         body {
             background: #f8fafc !important;
@@ -73,6 +74,7 @@
             border-radius: 8px;
             font-weight: 500;
             border: 1px solid #e2e8f0;
+            transition: opacity 0.3s ease-in-out;
         }
 
         .deck-link {
@@ -284,8 +286,10 @@
         </div>
     </div>
 
+    <!-- Dynamic deck sections will be loaded here -->
+    <div id="decks-container"></div>
+
     <div class="container">
-        <div class="section-header">🩸 Blood</div>
 
         <div class="deck-grid">
             <div class="deck-card">
@@ -297,7 +301,7 @@
                         Master the different types of white blood cells: neutrophils, lymphocytes, monocytes, eosinophils, and basophils.
                     </div>
                     <div class="deck-stats">
-                        <span class="card-count">8 cards</span>
+                        <span class="card-count" data-source="practical-2" data-tags="leukocytes,formed-elements" style="opacity: 0;">8 cards</span>
                     </div>
                 </a>
                 <div class="quick-actions">
@@ -316,7 +320,7 @@
                         Study blood conditions including sickle cell anemia, thrombocytosis, and leukemia from tissue samples.
                     </div>
                     <div class="deck-stats">
-                        <span class="card-count">3 cards</span>
+                        <span class="card-count" data-source="practical-2" data-tags="blood-disorder" style="opacity: 0;">3 cards</span>
                     </div>
                 </a>
                 <div class="quick-actions">
@@ -327,24 +331,24 @@
             </div>
         </div>
 
-        <div class="section-header">❤️ Heart</div>
+        <div class="section-header">🫀 Heart</div>
 
         <div class="deck-grid">
 
             <div class="deck-card">
-                <a href="flashcards/flashcard-template.html?source=practical-2&tags=valve" class="deck-link">
+                <a href="flashcards/flashcard-template.html?source=practical-2&tags=heart-lp-4" class="deck-link">
                     <div class="deck-title">
-                        🚪 Heart Valves
+                        🫶 Heart Anatomy: Internal Structures
                     </div>
                     <div class="deck-description">
                         Study the three main heart valves: tricuspid, bicuspid (mitral), and aortic semilunar valves.
                     </div>
                     <div class="deck-stats">
-                        <span class="card-count">3 cards</span>
+                        <span class="card-count" data-source="practical-2" data-tags="heart-lp-4" style="opacity: 0;">18 cards</span>
                     </div>
                 </a>
                 <div class="quick-actions">
-                    <a href="flashcards/flashcard-template.html?source=practical-2&tags=valve" class="action-btn primary">
+                    <a href="flashcards/flashcard-template.html?source=practical-2&tags=heart-lp-4" class="action-btn primary">
                         🚀 Start Review
                     </a>
                 </div>
@@ -353,13 +357,13 @@
             <div class="deck-card">
                 <a href="flashcards/flashcard-template.html?source=unit2-practical&tags=heart-layers" class="deck-link">
                     <div class="deck-title">
-                        🧬 Heart Layers & Tissues
+                        🥪 Heart Layers & Tissues
                     </div>
                     <div class="deck-description">
                         Learn the three heart wall layers: epicardium, myocardium, endocardium, plus pericardial membranes.
                     </div>
                     <div class="deck-stats">
-                        <span class="card-count">6 cards</span>
+                        <span class="card-count" data-source="unit2-practical" data-tags="heart-layers" style="opacity: 0;">6 cards</span>
                     </div>
                 </a>
                 <div class="quick-actions">
@@ -369,36 +373,17 @@
                 </div>
             </div>
 
-            <div class="deck-card">
-                <a href="flashcards/flashcard-template.html?source=practical-2&tags=heart,heart-lp-5" class="deck-link">
-                    <div class="deck-title">
-                        🩸 Advanced Heart & Coronary System
-                    </div>
-                    <div class="deck-description">
-                        Advanced heart topics from lab practical 5: coronary circulation, cardiac sulcus, and detailed vessel anatomy.
-                    </div>
-                    <div class="deck-stats">
-                        <span class="card-count">10 cards</span>
-                    </div>
-                </a>
-                <div class="quick-actions">
-                    <a href="flashcards/flashcard-template.html?source=practical-2&tags=heart,heart-lp-5" class="action-btn primary">
-                        🚀 Start Review
-                    </a>
-                </div>
-            </div>
-
 
             <div class="deck-card">
                 <a href="flashcards/flashcard-template.html?source=practical-2&tags=coronary-circulation,heart-lp-5" class="deck-link">
                     <div class="deck-title">
-                        🔄 Coronary Circulation
+                        👑 Coronary Circulation
                     </div>
                     <div class="deck-description">
                         Focus on coronary arteries and veins: left and right coronary systems, interventricular branches, and cardiac veins.
                     </div>
                     <div class="deck-stats">
-                        <span class="card-count">9 cards</span>
+                        <span class="card-count" data-source="practical-2" data-tags="coronary-circulation,heart-lp-5" style="opacity: 0;">9 cards</span>
                     </div>
                 </a>
                 <div class="quick-actions">
@@ -411,13 +396,13 @@
             <div class="deck-card">
                 <a href="flashcards/flashcard-template.html?source=practical-2&tags=ekg" class="deck-link">
                     <div class="deck-title">
-                        📈 EKG Basics
+                        📈 Electrophysiology
                     </div>
                     <div class="deck-description">
-                        Learn to interpret EKG waves: P wave (atrial depolarization), QRS complex (ventricular depolarization), and T wave.
+                        EKG waves: P wave (atrial depolarization), QRS complex (ventricular depolarization), and T wave.
                     </div>
                     <div class="deck-stats">
-                        <span class="card-count">3 cards</span>
+                        <span class="card-count" data-source="practical-2" data-tags="ekg" style="opacity: 0;">3 cards</span>
                     </div>
                 </a>
                 <div class="quick-actions">
@@ -430,13 +415,13 @@
             <div class="deck-card">
                 <a href="flashcards/flashcard-template.html?source=practical-2&tags=heart,anatomy" class="deck-link">
                     <div class="deck-title">
-                        🫀 Complete Heart
+                        💗 Complete Heart
                     </div>
                     <div class="deck-description">
                         <strong>Full deck:</strong> All heart structures combined for comprehensive review. Use after studying individual topics.
                     </div>
                     <div class="deck-stats">
-                        <span class="card-count">41 cards</span>
+                        <span class="card-count" data-source="practical-2" data-tags="heart,anatomy" style="opacity: 0;">41 cards</span>
                     </div>
                 </a>
                 <div class="quick-actions">
@@ -546,6 +531,72 @@
             const url = `flashcards/flashcard-template.html?source=practical-2&tags=${selectedTags.join(',')}`;
             window.location.href = url;
         });
+
+        // Dynamic card count calculation
+        async function loadCardCounts() {
+            const cardCountElements = document.querySelectorAll('.card-count[data-source]');
+
+            for (const element of cardCountElements) {
+                const source = element.dataset.source;
+                const tags = element.dataset.tags ? element.dataset.tags.split(',').map(tag => tag.trim()) : [];
+
+                try {
+                    const count = await calculateCardCount(source, tags);
+                    element.textContent = `${count} card${count !== 1 ? 's' : ''}`;
+                    element.style.opacity = '1';
+                } catch (error) {
+                    console.error('Error calculating card count for', source, tags, error);
+                    element.textContent = 'Error loading count';
+                    element.style.opacity = '1';
+                }
+            }
+        }
+
+        async function calculateCardCount(source, tags) {
+            // Map source parameter to actual filename
+            const sourceMap = {
+                'practical-2': 'unit2-practical',
+                'practical': 'practice-practical',
+                'unit2-practical': 'unit2-practical'
+            };
+            const actualFilename = sourceMap[source] || source;
+            const fetchUrl = `data/${actualFilename}.yml`;
+
+            const response = await fetch(fetchUrl);
+            if (!response.ok) {
+                throw new Error(`Fetch failed: ${response.status} ${response.statusText}`);
+            }
+
+            const yamlText = await response.text();
+
+            // Check if js-yaml is loaded
+            if (typeof jsyaml === 'undefined') {
+                throw new Error('js-yaml library not loaded');
+            }
+
+            const practicalData = jsyaml.load(yamlText);
+
+            // Filter questions by tags if specified
+            let filteredQuestions = practicalData.questions;
+            if (tags && tags.length > 0) {
+                filteredQuestions = practicalData.questions.filter(question => {
+                    if (!question.tags || question.tags.length === 0) return false;
+                    return tags.some(tag => question.tags.includes(tag));
+                });
+            }
+
+            // Always exclude extra-credit questions unless explicitly requested
+            if (!tags || !tags.includes('extra-credit')) {
+                filteredQuestions = filteredQuestions.filter(question => {
+                    return !question.tags || !question.tags.includes('extra-credit');
+                });
+            }
+
+            return filteredQuestions.length;
+        }
+
+        // Load card counts when page loads
+        document.addEventListener('DOMContentLoaded', loadCardCounts);
     </script>
 </body>
 </html>
