@@ -195,7 +195,7 @@ questions:
   - id: 28
     image: "practical-2/28.jpg"
     question: "Name the structure"
-    answer: ["bicuspid valve", "left atrioventricular valve", "mitrial valve"]
+    answer: ["bicuspid valve", "left atrioventricular valve", "mitral valve"]
     definition: ""
     tags: ["heart", "anatomy", "valve", "heart-lp-4"]
 
