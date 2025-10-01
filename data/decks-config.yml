@@ -40,7 +40,7 @@ sections:
         title: "📈 Electrophysiology"
         description: "EKG waves: P wave (atrial depolarization), QRS complex (ventricular depolarization), and T wave."
         source: "practical-2"
-        tags: ["ekg"]
+        tags: ["ekg", "heart-electrophysiology"]
 
       - id: "complete-heart"
         title: "💗 Complete Heart"

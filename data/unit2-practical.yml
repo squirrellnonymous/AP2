@@ -283,7 +283,7 @@ questions:
   - id: 40
     image: "practical-2/40.jpg"
     question: "What does the highlighted region represent?"
-    answer: ["ventricular repolarization", "t wave ventricular repolarization", "t: atrial repolarization"]
+    answer: ["ventricular repolarization", "t wave ventricular repolarization", "t: ventricular repolarization"]
     definition: ""
     tags: ["heart", "ekg", "electrophysiology"]
 

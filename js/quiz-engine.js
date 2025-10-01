@@ -286,10 +286,155 @@ class QuizEngine {
         `;
     }
 
-    // Scoring methods would go here...
+    // Delegate to shared FuzzyMatcher utility
+    calculateSimilarity(student, correct) {
+        return FuzzyMatcher.calculateSimilarity(student, correct);
+    }
+
+    // Check answers and display results
     checkAnswers() {
-        // Implementation for checking answers and displaying results
-        // This would be similar to the existing logic but centralized
+        let totalScore = 0;
+        let maxScore = 0;
+        let results = [];
+
+        // Check multiple choice questions
+        if (this.selectedQuestions) {
+            this.selectedQuestions.forEach((question, index) => {
+                const selectedAnswer = document.querySelector(`input[name="q${index}"]:checked`);
+                const isCorrect = selectedAnswer && parseInt(selectedAnswer.value) === question.correct;
+
+                if (isCorrect) totalScore += 1;
+                maxScore += 1;
+
+                results.push({
+                    type: 'multiple-choice',
+                    question: question.question,
+                    isCorrect: isCorrect,
+                    selectedAnswer: selectedAnswer ? question.options[selectedAnswer.value] : 'No answer selected',
+                    correctAnswer: question.options[question.correct],
+                    score: isCorrect ? 1 : 0,
+                    maxScore: 1
+                });
+            });
+        }
+
+        // Check true/make true questions
+        if (this.quizData.trueMakeTrue) {
+            this.quizData.trueMakeTrue.forEach((question, index) => {
+                const selectedAnswer = document.querySelector(`input[name="tmt${index}"]:checked`);
+                const makeItTrueInput = document.querySelector(`input[name="correction${index}"]`);
+
+                let score = 0;
+                let maxQuestionScore = question.points || 2.5;
+
+                if (selectedAnswer) {
+                    const isTrue = selectedAnswer.value === 'true';
+                    if ((isTrue && question.isTrue) || (!isTrue && !question.isTrue)) {
+                        if (!isTrue && !question.isTrue) {
+                            // Check if they provided a correction using fuzzy matching
+                            const correction = makeItTrueInput.value.trim();
+                            if (correction) {
+                                const bestSimilarity = FuzzyMatcher.calculateBestSimilarity(correction, question.correctWord);
+
+                                if (bestSimilarity >= 0.7) {
+                                    score = maxQuestionScore * bestSimilarity;
+                                } else {
+                                    score = maxQuestionScore / 2; // Partial credit for identifying it as false
+                                }
+                            } else {
+                                score = maxQuestionScore / 2; // Partial credit for identifying it as false
+                            }
+                        } else {
+                            score = maxQuestionScore;
+                        }
+                    }
+                }
+
+                totalScore += score;
+                maxScore += maxQuestionScore;
+
+                results.push({
+                    type: 'true-make-true',
+                    question: question.statement,
+                    isCorrect: score === maxQuestionScore,
+                    hasPartialCredit: score > 0 && score < maxQuestionScore,
+                    selectedAnswer: selectedAnswer ? selectedAnswer.value : 'No answer selected',
+                    correction: makeItTrueInput.value,
+                    correctAnswer: question.isTrue ? 'True' : `False - Correct word(s): ${question.correctWord.join(', ')}`,
+                    score: score,
+                    maxScore: maxQuestionScore,
+                    similarity: correction ? FuzzyMatcher.calculateBestSimilarity(correction, question.correctWord) : 0
+                });
+            });
+        }
+
+        // Essay questions (no auto-grading)
+        if (this.quizData.essay) {
+            this.quizData.essay.forEach((question, index) => {
+                const textarea = document.querySelector(`textarea[name="essay${index}"]`);
+                const maxQuestionScore = question.points || 5;
+
+                maxScore += maxQuestionScore;
+
+                results.push({
+                    type: 'essay',
+                    question: question.question,
+                    answer: textarea.value,
+                    modelAnswer: question.answer,
+                    score: 0, // Will be manually graded
+                    maxScore: maxQuestionScore
+                });
+            });
+        }
+
+        this.displayResults(results, totalScore, maxScore);
+    }
+
+    displayResults(results, totalScore, maxScore) {
+        const resultsDiv = document.getElementById('results');
+        const scoreDiv = document.getElementById('score');
+
+        let resultsHTML = `<p><strong>Score: ${totalScore.toFixed(1)}/${maxScore} points</strong></p>`;
+
+        results.forEach((result, index) => {
+            const resultClass = result.isCorrect ? 'correct' :
+                              result.hasPartialCredit ? 'partial' : 'incorrect';
+
+            resultsHTML += `<div class="result-item ${resultClass}">`;
+            resultsHTML += `<h4>Question ${index + 1}: ${result.question}</h4>`;
+
+            if (result.type === 'multiple-choice') {
+                resultsHTML += `<p><strong>Your answer:</strong> ${result.selectedAnswer}</p>`;
+                resultsHTML += `<p><strong>Correct answer:</strong> ${result.correctAnswer}</p>`;
+            } else if (result.type === 'true-make-true') {
+                resultsHTML += `<p><strong>Your answer:</strong> ${result.selectedAnswer}`;
+                if (result.correction) {
+                    resultsHTML += ` - Correction: ${result.correction}`;
+                    if (result.hasPartialCredit && result.similarity) {
+                        resultsHTML += ` <span class="partial-credit">(${Math.round(result.similarity * 100)}% match)</span>`;
+                    }
+                }
+                resultsHTML += `</p>`;
+                resultsHTML += `<p><strong>Correct answer:</strong> ${result.correctAnswer}</p>`;
+            } else if (result.type === 'essay') {
+                resultsHTML += `<p><strong>Your answer:</strong></p><div class="essay-answer">${result.answer || 'No answer provided'}</div>`;
+                resultsHTML += `<p><strong>Model answer:</strong></p><div class="model-answer">${result.modelAnswer}</div>`;
+                resultsHTML += `<p><em>This question requires manual grading (${result.maxScore} points)</em></p>`;
+            }
+
+            resultsHTML += `<p><strong>Score:</strong> ${result.score.toFixed(1)}/${result.maxScore} points</p>`;
+            resultsHTML += `</div>`;
+        });
+
+        scoreDiv.innerHTML = resultsHTML;
+
+        document.getElementById('quiz-form').style.display = 'none';
+        resultsDiv.style.display = 'block';
+
+        // Show calculate final score button if there are essay questions
+        if (this.quizData.essay && this.quizData.essay.length > 0) {
+            document.getElementById('calculate-final-score').style.display = 'block';
+        }
     }
 }
 

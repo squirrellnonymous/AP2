@@ -316,31 +316,11 @@
                 const input = document.querySelector(`input[name="answer${questionNum}"]`);
                 const circle = document.querySelectorAll('.answer-number')[index];
 
-                // Normalize answers by removing leading articles and standardizing numerals
-                const normalizeAnswer = (answer) => {
-                    let normalized = answer.toLowerCase().trim();
-
-                    // Remove leading articles
-                    if (normalized.startsWith('the ')) {
-                        normalized = normalized.substring(4);
-                    } else if (normalized.startsWith('an ')) {
-                        normalized = normalized.substring(3);
-                    } else if (normalized.startsWith('a ')) {
-                        normalized = normalized.substring(2);
-                    }
-
-                    return normalized;
-                };
-
-                const normalizedStudentAnswer = normalizeAnswer(studentAnswer);
-
-                // Handle multiple correct answers or single answer
-                const isCorrect = Array.isArray(correctAnswer)
-                    ? correctAnswer.some(ans => {
-                        const normalizedCorrect = normalizeAnswer(ans);
-                        return normalizedStudentAnswer === normalizedCorrect;
-                    })
-                    : normalizedStudentAnswer === normalizeAnswer(correctAnswer);
+                // Use shared fuzzy matcher utility
+                const scoreResult = FuzzyMatcher.getDetailedScore(studentAnswer, correctAnswer);
+                const bestScore = scoreResult.score;
+                const isCorrect = scoreResult.isCorrect;
+                const hasPartialCredit = scoreResult.hasPartialCredit;
 
                 if (circle) {
                     // Remove active class from all circles first
@@ -355,6 +335,22 @@
                             displayDiv.className = 'answer-display correct';
                             displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span>`;
                             displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, null, question.image);
+                            displayDiv.style.cursor = 'pointer';
+                            input.parentNode.replaceChild(displayDiv, input);
+                        }
+                    } else if (hasPartialCredit) {
+                        circle.classList.add('result-partial');
+                        score += bestScore; // Add fractional score
+                        // Convert to display element with partial credit info
+                        if (input) {
+                            const displayAnswer = Array.isArray(correctAnswer)
+                                ? correctAnswer.join(' OR ')
+                                : correctAnswer;
+
+                            const displayDiv = document.createElement('div');
+                            displayDiv.className = 'answer-display partial';
+                            displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span><span class="partial-credit">(${Math.round(bestScore * 100)}%)</span>`;
+                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, displayAnswer, question.image);
                             displayDiv.style.cursor = 'pointer';
                             input.parentNode.replaceChild(displayDiv, input);
                         }
@@ -393,9 +389,10 @@
             });
 
             const percentage = total > 0 ? Math.round((score / total) * 100) : 0;
+            const displayScore = score % 1 === 0 ? score : score.toFixed(1); // Show decimal if needed
 
             document.getElementById('final-score').innerHTML = `
-                <strong>Final Score: ${score}/${total} (${percentage}%)</strong>
+                <strong>Final Score: ${displayScore}/${total} (${percentage}%)</strong>
             `;
             document.getElementById('final-score').style.display = 'block';
             document.querySelector('.submit-button').style.display = 'none';
@@ -551,11 +548,19 @@
             localStorage.setItem('theme', newTheme);
         });
 
-        // Load YAML parser
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js';
-        script.onload = loadQuiz;
-        document.head.appendChild(script);
+        // Load scripts
+        const fuzzyScript = document.createElement('script');
+        fuzzyScript.src = 'js/fuzzy-matcher.js';
+
+        const yamlScript = document.createElement('script');
+        yamlScript.src = 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js';
+        yamlScript.onload = loadQuiz;
+
+        fuzzyScript.onload = () => {
+            document.head.appendChild(yamlScript);
+        };
+
+        document.head.appendChild(fuzzyScript);
     </script>
 </body>
 </html>
