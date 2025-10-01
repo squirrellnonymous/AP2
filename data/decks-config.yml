@@ -2,33 +2,22 @@ title: "Unit 2 Flashcard Decks"
 description: "Blood, Heart, & Circulatory System Study Decks"
 
 sections:
-  - name: "🩸 Blood"
+  - name: "🩸 Blood Flashcards"
     decks:
-      - id: "leukocytes"
-        title: "🔬 Leukocytes (White Blood Cells)"
-        description: "Master the different types of white blood cells: neutrophils, lymphocytes, monocytes, eosinophils, and basophils."
+      - id: "blood"
+        title: "🔬 The Blood"
+        description: "erythrocytes, thrombocytes, neutrophils, lymphocytes, monocytes, eosinophils, basophils, and disorders"
         source: "practical-2"
-        tags: ["leukocytes", "formed-elements"]
+        tags: ["blood", "leukocytes", "formed-elements"]
 
-      - id: "blood-disorders"
-        title: "🩸 Blood Disorders"
-        description: "Study blood conditions including sickle cell anemia, thrombocytosis, and leukemia from tissue samples."
-        source: "practical-2"
-        tags: ["blood-disorder"]
-
-  - name: "🫀 Heart"
+  - name: "🫀 Heart Flashcards"
     decks:
-      - id: "heart-anatomy"
-        title: "🫶 Heart Anatomy: Internal Structures"
-        description: "Study heart chambers, valves, and internal anatomical features from lab practical images."
-        source: "practical-2"
-        tags: ["heart-lp-4"]
 
       - id: "heart-layers"
-        title: "🥪 Heart Layers & Tissues"
+        title: "🥪 Heart Tissues"
         description: "Learn the three heart wall layers: epicardium, myocardium, endocardium, plus pericardial membranes."
         source: "unit2-practical"
-        tags: ["heart-layers"]
+        tags: ["heart-layers", "tissue"]
 
       - id: "coronary-circulation"
         title: "👑 Coronary Circulation"
