@@ -74,6 +74,15 @@ multipleChoice:
     correct: 2
     tags: ["unit-2", "blood"]
 
+  - question: "Group AB blood"
+    options:
+      - "Produces both anti-A and anti-B antibodies"
+      - "Is the universal donor"
+      - "Produces both A and B antigens"
+      - "Is all of the above"
+    correct: 2
+    tags: ["unit-2", "blood"]
+
 
   - question: "A person who carries a recessive gene for a trait, such as the I<sup>A</sup>i genotype for Type A blood, who can have type O offspring is considered?"
     options:

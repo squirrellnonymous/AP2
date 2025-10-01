@@ -477,4 +477,24 @@ questions:
     definition: ""
     tags: ["heart", "heart-electrophysiology"]
 
+  - id: 68
+    image: "practical-2/68.jpg"
+    question: "Name the structure"
+    answer: ["Chordae tendineae"]
+    definition: ""
+    tags: ["heart", "pig-heart"]
+
+  - id: 69
+    image: "practical-2/69.jpg"
+    question: "Name the chamber"
+    answer: ["Right ventricle"]
+    definition: ""
+    tags: ["heart", "pig-heart"]
+
+  - id: 70
+    image: "practical-2/69.jpg"
+    question: "Name the structure"
+    answer: ["anterior interventricular sulcus"]
+    definition: ""
+    tags: ["heart", "pig-heart"]
 
