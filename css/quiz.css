@@ -25,50 +25,39 @@
 .options {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 4px;
 }
 
 .option {
     display: flex;
     align-items: center;
-    padding: 16px 20px;
-    border: 2px solid #e5e7eb;
-    border-radius: 12px;
+    padding: 4px 0;
     cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: #ffffff;
+    transition: all 0.2s ease;
+    background-color: transparent;
     position: relative;
 }
 
 .option:hover {
-    border-color: #6366f1;
-    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-    transform: translateX(4px);
-    box-shadow: 0 4px 8px rgba(99, 102, 241, 0.1);
+    background-color: #f8fafc;
 }
 
 .option.selected {
-    border-color: #6366f1;
-    background: linear-gradient(135deg, #eef2ff, #ddd6fe);
-    transform: translateX(4px);
+    background-color: #eef2ff;
 }
 
 .option.correct {
-    border-color: #10b981;
-    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-    transform: translateX(4px);
+    background-color: #ecfdf5;
 }
 
 .option.incorrect {
-    border-color: #ef4444;
-    background: linear-gradient(135deg, #fef2f2, #fecaca);
-    transform: translateX(4px);
+    background-color: #fef2f2;
 }
 
 .option input[type="radio"] {
-    margin-right: 16px;
-    width: 20px;
-    height: 20px;
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
     accent-color: #6366f1;
 }
 

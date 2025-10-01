@@ -75,12 +75,12 @@ multipleChoice:
     tags: ["unit-2", "blood"]
 
 
-  - question: "What is the term for a person who has one dominant gene and one recessive gene for a trait, such as the I<sup>A</sup>i genotype for Type A blood?"
+  - question: "A person who carries a recessive gene for a trait, such as the I<sup>A</sup>i genotype for Type A blood, who can have type O offspring is considered?"
     options:
-      - "Homozygous recessive."
-      - "Codominant."
-      - "Heterozygous (or heerzis)."
-      - "Polycythemic."
+      - "Homozygous recessive"
+      - "Codominant"
+      - "Heterozygous"
+      - "Polycythemic"
     correct: 2
     tags: ["unit-2", "blood"]
 
@@ -255,6 +255,24 @@ multipleChoice:
     correct: 1
     tags: ["unit-2", "heart", "electrophysiology"]
 
+  - question: "Why is it important to have a plateau phase in the heart?"
+    options:
+      - "So the atria and ventricles do not contract at the same time"
+      - "Allows time for blood to fill the heart"
+      - "Prevent the heart from beating too slow"
+      - "All of the above"
+    correct: 1
+    tags: ["unit-2", "heart"]
+
+  - question: "Which of the following would decrease stroke volume?"
+    options:
+      - "High end-diastolic volume"
+      - "A positive inotropic agent injected into a person"
+      - "Low venous return"
+      - "Reduced afterload"
+    correct: 2
+    tags: ["unit-2", "heart"]
+
   - question: "The slow depolarization phase of pacemaker action potentials is caused by what?"
     options:
       - "Cation inflow"
@@ -295,6 +313,12 @@ trueMakeTrue:
   - statement: "The formed element that carries gasses is an ***eosinophil***."
     isTrue: false
     correctWord: ["erythrocyte", "red blood cell"]
+    points: 2.5
+    tags: ["unit-2", "blood"]
+
+  - statement: "The ***intrinsic*** pathway begins with damage to tissue and release of factor III."
+    isTrue: false
+    correctWord: ["extrinsic"]
     points: 2.5
     tags: ["unit-2", "blood"]
     

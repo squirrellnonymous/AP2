@@ -1,6 +1,10 @@
 title: "Practice Practical #2"
 description: "Blood & the Heart"
 
+# Upload your images to: /images/practical-2/
+# Name them: 01.jpg, 02.jpg, 03.jpg, etc. 
+# Then update this YAML file with the correct answers
+
 questions:
   - id: 1
     image: "practical-2/01.jpg"
@@ -267,21 +271,21 @@ questions:
     question: "What is the highlighted region measuring?"
     answer: ["ventricular depolarization", "qrs complex ventricular depolarization", "qrs: ventricular depolarization"]
     definition: "The QRS complex represents a measurement of ventricular depolarization"
-    tags: ["heart", "ekg"]
+    tags: ["heart", "ekg", "electrophysiology"]
 
   - id: 39
     image: "practical-2/39.jpg"
     question: "What does the highlighted region represent?"
     answer: ["atrial depolarization", "p wave atrial depolarization", "p: atrial depolarization"]
     definition: ""
-    tags: ["heart", "ekg"]
+    tags: ["heart", "ekg", "electrophysiology"]
 
   - id: 40
     image: "practical-2/40.jpg"
     question: "What does the highlighted region represent?"
     answer: ["ventricular repolarization", "t wave ventricular repolarization", "t: atrial repolarization"]
     definition: ""
-    tags: ["heart", "ekg"]
+    tags: ["heart", "ekg", "electrophysiology"]
 
   - id: 41
     image: "practical-2/41.jpg"
@@ -430,9 +434,47 @@ questions:
     definition: ""
     tags: ["heart", "heart-lp-5", "coronary-circulation"]
 
+  - id: 62
+    image: "practical-2/62.jpg"
+    question: "Name the purple (pacemaker) structure"
+    answer: ["Sinoatrial Node", "SA Node"]
+    definition: ""
+    tags: ["heart", "heart-electrophysiology"]
+
+  - id: 63
+    image: "practical-2/63.jpg"
+    question: "Name the purple (pacemaker) structure"
+    answer: ["Atrioventricular Node", "AV Node"]
+    definition: ""
+    tags: ["heart", "heart-electrophysiology"]
+
+  - id: 64
+    image: "practical-2/64.jpg"
+    question: "Name the purple (pacemaker) structure(s)"
+    answer: ["perkinje fibers"]
+    definition: ""
+    tags: ["heart", "heart-electrophysiology"]
+
+  - id: 65
+    image: "practical-2/65.jpg"
+    question: "Name the purple (pacemaker) structure"
+    answer: ["Bundle of His", "AV Bundle", "Atrioventricular Bundle"]
+    definition: ""
+    tags: ["heart", "heart-electrophysiology"]
 
 
+  - id: 66
+    image: "practical-2/66.jpg"
+    question: "Name the purple (pacemaker) structure (hint: just one of the pair)"
+    answer: ["Left Bundle Branch"]
+    definition: ""
+    tags: ["heart", "heart-electrophysiology"]
 
-# Upload your images to: /images/practical-2/
-# Name them: 01.jpg, 02.jpg, 03.jpg, etc. (up to 42.jpg)
-# Then update this YAML file with the correct answers
+  - id: 67
+    image: "practical-2/67.jpg"
+    question: "Name the purple (pacemaker) structure (hint: just one of the pair)"
+    answer: ["Right Bundle Branch"]
+    definition: ""
+    tags: ["heart", "heart-electrophysiology"]
+
+
