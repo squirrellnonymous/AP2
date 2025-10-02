@@ -65,7 +65,7 @@ questions:
 
   - id: 9
     image: "practical-2/09.jpg"
-    question: "Name the missing factor or precurssor."
+    question: "Name the missing factor or precursor."
     answer: ["Prothrombin Factor 2"]
     definition: ""
     tags: ["clotting", "blood", "platelets"]
@@ -107,7 +107,7 @@ questions:
 
   - id: 15
     image: "practical-2/15.jpg"
-    question: "What anitbodies?"
+    question: "What antibodies?"
     answer: ["Anti-B antibodies", "antibodies against B antigens"]
     definition: ""
     tags: ["blood"]
@@ -255,7 +255,7 @@ questions:
   - id: 36
     image: "practical-2/36.jpg"
     question: "Name the vessel."
-    answer: ["left common corotid artery"]
+    answer: ["left common carotid artery"]
     definition: ""
     tags: ["heart", "anatomy", "heart-lp-4"]
 
@@ -318,7 +318,7 @@ questions:
   - id: 45
     image: "practical-2/45.jpg"
     question: "Name the structure."
-    answer: ["myocardium", "myocardium {heart muscle)"]
+    answer: ["myocardium", "myocardium (heart muscle)"]
     definition: ""
     tags: ["heart", "heart-layers"]
 
@@ -353,7 +353,7 @@ questions:
   - id: 50
     image: "practical-2/50.jpg"
     question: "name the type of dysrhythmia?"
-    answer: ["ventricular fibrullation"]
+    answer: ["ventricular fibrillation"]
     definition: ""
     tags: ["heart", "extra-credit"]
 
@@ -423,7 +423,7 @@ questions:
   - id: 60
     image: "practical-2/60.jpg"
     question: "Name the structure."
-    answer: ["trabeculea carneae"]
+    answer: ["trabeculae carneae"]
     definition: ""
     tags: ["heart", "heart-lp-4", "heart-anatomy"]
 
