@@ -451,7 +451,7 @@ questions:
   - id: 64
     image: "practical-2/64.jpg"
     question: "Name the purple (pacemaker) structure(s)"
-    answer: ["perkinje fibers"]
+    answer: ["purkinje fibers"]
     definition: ""
     tags: ["heart", "heart-electrophysiology"]
 

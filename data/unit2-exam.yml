@@ -273,7 +273,7 @@ multipleChoice:
     correct: 1
     tags: ["unit-2", "heart"]
 
-  - question: "Which of the following would decrease stroke volume?"
+  - question: "Which of the following would <strong>decrease</strong> stroke volume?"
     options:
       - "High end-diastolic volume"
       - "A positive inotropic agent injected into a person"
