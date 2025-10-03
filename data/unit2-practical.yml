@@ -68,7 +68,7 @@ questions:
     question: "Name the missing factor or precursor."
     answer: ["Prothrombin Factor 2"]
     definition: ""
-    tags: ["clotting", "blood", "platelets"]
+    tags: ["clotting", "blood", "platelets", "extra-credit"]
 
   - id: 10
     image: "practical-2/10.jpg"
