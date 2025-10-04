@@ -142,14 +142,14 @@ questions:
 
   - id: 20
     image: "practical-2/20.jpg"
-    question: "What is underneath the structure labeled Y?"
+    question: "What is the chamber underneath the structure labeled Y?"
     answer: ["right atrium"]
     definition: ""
     tags: ["heart", "heart-lp-4"]
 
   - id: 21
     image: "practical-2/21.jpg"
-    question: "Name the structure."
+    question: "Name the chamber."
     answer: ["left atrium"]
     definition: ""
     tags: ["heart", "heart-lp-4"]
@@ -296,28 +296,28 @@ questions:
 
   - id: 42
     image: "practical-2/42.jpg"
-    question: "Name the tissue"
-    answer: ["normal cardiac tissue", "heart muscle", "cardiac muscle", "myocardium"]
+    question: "Is this cardiac tissue normal or infarcted?"
+    answer: ["normal", "normal cardiac tissue"]
     definition: ""
-    tags: ["heart", "tissue", "heart-layers"]
+    tags: ["heart", "tissue", "myocardium"]
 
   - id: 43
     image: "practical-2/43.jpg"
-    question: ""
-    answer: ["infarcted cardiac tissue", "infarcted heart muscle", "infarcted cardiac muscle", "cardiac muscle (infarcted)"]
+    question: "Is this cardiac tissue normal or infarcted?"
+    answer: ["infarcted", "infarcted cardiac tissue", "infarcted heart muscle", "infarcted cardiac muscle", "cardiac muscle (infarcted)"]
     definition: ""
     tags: ["heart", "tissue"]
 
   - id: 44
     image: "practical-2/44.jpg"
-    question: "Name the structure."
+    question: "Name the layer."
     answer: ["Parietal pericardium"]
     definition: ""
     tags: ["heart", "membranes", "heart-layers"]
 
   - id: 45
     image: "practical-2/45.jpg"
-    question: "Name the structure."
+    question: "Name the layer."
     answer: ["myocardium", "myocardium (heart muscle)"]
     definition: ""
     tags: ["heart", "heart-layers"]
@@ -492,9 +492,82 @@ questions:
     tags: ["heart", "pig-heart"]
 
   - id: 70
-    image: "practical-2/69.jpg"
+    image: "practical-2/70.jpg"
     question: "Name the structure"
     answer: ["anterior interventricular sulcus"]
     definition: ""
     tags: ["heart", "pig-heart"]
+
+  - id: 71
+    question: "What is the most abundant type of leukocyte?"
+    answer: ["neutrophil"]
+    definition: "Never (neutrophil) Let Monkeys Eat Bananas."
+    tags: ["blood", "leukocytes"]
+
+  - id: 72
+    question: "What type of blood can a person with O- blood receive?"
+    answer: ["O-", "only O-", "just O-", "type O-"]
+    definition: "People with O- can only accept O- donor blood. Technically, they can have Rh positive O blood one time (the first time) but you would never risk that."
+    tags: ["blood", "leukocytes"]
+
+  - id: 73
+    question: "Name a type of white blood cell that lacks granular cytoplasm."
+    answer: ["lymphocyte", "monocyte"]
+    definition: "Lymphocytes and macrophages lack granules... they are agranulocytes."
+    tags: ["blood", "leukocytes"]
+
+  - id: 74
+    question: "Which white blood cell is the largest?"
+    answer: ["monocyte"]
+    definition: "Monocytes are the largest in the blood. "
+    tags: ["blood", "leukocytes"]  
+
+  - id: 75
+    question: "Which leukocyte aids in the inflammation process?"
+    answer: ["basophil"]
+    definition: "Basophils release histamines that aid in the inflammatory response."
+    tags: ["blood", "leukocytes"]  
+
+  - id: 76
+    question: "Elevated levels of which leukocyte would indicate a parasitic infection or allergic reaction?"
+    answer: ["eosinophil"]
+    definition: "Eosinophils are involved in allergic reactions and attack parasitic worms (ewww)."
+    tags: ["blood", "leukocytes"]  
+
+  - id: 77
+    question: "What does the hematocrit measure?"
+    answer: ["number of red blood cells", "red blood cell count", "erythrocyte count", "percentage of blood that is erythrocytes"]
+    definition: "Basophils release histamines that aid in the inflammatory response."
+    tags: ["blood", "hematocrit"]  
+
+  - id: 78
+    question: "Name one reason a female person's hematocrit is generally lower than a male person's."
+    answer: ["menstruation", "testosterone", "body fat", "women have more body fat"]
+    definition: ""
+    tags: ["blood", "hematocrit"]
+
+  - id: 79
+    image: "practical-2/79.jpg"
+    question: "What is the structure in this tissue that prevents tearing?"
+    answer: ["desmosome"]
+    definition: ""
+    tags: ["heart", "tissue"]
+
+  - id: 80
+    question: "What is the structure in cardiac muscle tissue that stores calcium?"
+    answer: ["sarcoplasmic reticulum"]
+    definition: ""
+    tags: ["heart", "tissue"]
+
+  - id: 81
+    question: "What is the structure in cardiac muscle tissue that allows ions to pass between cells for rapid communication?"
+    answer: ["gap junction"]
+    definition: ""
+    tags: ["heart", "tissue"]
+
+  - id: 82
+    question: "What is the connection in cardiac muscle tissue that has both gap junctions and desmosomes?"
+    answer: ["intercalated disc"]
+    definition: ""
+    tags: ["heart", "tissue"]
 

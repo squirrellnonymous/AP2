@@ -414,12 +414,6 @@
 }
 
 .answer-number.result-partial {
-    background-color: #fbbf24;
-    border-color: #fbbf24;
-    color: white;
-}
-
-.answer-number.result-partial {
     background-color: #fef3c7;
     border-color: #f59e0b;
     color: #92400e;
@@ -730,11 +724,9 @@
     }
 
     .image-content img {
-        height: auto;
-        min-height: 200px;
-        max-height: 70vh;
+        height: 450px;
         width: 100%;
-        object-fit: contain;
+        object-fit: cover;
     }
 
     .answers-grid {

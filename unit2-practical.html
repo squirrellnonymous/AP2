@@ -160,10 +160,37 @@
                 return hasQuestion && hasAnswer && isNotExtraCredit;
             });
 
-            // Randomly select up to 40 questions from valid questions
-            let selectedQuestions = validQuestions;
+            // Separate image and text-only questions
+            const imageQuestions = validQuestions.filter(q => q.image);
+            const textOnlyQuestions = validQuestions.filter(q => !q.image);
+
+            // Smart selection with limited and distributed text-only questions
+            let selectedQuestions = [];
+
             if (validQuestions.length > 40) {
-                selectedQuestions = shuffleArray(validQuestions).slice(0, 40);
+                // If we have plenty of questions, limit text-only to max 12.5% of total (5 out of 40)
+                const maxTextOnly = Math.min(textOnlyQuestions.length, 5);
+                const numImageQuestions = 40 - maxTextOnly;
+
+                // Select questions
+                const selectedImageQuestions = shuffleArray(imageQuestions).slice(0, numImageQuestions);
+                const selectedTextOnlyQuestions = shuffleArray(textOnlyQuestions).slice(0, maxTextOnly);
+
+                // Distribute text-only questions evenly throughout the practical
+                selectedQuestions = [...selectedImageQuestions];
+                if (selectedTextOnlyQuestions.length > 0) {
+                    const spacing = Math.floor(selectedImageQuestions.length / selectedTextOnlyQuestions.length);
+                    selectedTextOnlyQuestions.forEach((textQ, index) => {
+                        const insertPosition = (index + 1) * spacing + index;
+                        selectedQuestions.splice(Math.min(insertPosition, selectedQuestions.length), 0, textQ);
+                    });
+                }
+
+                // Final shuffle to randomize while maintaining general distribution
+                selectedQuestions = shuffleArray(selectedQuestions);
+            } else {
+                // If we have fewer questions, just use them all but still shuffle
+                selectedQuestions = shuffleArray(validQuestions);
             }
 
             // Update practicalData to only include selected questions
@@ -282,8 +309,36 @@
             imageElement.src = '';
 
             if (question) {
-                imageElement.src = `images/${question.image}`;
-                document.getElementById('current-question-text').innerHTML = question.question || '';
+                if (question.image) {
+                    // Image-based question
+                    imageElement.src = `images/${question.image}`;
+                    imageElement.style.display = 'block';
+                    document.getElementById('current-question-text').innerHTML = question.question || '';
+                } else {
+                    // Text-only question - replace image with styled text
+                    imageElement.style.display = 'none';
+                    document.getElementById('current-question-text').innerHTML = `
+                        <div style="
+                            width: 100%;
+                            max-width: 600px;
+                            height: 450px;
+                            margin: 0 auto;
+                            padding: 0 32px;
+                            background-color: #f8fafc;
+                            border: 2px solid #e2e8f0;
+                            border-radius: 12px;
+                            text-align: center;
+                            font-size: 1.5rem;
+                            font-weight: 600;
+                            color: #1e293b;
+                            line-height: 1.6;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                        ">${question.question || ''}</div>&nbsp;
+                    `;
+                }
 
                 // Update inline answer elements
                 const inlineNumber = document.getElementById('inline-question-number');
@@ -374,14 +429,41 @@
             isViewingExtraCredit = true;
             currentExtraCreditIndex = extraCreditIndex;
 
-            // Update main image
+            // Update main image or text
             const imageElement = document.getElementById('current-image');
             imageElement.src = '';
-            const imagePath = `images/${question.image}`;
-            imageElement.src = imagePath;
 
-            // Update question text for extra credit
-            document.getElementById('current-question-text').innerHTML = question.question || 'Extra Credit Question';
+            if (question.image) {
+                // Image-based extra credit question
+                const imagePath = `images/${question.image}`;
+                imageElement.src = imagePath;
+                imageElement.style.display = 'block';
+                document.getElementById('current-question-text').innerHTML = question.question || 'Extra Credit Question';
+            } else {
+                // Text-only extra credit question
+                imageElement.style.display = 'none';
+                document.getElementById('current-question-text').innerHTML = `
+                    <div style="
+                        width: 100%;
+                        max-width: 600px;
+                        height: 450px;
+                        margin: 0 auto;
+                        padding: 0 32px;
+                        background-color: #f8fafc;
+                        border: 2px solid #e2e8f0;
+                        border-radius: 12px;
+                        text-align: center;
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        color: #1e293b;
+                        line-height: 1.6;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                    ">${question.question || 'Extra Credit Question'}</div>&nbsp;
+                `;
+            }
 
             // Update image counter for extra credit
             document.querySelector('.image-counter').innerHTML = `Extra Credit Question`;
@@ -587,7 +669,7 @@
                     return 1 - (distance / maxLength);
                 };
 
-                // Normalize answers by removing leading articles and standardizing numerals
+                // Normalize answers by removing leading articles, standardizing numerals, and handling plurals
                 const normalizeAnswer = (answer) => {
                     let normalized = answer.toLowerCase().trim();
 
@@ -603,6 +685,22 @@
                     // Convert Roman numerals to Arabic numerals
                     normalized = normalized.replace(/\bii\b/g, '2');
                     normalized = normalized.replace(/\bi\b/g, '1');
+
+                    // Handle common plural forms
+                    // Remove trailing 's' for simple plurals (but not for words ending in 'ss', 'us', etc.)
+                    if (normalized.endsWith('s') && normalized.length > 3 &&
+                        !normalized.endsWith('ss') && !normalized.endsWith('us') &&
+                        !normalized.endsWith('is') && !normalized.endsWith('os')) {
+                        normalized = normalized.slice(0, -1);
+                    }
+                    // Handle 'ies' -> 'y' (e.g., arteries -> artery)
+                    else if (normalized.endsWith('ies') && normalized.length > 4) {
+                        normalized = normalized.slice(0, -3) + 'y';
+                    }
+                    // Handle 'es' -> '' for some cases (e.g., valves -> valve)
+                    else if (normalized.endsWith('ves') && normalized.length > 4) {
+                        normalized = normalized.slice(0, -3) + 'fe';
+                    }
 
                     return normalized;
                 };
