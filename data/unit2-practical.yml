@@ -571,3 +571,13 @@ questions:
     definition: ""
     tags: ["heart", "tissue"]
 
+  - id: 83
+    question: "Which blood vessel is known as the &quot;widow maker&quot;?"
+    answer: ["anterior interventricular artery"]
+    definition: "if you have a heart attack in this artery you will suffer a lot of damage to the myocardium"
+    tags: ["heart", "coronary circulation", "extra-credit"]
+
+  - id: 84
+    question: ""
+    answer: ""
+    tagas: ""

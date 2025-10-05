@@ -294,15 +294,8 @@
             <h3>🎯 Build Custom Deck</h3>
             <p>Mix and match topics to create your perfect study session</p>
 
-            <div class="tag-selector">
-                <div class="tag-chip" data-tag="leukocytes">Leukocytes</div>
-                <div class="tag-chip" data-tag="heart">Heart</div>
-                <div class="tag-chip" data-tag="valves">Valves</div>
-                <div class="tag-chip" data-tag="ekg">EKG</div>
-                <div class="tag-chip" data-tag="tissue">Tissue</div>
-                <div class="tag-chip" data-tag="coronary-circulation">Circulation</div>
-                <div class="tag-chip" data-tag="blood">Blood</div>
-                <div class="tag-chip" data-tag="extra-credit">Extra Credit</div>
+            <div class="tag-selector" id="tag-selector">
+                <!-- Tags will be loaded dynamically -->
             </div>
 
             <button id="build-custom" class="build-btn" disabled>
@@ -351,34 +344,112 @@
         });
 
         // Custom deck builder functionality
-        const tagChips = document.querySelectorAll('.tag-chip');
         const buildButton = document.getElementById('build-custom');
         let selectedTags = [];
 
-        tagChips.forEach(chip => {
-            chip.addEventListener('click', () => {
-                const tag = chip.dataset.tag;
+        // Load all available tags from the YAML data
+        async function loadAvailableTags() {
+            try {
+                const response = await fetch('data/unit2-practical.yml');
+                const yamlText = await response.text();
+                const practicalData = jsyaml.load(yamlText);
 
-                if (chip.classList.contains('selected')) {
-                    chip.classList.remove('selected');
-                    selectedTags = selectedTags.filter(t => t !== tag);
-                } else {
-                    chip.classList.add('selected');
-                    selectedTags.push(tag);
-                }
+                // Extract all unique tags from questions
+                const allTags = new Set();
+                practicalData.questions.forEach(question => {
+                    if (question.tags && Array.isArray(question.tags)) {
+                        question.tags.forEach(tag => allTags.add(tag));
+                    }
+                });
 
-                if (selectedTags.length === 0) {
-                    buildButton.textContent = 'Study topics';
-                    buildButton.disabled = true;
-                } else if (selectedTags.length === 1) {
-                    buildButton.textContent = 'Study 1 topic';
-                    buildButton.disabled = false;
-                } else {
-                    buildButton.textContent = `Study ${selectedTags.length} topics`;
-                    buildButton.disabled = false;
-                }
+                // Convert to array and sort
+                const sortedTags = Array.from(allTags).sort();
+
+                // Create tag display names
+                const tagDisplayNames = {
+                    'blood': 'Blood',
+                    'leukocytes': 'Leukocytes',
+                    'heart': 'Heart',
+                    'heart-lp-4': 'Heart Anatomy',
+                    'heart-lp-5': 'Heart Circulation',
+                    'heart-layers': 'Heart Layers',
+                    'heart-electrophysiology': 'Heart Electrical',
+                    'valve': 'Valves',
+                    'valves': 'Valves',
+                    'ekg': 'EKG',
+                    'electrophysiology': 'Electrophysiology',
+                    'tissue': 'Tissue',
+                    'coronary-circulation': 'Coronary Circulation',
+                    'pig-heart': 'Pig Heart',
+                    'blood-clotting': 'Blood Clotting',
+                    'blood-disorder': 'Blood Disorders',
+                    'blood-type': 'Blood Types',
+                    'hematocrit': 'Hematocrit',
+                    'myocardium': 'Myocardium',
+                    'formed-elements': 'Formed Elements',
+                    'platelets': 'Platelets',
+                    'clotting': 'Clotting',
+                    'anemia': 'Anemia',
+                    'platelet-disorder': 'Platelet Disorders',
+                    'leukocyte-disorder': 'Leukocyte Disorders',
+                    'membranes': 'Membranes',
+                    'physiology': 'Physiology',
+                    'anatomy': 'Anatomy',
+                    'extra-credit': 'Extra Credit'
+                };
+
+                // Render tag chips
+                const tagSelector = document.getElementById('tag-selector');
+                tagSelector.innerHTML = sortedTags.map(tag => {
+                    const displayName = tagDisplayNames[tag] || tag.charAt(0).toUpperCase() + tag.slice(1);
+                    return `<div class="tag-chip" data-tag="${tag}">${displayName}</div>`;
+                }).join('');
+
+                // Add event listeners to the new tag chips
+                setupTagEventListeners();
+
+            } catch (error) {
+                console.error('Error loading tags:', error);
+                // Fallback to hardcoded tags if loading fails
+                const tagSelector = document.getElementById('tag-selector');
+                tagSelector.innerHTML = `
+                    <div class="tag-chip" data-tag="leukocytes">Leukocytes</div>
+                    <div class="tag-chip" data-tag="heart">Heart</div>
+                    <div class="tag-chip" data-tag="blood">Blood</div>
+                    <div class="tag-chip" data-tag="extra-credit">Extra Credit</div>
+                `;
+                setupTagEventListeners();
+            }
+        }
+
+        function setupTagEventListeners() {
+            const tagChips = document.querySelectorAll('.tag-chip');
+
+            tagChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const tag = chip.dataset.tag;
+
+                    if (chip.classList.contains('selected')) {
+                        chip.classList.remove('selected');
+                        selectedTags = selectedTags.filter(t => t !== tag);
+                    } else {
+                        chip.classList.add('selected');
+                        selectedTags.push(tag);
+                    }
+
+                    if (selectedTags.length === 0) {
+                        buildButton.textContent = 'Study topics';
+                        buildButton.disabled = true;
+                    } else if (selectedTags.length === 1) {
+                        buildButton.textContent = 'Study 1 topic';
+                        buildButton.disabled = false;
+                    } else {
+                        buildButton.textContent = `Study ${selectedTags.length} topics`;
+                        buildButton.disabled = false;
+                    }
+                });
             });
-        });
+        }
 
         buildButton.addEventListener('click', () => {
             if (selectedTags.length === 0) {
@@ -512,8 +583,11 @@
             `;
         }
 
-        // Load decks and card counts when page loads
-        document.addEventListener('DOMContentLoaded', loadDecks);
+        // Load decks, card counts, and tags when page loads
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadDecks();
+            await loadAvailableTags();
+        });
     </script>
 </body>
 </html>
