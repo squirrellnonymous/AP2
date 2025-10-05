@@ -537,7 +537,7 @@ questions:
   - id: 77
     question: "What does the hematocrit measure?"
     answer: ["number of red blood cells", "red blood cell count", "erythrocyte count", "percentage of blood that is erythrocytes"]
-    definition: "Basophils release histamines that aid in the inflammatory response."
+    definition: ""
     tags: ["blood", "hematocrit"]  
 
   - id: 78
