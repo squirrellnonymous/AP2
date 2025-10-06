@@ -523,7 +523,7 @@ questions:
     question: "Which white blood cell is the largest?"
     answer: ["monocyte"]
     definition: "Monocytes are the largest in the blood."
-    theme: "pathology"
+    theme: "wbc"
     tags: ["blood", "leukocytes"]  
 
   - id: 75

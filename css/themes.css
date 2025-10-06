@@ -24,6 +24,15 @@
     font-size: 1.6rem;
 }
 
+/* YAML: theme: "wbc" */
+.text-only-theme-wbc {
+    background: linear-gradient(135deg, #8b70ec 0%, #2252c4 100%);
+    color: #ffffff;
+    border-color: #4c51bf;
+    font-size: 1.6rem;
+}
+    
+
 /* YAML: theme: "highlight" */
 .text-only-theme-highlight {
     background-color: #065f46;
@@ -34,7 +43,7 @@
 
 /* YAML: theme: "blood" */
 .text-only-theme-blood {
-    background: linear-gradient(135deg, #90000c 0%, #65095a 100%);
+    background: linear-gradient(180deg, #90000c 0%, #65095a 100%);
     color: #ecfdf5;
     border-color: #2f0061;
     font-size: 1.8rem;
@@ -75,10 +84,10 @@
 /* Base text-only question styling */
 .text-only-question-box {
     width: 100%;
-    max-width: 600px;
+    max-width: 480px;
     height: 450px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 60px;
     border: 2px solid #e2e8f0;
     border-radius: 12px;
     text-align: center;
