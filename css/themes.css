@@ -1,0 +1,91 @@
+/* Text-Only Question Themes */
+
+/* Default theme - no theme specified in YAML */
+.text-only-theme-default {
+    background-color: #f8fafc;
+    color: #1e293b;
+    border-color: #e2e8f0;
+    font-size: 1.5rem;
+}
+
+/* YAML: theme: "blk-wht" */
+.text-only-theme-blk-wht {
+    background-color: #1a202c;
+    color: #f7fafc;
+    border-color: #2d3748;
+    font-size: 1.5rem;
+}
+
+/* YAML: theme: "elegant" */
+.text-only-theme-elegant {
+    background: linear-gradient(90deg, #667eea 0%, #6c3c9d 100%, #b00606 100%);
+    color: #ffffff;
+    border-color: #4c51bf;
+    font-size: 1.6rem;
+}
+
+/* YAML: theme: "highlight" */
+.text-only-theme-highlight {
+    background-color: #065f46;
+    color: #ecfdf5;
+    border-color: #059669;
+    font-size: 1.8rem;
+}
+
+/* YAML: theme: "blood" */
+.text-only-theme-blood {
+    background: linear-gradient(135deg, #90000c 0%, #65095a 100%);
+    color: #ecfdf5;
+    border-color: #2f0061;
+    font-size: 1.8rem;
+}
+
+/* YAML: theme: "emergency" */
+.text-only-theme-emergency {
+    background-color: #dc2626;
+    color: #ffffff;
+    border-color: #991b1b;
+    font-size: 1.7rem;
+}
+
+/* YAML: theme: "anatomy" */
+.text-only-theme-anatomy {
+    background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+    color: #ffffff;
+    border-color: #3730a3;
+    font-size: 1.6rem;
+}
+
+/* YAML: theme: "physiology" */
+.text-only-theme-physiology {
+    background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+    color: #ffffff;
+    border-color: #047857;
+    font-size: 1.5rem;
+}
+
+/* YAML: theme: "pathology" */
+.text-only-theme-pathology {
+    background: linear-gradient(135deg, #ec7093 0%, #ffae83 100%);
+    color: #26053e;
+    border-color: #e01c1c;
+    font-size: 1.6rem;
+}
+
+/* Base text-only question styling */
+.text-only-question-box {
+    width: 100%;
+    max-width: 600px;
+    height: 450px;
+    margin: 0 auto;
+    padding: 0 32px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
