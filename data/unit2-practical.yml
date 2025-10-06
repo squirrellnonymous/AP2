@@ -494,7 +494,7 @@ questions:
   - id: 70
     image: "practical-2/70.jpg"
     question: "Name the structure"
-    answer: ["anterior interventricular sulcus"]
+    answer: ["posterior interventricular sulcus"]
     definition: ""
     tags: ["heart", "pig-heart", "dissection"]
 
@@ -590,6 +590,26 @@ questions:
     tags: ["heart", "coronary circulation", "extra-credit"]
 
   - id: 84
-    question: ""
-    answer: ""
-    tagas: ""
+    image: "practical-2/84.jpg"
+    question: "What is the blood type?"
+    answer: ["A+", "Type A positive", "type A+"]
+    tagas: ["blood", "blood-typing"]
+
+  - id: 85
+    image: "practical-2/85.jpg"
+    question: "What is the blood type?"
+    answer: ["O-", "Type O negative", "type O-"]
+    tagas: ["blood", "blood-typing"]
+
+  - id: 86
+    question: "If a person has edema in their uppperbody and extremities due to a damaged AV valve, which valve is it? (right or left)"
+    answer: ["right", "right AV valve", "right atrioventricular valve", "tricuspid"]
+    definition: "if you have a heart attack in this artery you will suffer a lot of damage to the myocardium"
+    theme: "pathology"
+    tags: ["heart", "coronary circulation", "extra-credit"]
+
+  - id: 87
+    image: "practical-2/87.jpg"
+    question: "What is the chamber?"
+    answer: ["left ventricle"]
+    tagas: ["heart", "chambers"] 
