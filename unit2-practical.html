@@ -407,12 +407,21 @@
             if (question) {
                 if (question.image) {
                     // Image-based question
-                    imageElement.src = `images/${question.image}`;
+                    const imagePath = `images/${question.image}`;
+                    imageElement.src = imagePath;
                     imageElement.style.display = 'block';
                     document.getElementById('current-question-text').innerHTML = question.question || '';
+
+                    // Add click handler for full-size view on mobile
+                    imageElement.onclick = () => showFullImageModal(imagePath);
+                    imageElement.style.cursor = 'pointer';
+                    imageElement.title = 'Click to view full size';
                 } else {
                     // Text-only question - replace image with themed text box
                     imageElement.style.display = 'none';
+                    imageElement.onclick = null;
+                    imageElement.style.cursor = 'default';
+                    imageElement.title = '';
 
                     // Get theme class
                     const themeClass = getTextOnlyThemeClass(question.theme);
@@ -523,9 +532,17 @@
                 imageElement.src = imagePath;
                 imageElement.style.display = 'block';
                 document.getElementById('current-question-text').innerHTML = question.question || 'Extra Credit Question';
+
+                // Add click handler for full-size view on mobile
+                imageElement.onclick = () => showFullImageModal(imagePath);
+                imageElement.style.cursor = 'pointer';
+                imageElement.title = 'Click to view full size';
             } else {
                 // Text-only extra credit question
                 imageElement.style.display = 'none';
+                imageElement.onclick = null;
+                imageElement.style.cursor = 'default';
+                imageElement.title = '';
 
                 // Get theme class
                 const themeClass = getTextOnlyThemeClass(question.theme);
@@ -945,7 +962,7 @@
                             const displayDiv = document.createElement('div');
                             displayDiv.className = 'answer-display correct';
                             displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span> <span class="checkmark">✓</span>`;
-                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, studentAnswer, question.image);
+                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, correctAnswer, question.image, studentAnswer, 'correct');
                             displayDiv.style.cursor = 'pointer';
                             displayDiv.title = 'Click to see question and your answer';
                             input.parentNode.replaceChild(displayDiv, input);
@@ -959,7 +976,7 @@
                             const displayDiv = document.createElement('div');
                             displayDiv.className = 'answer-display partial';
                             displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span> <span class="partial-credit">½</span><br><small class="correct-answer">Correct: ${displayAnswer}</small>`;
-                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, studentAnswer, question.image);
+                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, correctAnswer, question.image, studentAnswer, 'partial');
                             displayDiv.style.cursor = 'pointer';
                             displayDiv.title = 'Click to see question and correction';
                             input.parentNode.replaceChild(displayDiv, input);
@@ -973,7 +990,7 @@
                             const displayDiv = document.createElement('div');
                             displayDiv.className = 'answer-display incorrect';
                             displayDiv.innerHTML = `<span class="student-answer incorrect">${studentAnswer}</span> <span class="cross">✗</span><br><small class="correct-answer">Correct: ${displayAnswer}</small>`;
-                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, studentAnswer, question.image);
+                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, correctAnswer, question.image, studentAnswer, 'incorrect');
                             displayDiv.style.cursor = 'pointer';
                             displayDiv.title = 'Click to see question and correction';
                             input.parentNode.replaceChild(displayDiv, input);
@@ -987,7 +1004,7 @@
                             const displayDiv = document.createElement('div');
                             displayDiv.className = 'answer-display unanswered';
                             displayDiv.innerHTML = `<span class="correct-answer">${displayAnswer}</span>`;
-                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, null, question.image);
+                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, correctAnswer, question.image, '', 'unanswered');
                             displayDiv.style.cursor = 'pointer';
                             input.parentNode.replaceChild(displayDiv, input);
                         }
@@ -1051,12 +1068,160 @@
             }
         }
 
+        function showFullImageModal(imagePath) {
+            // Remove any existing modal
+            const existingModal = document.querySelector('.full-image-modal');
+            if (existingModal) {
+                existingModal.remove();
+            }
+
+            // Create full image modal
+            const modal = document.createElement('div');
+            modal.className = 'full-image-modal';
+            modal.innerHTML = `
+                <div class="full-image-content">
+                    <div class="full-image-header">
+                        <button class="close-modal" onclick="this.parentElement.parentElement.parentElement.remove()">×</button>
+                    </div>
+                    <div class="full-image-container">
+                        <img src="${imagePath}" alt="Full size image" class="full-size-image" />
+                    </div>
+                </div>
+            `;
+
+            // Add to page
+            document.body.appendChild(modal);
+
+            // Add click outside to close
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        let currentModalIndex = 0;
+        let modalQuestions = [];
+
+        function buildModalQuestionsList() {
+            modalQuestions = [];
+
+            // Add regular questions
+            if (practicalData && practicalData.validQuestions) {
+                practicalData.validQuestions.forEach((question, index) => {
+                    modalQuestions.push({
+                        type: 'regular',
+                        index: index,
+                        questionNum: index + 1,
+                        question: question,
+                        questionText: question.question || 'What is the tissue/structure?',
+                        imagePath: question.image
+                    });
+                });
+            }
+
+            // Add extra credit questions
+            if (practicalData && practicalData.extraCreditQuestions) {
+                practicalData.extraCreditQuestions.forEach((question, index) => {
+                    modalQuestions.push({
+                        type: 'extra-credit',
+                        index: index,
+                        questionNum: 'EC',
+                        question: question,
+                        questionText: question.question || 'Extra Credit Question',
+                        imagePath: question.image
+                    });
+                });
+            }
+        }
+
+        function getQuestionData(modalQuestion) {
+            let studentAnswer = '';
+            let resultType = '';
+            let correctAnswer = modalQuestion.question.answer;
+
+            if (modalQuestion.type === 'regular') {
+                const answerInput = document.querySelector(`input[name="answer${modalQuestion.questionNum}"]`);
+                if (answerInput) {
+                    studentAnswer = answerInput.value.trim();
+                } else {
+                    // Check if it's been converted to display element
+                    const displayElement = document.querySelector(`.answer-item:nth-child(${modalQuestion.questionNum}) .answer-display`);
+                    if (displayElement) {
+                        const studentSpan = displayElement.querySelector('.student-answer');
+                        studentAnswer = studentSpan ? studentSpan.textContent : '';
+                    }
+                }
+
+                // Determine result type from answer number circle
+                const circle = document.querySelectorAll('.answer-number')[modalQuestion.index];
+                if (circle) {
+                    if (circle.classList.contains('result-correct')) resultType = 'correct';
+                    else if (circle.classList.contains('result-partial')) resultType = 'partial';
+                    else if (circle.classList.contains('result-incorrect')) resultType = 'incorrect';
+                    else if (circle.classList.contains('result-unanswered')) resultType = 'unanswered';
+                }
+            } else {
+                // Extra credit
+                const extraCreditInput = document.querySelector(`input[name="extra-credit-${modalQuestion.index}"]`);
+                if (extraCreditInput) {
+                    studentAnswer = extraCreditInput.value.trim();
+                } else {
+                    // Check if it's been converted to display element
+                    const displayElement = document.querySelector(`.extra-credit-item:nth-child(${modalQuestion.index + 1}) .answer-display`);
+                    if (displayElement) {
+                        const studentSpan = displayElement.querySelector('.student-answer');
+                        studentAnswer = studentSpan ? studentSpan.textContent : '';
+                    }
+                }
+
+                // Determine result type from extra credit button
+                const button = document.querySelectorAll('.extra-credit-button')[modalQuestion.index];
+                if (button) {
+                    if (button.classList.contains('result-correct')) resultType = 'correct';
+                    else if (button.classList.contains('result-partial')) resultType = 'partial';
+                    else if (button.classList.contains('result-incorrect')) resultType = 'incorrect';
+                    else if (button.classList.contains('result-unanswered')) resultType = 'unanswered';
+                }
+            }
+
+            return { studentAnswer, resultType, correctAnswer };
+        }
+
         function showQuestionPopup(questionNum, questionText, correctAnswer, imagePath, studentAnswer = '', resultType = '') {
+            // Build the questions list if not already built
+            if (modalQuestions.length === 0) {
+                buildModalQuestionsList();
+            }
+
+            // Find the index in our modal questions list
+            let targetIndex = 0;
+            if (questionNum === 'EC') {
+                // Find the extra credit question
+                targetIndex = modalQuestions.findIndex(q => q.type === 'extra-credit');
+            } else {
+                // Find the regular question
+                targetIndex = modalQuestions.findIndex(q => q.type === 'regular' && q.questionNum == questionNum);
+            }
+
+            if (targetIndex >= 0) {
+                currentModalIndex = targetIndex;
+            }
+
+            showModalAtIndex(currentModalIndex);
+        }
+
+        function showModalAtIndex(index) {
+            if (index < 0 || index >= modalQuestions.length) return;
+
             // Remove any existing popup
             const existingPopup = document.querySelector('.question-popup');
             if (existingPopup) {
                 existingPopup.remove();
             }
+
+            const modalQuestion = modalQuestions[index];
+            const { studentAnswer, resultType, correctAnswer } = getQuestionData(modalQuestion);
 
             // Format correct answer for display
             const displayCorrectAnswer = Array.isArray(correctAnswer)
@@ -1090,14 +1255,15 @@
                         responseClass = 'student-response-unanswered';
                         responseLabel = 'Your answer';
                         responseIcon = '—';
-                        studentAnswer = '(blank)';
                         break;
                 }
 
+                const displayStudentAnswer = resultType === 'unanswered' && !studentAnswer ? '(blank)' : studentAnswer;
+
                 studentResponseSection = `
                     <div class="popup-student-response ${responseClass}">
-                        <strong>${responseLabel}:</strong>
-                        <span class="response-text">${studentAnswer}</span>
+                        <div class="response-number">${modalQuestion.questionNum}</div>
+                        <span class="response-text">${displayStudentAnswer}</span>
                         <span class="response-icon">${responseIcon}</span>
                     </div>
                 `;
@@ -1108,10 +1274,19 @@
             if (resultType !== 'correct' && correctAnswer) {
                 correctAnswerSection = `
                     <div class="popup-correction">
-                        <strong>Correct answer:</strong> <span class="correction-text">${displayCorrectAnswer}</span>
+                        <span class="correction-text">${displayCorrectAnswer}</span>
                     </div>
                 `;
             }
+
+            // Navigation arrows
+            const navigationSection = `
+                <div class="modal-navigation">
+                    <button class="modal-nav-btn modal-prev" onclick="navigateModal(-1)" ${index === 0 ? 'disabled' : ''}>‹</button>
+                    <span class="modal-position">${index + 1} of ${modalQuestions.length}</span>
+                    <button class="modal-nav-btn modal-next" onclick="navigateModal(1)" ${index === modalQuestions.length - 1 ? 'disabled' : ''}>›</button>
+                </div>
+            `;
 
             // Create popup
             const popup = document.createElement('div');
@@ -1119,15 +1294,16 @@
             popup.innerHTML = `
                 <div class="popup-content">
                     <div class="popup-header">
-                        <h3>Question ${questionNum}</h3>
+                        <h3>Question ${modalQuestion.questionNum}</h3>
                         <button class="close-popup" onclick="this.parentElement.parentElement.parentElement.remove()">×</button>
                     </div>
-                    ${imagePath ? `<div class="popup-image">
-                        <img src="images/${imagePath}" alt="Question ${questionNum} image" />
+                    ${modalQuestion.imagePath ? `<div class="popup-image">
+                        <img src="images/${modalQuestion.imagePath}" alt="Question ${modalQuestion.questionNum} image" />
                     </div>` : ''}
-                    <div class="popup-question">${questionText || 'What is the tissue/structure?'}</div>
+                    <div class="popup-question">${modalQuestion.questionText}</div>
                     ${studentResponseSection}
                     ${correctAnswerSection}
+                    ${navigationSection}
                 </div>
             `;
 
@@ -1140,6 +1316,38 @@
                     popup.remove();
                 }
             });
+
+            // Add keyboard navigation
+            const handleKeydown = (e) => {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    navigateModal(-1);
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    navigateModal(1);
+                } else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    popup.remove();
+                    document.removeEventListener('keydown', handleKeydown);
+                }
+            };
+
+            document.addEventListener('keydown', handleKeydown);
+
+            // Remove event listener when popup is closed
+            const originalRemove = popup.remove.bind(popup);
+            popup.remove = () => {
+                document.removeEventListener('keydown', handleKeydown);
+                originalRemove();
+            };
+        }
+
+        function navigateModal(direction) {
+            const newIndex = currentModalIndex + direction;
+            if (newIndex >= 0 && newIndex < modalQuestions.length) {
+                currentModalIndex = newIndex;
+                showModalAtIndex(currentModalIndex);
+            }
         }
 
         function toggleQuestionDetail(questionNum) {

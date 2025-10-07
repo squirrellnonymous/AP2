@@ -29,7 +29,7 @@ questions:
 
   - id: 4
     image: "practical-2/04.jpg"
-    question: "What's the type of WBC?"
+    question: "What's the type of leukocyte?"
     answer: "Basophil"
     definition: "The least common white blood cells with blue-staining granules that release histamine during allergic reactions, closely related to tissue mast cells."
     tags: ["formed-elements", "leukocytes", "blood"]
@@ -44,7 +44,7 @@ questions:
 
   - id: 6
     image: "practical-2/06.jpg"
-    question: "Which WBC is this?"
+    question: "Which leukocyte is this?"
     answer: ["Eosinophil", "eosinophils"]
     definition: "White blood cell with characteristic pink-staining granules and typically a bilobed nucleus."
     tags: ["formed-elements", "leukocytes", "blood"]
@@ -500,7 +500,7 @@ questions:
 
   - id: 72
     question: "What type of blood can a person with O- blood receive?"
-    answer: ["O-", "only O-", "just O-", "type O-", "0-"]
+    answer: ["O-", "only O-", "just O-", "type O-"]
     definition: "People with O- can only accept O- donor blood. Technically, they can have Rh positive O blood one time (the first time) but you would never risk that."
     theme: "blood"
     tags: ["blood", "leukocytes"]
