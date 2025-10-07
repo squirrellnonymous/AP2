@@ -607,6 +607,91 @@
     font-weight: 500;
 }
 
+/* Student response styling in popup */
+.popup-student-response {
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.popup-student-response .response-text {
+    font-family: 'Kalam', cursive;
+    font-weight: 500;
+    flex: 1;
+}
+
+.popup-student-response .response-icon {
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.student-response-correct {
+    background-color: #ecfdf5;
+    border: 1px solid #10b981;
+}
+
+.student-response-correct .response-text {
+    color: #047857;
+}
+
+.student-response-correct .response-icon {
+    background-color: #10b981;
+    color: white;
+}
+
+.student-response-partial {
+    background-color: #fefbf0;
+    border: 1px solid #fbbf24;
+}
+
+.student-response-partial .response-text {
+    color: #92400e;
+}
+
+.student-response-partial .response-icon {
+    background-color: #fbbf24;
+    color: #92400e;
+    font-weight: bold;
+}
+
+.student-response-incorrect {
+    background-color: #fef2f2;
+    border: 1px solid #ef4444;
+}
+
+.student-response-incorrect .response-text {
+    color: #dc2626;
+}
+
+.student-response-incorrect .response-icon {
+    background-color: #ef4444;
+    color: white;
+}
+
+.student-response-unanswered {
+    background-color: #f3f4f6;
+    border: 1px solid #9ca3af;
+}
+
+.student-response-unanswered .response-text {
+    color: #6b7280;
+    font-style: italic;
+}
+
+.student-response-unanswered .response-icon {
+    background-color: #9ca3af;
+    color: white;
+}
+
 /* Results circles */
 .results-circles {
     display: flex;

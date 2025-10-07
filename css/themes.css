@@ -84,7 +84,7 @@
 /* Base text-only question styling */
 .text-only-question-box {
     width: 100%;
-    max-width: 480px;
+    max-width: 600px;
     height: 450px;
     margin: 0 auto;
     padding: 0 60px;
@@ -97,4 +97,23 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile responsive styles - scale down font size for longer text */
+@media (max-width: 768px) {
+    .text-only-question-box {
+        font-size: clamp(1.2rem, 3vw, 2rem);
+    }
+
+    /* Override theme-specific font sizes on mobile with responsive scaling */
+    .text-only-theme-default { font-size: clamp(1.2rem, 3vw, 1.5rem) !important; }
+    .text-only-theme-blk-wht { font-size: clamp(1.2rem, 3vw, 1.5rem) !important; }
+    .text-only-theme-elegant { font-size: clamp(1.3rem, 3.2vw, 1.6rem) !important; }
+    .text-only-theme-wbc { font-size: clamp(1.3rem, 3.2vw, 1.6rem) !important; }
+    .text-only-theme-highlight { font-size: clamp(1.4rem, 3.5vw, 1.8rem) !important; }
+    .text-only-theme-blood { font-size: clamp(1.4rem, 3.5vw, 1.8rem) !important; }
+    .text-only-theme-emergency { font-size: clamp(1.3rem, 3.2vw, 1.7rem) !important; }
+    .text-only-theme-anatomy { font-size: clamp(1.3rem, 3.2vw, 1.6rem) !important; }
+    .text-only-theme-physiology { font-size: clamp(1.2rem, 3vw, 1.5rem) !important; }
+    .text-only-theme-pathology { font-size: clamp(1.3rem, 3.2vw, 1.6rem) !important; }
 }

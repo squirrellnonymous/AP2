@@ -52,7 +52,7 @@ questions:
   - id: 7
     image: "practical-2/07.jpg"
     question: "What chemical signal does this formed element release?"
-    answer: ["Histamine", "Histamines"]
+    answer: ["Histamine", "Histamines", "Heparin"]
     definition: "Releases histamine during allergic reactions"
     tags: ["formed-elements", "leukocytes", "blood"]
 
@@ -366,56 +366,56 @@ questions:
 
   - id: 52
     image: "practical-2/52.jpg"
-    question: "Name the (red) vessel."
+    question: "Name the *red* vessel."
     answer: ["anterior interventricular artery", "left anterior descending artery"]
     definition: ""
     tags: ["heart", "heart-lp-5", "coronary-circulation"]
 
   - id: 53
     image: "practical-2/53.jpg"
-    question: "Name the (red) vessel."
+    question: "Name the *red* vessel."
     answer: ["circumflex branch of the left coronary artery", "left circumflex coronary artery", "left circumflex artery"]
     definition: "This artery branches off from the left coronary artery and goes around (circumflex ... like circle) the heart. It runs between the left atrium and the left ventricle."
     tags: ["heart", "heart-lp-5", "coronary-circulation"]
 
   - id: 54
     image: "practical-2/54.jpg"
-    question:  "Name the (red) vessel."
+    question:  "Name the *red* vessel."
     answer: ["marginal branch of the left coronary artery"]
     definition: ""
     tags: ["heart", "heart-lp-5", "coronary-circulation"]
 
   - id: 55
     image: "practical-2/55.jpg"
-    question: "What is the (red) vessel?"
+    question: "What is the *red* vessel?"
     answer: ["right coronary artery"]
     definition: "The right coronary artery branches off of the aorta and runs between the right atrium and ventricle to deliver freshly oxygenated blood. Coronary means crown-like (Latin)"
     tags: ["heart", "heart-lp-5", "coronary-circulation"]
 
   - id: 56
     image: "practical-2/56.jpg"
-    question: "What is the (red) vessel?"
+    question: "What is the *red* vessel?"
     answer: ["marginal branch of the right coronary artery"]
     definition: ""
     tags: ["heart", "heart-lp-5", "coronary-circulation"]
 
   - id: 57
     image: "practical-2/57.jpg"
-    question: "Name this (red) vessel on the back side of the heart."
+    question: "Name this *red* vessel on the back side of the heart."
     answer: ["posterior interventricular artery"]
     definition: ""
     tags: ["heart", "heart-lp-5", "coronary-circulation"]
 
   - id: 58
     image: "practical-2/58.jpg"
-    question: "Name this (blue) vessel."
+    question: "Name this *blue* vessel."
     answer: ["coronary sinus"]
     definition: ""
     tags: ["heart", "heart-lp-5", "coronary-circulation"]
 
   - id: 59
     image: "practical-2/59.jpg"
-    question: "Name this (blue) vessel."
+    question: "Name this *blue* vessel."
     answer: ["posterior interventricular vein"]
     definition: ""
     tags: ["heart", "heart-lp-5", "coronary-circulation"]
@@ -520,7 +520,7 @@ questions:
     tags: ["blood", "leukocytes"]  
 
   - id: 75
-    question: "Which leukocyte aids in the inflammation process?"
+    question: "Which leukocyte aids in the inflammation&nbsp;process?"
     answer: ["basophil"]
     definition: "Basophils release histamines that aid in the inflammatory response."
     theme: "pathology"
@@ -541,7 +541,7 @@ questions:
     tags: ["blood", "hematocrit"]  
 
   - id: 78
-    question: "Name one reason a hematocrit would be lower for a female than a male.</br>(1-2 word answer)"
+    question: "Name one reason a female would have a lower hematocrit than a male would.</br>(1-2 word answer)"
     answer: ["menstruation", "testosterone", "body fat", "adipose tissue", "women have more body fat"]
     definition: ""
     theme: "blood"

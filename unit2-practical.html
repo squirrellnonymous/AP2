@@ -822,7 +822,7 @@
                             const displayDiv = document.createElement('div');
                             displayDiv.className = 'answer-display correct';
                             displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span>`;
-                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, null, question.image);
+                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, studentAnswer, 'correct');
                             displayDiv.style.cursor = 'pointer';
                             input.parentNode.replaceChild(displayDiv, input);
                         }
@@ -837,7 +837,7 @@
                             const displayDiv = document.createElement('div');
                             displayDiv.className = 'answer-display partial';
                             displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span><span class="partial-indicator">(0.5)</span>`;
-                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, displayAnswer, question.image);
+                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, studentAnswer, 'partial');
                             displayDiv.style.cursor = 'pointer';
                             displayDiv.title = 'Click to see question and correction - Partial credit for close answer';
                             input.parentNode.replaceChild(displayDiv, input);
@@ -853,7 +853,7 @@
                             const displayDiv = document.createElement('div');
                             displayDiv.className = 'answer-display incorrect';
                             displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span>`;
-                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, displayAnswer, question.image);
+                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, studentAnswer, 'incorrect');
                             displayDiv.style.cursor = 'pointer';
                             displayDiv.title = 'Click to see question and correction';
                             input.parentNode.replaceChild(displayDiv, input);
@@ -868,7 +868,7 @@
                             const displayDiv = document.createElement('div');
                             displayDiv.className = 'answer-display unanswered';
                             displayDiv.innerHTML = `<span class="correct-answer">${displayAnswer}</span>`;
-                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, null, question.image);
+                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, '', 'unanswered');
                             displayDiv.style.cursor = 'pointer';
                             input.parentNode.replaceChild(displayDiv, input);
                         }
@@ -1051,11 +1051,66 @@
             }
         }
 
-        function showQuestionPopup(questionNum, questionText, correction, imagePath) {
+        function showQuestionPopup(questionNum, questionText, correctAnswer, imagePath, studentAnswer = '', resultType = '') {
             // Remove any existing popup
             const existingPopup = document.querySelector('.question-popup');
             if (existingPopup) {
                 existingPopup.remove();
+            }
+
+            // Format correct answer for display
+            const displayCorrectAnswer = Array.isArray(correctAnswer)
+                ? correctAnswer.join(' OR ')
+                : correctAnswer;
+
+            // Create student response section based on result type
+            let studentResponseSection = '';
+            if (studentAnswer || resultType === 'unanswered') {
+                let responseClass = '';
+                let responseLabel = '';
+                let responseIcon = '';
+
+                switch (resultType) {
+                    case 'correct':
+                        responseClass = 'student-response-correct';
+                        responseLabel = 'Your answer';
+                        responseIcon = '✓';
+                        break;
+                    case 'partial':
+                        responseClass = 'student-response-partial';
+                        responseLabel = 'Your answer';
+                        responseIcon = '½';
+                        break;
+                    case 'incorrect':
+                        responseClass = 'student-response-incorrect';
+                        responseLabel = 'Your answer';
+                        responseIcon = '✗';
+                        break;
+                    case 'unanswered':
+                        responseClass = 'student-response-unanswered';
+                        responseLabel = 'Your answer';
+                        responseIcon = '—';
+                        studentAnswer = '(blank)';
+                        break;
+                }
+
+                studentResponseSection = `
+                    <div class="popup-student-response ${responseClass}">
+                        <strong>${responseLabel}:</strong>
+                        <span class="response-text">${studentAnswer}</span>
+                        <span class="response-icon">${responseIcon}</span>
+                    </div>
+                `;
+            }
+
+            // Show correct answer for wrong, partial, or unanswered
+            let correctAnswerSection = '';
+            if (resultType !== 'correct' && correctAnswer) {
+                correctAnswerSection = `
+                    <div class="popup-correction">
+                        <strong>Correct answer:</strong> <span class="correction-text">${displayCorrectAnswer}</span>
+                    </div>
+                `;
             }
 
             // Create popup
@@ -1071,9 +1126,8 @@
                         <img src="images/${imagePath}" alt="Question ${questionNum} image" />
                     </div>` : ''}
                     <div class="popup-question">${questionText || 'What is the tissue/structure?'}</div>
-                    ${correction ? `<div class="popup-correction">
-                        <strong>Correct answer:</strong> <span class="correction-text">${correction}</span>
-                    </div>` : ''}
+                    ${studentResponseSection}
+                    ${correctAnswerSection}
                 </div>
             `;
 
