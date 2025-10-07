@@ -121,7 +121,7 @@ questions:
 
   - id: 17
     image: "practical-2/17.jpg"
-    question: "Name the area."
+    question: "Name the cavity."
     answer: ["pericardial cavity"]
     definition: ""
     tags: ["heart"]
@@ -491,13 +491,6 @@ questions:
     definition: ""
     tags: ["heart", "pig-heart", "dissection"]
 
-  - id: 70
-    image: "practical-2/70.jpg"
-    question: "Name the structure"
-    answer: ["posterior interventricular sulcus"]
-    definition: ""
-    tags: ["heart", "pig-heart", "dissection"]
-
   - id: 71
     question: "What is the most abundant type of leukocyte?"
     answer: ["neutrophil"]
@@ -507,7 +500,7 @@ questions:
 
   - id: 72
     question: "What type of blood can a person with O- blood receive?"
-    answer: ["O-", "only O-", "just O-", "type O-"]
+    answer: ["O-", "only O-", "just O-", "type O-", "0-"]
     definition: "People with O- can only accept O- donor blood. Technically, they can have Rh positive O blood one time (the first time) but you would never risk that."
     theme: "blood"
     tags: ["blood", "leukocytes"]
@@ -604,12 +597,12 @@ questions:
   - id: 86
     question: "If a person has edema in their uppperbody and extremities due to a damaged AV valve, which valve is it? (right or left)"
     answer: ["right", "right AV valve", "right atrioventricular valve", "tricuspid"]
-    definition: "if you have a heart attack in this artery you will suffer a lot of damage to the myocardium"
+    definition: ""
     theme: "pathology"
-    tags: ["heart", "coronary circulation", "extra-credit"]
+    tags: ["heart", "edema"]
 
   - id: 87
     image: "practical-2/87.jpg"
     question: "What is the chamber?"
     answer: ["left ventricle"]
-    tagas: ["heart", "chambers"] 
+    tagas: ["heart", "chambers"]
