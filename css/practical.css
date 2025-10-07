@@ -733,6 +733,7 @@
     color: white;
 }
 
+
 .student-response-partial {
     background-color: #fefbf0;
     border: 1px solid #fbbf24;
@@ -753,6 +754,7 @@
     font-weight: bold;
 }
 
+
 .student-response-incorrect {
     background-color: #fef2f2;
     border: 1px solid #ef4444;
@@ -771,6 +773,7 @@
     background-color: #ef4444;
     color: white;
 }
+
 
 .student-response-unanswered {
     background-color: #f3f4f6;
@@ -791,6 +794,7 @@
     background-color: #9ca3af;
     color: white;
 }
+
 
 /* Modal navigation */
 .modal-navigation {
