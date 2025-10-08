@@ -1,0 +1,30 @@
+title: "Practice Practical #2"
+description: "Blood & the Heart"
+
+# Upload your images to: /images/practical-2-2/
+# Name them: 01.jpg, 02.jpg, 03.jpg, etc. 
+# Then update this YAML file with the correct answers
+
+questions:
+  - id: 1
+    image: "practical-2-2/01.jpg"
+    question: "Name the layer (hint: they all have the same two-word name)"
+    answer: "tunica media"
+    definition: "Tunica media is the layer with smooth muscle and elestic fibers in arteries and veins. The capillaries, arterioles, and venules don't have tunica media."
+    tags: ["blood-vessels"]
+
+  - id: 2
+    question: "What type of cells are capillaries made of?"
+    answer: ["endothelial cells", "endothelial"]
+    definition: "Endothelial cells are a special type of epithelial cell."
+    theme: "blood"
+    tags: ["blood-vessels"]
+
+  - id: 3
+    question: "Which artery is the longest artery in the body?"
+    answer: ["femoral artery", "femoral"]
+    definition: "It's the femoral!"
+    theme: "blood"
+    tags: ["blood-vessels"]
+
+ 

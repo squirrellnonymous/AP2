@@ -381,7 +381,7 @@ questions:
   - id: 54
     image: "practical-2/54.jpg"
     question:  "Name the *red* vessel."
-    answer: ["marginal branch of the left coronary artery"]
+    answer: ["anterior interventricular artery"]
     definition: ""
     tags: ["heart", "heart-lp-5", "coronary-circulation"]
 
