@@ -1,5 +1,5 @@
-title: "Practice Practical #2"
-description: "Blood & the Heart"
+title: "Practice Practical #3 - Blood Vessels"
+description: "Blood Vessels"
 
 # Upload your images to: /images/practical-2-2/
 # Name them: 01.jpg, 02.jpg, 03.jpg, etc. 
@@ -8,20 +8,27 @@ description: "Blood & the Heart"
 questions:
   - id: 1
     image: "practical-2-2/01.jpg"
-    question: "Name the layer (hint: they all have the same two-word name)"
+    question: "Name the middle layer (hint: two word name)"
     answer: "tunica media"
-    definition: "Tunica media is the layer with smooth muscle and elestic fibers in arteries and veins. The capillaries, arterioles, and venules don't have tunica media."
+    definition: "Tunica media is the layer with smooth muscle and elestic fibers in arteries, arterioles, and veins. The capillaries and the venules don't have tunica media."
     tags: ["blood-vessels"]
 
   - id: 2
-    question: "What type of cells are capillaries made of?"
-    answer: ["endothelial cells", "endothelial"]
-    definition: "Endothelial cells are a special type of epithelial cell."
-    theme: "blood"
+    image: "practical-2-2/02.jpg"
+    question: "Name the outer layer (hint: two word name)"
+    answer: "tunica externa"
+    definition: "Tunica externa is the outermost connective tissue layer of vessels found in arteries, veins, and venules. The arterioles and capillaries don't have this layer."
     tags: ["blood-vessels"]
 
   - id: 3
-    question: "Which artery is the longest artery in the body?"
+    question: "What type of cells form the walls of capillaries?"
+    answer: ["endothelial cells", "endothelial"]
+    definition: "Endothelial cells are a special type of epithelial cell."
+    theme: "elegant"
+    tags: ["blood-vessels"]
+
+  - id: 4
+    question: "Which artery is the *longest&nbsp;artery* in the body?"
     answer: ["femoral artery", "femoral"]
     definition: "It's the femoral!"
     theme: "blood"
