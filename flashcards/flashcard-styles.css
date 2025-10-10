@@ -1,3 +1,6 @@
+/* Import shared theme styles */
+@import url('../css/themes.css');
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -169,12 +172,19 @@ h1 {
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    background: white;
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     padding: 40px;
     box-sizing: border-box;
     overflow: hidden;
+}
+
+.flip-card-front {
+    background: white; /* Default white background for image cards */
+}
+
+.flip-card-back {
+    background: white;
 }
 
 .flip-card-front {
@@ -213,12 +223,23 @@ h1 {
     gap: 15px;
 }
 
-/* Term display */
+/* Term display - base styles for image cards */
 .term {
+    text-align: center;
+}
+
+/* Term styles for image cards only */
+.term:not(.text-only-question-box) {
     font-size: 2.5rem;
     font-weight: 700;
     color: #1a1a1a;
-    text-align: center;
+}
+
+/* Remove card padding and background when displaying text-only questions */
+.flip-card-front:has(.text-only-question-box),
+.flip-card-back:has(.text-only-question-box) {
+    padding: 0;
+    background: transparent;
 }
 
 /* Image container for positioning overlay */
@@ -252,8 +273,8 @@ h1 {
     z-index: 10;
 }
 
-/* Smaller text when image is present */
-.term-content:has(.term-image:not(.hidden)) .term {
+/* Smaller text when image is present (image cards only) */
+.term-content:has(.term-image:not(.hidden)) .term:not(.text-only-question-box) {
     font-size: 1.5rem;
     font-weight: 600;
 }
@@ -558,4 +579,9 @@ h1 {
         font-size: 0.75rem;
         line-height: 1.2;
     }
+}
+
+/* Make theme classes override the default .flip-card-front white background */
+.flip-card-front[class*="text-only-theme-"] {
+    background: revert !important; /* Remove the white, let the text-only-theme-* class define it */
 }

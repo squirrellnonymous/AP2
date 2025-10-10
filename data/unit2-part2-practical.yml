@@ -20,18 +20,38 @@ questions:
     definition: "Tunica externa is the outermost connective tissue layer of vessels found in arteries, veins, and venules. The arterioles and capillaries don't have this layer."
     tags: ["blood-vessels"]
 
-  - id: 3
+  - id: 100
     question: "What type of cells form the walls of capillaries?"
     answer: ["endothelial cells", "endothelial"]
     definition: "Endothelial cells are a special type of epithelial cell."
-    theme: "elegant"
+    theme: "pathology"
     tags: ["blood-vessels"]
 
-  - id: 4
+  - id: 101
     question: "Which artery is the *longest&nbsp;artery* in the body?"
     answer: ["femoral artery", "femoral"]
     definition: "It's the femoral!"
     theme: "blood"
     tags: ["blood-vessels"]
 
+  - id: 03
+    image: "practical-2-2/03.jpg"
+    question: "What is the red vessel?"
+    answer: ["right axillary artery", "R axillary artery"]
+    definition: "This is the right side of the body and the vessel is an artery with red, oxygenated blood. It's the <strong>right axillary artery</strong> that is what the right subclavian artery turns into."
+    tags: ["blood-vessels", "bv-pg8"]
+
+  - id: 04
+    image: "practical-2-2/04.jpg"
+    question: "What is the red vessel?"
+    answer: ["right brachial artery", "R brachial artery"]
+    definition: "This is the right side of the body and the vessel is an artery with red, oxygenated blood. It's the <strong>right brachial artery</strong> that is what the right axillary artery turns into."
+    tags: ["blood-vessels", "bv-pg8"]
+
+  - id: 05
+    image: "practical-2-2/05.jpg"
+    question: "What is the red vessel?"
+    answer: ["right subclavian artery", "R subclavian artery"]
+    definition: "This is the right side of the body and the vessel is an artery with red, oxygenated blood. It's the <strong>right subclavian artery</strong> that branched off of the brachiocephalic trunk."
+    tags: ["blood-vessels", "bv-pg8"]
  

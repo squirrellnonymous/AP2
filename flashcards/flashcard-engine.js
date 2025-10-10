@@ -34,8 +34,16 @@ function getFlashcardSet() {
 // Get practical source and tags from URL parameters
 function getPracticalParams() {
     const urlParams = new URLSearchParams(window.location.search);
+    const source = urlParams.get('source');
+
+    // Update back link based on source
+    const backLink = document.getElementById('back-link');
+    if (backLink && source === 'practical-2-2') {
+        backLink.href = '../unit2-part2-flashcards.html';
+    }
+
     return {
-        source: urlParams.get('source'),
+        source: source,
         tags: urlParams.get('tags') ? urlParams.get('tags').split(',').map(tag => tag.trim()) : null,
         title: urlParams.get('title')
     };
@@ -125,6 +133,7 @@ async function loadFlashcards() {
             // Map source parameter to actual filename
             const sourceMap = {
                 'practical-2': 'unit2-practical',
+                'practical-2-2': 'unit2-part2-practical',
                 'practical': 'practice-practical'
             };
             const actualFilename = sourceMap[practicalParams.source] || practicalParams.source;
@@ -157,6 +166,13 @@ async function loadFlashcards() {
             // Use provided title or generate descriptive title based on tags
             const deckTitle = practicalParams.title || generateDeckTitle(practicalParams.tags, filteredQuestions.length);
 
+            // Helper function to decode HTML entities
+            function decodeHTMLEntities(text) {
+                const textarea = document.createElement('textarea');
+                textarea.innerHTML = text;
+                return textarea.value;
+            }
+
             // Convert to flashcard format
             data = {
                 title: deckTitle,
@@ -164,13 +180,14 @@ async function loadFlashcards() {
                 color_theme: 'blue',
                 flashcards: filteredQuestions.map(q => ({
                     id: q.id,
-                    term: q.question,
+                    term: decodeHTMLEntities(q.question),
                     image: q.image,
                     answer: Array.isArray(q.answer) ? q.answer[0] : q.answer,
                     keywords: Array.isArray(q.answer) ? q.answer : [q.answer],
                     definition: q.definition || "",
                     breakdown: q.breakdown || "",
-                    example: ""
+                    example: "",
+                    theme: q.theme || null
                 }))
             };
 
@@ -297,6 +314,26 @@ function showCard() {
 
     // Reset swipe button state for new card
     resetSwipeButtons();
+
+    // Helper function to get theme class (same as in practical)
+    const getTextOnlyThemeClass = (theme) => {
+        if (!theme) return 'text-only-theme-default';
+        return `text-only-theme-${theme}`;
+    };
+
+    // Update term element - will be updated again below with content
+    const termElement = document.getElementById('term');
+    const themeClasses = ['text-only-question-box', 'text-only-theme-default', 'text-only-theme-blk-wht',
+                          'text-only-theme-elegant', 'text-only-theme-wbc', 'text-only-theme-highlight',
+                          'text-only-theme-blood', 'text-only-theme-emergency', 'text-only-theme-anatomy',
+                          'text-only-theme-physiology', 'text-only-theme-pathology'];
+    termElement.classList.remove(...themeClasses);
+
+    // Apply theme styling ONLY to text-only cards (no image)
+    if (!card.image) {
+        const themeClass = getTextOnlyThemeClass(card.theme);
+        termElement.classList.add('text-only-question-box', themeClass);
+    }
 
     // Immediately clear the previous image to prevent flash
     const termImage = document.getElementById('term-image');

@@ -34,7 +34,15 @@ h2 {
     font-weight: 400;
     color: #6b7280;
     margin-top: 36px;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
+}
+
+h2 + p {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin-top: 0;
+    margin-bottom: 20px;
+    line-height: 1.4;
 }
 
 .links {
@@ -102,6 +110,10 @@ body.dark-mode h1 {
 
 body.dark-mode h2 {
     color: #94a3b8;
+}
+
+body.dark-mode h2 + p {
+    color: #64748b;
 }
 
 body.dark-mode .link {

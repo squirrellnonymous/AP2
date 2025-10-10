@@ -1,0 +1,13 @@
+title: "Practical 3 Flashcard Decks"
+description: "Blood Vessels Study Decks"
+
+sections:
+  - name: "🩸 Blood Vessels Flashcards"
+    decks:
+      - id: "all-vessels"
+        title: "🔴 All Blood Vessels"
+        description: "Complete deck covering all the items possible (in this dataset) from the blood vessel labs"
+        source: "practical-2-2"
+        tags: ["blood-vessels"]
+
+

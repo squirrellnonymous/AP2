@@ -561,11 +561,11 @@ multipleChoice:
     tags: ["unit-2", "blood"]
 
 trueMakeTrue:
-  - statement: "The formed element that carries gasses is an ***eosinophil***."
+  - statement: "When hydrostatic pressure is greater than BCOP net ***reabsorption*** occurs."
     isTrue: false
-    correctWord: ["erythrocyte", "red blood cell"]
+    correctWord: ["filtration"]
     points: 2.5
-    tags: ["unit-2", "blood"]
+    tags: ["unit-2", "blood-vessels", "capillary-exchange"]
 
   - statement: "The ***intrinsic*** pathway begins with damage to tissue and release of factor III."
     isTrue: false
@@ -583,6 +583,11 @@ trueMakeTrue:
     correctWord: ["atrioventricular", "atrioventricular valve"]
     points: 2.5
 
+  - statement: "The plateau phase in cardiac muscle action potentials is caused by ***sodium*** influx."
+    isTrue: false
+    correctWord: ["calcium", "Ca++", "Ca 2+", "calcium ion"]
+    points: 2.5
+    
   - statement: "Type ***O negative*** is the universal recipient."
     isTrue: false
     correctWord: ["AB positive", "AB+", "A B +"]
@@ -591,6 +596,10 @@ trueMakeTrue:
   - statement: "Heparin ***promotes*** coagulation and clotting."
     isTrue: false
     correctWord: ["inhibits", "blocks", "lowers", "decreases", "antagonizes"]
+    points: 2.5
+
+  - statement: "Increased preload ***increases*** stroke volume."
+    isTrue: true
     points: 2.5
     
 
@@ -608,7 +617,7 @@ table:
 essay:
   - question: "People who get cirrhosis (fibrosis) of the liver often get swelling of the abdomen (ascites), edema, and easily bruise. Why might that be the case?"
     answer: "Their damaged liver can't produce enough albumin or fibrinogen. Inadequate albumin leads to swelling and edema which is apparent as swelling of the abdomen. Low fibrinogen leads to not enough clotting and they get bruising from even minor tissue damage."
-    points: 6
+    points: 3
     tags: ["unit-2", "blood"]
 
   - question: "When does an Rh negative person (Rh-) begin to produce anti-D antibodies? Explain why this timing is different from the ABO blood group system."
@@ -629,5 +638,5 @@ essay:
 
   - question: "Describe the process of capillary exchange (draw and label a diagram if it's helpful)."
     answer: "Capillary exchange occurs through filtration and reabsorption. At the arteriole end, hydrostatic pressure (HP) exceeds blood colloid osmotic pressure (BCOP), causing net filtration of fluid, nutrients, and oxygen into tissues. At the venule end, BCOP exceeds HP, causing net reabsorption of fluid, waste products, and CO2 back into the blood. This process maintains fluid balance and facilitates nutrient/waste exchange."
-    points: 12
+    points: 14
     tags: ["unit-2", "vessels", "capillary-exchange"]
