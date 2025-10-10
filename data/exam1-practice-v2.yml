@@ -12,7 +12,7 @@ multipleChoice:
       - "FSH"
       - "LH"
     correct: 3
-    info: luteinizing hormone stimulates: 1. ovulation, 2. production of progesterone in ovaries, and 3. production of testosterone in testes
+    info: "luteinizing hormone stimulates: 1. ovulation, 2. production of progesterone in ovaries, and 3. production of testosterone in testes"
     
   - question: "ADH underproduction by the _______ would cause _________,"
 

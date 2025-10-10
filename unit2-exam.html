@@ -59,6 +59,7 @@
                 }
 
                 renderQuiz();
+                updateProgress();
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('quiz-form').style.display = 'block';
 
@@ -247,8 +248,11 @@
                         const essayCard = document.createElement('div');
                         essayCard.className = 'essay-card';
 
+                        const imageHTML = item.image ? `<div class="essay-image"><img src="images/${item.image}" alt="Question ${questionCounter} diagram" /></div>` : '';
+
                         essayCard.innerHTML = `
                             <div class="question-number">Question ${questionCounter} (${item.points} points)</div>
+                            ${imageHTML}
                             <div class="essay-question">${item.question}</div>
                             <textarea class="essay-textarea" name="essay${index}" placeholder="Write your answer here..." autocomplete="off" data-1p-ignore autocorrect="off" spellcheck="true"></textarea>
                             <div class="essay-answer" id="essay-answer-${index}" style="display: none;">
@@ -271,6 +275,21 @@
                 }
             }
 
+            // Add click handlers to option labels for better UX
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const radio = this.querySelector('input[type="radio"]');
+                    const name = radio.name;
+
+                    // Remove selected class from all options with same name
+                    document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+                        input.closest('.option').classList.remove('selected');
+                    });
+
+                    // Add selected class to this option
+                    this.classList.add('selected');
+                });
+            });
         }
 
         function handleTableNavigation(event, tableIndex, currentRow, currentCol, totalRows, totalCols) {
@@ -319,18 +338,18 @@
             }
         }
 
-        function calculateFinalScore() {
-            // Update progress with detailed breakdown
-            const mcCount = selectedQuestions.length;
+        function updateProgress() {
+            const mcCount = selectedQuestions ? selectedQuestions.length : 0;
             const tmtCount = quizData.trueMakeTrue ? quizData.trueMakeTrue.length : 0;
+            const tableCount = quizData.table ? quizData.table.length : 0;
             const essayCount = quizData.essay ? quizData.essay.length : 0;
-            const totalQuestions = mcCount + tmtCount + essayCount;
 
             // Calculate total points
             const mcPoints = mcCount; // 1 point each
             const tmtPoints = quizData.trueMakeTrue ? quizData.trueMakeTrue.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
+            const tablePoints = quizData.table ? quizData.table.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
             const essayPoints = quizData.essay ? quizData.essay.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
-            const totalPoints = mcPoints + tmtPoints + essayPoints;
+            const totalPoints = mcPoints + tmtPoints + tablePoints + essayPoints;
 
             let sections = [];
 
@@ -340,28 +359,14 @@
             if (tmtCount > 0) {
                 sections.push(`${tmtCount} True/Make True (${tmtPoints} pts)`);
             }
-            if (essayCount > 0) {
-                sections.push(`${essayCount} Essay (${essayPoints} pts)`);
+            if (tableCount > 0 || essayCount > 0) {
+                const combinedCount = tableCount + essayCount;
+                const combinedPoints = tablePoints + essayPoints;
+                sections.push(`${combinedCount} Short/Long Answer (${combinedPoints} pts)`);
             }
 
             const progressText = `${totalPoints} Points<br>${sections.join('<br>')}`;
             document.getElementById('progress').innerHTML = progressText;
-
-            // Add click handlers to option labels
-            document.querySelectorAll('.option').forEach(option => {
-                option.addEventListener('click', function() {
-                    const radio = this.querySelector('input[type="radio"]');
-                    const name = radio.name;
-
-                    // Remove selected class from all options with same name
-                    document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
-                        input.closest('.option').classList.remove('selected');
-                    });
-
-                    // Add selected class to this option
-                    this.classList.add('selected');
-                });
-            });
         }
 
         function checkAnswers() {

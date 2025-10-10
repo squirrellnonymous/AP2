@@ -1,5 +1,5 @@
-title: "Unit 2 Exam Practice Test — PDF"
-description: "Practice questions from PDF for Unit 2 exam covering cardiovascular and blood topics"
+title: "Unit 2 Exam Practice Test — from PDF + Added Questions"
+description: "Practice questions from PDF for Lecture Exam 2 plus additional questions, randomized order and selection."
 
 multipleChoice:
   - question: "Why is it important to have a plateau phase in the heart?"
@@ -243,6 +243,23 @@ multipleChoice:
       - "Type AB positive given to O positive"
     correct: 1
     tags: ["unit-2", "blood"]
+
+trueMakeTrue:
+  - statement: "Hemolytic disease of the newborn causes jaundice due to breakdown of **platelets**."
+    isTrue: false
+    correctWord: ["erythrocytes", "red blood cells", "RBCs"]
+    points: 2.5
+
+  - statement: "**Type O negative** is the universal recipient."
+    isTrue: false
+    correctWord: ["Type AB positive", "AB+", "AB positive", "A B +"]
+    points: 2.5
+
+  - statement: "Heparin **promotes** coagulation and clotting."
+    isTrue: false
+    correctWord: ["inhibits", "blocks", "lowers", "decreases", "antagonizes"]
+    points: 2.5
+
 
 essay:
   - question: "Answer the following questions based on the Wigger's graph: a) What is it called and what is happening? b) Is this ventricular or atrial pressure (top line)? Why? c) Are the atria in systole or diastole in this region? How do you know? d) Of the four phases of the cardiac cycle, what does D represent? e) What is E?"

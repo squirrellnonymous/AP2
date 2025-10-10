@@ -30,6 +30,21 @@ function validateYamlFile(filePath) {
             return false;
         }
 
+        // Skip exam files (they have different structure validated separately)
+        const fileName = path.basename(filePath);
+        const isExamFile = fileName.includes('exam');
+        const isConfigFile = fileName.includes('config');
+
+        if (isExamFile) {
+            console.log('⏭️  Skipping (exam file - validated separately)');
+            return true;
+        }
+
+        if (isConfigFile) {
+            console.log('⏭️  Skipping (config file - different structure)');
+            return true;
+        }
+
         if (!data.questions || !Array.isArray(data.questions)) {
             console.error('❌ Missing required field: questions (must be an array)');
             return false;
@@ -52,9 +67,7 @@ function validateYamlFile(filePath) {
                 issues.push(`Question ${index + 1}: Missing id field`);
             }
 
-            if (!question.image) {
-                issues.push(`Question ${questionNum}: Missing image field`);
-            }
+            // Image is optional - skip check
 
             // Check if question is complete
             const hasQuestion = question.question && question.question.trim() !== '';

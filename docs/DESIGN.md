@@ -1,11 +1,13 @@
-# Working Design Document
+# Early Design Document
+
+> **Note**: This is an artifact from early in the project. Many items listed here have been completed or evolved. Kept for historical reference.
 
 ## Current Status
 - **Working**: Leukocytes flashcards work well and have been shared (don't touch!)
 
 - **What's Next**: 
 
-- Unit Tests? suggestion from boyfriend... what do you think?
+- Unit Tests? ... what do you think?
    
 - Practical fine tuning:
    - dark mode based on system (is that possible in a browser)
