@@ -603,26 +603,26 @@ table:
 essay:
   - question: "People who get cirrhosis (fibrosis) of the liver often get swelling of the abdomen (ascites), edema, and easily bruise. Why might that be the case?"
     answer: "Their damaged liver can't produce enough albumin or fibrinogen. Inadequate albumin leads to swelling and edema which is apparent as swelling of the abdomen. Low fibrinogen leads to not enough clotting and they get bruising from even minor tissue damage."
-    points: 5
+    points: 6
     tags: ["unit-2", "blood"]
 
   - question: "When does an Rh negative person (Rh-) begin to produce anti-D antibodies? Explain why this timing is different from the ABO blood group system."
     answer: "Rh negative people only begin to produce anti-D antibodies after initial exposure to Rh positive blood. This is different from the ABO system because people are born with ABO antibodies without any prior exposure. The Rh system requires sensitization - the first exposure creates memory cells that will produce antibodies upon subsequent exposures."
-    points: 5
+    points: 6
     tags: ["unit-2", "blood"]
 
   - question: describe the clotting pathway, extrinsic and intrinsic braches as well as the common pathway. Draw a flow chart showing the sequence and the factors if you prefer (don't use abreviations). 
     answer: extrinsic pathway, intrinsic pathway, common pathway (see image)
-    points: 10
+    points: 12
     tags: ["unit-2", "clotting", "blood"]
 
   - question: "Answer the following questions based on the Wigger's graph:<br>&nbsp;&nbsp;&nbsp;&nbsp;A) What is it called and what is happening?<br>&nbsp;&nbsp;&nbsp;&nbsp;B) Is this ventricular or atrial pressure (top line)? Why?<br>&nbsp;&nbsp;&nbsp;&nbsp;C) Are the atria in systole or diastole in this region? How do you know?<br>&nbsp;&nbsp;&nbsp;&nbsp;D) Of the four phases of the cardiac cycle, what does D represent?<br>&nbsp;&nbsp;&nbsp;&nbsp;E) What is E?"
     image: "exam-2/wiggers.jpg"
     answer: "A) P wave; atrial depolarization<br>&nbsp;&nbsp;&nbsp;&nbsp;B) Ventricular, higher than atria during IC phase <br>&nbsp;&nbsp;&nbsp;&nbsp;C) Systole (higher pressure than ventricles and after P wave) <br>&nbsp;&nbsp;&nbsp;&nbsp;D) Isovolumetric relaxation.<br>&nbsp;&nbsp;&nbsp;&nbsp;E) End Diastolic Volume (EDV)."
-    points: 10
+    points: 12
     tags: ["unit-2", "heart", "wiggers-diagram"]
 
   - question: "Describe the process of capillary exchange (draw and label a diagram if it's helpful)."
     answer: "Capillary exchange occurs through filtration and reabsorption. At the arteriole end, hydrostatic pressure (HP) exceeds blood colloid osmotic pressure (BCOP), causing net filtration of fluid, nutrients, and oxygen into tissues. At the venule end, BCOP exceeds HP, causing net reabsorption of fluid, waste products, and CO2 back into the blood. This process maintains fluid balance and facilitates nutrient/waste exchange."
-    points: 10
+    points: 12
     tags: ["unit-2", "vessels", "capillary-exchange"]

@@ -10,6 +10,7 @@
     "validate-exam": "node scripts/validate-exam-yaml.js",
     "validate-images": "node scripts/check-images.js",
     "validate-all": "npm run validate-yaml && npm run validate-exam && npm run validate-images",
+    "validate-quiet": "QUIET=true npm run validate-all",
     "validate": "npm run validate-all",
     "build:leukocytes": "node scripts/generate-flashcards.js --source unit2-practical --tags leukocytes,formed-elements --output unit2-leukocytes",
     "build:heart-anatomy": "node scripts/generate-flashcards.js --source unit2-practical --tags heart,anatomy --output unit2-heart-anatomy",

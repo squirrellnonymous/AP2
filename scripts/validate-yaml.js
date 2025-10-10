@@ -5,8 +5,12 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 function validateYamlFile(filePath) {
-    console.log(`\nValidating: ${filePath}`);
-    console.log('='.repeat(50));
+    const isQuiet = process.env.QUIET === 'true';
+
+    if (!isQuiet) {
+        console.log(`\nValidating: ${filePath}`);
+        console.log('='.repeat(50));
+    }
 
     try {
         // Check if file exists
@@ -36,12 +40,12 @@ function validateYamlFile(filePath) {
         const isConfigFile = fileName.includes('config');
 
         if (isExamFile) {
-            console.log('⏭️  Skipping (exam file - validated separately)');
+            if (!isQuiet) console.log('⏭️  Skipping (exam file - validated separately)');
             return true;
         }
 
         if (isConfigFile) {
-            console.log('⏭️  Skipping (config file - different structure)');
+            if (!isQuiet) console.log('⏭️  Skipping (config file - different structure)');
             return true;
         }
 
@@ -50,8 +54,10 @@ function validateYamlFile(filePath) {
             return false;
         }
 
-        console.log('✅ YAML syntax is valid');
-        console.log(`📊 Found ${data.questions.length} total questions`);
+        if (!isQuiet) {
+            console.log('✅ YAML syntax is valid');
+            console.log(`📊 Found ${data.questions.length} total questions`);
+        }
 
         // Validate each question
         let validQuestions = 0;
@@ -96,14 +102,16 @@ function validateYamlFile(filePath) {
             }
         });
 
-        console.log(`✅ ${validQuestions} complete questions`);
-        console.log(`⚠️  ${emptyQuestions} incomplete/placeholder questions`);
-        console.log(`🎯 ${extraCreditQuestions} extra credit questions`);
+        if (!isQuiet) {
+            console.log(`✅ ${validQuestions} complete questions`);
+            console.log(`⚠️  ${emptyQuestions} incomplete/placeholder questions`);
+            console.log(`🎯 ${extraCreditQuestions} extra credit questions`);
+        }
 
         if (issues.length > 0) {
-            console.log('\n⚠️  Issues found:');
+            console.log(`\n⚠️  Issues in ${fileName}:`);
             issues.forEach(issue => console.log(`   • ${issue}`));
-        } else {
+        } else if (!isQuiet) {
             console.log('✅ No structural issues found');
         }
 
@@ -118,10 +126,13 @@ function validateYamlFile(filePath) {
 
 function main() {
     const dataDir = path.join(__dirname, '..', 'data');
+    const isQuiet = process.env.QUIET === 'true';
 
-    console.log('🔍 Validating YAML files...');
+    if (!isQuiet) console.log('🔍 Validating practical YAML files...');
 
     let allValid = true;
+    let totalFiles = 0;
+    let validFiles = 0;
 
     // Find all YAML files in data directory
     const yamlFiles = fs.readdirSync(dataDir)
@@ -134,18 +145,24 @@ function main() {
     }
 
     yamlFiles.forEach(file => {
+        totalFiles++;
         const isValid = validateYamlFile(file);
+        if (isValid) validFiles++;
         if (!isValid) allValid = false;
     });
 
-    console.log('\n' + '='.repeat(50));
-    if (allValid) {
-        console.log('✅ All YAML files are valid!');
-        process.exit(0);
+    if (isQuiet) {
+        console.log(`✅ Practical files: ${validFiles}/${totalFiles} valid`);
     } else {
-        console.log('❌ Some YAML files have issues. Please fix them before proceeding.');
-        process.exit(1);
+        console.log('\n' + '='.repeat(50));
+        if (allValid) {
+            console.log('✅ All YAML files are valid!');
+        } else {
+            console.log('❌ Some YAML files have issues. Please fix them before proceeding.');
+        }
     }
+
+    process.exit(allValid ? 0 : 1);
 }
 
 if (require.main === module) {

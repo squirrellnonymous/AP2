@@ -5,8 +5,13 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 function validateExamFile(filePath) {
-    console.log(`\nValidating exam file: ${filePath}`);
-    console.log('='.repeat(50));
+    const isQuiet = process.env.QUIET === 'true';
+    const fileName = path.basename(filePath);
+
+    if (!isQuiet) {
+        console.log(`\nValidating exam file: ${filePath}`);
+        console.log('='.repeat(50));
+    }
 
     try {
         if (!fs.existsSync(filePath)) {
@@ -34,7 +39,7 @@ function validateExamFile(filePath) {
             if (!Array.isArray(data.multipleChoice)) {
                 issues.push('multipleChoice must be an array');
             } else {
-                console.log(`📊 Found ${data.multipleChoice.length} multiple choice questions`);
+                if (!isQuiet) console.log(`📊 Found ${data.multipleChoice.length} multiple choice questions`);
 
                 data.multipleChoice.forEach((q, index) => {
                     const qNum = index + 1;
@@ -62,11 +67,13 @@ function validateExamFile(filePath) {
                 });
 
                 // Check tag distribution (just report, don't fail)
-                const bloodQuestions = data.multipleChoice.filter(q => q.tags && q.tags.includes('blood'));
-                const heartQuestions = data.multipleChoice.filter(q => q.tags && q.tags.includes('heart'));
+                if (!isQuiet) {
+                    const bloodQuestions = data.multipleChoice.filter(q => q.tags && q.tags.includes('blood'));
+                    const heartQuestions = data.multipleChoice.filter(q => q.tags && q.tags.includes('heart'));
 
-                console.log(`   • ${bloodQuestions.length} tagged 'blood'`);
-                console.log(`   • ${heartQuestions.length} tagged 'heart'`);
+                    console.log(`   • ${bloodQuestions.length} tagged 'blood'`);
+                    console.log(`   • ${heartQuestions.length} tagged 'heart'`);
+                }
             }
         }
 
@@ -75,7 +82,7 @@ function validateExamFile(filePath) {
             if (!Array.isArray(data.trueMakeTrue)) {
                 issues.push('trueMakeTrue must be an array');
             } else {
-                console.log(`📊 Found ${data.trueMakeTrue.length} True/Make True questions`);
+                if (!isQuiet) console.log(`📊 Found ${data.trueMakeTrue.length} True/Make True questions`);
 
                 data.trueMakeTrue.forEach((q, index) => {
                     const qNum = index + 1;
@@ -104,7 +111,7 @@ function validateExamFile(filePath) {
             if (!Array.isArray(data.table)) {
                 issues.push('table must be an array');
             } else {
-                console.log(`📊 Found ${data.table.length} table questions`);
+                if (!isQuiet) console.log(`📊 Found ${data.table.length} table questions`);
 
                 data.table.forEach((q, index) => {
                     const qNum = index + 1;
@@ -133,7 +140,7 @@ function validateExamFile(filePath) {
             if (!Array.isArray(data.essay)) {
                 issues.push('essay must be an array');
             } else {
-                console.log(`📊 Found ${data.essay.length} essay questions`);
+                if (!isQuiet) console.log(`📊 Found ${data.essay.length} essay questions`);
 
                 data.essay.forEach((q, index) => {
                     const qNum = index + 1;
@@ -163,11 +170,11 @@ function validateExamFile(filePath) {
 
         // Summary
         if (issues.length > 0) {
-            console.log('\n❌ Issues found:');
+            console.log(`\n❌ Issues in ${fileName}:`);
             issues.forEach(issue => console.log(`   • ${issue}`));
             return false;
         } else {
-            console.log('✅ All validation checks passed');
+            if (!isQuiet) console.log('✅ All validation checks passed');
             return true;
         }
 
@@ -180,10 +187,13 @@ function validateExamFile(filePath) {
 
 function main() {
     const dataDir = path.join(__dirname, '..', 'data');
+    const isQuiet = process.env.QUIET === 'true';
 
-    console.log('🔍 Validating exam YAML files...');
+    if (!isQuiet) console.log('🔍 Validating exam YAML files...');
 
     let criticalFilesValid = true;
+    let totalFiles = 0;
+    let validFiles = 0;
 
     // Critical files that MUST pass validation for deployment
     const criticalFiles = ['unit2-exam.yml', 'unit2-exam-pdf.yml'];
@@ -199,23 +209,29 @@ function main() {
     }
 
     examFiles.forEach(file => {
+        totalFiles++;
         const fileName = path.basename(file);
         const isValid = validateExamFile(file);
         const isCritical = criticalFiles.includes(fileName);
 
+        if (isValid) validFiles++;
         if (!isValid && isCritical) {
             criticalFilesValid = false;
         }
     });
 
-    console.log('\n' + '='.repeat(50));
-    if (criticalFilesValid) {
-        console.log('✅ All critical exam YAML files are valid!');
-        process.exit(0);
+    if (isQuiet) {
+        console.log(`✅ Exam files: ${validFiles}/${totalFiles} valid (critical files OK)`);
     } else {
-        console.log('❌ Critical exam YAML files have issues. Please fix them before deploying.');
-        process.exit(1);
+        console.log('\n' + '='.repeat(50));
+        if (criticalFilesValid) {
+            console.log('✅ All critical exam YAML files are valid!');
+        } else {
+            console.log('❌ Critical exam YAML files have issues. Please fix them before deploying.');
+        }
     }
+
+    process.exit(criticalFilesValid ? 0 : 1);
 }
 
 if (require.main === module) {

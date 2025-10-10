@@ -5,7 +5,9 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 function checkImageReferences() {
-    console.log('🔍 Checking image references...\n');
+    const isQuiet = process.env.QUIET === 'true';
+
+    if (!isQuiet) console.log('🔍 Checking image references...\n');
 
     const dataDir = path.join(__dirname, '..', 'data');
     const imagesDir = path.join(__dirname, '..', 'images');
@@ -59,18 +61,30 @@ function checkImageReferences() {
         }
     });
 
-    console.log(`📊 Found ${referencedImages.size} unique image references`);
-
-    if (issues.length > 0) {
-        console.log('\n❌ Missing images:');
-        issues.forEach(issue => console.log(`   • ${issue}`));
-        console.log('\n' + '='.repeat(50));
-        console.log('❌ Image validation failed');
-        process.exit(1);
+    if (isQuiet) {
+        if (issues.length > 0) {
+            console.log(`❌ Images: ${issues.length} missing`);
+            issues.slice(0, 3).forEach(issue => console.log(`   • ${issue}`));
+            if (issues.length > 3) {
+                console.log(`   ... and ${issues.length - 3} more`);
+            }
+        } else {
+            console.log(`✅ Images: ${referencedImages.size} references, all valid`);
+        }
     } else {
-        console.log('✅ All referenced images exist');
-        process.exit(0);
+        console.log(`📊 Found ${referencedImages.size} unique image references`);
+
+        if (issues.length > 0) {
+            console.log('\n❌ Missing images:');
+            issues.forEach(issue => console.log(`   • ${issue}`));
+            console.log('\n' + '='.repeat(50));
+            console.log('❌ Image validation failed');
+        } else {
+            console.log('✅ All referenced images exist');
+        }
     }
+
+    process.exit(issues.length > 0 ? 1 : 0);
 }
 
 checkImageReferences();
