@@ -578,6 +578,11 @@ trueMakeTrue:
     correctWord: ["erythrocytes", "red blood cells", "RBCs"]
     points: 2.5
 
+  - statement: "During ventricular filling, the ***semilunar*** valves are open."
+    isTrue: false
+    correctWord: ["atrioventricular", "atrioventricular valve"]
+    points: 2.5
+
   - statement: "Type ***O negative*** is the universal recipient."
     isTrue: false
     correctWord: ["AB positive", "AB+", "A B +"]
