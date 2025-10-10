@@ -1,9 +1,14 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Get list of staged files
+STAGED_FILES=$(git diff --cached --name-only)
+
+echo "🔍 Checking staged files..."
+
 # Only run validation if YAML files in data/ directory were changed
-if git diff --cached --name-only | grep -q "^data/.*\.yml$\|^data/.*\.yaml$"; then
-  echo "📋 YAML files in data/ changed - running validation..."
+if echo "$STAGED_FILES" | grep -q "^data/.*\.yml$\|^data/.*\.yaml$"; then
+  echo "📋 Data YAML files changed - running validation..."
   npm test
 else
   echo "✅ No data YAML files changed - skipping validation"
