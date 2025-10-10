@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# Only run validation if YAML files were changed
-if git diff --cached --name-only | grep -q "\.yml$\|\.yaml$"; then
-  echo "📋 YAML files changed - running validation..."
+# Only run validation if YAML files in data/ directory were changed
+if git diff --cached --name-only | grep -q "^data/.*\.yml$\|^data/.*\.yaml$"; then
+  echo "📋 YAML files in data/ changed - running validation..."
   npm test
 else
-  echo "✅ No YAML files changed - skipping validation"
+  echo "✅ No data YAML files changed - skipping validation"
 fi
