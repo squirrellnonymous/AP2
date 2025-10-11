@@ -56,8 +56,8 @@ questions:
   - id: 07
     image: "practical-2-2/07.jpg"
     question: "What is the large red vessel?"
-    answer: ["descending aorta"]
-    definition: "It's the <strong>descending aorta</strong>... which is above the abdominal aorta."
+    answer: ["descending aorta", "thoracic aorta"]
+    definition: "It's the <strong>descending aorta</strong>... which includes the thoracic aorta and the abdominal aorta. You could also say this is the throacic aorta since it's above the diaphragm"
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 08
@@ -184,8 +184,8 @@ questions:
   - id: 26
     image: "practical-2-2/26.jpg"
     question: "What is the very large red vessel?"
-    answer: ["abdominal aorta"]
-    definition: ""
+    answer: ["descending aorta", "abdominal aorta"]
+    definition: "It's the **descending aorta**... which includes the thoracic aorta and the abdominal aorta. You could also say this is the abdominal aorta since it's below the diaphragm"
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 27

@@ -972,6 +972,29 @@ body.dark-mode .modal-position {
 
 /* Mobile responsive */
 @media (max-width: 640px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .home-link {
+        position: static;
+        padding: 4px 0;
+        font-size: 0.85rem;
+    }
+
+    .header-content h1 {
+        width: 100%;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    .question-count {
+        width: 100%;
+        text-align: center;
+    }
+
     .image-numbers {
         gap: 4px;
         padding: 12px;
