@@ -87,14 +87,14 @@ questions:
   - id: 12
     image: "practical-2-2/12.jpg"
     question: "What is the red vessel?"
-    answer: ["Right Common Illiac Artery"]
+    answer: ["Right Common Iliac Artery"]
     definition: "T"
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 13
     image: "practical-2-2/13.jpg"
     question: "What is the red vessel?"
-    answer: ["left external Illiac Artery"]
+    answer: ["left external Iliac Artery"]
     definition: "T"
     tags: ["blood-vessels", "vessels-9"]
 
@@ -107,7 +107,7 @@ questions:
   - id: 15
     image: "practical-2-2/15.jpg"
     question: "Name the vessel."
-    answer: ["Right internal illiac artery"]
+    answer: ["Right internal iliac artery"]
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 16
