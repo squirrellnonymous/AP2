@@ -80,46 +80,46 @@ questions:
   - id: 11
     image: "practical-2-2/11.jpg"
     question: "What is the red vessel?"
-    answer: ["Right Renal Artery"]
-    definition: "T"
+    answer: ["right renal artery"]
+    definition: ""
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 12
     image: "practical-2-2/12.jpg"
     question: "What is the red vessel?"
-    answer: ["Right Common Iliac Artery"]
-    definition: "T"
+    answer: ["right common iliac artery"]
+    definition: ""
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 13
     image: "practical-2-2/13.jpg"
     question: "What is the red vessel?"
-    answer: ["left external Iliac Artery"]
-    definition: "T"
+    answer: ["left external iliac artery"]
+    definition: ""
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 14
     image: "practical-2-2/14.jpg"
     question: "what is the red vessel labeled <strong>D</strong>?"
-    answer: ["Right common carotid artery"]
+    answer: ["right common carotid artery"]
     tags: ["blood-vessels", "neck"]
 
   - id: 15
     image: "practical-2-2/15.jpg"
     question: "Name the vessel."
-    answer: ["Right internal iliac artery"]
+    answer: ["right internal iliac artery"]
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 16
     image: "practical-2-2/16.jpg"
     question: "What is the red vessel?"
-    answer: ["Left subclavian artery"]
+    answer: ["left subclavian artery"]
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 17
     image: "practical-2-2/17.jpg"
     question: "What is the red vessel?"
-    answer: ["Left renal artery"]
+    answer: ["left renal artery"]
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 18

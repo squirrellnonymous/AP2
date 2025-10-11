@@ -814,6 +814,14 @@
                     }
                 }
 
+                // Store grading results on the question object for later retrieval
+                question.gradingResult = {
+                    studentAnswer: studentAnswer,
+                    resultType: answerResult.isCorrect ? 'correct' :
+                               answerResult.isPartial ? 'partial' :
+                               (studentAnswer && studentAnswer.trim() !== '') ? 'incorrect' : 'unanswered'
+                };
+
                 if (circle) {
                     score += answerResult.points; // Add points (0, 0.5, or 1)
 
@@ -939,6 +947,14 @@
                             }
                         }
                     }
+
+                    // Store grading results on the question object for later retrieval
+                    question.gradingResult = {
+                        studentAnswer: studentAnswer,
+                        resultType: answerResult.isCorrect ? 'correct' :
+                                   answerResult.isPartial ? 'partial' :
+                                   (studentAnswer && studentAnswer.trim() !== '') ? 'incorrect' : 'unanswered'
+                    };
 
                     // Apply visual feedback to extra credit
                     if (answerResult.isCorrect) {
@@ -1125,48 +1141,23 @@
             let resultType = '';
             let correctAnswer = modalQuestion.question.answer;
 
-            if (modalQuestion.type === 'regular') {
-                const answerInput = document.querySelector(`input[name="answer${modalQuestion.questionNum}"]`);
-                if (answerInput) {
-                    studentAnswer = answerInput.value.trim();
-                } else {
-                    // Check if it's been converted to display element
-                    const displayElement = document.querySelector(`.answer-item:nth-child(${modalQuestion.questionNum}) .answer-display`);
-                    if (displayElement) {
-                        const studentSpan = displayElement.querySelector('.student-answer');
-                        studentAnswer = studentSpan ? studentSpan.textContent : '';
-                    }
-                }
-
-                // Determine result type from answer number circle
-                const circle = document.querySelectorAll('.answer-number')[modalQuestion.index];
-                if (circle) {
-                    if (circle.classList.contains('result-correct')) resultType = 'correct';
-                    else if (circle.classList.contains('result-partial')) resultType = 'partial';
-                    else if (circle.classList.contains('result-incorrect')) resultType = 'incorrect';
-                    else if (circle.classList.contains('result-unanswered')) resultType = 'unanswered';
-                }
+            // Use stored grading results if available (after submission)
+            if (modalQuestion.question.gradingResult) {
+                studentAnswer = modalQuestion.question.gradingResult.studentAnswer;
+                resultType = modalQuestion.question.gradingResult.resultType;
             } else {
-                // Extra credit
-                const extraCreditInput = document.querySelector(`input[name="extra-credit-${modalQuestion.index}"]`);
-                if (extraCreditInput) {
-                    studentAnswer = extraCreditInput.value.trim();
-                } else {
-                    // Check if it's been converted to display element
-                    const displayElement = document.querySelector(`.extra-credit-item:nth-child(${modalQuestion.index + 1}) .answer-display`);
-                    if (displayElement) {
-                        const studentSpan = displayElement.querySelector('.student-answer');
-                        studentAnswer = studentSpan ? studentSpan.textContent : '';
+                // Fallback to DOM parsing (before submission)
+                if (modalQuestion.type === 'regular') {
+                    const answerInput = document.querySelector(`input[name="answer${modalQuestion.questionNum}"]`);
+                    if (answerInput) {
+                        studentAnswer = answerInput.value.trim();
                     }
-                }
-
-                // Determine result type from extra credit button
-                const button = document.querySelectorAll('.extra-credit-button')[modalQuestion.index];
-                if (button) {
-                    if (button.classList.contains('result-correct')) resultType = 'correct';
-                    else if (button.classList.contains('result-partial')) resultType = 'partial';
-                    else if (button.classList.contains('result-incorrect')) resultType = 'incorrect';
-                    else if (button.classList.contains('result-unanswered')) resultType = 'unanswered';
+                } else {
+                    // Extra credit
+                    const extraCreditInput = document.querySelector(`input[name="extra-credit-${modalQuestion.index}"]`);
+                    if (extraCreditInput) {
+                        studentAnswer = extraCreditInput.value.trim();
+                    }
                 }
             }
 
@@ -1243,7 +1234,7 @@
                         break;
                 }
 
-                const displayStudentAnswer = resultType === 'unanswered' && !studentAnswer ? '(blank)' : studentAnswer;
+                const displayStudentAnswer = (resultType === 'unanswered' || !studentAnswer) ? '(blank)' : studentAnswer;
 
                 studentResponseSection = `
                     <div class="popup-student-response ${responseClass}">

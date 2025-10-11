@@ -307,6 +307,10 @@
     border-radius: 12px;
     padding: 24px;
     margin-bottom: 24px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     /* Uses card-base styles from shared.css */
 }
 
@@ -410,6 +414,7 @@
     background-color: #f8fafc;
     cursor: pointer;
     user-select: none;
+    caret-color: transparent;
 }
 
 .answer-item input[readonly]:hover {
@@ -1140,6 +1145,7 @@ body.dark-mode .answer-item input:focus {
 body.dark-mode .answer-item input[readonly] {
     background-color: #0f172a;
     border-color: #1e293b;
+    caret-color: transparent;
 }
 
 body.dark-mode .answer-item input[readonly]:hover {
