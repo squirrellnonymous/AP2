@@ -36,7 +36,7 @@ class FuzzyMatcher {
     }
 
     /**
-     * Normalize answer by removing articles and standardizing format
+     * Normalize answer by removing articles, standardizing format, and handling plurals
      * @param {string} answer - The answer to normalize
      * @returns {string} - Normalized answer
      */
@@ -52,9 +52,28 @@ class FuzzyMatcher {
             normalized = normalized.substring(2);
         }
 
+        //R is Right and L is Left
+        normalized = normalized.replace(/\br\b/g, 'right');
+        normalized = normalized.replace(/\bl\b/g, 'left');
+
+        //Ant is Anterior
+        normalized = normalized.replace(/\bant\.?\b/g, 'anterior');
+        normalized = normalized.replace(/\bpost\.?\b/g, 'posterior');
+
         // Convert Roman numerals to Arabic numerals
         normalized = normalized.replace(/\bii\b/g, '2');
         normalized = normalized.replace(/\bi\b/g, '1');
+
+        // Handle common plural forms
+        if (normalized.endsWith('s') && normalized.length > 3 &&
+            !normalized.endsWith('ss') && !normalized.endsWith('us') &&
+            !normalized.endsWith('is') && !normalized.endsWith('os')) {
+            normalized = normalized.slice(0, -1);
+        } else if (normalized.endsWith('ies') && normalized.length > 4) {
+            normalized = normalized.slice(0, -3) + 'y';
+        } else if (normalized.endsWith('ves') && normalized.length > 4) {
+            normalized = normalized.slice(0, -3) + 'fe';
+        }
 
         return normalized;
     }
