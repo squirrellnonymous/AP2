@@ -464,6 +464,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script src="js/question-modal.js"></script>
     <script>
         let practicalData = null;
         let selectedTags = new Set();
@@ -846,6 +847,9 @@
         function submitQuiz() {
             let score = 0;
 
+            // Build modal questions list for review
+            buildModalQuestionsList(quizQuestions, false);
+
             quizQuestions.forEach((question, index) => {
                 const questionNum = index + 1;
                 const input = document.querySelector(`input[name="answer${questionNum}"]`);
@@ -869,21 +873,32 @@
                     isCorrect = normalizedStudentAnswer === normalizedCorrect;
                 }
 
+                // Store grading results on the question object
+                const resultType = isCorrect ? 'correct' :
+                                   (studentAnswer && studentAnswer.trim() !== '') ? 'incorrect' : 'unanswered';
+
+                question.gradingResult = {
+                    studentAnswer: studentAnswer,
+                    resultType: resultType
+                };
+
                 if (isCorrect) {
                     score++;
                     circle.classList.add('result-correct');
                     const displayDiv = document.createElement('div');
                     displayDiv.className = 'answer-display correct';
                     displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span>`;
+                    displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, studentAnswer, 'correct');
+                    displayDiv.style.cursor = 'pointer';
                     input.parentNode.replaceChild(displayDiv, input);
                 } else if (studentAnswer) {
                     circle.classList.add('result-incorrect');
-                    const displayAnswer = Array.isArray(correctAnswer)
-                        ? correctAnswer.join(' OR ')
-                        : correctAnswer;
                     const displayDiv = document.createElement('div');
                     displayDiv.className = 'answer-display incorrect';
                     displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span>`;
+                    displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, studentAnswer, 'incorrect');
+                    displayDiv.style.cursor = 'pointer';
+                    displayDiv.title = 'Click to see question and correction';
                     input.parentNode.replaceChild(displayDiv, input);
                 } else {
                     circle.classList.add('result-unanswered');
@@ -893,6 +908,8 @@
                     const displayDiv = document.createElement('div');
                     displayDiv.className = 'answer-display unanswered';
                     displayDiv.innerHTML = `<span class="correct-answer" style="color: #999;">(${displayAnswer})</span>`;
+                    displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, '', 'unanswered');
+                    displayDiv.style.cursor = 'pointer';
                     input.parentNode.replaceChild(displayDiv, input);
                 }
             });

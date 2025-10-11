@@ -183,7 +183,7 @@ questions:
 
   - id: 26
     image: "practical-2-2/26.jpg"
-    question: "What is the red vessel?"
+    question: "What is the very large red vessel?"
     answer: ["abdominal aorta"]
     definition: ""
     tags: ["blood-vessels", "vessels-9"]
