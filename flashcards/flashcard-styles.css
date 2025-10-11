@@ -534,8 +534,12 @@ h1 {
         padding: 0 15px;
     }
 
-    .flip-card-front, .flip-card-back {
+    .flip-card-front {
         padding: 10px;
+    }
+
+    .flip-card-back {
+        padding: 30px;
     }
 
     .term-image {
