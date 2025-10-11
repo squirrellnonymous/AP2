@@ -5,6 +5,10 @@ share_image: "practical-2-2/00.jpg"
 # Upload your images to: /images/practical-2-2/
 # Name them: 01.jpg, 02.jpg, 03.jpg, etc.
 # Then update this YAML file with the correct answers
+#
+# ID NUMBERING SCHEME:
+# - Image questions: Start at id: 1 (01, 02, 03, etc.)
+# - Text-only questions: Start at id: 100 (100, 101, 102, etc.)
 
 questions:
   - id: 1
@@ -26,14 +30,14 @@ questions:
     question: "What is the red vessel?"
     answer: ["right axillary artery"]
     definition: "This is the right side of the body and the vessel is an artery with red, oxygenated blood. It's the <strong>right axillary artery</strong> that is what the right subclavian artery turns into."
-    tags: ["blood-vessels", "bv-pg8"]
+    tags: ["blood-vessels", "vessels-8"]
 
   - id: 04
     image: "practical-2-2/04.jpg"
     question: "What is the red vessel?"
     answer: ["right brachial artery"]
     definition: "This is the right side of the body and the vessel is an artery with red, oxygenated blood. It's the <strong>right brachial artery</strong> that is what the right axillary artery turns into."
-    tags: ["blood-vessels", "bv-pg8"]
+    tags: ["blood-vessels", "vessels-8"]
 
   - id: 05
     image: "practical-2-2/05.jpg"
@@ -128,8 +132,82 @@ questions:
     answer: ["hepatic artery proper"]
     tags: ["blood-vessels", "vessels-10"]
 
+  - id: 19
+    image: "practical-2-2/19.jpg"
+    question: "What is the red vessel?"
+    answer: ["right radial artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-8"]
 
+  - id: 20
+    image: "practical-2-2/20.jpg"
+    question: "What is the red vessel?"
+    answer: ["right ulnar artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-8"]
 
+  - id: 21
+    image: "practical-2-2/21.jpg"
+    question: "What is the red vessel?"
+    answer: ["common hepatic artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-10"]
+
+  - id: 22
+    image: "practical-2-2/22.jpg"
+    question: "What is the red vessel?"
+    answer: ["splenic artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-10"]
+
+  - id: 23
+    image: "practical-2-2/23.jpg"
+    question: "What is the red vessel?"
+    answer: ["gastric artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-10"]
+
+  - id: 24
+    image: "practical-2-2/24.jpg"
+    question: "What is the red vessel?"
+    answer: ["inferior mesenteric artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-10"]
+
+  - id: 25
+    image: "practical-2-2/25.jpg"
+    question: "What is the red vessel?"
+    answer: ["superior mesenteric artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-10"]
+
+  - id: 26
+    image: "practical-2-2/26.jpg"
+    question: "What is the red vessel?"
+    answer: ["abdominal aorta"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-9"]
+
+  - id: 27
+    image: "practical-2-2/27.jpg"
+    question: "What is the red vessel?"
+    answer: ["left adrenal artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-9"]
+
+  - id: 28
+    image: "practical-2-2/28.jpg"
+    question: "What is the red vessel?"
+    answer: ["right gonadal artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-9"]
+
+  - id: 29
+    image: "practical-2-2/29.jpg"
+    question: "name the vessel: artery or vein?"
+    answer: ["vein"]
+    definition: ""
+    tags: ["blood-vessels"]
 
 
 

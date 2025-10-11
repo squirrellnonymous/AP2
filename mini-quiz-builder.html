@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Quiz Builder</title>
+    <link rel="stylesheet" href="css/practical.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/shared.css">
+    <style>
+        .quiz-builder-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .builder-section {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 1px solid #c7d2fe;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+        }
+
+        .builder-section h2 {
+            margin-top: 0;
+            color: #4f46e5;
+        }
+
+        /* Tag selection styles now in shared.css */
+
+        .question-count-display {
+            padding: 1rem 1.25rem;
+            background: white;
+            border: 1px solid #c7d2fe;
+            border-left: 4px solid #6366f1;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            color: #4338ca;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .start-quiz-btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        .start-quiz-btn:hover:not(:disabled) {
+            background: #4338ca;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+        }
+
+        .start-quiz-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .error-message {
+            color: #d32f2f;
+            padding: 1rem;
+            background: #ffebee;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        /* Dark mode support */
+        body.dark-mode .builder-section {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-color: #475569;
+        }
+
+        body.dark-mode .builder-section h2 {
+            color: #a5b4fc;
+        }
+
+        body.dark-mode .builder-section p {
+            color: #cbd5e1;
+        }
+
+        /* Dark mode tag styles now in shared.css */
+
+        body.dark-mode .question-count-display {
+            background: #1e293b;
+            color: #cbd5e1;
+            border-color: #475569;
+            border-left-color: #818cf8;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .quiz-hidden {
+            display: none;
+        }
+
+        /* Breadcrumb styles */
+        #breadcrumbs a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        #breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        #breadcrumbs .separator {
+            margin: 0 0.5rem;
+            color: #94a3b8;
+        }
+
+        body.dark-mode #breadcrumbs .separator {
+            color: #64748b;
+        }
+
+        /* Share button styling */
+        .share-button {
+            background: transparent;
+            color: #4f46e5;
+            border: 2px solid #4f46e5;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .share-button:hover {
+            background: #4f46e5;
+            color: white;
+        }
+
+        body.dark-mode .share-button {
+            color: #a5b4fc;
+            border-color: #a5b4fc;
+        }
+
+        body.dark-mode .share-button:hover {
+            background: #a5b4fc;
+            color: #1e293b;
+        }
+
+        /* Share modal */
+        .share-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .share-modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .share-modal-content {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+
+        .share-modal h3 {
+            margin-top: 0;
+            color: #4f46e5;
+        }
+
+        body.dark-mode .share-modal h3 {
+            color: #a5b4fc;
+        }
+
+        .share-url-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .share-url-box {
+            background: #334155;
+            border-color: #475569;
+            color: #cbd5e1;
+        }
+
+        .share-modal-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .copy-url-btn, .close-modal-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-url-btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+        }
+
+        .copy-url-btn:hover {
+            background: #4338ca;
+        }
+
+        .close-modal-btn {
+            background: transparent;
+            color: #6b7280;
+            border: 2px solid #e5e7eb;
+        }
+
+        .close-modal-btn:hover {
+            border-color: #9ca3af;
+            color: #374151;
+        }
+
+        body.dark-mode .close-modal-btn {
+            color: #94a3b8;
+            border-color: #475569;
+        }
+
+        body.dark-mode .close-modal-btn:hover {
+            border-color: #64748b;
+            color: #cbd5e1;
+        }
+
+        /* Share section at bottom */
+        .share-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        body.dark-mode .share-section {
+            border-top-color: #374151;
+        }
+
+        body.dark-mode .share-section p {
+            color: #94a3b8;
+        }
+
+        .share-url-container {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .share-url-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            background: #f8fafc;
+            color: #475569;
+        }
+
+        body.dark-mode .share-url-input {
+            background: #334155;
+            border-color: #475569;
+            color: #cbd5e1;
+        }
+
+        .copy-url-btn-inline {
+            padding: 0.75rem 1.5rem;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .copy-url-btn-inline:hover {
+            background: #4338ca;
+        }
+
+        body.dark-mode .copy-url-btn-inline {
+            background: #6366f1;
+        }
+
+        body.dark-mode .copy-url-btn-inline:hover {
+            background: #818cf8;
+        }
+
+        /* Quiz action buttons */
+        #quiz-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .regenerate-button,
+        .change-topics-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .regenerate-button {
+            background: #4f46e5;
+            color: white;
+            border: none;
+        }
+
+        .regenerate-button:hover {
+            background: #4338ca;
+        }
+
+        .change-topics-button {
+            background: transparent;
+            color: #6b7280;
+            border: 2px solid #e5e7eb;
+        }
+
+        .change-topics-button:hover {
+            border-color: #9ca3af;
+            color: #374151;
+        }
+
+        body.dark-mode .regenerate-button {
+            background: #6366f1;
+        }
+
+        body.dark-mode .regenerate-button:hover {
+            background: #818cf8;
+        }
+
+        body.dark-mode .change-topics-button {
+            color: #94a3b8;
+            border-color: #475569;
+        }
+
+        body.dark-mode .change-topics-button:hover {
+            border-color: #64748b;
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon">🌙</span>
+    </button>
+
+    <div class="header">
+        <div class="header-content">
+            <div id="breadcrumbs" class="home-link">
+                <a href="index.html">Home</a>
+            </div>
+            <h1 id="page-title">Mini Quiz Builder</h1>
+        </div>
+    </div>
+
+    <!-- Quiz Builder Interface -->
+    <div id="quiz-builder" class="quiz-builder-container">
+        <div class="builder-section">
+            <h2>Select Topics</h2>
+            <p>Choose which topics you want to practice. The quiz will randomly select 4 questions from your chosen topics.</p>
+
+            <div class="tag-selector" id="tag-selector">
+                <!-- Tags will be populated here -->
+            </div>
+
+            <div class="question-count-display" id="question-count">
+                Select tags to see available questions
+            </div>
+
+            <button class="start-quiz-btn" id="start-quiz-btn" onclick="startQuiz()" disabled>
+                Start Quiz
+            </button>
+        </div>
+    </div>
+
+    <!-- Quiz Interface (initially hidden) -->
+    <div id="quiz-interface" class="container quiz-hidden">
+        <div id="practical-content" class="practical-content">
+            <!-- Current image display -->
+            <div class="image-container">
+                <div class="image-content">
+                    <img id="current-image" src="" alt="Quiz question" />
+                    <div id="current-question-text" class="question-text"></div>
+                    <div class="inline-answer">
+                        <div class="answer-center">
+                            <button id="inline-question-number" class="inline-number" onclick="scrollToAnswerSheet()">1</button>
+                            <input type="text" id="inline-answer-input" class="inline-input" placeholder="Type your answer..." oninput="syncAnswer()" onkeydown="handleEnterKey(event)" autocorrect="off" autocapitalize="off" spellcheck="false" />
+                        </div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button id="prev-btn" class="nav-btn nav-prev" onclick="previousImage()">‹</button>
+                        <button id="next-btn" class="nav-btn nav-next" onclick="nextImage()">Next ›</button>
+                    </div>
+                    <div class="image-counter">
+                        Question <span id="current-question">1</span> of 4
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Answer Sheet -->
+        <div class="answer-sheet">
+            <div class="answer-sheet-header">
+                <h2>Answer Sheet</h2>
+                <div class="header-controls">
+                    <button class="submit-button" onclick="submitQuiz()">Submit Quiz</button>
+                    <div id="final-score" class="final-score" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="answers-grid" id="answers-grid">
+                <!-- Generated by JavaScript -->
+            </div>
+
+            <!-- Share section at bottom -->
+            <div id="share-section" class="share-section">
+                <!-- Action buttons (shown after submission) -->
+                <div id="quiz-actions" style="display: none; margin-bottom: 1.5rem;">
+                    <button class="regenerate-button" onclick="regenerateQuiz()">New Random Quiz</button>
+                    <button class="change-topics-button" onclick="restartBuilder()">Change Topics</button>
+                </div>
+
+                <!-- Share URL -->
+                <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 0.5rem;">Share this quiz:</p>
+                <div class="share-url-container">
+                    <input type="text" id="share-url-input" class="share-url-input" readonly />
+                    <button class="copy-url-btn-inline" onclick="copyShareUrlInline()">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script>
+        let practicalData = null;
+        let selectedTags = new Set();
+        let quizQuestions = [];
+        let currentImageIndex = 0;
+        let availableTags = [];
+
+        // Check URL parameters for shared quiz
+        function getUrlTags() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tagsParam = urlParams.get('tags');
+            if (tagsParam) {
+                return tagsParam.split(',').map(t => t.trim()).filter(t => t);
+            }
+            return [];
+        }
+
+        // Load and parse the YAML data
+        async function loadPracticalData() {
+            try {
+                const response = await fetch('data/unit2-part2-practical.yml');
+                const yamlText = await response.text();
+                practicalData = jsyaml.load(yamlText);
+
+                // Extract all unique tags
+                const tagSet = new Set();
+                practicalData.questions.forEach(q => {
+                    if (q.tags && Array.isArray(q.tags)) {
+                        q.tags.forEach(tag => tagSet.add(tag));
+                    }
+                });
+
+                availableTags = Array.from(tagSet).sort((a, b) => {
+                    // Natural sort for alphanumeric (e.g., vessels-8, vessels-9, vessels-10)
+                    return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+                });
+                renderTagSelection();
+
+                // Check if URL has tags parameter - auto-start quiz
+                const urlTags = getUrlTags();
+                if (urlTags.length > 0) {
+                    // Select tags from URL
+                    urlTags.forEach(tag => {
+                        if (availableTags.includes(tag)) {
+                            selectedTags.add(tag);
+                            const chip = document.querySelector(`[data-tag="${tag}"]`);
+                            if (chip) chip.classList.add('selected');
+                        }
+                    });
+
+                    // Auto-start quiz if we have valid tags
+                    if (selectedTags.size > 0) {
+                        updateQuestionCount();
+                        // Small delay to let UI render
+                        setTimeout(() => startQuiz(), 100);
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading practical data:', error);
+                document.getElementById('question-count').innerHTML =
+                    '<div class="error-message">Error loading quiz data. Please refresh the page.</div>';
+            }
+        }
+
+        function renderTagSelection() {
+            const container = document.getElementById('tag-selector');
+            container.innerHTML = '';
+
+            availableTags.forEach(tag => {
+                const chip = document.createElement('div');
+                chip.className = 'tag-chip';
+                chip.textContent = tag;
+                chip.dataset.tag = tag;
+                chip.onclick = handleTagSelection;
+                container.appendChild(chip);
+            });
+        }
+
+        function handleTagSelection(event) {
+            const chip = event.target;
+            const tag = chip.dataset.tag;
+
+            if (chip.classList.contains('selected')) {
+                chip.classList.remove('selected');
+                selectedTags.delete(tag);
+            } else {
+                chip.classList.add('selected');
+                selectedTags.add(tag);
+            }
+            updateQuestionCount();
+        }
+
+        function updateQuestionCount() {
+            const countDisplay = document.getElementById('question-count');
+            const startBtn = document.getElementById('start-quiz-btn');
+
+            if (selectedTags.size === 0) {
+                countDisplay.textContent = 'Select tags to see available questions';
+                startBtn.disabled = true;
+                return;
+            }
+
+            // Count questions that match selected tags
+            const matchingQuestions = practicalData.questions.filter(q => {
+                if (!q.tags || !Array.isArray(q.tags)) return false;
+                return q.tags.some(tag => selectedTags.has(tag));
+            });
+
+            const count = matchingQuestions.length;
+
+            if (count === 0) {
+                countDisplay.textContent = 'No questions found for selected tags';
+                startBtn.disabled = true;
+            } else if (count < 4) {
+                countDisplay.innerHTML = `<strong>${count}</strong> questions available (need at least 4 for a quiz)`;
+                startBtn.disabled = true;
+            } else {
+                countDisplay.innerHTML = `<strong>${count}</strong> questions available — ready to build quiz!`;
+                startBtn.disabled = false;
+            }
+        }
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function startQuiz() {
+            // Filter questions by selected tags
+            const matchingQuestions = practicalData.questions.filter(q => {
+                if (!q.tags || !Array.isArray(q.tags)) return false;
+                // Question must be valid (has text and answer)
+                const hasQuestion = q.question && q.question.trim() !== '';
+                const hasAnswer = q.answer && (
+                    Array.isArray(q.answer)
+                        ? q.answer.some(ans => ans && ans.trim() !== '')
+                        : q.answer.trim() !== ''
+                );
+                const matchesTags = q.tags.some(tag => selectedTags.has(tag));
+                return hasQuestion && hasAnswer && matchesTags;
+            });
+
+            // Randomly select 4 questions
+            const shuffled = shuffleArray(matchingQuestions);
+            quizQuestions = shuffled.slice(0, 4);
+
+            // Hide builder, show quiz
+            document.getElementById('quiz-builder').classList.add('quiz-hidden');
+            document.getElementById('quiz-interface').classList.remove('quiz-hidden');
+            document.getElementById('page-title').textContent = 'Mini Quiz';
+
+            // Update breadcrumbs
+            document.getElementById('breadcrumbs').innerHTML = `
+                <a href="index.html">Home</a>
+                <span class="separator">›</span>
+                <a href="mini-quiz-builder.html">Mini Quizzes</a>
+            `;
+
+            // Update share URL
+            updateShareUrl();
+
+            // Render quiz
+            renderQuiz();
+        }
+
+        function updateShareUrl() {
+            const tagsParam = Array.from(selectedTags).join(',');
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareUrl = `${baseUrl}?tags=${encodeURIComponent(tagsParam)}`;
+            document.getElementById('share-url-input').value = shareUrl;
+        }
+
+        function copyShareUrlInline() {
+            const input = document.getElementById('share-url-input');
+            const button = document.querySelector('.copy-url-btn-inline');
+
+            input.select();
+            navigator.clipboard.writeText(input.value).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied! ✓';
+                button.style.background = '#10b981';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#4f46e5';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy URL. Please copy manually.');
+            });
+        }
+
+        function renderQuiz() {
+            // Generate answer sheet
+            const answersGrid = document.getElementById('answers-grid');
+            answersGrid.innerHTML = '';
+
+            for (let i = 1; i <= 4; i++) {
+                const answerItem = document.createElement('div');
+                answerItem.className = 'answer-item';
+                answerItem.innerHTML = `
+                    <button class="answer-number"
+                            onclick="goToImage(${i - 1})"
+                            tabindex="-1">${i}</button>
+                    <input type="text" name="answer${i}"
+                           readonly
+                           onclick="goToQuestionAndFocus(${i - 1})"
+                           tabindex="${i}" />
+                `;
+                answersGrid.appendChild(answerItem);
+            }
+
+            // Show first question
+            showImage(0);
+        }
+
+        function getTextOnlyThemeClass(themeName) {
+            return `text-only-theme-${themeName || 'default'}`;
+        }
+
+        function showImage(index) {
+            currentImageIndex = index;
+            const question = quizQuestions[index];
+
+            if (!question) return;
+
+            const imageElement = document.getElementById('current-image');
+            imageElement.src = '';
+
+            if (question.image) {
+                // Image-based question
+                const imagePath = `images/${question.image}`;
+                imageElement.src = imagePath;
+                imageElement.style.display = 'block';
+                document.getElementById('current-question-text').innerHTML = question.question || '';
+            } else {
+                // Text-only question
+                imageElement.style.display = 'none';
+                const themeClass = getTextOnlyThemeClass(question.theme);
+                document.getElementById('current-question-text').innerHTML = `
+                    <div class="text-only-question-box ${themeClass}">
+                        ${question.question || ''}
+                    </div>&nbsp;
+                `;
+            }
+
+            // Update inline answer elements
+            const inlineNumber = document.getElementById('inline-question-number');
+            const inlineInput = document.getElementById('inline-answer-input');
+            inlineNumber.textContent = index + 1;
+            const currentAnswer = document.querySelector(`input[name="answer${index + 1}"]`);
+            inlineInput.value = currentAnswer ? currentAnswer.value : '';
+
+            // Update navigation buttons
+            document.getElementById('prev-btn').disabled = index === 0;
+            document.getElementById('next-btn').disabled = index === 3;
+
+            // Update image counter
+            document.querySelector('.image-counter').innerHTML = `Question <span id="current-question">${index + 1}</span> of 4`;
+
+            // Update answer sheet highlighting
+            document.querySelectorAll('.answer-number').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+        }
+
+        function goToImage(index) {
+            if (index >= 0 && index < 4) {
+                showImage(index);
+            }
+        }
+
+        function goToQuestionAndFocus(index) {
+            if (index >= 0 && index < 4) {
+                showImage(index);
+                document.querySelector('.image-container').scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    document.getElementById('inline-answer-input').focus();
+                }, 300);
+            }
+        }
+
+        function previousImage() {
+            if (currentImageIndex > 0) {
+                showImage(currentImageIndex - 1);
+            }
+        }
+
+        function nextImage() {
+            if (currentImageIndex < 3) {
+                showImage(currentImageIndex + 1);
+            }
+            setTimeout(() => {
+                document.getElementById('inline-answer-input').focus();
+            }, 0);
+        }
+
+        function syncAnswer() {
+            const inlineInput = document.getElementById('inline-answer-input');
+            const currentQuestionNum = currentImageIndex + 1;
+            const answerSheetInput = document.querySelector(`input[name="answer${currentQuestionNum}"]`);
+            if (answerSheetInput) {
+                answerSheetInput.value = inlineInput.value;
+            }
+        }
+
+        function scrollToAnswerSheet() {
+            document.querySelector('.answer-sheet').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleEnterKey(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                nextImage();
+            }
+        }
+
+        function normalizeAnswer(answer) {
+            let normalized = answer.toLowerCase().trim();
+
+            // Remove leading articles
+            if (normalized.startsWith('the ')) {
+                normalized = normalized.substring(4);
+            } else if (normalized.startsWith('an ')) {
+                normalized = normalized.substring(3);
+            } else if (normalized.startsWith('a ')) {
+                normalized = normalized.substring(2);
+            }
+
+            // Convert Roman numerals to Arabic numerals
+            normalized = normalized.replace(/\bii\b/g, '2');
+            normalized = normalized.replace(/\bi\b/g, '1');
+
+            // Handle common plural forms
+            if (normalized.endsWith('s') && normalized.length > 3 &&
+                !normalized.endsWith('ss') && !normalized.endsWith('us') &&
+                !normalized.endsWith('is') && !normalized.endsWith('os')) {
+                normalized = normalized.slice(0, -1);
+            } else if (normalized.endsWith('ies') && normalized.length > 4) {
+                normalized = normalized.slice(0, -3) + 'y';
+            } else if (normalized.endsWith('ves') && normalized.length > 4) {
+                normalized = normalized.slice(0, -3) + 'fe';
+            }
+
+            return normalized;
+        }
+
+        function regenerateQuiz() {
+            // Filter questions by selected tags (reuse same tags)
+            const matchingQuestions = practicalData.questions.filter(q => {
+                if (!q.tags || !Array.isArray(q.tags)) return false;
+                const hasQuestion = q.question && q.question.trim() !== '';
+                const hasAnswer = q.answer && (
+                    Array.isArray(q.answer)
+                        ? q.answer.some(ans => ans && ans.trim() !== '')
+                        : q.answer.trim() !== ''
+                );
+                const matchesTags = q.tags.some(tag => selectedTags.has(tag));
+                return hasQuestion && hasAnswer && matchesTags;
+            });
+
+            // Randomly select 4 new questions
+            const shuffled = shuffleArray(matchingQuestions);
+            quizQuestions = shuffled.slice(0, 4);
+
+            // Reset the interface
+            document.getElementById('final-score').style.display = 'none';
+            document.querySelector('.submit-button').style.display = 'block';
+            document.getElementById('quiz-actions').style.display = 'none';
+
+            // Re-render the quiz
+            currentImageIndex = 0;
+            renderQuiz();
+            showImage(0);
+        }
+
+        function submitQuiz() {
+            let score = 0;
+
+            quizQuestions.forEach((question, index) => {
+                const questionNum = index + 1;
+                const input = document.querySelector(`input[name="answer${questionNum}"]`);
+                const circle = document.querySelectorAll('.answer-number')[index];
+                const studentAnswer = input ? input.value.trim() : '';
+                const correctAnswer = question.answer || '';
+
+                const normalizedStudentAnswer = normalizeAnswer(studentAnswer);
+                let isCorrect = false;
+
+                if (Array.isArray(correctAnswer)) {
+                    for (const ans of correctAnswer) {
+                        const normalizedCorrect = normalizeAnswer(ans);
+                        if (normalizedStudentAnswer === normalizedCorrect) {
+                            isCorrect = true;
+                            break;
+                        }
+                    }
+                } else {
+                    const normalizedCorrect = normalizeAnswer(correctAnswer);
+                    isCorrect = normalizedStudentAnswer === normalizedCorrect;
+                }
+
+                if (isCorrect) {
+                    score++;
+                    circle.classList.add('result-correct');
+                    const displayDiv = document.createElement('div');
+                    displayDiv.className = 'answer-display correct';
+                    displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span>`;
+                    input.parentNode.replaceChild(displayDiv, input);
+                } else if (studentAnswer) {
+                    circle.classList.add('result-incorrect');
+                    const displayAnswer = Array.isArray(correctAnswer)
+                        ? correctAnswer.join(' OR ')
+                        : correctAnswer;
+                    const displayDiv = document.createElement('div');
+                    displayDiv.className = 'answer-display incorrect';
+                    displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span>`;
+                    input.parentNode.replaceChild(displayDiv, input);
+                } else {
+                    circle.classList.add('result-unanswered');
+                    const displayAnswer = Array.isArray(correctAnswer)
+                        ? correctAnswer[0]  // Show only first answer
+                        : correctAnswer;
+                    const displayDiv = document.createElement('div');
+                    displayDiv.className = 'answer-display unanswered';
+                    displayDiv.innerHTML = `<span class="correct-answer" style="color: #999;">(${displayAnswer})</span>`;
+                    input.parentNode.replaceChild(displayDiv, input);
+                }
+            });
+
+            const percentage = Math.round((score / 4) * 100);
+            document.getElementById('final-score').innerHTML = `<strong>Score: ${score}/4 (${percentage}%)</strong>`;
+            document.getElementById('final-score').style.display = 'block';
+            document.querySelector('.submit-button').style.display = 'none';
+
+            // Show quiz actions in the share section
+            document.getElementById('quiz-actions').style.display = 'flex';
+
+            // Clear highlighting
+            document.querySelectorAll('.answer-number').forEach(btn => {
+                btn.classList.remove('active');
+            });
+        }
+
+        function shareQuiz() {
+            // Generate shareable URL with selected tags
+            const tagsParam = Array.from(selectedTags).join(',');
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareUrl = `${baseUrl}?tags=${encodeURIComponent(tagsParam)}`;
+
+            // Create modal
+            const modal = document.createElement('div');
+            modal.className = 'share-modal';
+            modal.innerHTML = `
+                <div class="share-modal-content">
+                    <h3>Share This Quiz</h3>
+                    <p>Share this URL to let others practice the same topics:</p>
+                    <div class="share-url-box">${shareUrl}</div>
+                    <div class="share-modal-buttons">
+                        <button class="copy-url-btn" onclick="copyShareUrl('${shareUrl}', this)">Copy URL</button>
+                        <button class="close-modal-btn" onclick="this.parentElement.parentElement.parentElement.remove()">Close</button>
+                    </div>
+                </div>
+            `;
+
+            // Close on background click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+
+            document.body.appendChild(modal);
+        }
+
+        function copyShareUrl(url, button) {
+            navigator.clipboard.writeText(url).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied! ✓';
+                button.style.background = '#10b981';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#4f46e5';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy URL. Please copy manually.');
+            });
+        }
+
+        function restartBuilder() {
+            // Reset state
+            selectedTags.clear();
+            quizQuestions = [];
+            currentImageIndex = 0;
+
+            // Reset tag chips
+            document.querySelectorAll('.tag-chip').forEach(chip => chip.classList.remove('selected'));
+
+            // Show builder, hide quiz
+            document.getElementById('quiz-builder').classList.remove('quiz-hidden');
+            document.getElementById('quiz-interface').classList.add('quiz-hidden');
+            document.getElementById('page-title').textContent = 'Mini Quiz Builder';
+
+            // Reset breadcrumbs
+            document.getElementById('breadcrumbs').innerHTML = '<a href="index.html">Home</a>';
+
+            // Reset displays
+            updateQuestionCount();
+            document.getElementById('final-score').style.display = 'none';
+            document.querySelector('.submit-button').style.display = 'block';
+            document.getElementById('quiz-actions').style.display = 'none';
+        }
+
+        // Smart arrow key navigation
+        document.addEventListener('keydown', function(event) {
+            // Only handle arrow keys when quiz is active
+            if (document.getElementById('quiz-interface').classList.contains('quiz-hidden')) {
+                return;
+            }
+
+            if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
+                return;
+            }
+
+            const inlineInput = document.getElementById('inline-answer-input');
+            const isInputFocused = document.activeElement === inlineInput;
+
+            let shouldNavigate = false;
+
+            if (!isInputFocused) {
+                // Input not focused - always allow navigation
+                shouldNavigate = true;
+            } else {
+                // Input is focused - check cursor position
+                const cursorPosition = inlineInput.selectionStart;
+                const textLength = inlineInput.value.length;
+
+                if (event.key === 'ArrowLeft' && cursorPosition === 0) {
+                    // At beginning of text, allow left navigation
+                    shouldNavigate = true;
+                } else if (event.key === 'ArrowRight' && cursorPosition === textLength) {
+                    // At end of text, allow right navigation
+                    shouldNavigate = true;
+                }
+            }
+
+            if (shouldNavigate) {
+                event.preventDefault(); // Prevent default arrow behavior
+
+                if (event.key === 'ArrowLeft') {
+                    previousImage();
+                } else if (event.key === 'ArrowRight') {
+                    nextImage();
+                }
+
+                // Focus the input after navigation if it was focused before
+                if (isInputFocused) {
+                    setTimeout(() => {
+                        document.getElementById('inline-answer-input').focus();
+                    }, 0);
+                }
+            }
+        });
+
+        // Dark mode functionality
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const toggleIcon = document.querySelector('.toggle-icon');
+        const body = document.body;
+
+        function getPreferredTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                return savedTheme;
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                toggleIcon.textContent = '☀️';
+            } else {
+                body.classList.remove('dark-mode');
+                toggleIcon.textContent = '🌙';
+            }
+        }
+
+        const currentTheme = getPreferredTheme();
+        applyTheme(currentTheme);
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+
+        darkModeToggle.addEventListener('click', () => {
+            const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Initialize
+        loadPracticalData();
+    </script>
+</body>
+</html>
