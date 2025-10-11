@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice Practical #3</title>
+    <title>Practice Practical #1</title>
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Practice Practical #2 Part 2 - Vessels" id="og-title">
-    <meta property="og:description" content="Interactive anatomy practical covering blood vessels and circulatory pathways" id="og-description">
-    <meta property="og:image" content="images/practical-2-2/01.jpg" id="og-image">
-    <meta property="og:url" content="unit2-part2-practical.html">
+    <meta property="og:title" content="Practice Practical #1 - Unit 1" id="og-title">
+    <meta property="og:description" content="Interactive anatomy practical covering lymphatic, endocrine, and immune systems" id="og-description">
+    <meta property="og:image" content="images/practical/01.png" id="og-image">
+    <meta property="og:url" content="unit1-practical.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Practice Practical #2 Part 2 - Vessels" id="twitter-title">
-    <meta name="twitter:description" content="Interactive anatomy practical covering blood vessels and circulatory pathways" id="twitter-description">
-    <meta name="twitter:image" content="images/practical-2-2/01.jpg" id="twitter-image">
+    <meta name="twitter:title" content="Practice Practical #1 - Unit 1" id="twitter-title">
+    <meta name="twitter:description" content="Interactive anatomy practical covering lymphatic, endocrine, and immune systems" id="twitter-description">
+    <meta name="twitter:image" content="images/practical/01.png" id="twitter-image">
 
     <link rel="stylesheet" href="css/practical.css">
     <link rel="stylesheet" href="css/themes.css">
@@ -26,7 +26,7 @@
     <div class="header">
         <div class="header-content">
             <a href="index.html" class="home-link">← Home</a>
-            <h1>Practical #3 — Blood Vessels</h1>
+            <h1>Practice Practical #1</h1>
             <div class="question-count"></div>
         </div>
     </div>
@@ -54,7 +54,7 @@
                         <button id="inline-submit-btn" class="nav-btn nav-submit" onclick="submitPractical()" style="display: none;">Submit</button>
                     </div>
                     <div class="image-counter">
-                        Question <span id="current-question">1</span> of 42
+                        Question <span id="current-question">1</span> of 40
                     </div>
                 </div>
             </div>
@@ -210,7 +210,7 @@
 
         async function loadPractical() {
             try {
-                const response = await fetch('data/unit2-part2-practical.yml');
+                const response = await fetch('data/unit1-practical.yml');
                 const yamlText = await response.text();
                 practicalData = jsyaml.load(yamlText);
 
@@ -238,11 +238,11 @@
                 console.log('Using fallback data');
                 // Fallback data structure
                 practicalData = {
-                    title: "Practice Practical #2 Part 2",
-                    description: "Blood vessels and circulatory pathways identification practical",
+                    title: "Practice Practical #1",
+                    description: "Unit 1 anatomy practical",
                     questions: [
-                        { id: 1, image: "images/practical-2/01.jpg", answer: "Sample Answer 1" },
-                        { id: 2, image: "images/practical-2/02.jpg", answer: "Sample Answer 2" }
+                        { id: 1, image: "images/practical/01.png", answer: "Sample Answer 1" },
+                        { id: 2, image: "images/practical/02.png", answer: "Sample Answer 2" }
                         // Add more as needed
                     ]
                 };

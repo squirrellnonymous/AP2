@@ -12,7 +12,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     line-height: 1.6;
     color: #1a1a1a;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #374151;
     min-height: 100vh;
     padding: 20px;
     overflow-x: hidden;
@@ -28,12 +28,9 @@ body {
 /* Header content area */
 .flashcard-header {
     position: relative;
-    padding: 20px 40px;
-    margin: -20px -20px 30px -20px;
+    padding: 20px 20px;
+    margin: -20px 0 30px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    width: 100vw;
-    left: 50%;
-    transform: translateX(-50%);
     box-sizing: border-box;
     text-align: center;
 }
@@ -41,7 +38,7 @@ body {
 /* Back link */
 .flashcard-header .back-link {
     position: absolute;
-    left: 40px;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
     color: rgba(255, 255, 255, 0.6);
@@ -79,11 +76,20 @@ body {
     .flashcard-header {
         padding: 15px 20px;
         margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
     }
 
     .flashcard-header .back-link {
-        left: 20px;
+        position: static;
+        transform: none;
         font-size: 0.8rem;
+    }
+
+    .deck-info {
+        width: 100%;
     }
 
     .deck-info h1 {
@@ -174,7 +180,7 @@ h1 {
     backface-visibility: hidden;
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    padding: 40px;
+    padding: 30px;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -246,14 +252,15 @@ h1 {
 .image-container {
     position: relative;
     display: inline-block;
+    overflow: hidden;
 }
 
 /* Term image */
 .term-image {
     max-width: 100%;
-    max-height: 350px;
+    max-height: 480px;
     border-radius: 8px;
-    border: 1px solid #d1d5db;
+    border: none;
     display: block;
 }
 
@@ -298,7 +305,7 @@ h1 {
 }
 
 .nav-btn {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
     border: none;
     color: white;
     padding: 12px 24px;
@@ -311,7 +318,6 @@ h1 {
 
 .nav-btn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
 }
 
 .nav-btn:disabled {
@@ -345,10 +351,9 @@ h1 {
     text-align: center;
     padding: 12px 16px;
     border-radius: 12px;
-    background: linear-gradient(145deg, #6b46c1, #4c1d95);
-    border: 1px solid #7c3aed;
+    background: linear-gradient(145deg, #5b68c4, #4338a8);
+    border: 1px solid #4c3fb8;
     box-shadow:
-        0 4px 15px rgba(139, 92, 246, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.2),
         0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -361,9 +366,8 @@ h1 {
 }
 
 .swipe-option:hover:not(.disabled) {
-    background: linear-gradient(145deg, #7c3aed, #5b21b6);
+    background: linear-gradient(145deg, #4c3fb8, #3730a3);
     box-shadow:
-        0 6px 20px rgba(139, 92, 246, 0.4),
         inset 0 1px 0 rgba(255, 255, 255, 0.25),
         0 2px 4px rgba(0, 0, 0, 0.1);
     transform: translateY(-1px);
@@ -372,7 +376,6 @@ h1 {
 .swipe-option:active:not(.disabled) {
     transform: translateY(0);
     box-shadow:
-        0 2px 8px rgba(139, 92, 246, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.2),
         inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -529,6 +532,17 @@ h1 {
 @media (max-width: 640px) {
     .container {
         padding: 0 15px;
+    }
+
+    .flip-card-front, .flip-card-back {
+        padding: 10px;
+    }
+
+    .term-image {
+        object-fit: cover;
+        object-position: center;
+        width: 125%;
+        transform: scale(1.25);
     }
 
     .flashcard {

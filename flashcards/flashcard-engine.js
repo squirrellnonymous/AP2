@@ -343,7 +343,8 @@ function showCard() {
     loadingOverlay.style.display = 'block';
 
     // Update content
-    document.getElementById('term').textContent = card.term;
+    let termContent = card.term.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+    document.getElementById('term').innerHTML = termContent;
 
     // Handle answer + definition or just definition
     let definitionContent = '';

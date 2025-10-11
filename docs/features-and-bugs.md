@@ -57,18 +57,18 @@ When building a custom flashcard deck, the tags should be displayed in alphabeti
 
 ## Better Background Color for Flashcards Review Page
 
-**Status:** Not yet implemented
+**Status:** ✅ Implemented
 **Location:** Flashcards review page
+**Completed:** 2025-10-11
 
 ### Description
 The purple background on the flashcards review page is distracting and should be replaced with a more neutral gray color scheme.
 
-### Expected Behavior
-- Use a nice gray color scheme (both dark and light tones)
-- Less distracting, more focused on content
-
-### Current Behavior
-- Purple background is visually distracting during review
+### Implemented Solution
+- Changed from purple gradient to solid dark blue-gray (`#374151`)
+- Swipe buttons changed from purple to indigo/blue-violet (`#5b68c4` to `#4338a8`)
+- Removed glowing shadow effects from buttons for cleaner appearance
+- Much less distracting, allows better focus on content
 
 ---
 
@@ -104,38 +104,34 @@ A system to dynamically generate mini quizzes (4 questions) from specific tags i
 
 ## Back Link Positioning in Flashcard Deck Review
 
-**Status:** Not yet fixed
+**Status:** ✅ Fixed
 **Location:** Flashcard deck review page
+**Completed:** 2025-10-11
 
 ### Description
-The back/return link while reviewing a flashcard deck is positioned too far to the left, inconsistent with its placement on other pages.
+The back/return link while reviewing a flashcard deck was misaligned due to full-width header breaking out of container.
 
-### Expected Behavior
-- Back link should be in a consistent position matching other pages in the site
-
-### Actual Behavior
-- Back link appears too far left compared to other pages
+### Solution
+- Removed full-width viewport hack (`width: 100vw` with centering transform)
+- Changed header to stay within container bounds (max-width: 600px)
+- Removed negative side margins causing alignment issues
+- Back link now aligns properly with page content
 
 ---
 
 ## Flashcards Show HTML Tags Instead of Rendering Them
 
-**Status:** Not yet fixed
-**Location:** Flashcard display
+**Status:** ✅ Fixed
+**Location:** Flashcard display (`flashcards/flashcard-engine.js`)
+**Completed:** 2025-10-11
 
 ### Description
-Flashcards are displaying raw HTML tags like `<strong>` in the text instead of rendering them as formatted HTML (e.g., bold text).
+Flashcards were displaying raw HTML tags like `<strong>` in the text instead of rendering them as formatted HTML (e.g., bold text).
 
-### Expected Behavior
-- `<strong>text</strong>` should display as **text** (bold)
-- HTML formatting tags should be rendered, not shown as literal text
-
-### Actual Behavior
-- Tags appear as plain text: "This is <strong>important</strong>" instead of "This is **important**"
-
-### Likely Cause
-- Using `.textContent` instead of `.innerHTML` when setting flashcard content
-- Or HTML entities are being escaped somewhere in the rendering pipeline
+### Solution
+- Changed `document.getElementById('term').textContent = card.term` to `.innerHTML` (line 347)
+- Added markdown conversion for term content: `**text**` → `<strong>text</strong>` (line 346)
+- Now both HTML tags and markdown bold syntax render properly on both front and back of cards
 
 ---
 
