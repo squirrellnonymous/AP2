@@ -7,11 +7,19 @@
 **File:** `flashcards/flashcard-styles.css`
 
 Improved image display in flashcard review to maximize visual detail:
-- Reduced card padding from 40px → 10px for more image space
+- **Desktop:** 30px padding with full uncropped images, no border
+- **Mobile:** 10px padding on front (image cards) with 25% zoom crop for detail, 30px padding on back (definition cards)
 - Increased max image height from 350px → 480px
-- Added 25% zoom crop (12.5% cropped from each side) to focus on central detail
-- Images now take up nearly the full card height with enhanced detail
 - Mobile responsive: Back link now appears above deck title on small screens
+
+### 📱 Practice Practical Mobile Header Fix
+
+**File:** `css/practical.css`
+
+Fixed header overlap issue on mobile:
+- Home link now appears above title instead of overlapping
+- Vertical layout on mobile with proper spacing
+- Title and question count remain centered
 
 ---
 

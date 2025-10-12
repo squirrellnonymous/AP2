@@ -3,7 +3,7 @@
 ## Project Structure Notes
 
 ### Active Files
-- **Practice Practicals**: `unit2-part2-practical.html` and related files are the current, actively maintained practical exam system
+- **Practice Practicals**: Current upcoming practical is `unit2-part2-practical.html` (multiple practicals share the same logic/architecture)
 - **Flashcards**: Main flashcard system and deck builder
 
 ### Legacy/Deprecated Files
@@ -13,6 +13,136 @@
 ---
 
 # Feature Requests
+
+## Update unit2-practical.html with Latest Refactoring
+
+**Status:** Not yet implemented
+**Location:** `unit2-practical.html`
+
+### Description
+Ensure `unit2-practical.html` is updated with the latest refactoring and improvements from `unit2-part2-practical.html`, including the shared modal system and other architectural improvements.
+
+### Technical Considerations
+- Apply shared modal system (`js/question-modal.js`)
+- Ensure consistent grading logic and keyboard navigation
+- Verify dark mode support
+- Check that all recent bug fixes are applied
+
+---
+
+## Mini Quizzes for Lecture Exam Material
+
+**Status:** Not yet implemented
+**Location:** New feature - lecture exam preparation
+
+### Description
+Create a mini quiz builder similar to the existing practical mini quiz system, but designed for lecture exam content (definitions, concepts, processes, etc.).
+
+### Expected Features
+- Tag-based quiz generation for lecture topics
+- Multiple choice, fill-in-the-blank, or short answer formats
+- 4-10 question quizzes for quick review sessions
+- Smart grading with partial credit
+- Shareable URLs with specific topic combinations
+- Integration with existing mini quiz builder interface
+- Mobile and desktop friendly
+
+### Use Cases
+- Quick review of specific lecture topics before exams
+- Practice definitions and concepts
+- Test understanding of physiological processes
+- Share study quizzes with classmates
+- Focused practice on weak areas
+
+### Technical Considerations
+- Extend existing mini quiz builder architecture
+- YAML data format for lecture content
+- Reuse existing grading and modal systems
+- Tag system for organizing lecture topics (e.g., cardiac-cycle, blood-pressure, hemodynamics)
+
+---
+
+## Timer for Practice Lecture Exams
+
+**Status:** Not yet implemented
+**Location:** Practice lecture exam features (mini quizzes, future flowchart practice)
+
+### Description
+Add an optional timer to practice exams to help students prepare for timed lecture exams and manage their pacing.
+
+### Expected Features
+- Optional timer that can be turned on/off
+- Configurable time limit (e.g., 1 minute per question, custom total time)
+- Visual countdown display
+- Warning when time is running low
+- Auto-submit option when time expires (or just notify)
+- Display time taken after completion for untimed practice
+- Save timing statistics to track improvement
+
+### Use Cases
+- Practice under real exam conditions
+- Learn to pace answers appropriately
+- Build confidence for timed exams
+- Track speed improvement over multiple attempts
+
+### Technical Considerations
+- Store timer preference in localStorage
+- Non-intrusive display (top corner or header)
+- Pause functionality for breaks
+- Mobile friendly display
+
+---
+
+## Fill-in-the-Blanks Flowchart Practice
+
+**Status:** Not yet implemented
+**Location:** New feature for lecture exam preparation
+
+### Description
+Interactive flowchart practice where students fill in missing labels/terms on process diagrams (e.g., cardiac cycle, blood flow pathways, physiological processes).
+
+### Expected Features
+- Display flowcharts with blanks/gaps for key terms
+- Click or tap to fill in answers
+- Smart grading with partial credit for close answers
+- Visual feedback showing correct/incorrect answers
+- Review mode to see completed flowcharts
+- Mobile and desktop friendly
+
+### Use Cases
+- Practice cardiac cycle step-by-step
+- Learn blood flow pathways through chambers and vessels
+- Study physiological processes with sequential steps
+- Visual learning for process-oriented content on lecture exams
+
+### Technical Considerations
+- Could use SVG overlays or labeled images
+- Similar grading system to practicals
+- YAML data format for flowchart definitions
+
+---
+
+## Sortable, Filterable Index File
+
+**Status:** Not yet implemented
+**Location:** `index.html`
+
+### Description
+The main index/home page should allow users to sort and filter the available resources (practicals, flashcards, quizzes) to quickly find what they need.
+
+### Expected Features
+- **Filtering**: Filter by resource type (practicals, flashcards, mini quizzes, etc.)
+- **Sorting**: Sort by name, date added, unit/topic
+- **Search**: Quick text search to find specific resources
+- **Mobile friendly**: Works well on all screen sizes
+
+### Use Cases
+- Quickly find all Unit 2 resources
+- See only practice practicals
+- Find resources added recently
+- Search for specific topics (e.g., "vessels", "lymphatic")
+
+---
 
 ## Better Styling for Blank Answers in Answer Sheet
 
@@ -101,6 +231,65 @@ A system to dynamically generate mini quizzes (4 questions) from specific tags i
 ---
 
 # Known Bugs
+
+## Light/Dark Mode Button Covers Page Title
+
+**Status:** Not yet fixed
+**Location:** Pages with dark mode toggle button
+
+### Description
+The light mode/dark mode toggle button overlaps and covers the page title, especially on mobile devices.
+
+### Current Behavior
+- Toggle button positioned in a way that overlaps page title
+- Makes title difficult or impossible to read
+- Particularly problematic on smaller screens
+
+### Expected Behavior
+- Toggle button should be positioned to avoid overlapping any content
+- All page elements should be clearly visible
+- Responsive positioning that works on all screen sizes
+
+---
+
+## Theme Lab File Not Responsive and Doesn't Show Real Usage
+
+**Status:** Not yet fixed
+**Location:** Theme lab/preview page
+
+### Description
+The theme lab file used for previewing text-only question themes is not mobile responsive and doesn't accurately represent how themes appear in actual use cases (flashcards, practice questions).
+
+### Current Behavior
+- Theme preview doesn't work well on mobile devices
+- Preview boxes don't match the real-world presentation of flashcards or practice questions
+- Users can't accurately preview how themes will look when actually studying
+
+### Expected Behavior
+- Mobile responsive design for theme preview
+- Show themes applied to actual flashcard and practice question layouts
+- Give users accurate representation of how their theme selections will appear during study sessions
+
+---
+
+## Results Modal Shows Text-Only Questions Larger Than Image Questions
+
+**Status:** Not yet fixed
+**Location:** Practice practicals - answer review modal (`js/question-modal.js`)
+
+### Description
+When reviewing answers after submitting a practical, the popup modal displays text-only questions at a much larger size than image-based questions, creating an inconsistent and jarring user experience.
+
+### Current Behavior
+- Text-only questions appear significantly larger in the modal
+- Image-based questions display at normal/expected size
+- Size inconsistency makes navigation between different question types feel unpolished
+
+### Expected Behavior
+- Both text-only and image-based questions should display at similar, consistent sizes in the modal
+- Smooth visual experience when navigating between question types
+
+---
 
 ## Back Link Positioning in Flashcard Deck Review
 
