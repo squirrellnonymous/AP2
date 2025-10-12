@@ -38,6 +38,7 @@ function validateYamlFile(filePath) {
         const fileName = path.basename(filePath);
         const isExamFile = fileName.includes('exam');
         const isConfigFile = fileName.includes('config');
+        const isConnectionsFile = fileName.includes('connections');
 
         if (isExamFile) {
             if (!isQuiet) console.log('⏭️  Skipping (exam file - validated separately)');
@@ -48,6 +49,35 @@ function validateYamlFile(filePath) {
             if (!isQuiet) console.log('⏭️  Skipping (config file - different structure)');
             return true;
         }
+
+        if (isConnectionsFile) {
+            // Validate vessel connections structure
+            if (!data.arterial || typeof data.arterial !== 'object') {
+                console.error('❌ Missing or invalid arterial tree');
+                return false;
+            }
+            if (!data.venous || typeof data.venous !== 'object') {
+                console.error('❌ Missing or invalid venous tree');
+                return false;
+            }
+
+            // Count vessels in each tree
+            const arterialCount = Object.keys(data.arterial).length;
+            const venousCount = Object.keys(data.venous).length;
+
+            if (!isQuiet) {
+                console.log('✅ YAML syntax is valid');
+                console.log(`🫀 Arterial tree: ${arterialCount} vessels`);
+                console.log(`🫀 Venous tree: ${venousCount} vessels`);
+                console.log('✅ Vessel connection structure is valid');
+            }
+
+            return true;
+        }
+
+        // Check if this is a pathway questions file
+        const isPathwayFile = data.questions && data.questions.length > 0 &&
+                              data.questions.every(q => q.type === 'pathway');
 
         if (!data.questions || !Array.isArray(data.questions)) {
             console.error('❌ Missing required field: questions (must be an array)');
@@ -75,20 +105,45 @@ function validateYamlFile(filePath) {
 
             // Image is optional - skip check
 
-            // Check if question is complete
-            const hasQuestion = question.question && question.question.trim() !== '';
-            const hasAnswer = question.answer && (
-                Array.isArray(question.answer)
-                    ? question.answer.some(ans => ans && ans.trim() !== '')
-                    : question.answer.trim() !== ''
-            );
+            // Validate pathway questions differently
+            if (question.type === 'pathway') {
+                // Pathway-specific validation
+                if (!question.direction) {
+                    issues.push(`Question ${questionNum}: Missing direction field (e.g., "arterial" or "venous")`);
+                }
+                if (!question.validStartVessels || !Array.isArray(question.validStartVessels)) {
+                    issues.push(`Question ${questionNum}: Missing or invalid validStartVessels array`);
+                }
+                if (!question.validEndVessels || !Array.isArray(question.validEndVessels)) {
+                    issues.push(`Question ${questionNum}: Missing or invalid validEndVessels array`);
+                }
 
-            if (!hasQuestion || !hasAnswer) {
-                emptyQuestions++;
-                if (!hasQuestion) issues.push(`Question ${questionNum}: Empty question field`);
-                if (!hasAnswer) issues.push(`Question ${questionNum}: Empty answer field`);
+                // Question field is optional for pathway questions if image is present
+                const hasQuestion = question.question && question.question.trim() !== '';
+                const hasImage = question.image && question.image.trim() !== '';
+
+                if (!hasQuestion && !hasImage) {
+                    issues.push(`Question ${questionNum}: Must have either question text or image`);
+                    emptyQuestions++;
+                } else {
+                    validQuestions++;
+                }
             } else {
-                validQuestions++;
+                // Regular question validation
+                const hasQuestion = question.question && question.question.trim() !== '';
+                const hasAnswer = question.answer && (
+                    Array.isArray(question.answer)
+                        ? question.answer.some(ans => ans && ans.trim() !== '')
+                        : question.answer.trim() !== ''
+                );
+
+                if (!hasQuestion || !hasAnswer) {
+                    emptyQuestions++;
+                    if (!hasQuestion) issues.push(`Question ${questionNum}: Empty question field`);
+                    if (!hasAnswer) issues.push(`Question ${questionNum}: Empty answer field`);
+                } else {
+                    validQuestions++;
+                }
             }
 
             // Check for extra credit

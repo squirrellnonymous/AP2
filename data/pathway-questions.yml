@@ -1,0 +1,48 @@
+title: "Pathway Practice Questions - Extra Credit"
+description: "Blood vessel pathway tracing for extra credit"
+
+# Pathway Questions (Extra Credit)
+questions:
+  - id: 200
+    type: "pathway"
+    image: "practical-2-2/200.jpg"
+    question: "Trace the pathway from the heart to the right hand:"
+    answer: "pathway"
+    direction: "arterial"
+    validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
+    validEndVessels: ["right radial artery", "right ulnar artery", "right hand"]
+    points: 2
+    tags: ["extra-credit", "pathway", "upper-extremity"]
+
+  - id: 201
+    type: "pathway"
+    image: "practical-2-2/201.jpg"
+    question: "Trace the pathway from the heart to the left hand:"
+    answer: "pathway"
+    direction: "arterial"
+    validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
+    validEndVessels: ["left radial artery", "left ulnar artery", "left hand"]
+    points: 2
+    tags: ["extra-credit", "pathway", "upper-extremity"]
+
+  - id: 202
+    type: "pathway"
+    image: "practical-2-2/202.jpg"
+    question: "Trace the pathway from the heart to the right foot:"
+    answer: "pathway"
+    direction: "arterial"
+    validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
+    validEndVessels: ["right anterior tibial artery", "right posterior tibial artery", "right fibular artery", "right foot"]
+    points: 2
+    tags: ["extra-credit", "pathway", "lower-extremity"]
+
+  - id: 203
+    type: "pathway"
+    image: "practical-2-2/203.jpg"
+    question: "Trace the pathway from the heart to the left foot:"
+    answer: "pathway"
+    direction: "arterial"
+    validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
+    validEndVessels: ["left anterior tibial artery", "left posterior tibial artery", "left fibular artery", "left foot"]
+    points: 2
+    tags: ["extra-credit", "pathway", "lower-extremity"]

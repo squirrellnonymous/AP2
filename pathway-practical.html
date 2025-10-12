@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathway Practice - Blood Vessel Routes</title>
+    <link rel="stylesheet" href="css/practical.css">
+    <style>
+        /* Pathway-specific styles */
+        .pathway-inputs-container {
+            margin: 20px 0;
+        }
+
+        .pathway-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        .pathway-input {
+            flex: 1;
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.2s ease;
+            background-color: #ffffff;
+            color: #374151;
+        }
+
+        .pathway-input:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        .remove-vessel-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #d1d5db;
+            background-color: #f9fafb;
+            color: #6b7280;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .remove-vessel-btn:hover:not(:disabled) {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+            color: #dc2626;
+        }
+
+        .remove-vessel-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .add-vessel-btn {
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: #6366f1;
+            border: 2px solid #6366f1;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .add-vessel-btn:hover {
+            background-color: #6366f1;
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .pathway-question-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #374151;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Dark mode */
+        body.dark-mode .pathway-input {
+            background-color: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .pathway-input:focus {
+            border-color: #a78bfa;
+        }
+
+        body.dark-mode .pathway-question-text {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .remove-vessel-btn {
+            background-color: #374151;
+            border-color: #4b5563;
+            color: #9ca3af;
+        }
+
+        body.dark-mode .remove-vessel-btn:hover:not(:disabled) {
+            background-color: #7f1d1d;
+            border-color: #991b1b;
+            color: #fca5a5;
+        }
+
+        body.dark-mode .add-vessel-btn {
+            background-color: #1e293b;
+            color: #a78bfa;
+            border-color: #a78bfa;
+        }
+
+        body.dark-mode .add-vessel-btn:hover {
+            background-color: #a78bfa;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon">🌙</span>
+    </button>
+
+    <div class="header">
+        <div class="header-content">
+            <a href="index.html" class="home-link">← Home</a>
+            <h1>Pathway Practice</h1>
+            <div class="question-count"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            Loading pathway questions...
+        </div>
+
+        <div id="practical-content" class="practical-content" style="display: none;">
+            <!-- Question display -->
+            <div class="image-container">
+                <div class="image-content">
+                    <div class="pathway-question-text" id="current-question-text"></div>
+
+                    <div class="pathway-inputs-container" id="pathway-inputs">
+                        <!-- Dynamic inputs will be added here -->
+                    </div>
+
+                    <button class="add-vessel-btn" onclick="addPathwayInput()">+ Add vessel</button>
+
+                    <div class="navigation-buttons">
+                        <button id="prev-btn" class="nav-btn nav-prev" onclick="previousQuestion()" disabled>‹</button>
+                        <button id="next-btn" class="nav-btn nav-next" onclick="nextQuestion()">Next ›</button>
+                        <button id="submit-btn" class="nav-btn nav-submit" onclick="submitPractical()" style="display: none;">Submit</button>
+                    </div>
+
+                    <div class="image-counter">
+                        Question <span id="current-question-num">1</span> of <span id="total-questions">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Answer Sheet -->
+        <div class="answer-sheet" id="answer-sheet" style="display: none;">
+            <div class="answer-sheet-header">
+                <h2>Results</h2>
+                <div id="final-score" class="final-score"></div>
+            </div>
+            <div id="results-container"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="js/pathway-validator.js"></script>
+    <script>
+        let pathwayQuestions = [];
+        let currentQuestionIndex = 0;
+        let studentAnswers = {}; // Store pathway arrays by question index
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.toggle('dark-mode', savedTheme === 'dark');
+        darkModeToggle.querySelector('.toggle-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        darkModeToggle.addEventListener('click', () => {
+            const isDark = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            darkModeToggle.querySelector('.toggle-icon').textContent = isDark ? '☀️' : '🌙';
+        });
+
+        async function init() {
+            // Load pathway validator
+            await pathwayValidator.loadConnectionTrees();
+
+            // Load questions from YAML
+            try {
+                const response = await fetch('data/unit2-part2-practical.yml');
+                const yamlText = await response.text();
+                const data = jsyaml.load(yamlText);
+
+                // Filter for pathway questions
+                pathwayQuestions = data.questions.filter(q => q.type === 'pathway');
+
+                if (pathwayQuestions.length > 0) {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('practical-content').style.display = 'block';
+                    document.getElementById('total-questions').textContent = pathwayQuestions.length;
+
+                    // Show first question
+                    showQuestion(0);
+                } else {
+                    document.getElementById('loading').textContent = 'No pathway questions found.';
+                }
+            } catch (error) {
+                console.error('Error loading questions:', error);
+                document.getElementById('loading').textContent = 'Error loading questions. Please refresh.';
+            }
+        }
+
+        function showQuestion(index) {
+            currentQuestionIndex = index;
+            const question = pathwayQuestions[index];
+
+            // Display question
+            document.getElementById('current-question-text').textContent = question.question;
+            document.getElementById('current-question-num').textContent = index + 1;
+
+            // Clear previous inputs
+            document.getElementById('pathway-inputs').innerHTML = '';
+
+            // Load saved answer or create default inputs
+            const savedAnswer = studentAnswers[index] || ['', '', ''];
+            savedAnswer.forEach(vessel => {
+                addPathwayInput(vessel);
+            });
+
+            // Update navigation
+            document.getElementById('prev-btn').disabled = index === 0;
+            const isLast = index === pathwayQuestions.length - 1;
+            document.getElementById('next-btn').style.display = isLast ? 'none' : 'block';
+            document.getElementById('submit-btn').style.display = isLast ? 'block' : 'none';
+        }
+
+        function addPathwayInput(value = '') {
+            const container = document.getElementById('pathway-inputs');
+            const row = document.createElement('div');
+            row.className = 'pathway-input-row';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'pathway-input';
+            input.placeholder = 'Enter vessel name...';
+            input.value = value;
+            input.autocomplete = 'off';
+            input.autocorrect = 'off';
+            input.autocapitalize = 'off';
+            input.spellcheck = false;
+
+            // Enter key: move to next field or add new one
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const allInputs = Array.from(document.querySelectorAll('.pathway-input'));
+                    const currentIndex = allInputs.indexOf(input);
+
+                    if (currentIndex < allInputs.length - 1) {
+                        allInputs[currentIndex + 1].focus();
+                    } else {
+                        addPathwayInput();
+                        setTimeout(() => {
+                            const inputs = document.querySelectorAll('.pathway-input');
+                            inputs[inputs.length - 1].focus();
+                        }, 0);
+                    }
+                }
+            });
+
+            // Save on input
+            input.addEventListener('input', saveCurrentAnswer);
+
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'remove-vessel-btn';
+            removeBtn.textContent = '×';
+            removeBtn.onclick = () => {
+                row.remove();
+                updateRemoveButtons();
+                saveCurrentAnswer();
+            };
+
+            row.appendChild(input);
+            row.appendChild(removeBtn);
+            container.appendChild(row);
+
+            updateRemoveButtons();
+        }
+
+        function updateRemoveButtons() {
+            const rows = document.querySelectorAll('.pathway-input-row');
+            rows.forEach(row => {
+                const btn = row.querySelector('.remove-vessel-btn');
+                btn.disabled = rows.length <= 1;
+            });
+        }
+
+        function saveCurrentAnswer() {
+            const inputs = document.querySelectorAll('.pathway-input');
+            const pathway = Array.from(inputs).map(input => input.value.trim());
+            studentAnswers[currentQuestionIndex] = pathway;
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                saveCurrentAnswer();
+                showQuestion(currentQuestionIndex - 1);
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < pathwayQuestions.length - 1) {
+                saveCurrentAnswer();
+                showQuestion(currentQuestionIndex + 1);
+            }
+        }
+
+        function submitPractical() {
+            saveCurrentAnswer();
+
+            // Grade all answers
+            const results = pathwayQuestions.map((question, index) => {
+                const pathway = studentAnswers[index] || [];
+                const validation = pathwayValidator.validatePathway(
+                    pathway,
+                    question.direction,
+                    question.validStartVessels,
+                    question.validEndVessels
+                );
+
+                return {
+                    question: question,
+                    pathway: pathway,
+                    validation: validation
+                };
+            });
+
+            // Calculate score
+            const totalPoints = results.reduce((sum, r) => sum + r.validation.maxScore, 0);
+            const earnedPoints = results.reduce((sum, r) => sum + r.validation.score, 0);
+            const percentage = totalPoints > 0 ? Math.round((earnedPoints / totalPoints) * 100) : 0;
+
+            // Display results
+            document.getElementById('practical-content').style.display = 'none';
+            document.getElementById('answer-sheet').style.display = 'block';
+            document.getElementById('final-score').textContent = `Score: ${earnedPoints}/${totalPoints} (${percentage}%)`;
+
+            const resultsContainer = document.getElementById('results-container');
+            resultsContainer.innerHTML = '';
+
+            results.forEach((result, index) => {
+                const resultDiv = document.createElement('div');
+                resultDiv.style.marginBottom = '30px';
+                resultDiv.style.padding = '20px';
+                resultDiv.style.backgroundColor = '#f9fafb';
+                resultDiv.style.borderRadius = '8px';
+
+                const questionText = document.createElement('div');
+                questionText.style.fontWeight = 'bold';
+                questionText.style.marginBottom = '10px';
+                questionText.textContent = `Q${index + 1}: ${result.question.question}`;
+                resultDiv.appendChild(questionText);
+
+                const pathwayText = document.createElement('div');
+                pathwayText.style.marginBottom = '10px';
+                pathwayText.style.fontFamily = 'monospace';
+                pathwayText.textContent = `Your pathway: ${result.pathway.join(' → ')}`;
+                resultDiv.appendChild(pathwayText);
+
+                const scoreText = document.createElement('div');
+                scoreText.style.marginBottom = '10px';
+                scoreText.style.fontWeight = '500';
+                scoreText.textContent = `Score: ${result.validation.score}/${result.validation.maxScore}`;
+                resultDiv.appendChild(scoreText);
+
+                result.validation.feedback.forEach(fb => {
+                    const feedbackItem = document.createElement('div');
+                    feedbackItem.style.padding = '8px';
+                    feedbackItem.style.marginTop = '5px';
+                    feedbackItem.style.borderRadius = '4px';
+                    feedbackItem.style.fontFamily = 'monospace';
+                    feedbackItem.style.fontSize = '0.9em';
+
+                    if (fb.type.includes('valid')) {
+                        feedbackItem.style.backgroundColor = '#d5f4e6';
+                        feedbackItem.style.color = '#27ae60';
+                    } else {
+                        feedbackItem.style.backgroundColor = '#fadbd8';
+                        feedbackItem.style.color = '#e74c3c';
+                    }
+
+                    feedbackItem.textContent = fb.message;
+                    resultDiv.appendChild(feedbackItem);
+                });
+
+                resultsContainer.appendChild(resultDiv);
+            });
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

@@ -1,5 +1,77 @@
 # Release Notes
 
+## Session Paused - October 11, 2025
+
+**Active Work:** Fixing grading UX in pathway-mini-quiz.html
+
+**Issue:** Attempting to display inline color-coded feedback (green for correct vessels, red for incorrect) instead of long vertical feedback list. Current implementation not correctly mapping validation feedback indices to input field indices.
+
+**Challenge:** Validation feedback is indexed by pathway position (non-empty vessels only), but we need to color-code all input fields (which may include empty fields).
+
+**Files being modified:**
+- `pathway-mini-quiz.html` - displayResults() function needs debugging
+
+**Next session:** Debug the feedback index mapping logic to correctly apply colors to input fields based on validation results.
+
+---
+
+## October 11, 2025 - Pathway Mini Quiz Feature
+
+### 🆕 New Feature: Blood Vessel Pathway Practice
+
+Created a new pathway mapping feature for extra credit practice - tracing blood vessel routes from one location to another.
+
+**File:** `pathway-mini-quiz.html`
+
+#### Features
+- **Single-question practice format** - Quick, focused extra credit review
+- **Dynamic pathway input**
+  - Start with 3 input fields
+  - Add/remove vessel fields as needed
+  - Enter key navigation between fields
+  - Minimum 1 field always present
+- **Smart validation**
+  - Validates anatomical connections using vessel tree
+  - Fuzzy name matching (handles typos, variations)
+  - Partial credit scoring per valid connection
+  - Detailed feedback showing where pathway breaks
+- **Question example:** "How would blood get from the heart to the right hand?"
+- **Full dark mode support**
+- **Try Again** button for repeated practice
+
+#### Core Infrastructure
+
+**Pathway Validator** (`js/pathway-validator.js`)
+- Validates sequential pathways against connection tree
+- Flexible design - works for any connected system (vessels, nerves, metabolic pathways, etc.)
+- Handles anatomically valid shortcuts (e.g., "aorta" → "brachiocephalic trunk")
+
+**Vessel Connection Tree** (`data/vessel-connections.yml`)
+- Maps all blood vessel connections
+- Separate arterial and venous trees
+- Includes shortcuts for flexibility (skip descriptive terms, not anatomical structures)
+
+#### Design Decisions
+- Arterial paths start with: "aorta", "ascending aorta", or "heart"
+- Venous paths end at: "right atrium" or "heart"
+- Shortcuts allow skipping intermediate labels but not actual vessels
+- Scoring: Partial credit per valid connection
+
+#### Use Cases
+- Extra credit practice for vessel pathway questions
+- Quick review before practicals/exams
+- Helps students learn valid blood flow routes
+- Refresh page for new random question
+
+#### Additional Files Created
+- `pathway-test.html` - Development/testing page
+- `pathway-practical.html` - Multi-question demo
+- Question added to `unit2-part2-practical.yml` (id: 200)
+
+---
+
+# Release Notes
+
 ## October 11, 2025 - Flashcard Display Improvements
 
 ### 🎨 Enhanced Flashcard Image Display

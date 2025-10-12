@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathway Mini Quiz - Extra Credit Practice</title>
+    <link rel="stylesheet" href="css/practical.css">
+    <style>
+        .quiz-container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .pathway-question-text {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            color: #374151;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .pathway-question-image {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto 30px;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .pathway-inputs-container {
+            margin: 30px 0;
+        }
+
+        .pathway-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        .pathway-input {
+            flex: 1;
+            padding: 14px;
+            font-size: 1.05em;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.2s ease;
+            background-color: #ffffff;
+            color: #374151;
+        }
+
+        .pathway-input:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        .remove-vessel-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #d1d5db;
+            background-color: #f9fafb;
+            color: #6b7280;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .remove-vessel-btn:hover:not(:disabled) {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+            color: #dc2626;
+        }
+
+        .remove-vessel-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .add-vessel-btn {
+            padding: 12px 24px;
+            background-color: #ffffff;
+            color: #6366f1;
+            border: 2px solid #6366f1;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 20px;
+        }
+
+        .add-vessel-btn:hover {
+            background-color: #6366f1;
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .submit-btn {
+            padding: 14px 32px;
+            background-color: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .submit-btn:hover {
+            background-color: #059669;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .results-container {
+            margin-top: 40px;
+            padding: 30px;
+            background-color: #f9fafb;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .results-container.show {
+            display: block;
+        }
+
+        .score-display {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #374151;
+        }
+
+        .pathway-display {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            color: #374151;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .feedback-item {
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        .feedback-valid,
+        .feedback-valid-start,
+        .feedback-valid-end {
+            background-color: #d5f4e6;
+            color: #27ae60;
+        }
+
+        .feedback-invalid,
+        .feedback-invalid-start,
+        .feedback-invalid-end {
+            background-color: #fadbd8;
+            color: #e74c3c;
+        }
+
+        .try-again-btn {
+            padding: 12px 24px;
+            background-color: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            margin: 20px auto 0;
+            display: block;
+            transition: all 0.2s ease;
+        }
+
+        .try-again-btn:hover {
+            background-color: #4338a8;
+            transform: scale(1.02);
+        }
+
+        /* Dark mode */
+        body.dark-mode .quiz-container {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .pathway-question-text {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .pathway-input {
+            background-color: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .pathway-input:focus {
+            border-color: #a78bfa;
+        }
+
+        body.dark-mode .remove-vessel-btn {
+            background-color: #374151;
+            border-color: #4b5563;
+            color: #9ca3af;
+        }
+
+        body.dark-mode .remove-vessel-btn:hover:not(:disabled) {
+            background-color: #7f1d1d;
+            border-color: #991b1b;
+            color: #fca5a5;
+        }
+
+        body.dark-mode .add-vessel-btn {
+            background-color: #1e293b;
+            color: #a78bfa;
+            border-color: #a78bfa;
+        }
+
+        body.dark-mode .add-vessel-btn:hover {
+            background-color: #a78bfa;
+            color: white;
+        }
+
+        body.dark-mode .results-container {
+            background-color: #1e293b;
+        }
+
+        body.dark-mode .score-display {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .pathway-display {
+            background-color: #0f172a;
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon">🌙</span>
+    </button>
+
+    <div class="header">
+        <div class="header-content">
+            <a href="index.html" class="home-link">← Home</a>
+            <h1>Pathway Mini Quiz</h1>
+            <div class="question-count">Extra Credit Practice</div>
+        </div>
+    </div>
+
+    <div class="quiz-container">
+        <div id="loading" class="loading" style="text-align: center; padding: 40px;">
+            Loading question...
+        </div>
+
+        <div id="quiz-content" style="display: none;">
+            <img id="question-image" class="pathway-question-image" style="display: none;">
+            <div class="pathway-question-text" id="question-text"></div>
+
+            <div class="pathway-inputs-container" id="pathway-inputs">
+                <!-- Inputs added dynamically -->
+            </div>
+
+            <button class="add-vessel-btn" onclick="addPathwayInput()">+ Add vessel</button>
+            <button class="submit-btn" onclick="submitAnswer()">Check Answer</button>
+
+            <div class="results-container" id="results">
+                <div class="score-display" id="score"></div>
+                <div class="pathway-display" id="pathway-display"></div>
+                <div id="feedback"></div>
+                <button class="try-again-btn" onclick="tryAgain()">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="js/pathway-validator.js"></script>
+    <script>
+        let currentQuestion = null;
+
+        // Dark mode
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.toggle('dark-mode', savedTheme === 'dark');
+        darkModeToggle.querySelector('.toggle-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        darkModeToggle.addEventListener('click', () => {
+            const isDark = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            darkModeToggle.querySelector('.toggle-icon').textContent = isDark ? '☀️' : '🌙';
+        });
+
+        async function init() {
+            await pathwayValidator.loadConnectionTrees();
+
+            try {
+                const response = await fetch('data/pathway-questions.yml');
+                const yamlText = await response.text();
+                const data = jsyaml.load(yamlText);
+
+                // Get pathway questions
+                const pathwayQuestions = data.questions.filter(q => q.type === 'pathway');
+
+                if (pathwayQuestions.length > 0) {
+                    // Pick a random one (or first one for now)
+                    currentQuestion = pathwayQuestions[Math.floor(Math.random() * pathwayQuestions.length)];
+
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('quiz-content').style.display = 'block';
+
+                    // Show image and/or text question
+                    const questionImage = document.getElementById('question-image');
+                    const questionText = document.getElementById('question-text');
+
+                    if (currentQuestion.image) {
+                        questionImage.src = 'images/' + currentQuestion.image;
+                        questionImage.style.display = 'block';
+                    } else {
+                        questionImage.style.display = 'none';
+                    }
+
+                    if (currentQuestion.question) {
+                        questionText.textContent = currentQuestion.question;
+                        questionText.style.display = 'block';
+                    } else {
+                        questionText.style.display = 'none';
+                    }
+
+                    // Start with 3 empty inputs
+                    addPathwayInput();
+                    addPathwayInput();
+                    addPathwayInput();
+                } else {
+                    document.getElementById('loading').textContent = 'No pathway questions available.';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('loading').textContent = 'Error loading question.';
+            }
+        }
+
+        function addPathwayInput(value = '') {
+            const container = document.getElementById('pathway-inputs');
+            const row = document.createElement('div');
+            row.className = 'pathway-input-row';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'pathway-input';
+            input.placeholder = 'Enter vessel name...';
+            input.value = value;
+            input.autocomplete = 'off';
+            input.autocorrect = 'off';
+            input.autocapitalize = 'off';
+            input.spellcheck = false;
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === 'Tab') {
+                    e.preventDefault();
+                    const allInputs = Array.from(document.querySelectorAll('.pathway-input'));
+                    const currentIndex = allInputs.indexOf(input);
+
+                    if (currentIndex < allInputs.length - 1) {
+                        allInputs[currentIndex + 1].focus();
+                    } else {
+                        addPathwayInput();
+                        setTimeout(() => {
+                            const inputs = document.querySelectorAll('.pathway-input');
+                            inputs[inputs.length - 1].focus();
+                        }, 0);
+                    }
+                }
+            });
+
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'remove-vessel-btn';
+            removeBtn.textContent = '×';
+            removeBtn.onclick = () => {
+                row.remove();
+                updateRemoveButtons();
+            };
+
+            row.appendChild(input);
+            row.appendChild(removeBtn);
+            container.appendChild(row);
+
+            updateRemoveButtons();
+        }
+
+        function updateRemoveButtons() {
+            const rows = document.querySelectorAll('.pathway-input-row');
+            rows.forEach(row => {
+                const btn = row.querySelector('.remove-vessel-btn');
+                btn.disabled = rows.length <= 1;
+            });
+        }
+
+        function getPathway() {
+            const inputs = document.querySelectorAll('.pathway-input');
+            return Array.from(inputs).map(input => input.value.trim()).filter(v => v);
+        }
+
+        function submitAnswer() {
+            const pathway = getPathway();
+
+            if (pathway.length === 0) {
+                alert('Please enter at least one vessel name');
+                return;
+            }
+
+            const validation = pathwayValidator.validatePathway(
+                pathway,
+                currentQuestion.direction,
+                currentQuestion.validStartVessels,
+                currentQuestion.validEndVessels
+            );
+
+            displayResults(pathway, validation);
+        }
+
+        function displayResults(pathway, validation) {
+            const percentage = validation.maxScore > 0
+                ? Math.round((validation.score / validation.maxScore) * 100)
+                : 0;
+
+            document.getElementById('score').textContent =
+                `Score: ${validation.score}/${validation.maxScore} (${percentage}%)`;
+
+            // Build visual pathway with check/x marks
+            let pathwayHTML = '';
+            pathway.forEach((vessel, index) => {
+                const feedback = validation.feedback.find(f => f.step === index);
+
+                // Add the vessel name
+                if (feedback && feedback.type.includes('invalid')) {
+                    pathwayHTML += `<span style="color: #e74c3c; font-weight: bold;">${vessel}</span>`;
+                } else if (feedback && feedback.type.includes('valid')) {
+                    pathwayHTML += `<span style="color: #27ae60;">${vessel}</span>`;
+                } else {
+                    pathwayHTML += `<span style="opacity: 0.5;">${vessel}</span>`;
+                }
+
+                // Add arrow with validation indicator (if not the last item)
+                if (index < pathway.length - 1) {
+                    const nextFeedback = validation.feedback.find(f => f.step === index + 1);
+                    // Arrow is red if the next vessel has invalid feedback
+                    if (nextFeedback && nextFeedback.type.includes('invalid')) {
+                        pathwayHTML += ` <span style="color: #e74c3c;">—✗→</span> `;
+                    } else if (nextFeedback && nextFeedback.type.includes('valid')) {
+                        pathwayHTML += ` <span style="color: #27ae60;">—✓→</span> `;
+                    } else {
+                        pathwayHTML += ` <span style="opacity: 0.5;">→</span> `;
+                    }
+                }
+            });
+
+            document.getElementById('pathway-display').innerHTML = pathwayHTML;
+
+            // Make inputs read-only and show feedback inline
+            const inputs = document.querySelectorAll('.pathway-input');
+            const addBtn = document.querySelector('.add-vessel-btn');
+            const submitBtn = document.querySelector('.submit-btn');
+            const removeButtons = document.querySelectorAll('.remove-vessel-btn');
+
+            // Hide add button and submit button
+            addBtn.style.display = 'none';
+            submitBtn.style.display = 'none';
+
+            // Hide remove buttons
+            removeButtons.forEach(btn => btn.style.display = 'none');
+
+            // Build mapping from input index to pathway index
+            let pathwayPosition = 0;
+            const inputToPathwayMap = [];
+            inputs.forEach((input, index) => {
+                if (input.value.trim()) {
+                    inputToPathwayMap[index] = pathwayPosition;
+                    pathwayPosition++;
+                } else {
+                    inputToPathwayMap[index] = -1; // Empty input
+                }
+            });
+
+            inputs.forEach((input, index) => {
+                input.readOnly = true;
+                input.style.cursor = 'not-allowed';
+
+                // Only style inputs that have values
+                if (!input.value.trim()) {
+                    input.style.opacity = '0.5';
+                    return;
+                }
+
+                // Get the pathway position for this input
+                const pathwayIndex = inputToPathwayMap[index];
+                const feedback = validation.feedback.find(f => f.step === pathwayIndex);
+
+                if (feedback) {
+                    if (feedback.type.includes('valid')) {
+                        input.style.borderColor = '#27ae60';
+                        input.style.backgroundColor = '#d5f4e6';
+                        input.style.color = '#27ae60';
+                    } else {
+                        input.style.borderColor = '#e74c3c';
+                        input.style.backgroundColor = '#fadbd8';
+                        input.style.color = '#e74c3c';
+                    }
+                } else {
+                    // No feedback means it wasn't validated (pathway broke before this)
+                    input.style.opacity = '0.5';
+                }
+            });
+
+            // Show detailed feedback
+            const feedbackDiv = document.getElementById('feedback');
+            feedbackDiv.innerHTML = '<div style="margin-top: 20px; font-weight: 500;">Detailed Feedback:</div>';
+
+            validation.feedback.forEach(item => {
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = `feedback-item feedback-${item.type.replace('_', '-')}`;
+                feedbackItem.textContent = item.message;
+                feedbackDiv.appendChild(feedbackItem);
+            });
+
+            document.getElementById('results').classList.add('show');
+        }
+
+        function tryAgain() {
+            document.getElementById('results').classList.remove('show');
+            document.getElementById('pathway-inputs').innerHTML = '';
+
+            // Show add and submit buttons again
+            document.querySelector('.add-vessel-btn').style.display = 'inline-block';
+            document.querySelector('.submit-btn').style.display = 'block';
+
+            addPathwayInput();
+            addPathwayInput();
+            addPathwayInput();
+            document.querySelector('.pathway-input').focus();
+        }
+
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

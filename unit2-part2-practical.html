@@ -1235,14 +1235,23 @@
             localStorage.setItem('theme', newTheme);
         });
 
-        // Load YAML parser and question modal module
+        // Load YAML parser, pathway validator, and question modal module
         const yamlScript = document.createElement('script');
         yamlScript.src = 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js';
         yamlScript.onload = () => {
-            const modalScript = document.createElement('script');
-            modalScript.src = 'js/question-modal.js';
-            modalScript.onload = loadPractical;
-            document.head.appendChild(modalScript);
+            const pathwayScript = document.createElement('script');
+            pathwayScript.src = 'js/pathway-validator.js';
+            pathwayScript.onload = () => {
+                const modalScript = document.createElement('script');
+                modalScript.src = 'js/question-modal.js';
+                modalScript.onload = async () => {
+                    // Load pathway connection trees
+                    await pathwayValidator.loadConnectionTrees();
+                    loadPractical();
+                };
+                document.head.appendChild(modalScript);
+            };
+            document.head.appendChild(pathwayScript);
         };
         document.head.appendChild(yamlScript);
     </script>

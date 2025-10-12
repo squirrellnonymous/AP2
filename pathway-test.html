@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathway Test - Blood Vessel Routes</title>
+    <link rel="stylesheet" href="css/practical.css">
+    <style>
+        .pathway-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .pathway-question {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .pathway-inputs {
+            margin-bottom: 20px;
+        }
+
+        .pathway-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        .pathway-input {
+            flex: 1;
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.2s ease;
+            background-color: #ffffff;
+            color: #374151;
+        }
+
+        .pathway-input:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        .remove-vessel-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #d1d5db;
+            background-color: #f9fafb;
+            color: #6b7280;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .remove-vessel-btn:hover:not(:disabled) {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+            color: #dc2626;
+        }
+
+        .remove-vessel-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .add-vessel-btn {
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: #6366f1;
+            border: 2px solid #6366f1;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .add-vessel-btn:hover {
+            background-color: #6366f1;
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .validate-btn {
+            padding: 12px 24px;
+            background-color: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .validate-btn:hover {
+            background-color: #059669;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .result-item {
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .result-valid {
+            background-color: #d5f4e6;
+            color: #27ae60;
+        }
+
+        .result-invalid {
+            background-color: #fadbd8;
+            color: #e74c3c;
+        }
+
+        .result-valid-start {
+            background-color: #d5f4e6;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .result-invalid-start {
+            background-color: #fadbd8;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .result-valid-end {
+            background-color: #d5f4e6;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .result-invalid-end {
+            background-color: #fadbd8;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .score-display {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="pathway-container">
+        <h1>Blood Vessel Pathway Test</h1>
+
+        <div id="loading" class="loading">
+            Loading pathway validator...
+        </div>
+
+        <div id="pathway-interface" style="display: none;">
+            <div class="pathway-question" id="question">
+                How would blood get from the heart to the right hand?
+            </div>
+
+            <div class="pathway-inputs" id="pathway-inputs">
+                <!-- Dynamic inputs will be added here -->
+            </div>
+
+            <button class="add-vessel-btn" onclick="addVesselInput()">+ Add vessel</button>
+            <br>
+            <button class="validate-btn" onclick="validatePathway()">Validate Pathway</button>
+
+            <div class="results" id="results">
+                <div class="score-display" id="score"></div>
+                <div id="feedback"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="js/pathway-validator.js"></script>
+    <script>
+        let vesselCount = 0;
+
+        // Test question configuration
+        const testQuestion = {
+            question: "How would blood get from the heart to the right hand?",
+            type: "pathway",
+            direction: "arterial",
+            validStartVessels: ["aorta", "ascending aorta", "heart"],
+            validEndVessels: ["right radial artery", "right ulnar artery"]
+        };
+
+        async function init() {
+            // Load connection trees
+            const loaded = await pathwayValidator.loadConnectionTrees();
+
+            if (loaded) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('pathway-interface').style.display = 'block';
+
+                // Initialize with 3 empty inputs
+                addVesselInput();
+                addVesselInput();
+                addVesselInput();
+            } else {
+                document.getElementById('loading').textContent = 'Error loading pathway data. Please refresh the page.';
+            }
+        }
+
+        function addVesselInput() {
+            const container = document.getElementById('pathway-inputs');
+            const row = document.createElement('div');
+            row.className = 'pathway-input-row';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'pathway-input';
+            input.placeholder = 'Enter vessel name...';
+            input.autocomplete = 'off';
+            input.autocorrect = 'off';
+            input.autocapitalize = 'off';
+            input.spellcheck = false;
+
+            // Enter key: move to next field or add new one
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const allInputs = Array.from(document.querySelectorAll('.pathway-input'));
+                    const currentIndex = allInputs.indexOf(input);
+
+                    if (currentIndex < allInputs.length - 1) {
+                        // Focus next existing field
+                        allInputs[currentIndex + 1].focus();
+                    } else {
+                        // This is the last field, add a new one
+                        addVesselInput();
+                        setTimeout(() => {
+                            const inputs = document.querySelectorAll('.pathway-input');
+                            inputs[inputs.length - 1].focus();
+                        }, 0);
+                    }
+                }
+            });
+
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'remove-vessel-btn';
+            removeBtn.textContent = '×';
+            removeBtn.onclick = () => {
+                row.remove();
+                updateRemoveButtons();
+            };
+            removeBtn.title = 'Remove this vessel';
+
+            row.appendChild(input);
+            row.appendChild(removeBtn);
+            container.appendChild(row);
+
+            updateRemoveButtons();
+        }
+
+        function updateRemoveButtons() {
+            const rows = document.querySelectorAll('.pathway-input-row');
+            // Allow deleting all the way down to 1 field
+            rows.forEach(row => {
+                const btn = row.querySelector('.remove-vessel-btn');
+                btn.disabled = rows.length <= 1;
+            });
+        }
+
+        function getPathwayInputs() {
+            const inputs = document.querySelectorAll('.pathway-input');
+            const pathway = [];
+            inputs.forEach(input => {
+                const value = input.value.trim();
+                if (value) {
+                    pathway.push(value);
+                }
+            });
+            return pathway;
+        }
+
+        function validatePathway() {
+            const pathway = getPathwayInputs();
+
+            if (pathway.length === 0) {
+                alert('Please enter at least one vessel name');
+                return;
+            }
+
+            // Validate using the pathway validator
+            const results = pathwayValidator.validatePathway(
+                pathway,
+                testQuestion.direction,
+                testQuestion.validStartVessels,
+                testQuestion.validEndVessels
+            );
+
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            const resultsDiv = document.getElementById('results');
+            const scoreDiv = document.getElementById('score');
+            const feedbackDiv = document.getElementById('feedback');
+
+            // Show results
+            resultsDiv.classList.add('show');
+
+            // Display score
+            const percentage = results.maxScore > 0
+                ? Math.round((results.score / results.maxScore) * 100)
+                : 0;
+            scoreDiv.textContent = `Score: ${results.score}/${results.maxScore} (${percentage}%)`;
+
+            // Display feedback
+            feedbackDiv.innerHTML = '';
+            results.feedback.forEach(item => {
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = `result-item result-${item.type.replace('_', '-')}`;
+
+                let stepText = '';
+                if (item.step !== undefined) {
+                    stepText = `Step ${item.step + 1}: `;
+                }
+
+                feedbackItem.textContent = `${stepText}${item.vessel || ''} - ${item.message}`;
+                feedbackDiv.appendChild(feedbackItem);
+            });
+
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

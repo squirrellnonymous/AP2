@@ -16,14 +16,14 @@ questions:
     question: "Name the middle layer (hint: two word name)"
     answer: "tunica media"
     definition: "Tunica media is the layer with smooth muscle and elestic fibers in arteries, arterioles, and veins. The capillaries and the venules don't have tunica media."
-    tags: ["blood-vessels"]
+    tags: ["blood-vessels", "vessels-1"]
 
   - id: 2
     image: "practical-2-2/02.jpg"
     question: "Name the outer layer (hint: two word name)"
     answer: "tunica externa"
     definition: "Tunica externa is the outermost connective tissue layer of vessels found in arteries, veins, and venules. The arterioles and capillaries don't have this layer."
-    tags: ["blood-vessels"]
+    tags: ["blood-vessels", "vessels-1"]
 
   - id: 03
     image: "practical-2-2/03.jpg"
@@ -106,7 +106,7 @@ questions:
     image: "practical-2-2/14.jpg"
     question: "what is the red vessel labeled <strong>D</strong>?"
     answer: ["right common carotid artery"]
-    tags: ["blood-vessels", "neck"]
+    tags: ["blood-vessels", "neck", "crystal-skull", "models"]
 
   - id: 15
     image: "practical-2-2/15.jpg"
@@ -211,7 +211,7 @@ questions:
 
 
 
-
+  # Text Only Questions (themed with colors)
 
   - id: 100
     question: "What type of cells form the walls of capillaries?"
@@ -226,4 +226,8 @@ questions:
     definition: "It's the femoral!"
     theme: "blood"
     tags: ["blood-vessels"]
- 
+
+
+
+    
+

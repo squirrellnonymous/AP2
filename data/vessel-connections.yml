@@ -1,0 +1,461 @@
+title: "Blood Vessel Connection Tree"
+description: "Defines arterial and venous vessel connections for pathway validation"
+
+# Vessel Connection Tree
+# Defines which blood vessels connect to which vessels
+# Used for validating pathway questions (e.g., "How would blood get from the heart to the right hand?")
+
+# Format:
+# vessel_name:
+#   - next_vessel_1
+#   - next_vessel_2
+
+arterial:
+  # Heart and Major Vessels
+  "heart":
+    - "aorta"
+    - "ascending aorta"
+    - "aortic semilunar valve"  # skippable
+
+  "left ventricle":
+    - "aorta"
+    - "ascending aorta"
+    - "aortic semilunar valve"  # skippable
+
+  "aortic semilunar valve":
+    - "aorta"
+    - "ascending aorta"
+
+  "aorta":
+    - "ascending aorta"
+    - "aortic arch"
+    - "brachiocephalic trunk"  # shortcut (via aortic arch)
+    - "left common carotid artery"  # shortcut (via aortic arch)
+    - "left subclavian artery"  # shortcut (via aortic arch)
+    - "descending aorta"  # shortcut
+
+  "ascending aorta":
+    - "aortic arch"
+    - "brachiocephalic trunk"  # shortcut (via aortic arch)
+    - "left common carotid artery"  # shortcut (via aortic arch)
+    - "left subclavian artery"  # shortcut (via aortic arch)
+    - "descending aorta"  # shortcut
+
+  "aortic arch":
+    - "brachiocephalic trunk"
+    - "left common carotid artery"
+    - "left subclavian artery"
+    - "descending aorta"
+
+  "descending aorta":
+    - "celiac trunk"
+    - "superior mesenteric artery"
+    - "right renal artery"
+    - "left renal artery"
+    - "right adrenal artery"
+    - "left adrenal artery"
+    - "right gonadal artery"
+    - "left gonadal artery"
+    - "inferior mesenteric artery"
+    - "right common iliac artery"
+    - "left common iliac artery"
+    - "right external iliac artery"  # shortcut
+    - "left external iliac artery"  # shortcut
+    - "right femoral artery"  # shortcut
+    - "left femoral artery"  # shortcut
+
+  # Head and Neck (Right Side)
+  "brachiocephalic trunk":
+    - "right common carotid artery"
+    - "right subclavian artery"
+
+  "right common carotid artery":
+    - "right external carotid artery"
+    - "right internal carotid artery"
+
+  "right external carotid artery": []
+
+  "right internal carotid artery":
+    - "right anterior cerebral artery"
+    - "right middle cerebral artery"
+    - "right anterior communicating branch"
+    - "right posterior communicating branch"
+
+  "right subclavian artery":
+    - "right vertebral artery"
+    - "right axillary artery"
+
+  "right vertebral artery":
+    - "basilar artery"
+
+  # Head and Neck (Left Side)
+  "left common carotid artery":
+    - "left external carotid artery"
+    - "left internal carotid artery"
+
+  "left external carotid artery": []
+
+  "left internal carotid artery":
+    - "left anterior cerebral artery"
+    - "left middle cerebral artery"
+    - "left anterior communicating branch"
+    - "left posterior communicating branch"
+
+  "left subclavian artery":
+    - "left vertebral artery"
+    - "left axillary artery"
+
+  "left vertebral artery":
+    - "basilar artery"
+
+  # Brain Circulation
+  "basilar artery":
+    - "right posterior cerebral artery"
+    - "left posterior cerebral artery"
+
+  "right anterior cerebral artery":
+    - "right anterior communicating branch"
+
+  "left anterior cerebral artery":
+    - "left anterior communicating branch"
+
+  "right anterior communicating branch": []
+  "left anterior communicating branch": []
+  "right middle cerebral artery": []
+  "left middle cerebral artery": []
+  "right posterior cerebral artery":
+    - "right posterior communicating branch"
+  "left posterior cerebral artery":
+    - "left posterior communicating branch"
+  "right posterior communicating branch": []
+  "left posterior communicating branch": []
+
+  # Upper Limb (Right Side)
+  "right axillary artery":
+    - "right brachial artery"
+
+  "right brachial artery":
+    - "right radial artery"
+    - "right ulnar artery"
+
+  "right radial artery": []
+  "right ulnar artery": []
+
+  # Upper Limb (Left Side)
+  "left axillary artery":
+    - "left brachial artery"
+
+  "left brachial artery":
+    - "left radial artery"
+    - "left ulnar artery"
+
+  "left radial artery": []
+  "left ulnar artery": []
+
+  # Abdomen - Celiac Trunk
+  "celiac trunk":
+    - "common hepatic artery"
+    - "splenic artery"
+    - "left gastric artery"
+    - "right gastric artery"  # shortcut
+    - "hepatic artery proper"  # shortcut
+
+  "common hepatic artery":
+    - "hepatic artery proper"
+    - "right gastric artery"
+
+  "hepatic artery proper": []
+  "splenic artery": []
+  "left gastric artery": []
+  "right gastric artery": []
+
+  # Abdomen - Mesenteric
+  "superior mesenteric artery": []
+  "inferior mesenteric artery": []
+
+  # Abdomen - Kidneys and Adrenals
+  "right renal artery": []
+  "left renal artery": []
+  "right adrenal artery": []
+  "left adrenal artery": []
+  "right gonadal artery": []
+  "left gonadal artery": []
+
+  # Lower Limb (Right Side)
+  "right common iliac artery":
+    - "right external iliac artery"
+    - "right internal iliac artery"
+    - "right femoral artery"  # shortcut
+
+  "right external iliac artery":
+    - "right femoral artery"
+
+  "right internal iliac artery": []
+
+  "right femoral artery":
+    - "right popliteal artery"
+
+  "right popliteal artery":
+    - "right anterior tibial artery"
+    - "right posterior tibial artery"
+    - "right fibular artery"
+
+  "right anterior tibial artery": []
+  "right posterior tibial artery": []
+  "right fibular artery": []
+
+  # Lower Limb (Left Side)
+  "left common iliac artery":
+    - "left external iliac artery"
+    - "left internal iliac artery"
+    - "left femoral artery"  # shortcut
+
+  "left external iliac artery":
+    - "left femoral artery"
+
+  "left internal iliac artery": []
+
+  "left femoral artery":
+    - "left popliteal artery"
+
+  "left popliteal artery":
+    - "left anterior tibial artery"
+    - "left posterior tibial artery"
+    - "left fibular artery"
+
+  "left anterior tibial artery": []
+  "left posterior tibial artery": []
+  "left fibular artery": []
+
+
+venous:
+  # Upper Limb (Right Side) - Deep Veins
+  "right radial vein":
+    - "right brachial vein"
+
+  "right ulnar vein":
+    - "right brachial vein"
+
+  "right brachial vein":
+    - "right axillary vein"
+
+  # Upper Limb (Right Side) - Superficial Veins
+  "right basilic vein":
+    - "right axillary vein"
+
+  "right cephalic vein":
+    - "right axillary vein"
+
+  "right median cubital vein":
+    - "right basilic vein"
+    - "right cephalic vein"
+
+  "right axillary vein":
+    - "right subclavian vein"
+
+  "right subclavian vein":
+    - "right brachiocephalic vein"
+
+  # Upper Limb (Left Side) - Deep Veins
+  "left radial vein":
+    - "left brachial vein"
+
+  "left ulnar vein":
+    - "left brachial vein"
+
+  "left brachial vein":
+    - "left axillary vein"
+
+  # Upper Limb (Left Side) - Superficial Veins
+  "left basilic vein":
+    - "left axillary vein"
+
+  "left cephalic vein":
+    - "left axillary vein"
+
+  "left median cubital vein":
+    - "left basilic vein"
+    - "left cephalic vein"
+
+  "left axillary vein":
+    - "left subclavian vein"
+
+  "left subclavian vein":
+    - "left brachiocephalic vein"
+
+  # Head and Neck (Right Side)
+  "right external jugular vein":
+    - "right subclavian vein"
+
+  "right internal jugular vein":
+    - "right brachiocephalic vein"
+
+  "right vertebral vein":
+    - "right brachiocephalic vein"
+
+  # Head and Neck (Left Side)
+  "left external jugular vein":
+    - "left subclavian vein"
+
+  "left internal jugular vein":
+    - "left brachiocephalic vein"
+
+  "left vertebral vein":
+    - "left brachiocephalic vein"
+
+  # Brain Sinuses
+  "superior sagittal sinus":
+    - "transverse sinus"
+
+  "transverse sinus":
+    - "right sigmoid sinus"
+    - "left sigmoid sinus"
+
+  "right sigmoid sinus":
+    - "right internal jugular vein"
+
+  "left sigmoid sinus":
+    - "left internal jugular vein"
+
+  "cavernous sinus":
+    - "petrosal sinus"
+
+  "petrosal sinus":
+    - "right sigmoid sinus"
+    - "left sigmoid sinus"
+
+  # Superior Vena Cava and Brachiocephalic
+  "right brachiocephalic vein":
+    - "superior vena cava"
+    - "right atrium"  # shortcut
+    - "heart"  # shortcut
+
+  "left brachiocephalic vein":
+    - "superior vena cava"
+    - "right atrium"  # shortcut
+    - "heart"  # shortcut
+
+  "superior vena cava":
+    - "right atrium"
+    - "heart"
+
+  # Lower Limb (Right Side) - Deep Veins
+  "right anterior tibial vein":
+    - "right popliteal vein"
+
+  "right posterior tibial vein":
+    - "right popliteal vein"
+
+  "right fibular vein":
+    - "right popliteal vein"
+
+  "right popliteal vein":
+    - "right femoral vein"
+
+  "right femoral vein":
+    - "right external iliac vein"
+
+  # Lower Limb (Right Side) - Superficial Veins
+  "right great saphenous vein":
+    - "right femoral vein"
+
+  "right small saphenous vein":
+    - "right popliteal vein"
+
+  # Lower Limb (Left Side) - Deep Veins
+  "left anterior tibial vein":
+    - "left popliteal vein"
+
+  "left posterior tibial vein":
+    - "left popliteal vein"
+
+  "left fibular vein":
+    - "left popliteal vein"
+
+  "left popliteal vein":
+    - "left femoral vein"
+
+  "left femoral vein":
+    - "left external iliac vein"
+
+  # Lower Limb (Left Side) - Superficial Veins
+  "left great saphenous vein":
+    - "left femoral vein"
+
+  "left small saphenous vein":
+    - "left popliteal vein"
+
+  # Pelvic Veins
+  "right external iliac vein":
+    - "right common iliac vein"
+    - "inferior vena cava"  # shortcut
+
+  "right internal iliac vein":
+    - "right common iliac vein"
+    - "inferior vena cava"  # shortcut
+
+  "right common iliac vein":
+    - "inferior vena cava"
+    - "right atrium"  # shortcut
+    - "heart"  # shortcut
+
+  "left external iliac vein":
+    - "left common iliac vein"
+    - "inferior vena cava"  # shortcut
+
+  "left internal iliac vein":
+    - "left common iliac vein"
+    - "inferior vena cava"  # shortcut
+
+  "left common iliac vein":
+    - "inferior vena cava"
+    - "right atrium"  # shortcut
+    - "heart"  # shortcut
+
+  # Abdomen - IVC and Tributaries
+  "right renal vein":
+    - "inferior vena cava"
+    - "right atrium"  # shortcut
+    - "heart"  # shortcut
+
+  "left renal vein":
+    - "inferior vena cava"
+    - "right atrium"  # shortcut
+    - "heart"  # shortcut
+
+  "right gonadal vein":
+    - "inferior vena cava"
+    - "right atrium"  # shortcut
+    - "heart"  # shortcut
+
+  "left gonadal vein":
+    - "left renal vein"
+
+  "hepatic veins":
+    - "inferior vena cava"
+    - "right atrium"  # shortcut
+    - "heart"  # shortcut
+
+  "inferior vena cava":
+    - "right atrium"
+    - "heart"
+
+  # Hepatic Portal System
+  "gastric veins":
+    - "hepatic portal vein"
+
+  "splenic vein":
+    - "hepatic portal vein"
+
+  "superior mesenteric vein":
+    - "hepatic portal vein"
+
+  "inferior mesenteric vein":
+    - "splenic vein"
+
+  "hepatic portal vein":
+    - "hepatic veins"
+
+  # Heart
+  "right atrium": []
+  "heart": []
