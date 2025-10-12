@@ -14,6 +14,62 @@
 
 # Feature Requests
 
+## Pathway Questions in Practice Practicals with Auto-Grading
+
+**Status:** Not yet implemented
+**Location:** Practice practicals (e.g., `unit2-part2-practical.html`, `unit1-practical.html`)
+
+### Description
+Add pathway questions to practice practicals that use the same intelligent validation logic as the pathway mini quiz, but with a simpler comma-separated input format for students.
+
+### Expected Features
+- **Simple input**: Students type a comma-separated list of vessels (e.g., "aorta, brachiocephalic trunk, right subclavian artery")
+- **Pathway mini quiz validation**: Reuse existing pathway validator logic
+- **Smart grading**:
+  - Fuzzy matching for typos (lose 0.5 points per misspelling)
+  - Zero points if pathway is wrong (skipped vessel, incorrect connection, etc.)
+  - Maximum 2 points total for extra credit pathway questions
+- **Human-like feedback**: Clear, contextual error messages just like pathway mini quiz
+- **Visual feedback**: Color-coded results showing which vessels were correct/typos/wrong
+
+### Scoring Rules
+- **2 points total** for extra credit pathway questions
+- **-0.5 points** per misspelled vessel name (typo detection via fuzzy matching)
+- **0 points** if pathway is fundamentally wrong:
+  - Skipped a required vessel
+  - Used incorrect vessel sequence
+  - Wrong vessel type (artery vs vein)
+  - Invalid connection
+
+### Technical Considerations
+- Reuse `js/pathway-validator.js` validation logic
+- Parse comma-separated input into array of vessel names
+- Apply same fuzzy matching and connection validation as pathway mini quiz
+- Display results in answer sheet with color coding
+- Store pathway question data in YAML with `type: "pathway"` field
+- Questions marked as extra credit (2 points max)
+
+### Use Cases
+- Practice vessel pathways within the context of a full practical exam
+- Get immediate feedback on pathway accuracy
+- Partial credit for understanding the pathway despite typos
+- Simpler input format than dynamic field addition (just type and go)
+
+### Example Question in YAML
+```yaml
+- id: 200
+  type: pathway
+  question: "How would blood get from the heart to the right hand?"
+  image: "practical/heart-to-hand.png"
+  direction: arterial
+  validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
+  validEndVessels: ["right radial artery", "right ulnar artery", "right hand"]
+  points: 2
+  extraCredit: true
+```
+
+---
+
 ## Update unit2-practical.html with Latest Refactoring
 
 **Status:** Not yet implemented
