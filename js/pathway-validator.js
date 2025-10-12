@@ -2,6 +2,7 @@
  * Pathway Validation Module
  * Validates sequential pathways (blood vessels, clotting cascades, etc.)
  * against a connection tree
+ * Uses FuzzyMatcher for typo detection and partial credit
  */
 
 class PathwayValidator {
@@ -58,8 +59,30 @@ class PathwayValidator {
 
         // Check if one is a substring of the other (for partial matches)
         // e.g., "aorta" matches "ascending aorta"
-        if (norm1.includes(norm2) || norm2.includes(norm1)) {
-            return true;
+        // BUT: "aorta" should NOT match "descending aorta" - too ambiguous
+        // Only allow substring matching for "ascending" variant
+        if (norm1.includes(norm2)) {
+            // norm1 is longer, norm2 is substring
+            // Allow if norm1 starts with "ascending" and norm2 is the base term
+            if (norm1.startsWith('ascending ') && norm1.includes(norm2)) {
+                return true;
+            }
+            // Don't match if norm1 contains "descending" and norm2 doesn't
+            if (norm1.includes('descending') && !norm2.includes('descending')) {
+                return false;
+            }
+        }
+
+        if (norm2.includes(norm1)) {
+            // norm2 is longer, norm1 is substring
+            // Allow if norm2 starts with "ascending" and norm1 is the base term
+            if (norm2.startsWith('ascending ') && norm2.includes(norm1)) {
+                return true;
+            }
+            // Don't match if norm2 contains "descending" and norm1 doesn't
+            if (norm2.includes('descending') && !norm1.includes('descending')) {
+                return false;
+            }
         }
 
         return false;
@@ -67,11 +90,13 @@ class PathwayValidator {
 
     /**
      * Check if node1 connects to node2 in the given connection tree
+     * Returns a match object with quality score for partial credit
+     * @returns {Object} - { isValid: boolean, matchQuality: number (0, 0.5, or 1), matchedVessel: string }
      */
     isValidConnection(node1, node2, treeType) {
         if (!this.connectionTrees || !this.connectionTrees[treeType]) {
             console.error(`Connection tree "${treeType}" not found`);
-            return false;
+            return { isValid: false, matchQuality: 0, matchedVessel: null };
         }
 
         const tree = this.connectionTrees[treeType];
@@ -87,18 +112,29 @@ class PathwayValidator {
         }
 
         if (!connections || !Array.isArray(connections)) {
-            return false;
+            return { isValid: false, matchQuality: 0, matchedVessel: null };
         }
 
         // Check if node2 is in the list of valid connections
         const normalizedNode2 = this.normalizeNodeName(node2);
+
+        // First check for exact matches
         for (const possibleNext of connections) {
             if (this.nodesMatch(possibleNext, normalizedNode2)) {
-                return true;
+                return { isValid: true, matchQuality: 1.0, matchedVessel: possibleNext };
             }
         }
 
-        return false;
+        // If no exact match, check for fuzzy matches (typos)
+        for (const possibleNext of connections) {
+            const similarity = FuzzyMatcher.calculateSimilarity(normalizedNode2, possibleNext);
+            if (similarity === 0.5) {
+                // Close enough for partial credit (typo detected)
+                return { isValid: true, matchQuality: 0.5, matchedVessel: possibleNext };
+            }
+        }
+
+        return { isValid: false, matchQuality: 0, matchedVessel: null };
     }
 
     /**
@@ -127,6 +163,65 @@ class PathwayValidator {
                     if (this.nodesMatch(dest, normalized)) {
                         return true;
                     }
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if there's a path from startNode to any of the targetNodes
+     * Uses breadth-first search with a depth limit to avoid infinite loops
+     */
+    canReachTarget(startNode, targetNodes, treeType, maxDepth = 15) {
+        if (!this.connectionTrees || !this.connectionTrees[treeType]) {
+            return false;
+        }
+
+        // Check if startNode is already a target
+        for (const target of targetNodes) {
+            if (this.nodesMatch(startNode, target)) {
+                return true;
+            }
+        }
+
+        const tree = this.connectionTrees[treeType];
+        const visited = new Set();
+        const queue = [{ node: this.normalizeNodeName(startNode), depth: 0 }];
+
+        while (queue.length > 0) {
+            const { node, depth } = queue.shift();
+
+            if (depth > maxDepth) continue;
+            if (visited.has(node)) continue;
+            visited.add(node);
+
+            // Find connections for this node
+            let connections = null;
+            for (const key in tree) {
+                if (this.nodesMatch(key, node)) {
+                    connections = tree[key];
+                    break;
+                }
+            }
+
+            if (!connections || !Array.isArray(connections)) continue;
+
+            // Check each connection
+            for (const nextNode of connections) {
+                const normalized = this.normalizeNodeName(nextNode);
+
+                // Check if this is a target
+                for (const target of targetNodes) {
+                    if (this.nodesMatch(nextNode, target)) {
+                        return true;
+                    }
+                }
+
+                // Add to queue for further exploration
+                if (!visited.has(normalized)) {
+                    queue.push({ node: normalized, depth: depth + 1 });
                 }
             }
         }
@@ -189,35 +284,116 @@ class PathwayValidator {
             message: 'Valid start point'
         });
         results.validSteps++;
+        results.score += 1.0;
+
+        // Create a corrected pathway that replaces typos with correct vessel names
+        // This ensures subsequent connections are validated against the correct vessel
+        const correctedPathway = [cleanedPathway[0]]; // Start with the first vessel
 
         // Validate each connection in the pathway
         for (let i = 0; i < cleanedPathway.length - 1; i++) {
-            const currentNode = cleanedPathway[i];
-            const nextNode = cleanedPathway[i + 1];
+            const currentNode = correctedPathway[i]; // Use corrected name for current node
+            const nextNode = cleanedPathway[i + 1];  // Student's input for next node
 
-            if (this.isValidConnection(currentNode, nextNode, treeType)) {
-                results.feedback.push({
-                    step: i + 1,
-                    type: 'valid',
-                    vessel: nextNode,
-                    message: `✓ Valid connection from ${currentNode}`
-                });
-                results.validSteps++;
+            const connectionResult = this.isValidConnection(currentNode, nextNode, treeType);
+
+            if (connectionResult.isValid) {
+                if (connectionResult.matchQuality === 1.0) {
+                    // Perfect match
+                    results.feedback.push({
+                        step: i + 1,
+                        type: 'valid',
+                        vessel: nextNode,
+                        matchQuality: 1.0,
+                        message: `✓ Valid connection from ${currentNode}`
+                    });
+                    results.validSteps++;
+                    results.score += 1.0;
+                    correctedPathway.push(connectionResult.matchedVessel); // Add correct name
+                } else if (connectionResult.matchQuality === 0.5) {
+                    // Typo detected - partial credit
+                    results.feedback.push({
+                        step: i + 1,
+                        type: 'partial',
+                        vessel: nextNode,
+                        matchQuality: 0.5,
+                        correctVessel: connectionResult.matchedVessel,
+                        message: `½ Minor spelling error (should be "${connectionResult.matchedVessel}")`
+                    });
+                    results.validSteps++;
+                    results.score += 0.5;
+                    correctedPathway.push(connectionResult.matchedVessel); // Add CORRECTED name for next validation
+                }
             } else {
-                // Check if they might have confused artery/vein
+                // Invalid connection - provide helpful feedback
                 let hint = '';
-                const oppositeTree = treeType === 'arterial' ? 'venous' : 'arterial';
-                if (this.isValidNode(nextNode, oppositeTree)) {
-                    const vesselType = treeType === 'arterial' ? 'artery' : 'vein';
-                    const wrongType = treeType === 'arterial' ? 'vein' : 'artery';
-                    hint = ` (Hint: "${nextNode}" is a ${wrongType}, not an ${vesselType})`;
+
+                // Check if they skipped a vessel (nextNode connects to something that connects to currentNode)
+                const tree = this.connectionTrees[treeType];
+                const normalizedCurrent = this.normalizeNodeName(currentNode);
+
+                // Find what currentNode connects to
+                let currentConnections = null;
+                for (const key in tree) {
+                    if (this.nodesMatch(key, normalizedCurrent)) {
+                        currentConnections = tree[key];
+                        break;
+                    }
+                }
+
+                // Check if nextNode is reachable through one intermediate vessel
+                let skippedVessel = null;
+                if (currentConnections && Array.isArray(currentConnections)) {
+                    for (const intermediate of currentConnections) {
+                        // Check if intermediate connects to nextNode
+                        const intermediateResult = this.isValidConnection(intermediate, nextNode, treeType);
+                        if (intermediateResult.isValid) {
+                            skippedVessel = intermediate;
+                            break;
+                        }
+                    }
+                }
+
+                let message = '';
+
+                if (skippedVessel) {
+                    message = `You skipped "${skippedVessel}".`;
+                } else {
+                    // Check if they might have confused artery/vein
+                    const oppositeTree = treeType === 'arterial' ? 'venous' : 'arterial';
+                    if (this.isValidNode(nextNode, oppositeTree)) {
+                        const vesselType = treeType === 'arterial' ? 'artery' : 'vein';
+                        const wrongType = treeType === 'arterial' ? 'vein' : 'artery';
+                        message = `"${nextNode}" is a ${wrongType}, not an ${vesselType}.`;
+                    } else if (currentConnections && currentConnections.length > 0 && validEndNodes.length > 0) {
+                        // Filter to only show vessels that lead to the target endpoints
+                        const vesselsTowardsTarget = currentConnections.filter(vessel =>
+                            this.canReachTarget(vessel, validEndNodes, treeType)
+                        );
+
+                        if (vesselsTowardsTarget.length > 0) {
+                            // Only show the first vessel that leads to target (the immediate next step)
+                            message = `The ${nextNode} doesn't connect directly to the ${currentNode}. Try going through the ${vesselsTowardsTarget[0]} next.`;
+                        } else {
+                            // Fallback: show all if none lead to target (shouldn't happen in valid pathway)
+                            const validOptions = currentConnections.join('", "');
+                            message = `"${nextNode}" doesn't connect to "${currentNode}". From "${currentNode}", you can go to "${validOptions}".`;
+                        }
+                    } else if (currentConnections && currentConnections.length > 0) {
+                        // No target specified, show all options
+                        const validOptions = currentConnections.join('", "');
+                        message = `"${nextNode}" doesn't connect to "${currentNode}". From "${currentNode}", you can go to "${validOptions}".`;
+                    } else {
+                        message = `"${nextNode}" does not connect to ${currentNode}.`;
+                    }
                 }
 
                 results.feedback.push({
                     step: i + 1,
                     type: 'invalid',
                     vessel: nextNode,
-                    message: `✗ "${nextNode}" does not connect to ${currentNode}${hint}`
+                    matchQuality: 0,
+                    message: `✗ ${message}`
                 });
                 results.brokenAtIndex = i + 1;
                 break;
@@ -227,33 +403,63 @@ class PathwayValidator {
         // Check end point (only if we made it through without breaking)
         if (results.brokenAtIndex === null) {
             const endNode = cleanedPathway[cleanedPathway.length - 1];
-            const validEnd = validEndNodes.length === 0 || validEndNodes.some(validNode =>
+
+            // Check if the last vessel IS a valid endpoint
+            const exactMatch = validEndNodes.length === 0 || validEndNodes.some(validNode =>
                 this.nodesMatch(endNode, validNode)
             );
 
-            if (validEnd) {
-                results.feedback.push({
-                    step: cleanedPathway.length - 1,
-                    type: 'valid-end',
-                    vessel: endNode,
-                    message: 'Valid end point'
-                });
+            if (exactMatch) {
+                // Last vessel is a valid endpoint
                 results.isComplete = true;
                 results.isValid = true;
+                results.score += 1.0;
             } else {
-                results.feedback.push({
-                    step: cleanedPathway.length - 1,
-                    type: 'invalid-end',
-                    vessel: endNode,
-                    message: `Should end with: ${validEndNodes.join(' OR ')}`
-                });
+                // Check for fuzzy match (typo in endpoint)
+                let fuzzyMatch = false;
+                for (const validNode of validEndNodes) {
+                    const similarity = FuzzyMatcher.calculateSimilarity(endNode, validNode);
+                    if (similarity === 0.5) {
+                        fuzzyMatch = true;
+                        // Typo in endpoint - give partial credit
+                        results.isComplete = true;
+                        results.isValid = true;
+                        results.score += 0.5;
+                        break;
+                    }
+                }
+
+                // If not a valid endpoint or typo, check if we passed through a valid endpoint earlier
+                if (!fuzzyMatch) {
+                    // Check if any vessel in the corrected pathway is a valid endpoint
+                    let passedThroughValidEndpoint = false;
+                    for (const vessel of correctedPathway) {
+                        if (validEndNodes.some(validNode => this.nodesMatch(vessel, validNode))) {
+                            passedThroughValidEndpoint = true;
+                            break;
+                        }
+                    }
+
+                    if (passedThroughValidEndpoint) {
+                        // We reached a valid endpoint and then added optional descriptors (like "hand" or "foot")
+                        results.isComplete = true;
+                        results.isValid = true;
+                        results.score += 1.0;
+                    } else {
+                        // Truly wrong endpoint
+                        results.feedback.push({
+                            step: cleanedPathway.length - 1,
+                            type: 'invalid-end',
+                            vessel: endNode,
+                            message: `Should end with: ${validEndNodes.join(' OR ')}`
+                        });
+                    }
+                }
             }
         }
 
-        // Calculate score (partial credit per valid connection)
-        // Max score = number of expected connections (totalSteps - 1 for connections, +2 for start/end)
-        results.maxScore = results.totalSteps + 1; // steps + end validation
-        results.score = results.validSteps + (results.isComplete ? 1 : 0);
+        // Calculate max score (1 point per vessel + 1 for reaching valid endpoint)
+        results.maxScore = results.totalSteps + 1;
 
         return results;
     }

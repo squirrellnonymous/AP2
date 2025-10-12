@@ -1,21 +1,174 @@
 # Release Notes
 
-## Session Paused - October 11, 2025
+## October 12, 2025 - Pathway Mini Quiz Advanced Refinements
 
-**Active Work:** Fixing grading UX in pathway-mini-quiz.html
+### 🎯 Major Enhancements to Pathway Validation System
 
-**Issue:** Attempting to display inline color-coded feedback (green for correct vessels, red for incorrect) instead of long vertical feedback list. Current implementation not correctly mapping validation feedback indices to input field indices.
+Significantly improved the pathway quiz with intelligent feedback, partial credit for typos, and contextual guidance.
 
-**Challenge:** Validation feedback is indexed by pathway position (non-empty vessels only), but we need to color-code all input fields (which may include empty fields).
+**Files Updated:** `js/pathway-validator.js`, `pathway-mini-quiz.html`, `data/pathway-questions.yml`, `data/vessel-connections.yml`
 
-**Files being modified:**
-- `pathway-mini-quiz.html` - displayResults() function needs debugging
+#### Advanced Features Implemented
 
-**Next session:** Debug the feedback index mapping logic to correctly apply colors to input fields based on validation results.
+**Partial Credit for Typos (Yellow Highlighting)**
+- **FuzzyMatcher integration**: Detects minor spelling errors and awards 0.5 points
+- **Visual feedback**: Yellow arrows (—½→) and yellow input backgrounds for typos
+- **Corrected pathway tracking**: Typos don't break the chain - validator uses corrected names for subsequent validation
+- **Example**: "right redial artery" → 0.5 points, feedback shows "should be 'right radial artery'"
+- **Scoring**: Each vessel = 1.0 point, typos = 0.5 points, wrong = 0 points
+
+**Intelligent Contextual Feedback**
+- **Skipped vessel detection**: "You skipped 'right femoral artery'."
+- **Artery/vein confusion**: "'right femoral vein' is a vein, not an artery."
+- **Pathfinding guidance**: Uses breadth-first search to identify vessels that lead toward the destination
+- **Conversational tone**: Natural language feedback like a helpful tutor
+- **Example**: "The right foot doesn't connect directly to the descending aorta. Try going through the right common iliac artery next."
+
+**Optional Descriptors Support**
+- **Starting points**: "heart", "left ventricle", and "aortic semilunar valve" are optional prefixes before "aorta"
+- **Endpoints**: "hand" and "foot" can be added after terminal arteries as optional descriptors
+- **Anatomical positioning**: "aortic semilunar valve" must be in correct location if included
+- **Endpoint validation**: Recognizes when valid endpoint was reached even if optional descriptor added after
+
+**Enhanced Fuzzy Matching**
+- **"descending aorta" fix**: No longer incorrectly matches plain "aorta"
+- **Ascending shortcuts**: "aorta" can match "ascending aorta" but not "descending aorta"
+- **Handles**: R/L abbreviations, "the" prefix, case differences, plurals
+
+**Vessel Connection Updates**
+- Removed "hand" and "foot" from valid endpoints list (now optional extensions only)
+- Added "hand"/"foot" as valid connections FROM terminal arteries (radial, ulnar, tibial, fibular)
+- 50+ arterial vessels, 40+ venous vessels mapped
+
+#### Visual Improvements
+
+**Color-Coded Feedback**
+- Green checkmark arrows (—✓→) for correct vessels (1.0 point)
+- Yellow half arrows (—½→) for typos (0.5 points)
+- Red X arrows (—✗→) for incorrect vessels (0 points)
+- Matching input field backgrounds (green/yellow/red)
+
+**Current Questions** (4 pathway questions)
+- Heart → Right Hand (id: 200) - with image
+- Heart → Left Hand (id: 201) - with image
+- Heart → Right Foot (id: 202) - with image
+- Heart → Left Foot (id: 203) - with image
+- Questions randomly selected on page load/refresh
+
+#### Core Infrastructure
+
+**Pathway Validator** (`js/pathway-validator.js`)
+- Validates sequential pathways against connection tree
+- **Fuzzy name matching**: Uses FuzzyMatcher.js for typo detection and partial credit
+- **Pathfinding**: Breadth-first search to find vessels that lead to destination
+- **Corrected pathway tracking**: Replaces typos with correct names for chain validation
+- **Artery/vein detection**: Checks if student used wrong vessel type
+- **Skipped vessel detection**: Identifies when student skipped an intermediate vessel
+- **Contextual feedback**: Shows only the immediate next step toward destination
+- Enhanced error messages in conversational tone
+
+**Vessel Connection Tree** (`data/vessel-connections.yml`)
+- Complete arterial and venous trees
+- 50+ arterial vessels mapped with connections
+- 40+ venous vessels mapped with connections
+- Optional descriptors: heart → aorta, terminal arteries → hand/foot
+- Anatomically valid shortcuts included
+
+#### Educational Philosophy
+- **Productive failure**: Students learn from specific, helpful feedback
+- **Partial credit**: Rewards understanding despite minor spelling errors
+- **Contextual guidance**: Shows the correct path without giving away entire answer
+- **Immediate feedback**: Try Again button for repeated practice
+- **Progressive difficulty**: Can add optional vessels for extra detail
 
 ---
 
-## October 11, 2025 - Pathway Mini Quiz Feature
+## October 12, 2025 - Pathway Mini Quiz Initial Implementation
+
+### 🆕 New Feature: Pathway Mini Quiz for Extra Credit
+
+Created a standalone pathway practice system for tracing blood vessel routes - a complete extra credit practice tool.
+
+**File:** `pathway-mini-quiz.html`
+**Data:** `data/pathway-questions.yml`
+
+#### Features Implemented
+
+**Visual Question Display**
+- Image-based pathway diagrams (heart → hand/foot)
+- Question text displayed below images as prompts
+- Clean, centered layout optimized for clarity
+
+**Smart Input System**
+- Start with 3 empty vessel input fields
+- Add/remove fields dynamically as needed
+- Enter/Tab key navigation between fields (skips delete buttons)
+- Minimum 1 field always present
+- Auto-focus on next field after Enter/Tab
+
+**Intelligent Validation & Feedback**
+- **Visual pathway display** with color-coded arrows for valid/invalid connections
+- **Input field color coding**: Green for correct, red for incorrect
+- **Detailed text feedback**: Shows exact error messages
+- **Helpful hints**: Detects when you use a vein instead of an artery
+- Partial credit scoring per valid connection
+- Try Again button for repeated practice
+
+#### Core Infrastructure
+
+**Pathway Validator** (`js/pathway-validator.js`)
+- Validates sequential pathways against connection tree
+- **Fuzzy name matching**: Handles typos, R/L abbreviations, "the" prefix
+- **Artery/vein detection**: Checks if student used wrong vessel type and provides helpful hint
+- Flexible design - works for any connected system (vessels, nerves, metabolic pathways, etc.)
+- Enhanced error messages show the problematic vessel name
+
+**Vessel Connection Tree** (`data/vessel-connections.yml`)
+- Complete arterial and venous trees
+- 50+ arterial vessels mapped
+- 40+ venous vessels mapped
+- Includes anatomically valid shortcuts (e.g., skip "ascending aorta" → directly to "aortic arch")
+- **Validated structure**: Custom validator checks for broken references
+
+**YAML Validation System**
+- Extended `scripts/validate-yaml.js` to handle pathway questions
+- Pathway-specific validation:
+  - Requires `direction` field (arterial/venous)
+  - Requires `validStartVessels` array
+  - Requires `validEndVessels` array
+  - Accepts either question text OR image (or both)
+- Vessel connections validation:
+  - Checks arterial/venous tree structure
+  - Reports vessel counts
+  - Validates with dedicated `validate-vessels.js` script
+
+**Vessel Connection Validator** (`validate-vessels.js`)
+- Checks for broken references in vessel trees
+- Ensures every vessel in a connection list exists or is a valid endpoint
+- Run with: `node validate-vessels.js`
+
+#### Design Decisions
+- Arterial paths: Start with "aorta", "ascending aorta", "heart", or "left ventricle"
+- Arterial endpoints: Accept specific arteries OR generic "hand"/"foot" for flexibility
+- Shortcuts: Allow skipping intermediate descriptive labels, but not actual vessels
+- Scoring: Partial credit per valid step + bonus for reaching correct endpoint
+- Separated from practice practicals to avoid slowing down main quiz validation
+
+#### Technical Improvements
+- Pathway questions stored in separate `data/pathway-questions.yml` file
+- Reusable pathway question type - can be used for any system (nerves, metabolic pathways, etc.)
+- Fixed feedback index mapping bug for correct input field coloring
+- Smart Tab/Enter key handling skips UI elements, focuses on content
+
+#### Use Cases
+- Extra credit practice for vessel pathway questions
+- Learn valid blood flow routes step-by-step
+- Immediate feedback on where pathway breaks
+- Understand vessel connections through trial and error
+
+---
+
+## October 11, 2025 - Pathway Mini Quiz Feature (Initial Implementation)
 
 ### 🆕 New Feature: Blood Vessel Pathway Practice
 

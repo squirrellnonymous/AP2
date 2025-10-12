@@ -10,7 +10,7 @@ questions:
     answer: "pathway"
     direction: "arterial"
     validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
-    validEndVessels: ["right radial artery", "right ulnar artery", "right hand"]
+    validEndVessels: ["right radial artery", "right ulnar artery"]
     points: 2
     tags: ["extra-credit", "pathway", "upper-extremity"]
 
@@ -21,7 +21,7 @@ questions:
     answer: "pathway"
     direction: "arterial"
     validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
-    validEndVessels: ["left radial artery", "left ulnar artery", "left hand"]
+    validEndVessels: ["left radial artery", "left ulnar artery"]
     points: 2
     tags: ["extra-credit", "pathway", "upper-extremity"]
 
@@ -32,7 +32,7 @@ questions:
     answer: "pathway"
     direction: "arterial"
     validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
-    validEndVessels: ["right anterior tibial artery", "right posterior tibial artery", "right fibular artery", "right foot"]
+    validEndVessels: ["right anterior tibial artery", "right posterior tibial artery", "right fibular artery"]
     points: 2
     tags: ["extra-credit", "pathway", "lower-extremity"]
 
@@ -43,6 +43,6 @@ questions:
     answer: "pathway"
     direction: "arterial"
     validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
-    validEndVessels: ["left anterior tibial artery", "left posterior tibial artery", "left fibular artery", "left foot"]
+    validEndVessels: ["left anterior tibial artery", "left posterior tibial artery", "left fibular artery"]
     points: 2
     tags: ["extra-credit", "pathway", "lower-extremity"]

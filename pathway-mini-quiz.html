@@ -170,6 +170,11 @@
             color: #27ae60;
         }
 
+        .feedback-partial {
+            background-color: #fff4cc;
+            color: #d97706;
+        }
+
         .feedback-invalid,
         .feedback-invalid-start,
         .feedback-invalid-end {
@@ -291,6 +296,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="js/fuzzy-matcher.js"></script>
     <script src="js/pathway-validator.js"></script>
     <script>
         let currentQuestion = null;
@@ -443,7 +449,7 @@
             document.getElementById('score').textContent =
                 `Score: ${validation.score}/${validation.maxScore} (${percentage}%)`;
 
-            // Build visual pathway with check/x marks
+            // Build visual pathway with check/x/half marks
             let pathwayHTML = '';
             pathway.forEach((vessel, index) => {
                 const feedback = validation.feedback.find(f => f.step === index);
@@ -451,6 +457,8 @@
                 // Add the vessel name
                 if (feedback && feedback.type.includes('invalid')) {
                     pathwayHTML += `<span style="color: #e74c3c; font-weight: bold;">${vessel}</span>`;
+                } else if (feedback && feedback.type === 'partial') {
+                    pathwayHTML += `<span style="color: #d97706; font-weight: bold;">${vessel}</span>`;
                 } else if (feedback && feedback.type.includes('valid')) {
                     pathwayHTML += `<span style="color: #27ae60;">${vessel}</span>`;
                 } else {
@@ -460,9 +468,11 @@
                 // Add arrow with validation indicator (if not the last item)
                 if (index < pathway.length - 1) {
                     const nextFeedback = validation.feedback.find(f => f.step === index + 1);
-                    // Arrow is red if the next vessel has invalid feedback
+                    // Arrow colors based on next vessel type
                     if (nextFeedback && nextFeedback.type.includes('invalid')) {
                         pathwayHTML += ` <span style="color: #e74c3c;">—✗→</span> `;
+                    } else if (nextFeedback && nextFeedback.type === 'partial') {
+                        pathwayHTML += ` <span style="color: #d97706;">—½→</span> `;
                     } else if (nextFeedback && nextFeedback.type.includes('valid')) {
                         pathwayHTML += ` <span style="color: #27ae60;">—✓→</span> `;
                     } else {
@@ -513,7 +523,11 @@
                 const feedback = validation.feedback.find(f => f.step === pathwayIndex);
 
                 if (feedback) {
-                    if (feedback.type.includes('valid')) {
+                    if (feedback.type === 'partial') {
+                        input.style.borderColor = '#d97706';
+                        input.style.backgroundColor = '#fff4cc';
+                        input.style.color = '#d97706';
+                    } else if (feedback.type.includes('valid')) {
                         input.style.borderColor = '#27ae60';
                         input.style.backgroundColor = '#d5f4e6';
                         input.style.color = '#27ae60';

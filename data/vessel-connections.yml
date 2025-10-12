@@ -138,8 +138,10 @@ arterial:
     - "right radial artery"
     - "right ulnar artery"
 
-  "right radial artery": []
-  "right ulnar artery": []
+  "right radial artery":
+    - "right hand"  # optional descriptive endpoint
+  "right ulnar artery":
+    - "right hand"  # optional descriptive endpoint
 
   # Upper Limb (Left Side)
   "left axillary artery":
@@ -149,8 +151,10 @@ arterial:
     - "left radial artery"
     - "left ulnar artery"
 
-  "left radial artery": []
-  "left ulnar artery": []
+  "left radial artery":
+    - "left hand"  # optional descriptive endpoint
+  "left ulnar artery":
+    - "left hand"  # optional descriptive endpoint
 
   # Abdomen - Celiac Trunk
   "celiac trunk":
@@ -200,9 +204,12 @@ arterial:
     - "right posterior tibial artery"
     - "right fibular artery"
 
-  "right anterior tibial artery": []
-  "right posterior tibial artery": []
-  "right fibular artery": []
+  "right anterior tibial artery":
+    - "right foot"  # optional descriptive endpoint
+  "right posterior tibial artery":
+    - "right foot"  # optional descriptive endpoint
+  "right fibular artery":
+    - "right foot"  # optional descriptive endpoint
 
   # Lower Limb (Left Side)
   "left common iliac artery":
@@ -223,9 +230,12 @@ arterial:
     - "left posterior tibial artery"
     - "left fibular artery"
 
-  "left anterior tibial artery": []
-  "left posterior tibial artery": []
-  "left fibular artery": []
+  "left anterior tibial artery":
+    - "left foot"  # optional descriptive endpoint
+  "left posterior tibial artery":
+    - "left foot"  # optional descriptive endpoint
+  "left fibular artery":
+    - "left foot"  # optional descriptive endpoint
 
 
 venous:
