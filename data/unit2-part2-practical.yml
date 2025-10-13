@@ -227,7 +227,94 @@ questions:
     theme: "blood"
     tags: ["blood-vessels"]
 
+  - id: 102
+    question: "what two arteries are formed by the division of the brachiocephalic trunk?"
+    answer: ["Right subclavian artery and right common carotid artery", "right common carotid artery and Right subclavian artery"]
+    theme: "default"
+    tags: ["blood-vessels", "lab-activities"]
 
+  - id: 103
+    question: "What are two paired arteries serving the brain?"
+    answer: ["vertebral and internal carotid arteries", "vertebral artery and internal carotid artery", "internal carotid artery and vertebral artery"]
+    theme: "blood"
+    tags: ["blood-vessels", "lab-activities"]
 
-    
+  - id: 104
+    question: "what is the largest artery of the body?"
+    answer: ["aorta"]
+    theme: "blk-wht"
+    tags: ["blood-vessels", "lab-activities"]
+
+  - id: 105
+    question: "What is the major artery serving the arm and generally used to determine blood pressure?"
+    answer: ["brachial artery"]
+    theme: "blood"
+    tags: ["blood-vessels", "lab-activities"]
+
+  - id: 106
+    question: "What is the artery that supplies the last half of the large intestine?"
+    answer: ["inferior mesenteric artery"]
+    theme: "blood"
+    tags: ["blood-vessels", "lab-activities"]
+
+  - id: 107
+    question: "What artery supplies the pelvis?"
+    answer: ["internal iliac artery"]
+    theme: "blood"
+    tags: ["blood-vessels", "lab-activities"]
+
+  - id: 108
+    question: "What is the artery that supplies the small intestine and the proximal large intestine?"
+    answer: ["superior mesenteric artery"]
+    theme: "blood"
+    tags: ["blood-vessels", "lab-activities"]
+
+  - id: 109
+    question: "The terminal branches of the descending aorta?"
+    answer: ["common iliac arteries"]
+    theme: "blood"
+    tags: ["blood-vessels", "lab-activities"]
+
+  - id: 110
+    question: "What is the arterial trunk that has three major branches that supply the liver, spleen, and stomach?"
+    answer: ["celiac trunk"]
+    theme: "blood"
+    tags: ["blood-vessels", "lab-activities"]
+
+  - id: 111
+    question: "What is the artery generally used to feel the pulse at the wrist?"
+    answer: ["radial artery"]
+    theme: "blood"
+    tags: ["blood-vessels", "lab-activities"]
+
+  - id: 112
+    question: "What is the first vessel to branch from the aortic arch?"
+    answer: ["brachiocephalic trunk"]
+    theme: "blood"
+    tags: ["blood-vessels", "lab-activities"]
+
+  - id: 113
+    question: "What is the artery that supplies the liver?"
+    answer: ["hepatic artery", "hepatic artery proper"]
+    theme: "blood"
+    tags: ["blood-vessels", "lab-activities"]
+
+  - id: 114
+    question: "What is the artery that supplies the stomach and lower esophagus?"
+    answer: ["gastric artery"]
+    theme: "blk-wht"
+    tags: ["blood-vessels", "lab-activities"]
+
+  - id: 115
+    question: "what major artery serves the external structures of the skull?"
+    answer: ["external carotid artery"]
+    theme: "blood"
+    tags: ["blood-vessels", "lab-activities"]
+
+  - id: 116
+    question: "What is the artery that supplies the spleen?"
+    answer: ["splenic artery"]
+    theme: "blood"
+    tags: ["blood-vessels", "lab-activities"]
+
 
