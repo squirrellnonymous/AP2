@@ -137,7 +137,7 @@
                 }
             });
 
-            // From each group, pick the best representative
+            // From each group, pick a random representative
             const uniqueQuestions = [];
             answerGroups.forEach(group => {
                 // Prefer image questions over text-only when there's a choice
@@ -145,9 +145,13 @@
                 const textQs = group.filter(q => !q.image);
 
                 if (imageQs.length > 0) {
-                    uniqueQuestions.push(imageQs[0]); // Take first image question
+                    // Randomly select one image question from this group
+                    const randomIndex = Math.floor(Math.random() * imageQs.length);
+                    uniqueQuestions.push(imageQs[randomIndex]);
                 } else if (textQs.length > 0) {
-                    uniqueQuestions.push(textQs[0]); // Take first text question
+                    // Randomly select one text question from this group
+                    const randomIndex = Math.floor(Math.random() * textQs.length);
+                    uniqueQuestions.push(textQs[randomIndex]);
                 }
             });
 
@@ -270,22 +274,38 @@
             let imageQuestions = validQuestions.filter(q => q.image);
             let textOnlyQuestions = validQuestions.filter(q => !q.image);
 
-            // Remove questions with duplicate answers
-            const uniqueQuestions = removeDuplicateAnswers(imageQuestions, textOnlyQuestions);
-            imageQuestions = uniqueQuestions.imageQuestions;
-            textOnlyQuestions = uniqueQuestions.textOnlyQuestions;
+            // Remove questions with duplicate answers (unless disabled in config)
+            if (!practicalData.allow_duplicate_answers) {
+                const uniqueQuestions = removeDuplicateAnswers(imageQuestions, textOnlyQuestions);
+                imageQuestions = uniqueQuestions.imageQuestions;
+                textOnlyQuestions = uniqueQuestions.textOnlyQuestions;
+            }
 
             // Smart selection with limited and distributed text-only questions
             let selectedQuestions = [];
 
             if (validQuestions.length > 40) {
-                // If we have plenty of questions, limit text-only to max 12.5% of total (5 out of 40)
+                // Target 40 questions total, with text-only limited to max 12.5% (5 out of 40)
+                const targetTotal = 40;
                 const maxTextOnly = Math.min(textOnlyQuestions.length, 5);
-                const numImageQuestions = 40 - maxTextOnly;
 
-                // Select questions
-                const selectedImageQuestions = shuffleArray(imageQuestions).slice(0, numImageQuestions);
-                const selectedTextOnlyQuestions = shuffleArray(textOnlyQuestions).slice(0, maxTextOnly);
+                // Calculate how many image questions we can get
+                const availableImageQuestions = imageQuestions.length;
+                const targetImageQuestions = targetTotal - maxTextOnly;
+
+                // If we don't have enough image questions to reach target, use all images and fill with text
+                let selectedImageQuestions, selectedTextOnlyQuestions;
+
+                if (availableImageQuestions >= targetImageQuestions) {
+                    // We have enough image questions
+                    selectedImageQuestions = shuffleArray(imageQuestions).slice(0, targetImageQuestions);
+                    selectedTextOnlyQuestions = shuffleArray(textOnlyQuestions).slice(0, maxTextOnly);
+                } else {
+                    // Not enough image questions, use all and fill remaining with text
+                    selectedImageQuestions = shuffleArray(imageQuestions);
+                    const remainingSlots = targetTotal - availableImageQuestions;
+                    selectedTextOnlyQuestions = shuffleArray(textOnlyQuestions).slice(0, remainingSlots);
+                }
 
                 // Distribute text-only questions evenly throughout the practical
                 selectedQuestions = [...selectedImageQuestions];

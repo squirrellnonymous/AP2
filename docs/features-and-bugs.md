@@ -223,6 +223,42 @@ When a question is left blank (unanswered), the answer sheet should show the cor
 
 ---
 
+## Refine Display of Correct Answers from Arrays in Quiz Results
+
+**Status:** Not yet implemented
+**Location:** Quiz results display in practice practicals and mini quiz builder
+
+### Description
+When showing correct answers that come from an array of acceptable answers, improve the display to be more readable and less cluttered than showing all options joined with "OR".
+
+### Current Behavior
+- Shows all acceptable answers joined with " OR " (e.g., "Right ventricle OR Ventricle")
+- Can be cluttered when there are many acceptable variations
+- Takes up significant space in results display
+
+### Expected Behavior
+- Show the most canonical/preferred answer (first in array) as the primary display
+- Optionally indicate there are other acceptable answers without listing them all
+- Cleaner, more readable results display
+- Consider different formatting for:
+  - Correct answers: Show primary answer
+  - Incorrect answers: Show primary answer (what they should have written)
+  - Blank answers: Show primary answer in gray/parentheses
+
+### Potential Approaches
+1. **Simple**: Just show first answer from array
+2. **Informative**: Show first answer with indicator like "(or similar)"
+3. **Expandable**: Show first answer with "+" to expand and see all options
+4. **Context-aware**: Show the answer closest to what student wrote (if incorrect)
+
+### Use Cases
+- Cleaner answer sheets after quiz submission
+- More focused feedback on what the canonical answer is
+- Less visual clutter when reviewing results
+- Still maintains flexibility of accepting multiple answer variations
+
+---
+
 ## Alphabetical Tag Ordering in Custom Flashcard Deck Builder
 
 **Status:** Not yet implemented

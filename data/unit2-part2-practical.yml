@@ -1,6 +1,7 @@
 title: "Practice Practical #3 - Blood Vessels"
 description: "Blood Vessels"
 share_image: "practical-2-2/00.jpg"
+allow_duplicate_answers: true
 
 # Upload your images to: /images/practical-2-2/
 # Name them: 01.jpg, 02.jpg, 03.jpg, etc.
@@ -208,6 +209,41 @@ questions:
     answer: ["vein"]
     definition: ""
     tags: ["blood-vessels"]
+
+  - id: 30
+    image: "practical-2-2/30.jpg"
+    question: "Name the vessel."
+    answer: ["brachiocephalic trunk"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-5"]
+
+  - id: 31
+    image: "practical-2-2/31.jpg"
+    question: "Name the vessel."
+    answer: ["left subclavian artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-5"]
+
+  - id: 32
+    image: "practical-2-2/32.jpg"
+    question: "Name the vessel."
+    answer: ["right common carotid artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-5"]
+
+  - id: 33
+    image: "practical-2-2/33.jpg"
+    question: "Name the vessel."
+    answer: ["right subclavian artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-5"]
+
+  - id: 34
+    image: "practical-2-2/34.jpg"
+    question: "Name the vessel."
+    answer: ["left common carotid artery"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-5"]
 
 
 
