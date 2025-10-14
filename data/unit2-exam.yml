@@ -578,6 +578,11 @@ trueMakeTrue:
     correctWord: ["erythrocytes", "red blood cells", "RBCs"]
     points: 2.5
 
+  - statement: "The ***extrinsic*** pathway is the fastest of the two starting pathways in the clotting cascade."
+    isTrue: false
+    correctWord: ["intrinsic"]
+    points: 2.5
+
   - statement: "During ventricular filling, the ***semilunar*** valves are open."
     isTrue: false
     correctWord: ["atrioventricular", "atrioventricular valve"]
@@ -615,8 +620,19 @@ table:
     tags: ["unit-2", "blood", "plasma-proteins"]
 
 essay:
+  - question: "The drug Warfarin inhibits factor IX (factor 9). What clotting pathway is it inhibiting? What is the alternate pathway? Which pathway is faster."
+    answer: "Warfarin is inhibiting the intrinsic pathway. The alternate pathway is the extrinsic pathway. The intrinsic pathway is faster."
+    points: 3
+    tags: ["unit-2", "blood"]
+
+
   - question: "People who get cirrhosis (fibrosis) of the liver often get swelling of the abdomen (ascites), edema, and easily bruise. Why might that be the case?"
     answer: "Their damaged liver can't produce enough albumin or fibrinogen. Inadequate albumin leads to swelling and edema which is apparent as swelling of the abdomen. Low fibrinogen leads to not enough clotting and they get bruising from even minor tissue damage."
+    points: 3
+    tags: ["unit-2", "blood"]
+
+  - question: "The compounds thromboxan and prostacyclin have opposing effects on the clotting process. Describe the action of each."
+    answer: "Thromboxane is released by platelets and increases their stickiness encouraging platelet plug formation. Prostacyclin is an anti-coagulant that inhibits thrombin and reduces coagulation (it's an anticoagulant)."
     points: 3
     tags: ["unit-2", "blood"]
 
@@ -624,6 +640,11 @@ essay:
     answer: "Rh negative people only begin to produce anti-D antibodies after initial exposure to Rh positive blood. This is different from the ABO system because people are born with ABO antibodies without any prior exposure. The Rh system requires sensitization - the first exposure creates memory cells that will produce antibodies upon subsequent exposures."
     points: 6
     tags: ["unit-2", "blood"]
+
+  - question: "A mom with type AB blood and a dad with type O+ blood are having a baby. Could the baby have A- blood? Why? (Draw two punnet squares, one for the ABO type and one for the Rh type.)"
+    answer: "Yes, the baby could have A- blood. The mom (AB) can contribute either I^A or I^B allele, and the dad (O) can only contribute i allele. This gives possible blood types A or B (not AB or O). For Rh, if the dad is Dd (heterozygous), he can contribute d, and if mom is also Dd or dd, the baby could be dd (Rh negative). Therefore A- is possible."
+    points: 6
+    tags: ["unit-2", "blood", "genetics"]
 
   - question: describe the clotting pathway, extrinsic and intrinsic braches as well as the common pathway. Draw a flow chart showing the sequence and the factors if you prefer (don't use abreviations). 
     answer: extrinsic pathway, intrinsic pathway, common pathway (see image)

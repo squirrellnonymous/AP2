@@ -87,6 +87,6 @@ questions:
     answer: "pathway"
     direction: "venous"
     validStartVessels: ["right posterior tibial vein", "right anterior tibial vein", "right fibular vein", "right small saphenous vein", "right great saphenous vein", "right foot"]
-    alidEndVessels: ["inferior vena cava", "heart", "right atrium"]
+    validEndVessels: ["inferior vena cava", "heart", "right atrium"]
     points: 2
     tags: ["extra-credit", "pathway", "lower-extremity"]
