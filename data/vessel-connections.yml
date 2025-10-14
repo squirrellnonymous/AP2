@@ -27,19 +27,14 @@ arterial:
     - "ascending aorta"
 
   "aorta":
-    - "ascending aorta"
-    - "aortic arch"
     - "brachiocephalic trunk"  # shortcut (via aortic arch)
     - "left common carotid artery"  # shortcut (via aortic arch)
     - "left subclavian artery"  # shortcut (via aortic arch)
-    - "descending aorta"  # shortcut
+    - "descending aorta" # shortcut (via aortic arch)
 
   "ascending aorta":
     - "aortic arch"
-    - "brachiocephalic trunk"  # shortcut (via aortic arch)
-    - "left common carotid artery"  # shortcut (via aortic arch)
-    - "left subclavian artery"  # shortcut (via aortic arch)
-    - "descending aorta"  # shortcut
+    - "descending aorta"  # shortcut (via aortic arch)
 
   "aortic arch":
     - "brachiocephalic trunk"
@@ -59,10 +54,7 @@ arterial:
     - "inferior mesenteric artery"
     - "right common iliac artery"
     - "left common iliac artery"
-    - "right external iliac artery"  # shortcut
-    - "left external iliac artery"  # shortcut
-    - "right femoral artery"  # shortcut
-    - "left femoral artery"  # shortcut
+
 
   # Head and Neck (Right Side)
   "brachiocephalic trunk":
@@ -161,8 +153,7 @@ arterial:
     - "common hepatic artery"
     - "splenic artery"
     - "left gastric artery"
-    - "right gastric artery"  # shortcut
-    - "hepatic artery proper"  # shortcut
+
 
   "common hepatic artery":
     - "hepatic artery proper"
@@ -189,7 +180,6 @@ arterial:
   "right common iliac artery":
     - "right external iliac artery"
     - "right internal iliac artery"
-    - "right femoral artery"  # shortcut
 
   "right external iliac artery":
     - "right femoral artery"
@@ -215,7 +205,7 @@ arterial:
   "left common iliac artery":
     - "left external iliac artery"
     - "left internal iliac artery"
-    - "left femoral artery"  # shortcut
+
 
   "left external iliac artery":
     - "left femoral artery"
@@ -337,13 +327,9 @@ venous:
   # Superior Vena Cava and Brachiocephalic
   "right brachiocephalic vein":
     - "superior vena cava"
-    - "right atrium"  # shortcut
-    - "heart"  # shortcut
 
   "left brachiocephalic vein":
     - "superior vena cava"
-    - "right atrium"  # shortcut
-    - "heart"  # shortcut
 
   "superior vena cava":
     - "right atrium"
@@ -366,6 +352,9 @@ venous:
     - "right external iliac vein"
 
   # Lower Limb (Right Side) - Superficial Veins
+  "right foot":
+    - "right great saphenous vein"
+
   "right great saphenous vein":
     - "right femoral vein"
 
@@ -389,6 +378,9 @@ venous:
     - "left external iliac vein"
 
   # Lower Limb (Left Side) - Superficial Veins
+  "left foot":
+    - "left great saphenous vein"
+
   "left great saphenous vein":
     - "left femoral vein"
 
@@ -398,53 +390,37 @@ venous:
   # Pelvic Veins
   "right external iliac vein":
     - "right common iliac vein"
-    - "inferior vena cava"  # shortcut
 
   "right internal iliac vein":
     - "right common iliac vein"
-    - "inferior vena cava"  # shortcut
 
   "right common iliac vein":
     - "inferior vena cava"
-    - "right atrium"  # shortcut
-    - "heart"  # shortcut
 
   "left external iliac vein":
     - "left common iliac vein"
-    - "inferior vena cava"  # shortcut
 
   "left internal iliac vein":
     - "left common iliac vein"
-    - "inferior vena cava"  # shortcut
 
   "left common iliac vein":
     - "inferior vena cava"
-    - "right atrium"  # shortcut
-    - "heart"  # shortcut
 
   # Abdomen - IVC and Tributaries
   "right renal vein":
     - "inferior vena cava"
-    - "right atrium"  # shortcut
-    - "heart"  # shortcut
 
   "left renal vein":
     - "inferior vena cava"
-    - "right atrium"  # shortcut
-    - "heart"  # shortcut
 
   "right gonadal vein":
     - "inferior vena cava"
-    - "right atrium"  # shortcut
-    - "heart"  # shortcut
 
   "left gonadal vein":
     - "left renal vein"
 
   "hepatic veins":
     - "inferior vena cava"
-    - "right atrium"  # shortcut
-    - "heart"  # shortcut
 
   "inferior vena cava":
     - "right atrium"

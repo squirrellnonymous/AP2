@@ -6,7 +6,7 @@ questions:
   - id: 200
     type: "pathway"
     image: "practical-2-2/200.jpg"
-    question: "How would blood get from the heart to the right hand:"
+    question: "How would blood get from the heart **to the right hand**?"
     answer: "pathway"
     direction: "arterial"
     validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
@@ -17,7 +17,7 @@ questions:
   - id: 201
     type: "pathway"
     image: "practical-2-2/201.jpg"
-    question: "How would blood get from the heart to the left hand:"
+    question: "How would blood get from the heart **to the left hand**?"
     answer: "pathway"
     direction: "arterial"
     validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
@@ -28,7 +28,7 @@ questions:
   - id: 202
     type: "pathway"
     image: "practical-2-2/202.jpg"
-    question: "How would blood get from the heart to the right foot:"
+    question: "How would blood get from the heart to the right foot?"
     answer: "pathway"
     direction: "arterial"
     validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
@@ -39,10 +39,54 @@ questions:
   - id: 203
     type: "pathway"
     image: "practical-2-2/203.jpg"
-    question: "How would blood get from the heart to the left foot:"
+    question: "How would blood get from the heart to the left foot?"
     answer: "pathway"
     direction: "arterial"
     validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
     validEndVessels: ["left anterior tibial artery", "left posterior tibial artery", "left fibular artery"]
+    points: 2
+    tags: ["extra-credit", "pathway", "lower-extremity"]
+
+  - id: 204
+    type: "pathway"
+    image: "practical-2-2/204.jpg"
+    question: "How would blood get from the right hand to the heart?"
+    answer: "pathway"
+    direction: "venous"
+    validStartVessels: ["right ulnar vein", "right radial vein", "right basilic vein", "right cephalic vein", "right hand"]
+    validEndVessels: ["superior vena cava", "heart", "right atrium"]
+    points: 2
+    tags: ["extra-credit", "pathway", "upper-extremity"]
+
+  - id: 205
+    type: "pathway"
+    image: "practical-2-2/201.jpg"
+    question: "How would blood get from the left hand to the heart?"
+    answer: "pathway"
+    direction: "venous"
+    validStartVessels: ["left ulnar vein", "left radial vein", "left basilic vein", "left cephalic vein", "left hand"]
+    validEndVessels: ["superior vena cava", "heart", "right atrium"]
+    points: 2
+    tags: ["extra-credit", "pathway", "upper-extremity"]
+
+  - id: 206
+    type: "pathway"
+    image: "practical-2-2/206.jpg"
+    question: "How would blood get from the left foot to the heart?"
+    answer: "pathway"
+    direction: "venous"
+    validStartVessels: ["left posterior tibial vein", "left anterior tibial vein", "left fibular vein", "left small saphenous vein", "left great saphenous vein", "left foot"]
+    validEndVessels: ["inferior vena cava", "heart", "right atrium"]
+    points: 2
+    tags: ["extra-credit", "pathway", "lower-extremity"]
+
+  - id: 207
+    type: "pathway"
+    image: "practical-2-2/207.jpg"
+    question: "How would blood get from right foot to the heart?"
+    answer: "pathway"
+    direction: "venous"
+    validStartVessels: ["right posterior tibial vein", "right anterior tibial vein", "right fibular vein", "right small saphenous vein", "right great saphenous vein", "right foot"]
+    alidEndVessels: ["inferior vena cava", "heart", "right atrium"]
     points: 2
     tags: ["extra-credit", "pathway", "lower-extremity"]
