@@ -248,6 +248,20 @@ h1 {
     background: transparent;
 }
 
+/* Make text-only question box fill the entire card in flashcard view */
+.flip-card .text-only-question-box {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+/* Ensure term content fills the card front when it's a text-only card */
+.flip-card-front:has(.text-only-question-box) .term-content {
+    width: 100%;
+    height: 100%;
+}
+
 /* Image container for positioning overlay */
 .image-container {
     position: relative;

@@ -38,8 +38,14 @@ function getPracticalParams() {
 
     // Update back link based on source
     const backLink = document.getElementById('back-link');
-    if (backLink && source === 'practical-2-2') {
-        backLink.href = '../unit2-part2-flashcards.html';
+    if (backLink) {
+        if (source === 'practical-2-2') {
+            backLink.href = '../unit2-part2-flashcards.html';
+        } else if (source === 'lecture-topics') {
+            backLink.href = '../unit2-lecture-flashcards.html';
+        } else if (source === 'practical-2') {
+            backLink.href = '../unit2-flashcards.html';
+        }
     }
 
     return {
@@ -134,7 +140,8 @@ async function loadFlashcards() {
             const sourceMap = {
                 'practical-2': 'unit2-practical',
                 'practical-2-2': 'unit2-part2-practical',
-                'practical': 'practice-practical'
+                'practical': 'practice-practical',
+                'lecture-topics': 'unit2-lecture-topics'
             };
             const actualFilename = sourceMap[practicalParams.source] || practicalParams.source;
             const fetchUrl = `../data/${actualFilename}.yml`;
@@ -149,7 +156,7 @@ async function loadFlashcards() {
 
             // Filter questions by tags if specified
             let filteredQuestions = practicalData.questions;
-            if (practicalParams.tags && practicalParams.tags.length > 0) {
+            if (practicalParams.tags && practicalParams.tags.length > 0 && practicalParams.tags[0] !== '') {
                 filteredQuestions = practicalData.questions.filter(question => {
                     if (!question.tags || question.tags.length === 0) return false;
                     return practicalParams.tags.some(tag => question.tags.includes(tag));

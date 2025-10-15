@@ -1,0 +1,519 @@
+title: "Unit 2 Lecture Topics — Blood, Heart, and Blood Vessels"
+description: "Flashcards for memorizing key terms, factors, ions, and facts from Unit 2"
+randomize: true
+
+questions:
+  # BLOOD - Basic Properties
+  - id: "blood-tissue-type"
+    question: "What tissue type is blood?"
+    answer: "Connective tissue"
+    tags: ["unit-2", "blood", "lecture"]
+
+  - id: "blood-plasma-percent"
+    question: "What percentage of blood is plasma?"
+    answer: "Approximately 55%"
+    tags: ["unit-2", "blood", "lecture"]
+
+  - id: "blood-ph"
+    question: "What is the normal pH range of human blood?"
+    answer: "7.35–7.45 (slightly alkaline)"
+    tags: ["unit-2", "blood", "lecture"]
+
+  - id: "blood-viscosity"
+    question: "What two components determine blood viscosity?"
+    answer: "Water and plasma proteins"
+    tags: ["unit-2", "blood", "lecture"]
+
+  - id: "hematocrit"
+    question: "What is hematocrit?"
+    answer: "The percentage of blood volume comprised of formed elements (approximately 45%)"
+    tags: ["unit-2", "blood", "lecture"]
+
+  # BLOOD - Plasma Proteins
+  - id: "plasma-proteins"
+    question: "What are the three main plasma proteins?"
+    answer: "Albumin, globulins, and fibrinogen"
+    tags: ["unit-2", "blood", "plasma-proteins", "lecture"]
+
+  - id: "albumin-function"
+    question: "What is the function of albumin?"
+    answer: "Maintains osmotic pressure and transports hormones"
+    tags: ["unit-2", "blood", "plasma-proteins", "lecture"]
+
+  - id: "globulin-function"
+    question: "What is the function of globulins?"
+    answer: "Antibodies and immune response"
+    tags: ["unit-2", "blood", "plasma-proteins", "lecture"]
+
+  - id: "fibrinogen-function"
+    question: "What is the function of fibrinogen?"
+    answer: "Inactive precursor protein involved in blood clotting"
+    tags: ["unit-2", "blood", "plasma-proteins", "lecture"]
+
+  - id: "albumin-deficiency"
+    question: "Which plasma protein deficiency causes edema and ascites in liver cirrhosis patients?"
+    answer: "Albumin (and globulins)"
+    tags: ["unit-2", "blood", "plasma-proteins", "lecture"]
+
+  # BLOOD - Erythrocytes (RBCs)
+  - id: "rbc-no-mitochondria"
+    question: "Why don't mature RBCs consume the oxygen they transport?"
+    answer: "They lack mitochondria"
+    tags: ["unit-2", "blood", "lecture"]
+
+  - id: "epo"
+    question: "What hormone promotes RBC production?"
+    answer: "Erythropoietin (EPO)"
+    tags: ["unit-2", "blood", "lecture"]
+
+  - id: "epo-organ"
+    question: "What organ secretes erythropoietin?"
+    answer: "The kidney"
+    tags: ["unit-2", "blood", "lecture"]
+
+  - id: "hematopoiesis-location"
+    question: "Where does hematopoiesis occur?"
+    answer: "Red bone marrow"
+    tags: ["unit-2", "blood", "lecture"]
+
+  - id: "blood-replacement-time"
+    question: "How long does it take to replace formed elements after blood donation?"
+    answer: "About one month"
+    tags: ["unit-2", "blood", "lecture"]
+
+  - id: "rbc-lifespan"
+    question: "What is the lifespan of an RBC?"
+    answer: "120 days"
+    tags: ["unit-2", "blood", "lecture"]
+
+  - id: "bilirubin"
+    question: "What causes the yellowish color in jaundice?"
+    answer: "Bilirubin (from breakdown of the heme group)"
+    tags: ["unit-2", "blood", "lecture"]
+
+  # BLOOD - Conditions
+  - id: "polycythemia"
+    question: "What is polycythemia?"
+    answer: "A condition with high blood volume, high blood pressure, and high viscosity"
+    tags: ["unit-2", "blood", "lecture"]
+
+  - id: "anemia-effects"
+    question: "What are the effects of anemia on blood volume, pressure, and viscosity?"
+    answer: "All three are low (watery blood)"
+    tags: ["unit-2", "blood", "lecture"]
+
+  - id: "hdn"
+    question: "Why do babies with HDN have enlarged spleens and jaundice?"
+    answer: "The spleen works overtime to clean mass erythrocyte waste, causing bilirubin buildup"
+    tags: ["unit-2", "blood", "lecture"]
+
+  # BLOOD - Blood Types
+  - id: "type-a-antibodies"
+    question: "What antibodies does a Type A person have?"
+    answer: "Anti-B antibodies"
+    tags: ["unit-2", "blood", "blood-types", "lecture"]
+
+  - id: "type-b-antibodies"
+    question: "What antibodies does a Type B person have?"
+    answer: "Anti-A antibodies"
+    tags: ["unit-2", "blood", "blood-types", "lecture"]
+
+  - id: "universal-acceptor-why"
+    question: "Why is Type AB the universal acceptor?"
+    answer: "It makes no Anti-A or Anti-B antibodies, so it won't attack incoming RBCs"
+    tags: ["unit-2", "blood", "blood-types", "lecture"]
+
+  - id: "type-ab-antigens"
+    question: "What antigens does Type AB blood produce?"
+    answer: "Both A and B antigens"
+    tags: ["unit-2", "blood", "blood-types", "lecture"]
+
+  - id: "universal-donor"
+    question: "What is the universal donor blood type?"
+    answer: "Type O negative"
+    tags: ["unit-2", "blood", "blood-types", "lecture"]
+
+  - id: "universal-recipient"
+    question: "What is the universal recipient blood type?"
+    answer: "Type AB positive"
+    tags: ["unit-2", "blood", "blood-types", "lecture"]
+
+  - id: "agglutination"
+    question: "What does agglutination mean in blood typing?"
+    answer: "Clumping of RBCs when antibodies bind to antigens"
+    tags: ["unit-2", "blood", "blood-types", "lecture"]
+
+  - id: "rh-antibodies"
+    question: "When do Rh negative people produce anti-D antibodies?"
+    answer: "Only after initial exposure to Rh positive blood (not born with them like ABO antibodies)"
+    tags: ["unit-2", "blood", "blood-types", "lecture"]
+
+  - id: "heterozygous"
+    question: "What genotype means a person is heterozygous for a trait?"
+    answer: "Having one dominant and one recessive allele (e.g., I^A i for Type A)"
+    tags: ["unit-2", "blood", "genetics", "lecture"]
+
+  # BLOOD - Clotting
+  - id: "plasminogen"
+    question: "What does plasminogen do?"
+    answer: "It is inactive (but becomes plasmin which breaks down fibrin)"
+    tags: ["unit-2", "blood", "clotting", "lecture"]
+
+  - id: "thromboxane"
+    question: "What does thromboxane do?"
+    answer: "Promotes platelet aggregation and increases platelet stickiness"
+    tags: ["unit-2", "blood", "clotting", "lecture"]
+
+  - id: "prostacyclin"
+    question: "What does prostacyclin do?"
+    answer: "Inhibits thrombin and reduces coagulation (anticoagulant)"
+    tags: ["unit-2", "blood", "clotting", "lecture"]
+
+  - id: "faster-pathway"
+    question: "Which clotting pathway is faster?"
+    answer: "The extrinsic pathway"
+    tags: ["unit-2", "blood", "clotting", "lecture"]
+
+  - id: "extrinsic-start"
+    question: "What starts the extrinsic pathway?"
+    answer: "Damage to tissue and release of factor III"
+    tags: ["unit-2", "blood", "clotting", "lecture"]
+
+  - id: "extrinsic-factor"
+    question: "What factor is necessary for the extrinsic pathway?"
+    answer: "Factor VII"
+    tags: ["unit-2", "blood", "clotting", "lecture"]
+
+  - id: "heparin"
+    question: "What does heparin do?"
+    answer: "Inhibits coagulation and clotting (anticoagulant)"
+    tags: ["unit-2", "blood", "clotting", "lecture"]
+
+  - id: "warfarin"
+    question: "What does warfarin inhibit?"
+    answer: "Factor IX (intrinsic pathway)"
+    tags: ["unit-2", "blood", "clotting", "lecture"]
+
+  - id: "prothrombin"
+    question: "What does prothrombin do?"
+    answer: "Promotes clot formation (becomes thrombin)"
+    tags: ["unit-2", "blood", "clotting", "lecture"]
+
+  # HEART - Anatomy
+  - id: "papillary-muscles"
+    question: "What is the function of papillary muscles?"
+    answer: "Prevent AV valves from prolapsing into the atria when ventricles contract"
+    tags: ["unit-2", "heart", "anatomy", "lecture"]
+
+  - id: "heart-working-layer"
+    question: "Which layer of the heart performs the work?"
+    answer: "The myocardium (not the endocardium)"
+    tags: ["unit-2", "heart", "anatomy", "lecture"]
+
+  # HEART - Cardiac Cycle Phases
+  - id: "cardiac-cycle-phases"
+    question: "What are the four phases of the cardiac cycle?"
+    answer: "Ventricular filling, isovolumetric contraction, ventricular ejection, isovolumetric relaxation"
+    tags: ["unit-2", "heart", "cardiac-cycle", "lecture"]
+
+  - id: "ventricular-filling-percent"
+    question: "When does 70-80% of ventricular filling occur?"
+    answer: "During atrial diastole (passive filling)"
+    tags: ["unit-2", "heart", "cardiac-cycle", "lecture"]
+
+  - id: "isovolumetric-contraction"
+    question: "What is isovolumetric contraction?"
+    answer: "Phase where tension increases in ventricles but no blood is ejected (all valves closed)"
+    tags: ["unit-2", "heart", "cardiac-cycle", "lecture"]
+
+  - id: "ventricular-ejection-pressure"
+    question: "During ventricular ejection, where is pressure greatest?"
+    answer: "In the ventricles (greater than atria, aorta, and pulmonary trunk)"
+    tags: ["unit-2", "heart", "cardiac-cycle", "lecture"]
+
+  - id: "esv"
+    question: "What is end systolic volume (ESV)?"
+    answer: "The least volume of blood in ventricles at the end of ventricular systole"
+    tags: ["unit-2", "heart", "cardiac-cycle", "lecture"]
+
+  - id: "edv"
+    question: "What is end diastolic volume (EDV)?"
+    answer: "The volume of blood in ventricles at the end of ventricular filling"
+    tags: ["unit-2", "heart", "cardiac-cycle", "lecture"]
+
+  - id: "filling-valves"
+    question: "During ventricular filling, which valves are open?"
+    answer: "Atrioventricular (AV) valves"
+    tags: ["unit-2", "heart", "cardiac-cycle", "lecture"]
+
+  - id: "filling-pressure"
+    question: "During ventricular filling, what is the pressure relationship?"
+    answer: "Pressure is higher in the atria than the ventricles"
+    tags: ["unit-2", "heart", "cardiac-cycle", "lecture"]
+
+  # HEART - Electrophysiology (Pacemaker Cells)
+  - id: "pacemaker-slow-depol"
+    question: "What ion causes slow depolarization in pacemaker cells?"
+    answer: "Nonspecific cations (mainly Na+)"
+    tags: ["unit-2", "heart", "electrophysiology", "lecture"]
+
+  - id: "pacemaker-rapid-depol"
+    question: "What ion causes rapid depolarization in pacemaker cells?"
+    answer: "Calcium (Ca2+)"
+    tags: ["unit-2", "heart", "electrophysiology", "lecture"]
+
+  - id: "pacemaker-repol"
+    question: "What ion causes repolarization in pacemaker cells?"
+    answer: "Potassium (K+) outflow"
+    tags: ["unit-2", "heart", "electrophysiology", "lecture"]
+
+  # HEART - Electrophysiology (Contractile Cells)
+  - id: "contractile-rapid-depol"
+    question: "What ion causes rapid depolarization in contractile cells?"
+    answer: "Sodium (Na+)"
+    tags: ["unit-2", "heart", "electrophysiology", "lecture"]
+
+  - id: "plateau-ions"
+    question: "What ions cause the plateau phase in contractile cells?"
+    answer: "Calcium (Ca2+) rushing in and potassium (K+) rushing out"
+    tags: ["unit-2", "heart", "electrophysiology", "lecture"]
+
+  - id: "plateau-importance"
+    question: "Why is the plateau phase important?"
+    answer: "Allows time for blood to fill the heart (prevents simultaneous atrial and ventricular contraction)"
+    tags: ["unit-2", "heart", "electrophysiology", "lecture"]
+
+  - id: "contractile-repol"
+    question: "What ion causes repolarization in contractile cells?"
+    answer: "Potassium (K+) outflow"
+    tags: ["unit-2", "heart", "electrophysiology", "lecture"]
+
+  # HEART - ECG
+  - id: "p-wave"
+    question: "What does the P wave represent?"
+    answer: "Atrial depolarization"
+    tags: ["unit-2", "heart", "ecg", "lecture"]
+
+  - id: "qrs-complex"
+    question: "What does the QRS complex represent?"
+    answer: "Ventricular depolarization"
+    tags: ["unit-2", "heart", "ecg", "lecture"]
+
+  - id: "st-segment"
+    question: "What does the ST segment represent?"
+    answer: "Ventricular plateau phase"
+    tags: ["unit-2", "heart", "ecg", "lecture"]
+
+  - id: "qrs-phase"
+    question: "In which phase does the QRS complex occur?"
+    answer: "Isovolumetric contraction"
+    tags: ["unit-2", "heart", "ecg", "lecture"]
+
+  # HEART - Cardiac Muscle Properties
+  - id: "cardiac-metabolism"
+    question: "Do cardiac myocytes depend on aerobic or anaerobic metabolism?"
+    answer: "Aerobic metabolism (NOT anaerobic)"
+    tags: ["unit-2", "heart", "muscle-properties", "lecture"]
+
+  - id: "cardiac-nuclei"
+    question: "How many nuclei do cardiac myocytes usually have?"
+    answer: "A single nucleus"
+    tags: ["unit-2", "heart", "muscle-properties", "lecture"]
+
+  - id: "autorhythmicity"
+    question: "Are all cardiac myocytes capable of autorhythmicity?"
+    answer: "No, only pacemaker cells have autorhythmicity"
+    tags: ["unit-2", "heart", "muscle-properties", "lecture"]
+
+  - id: "refractory-period"
+    question: "Do cardiac myocytes have a long or short refractory period?"
+    answer: "Long refractory period (prevents tetanus)"
+    tags: ["unit-2", "heart", "muscle-properties", "lecture"]
+
+  # HEART - Cardiac Output
+  - id: "co-formula"
+    question: "What is the formula for cardiac output?"
+    answer: "CO = HR × SV (heart rate × stroke volume)"
+    tags: ["unit-2", "heart", "cardiac-output", "lecture"]
+
+  - id: "sv-formula"
+    question: "What is the formula for stroke volume?"
+    answer: "SV = EDV - ESV (end diastolic volume - end systolic volume)"
+    tags: ["unit-2", "heart", "cardiac-output", "lecture"]
+
+  - id: "preload"
+    question: "What is preload?"
+    answer: "The degree of stretch on the ventricles before contraction (related to EDV)"
+    tags: ["unit-2", "heart", "cardiac-output", "lecture"]
+
+  - id: "afterload"
+    question: "What is afterload?"
+    answer: "The resistance the ventricles must overcome to eject blood"
+    tags: ["unit-2", "heart", "cardiac-output", "lecture"]
+
+  - id: "preload-effect"
+    question: "What does increased preload do to stroke volume?"
+    answer: "Increases stroke volume"
+    tags: ["unit-2", "heart", "cardiac-output", "lecture"]
+
+  - id: "afterload-effect"
+    question: "What does increased afterload do to stroke volume?"
+    answer: "Decreases stroke volume"
+    tags: ["unit-2", "heart", "cardiac-output", "lecture"]
+
+  - id: "venous-return-effect"
+    question: "What does low venous return do to stroke volume?"
+    answer: "Decreases stroke volume"
+    tags: ["unit-2", "heart", "cardiac-output", "lecture"]
+
+  - id: "edv-effect"
+    question: "What does high end-diastolic volume do to cardiac output?"
+    answer: "Increases cardiac output (increases stroke volume)"
+    tags: ["unit-2", "heart", "cardiac-output", "lecture"]
+
+  - id: "athlete-hr"
+    question: "Why do athletes have lower heart rates?"
+    answer: "They have higher stroke volumes (to maintain same cardiac output)"
+    tags: ["unit-2", "heart", "cardiac-output", "lecture"]
+
+  # HEART - Hormones
+  - id: "aldosterone"
+    question: "What does aldosterone do to blood volume and cardiac output?"
+    answer: "Increases both (retains water and sodium)"
+    tags: ["unit-2", "heart", "hormones", "lecture"]
+
+  - id: "anp"
+    question: "What does atrial natriuretic hormone (ANP) do to cardiac output?"
+    answer: "Decreases cardiac output (promotes water and sodium loss)"
+    tags: ["unit-2", "heart", "hormones", "lecture"]
+
+  - id: "adh"
+    question: "What does antidiuretic hormone (ADH) do to blood pressure?"
+    answer: "Increases blood pressure (retains water)"
+    tags: ["unit-2", "heart", "hormones", "lecture"]
+
+  # HEART - Agents
+  - id: "inotropic-agents"
+    question: "What do positive inotropic agents do?"
+    answer: "Increase force of contraction (increase stroke volume)"
+    tags: ["unit-2", "heart", "lecture"]
+
+  - id: "chronotropic-agents"
+    question: "What do chronotropic agents affect?"
+    answer: "Speed of contraction (heart rate)"
+    tags: ["unit-2", "heart", "lecture"]
+
+  - id: "vagus-nerve"
+    question: "What does vagus nerve stimulation do to cardiac output?"
+    answer: "Decreases cardiac output (slows heart rate)"
+    tags: ["unit-2", "heart", "lecture"]
+
+  # BLOOD VESSELS - Capillary Exchange
+  - id: "hp-meaning"
+    question: "What does HP stand for in capillary exchange?"
+    answer: "Hydrostatic pressure"
+    tags: ["unit-2", "vessels", "capillary-exchange", "lecture"]
+
+  - id: "bcop-meaning"
+    question: "What does BCOP stand for in capillary exchange?"
+    answer: "Blood colloid osmotic pressure"
+    tags: ["unit-2", "vessels", "capillary-exchange", "lecture"]
+
+  - id: "bcop-driver"
+    question: "What drives blood colloid osmotic pressure?"
+    answer: "Albumins"
+    tags: ["unit-2", "vessels", "capillary-exchange", "lecture"]
+
+  - id: "filtration-when"
+    question: "When does net filtration occur in capillary beds?"
+    answer: "At the arteriole end where HP > BCOP"
+    tags: ["unit-2", "vessels", "capillary-exchange", "lecture"]
+
+  - id: "reabsorption-when"
+    question: "When does net reabsorption occur in capillary beds?"
+    answer: "At the venule end where BCOP > HP"
+    tags: ["unit-2", "vessels", "capillary-exchange", "lecture"]
+
+  - id: "reabsorbed-substance"
+    question: "What substance would be reabsorbed in a capillary bed?"
+    answer: "Carbon dioxide (and other waste products)"
+    tags: ["unit-2", "vessels", "capillary-exchange", "lecture"]
+
+  - id: "transcytosis"
+    question: "What process is used to exchange large amounts of substance through capillary cells?"
+    answer: "Transcytosis"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  # BLOOD VESSELS - Capillary Types
+  - id: "fenestrated-location"
+    question: "Where would you find fenestrated capillaries?"
+    answer: "Surrounding endocrine glands (and kidneys, small intestine)"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  - id: "continuous-location"
+    question: "Where would you find continuous capillaries?"
+    answer: "Most tissue"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  - id: "sinusoidal-location"
+    question: "Where would you find sinusoidal capillaries?"
+    answer: "Liver and red bone marrow"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  # BLOOD VESSELS - Blood Pressure and Flow
+  - id: "bp-formula"
+    question: "What is the formula for blood pressure?"
+    answer: "BP = CO × R (cardiac output × resistance)"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  - id: "bp-increase"
+    question: "What increases blood pressure?"
+    answer: "Increased cardiac output, increased resistance, vasoconstriction, ADH release"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  - id: "bp-decrease"
+    question: "What decreases blood pressure?"
+    answer: "Vasodilation, ANP release, decreased cardiac output, decreased resistance"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  - id: "baroreceptors"
+    question: "What do baroreceptors do when they feel no stretch?"
+    answer: "Signal to increase blood pressure (via vasoconstriction and increased HR)"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  - id: "flow-velocity-decrease"
+    question: "What decreases blood flow velocity?"
+    answer: "Increased viscosity"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  - id: "flow-velocity-increase"
+    question: "What increases blood flow velocity?"
+    answer: "Increased blood pressure, vasoconstriction, increased cardiac output"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  # BLOOD VESSELS - Vasodilation/Constriction
+  - id: "histamine-effect"
+    question: "What does histamine release cause?"
+    answer: "Vasodilation and a decrease in blood pressure"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  - id: "co2-brain"
+    question: "What happens to brain blood vessels when CO2 builds up in brain tissue?"
+    answer: "Vasodilation of brain vessels (and vasoconstriction of vessels elsewhere)"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  # BLOOD VESSELS - Anatomy
+  - id: "anastomoses"
+    question: "What are anastomoses?"
+    answer: "Alternate routes for blood flow if one arterial route becomes blocked"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  - id: "cross-sectional-area"
+    question: "What vessels have the greatest total cross-sectional area?"
+    answer: "Capillaries"
+    tags: ["unit-2", "vessels", "lecture"]
+
+  - id: "slowest-flow"
+    question: "Where is blood flow velocity slowest?"
+    answer: "In capillaries (due to large total cross-sectional area)"
+    tags: ["unit-2", "vessels", "lecture"]

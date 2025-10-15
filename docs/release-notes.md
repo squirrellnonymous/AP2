@@ -1,5 +1,132 @@
 # Release Notes
 
+## October 15, 2025 - Blood Vessels Practical Content Expansion
+
+### 📚 Major Content Addition: 28 New Vessel Questions with Definitions
+
+Significantly expanded the blood vessels practice practical with comprehensive venous system coverage and helpful learning aids.
+
+**File Updated:** `data/unit2-part2-practical.yml`
+
+#### Content Added
+
+**Page 19 - Hepatic Portal System (6 questions, id: 35-40)**
+- Hepatic portal vein
+- Hepatic veins
+- Superior mesenteric vein
+- Gastric veins
+- Splenic vein
+- Inferior mesenteric vein
+
+**Page 18 - Systemic Veins (10 questions, id: 41-50)**
+- Hepatic veins (duplicate from different view)
+- Right renal vein
+- Right internal iliac vein
+- Left cephalic vein
+- Left basilic vein
+- Left brachial vein
+- Left median cubital vein
+- Left radial vein
+- Left axillary vein
+- Right gonadal vein
+
+**Page 15 - Dural Venous Sinuses (5 questions, id: 51-55)**
+- Cavernous sinus
+- Internal jugular vein/veins
+- Petrosal sinus
+- Sigmoid sinus
+- Transverse sinuses
+
+**Page 17 - Head & Neck Vessels (7 questions, id: 56-62)**
+- Superior sagittal sinus
+- Right transverse sinus
+- Right external jugular vein
+- Right internal jugular vein
+- Right brachiocephalic vein
+- Right subclavian vein
+- Right vertebral vein
+
+**Crystal Skull Model (1 question, id: 67)**
+- Right transverse sinus (on model)
+- Left gap (id: 63-66) for future model questions
+
+#### Educational Enhancements
+
+**Comprehensive Definitions Added**
+- All 28 new questions include detailed definitions for flashcard review
+- Definitions include:
+  - Anatomical function (what the vessel drains/supplies)
+  - Key connections to other vessels
+  - Memory aids and fun facts
+  - Clinical relevance where applicable
+
+**Notable Definition Features**
+- **Etymology notes**: Basilic vein (Greek/Arabic origins), Cephalic vein (Greek for head)
+- **Clinical facts**: Median cubital vein (most common blood draw site), Renal arteries (20% of cardiac output)
+- **Anatomical comparisons**: Right vs left renal veins, brachiocephalic veins vs arteries
+- **Memory tips**: Sigmoid = S-shaped, Superior sagittal sinus CSF reabsorption
+
+**Plural/Singular Clarity**
+- Updated transverse sinuses to plural (id: 55) - shows both sinuses in image
+- Consistent naming for paired vs unpaired structures
+
+#### Previously Missing Definitions Added
+
+Filled in definitions for 19 existing questions (id: 6, 11-34) that had empty definition fields:
+- Left common carotid artery
+- Right renal artery
+- Common iliac arteries
+- External/internal iliac arteries
+- Subclavian arteries
+- Radial and ulnar arteries
+- Hepatic and splenic arteries
+- Mesenteric arteries
+- Adrenal and gonadal arteries
+- Brachiocephalic trunk and branches
+- Vein identification question
+
+#### Content Quality Improvements
+
+**Consistent Formatting**
+- All definitions written in accessible, student-friendly language
+- Anatomical connections clearly stated
+- Emphasis on relationships between vessels in drainage/supply pathways
+
+**Tagging System**
+- New page-specific tags: `vessels-15`, `vessels-17`, `vessels-18`, `vessels-19`
+- Model questions tagged with: `models`, `crystal-skull`
+- All questions maintain `blood-vessels` base tag
+
+#### Project Scope
+
+**Total Questions in unit2-part2-practical.yml**
+- **62 image-based questions** (id: 1-62, plus id: 67)
+- **17 text-only questions** (id: 100-116)
+- **79 total questions** in blood vessels practical
+
+**Image Naming Convention**
+- Images match ID numbers: `practical-2-2/35.jpg` through `practical-2-2/62.jpg`
+- Model images use non-sequential numbers: `practical-2-2/67.jpg`
+- Gap reserved (id: 63-66) for future model photos
+
+#### Bug Documentation
+
+**New Bug Reported** (`docs/features-and-bugs.md`)
+- **Flashcard Images Flash Black Before Loading**
+  - Occurs when advancing between flashcards
+  - Possible causes: No image preloading, black background CSS, missing loading attributes
+  - Documented with potential solutions for future fix
+
+#### Use Cases
+
+1. **Comprehensive venous system practice** - Portal system, systemic veins, dural sinuses
+2. **Flashcard study** - All questions include definitions for spaced repetition
+3. **Targeted practice by page** - Filter by vessels-15, vessels-17, vessels-18, vessels-19 tags
+4. **Model-based learning** - Crystal skull questions tagged separately
+5. **Etymology learning** - Word origins help with memorization
+
+---
+
 ## October 14, 2025 - Unit 2 Exam Print Enhancements & Image Support
 
 ### 🖨️ Print-Friendly Exam with Answer Key
