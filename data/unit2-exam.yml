@@ -608,7 +608,13 @@ trueMakeTrue:
   - statement: "Increased preload ***increases*** stroke volume."
     isTrue: true
     points: 2.5
-    
+
+  - statement: "Arterial ***ligaments*** provide alternate routes for blood flow if one arterial route becomes blocked."
+    isTrue: false
+    correctWord: ["anastomoses", "anastomosis"]
+    points: 2.5
+    tags: ["unit-2", "vessels"]
+
 
 table:
   - question: "Name three blood plasma proteins and list a function of each."
