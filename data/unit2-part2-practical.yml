@@ -51,7 +51,7 @@ questions:
     image: "practical-2-2/06.jpg"
     question: "What is the red vessel?"
     answer: ["left common carotid artery"]
-    definition: ""
+    definition: "Supplies blood to the left side of the head and neck. It branches directly from the aortic arch (unlike the right common carotid which comes from the brachiocephalic trunk)."
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 07
@@ -86,100 +86,105 @@ questions:
     image: "practical-2-2/11.jpg"
     question: "What is the red vessel?"
     answer: ["right renal artery"]
-    definition: ""
+    definition: "Supplies oxygenated blood to the right kidney. The renal arteries branch directly from the abdominal aorta and carry about 20% of the heart's output!"
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 12
     image: "practical-2-2/12.jpg"
     question: "What is the red vessel?"
     answer: ["right common iliac artery"]
-    definition: ""
+    definition: "Formed when the abdominal aorta bifurcates (splits in two). It divides into the internal and external iliac arteries to supply the pelvis and lower limb."
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 13
     image: "practical-2-2/13.jpg"
     question: "What is the red vessel?"
     answer: ["left external iliac artery"]
-    definition: ""
+    definition: "Supplies blood to the lower limb. It becomes the femoral artery once it passes under the inguinal ligament."
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 14
     image: "practical-2-2/14.jpg"
     question: "what is the red vessel labeled <strong>D</strong>?"
     answer: ["right common carotid artery"]
+    definition: "Supplies blood to the right side of the head and neck. On the right side, it branches from the brachiocephalic trunk."
     tags: ["blood-vessels", "neck", "crystal-skull", "models"]
 
   - id: 15
     image: "practical-2-2/15.jpg"
     question: "Name the vessel."
     answer: ["right internal iliac artery"]
+    definition: "Supplies blood to the pelvic organs, gluteal muscles, and medial thigh. It's one of the two branches of the common iliac artery."
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 16
     image: "practical-2-2/16.jpg"
     question: "What is the red vessel?"
     answer: ["left subclavian artery"]
+    definition: "Supplies blood to the left arm and parts of the brain. It branches directly from the aortic arch on the left side (unlike the right subclavian which branches from the brachiocephalic trunk)."
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 17
     image: "practical-2-2/17.jpg"
     question: "What is the red vessel?"
     answer: ["left renal artery"]
+    definition: "Supplies oxygenated blood to the left kidney. The left renal artery is typically longer than the right because it must cross over the aorta."
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 18
     image: "practical-2-2/18.jpg"
     question: "What is the red vessel?"
     answer: ["hepatic artery proper"]
+    definition: "Supplies oxygenated blood to the liver, gallbladder, and stomach. It's a branch of the common hepatic artery (which comes from the celiac trunk)."
     tags: ["blood-vessels", "vessels-10"]
 
   - id: 19
     image: "practical-2-2/19.jpg"
     question: "What is the red vessel?"
     answer: ["right radial artery"]
-    definition: ""
+    definition: "Runs along the lateral (thumb) side of the forearm. This is where you feel your pulse at the wrist! It's a branch of the brachial artery."
     tags: ["blood-vessels", "vessels-8"]
 
   - id: 20
     image: "practical-2-2/20.jpg"
     question: "What is the red vessel?"
     answer: ["right ulnar artery"]
-    definition: ""
+    definition: "Runs along the medial (pinky) side of the forearm. It's typically larger than the radial artery and also branches from the brachial artery."
     tags: ["blood-vessels", "vessels-8"]
 
   - id: 21
     image: "practical-2-2/21.jpg"
     question: "What is the red vessel?"
     answer: ["common hepatic artery"]
-    definition: ""
+    definition: "One of the three branches of the celiac trunk. It supplies the liver, stomach, gallbladder, and pancreas. It divides into the hepatic artery proper and gastroduodenal artery."
     tags: ["blood-vessels", "vessels-10"]
 
   - id: 22
     image: "practical-2-2/22.jpg"
     question: "What is the red vessel?"
     answer: ["splenic artery"]
-    definition: ""
+    definition: "One of the three branches of the celiac trunk. It supplies the spleen, pancreas, and parts of the stomach. It's known for being particularly tortuous (twisty)!"
     tags: ["blood-vessels", "vessels-10"]
 
   - id: 23
     image: "practical-2-2/23.jpg"
     question: "What is the red vessel?"
     answer: ["gastric artery"]
-    definition: ""
+    definition: "One of the three branches of the celiac trunk. It supplies the stomach and lower esophagus, running along the lesser curvature of the stomach."
     tags: ["blood-vessels", "vessels-10"]
 
   - id: 24
     image: "practical-2-2/24.jpg"
     question: "What is the red vessel?"
     answer: ["inferior mesenteric artery"]
-    definition: ""
+    definition: "Supplies the distal (terminal) portions of the large intestine and rectum. It branches from the abdominal aorta below the superior mesenteric artery."
     tags: ["blood-vessels", "vessels-10"]
 
   - id: 25
     image: "practical-2-2/25.jpg"
     question: "What is the red vessel?"
     answer: ["superior mesenteric artery"]
-    definition: ""
+    definition: "Supplies the pancreas, duodenum, small intestine, and most of the large intestine. It's the second unpaired branch from the abdominal aorta (after the celiac trunk)."
     tags: ["blood-vessels", "vessels-10"]
 
   - id: 26
@@ -193,99 +198,262 @@ questions:
     image: "practical-2-2/27.jpg"
     question: "What is the red vessel?"
     answer: ["left adrenal artery"]
-    definition: ""
+    definition: "Supplies blood to the left adrenal gland (which sits on top of the kidney). The adrenal glands produce important hormones like adrenaline and cortisol."
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 28
     image: "practical-2-2/28.jpg"
     question: "What is the red vessel?"
     answer: ["right gonadal artery"]
-    definition: ""
+    definition: "Supplies the gonads (testes in males, ovaries in females). These arteries are very long because the gonads descend during development from near the kidneys."
     tags: ["blood-vessels", "vessels-9"]
 
   - id: 29
     image: "practical-2-2/29.jpg"
     question: "name the vessel: artery or vein?"
     answer: ["vein"]
-    definition: ""
+    definition: "Veins have thinner walls and larger lumens compared to arteries. They also have valves to prevent backflow of blood returning to the heart."
     tags: ["blood-vessels"]
 
   - id: 30
     image: "practical-2-2/30.jpg"
     question: "Name the vessel."
     answer: ["brachiocephalic trunk"]
-    definition: ""
+    definition: "The first and largest branch from the aortic arch. It splits into the right subclavian artery and right common carotid artery. Note: There's no left brachiocephalic trunk!"
     tags: ["blood-vessels", "vessels-5"]
 
   - id: 31
     image: "practical-2-2/31.jpg"
     question: "Name the vessel."
     answer: ["left subclavian artery"]
-    definition: ""
+    definition: "The second branch from the aortic arch. 'Subclavian' means 'under the clavicle' - it passes beneath the collarbone to supply the left arm."
     tags: ["blood-vessels", "vessels-5"]
 
   - id: 32
     image: "practical-2-2/32.jpg"
     question: "Name the vessel."
     answer: ["right common carotid artery"]
-    definition: ""
+    definition: "Branches from the brachiocephalic trunk to supply the right side of the head and neck. It divides into internal and external carotid arteries at about the level of the thyroid cartilage."
     tags: ["blood-vessels", "vessels-5"]
 
   - id: 33
     image: "practical-2-2/33.jpg"
     question: "Name the vessel."
     answer: ["right subclavian artery"]
-    definition: ""
+    definition: "Branches from the brachiocephalic trunk. It passes under the right clavicle and becomes the axillary artery as it enters the armpit region."
     tags: ["blood-vessels", "vessels-5"]
 
   - id: 34
     image: "practical-2-2/34.jpg"
     question: "Name the vessel."
     answer: ["left common carotid artery"]
-    definition: ""
+    definition: "The third branch from the aortic arch (after brachiocephalic trunk and left subclavian). It supplies the left side of the head and neck."
     tags: ["blood-vessels", "vessels-5"]
 
   - id: 35
     image: "practical-2-2/35.jpg"
     question: "Name the vessel."
     answer: ["hepatic portal vein"]
-    definition: ""
+    definition: "The hepatic portal vein carries nutrient-rich blood from the digestive organs to the liver for processing. It's unique because it connects two capillary beds (portal system)."
     tags: ["blood-vessels", "vessels-19"]
 
   - id: 36
     image: "practical-2-2/36.jpg"
     question: "Name the vessel."
     answer: ["hepatic veins"]
-    definition: ""
+    definition: "The hepatic veins drain processed blood from the liver directly into the inferior vena cava. Unlike the hepatic portal vein, these carry blood OUT of the liver."
     tags: ["blood-vessels", "vessels-19"]
 
   - id: 37
     image: "practical-2-2/37.jpg"
     question: "Name the vessel."
     answer: ["superior mesenteric vein"]
-    definition: ""
+    definition: "Drains blood from the small intestine and parts of the large intestine. It joins with the splenic vein to form the hepatic portal vein."
     tags: ["blood-vessels", "vessels-19"]
 
   - id: 38
     image: "practical-2-2/38.jpg"
     question: "Name the vessel."
     answer: ["gastric veins"]
-    definition: ""
+    definition: "Drain blood from the stomach and lower esophagus. These veins eventually empty into the hepatic portal system."
     tags: ["blood-vessels", "vessels-19"]
 
   - id: 39
     image: "practical-2-2/39.jpg"
     question: "Name the vessel."
     answer: ["splenic vein"]
-    definition: ""
+    definition: "Drains the spleen, pancreas, and parts of the stomach. It joins with the superior mesenteric vein to form the hepatic portal vein."
     tags: ["blood-vessels", "vessels-19"]
 
   - id: 40
     image: "practical-2-2/40.jpg"
     question: "Name the vessel."
     answer: ["inferior mesenteric vein"]
-    definition: ""
+    definition: "Drains blood from the distal portions of the large intestine and rectum. It typically empties into the splenic vein."
     tags: ["blood-vessels", "vessels-19"]
+
+  - id: 41
+    image: "practical-2-2/41.jpg"
+    question: "Name the vessel."
+    answer: ["hepatic veins"]
+    definition: "The hepatic veins drain processed blood from the liver directly into the inferior vena cava. Unlike the hepatic portal vein, these carry blood OUT of the liver."
+    tags: ["blood-vessels", "vessels-18"]
+
+  - id: 42
+    image: "practical-2-2/42.jpg"
+    question: "Name the vessel."
+    answer: ["right renal vein"]
+    definition: "Drains the right kidney into the inferior vena cava. The right renal vein is shorter than the left because the IVC is on the right side of the body."
+    tags: ["blood-vessels", "vessels-18"]
+
+  - id: 43
+    image: "practical-2-2/43.jpg"
+    question: "Name the vessel."
+    answer: ["right internal iliac vein"]
+    definition: "Drains blood from the pelvic organs, gluteal region, and medial thigh. It joins with the external iliac vein to form the common iliac vein."
+    tags: ["blood-vessels", "vessels-18"]
+
+  - id: 44
+    image: "practical-2-2/44.jpg"
+    question: "Name the vessel."
+    answer: ["left cephalic vein"]
+    definition: "A superficial vein that runs along the lateral (thumb) side of the arm. Memory tip: 'cephalic' comes from the Greek word for 'head' because it was once thought to go to the head."
+    tags: ["blood-vessels", "vessels-18"]
+
+  - id: 45
+    image: "practical-2-2/45.jpg"
+    question: "Name the vessel."
+    answer: ["left basilic vein"]
+    definition: "A superficial vein that runs along the medial (pinky) side of the arm. It eventually drains into the brachial or axillary vein. Etymology: 'Basilic' might come from Greek 'basilikos' (royal) OR Arabic 'al-basilik' (inner) - nobody's quite sure!"
+    tags: ["blood-vessels", "vessels-18"]
+
+  - id: 46
+    image: "practical-2-2/46.jpg"
+    question: "Name the vessel."
+    answer: ["left brachial vein"]
+    definition: "Deep vein that follows the brachial artery through the upper arm. It's formed by the union of the radial and ulnar veins."
+    tags: ["blood-vessels", "vessels-18"]
+
+  - id: 47
+    image: "practical-2-2/47.jpg"
+    question: "Name the vessel."
+    answer: ["left median cubital vein"]
+    definition: "The superficial vein that connects the cephalic and basilic veins in the elbow region. This is the most common site for blood draws because it's large and easily accessible!"
+    tags: ["blood-vessels", "vessels-18"]
+
+  - id: 48
+    image: "practical-2-2/48.jpg"
+    question: "Name the vessel."
+    answer: ["left radial vein"]
+    definition: "Deep vein that follows the radial artery along the lateral (thumb) side of the forearm. It joins with the ulnar vein to form the brachial vein."
+    tags: ["blood-vessels", "vessels-18"]
+
+  - id: 49
+    image: "practical-2-2/49.jpg"
+    question: "Name the vessel."
+    answer: ["left axillary vein"]
+    definition: "Drains blood from the arm and armpit region. The brachial vein becomes the axillary vein as it passes into the axilla (armpit), and then becomes the subclavian vein."
+    tags: ["blood-vessels", "vessels-18"]
+
+  - id: 50
+    image: "practical-2-2/50.jpg"
+    question: "Name the vessel."
+    answer: ["right gonadal vein"]
+    definition: "Drains the gonads (testes in males, ovaries in females). The right gonadal vein drains directly into the inferior vena cava, while the left drains into the left renal vein."
+    tags: ["blood-vessels", "vessels-18"]
+
+  - id: 51
+    image: "practical-2-2/51.jpg"
+    question: "Name the vessel."
+    answer: ["cavernous sinus"]
+    definition: "A paired dural venous sinus on either side of the sella turcica (where the pituitary gland sits). Important because several cranial nerves and the internal carotid artery pass through it!"
+    tags: ["blood-vessels", "vessels-15"]
+
+  - id: 52
+    image: "practical-2-2/52.jpg"
+    question: "Name the vessel."
+    answer: ["internal jugular vein", "internal jugular veins"]
+    definition: "The major vein draining blood from the brain, face, and neck. It receives blood from the dural sinuses and runs alongside the common carotid artery in the neck."
+    tags: ["blood-vessels", "vessels-15"]
+
+  - id: 53
+    image: "practical-2-2/53.jpg"
+    question: "Name the vessel."
+    answer: ["petrosal sinus"]
+    definition: "Dural venous sinuses that drain the cavernous sinus. The superior petrosal sinus connects to the transverse sinus, while the inferior petrosal sinus drains to the internal jugular vein. Named for the petrous part of the temporal bone."
+    tags: ["blood-vessels", "vessels-15"]
+
+  - id: 54
+    image: "practical-2-2/54.jpg"
+    question: "Name the vessel."
+    answer: ["right sigmoid sinus"]
+    definition: "An S-shaped dural venous sinus that receives blood from the transverse sinus and drains into the internal jugular vein. 'Sigmoid' means S-shaped!"
+    tags: ["blood-vessels", "vessels-15"]
+
+  - id: 55
+    image: "practical-2-2/55.jpg"
+    question: "Name the vessel."
+    answer: ["transverse sinuses"]
+    definition: "Paired dural venous sinuses that run laterally along the posterior skull. They receive blood from the superior sagittal sinus and drain into the sigmoid sinuses."
+    tags: ["blood-vessels", "vessels-15"]
+
+  - id: 56
+    image: "practical-2-2/56.jpg"
+    question: "Name the vessel."
+    answer: ["superior sagittal sinus"]
+    definition: "The largest dural venous sinus, running along the top of the brain in the midline. It collects blood from the brain and drains into the transverse sinuses. Also where cerebrospinal fluid is reabsorbed!"
+    tags: ["blood-vessels", "vessels-17"]
+
+  - id: 57
+    image: "practical-2-2/57.jpg"
+    question: "Name the vessel."
+    answer: ["right transverse sinus"]
+    definition: "Paired dural venous sinus that runs laterally along the posterior skull. Receives blood from the superior sagittal sinus and drains into the sigmoid sinus."
+    tags: ["blood-vessels", "vessels-17"]
+
+  - id: 58
+    image: "practical-2-2/58.jpg"
+    question: "Name the vessel."
+    answer: ["right external jugular vein"]
+    definition: "A superficial vein that drains blood from the scalp, face, and neck. It runs along the outside of the neck (you can sometimes see it bulging) and drains into the subclavian vein."
+    tags: ["blood-vessels", "vessels-17"]
+
+  - id: 59
+    image: "practical-2-2/59.jpg"
+    question: "Name the vessel."
+    answer: ["right internal jugular vein"]
+    definition: "The major deep vein draining the brain, face, and neck. It receives blood from the dural sinuses and joins with the subclavian vein to form the brachiocephalic vein."
+    tags: ["blood-vessels", "vessels-17"]
+
+  - id: 60
+    image: "practical-2-2/60.jpg"
+    question: "Name the vessel."
+    answer: ["right brachiocephalic vein"]
+    definition: "Formed by the union of the internal jugular and subclavian veins. The left and right brachiocephalic veins join to form the superior vena cava. Note: Unlike arteries, there ARE left and right brachiocephalic veins!"
+    tags: ["blood-vessels", "vessels-17"]
+
+  - id: 61
+    image: "practical-2-2/61.jpg"
+    question: "Name the vessel."
+    answer: ["right subclavian vein"]
+    definition: "Drains blood from the arm. It's the continuation of the axillary vein and joins with the internal jugular vein to form the brachiocephalic vein."
+    tags: ["blood-vessels", "vessels-17"]
+
+  - id: 62
+    image: "practical-2-2/62.jpg"
+    question: "Name the vessel."
+    answer: ["right vertebral vein"]
+    definition: "Drains blood from the back of the brain and cervical spinal cord. It runs through the transverse foramina of the cervical vertebrae and drains into the brachiocephalic vein."
+    tags: ["blood-vessels", "vessels-17"]
+
+  # Gap for future questions (id: 63-66)
+
+  - id: 67
+    image: "practical-2-2/67.jpg"
+    question: "Name the vessel."
+    answer: ["right transverse sinus"]
+    definition: "Paired dural venous sinus that runs laterally along the posterior skull. Receives blood from the superior sagittal sinus and drains into the sigmoid sinus."
+    tags: ["blood-vessels", "models", "crystal-skull"]
 
 
 

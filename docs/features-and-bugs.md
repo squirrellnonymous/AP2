@@ -525,3 +525,37 @@ question.gradingResult = {
 4. Submit the practical
 5. Click on the blank answers in the results to open the review popup
 6. Observe that some show "(blank)" and others don't
+
+---
+
+## Flashcard Images Flash Black Before Loading
+
+**Status:** Not yet fixed
+**Location:** Flashcard review modal (`js/question-modal.js`), practice practicals
+
+### Description
+When advancing to the next flashcard or flipping a card, images briefly show a black background before they finish loading, creating a jarring visual experience.
+
+### Current Behavior
+- Image container shows black background during image load
+- Flash is most noticeable when moving between cards quickly
+- Happens on both flashcard decks and practice practical review
+
+### Possible Causes
+1. **No image preloading** - Next images aren't loaded in advance
+2. **CSS background color** - Image container has black background-color
+3. **Missing loading attribute** - Images not set to `loading="eager"`
+4. **Caching issues** - Images might not be cached properly
+
+### Expected Behavior
+- Images should preload before being displayed
+- Smooth transitions between cards without black flashes
+- Better user experience during rapid card navigation
+
+### Potential Solutions
+- Implement image preloading for upcoming cards
+- Change image container background to white or neutral color
+- Add `loading="eager"` attribute to critical images
+- Ensure proper image caching
+
+---
