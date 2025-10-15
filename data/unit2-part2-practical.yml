@@ -245,6 +245,48 @@ questions:
     definition: ""
     tags: ["blood-vessels", "vessels-5"]
 
+  - id: 35
+    image: "practical-2-2/35.jpg"
+    question: "Name the vessel."
+    answer: ["hepatic portal vein"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-19"]
+
+  - id: 36
+    image: "practical-2-2/36.jpg"
+    question: "Name the vessel."
+    answer: ["hepatic veins"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-19"]
+
+  - id: 37
+    image: "practical-2-2/37.jpg"
+    question: "Name the vessel."
+    answer: ["superior mesenteric vein"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-19"]
+
+  - id: 38
+    image: "practical-2-2/38.jpg"
+    question: "Name the vessel."
+    answer: ["gastric veins"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-19"]
+
+  - id: 39
+    image: "practical-2-2/39.jpg"
+    question: "Name the vessel."
+    answer: ["splenic vein"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-19"]
+
+  - id: 40
+    image: "practical-2-2/40.jpg"
+    question: "Name the vessel."
+    answer: ["inferior mesenteric vein"]
+    definition: ""
+    tags: ["blood-vessels", "vessels-19"]
+
 
 
   # Text Only Questions (themed with colors)

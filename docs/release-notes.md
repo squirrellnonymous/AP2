@@ -1,5 +1,149 @@
 # Release Notes
 
+## October 14, 2025 - Unit 2 Exam Print Enhancements & Image Support
+
+### 🖨️ Print-Friendly Exam with Answer Key
+
+Enhanced `unit2-exam.html` with comprehensive print functionality and professional formatting for paper-based practice.
+
+**Files Updated:** `unit2-exam.html`, `css/exam-print.css`, `css/quiz.css`, `data/unit2-exam.yml`
+
+#### Print Features Implemented
+
+**Complete Answer Key (Print-Only)**
+- Appears on separate page after exam questions (hidden on screen)
+- Organized by section with clear headers
+- **Multiple Choice:** Listed as "1. A", "2. C", etc.
+- **True/Make True:** Shows correct word or "True" for each statement
+- **Table Questions:** Shows question with pipe-separated answer rows
+- **Essay/Short Answer:** Full answer text with question context
+- Professional formatting with section dividers
+
+**Cover Page & Scantron**
+- Print-only cover page with exam title, name field, and date field
+- Dynamic scantron bubble sheet generated from actual questions
+- **Letters inside bubbles** for cleaner appearance
+- **Uniform bubble columns:** All questions show A-E bubbles (based on max options in exam)
+- Two-column layout with proper page breaks
+- Hidden on screen, only visible when printing
+
+**Optimized Question Layouts**
+- **Multiple Choice:** Compact layout (~10 per page) with visual separation
+- **True/Make True:** Numbered blank lines with CSS counter system for proper numbering
+- **Essay Questions:**
+  - Low-point questions (< 10 pts): ~180pt spacing for handwritten answers
+  - High-point questions (≥ 10 pts): Full page per question
+  - Questions with images: Image + question on one page, blank space on next
+- **Mobile images:** Responsive sizing so images fit on mobile screens
+
+**Print CSS Enhancements**
+- All UI elements hidden (buttons, navigation, grading interfaces)
+- Black text, no shadows or gradients
+- Optimized page breaks to prevent awkward splits
+- Professional typography (11pt body, appropriate headings)
+
+#### Image Support for Multiple Choice
+
+**New Feature: MC Questions with Images**
+- Added `image` field support for multiple choice questions
+- Images display between question number and question text
+- **Screen:** Centered with rounded corners and subtle shadow
+- **Print:** Centered, max 90% width, 300pt height
+- **Mobile:** Responsive sizing (max-width: 100%)
+- Example: Graph question added to exam (graph-25.jpg)
+
+#### Configurable Randomization System
+
+**YAML-Based Quiz Configuration**
+- `randomize: true/false` - Toggle random question selection
+- `maxQuestions: 36` - Configurable question limit
+- When randomization enabled:
+  - Proportionally samples from blood, heart, and vessels categories
+  - Shuffles final selection for varied practice
+- When randomization disabled (`randomize: false`):
+  - Shows all questions in YAML order
+  - Useful for comprehensive review
+
+#### Content Updates
+
+**Answer Key Verification**
+- Compared all 27 professor questions against official answer key
+- ✅ All answers verified correct
+- Updated **Plasminogen** answer: "Does nothing" → "Is inactive" (clearer wording)
+- Fixed **Warfarin essay**: Corrected "intrinsic pathway is faster" → "extrinsic pathway is faster"
+- Added **anastomoses** true/make-true question for vessel connections
+
+**YAML Fixes**
+- Fixed image path: `graph_25.jpg` → `graph-25.jpg`
+- Removed "(see image)" from clotting pathway essay question
+- Added `randomize` and `maxQuestions` configuration fields
+
+#### Technical Implementation
+
+**CSS Counter System for True/Make True**
+- Replaced fragile nth-child selectors with robust counter system
+- `counter-reset` on section, `counter-increment` on cards
+- Numbering works correctly regardless of DOM structure
+- Supports text wrapping with proper alignment
+
+**Answer Key Generation**
+- JavaScript function `renderAnswerKey()` generates key from quiz data
+- Calculates correct letter (A/B/C/D/E) from index for MC questions
+- Shows first correct word from array for true/make-true
+- Formats essay answers with question context
+- Hidden on screen via CSS, shown only in print media
+
+**Print CSS Architecture**
+- `exam-print.css` loaded with `media="print"` attribute
+- Screen-specific hiding rules in `quiz.css` for broad compatibility
+- Separate `@media screen` and `@media print` sections
+- Cover page and answer key visibility controlled by both files
+
+#### Design Decisions
+
+**Answer Key Format**
+- Simple numbered lists by section (not inline with questions)
+- First correct answer shown (not all accepted variations)
+- Matches traditional exam answer key format
+- Easy to grade printed exams quickly
+
+**Print Layout**
+- Prioritized readability and space efficiency
+- True/make-true: Shorter blank line, statement starts immediately after
+- Point values in section headers, not per question (less clutter)
+- Page breaks prevent orphaned questions
+
+**Mobile Responsiveness**
+- Added `.question-image` and `.essay-image` mobile rules
+- Max-width: 100%, height: auto for proper scaling
+- Reduced margins on mobile (12px vs 16pt)
+
+#### Files Modified
+
+**HTML**
+- `unit2-exam.html`: Added answer key HTML, image support, renderAnswerKey(), updated randomization logic
+
+**CSS**
+- `css/exam-print.css`: Cover page, scantron, answer key print styles
+- `css/quiz.css`: Screen-specific hiding rules, mobile image styles
+
+**Data**
+- `data/unit2-exam.yml`: Added `randomize`, `maxQuestions`, fixed answers, added anastomoses question
+
+**Documentation**
+- Updated `docs/features-and-bugs.md`: Marked print CSS feature as completed
+
+#### Use Cases
+
+1. **Print practice exam** - Professional paper format with scantron
+2. **Print answer key** - Separate key for self-grading or instructor use
+3. **Study offline** - Complete exam without screen time
+4. **Simulate real exam** - Practice under paper-based conditions
+5. **Mobile practice** - Images properly sized for phone screens
+6. **Customizable difficulty** - Adjust question count via YAML config
+
+---
+
 ## October 12, 2025 - Pathway Mini Quiz Advanced Refinements
 
 ### 🎯 Major Enhancements to Pathway Validation System
