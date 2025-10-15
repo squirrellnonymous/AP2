@@ -536,6 +536,19 @@
     font-size: 0.875rem;
 }
 
+/* Question Images (for MC questions with images) */
+.question-image {
+    margin: 12px 0;
+    text-align: center;
+}
+
+.question-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Mobile Responsive */
 @media (max-width: 640px) {
     .header-content {
@@ -582,6 +595,18 @@
 
     .drop-zone {
         min-width: 60px;
+    }
+
+    /* Make images fit on mobile screens */
+    .essay-image img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .essay-image {
+        margin: 12px 0;
+        text-align: center;
     }
 }
 
@@ -794,4 +819,13 @@
     .correct-answer-table td {
         padding: 6px 8px;
     }
+}
+
+/* Hide exam cover page and answer key on screen (only show when printing) */
+.exam-cover-page {
+    display: none;
+}
+
+.answer-key {
+    display: none;
 }

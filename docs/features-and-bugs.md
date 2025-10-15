@@ -322,6 +322,57 @@ A system to dynamically generate mini quizzes (4 questions) from specific tags i
 
 ---
 
+## Print CSS for Practice Lecture Exams
+
+**Status:** ✅ Implemented
+**Location:** `css/exam-print.css`, linked in `unit2-exam.html`
+**Completed:** 2025-10-14
+
+### Description
+Create a print stylesheet that formats practice lecture exams to look like real exam papers, optimized for printing and completing by hand with pencil.
+
+### Expected Layout
+
+#### Multiple Choice Questions
+- Compact layout, approximately 10 questions per page
+- Clean, exam-like formatting matching actual exam appearance
+- Minimal spacing between questions to maximize page usage while keeping questions visually separate
+
+#### True/Make-True Questions
+- Each statement with a blank line before it
+- Student can write either "true" or the corrected word
+- Format: `__________ [statement with ***word*** highlighted]`
+
+#### Essay Questions - Low Points (< 10 points)
+- About 3 questions per page
+- Space provided below each question for handwritten answer
+- Appropriate spacing based on point value
+
+#### Essay Questions - High Points (≥ 10 points)
+- Full page dedicated to each high-point question
+- If essay includes an image:
+  - First page: Question text with image
+  - Second page: Full page of blank space for handwritten answer
+- If no image:
+  - Full page with question at top and remaining space for answer
+
+### Technical Considerations
+- Create shared print CSS file (e.g., `css/exam-print.css`)
+- Use `@media print` queries
+- Hide unnecessary UI elements (navigation, buttons, dark mode toggle)
+- Optimize page breaks with `page-break-before`, `page-break-after`, `page-break-inside`
+- Ensure images print at appropriate sizes
+- Consider adding question numbering if not already present
+- Make sure true/make-true blank lines are visible when printed
+
+### Use Cases
+- Print practice exams to simulate real exam conditions
+- Complete exams by hand to practice writing answers
+- Study without screen time
+- Take practice exams in different environments (library, study groups)
+
+---
+
 # Known Bugs
 
 ## Light/Dark Mode Button Covers Page Title

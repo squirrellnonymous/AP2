@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Practice Test</title>
     <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/exam-print.css" media="print">
 </head>
 <body>
     <div class="header">
@@ -20,6 +21,30 @@
     <div class="container">
         <div id="loading" class="loading">
             Loading quiz questions...
+        </div>
+
+        <!-- Print-only cover page -->
+        <div id="exam-cover-page" class="exam-cover-page">
+            <div class="cover-header">
+                <h1 id="cover-title">Practice Exam</h1>
+                <div class="cover-info">
+                    <div class="name-field">
+                        <label>Name: _____________________________________________</label>
+                    </div>
+                    <div class="date-field">
+                        <label>Date: _____________________________________________</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scantron-style bubble sheet -->
+            <div class="scantron-section">
+                <h2>Part I: Multiple Choice</h2>
+                <p class="scantron-instructions">Fill in the bubble corresponding to your answer choice.</p>
+                <div id="scantron-grid" class="scantron-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
         </div>
 
         <form id="quiz-form" style="display: none;">
@@ -38,6 +63,12 @@
         </div>
 
         <a href="index.html" class="back-link">← Back to Home</a>
+
+        <!-- Print-only answer key -->
+        <div id="answer-key" class="answer-key">
+            <h1 class="answer-key-title">Answer Key</h1>
+            <div id="answer-key-content"></div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
@@ -56,9 +87,12 @@
                 if (quizData.title) {
                     document.getElementById('page-title').textContent = quizData.title;
                     document.getElementById('quiz-title').innerHTML = quizData.title;
+                    document.getElementById('cover-title').innerHTML = quizData.title;
                 }
 
                 renderQuiz();
+                renderScantron();
+                renderAnswerKey();
                 updateProgress();
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('quiz-form').style.display = 'block';
@@ -82,27 +116,50 @@
             const container = document.getElementById('questions-container');
             const allQuestions = quizData.multipleChoice;
 
-            // Separate questions by category and randomly select from each
-            const bloodQuestions = allQuestions.filter(q => q.tags && q.tags.includes('blood'));
-            const heartQuestions = allQuestions.filter(q => q.tags && q.tags.includes('heart'));
+            // Check if randomization is disabled (default is true for backwards compatibility)
+            const shouldRandomize = quizData.randomize !== false;
 
-            // Randomly select 15 blood questions and 12 heart questions
-            const shuffledBlood = [...bloodQuestions].sort(() => 0.5 - Math.random());
-            const shuffledHeart = [...heartQuestions].sort(() => 0.5 - Math.random());
+            if (shouldRandomize) {
+                // Get max questions limit (default to all if not specified)
+                const maxQuestions = quizData.maxQuestions || allQuestions.length;
 
-            const selectedBlood = shuffledBlood.slice(0, Math.min(15, bloodQuestions.length));
-            const selectedHeart = shuffledHeart.slice(0, Math.min(12, heartQuestions.length));
+                // Separate questions by category
+                const bloodQuestions = allQuestions.filter(q => q.tags && q.tags.includes('blood'));
+                const heartQuestions = allQuestions.filter(q => q.tags && q.tags.includes('heart'));
+                const vesselQuestions = allQuestions.filter(q => q.tags && q.tags.includes('vessels'));
 
-            // Combine and shuffle the final selection
-            selectedQuestions = [...selectedBlood, ...selectedHeart].sort(() => 0.5 - Math.random());
+                // Calculate proportional distribution based on available questions
+                const totalAvailable = bloodQuestions.length + heartQuestions.length + vesselQuestions.length;
+                const bloodCount = Math.round((bloodQuestions.length / totalAvailable) * maxQuestions);
+                const heartCount = Math.round((heartQuestions.length / totalAvailable) * maxQuestions);
+                const vesselCount = maxQuestions - bloodCount - heartCount; // Remainder goes to vessels
+
+                // Randomly select from each category
+                const shuffledBlood = [...bloodQuestions].sort(() => 0.5 - Math.random());
+                const shuffledHeart = [...heartQuestions].sort(() => 0.5 - Math.random());
+                const shuffledVessels = [...vesselQuestions].sort(() => 0.5 - Math.random());
+
+                const selectedBlood = shuffledBlood.slice(0, Math.min(bloodCount, bloodQuestions.length));
+                const selectedHeart = shuffledHeart.slice(0, Math.min(heartCount, heartQuestions.length));
+                const selectedVessels = shuffledVessels.slice(0, Math.min(vesselCount, vesselQuestions.length));
+
+                // Combine and shuffle the final selection
+                selectedQuestions = [...selectedBlood, ...selectedHeart, ...selectedVessels].sort(() => 0.5 - Math.random());
+            } else {
+                // Use all questions in order (no randomization)
+                selectedQuestions = allQuestions;
+            }
 
             // Render multiple choice questions
             selectedQuestions.forEach((question, index) => {
                 const questionCard = document.createElement('div');
                 questionCard.className = 'question-card';
 
+                const imageHTML = question.image ? `<div class="question-image"><img src="images/${question.image}" alt="Question ${index + 1} diagram" /></div>` : '';
+
                 questionCard.innerHTML = `
                     <div class="question-number">Question ${index + 1}</div>
+                    ${imageHTML}
                     <div class="question-text">${question.question}</div>
                     <div class="options">
                         ${question.options.map((option, optionIndex) => `
@@ -128,11 +185,12 @@
                 tmtContainer.appendChild(sectionTitle);
 
                 const instructions = document.createElement('div');
+                instructions.className = 'tmt-instructions';
                 instructions.style.textAlign = 'center';
                 instructions.style.marginBottom = '20px';
                 instructions.style.color = '#6b7280';
                 instructions.style.fontSize = '0.9rem';
-                instructions.innerHTML = 'If the statement is true, write "True". If false, write the word that makes it true.';
+                instructions.innerHTML = 'If the statement is true, write "True". If false, write the word that makes it true. (2.5 pts each)';
                 tmtContainer.appendChild(instructions);
 
                 quizData.trueMakeTrue.forEach((item, index) => {
@@ -336,6 +394,127 @@
                     nextInput.focus();
                 }
             }
+        }
+
+        function renderScantron() {
+            if (!selectedQuestions) return;
+
+            const scantronGrid = document.getElementById('scantron-grid');
+            const numQuestions = selectedQuestions.length;
+
+            // Find the maximum number of options across all questions
+            const maxOptions = Math.max(...selectedQuestions.map(q => q.options.length));
+
+            // Determine number of columns (typically 2 columns for scantron)
+            const columns = 2;
+            const questionsPerColumn = Math.ceil(numQuestions / columns);
+
+            let scantronHTML = '';
+
+            for (let col = 0; col < columns; col++) {
+                scantronHTML += '<div class="scantron-column">';
+
+                const startIdx = col * questionsPerColumn;
+                const endIdx = Math.min(startIdx + questionsPerColumn, numQuestions);
+
+                for (let i = startIdx; i < endIdx; i++) {
+                    const questionNum = i + 1;
+
+                    scantronHTML += `
+                        <div class="scantron-row">
+                            <span class="scantron-number">${questionNum}.</span>
+                            <div class="scantron-bubbles">
+                    `;
+
+                    // Create bubbles for all options (A through max option letter)
+                    for (let opt = 0; opt < maxOptions; opt++) {
+                        const letter = String.fromCharCode(65 + opt); // A=65, B=66, etc.
+                        scantronHTML += `
+                            <div class="bubble-container">
+                                <span class="bubble-letter">${letter}</span>
+                                <div class="bubble"></div>
+                            </div>
+                        `;
+                    }
+
+                    scantronHTML += `
+                            </div>
+                        </div>
+                    `;
+                }
+
+                scantronHTML += '</div>';
+            }
+
+            scantronGrid.innerHTML = scantronHTML;
+        }
+
+        function renderAnswerKey() {
+            if (!quizData || !selectedQuestions) return;
+
+            const answerKeyContent = document.getElementById('answer-key-content');
+            let keyHTML = '';
+
+            // Multiple Choice answers
+            if (selectedQuestions && selectedQuestions.length > 0) {
+                keyHTML += '<div class="answer-key-section"><h2>Multiple Choice</h2>';
+                selectedQuestions.forEach((question, index) => {
+                    const correctLetter = String.fromCharCode(65 + question.correct); // A=0, B=1, etc.
+                    keyHTML += `<div class="answer-key-item">${index + 1}. ${correctLetter}</div>`;
+                });
+                keyHTML += '</div>';
+            }
+
+            // True/Make True answers
+            if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) {
+                keyHTML += '<div class="answer-key-section"><h2>True/Make True</h2>';
+                quizData.trueMakeTrue.forEach((item, index) => {
+                    let answer;
+                    if (item.isTrue) {
+                        answer = 'True';
+                    } else {
+                        const correctWords = Array.isArray(item.correctWord) ? item.correctWord : [item.correctWord];
+                        answer = correctWords[0]; // Show first correct answer
+                    }
+                    keyHTML += `<div class="answer-key-item">${index + 1}. ${answer}</div>`;
+                });
+                keyHTML += '</div>';
+            }
+
+            // Table answers
+            if (quizData.table && quizData.table.length > 0) {
+                keyHTML += '<div class="answer-key-section"><h2>Table Questions</h2>';
+                quizData.table.forEach((item, index) => {
+                    keyHTML += `<div class="answer-key-item"><strong>Question ${index + 1}:</strong> ${item.question}</div>`;
+                    if (item.answer && Array.isArray(item.answer)) {
+                        keyHTML += '<div class="answer-key-table">';
+                        item.answer.forEach((row, rowIdx) => {
+                            if (Array.isArray(row)) {
+                                keyHTML += `<div class="answer-key-row">${row.join(' | ')}</div>`;
+                            } else {
+                                keyHTML += `<div class="answer-key-row">${row}</div>`;
+                            }
+                        });
+                        keyHTML += '</div>';
+                    }
+                });
+                keyHTML += '</div>';
+            }
+
+            // Essay answers
+            if (quizData.essay && quizData.essay.length > 0) {
+                const questionOffset = (quizData.table ? quizData.table.length : 0);
+                keyHTML += '<div class="answer-key-section"><h2>Essay/Short Answer</h2>';
+                quizData.essay.forEach((item, index) => {
+                    keyHTML += `<div class="answer-key-item">
+                        <strong>Question ${index + 1 + questionOffset}:</strong> ${item.question}
+                    </div>`;
+                    keyHTML += `<div class="answer-key-essay">${item.answer}</div>`;
+                });
+                keyHTML += '</div>';
+            }
+
+            answerKeyContent.innerHTML = keyHTML;
         }
 
         function updateProgress() {

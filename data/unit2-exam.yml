@@ -1,5 +1,7 @@
 title: "Unit 2 Practice Exam — Blood, Heart, and Blood Vessels"
 description: "Practice test covering Blood, Heart, and Blood Vessel Physiology. Some questions from practice exam pdf, other questions added including true/make-true and essay questions."
+randomize: true
+maxQuestions: 36
 
 multipleChoice:
   - question: "What is the tissue type of blood?"
@@ -332,7 +334,7 @@ multipleChoice:
       - "Works to breakdown fibrin"
       - "Promotes prothrombin activator"
       - "Helps platelets stick to vessel walls"
-      - "Does nothing"
+      - "Is inactive"
     correct: 3
     tags: ["unit-2", "blood"]
 
@@ -534,6 +536,7 @@ multipleChoice:
     tags: ["unit-2", "vessels"]
 
   - question: "What does the following graph demonstrate?"
+    image: "exam-2/graph-25.jpg"
     options:
       - "Average blood pressure"
       - "Average diameter of vessels"
@@ -579,8 +582,7 @@ trueMakeTrue:
     points: 2.5
 
   - statement: "The ***extrinsic*** pathway is the fastest of the two starting pathways in the clotting cascade."
-    isTrue: false
-    correctWord: ["intrinsic"]
+    isTrue: true
     points: 2.5
 
   - statement: "During ventricular filling, the ***semilunar*** valves are open."
@@ -621,7 +623,7 @@ table:
 
 essay:
   - question: "The drug Warfarin inhibits factor IX (factor 9). What clotting pathway is it inhibiting? What is the alternate pathway? Which pathway is faster."
-    answer: "Warfarin is inhibiting the intrinsic pathway. The alternate pathway is the extrinsic pathway. The intrinsic pathway is faster."
+    answer: "Warfarin is inhibiting the intrinsic pathway. The alternate pathway is the extrinsic pathway. The extrinsic pathway is faster."
     points: 3
     tags: ["unit-2", "blood"]
 
@@ -646,8 +648,8 @@ essay:
     points: 6
     tags: ["unit-2", "blood", "genetics"]
 
-  - question: describe the clotting pathway, extrinsic and intrinsic braches as well as the common pathway. Draw a flow chart showing the sequence and the factors if you prefer (don't use abreviations). 
-    answer: extrinsic pathway, intrinsic pathway, common pathway (see image)
+  - question: describe the clotting pathway, extrinsic and intrinsic braches as well as the common pathway. Draw a flow chart showing the sequence and the factors if you prefer (don't use abreviations).
+    answer: extrinsic pathway, intrinsic pathway, common pathway
     points: 12
     tags: ["unit-2", "clotting", "blood"]
 

@@ -1,0 +1,539 @@
+/* Print Stylesheet for Practice Lecture Exams */
+/* Optimized for printing exam-like format */
+
+/* Hide cover page and answer key on screen */
+@media screen {
+    .exam-cover-page {
+        display: none !important;
+    }
+
+    .answer-key {
+        display: none !important;
+    }
+}
+
+@media print {
+    /* Hide UI elements */
+    .header,
+    .submit-button,
+    #results,
+    .back-link,
+    .home-link,
+    .progress,
+    .essay-textarea,
+    .essay-grading,
+    .essay-answer,
+    .table-grading,
+    .table-answer,
+    .feedback-text,
+    #loading,
+    button {
+        display: none !important;
+    }
+
+    /* Show cover page only in print */
+    .exam-cover-page {
+        display: block !important;
+    }
+
+    /* Reset page styles */
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+        font-size: 11pt;
+        line-height: 1.4;
+        color: black;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    #quiz-form {
+        display: block !important;
+    }
+
+    /* ===========================================
+       MULTIPLE CHOICE QUESTIONS
+       Compact layout, ~10 per page
+       =========================================== */
+    .question-card {
+        page-break-inside: avoid;
+        margin-bottom: 14pt;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        background: white;
+    }
+
+    .question-number {
+        font-size: 10pt;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 4pt;
+    }
+
+    .question-text {
+        font-size: 10.5pt;
+        margin-bottom: 6pt;
+        line-height: 1.3;
+        color: black;
+    }
+
+    .options {
+        margin-left: 12pt;
+        gap: 2pt;
+    }
+
+    .option {
+        padding: 2pt 0;
+        margin-bottom: 2pt;
+        background: none !important;
+        page-break-inside: avoid;
+    }
+
+    .option input[type="radio"] {
+        width: 10pt;
+        height: 10pt;
+        margin-right: 6pt;
+    }
+
+    .option-text {
+        font-size: 10pt;
+        line-height: 1.3;
+        color: black;
+    }
+
+    /* Remove highlighting from graded answers */
+    .option.correct,
+    .option.incorrect,
+    .option.selected {
+        background: none !important;
+        border: none !important;
+    }
+
+    /* Question images for MC questions */
+    .question-image {
+        margin: 8pt 0;
+        text-align: center;
+        page-break-inside: avoid;
+    }
+
+    .question-image img {
+        max-width: 90%;
+        max-height: 300pt;
+        height: auto;
+    }
+
+    /* ===========================================
+       TRUE/MAKE TRUE SECTION
+       Blank line before each statement
+       =========================================== */
+    .true-make-true-section {
+        page-break-before: always;
+        margin-top: 0;
+        padding-top: 20pt;
+        counter-reset: tmt-question;
+    }
+
+    .section-title {
+        font-size: 14pt;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 16pt;
+        padding-bottom: 8pt;
+        border-bottom: 2pt solid black;
+        color: black;
+    }
+
+    .true-make-true-card {
+        page-break-inside: avoid;
+        margin-bottom: 18pt;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        background: white;
+        counter-increment: tmt-question;
+    }
+
+    /* Hide question number in print */
+    .true-make-true-card .question-number {
+        display: none;
+    }
+
+    .statement-container {
+        display: flex;
+        margin-bottom: 0;
+        position: relative;
+    }
+
+    /* Hide the input field, show blank line */
+    .statement-container input {
+        display: none;
+    }
+
+    /* Add question number before blank line using counter */
+    .statement-container::before {
+        content: counter(tmt-question) ". _________________________  ";
+        font-size: 10.5pt;
+        font-weight: bold;
+        color: black;
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
+    .statement-text {
+        font-size: 10.5pt;
+        line-height: 1.4;
+        color: black;
+        flex: 1;
+    }
+
+    .statement-text strong em {
+        font-weight: bold;
+        font-style: italic;
+        text-decoration: underline;
+    }
+
+    /* Remove grading feedback */
+    .true-make-true-card input.correct,
+    .true-make-true-card input.incorrect {
+        background: none !important;
+        border-color: black !important;
+    }
+
+    /* ===========================================
+       ESSAY/SHORT ANSWER SECTION
+       =========================================== */
+    .essay-section {
+        page-break-before: always;
+        margin-top: 0;
+        padding-top: 20pt;
+    }
+
+    /* ===========================================
+       LOW-POINT ESSAY QUESTIONS (< 10 points)
+       ~3 per page with space underneath
+       =========================================== */
+    .essay-card {
+        page-break-inside: avoid;
+        padding: 0;
+        margin-bottom: 180pt;  /* Default generous spacing for low-point questions */
+        border: none;
+        box-shadow: none;
+        background: white;
+    }
+
+    /* ===========================================
+       HIGH-POINT ESSAY QUESTIONS (≥ 10 points)
+       Full page per question
+       =========================================== */
+    .essay-card:has(.question-number:contains("(10 points)")),
+    .essay-card:has(.question-number:contains("(11 points)")),
+    .essay-card:has(.question-number:contains("(12 points)")),
+    .essay-card:has(.question-number:contains("(13 points)")),
+    .essay-card:has(.question-number:contains("(14 points)")),
+    .essay-card:has(.question-number:contains("(15 points)")),
+    .essay-card:has(.question-number:contains("(16 points)")),
+    .essay-card:has(.question-number:contains("(18 points)")),
+    .essay-card:has(.question-number:contains("(20 points)")) {
+        page-break-before: always;
+        page-break-after: always;
+        min-height: 500pt;
+    }
+
+    /* If essay has image, question + image on first page, space on second */
+    .essay-card:has(.essay-image) {
+        page-break-before: always;
+    }
+
+    .essay-card .essay-image + .essay-question {
+        page-break-after: always;
+    }
+
+    .essay-question {
+        font-size: 11pt;
+        font-weight: normal;
+        margin-bottom: 16pt;
+        color: black;
+        line-height: 1.4;
+    }
+
+    .essay-image {
+        margin: 16pt 0;
+        text-align: center;
+        page-break-inside: avoid;
+    }
+
+    .essay-image img {
+        max-width: 90%;
+        max-height: 400pt;
+        height: auto;
+    }
+
+    /* ===========================================
+       TABLE QUESTIONS
+       =========================================== */
+    .table-card {
+        page-break-inside: avoid;
+        padding: 0;
+        margin-bottom: 24pt;
+        border: none;
+        box-shadow: none;
+        background: white;
+    }
+
+    .table-question {
+        font-size: 11pt;
+        margin-bottom: 12pt;
+        color: black;
+    }
+
+    .answer-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1pt solid black;
+        margin-bottom: 16pt;
+    }
+
+    .answer-table th {
+        background: #f0f0f0;
+        color: black;
+        padding: 8pt;
+        border: 1pt solid black;
+        font-size: 10pt;
+        font-weight: bold;
+    }
+
+    .answer-table td {
+        padding: 8pt;
+        border: 1pt solid black;
+        min-height: 30pt;
+    }
+
+    .answer-table input {
+        border: none;
+        width: 100%;
+        font-size: 10pt;
+    }
+
+    /* ===========================================
+       PAGE BREAKS AND LAYOUT CONTROL
+       =========================================== */
+
+    /* Prevent orphans/widows */
+    p, .question-text, .statement-text {
+        orphans: 3;
+        widows: 3;
+    }
+
+    /* ===========================================
+       GENERAL PRINT OPTIMIZATIONS
+       =========================================== */
+
+    /* Remove all shadows, gradients, colors */
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /* Ensure black text */
+    h1, h2, h3, h4, h5, h6, p, div, span, label {
+        color: black !important;
+    }
+
+    /* Remove links styling */
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+    /* Optimize for printing */
+    @page {
+        margin: 0.75in;
+        size: letter;
+    }
+
+    /* Print URLs for reference if needed */
+    @page :first {
+        margin-top: 1in;
+    }
+
+    /* ===========================================
+       COVER PAGE & SCANTRON
+       =========================================== */
+
+    .exam-cover-page {
+        padding: 40pt 0;
+    }
+
+    .cover-header {
+        text-align: center;
+        margin-bottom: 60pt;
+        page-break-after: always;
+    }
+
+    .cover-header h1 {
+        font-size: 20pt;
+        font-weight: bold;
+        margin-bottom: 40pt;
+        color: black;
+        text-transform: uppercase;
+        letter-spacing: 1pt;
+    }
+
+    .cover-info {
+        text-align: left;
+        max-width: 500pt;
+        margin: 0 auto;
+    }
+
+    .name-field,
+    .date-field {
+        margin-bottom: 24pt;
+        font-size: 12pt;
+    }
+
+    .name-field label,
+    .date-field label {
+        color: black;
+    }
+
+    /* Scantron Section */
+    .scantron-section {
+        padding: 20pt;
+        border: 2pt solid black;
+    }
+
+    .scantron-section h2 {
+        font-size: 14pt;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 8pt;
+        color: black;
+    }
+
+    .scantron-instructions {
+        text-align: center;
+        font-size: 10pt;
+        margin-bottom: 20pt;
+        color: black;
+        font-style: italic;
+    }
+
+    .scantron-grid {
+        display: flex;
+        gap: 30pt;
+        justify-content: space-around;
+    }
+
+    .scantron-column {
+        flex: 1;
+    }
+
+    .scantron-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6pt;
+        page-break-inside: avoid;
+    }
+
+    .scantron-number {
+        font-size: 10pt;
+        font-weight: bold;
+        min-width: 25pt;
+        color: black;
+    }
+
+    .scantron-bubbles {
+        display: flex;
+        gap: 8pt;
+        align-items: center;
+    }
+
+    .bubble-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .bubble-letter {
+        font-size: 8pt;
+        font-weight: bold;
+        color: black;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .bubble {
+        width: 16pt;
+        height: 16pt;
+        border: 1.5pt solid black;
+        border-radius: 50%;
+        background: white;
+    }
+
+    /* ===========================================
+       ANSWER KEY
+       =========================================== */
+    .answer-key {
+        page-break-before: always;
+        display: block !important;
+        padding-top: 20pt;
+    }
+
+    .answer-key-title {
+        font-size: 18pt;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 30pt;
+        padding-bottom: 10pt;
+        border-bottom: 3pt solid black;
+        color: black;
+        text-transform: uppercase;
+        letter-spacing: 2pt;
+    }
+
+    .answer-key-section {
+        margin-bottom: 24pt;
+        page-break-inside: avoid;
+    }
+
+    .answer-key-section h2 {
+        font-size: 14pt;
+        font-weight: bold;
+        margin-bottom: 12pt;
+        padding-bottom: 6pt;
+        border-bottom: 1.5pt solid black;
+        color: black;
+    }
+
+    .answer-key-item {
+        font-size: 10.5pt;
+        margin-bottom: 6pt;
+        color: black;
+        line-height: 1.4;
+    }
+
+    .answer-key-table {
+        margin: 8pt 0 12pt 20pt;
+        font-size: 10pt;
+    }
+
+    .answer-key-row {
+        margin-bottom: 4pt;
+        color: #333;
+    }
+
+    .answer-key-essay {
+        margin: 8pt 0 16pt 20pt;
+        font-size: 10pt;
+        line-height: 1.5;
+        color: #333;
+        white-space: pre-line;
+    }
+}
