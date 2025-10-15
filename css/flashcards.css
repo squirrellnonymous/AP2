@@ -70,7 +70,7 @@ h1 {
 
 /* Simple Flashcard */
 .flashcard {
-    background: white;
+    background: rgb(224, 224, 224);
     border-radius: 16px;
     padding: 60px 40px;
     margin-bottom: 30px;
