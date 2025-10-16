@@ -661,7 +661,13 @@ essay:
 
   - question: "Answer the following questions based on the Wigger's graph:<br>&nbsp;&nbsp;&nbsp;&nbsp;A) What is it called and what is happening?<br>&nbsp;&nbsp;&nbsp;&nbsp;B) Is this ventricular or atrial pressure (top line)? Why?<br>&nbsp;&nbsp;&nbsp;&nbsp;C) Are the atria in systole or diastole in this region? How do you know?<br>&nbsp;&nbsp;&nbsp;&nbsp;D) Of the four phases of the cardiac cycle, what does D represent?<br>&nbsp;&nbsp;&nbsp;&nbsp;E) What is E?"
     image: "exam-2/wiggers.jpg"
-    answer: "A) P wave; atrial depolarization<br>&nbsp;&nbsp;&nbsp;&nbsp;B) Ventricular, higher than atria during IC phase <br>&nbsp;&nbsp;&nbsp;&nbsp;C) Systole (higher pressure than ventricles and after P wave) <br>&nbsp;&nbsp;&nbsp;&nbsp;D) Isovolumetric relaxation.<br>&nbsp;&nbsp;&nbsp;&nbsp;E) End Diastolic Volume (EDV)."
+    answer: "&nbsp;&nbsp;&nbsp;&nbsp;A) P wave; atrial depolarization<br>&nbsp;&nbsp;&nbsp;&nbsp;B) Ventricular, higher than atria during IC phase <br>&nbsp;&nbsp;&nbsp;&nbsp;C) Systole (higher pressure than ventricles and after P wave) <br>&nbsp;&nbsp;&nbsp;&nbsp;D) Isovolumetric relaxation.<br>&nbsp;&nbsp;&nbsp;&nbsp;E) End Diastolic Volume (EDV)."
+    points: 12
+    tags: ["unit-2", "heart", "wiggers-diagram"]
+
+  - question: "Answer the following questions based on the Wigger's graph: <br>&nbsp;&nbsp;&nbsp;&nbsp; A) What is it called and what is happening? <br>&nbsp;&nbsp;&nbsp;&nbsp; B) What is happening at this point? What phase begins after this happens? <br>&nbsp;&nbsp;&nbsp;&nbsp; C) What is this point called? What does it represent (measure)?<br>&nbsp;&nbsp;&nbsp;&nbsp; D) What is this point called? When you subract it from the previous measurment what do you calculate? <br>&nbsp;&nbsp;&nbsp;&nbsp; E) What phase is represented by E, and which chamber is measured?"
+    image: "exam-2/wiggers2.jpg"
+    answer: "A. T wave - ventricular repolarization. </br> B. Atrioventricular valve closes, isovolumetric contraction begins. </br> C. End Diastolic Volume (EDV), the volume of blood at the end of ventricular filling (preload).</br> D. End Systolic Volume (ESV) which is the volume of blood at the end of ventricular ejection. </br>&nbsp;&nbsp;&nbsp;&nbsp;EDV - ESV = Stroke Volume (SV)</br> E. Isovolumetric relaxation, pressure in the left ventricle."
     points: 12
     tags: ["unit-2", "heart", "wiggers-diagram"]
 
