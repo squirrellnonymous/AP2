@@ -55,6 +55,44 @@ function getPracticalParams() {
     };
 }
 
+// Update social media meta tags for sharing
+function updateSocialMetaTags(flashcardSet, flashcards) {
+    const currentUrl = window.location.href;
+    const title = flashcardSet.title || 'Study Flashcards - BIOL 224';
+    const description = flashcardSet.description || `Interactive flashcards for anatomy and physiology study - ${flashcards.length} cards`;
+
+    // Pick a random image from flashcards that have images
+    const cardsWithImages = flashcards.filter(card => card.image);
+    let imageUrl = 'https://squirrellnonymous.github.io/AP2/images/0.jpg'; // Default fallback
+
+    if (cardsWithImages.length > 0) {
+        const randomCard = cardsWithImages[Math.floor(Math.random() * cardsWithImages.length)];
+        imageUrl = `https://squirrellnonymous.github.io/AP2/images/${randomCard.image}`;
+    }
+
+    // Update Open Graph tags (check if elements exist first)
+    const ogUrl = document.getElementById('og-url');
+    const ogTitle = document.getElementById('og-title');
+    const ogDescription = document.getElementById('og-description');
+    const ogImage = document.getElementById('og-image');
+
+    if (ogUrl) ogUrl.setAttribute('content', currentUrl);
+    if (ogTitle) ogTitle.setAttribute('content', title);
+    if (ogDescription) ogDescription.setAttribute('content', description);
+    if (ogImage) ogImage.setAttribute('content', imageUrl);
+
+    // Update Twitter Card tags (check if elements exist first)
+    const twitterUrl = document.getElementById('twitter-url');
+    const twitterTitle = document.getElementById('twitter-title');
+    const twitterDescription = document.getElementById('twitter-description');
+    const twitterImage = document.getElementById('twitter-image');
+
+    if (twitterUrl) twitterUrl.setAttribute('content', currentUrl);
+    if (twitterTitle) twitterTitle.setAttribute('content', title);
+    if (twitterDescription) twitterDescription.setAttribute('content', description);
+    if (twitterImage) twitterImage.setAttribute('content', imageUrl);
+}
+
 // Generate descriptive deck title based on tags
 function generateDeckTitle(tags, cardCount) {
     if (!tags || tags.length === 0) {
@@ -238,6 +276,9 @@ async function loadFlashcards() {
             const cardCount = data.flashcards?.length || 0;
             cardCountElement.textContent = `${cardCount} flashcard${cardCount !== 1 ? 's' : ''}`;
         }
+
+        // Update Open Graph meta tags for social sharing
+        updateSocialMetaTags(flashcardSet, data.flashcards);
 
         allCards = [...data.flashcards];
         cards = [...data.flashcards]; // Current deck

@@ -267,6 +267,8 @@ h1 {
     position: relative;
     display: inline-block;
     overflow: hidden;
+    max-height: 400px;
+    width: 100%;
 }
 
 /* Term image */
@@ -557,10 +559,13 @@ h1 {
     }
 
     .term-image {
-        object-fit: cover;
-        object-position: center;
-        width: 125%;
-        transform: scale(1.25);
+        /* Mobile image sizing: fills white space while cropping sides only */
+        height: 420px;           /* Fixed height to fill card space */
+        width: auto;              /* Width determined by aspect ratio */
+        min-width: 100%;          /* Ensures image spans full width (often exceeds, cropping sides) */
+        object-fit: cover;        /* Fills the 420px height, maintains aspect ratio */
+        object-position: center;  /* Centers image so sides crop evenly */
+        /* Combined with .image-container overflow:hidden, sides get clipped while preserving top/bottom */
     }
 
     .flashcard {

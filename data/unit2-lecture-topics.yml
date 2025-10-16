@@ -442,6 +442,7 @@ questions:
   - id: "transcytosis"
     question: "What process is used to exchange large amounts of substance through capillary cells?"
     answer: "Transcytosis"
+    definition: "Transcytosis is the process of transporting large, lipid-insoluble molecules across the capillary endothelium through a series of vesicle-mediated steps."
     tags: ["unit-2", "vessels", "lecture"]
 
   # BLOOD VESSELS - Capillary Types

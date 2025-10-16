@@ -1,5 +1,35 @@
 # Release Notes
 
+## October 15, 2025 - Flashcard Mobile Image Crop Fix
+
+### 🖼️ Fixed Mobile Image Cropping to Preserve Top/Bottom Anatomy
+
+**File:** `flashcards/flashcard-styles.css`
+
+Fixed an issue where flashcard images on mobile devices were cropping important anatomy and arrows at the top and bottom of images.
+
+#### Problem
+- Mobile view was using `object-fit: cover` with `transform: scale(1.25)`
+- This caused aggressive cropping that cut off arrows and anatomical structures at top/bottom
+- Made vessel identification difficult when key features were hidden
+
+#### Solution
+Implemented height-based image sizing that crops sides only:
+- **Fixed height:** `420px` - fills the available white space in the card
+- **Auto width:** `width: auto` - lets width adjust based on image aspect ratio
+- **Minimum width:** `min-width: 100%` - ensures image spans full container width (often exceeds, allowing side cropping)
+- **Object-fit:** `cover` - fills the 420px height while maintaining aspect ratio
+- **Centered:** `object-position: center` - crops sides evenly
+- Combined with `.image-container` having `overflow: hidden`, sides get clipped while preserving top/bottom content
+
+#### Result
+- Images now fill the mobile card space effectively
+- All anatomy and arrows at top/bottom are fully visible
+- Side cropping provides zoom effect without losing critical content
+- Better learning experience for vessel identification
+
+---
+
 ## October 15, 2025 - Blood Vessels Practical Content Expansion
 
 ### 📚 Major Content Addition: 28 New Vessel Questions with Definitions

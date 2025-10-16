@@ -446,7 +446,14 @@ questions:
     definition: "Drains blood from the back of the brain and cervical spinal cord. It runs through the transverse foramina of the cervical vertebrae and drains into the brachiocephalic vein."
     tags: ["blood-vessels", "vessels-17"]
 
-  # Gap for future questions (id: 63-66)
+  - id: 63
+    image: "practical-2-2/63.jpg"
+    question: "Name the vessel."
+    answer: ["left transverse sinus"]
+    definition: "Paired dural venous sinus that runs laterally along the posterior skull. Receives blood from the superior sagittal sinus and drains into the sigmoid sinus."
+    tags: ["blood-vessels", "models", "crystal-skull"]
+
+  # Gap for future questions (id: 64-66)
 
   - id: 67
     image: "practical-2-2/67.jpg"
