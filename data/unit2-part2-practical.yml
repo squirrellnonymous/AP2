@@ -379,7 +379,7 @@ questions:
   - id: 53
     image: "practical-2-2/53.jpg"
     question: "Name the vessel."
-    answer: ["petrosal sinus"]
+    answer: ["left petrosal sinuses"]
     definition: "Dural venous sinuses that drain the cavernous sinus. The superior petrosal sinus connects to the transverse sinus, while the inferior petrosal sinus drains to the internal jugular vein. Named for the petrous part of the temporal bone."
     tags: ["blood-vessels", "vessels-15"]
 

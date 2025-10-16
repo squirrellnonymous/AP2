@@ -972,6 +972,51 @@ function startOver() {
     document.getElementById('flashcard-app').classList.remove('hidden');
 }
 
+// Share deck function
+function shareDeck() {
+    const shareUrl = window.location.href;
+    const shareBtn = document.getElementById('share-btn');
+
+    // Try to use native share API first (works on mobile)
+    if (navigator.share) {
+        navigator.share({
+            title: flashcardSet.title || 'Study Flashcards - BIOL 224',
+            text: `Check out this flashcard deck: ${flashcardSet.title}`,
+            url: shareUrl
+        }).catch(err => {
+            // If share fails, fall back to clipboard
+            copyToClipboard(shareUrl, shareBtn);
+        });
+    } else {
+        // Fall back to clipboard copy
+        copyToClipboard(shareUrl, shareBtn);
+    }
+}
+
+// Copy URL to clipboard
+function copyToClipboard(text, button) {
+    navigator.clipboard.writeText(text).then(() => {
+        // Show success feedback
+        const originalText = button.textContent;
+        button.textContent = 'Link copied!';
+        button.style.background = 'rgba(16, 185, 129, 0.3)'; // Green background
+
+        // Reset after 2 seconds
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.style.background = '';
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+        // Show error feedback
+        const originalText = button.textContent;
+        button.textContent = 'Copy failed';
+        setTimeout(() => {
+            button.textContent = originalText;
+        }, 2000);
+    });
+}
+
 // Keyboard shortcuts
 document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowLeft') previousCard();

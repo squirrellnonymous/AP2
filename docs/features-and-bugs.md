@@ -14,6 +14,40 @@
 
 # Feature Requests
 
+## Share Deck Button on Flashcard Results Screen
+
+**Status:** 🚧 In Progress
+**Location:** Flashcard results screen (`flashcards/flashcard-template.html`, `flashcards/flashcard-engine.js`)
+
+### Description
+When users finish a flashcard deck, they should see a "Share this deck" button that allows them to easily share the specific deck with classmates.
+
+### Implemented Features
+- "Share this deck" button added to results screen
+- Native share API integration for mobile devices (iOS/Android share sheet)
+- Clipboard fallback for desktop browsers
+- Visual feedback: Button shows "Link copied!" with green background for 2 seconds
+- Shares the full URL with all parameters (tags, source) so recipients get the exact same deck
+- Share message includes deck title
+
+### How It Works
+- **Mobile:** Opens native share sheet to share via messaging apps, social media, etc.
+- **Desktop:** Copies URL to clipboard and shows confirmation
+- Shared URL includes all query parameters for exact deck replication
+
+### Next Steps
+- Test on various mobile devices and browsers
+- Verify Open Graph preview images display correctly in share messages
+- Consider adding share analytics if needed
+
+### Use Cases
+- Share study decks with classmates
+- Send specific tag combinations to study groups
+- Quick way to distribute focused review sets
+- Help others access the same flashcard content
+
+---
+
 ## Pathway Questions in Practice Practicals with Auto-Grading
 
 **Status:** Not yet implemented
