@@ -1,5 +1,111 @@
 # Release Notes
 
+## October 18, 2025 - Flashcard Image Loading Fix & Blood Vessels Content
+
+### 🐛 Fixed Flashcard Image Loading Flash
+
+**Files:** `flashcards/flashcard-engine.js`, `flashcards/flashcard-styles.css`
+
+Fixed a jarring black/dark flash when navigating between flashcards.
+
+#### Problem
+- Images showed dark gray body background during transitions
+- 1ms delay before displaying preloaded images caused visible flash
+- Poor user experience during card navigation
+
+#### Root Causes
+1. **Missing background color** - `.image-container` had no background, so dark page background (`#374151`) showed through
+2. **Unnecessary setTimeout** - 1ms delay before showing preloaded images even when already cached
+
+#### Solution
+1. **Added white background** - `flashcards/flashcard-styles.css:272`
+   - Set `background-color: #ffffff` on `.image-container`
+   - White background shows during loading instead of dark page background
+
+2. **Removed setTimeout delay** - `flashcards/flashcard-engine.js:416-419`
+   - Changed from `setTimeout(() => { termImage.src = ... }, 1)` to immediate assignment
+   - Preloaded images display instantly without delay
+   - Images already loaded in memory, no delay needed
+
+#### Result
+- Smooth transitions between flashcards with no visible flash
+- Clean white background during brief loading moments
+- Better user experience during card navigation
+- Preloading system now works as intended
+
+---
+
+### 📚 Blood Vessels Practice Practical Expansion
+
+**File:** `data/unit2-part2-practical.yml`
+
+Added 3 new questions for the internal organ model with labeled structures.
+
+#### New Questions Added
+- **Question 64**: "What is the structure labeled X?" → Hepatic portal vein
+- **Question 65**: "What is the structure labeled Y?" → Right renal vein
+- **Question 66**: "What is the structure labeled Z?" → Left renal artery
+
+#### Content Details
+- All three questions reference the same internal organ anatomical model
+- Labels X, Y, Z identify different vessels on kidneys and liver
+- Each includes comprehensive educational definitions
+- Tagged with: `blood-vessels`, `vein`/`artery`, `models`, `internal-organ-model`
+
+#### Educational Value
+- **Hepatic portal vein**: Light purple vessel carrying nutrient-rich blood to liver (portal system)
+- **Right renal vein**: Blue vessel draining right kidney to IVC
+- **Left renal artery**: Red vessel supplying oxygenated blood to left kidney
+
+#### Total Content
+Practice Practical #3 now includes:
+- **66 image-based questions** (id: 1-67, excluding gap at 63)
+- **17 text-only questions** (id: 100-116)
+- **83 total questions** for comprehensive blood vessels practice
+
+---
+
+### 📋 Feature Request: Question Grouping
+
+**File:** `docs/features-and-bugs.md`
+
+Documented new feature request for question grouping in practice practicals.
+
+#### Proposed Feature
+Keep related questions together in sequential order during randomization (e.g., X, Y, Z labels on same image).
+
+#### Configuration Format
+```yaml
+- id: 64
+  question: "What is the structure labeled X?"
+  group: "internal-organs-1"
+
+- id: 65
+  question: "What is the structure labeled Y?"
+  group: "internal-organs-1"
+
+- id: 66
+  question: "What is the structure labeled Z?"
+  group: "internal-organs-1"
+```
+
+#### Expected Behavior
+- Questions within a group stay together and in order
+- Groups randomize as single units among other questions
+- Backward compatible with existing questions
+- Works with tag balancing and other features
+
+#### Use Cases
+- Multi-label images (X, Y, Z on same model)
+- Sequential processes that build on each other
+- Comparative questions about related structures
+- Case studies with multiple related questions
+
+#### Priority
+Medium - Enhances UX for multi-part questions but not blocking.
+
+---
+
 ## October 15, 2025 - Flashcard Mobile Image Crop Fix
 
 ### 🖼️ Fixed Mobile Image Cropping to Preserve Top/Bottom Anatomy

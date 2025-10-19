@@ -269,6 +269,7 @@ h1 {
     overflow: hidden;
     max-height: 400px;
     width: 100%;
+    background-color: #ffffff; /* White background to prevent dark flash during image loading */
 }
 
 /* Term image */

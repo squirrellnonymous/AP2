@@ -12,39 +12,68 @@
     </button>
     <div class="container">
         <h1>Anatomy & Physiology II</h1>
-        
-        <h2>✅ Practical #1: Endocrine, Lymphatic, and Immune Systems</h2>
 
-        <div class="links">
-            <!-- <a href="exam1-practice.html" class="link">Exam 1 Practice Test (am)</a>
-            <a href="exam1-practice-key.html" class="link">Exam 1 Practice Test (pm)</a> -->
-            <a href="unit1-practical.html" class="link">📝🧞‍♀️ Practice Practical #1</a>
-            
-        </div>
+        <h3 id="up-next-heading" class="up-next-heading" style="display: none;">Up Next:</h3>
 
-        <h2>✅ Practical #2: The Blood and The Heart</h2>
+        <div id="sections-container">
 
-        <div class="links">
-            <a href="unit2-practical.html" class="link">📋🩸🫀 Practice Practical #2</a>
-            <a href="unit2-flashcards.html" class="link">🫀🩸 Flashcards</a>
+        <section class="course-section" id="practical-1" data-order="1">
+            <div class="section-header">
+                <input type="checkbox" id="checkbox-practical-1" class="section-checkbox">
+                <h2><label for="checkbox-practical-1">Practical #1: Endocrine, Lymphatic, and Immune Systems</label></h2>
             </div>
+            <div class="links">
+                <!-- <a href="exam1-practice.html" class="link">Exam 1 Practice Test (am)</a>
+                <a href="exam1-practice-key.html" class="link">Exam 1 Practice Test (pm)</a> -->
+                <a href="unit1-practical.html" class="link">📝🧞‍♀️ Practice Practical #1</a>
 
-        <h2>Exam #2: Blood, Heart, & Blood Vessels Lecture Exam</h2>
-
-        <div class="links">
-            <a href="exam-template.html?exam=exam2-practice" class="link">🩸🫀⭕️📝 Exam 2 Practice Test  </a>
-            <a href="unit2-lecture-flashcards.html" class="link">📚 Lecture Flashcards</a>
             </div>
-        
-        <h2>Practical #3: Blood Vessels</h2>
-        <div class="links">
-            <a href="unit2-part2-practical.html" class="link">📋⭕️ Practice Practical #3 </a>
-            <a href="mini-quiz-builder.html" class="link">📝 Mini-Quiz</a>
-            <a href="pathway-mini-quiz.html" class="link">❤️➡️🦶 Artery & Vein Pathway Quiz</a>
-            <a href="unit2-part2-flashcards.html" class="link">⭕️ Flashcards</a>
-            
-        </div>
+        </section>
 
+        <section class="course-section" id="practical-2" data-order="2">
+            <div class="section-header">
+                <input type="checkbox" id="checkbox-practical-2" class="section-checkbox">
+                <h2><label for="checkbox-practical-2">Practical #2: The Blood and The Heart</label></h2>
+            </div>
+            <div class="links">
+                <a href="unit2-practical.html" class="link">📋🩸🫀 Practice Practical #2</a>
+                <a href="unit2-flashcards.html" class="link">🫀🩸 Flashcards</a>
+            </div>
+        </section>
+
+        <section class="course-section" id="exam-2" data-order="3">
+            <div class="section-header">
+                <input type="checkbox" id="checkbox-exam-2" class="section-checkbox">
+                <h2><label for="checkbox-exam-2">Exam #2: Blood, Heart, & Blood Vessels Lecture Exam</label></h2>
+            </div>
+            <div class="links">
+                <a href="exam-template.html?exam=exam2-practice" class="link">🩸🫀⭕️📝 Exam 2 Practice Test  </a>
+                <a href="unit2-lecture-flashcards.html" class="link">📚 Lecture Flashcards</a>
+            </div>
+        </section>
+
+        <section class="course-section" id="practical-3" data-order="4">
+            <div class="section-header">
+                <input type="checkbox" id="checkbox-practical-3" class="section-checkbox">
+                <h2><label for="checkbox-practical-3">Practical #3: Blood Vessels</label></h2>
+            </div>
+            <div class="links">
+                <a href="unit2-part2-practical.html" class="link">📋⭕️ Practice Practical #3 </a>
+                <a href="mini-quiz-builder.html" class="link">📝 Mini-Quiz</a>
+                <a href="pathway-mini-quiz.html" class="link">❤️➡️🦶 Artery & Vein Pathway Quiz</a>
+                <a href="unit2-part2-flashcards.html" class="link">⭕️ Flashcards</a>
+
+            </div>
+        </section>
+
+        <section class="course-section" id="exam-3" data-order="5">
+            <div class="section-header">
+                <input type="checkbox" id="checkbox-exam-3" class="section-checkbox">
+                <h2><label for="checkbox-exam-3">Exam #3: Respiratory, ...</label></h2>
+            </div>
+        </section>
+
+        </div>
 
     </div>
 
@@ -93,6 +122,91 @@
             applyTheme(newTheme);
             localStorage.setItem('theme', newTheme);
         });
+
+        // Progress tracking functionality
+        const PROGRESS_KEY = 'courseProgress';
+        const sectionsContainer = document.getElementById('sections-container');
+        const upNextHeading = document.getElementById('up-next-heading');
+
+        // Load progress from localStorage
+        function loadProgress() {
+            const saved = localStorage.getItem(PROGRESS_KEY);
+            return saved ? JSON.parse(saved) : {};
+        }
+
+        // Save progress to localStorage
+        function saveProgress(progress) {
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        // Update "Up Next" heading visibility
+        function updateUpNextHeading(hasCompleted) {
+            upNextHeading.style.display = hasCompleted ? 'block' : 'none';
+        }
+
+        // Sort sections based on completion status
+        function sortSections() {
+            const sections = Array.from(document.querySelectorAll('.course-section'));
+            const progress = loadProgress();
+
+            // Separate into completed and uncompleted
+            const uncompleted = sections.filter(s => !progress[s.id]);
+            const completed = sections.filter(s => progress[s.id]);
+
+            // Sort each group by data-order
+            const sortByOrder = (a, b) => parseInt(a.dataset.order) - parseInt(b.dataset.order);
+            uncompleted.sort(sortByOrder);
+            completed.sort(sortByOrder);
+
+            // Clear container
+            sectionsContainer.innerHTML = '';
+
+            // Show "Up Next" heading only if there are completed items
+            updateUpNextHeading(completed.length > 0);
+
+            // Add uncompleted sections
+            uncompleted.forEach(section => {
+                section.classList.remove('completed');
+                sectionsContainer.appendChild(section);
+            });
+
+            // Add separator if there are both completed and uncompleted sections
+            if (completed.length > 0 && uncompleted.length > 0) {
+                const separator = document.createElement('hr');
+                separator.className = 'section-separator';
+                sectionsContainer.appendChild(separator);
+            }
+
+            // Add completed sections
+            completed.forEach(section => {
+                section.classList.add('completed');
+                sectionsContainer.appendChild(section);
+            });
+        }
+
+        // Initialize checkboxes with saved state
+        function initializeCheckboxes() {
+            const progress = loadProgress();
+            const checkboxes = document.querySelectorAll('.section-checkbox');
+
+            checkboxes.forEach(checkbox => {
+                const sectionId = checkbox.id.replace('checkbox-', '');
+                checkbox.checked = progress[sectionId] || false;
+
+                // Add change listener
+                checkbox.addEventListener('change', (e) => {
+                    const progress = loadProgress();
+                    progress[sectionId] = e.target.checked;
+                    saveProgress(progress);
+                    sortSections();
+                });
+            });
+
+            sortSections();
+        }
+
+        // Initialize on page load
+        initializeCheckboxes();
     </script>
 </body>
 </html>

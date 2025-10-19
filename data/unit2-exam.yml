@@ -248,15 +248,6 @@ multipleChoice:
     correct: 0
     tags: ["unit-2", "heart", "cardiac-cycle"]
 
-  - question: "The ST segment of an ECG represents what event?"
-    options:
-      - "Ventricular plateau phase"
-      - "Ventricular depolarization"
-      - "Atrial depolarization"
-      - "Time for signal to get from SA node to ventricles"
-    correct: 0
-    tags: ["unit-2", "heart", "ecg"]
-
   - question: "The plateau phase is caused by what?"
     options:
       - "Potassium rushing in and calcium rushing out"

@@ -413,12 +413,10 @@ function showCard() {
 
         // Check if image is already preloaded
         if (preloadedImages.has(imagePath)) {
-            // Use preloaded image immediately (after placeholder is set)
-            setTimeout(() => {
-                termImage.src = preloadedImages.get(imagePath).src;
-                termImage.alt = card.term;
-                loadingOverlay.style.display = 'none'; // Hide loading overlay
-            }, 1); // Tiny delay to ensure placeholder shows first
+            // Use preloaded image immediately - no delay needed since image is already loaded
+            termImage.src = preloadedImages.get(imagePath).src;
+            termImage.alt = card.term;
+            loadingOverlay.style.display = 'none'; // Hide loading overlay
         } else {
             // Create new image to load
             const newImg = new Image();

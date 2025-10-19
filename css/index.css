@@ -25,7 +25,7 @@ body {
 h1 {
     font-size: 2.5rem;
     font-weight: 300;
-    margin-bottom: 8px;
+    margin-bottom: 24px;
     color: #1a1a1a;
 }
 
@@ -33,8 +33,13 @@ h2 {
     font-size: 1.25rem;
     font-weight: 400;
     color: #6b7280;
-    margin-top: 48px;
+    margin-top: 0;
     margin-bottom: 16px;
+}
+
+h2 label {
+    cursor: pointer;
+    user-select: none;
 }
 
 h3 {
@@ -149,6 +154,61 @@ body.dark-mode .dark-mode-toggle {
 body.dark-mode .dark-mode-toggle:hover {
     background-color: #334155;
     border-color: #6b7280;
+}
+
+/* Up Next heading */
+.up-next-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #374151;
+    margin-top: 0;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* Course section styles */
+.course-section {
+    margin-bottom: 32px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.section-header h2 {
+    margin: 0;
+}
+
+.section-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    flex-shrink: 0;
+    accent-color: #10b981;
+}
+
+.section-separator {
+    margin: 48px auto;
+    border: none;
+    border-top: 2px solid #e5e7eb;
+    width: 80%;
+}
+
+/* Dark mode progress tracking styles */
+body.dark-mode .up-next-heading {
+    color: #cbd5e1;
+}
+
+body.dark-mode .section-separator {
+    border-top-color: #374151;
+}
+
+body.dark-mode h2 label {
+    color: #94a3b8;
 }
 
 @media (max-width: 640px) {

@@ -14,6 +14,141 @@
 
 # Feature Requests
 
+## Question Grouping for Practice Practicals
+
+**Status:** Not yet implemented
+**Location:** Practice practicals (e.g., `unit2-part2-practical.html`, `unit1-practical.html`)
+
+### Description
+Add the ability to group related questions together so they appear as a set in sequential order during practice practicals, even when questions are randomized. This is useful for multi-part questions that reference the same image or model with different labels (e.g., "What is structure X?", "What is structure Y?", "What is structure Z?").
+
+### Expected Features
+- **YAML configuration**: Define question groups with a `group` field
+- **Preserve group order**: Questions within a group always appear in their original sequential order
+- **Randomize groups**: Groups themselves can be randomized among other questions
+- **Flexible grouping**: Works with any question types (image, text-only, etc.)
+- **Backward compatible**: Questions without a group field work exactly as before
+
+### Configuration Format
+In the YAML file (e.g., `unit2-part2-practical.yml`):
+```yaml
+questions:
+  - id: 64
+    image: "practical-2-2/64.jpg"
+    question: "What is the structure labeled X?"
+    answer: ["hepatic portal vein"]
+    group: "internal-organs-1"
+    tags: ["blood-vessels", "vein", "models", "internal-organ-model"]
+
+  - id: 65
+    image: "practical-2-2/65.jpg"
+    question: "What is the structure labeled Y?"
+    answer: ["right renal vein"]
+    group: "internal-organs-1"
+    tags: ["blood-vessels", "vein", "models", "internal-organ-model"]
+
+  - id: 66
+    image: "practical-2-2/66.jpg"
+    question: "What is the structure labeled Z?"
+    answer: ["left renal artery"]
+    group: "internal-organs-1"
+    tags: ["blood-vessels", "artery", "models", "internal-organ-model"]
+```
+
+### How It Works
+1. During question randomization, identify all questions with group identifiers
+2. Keep grouped questions together as a single unit
+3. Randomize the position of groups among individual questions
+4. Within each group, preserve the original sequential order (64 → 65 → 66)
+5. Ensures students see X, Y, Z in order, but the group can appear anywhere in the exam
+
+### Use Cases
+- **Multi-label images**: Same anatomical model with different structures labeled (X, Y, Z)
+- **Sequential processes**: Questions that build on each other step-by-step
+- **Comparative questions**: Questions that compare related structures
+- **Case studies**: Multiple questions about the same clinical scenario
+
+### Technical Considerations
+- Modify practical JavaScript randomization logic to detect and handle groups
+- Parse `group` field from YAML data
+- Group questions by their group identifier before randomization
+- Treat each group as a single unit during shuffle
+- Maintain internal order within groups
+- Ensure compatibility with existing features (tag balancing, etc.)
+
+### Example Behavior
+**Before grouping** (random order):
+- Question 42: Right renal vein (standalone)
+- Question 15: Internal iliac artery (standalone)
+- Question 66: What is structure Z? (left renal artery)
+- Question 8: Celiac trunk (standalone)
+- Question 64: What is structure X? (hepatic portal vein)
+- Question 23: Gastric artery (standalone)
+- Question 65: What is structure Y? (right renal vein)
+
+**After grouping** (X, Y, Z stay together in order):
+- Question 42: Right renal vein (standalone)
+- Question 15: Internal iliac artery (standalone)
+- Question 64: What is structure X? (hepatic portal vein)
+- Question 65: What is structure Y? (right renal vein)
+- Question 66: What is structure Z? (left renal artery)
+- Question 8: Celiac trunk (standalone)
+- Question 23: Gastric artery (standalone)
+
+### Implementation Priority
+Medium - Would improve user experience for multi-part questions but not blocking current functionality.
+
+---
+
+## Tag Balancing for Practice Practicals
+
+**Status:** Not yet implemented
+**Location:** Practice practicals (e.g., `unit2-part2-practical.html`, `unit1-practical.html`)
+
+### Description
+Add configurable tag balancing to practice practicals so that randomly selected questions can be automatically balanced across specified tag pairs (e.g., equal numbers of artery and vein questions).
+
+### Expected Features
+- **Configurable in YAML**: Enable/disable balancing and define which tag pairs to balance
+- **Flexible design**: Not hardcoded to specific tags - works for any tag pair defined in config
+- **Automatic balancing**: After randomly selecting questions, swap some out to achieve roughly 50/50 balance
+- **Allows variance**: Can be off-balance by one question (e.g., 20 arteries, 19 veins is acceptable)
+- **Preserves non-tagged questions**: Questions without either tag in the pair remain in the pool
+
+### Configuration Format
+In the YAML file (e.g., `unit2-part2-practical.yml`):
+```yaml
+balance_tags: true
+balanced_tag_pairs:
+  - ["artery", "vein"]
+```
+
+### How It Works
+1. Randomly select 40 questions from the full pool
+2. Count questions with each tag in the balanced pairs
+3. If imbalanced (e.g., 22 arteries, 13 veins), swap out extras for the underrepresented tag
+4. Final result: roughly equal distribution (allowing ±1 difference)
+
+### Use Cases
+- Ensure balanced practice between arteries and veins for vessel practicals
+- Future flexibility for other tag pair balancing (e.g., "anterior" vs "posterior")
+- Better represent real exam distributions
+- More comprehensive practice coverage
+
+### Technical Considerations
+- Parse `balance_tags` and `balanced_tag_pairs` from YAML config
+- Implement balancing algorithm after random selection
+- Track available questions by tag for swapping
+- Maintain randomness while achieving balance
+
+### Implementation Plan
+- **First implementation**: Balance "artery" and "vein" tags for `unit2-part2-practical.html`
+- Add config to `unit2-part2-practical.yml`
+- Test with existing vessel questions to ensure proper balancing
+- Once working, can be extended to other practicals as needed
+
+---
+
 ## Share Deck Button on Flashcard Results Screen
 
 **Status:** 🚧 In Progress
@@ -212,25 +347,72 @@ Interactive flowchart practice where students fill in missing labels/terms on pr
 
 ---
 
-## Sortable, Filterable Index File
+## Progress Tracking with Checkbox-Based Index Sorting
 
-**Status:** Not yet implemented
+**Status:** ✅ Implemented
 **Location:** `index.html`
+**Completed:** 2025-10-18
 
 ### Description
-The main index/home page should allow users to sort and filter the available resources (practicals, flashcards, quizzes) to quickly find what they need.
+Progress tracking on the index page using checkboxes and localStorage. Students can mark completed units/resources, and the page automatically reorganizes to show uncompleted items first, followed by completed items at the bottom. This helps students focus on what's next while maintaining a sense of progress throughout the semester.
 
-### Expected Features
-- **Filtering**: Filter by resource type (practicals, flashcards, mini quizzes, etc.)
-- **Sorting**: Sort by name, date added, unit/topic
-- **Search**: Quick text search to find specific resources
-- **Mobile friendly**: Works well on all screen sizes
+### Implemented Features
+- **Checkbox for each section**: Each practical/exam/unit gets a green checkbox to mark as completed
+- **localStorage persistence**: Checkbox states saved across sessions using key `courseProgress`
+- **Automatic sorting**: Page reorganizes based on completion status
+  - Uncompleted items appear at top in logical course order
+  - Completed items move to bottom in logical course order
+  - Visual separator (hr line) between uncompleted and completed sections
+- **"Up Next" heading**: Appears dynamically above uncompleted sections once at least one item is checked off
+- **Clean minimal design**: No progress percentages or reset button - just focused tracking
+
+### Technical Implementation
+- Each section wrapped in `<section class="course-section">` with:
+  - Unique ID (e.g., `practical-1`, `exam-2`, `practical-3`)
+  - `data-order` attribute for course sequence (1, 2, 3, ...)
+  - Checkbox input with `accent-color: #10b981` for green checkmarks
+- JavaScript (`index.html` inline script):
+  - `loadProgress()` / `saveProgress()` handle localStorage operations
+  - `sortSections()` dynamically re-orders DOM based on completion
+  - `updateUpNextHeading()` shows/hides "Up Next:" heading
+  - `initializeCheckboxes()` loads saved state on page load
+- CSS styling:
+  - `.section-header` uses flexbox with `align-items: center` for proper checkbox/heading alignment
+  - `.section-header h2 { margin: 0; }` ensures vertical alignment works correctly
+  - Green checkboxes via `accent-color: #10b981`
+  - Full dark mode support for all progress tracking elements
+
+### localStorage Structure
+```javascript
+{
+  "courseProgress": {
+    "practical-1": true,
+    "practical-2": true,
+    "exam-2": true,
+    "practical-3": false,
+    "exam-3": false
+  }
+}
+```
 
 ### Use Cases
-- Quickly find all Unit 2 resources
-- See only practice practicals
-- Find resources added recently
-- Search for specific topics (e.g., "vessels", "lymphatic")
+- Students see what's immediately relevant at the top
+- Motivating visual progress as semester advances
+- Clear indication of what to focus on next
+- Works across devices (if using same browser)
+- No backend or login required
+
+### Design Decisions
+- **No reset button**: Simpler interface, users can manually uncheck if needed
+- **No progress counter**: "Up Next:" heading is sufficient context
+- **No opacity on completed items**: Keeps all text readable and clear
+- **Green checkboxes**: Positive visual feedback for completion
+
+### Future Enhancements
+- "Show all" toggle to view full list in original order regardless of completion
+- Export/import progress (to share across browsers)
+- Completion dates/timestamps
+- Study streak tracking
 
 ---
 
@@ -564,32 +746,31 @@ question.gradingResult = {
 
 ## Flashcard Images Flash Black Before Loading
 
-**Status:** Not yet fixed
-**Location:** Flashcard review modal (`js/question-modal.js`), practice practicals
+**Status:** ✅ Fixed
+**Location:** Flashcard review (`flashcards/flashcard-engine.js`, `flashcards/flashcard-styles.css`)
+**Completed:** 2025-10-18
 
 ### Description
-When advancing to the next flashcard or flipping a card, images briefly show a black background before they finish loading, creating a jarring visual experience.
+When advancing to the next flashcard or flipping a card, images briefly showed a black/dark background flash before they finished loading, creating a jarring visual experience.
 
-### Current Behavior
-- Image container shows black background during image load
-- Flash is most noticeable when moving between cards quickly
-- Happens on both flashcard decks and practice practical review
+### Root Causes Identified
+1. **Missing background color on `.image-container`** - The image container had no background-color set, so the dark gray body background (`#374151`) showed through during image transitions
+2. **Unnecessary setTimeout delay** - A 1ms delay before displaying preloaded images was causing a brief flash even when images were already cached
 
-### Possible Causes
-1. **No image preloading** - Next images aren't loaded in advance
-2. **CSS background color** - Image container has black background-color
-3. **Missing loading attribute** - Images not set to `loading="eager"`
-4. **Caching issues** - Images might not be cached properly
+### Solution Implemented
+1. **Added white background to image container** - `flashcards/flashcard-styles.css:272`
+   - Set `background-color: #ffffff` on `.image-container`
+   - Ensures white background shows during loading instead of dark page background
 
-### Expected Behavior
-- Images should preload before being displayed
-- Smooth transitions between cards without black flashes
-- Better user experience during rapid card navigation
+2. **Removed setTimeout delay for preloaded images** - `flashcards/flashcard-engine.js:416-419`
+   - Changed from `setTimeout(() => { termImage.src = ... }, 1)` to immediate assignment
+   - Preloaded images now display instantly without any delay
+   - Images are already loaded in memory, so no delay is needed
 
-### Potential Solutions
-- Implement image preloading for upcoming cards
-- Change image container background to white or neutral color
-- Add `loading="eager"` attribute to critical images
-- Ensure proper image caching
+### Result
+- Smooth transitions between flashcards with no visible flash
+- Clean white background during any brief loading moments
+- Better user experience during card navigation
+- Preloading system now works as intended
 
 ---

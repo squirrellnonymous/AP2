@@ -185,6 +185,70 @@
             return selectedQuestions;
         }
 
+        function balanceTagPairs(selectedQuestions, allValidQuestions, tagPairs) {
+            // Process each tag pair
+            tagPairs.forEach(([tag1, tag2]) => {
+                // Count questions with each tag in the pair
+                const tag1Questions = selectedQuestions.filter(q => q.tags && q.tags.includes(tag1));
+                const tag2Questions = selectedQuestions.filter(q => q.tags && q.tags.includes(tag2));
+
+                const tag1Count = tag1Questions.length;
+                const tag2Count = tag2Questions.length;
+
+                console.log(`Tag balance before: ${tag1}=${tag1Count}, ${tag2}=${tag2Count}`);
+
+                // If already balanced (difference of 1 or less), no action needed
+                if (Math.abs(tag1Count - tag2Count) <= 1) {
+                    console.log('Already balanced!');
+                    return;
+                }
+
+                // Determine which tag is overrepresented and which is underrepresented
+                const overTag = tag1Count > tag2Count ? tag1 : tag2;
+                const underTag = tag1Count > tag2Count ? tag2 : tag1;
+                const overCount = Math.max(tag1Count, tag2Count);
+                const underCount = Math.min(tag1Count, tag2Count);
+
+                // Calculate target count (roughly 50/50, allowing ±1)
+                const targetCount = Math.floor((overCount + underCount) / 2);
+                const swapsNeeded = overCount - targetCount;
+
+                console.log(`Need to swap ${swapsNeeded} ${overTag} questions for ${underTag} questions`);
+
+                // Get questions NOT in selectedQuestions but available in allValidQuestions
+                const availableQuestions = allValidQuestions.filter(q =>
+                    !selectedQuestions.includes(q) && q.tags && q.tags.includes(underTag)
+                );
+
+                // Perform swaps
+                let swapsPerformed = 0;
+                for (let i = selectedQuestions.length - 1; i >= 0 && swapsPerformed < swapsNeeded && availableQuestions.length > 0; i--) {
+                    const question = selectedQuestions[i];
+
+                    // Check if this question has the overrepresented tag (and not the underrepresented tag)
+                    if (question.tags && question.tags.includes(overTag) && !question.tags.includes(underTag)) {
+                        // Randomly select a replacement from available questions
+                        const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+                        const replacement = availableQuestions[randomIndex];
+
+                        // Swap
+                        selectedQuestions[i] = replacement;
+                        availableQuestions.splice(randomIndex, 1);
+                        swapsPerformed++;
+
+                        console.log(`Swapped question ${question.id} (${overTag}) for ${replacement.id} (${underTag})`);
+                    }
+                }
+
+                // Recount after balancing
+                const finalTag1Count = selectedQuestions.filter(q => q.tags && q.tags.includes(tag1)).length;
+                const finalTag2Count = selectedQuestions.filter(q => q.tags && q.tags.includes(tag2)).length;
+                console.log(`Tag balance after: ${tag1}=${finalTag1Count}, ${tag2}=${finalTag2Count}`);
+            });
+
+            return selectedQuestions;
+        }
+
         function hasConflictingAnatomicalTerms(studentAnswer, correctAnswer) {
             const student = studentAnswer.toLowerCase();
             const correct = correctAnswer.toLowerCase();
@@ -322,6 +386,11 @@
             } else {
                 // If we have fewer questions, just use them all but still shuffle
                 selectedQuestions = shuffleArray(validQuestions);
+            }
+
+            // Apply tag balancing if enabled
+            if (practicalData.balance_tags && practicalData.balanced_tag_pairs) {
+                selectedQuestions = balanceTagPairs(selectedQuestions, validQuestions, practicalData.balanced_tag_pairs);
             }
 
             // Update practicalData to only include selected questions
