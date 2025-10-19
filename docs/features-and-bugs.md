@@ -12,7 +12,103 @@
 
 ---
 
+## What's Up Next
+
+**Focus: Content Generation for Extra Credit Questions**
+
+The main priority is creating extra credit practice questions, particularly pathway questions. The standalone pathway quiz (`pathway-mini-quiz.html`) should be embedded into the practice practicals as extra credit questions so students can practice vessel pathways in the context of the full exam.
+
+**Key Tasks:**
+- Generate additional pathway questions (more routes beyond the current 4)
+- Integrate pathway questions into practice practicals as extra credit
+- Consider other extra credit question types (anatomy identification, clinical scenarios, etc.)
+- Ensure pathway validation and grading works within the practical exam context
+
+---
+
 # Feature Requests
+
+## Midi Quizzes - 10 Question Practice Format
+
+**Status:** Not yet implemented
+**Location:** New feature - intermediate-length practice quiz
+
+### Description
+Create a "midi quiz" option that generates 10-question practice quizzes, sitting between the 4-question mini quizzes and the 40-question full practice practicals.
+
+### Expected Features
+- **10 questions** randomly selected from chosen tags
+- Same tag-based selection interface as mini quiz builder
+- Same layout and functionality as mini/full practicals
+- "New Random Quiz" button to regenerate with same tags
+- "Change Topics" button to return to tag selection
+- Shareable URLs with tag parameters
+- Full dark mode support
+- Smart grading with partial credit
+
+### Rationale
+- **Mini quizzes (4 questions)**: Very quick review, good for targeted practice
+- **Midi quizzes (10 questions)**: More comprehensive practice without full commitment
+- **Full practicals (40 questions)**: Complete exam simulation
+
+### Use Cases
+- Longer practice session without the time commitment of 40 questions
+- Better statistical representation of knowledge across topics
+- Study sessions when you have 10-15 minutes available
+- More thorough review of specific tag combinations
+- Intermediate difficulty for building confidence
+
+### Technical Considerations
+- Could be same file as mini quiz builder with configurable question count
+- Or separate file (`midi-quiz-builder.html`) for clarity
+- Reuse all existing quiz infrastructure (grading, modal, keyboard navigation)
+- May need adjusted layout for 10 questions (possibly 5x2 grid)
+
+### Implementation Priority
+Low - Nice to have, but mini and full practicals already cover the use cases
+
+---
+
+## Wider Input Boxes and Consistent Column Layout for Quizzes
+
+**Status:** Not yet implemented
+**Location:** Practice practicals and mini quiz builder (shared CSS)
+
+### Description
+Improve the user experience by making answer input boxes wider and ensuring consistent question ordering across mini quizzes and practice practicals.
+
+### Expected Changes
+
+**1. Wider Input Boxes**
+- Increase width of answer input fields for better readability and easier typing
+- Apply consistently across:
+  - Practice practicals (`unit1-practical.html`, `unit2-practical.html`, `unit2-part2-practical.html`)
+  - Mini quiz builder (`mini-quiz-builder.html`)
+- Use shared CSS to ensure consistency
+
+**2. Consistent Two-Column Layout**
+- Mini quizzes currently read left-to-right (questions 1, 2 in first row; 3, 4 in second row)
+- Practice practicals read top-to-bottom (questions 1, 2 in first column; 3, 4 in second column)
+- **Change mini quiz to match practice practical layout**: Questions 1 and 2 in left column, questions 3 and 4 in right column
+- Eliminates confusion from inconsistent layouts
+- Makes mini quizzes feel like "mini practicals"
+
+### Technical Considerations
+- Create or update shared CSS file for consistent input styling
+- Modify CSS grid/flexbox layout for mini quiz builder to use column-based ordering
+- Ensure responsive design maintains readability on mobile devices
+- Test that wider inputs don't break layout on smaller screens
+
+### Use Cases
+- Easier to type longer answers (vessel names, anatomical terms)
+- Reduced confusion when switching between mini quizzes and practice practicals
+- Consistent muscle memory for navigation patterns
+- Better visual hierarchy and readability
+
+### Implementation Priority
+Low to Medium - Quality of life improvement that enhances consistency and usability
+
+---
 
 ## Question Grouping for Practice Practicals
 
@@ -180,6 +276,59 @@ When users finish a flashcard deck, they should see a "Share this deck" button t
 - Send specific tag combinations to study groups
 - Quick way to distribute focused review sets
 - Help others access the same flashcard content
+
+---
+
+## Pathway Quiz: Preserve Correct Answers on "Try Again"
+
+**Status:** Not yet implemented
+**Location:** Pathway mini quiz (`pathway-mini-quiz.html`)
+
+### Description
+When a student gets a pathway question wrong and clicks "Try Again", the input fields should preserve the vessels that were correct, allowing them to fix only the part of the pathway where they made a mistake.
+
+### Current Behavior
+- "Try Again" button clears all input fields
+- Student must re-enter the entire pathway from scratch
+- Even correct portions of the pathway are lost
+
+### Expected Behavior
+- Preserve all correctly validated vessels in their input fields
+- Clear only the fields after the first error
+- Allow student to continue from where they went wrong
+- Student can see which part was correct and build from there
+
+### Example Scenario
+**Student's Answer:**
+1. aorta ✓
+2. descending aorta ✓
+3. left common iliac artery ✓
+4. femoral artery ✗ (skipped left external iliac artery - error starts here)
+
+**After clicking "Try Again":**
+- Field 1: "aorta" (preserved, green)
+- Field 2: "descending aorta" (preserved, green)
+- Field 3: "left common iliac artery" (preserved, green)
+- Field 4: "" (cleared - this is where the error started)
+- Field 5+: "" (cleared - everything after error is cleared)
+- Student can now add "left external iliac artery" in field 4, then continue with femoral artery
+
+### Educational Benefits
+- **Productive failure**: Students learn from their mistakes without losing progress
+- **Scaffolding**: Correct portions provide a foundation to build on
+- **Reduced frustration**: Don't have to re-type vessels they got right
+- **Focus on the gap**: Attention directed to the specific missing/incorrect vessel
+- **Faster iteration**: Quick retry cycles lead to better learning
+
+### Technical Considerations
+- Track which vessels were validated as correct
+- Preserve correct input field values and styling
+- Clear fields starting from first error point
+- Maintain field focus on the first empty field for easy continuation
+- May need to track "corrected pathway" from validator for typos
+
+### Implementation Priority
+Medium - Significant UX improvement for learning, aligns with educational best practices
 
 ---
 
