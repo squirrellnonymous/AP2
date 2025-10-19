@@ -744,6 +744,45 @@ question.gradingResult = {
 
 ---
 
+## Practice Practical Images Flash Black During Navigation
+
+**Status:** Not yet fixed
+**Location:** Practice practicals (e.g., `unit2-part2-practical.html`, `unit1-practical.html`)
+
+### Description
+When navigating between questions using arrow keys or Next button in the answer review modal, images briefly show a black/dark flash before loading, creating a jarring visual experience.
+
+### Current Behavior
+- Black flash visible when pressing Right arrow or Next button to advance to next question
+- Flash occurs in the question review modal after submitting a practical
+- Similar to the flashcard image loading issue but in a different context
+
+### Possible Causes
+1. **No image preloading in modal** - Modal may not preload the next question's image
+2. **Missing background color** - Image container in modal might have no background-color set
+3. **Image loading timing** - Image src may be set before container is ready
+4. **CSS background** - Modal image container might default to dark/black background
+
+### Expected Behavior
+- Smooth transitions between questions with no black flash
+- Images should appear instantly or show neutral background during loading
+- Same smooth experience as flashcard navigation (after that fix)
+
+### Related Fix
+The flashcard image flash was fixed by:
+1. Adding white background to `.image-container`
+2. Removing setTimeout delay for preloaded images
+Similar approach may work for practice practical modal.
+
+### Reproduction
+1. Start any practice practical
+2. Answer some questions and submit
+3. Click on any answer to open review modal
+4. Press Right arrow or Next button to advance to next question
+5. Observe black flash before next image loads
+
+---
+
 ## Flashcard Images Flash Black Before Loading
 
 **Status:** ✅ Fixed

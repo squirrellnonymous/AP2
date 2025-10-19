@@ -66,12 +66,12 @@
             </div>
         </section>
 
-        <section class="course-section" id="exam-3" data-order="5">
+        <!-- <section class="course-section" id="exam-3" data-order="5">
             <div class="section-header">
                 <input type="checkbox" id="checkbox-exam-3" class="section-checkbox">
                 <h2><label for="checkbox-exam-3">Exam #3: Respiratory, ...</label></h2>
             </div>
-        </section>
+        </section> -->
 
         </div>
 
@@ -139,9 +139,17 @@
             localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
         }
 
-        // Update "Up Next" heading visibility
-        function updateUpNextHeading(hasCompleted) {
-            upNextHeading.style.display = hasCompleted ? 'block' : 'none';
+        // Update "Up Next" heading visibility and text
+        function updateUpNextHeading(hasCompleted, allCompleted) {
+            if (allCompleted) {
+                upNextHeading.textContent = 'All done!';
+                upNextHeading.style.display = 'block';
+            } else if (hasCompleted) {
+                upNextHeading.textContent = 'Up Next:';
+                upNextHeading.style.display = 'block';
+            } else {
+                upNextHeading.style.display = 'none';
+            }
         }
 
         // Sort sections based on completion status
@@ -161,8 +169,10 @@
             // Clear container
             sectionsContainer.innerHTML = '';
 
-            // Show "Up Next" heading only if there are completed items
-            updateUpNextHeading(completed.length > 0);
+            // Update heading based on completion status
+            const hasCompleted = completed.length > 0;
+            const allCompleted = uncompleted.length === 0 && completed.length > 0;
+            updateUpNextHeading(hasCompleted, allCompleted);
 
             // Add uncompleted sections
             uncompleted.forEach(section => {
