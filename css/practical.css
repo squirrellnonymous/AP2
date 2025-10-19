@@ -133,6 +133,7 @@
     height: 450px;
     object-fit: cover;
     border-radius: 12px;
+    background-color: #ffffff;
 }
 
 /* Match text-only question box height to image height for practical */
@@ -617,9 +618,9 @@
 .popup-content {
     background-color: white;
     border-radius: 12px;
-    padding: 24px;
+    padding: 16px;
     max-width: 600px;
-    max-height: 80vh;
+    max-height: 95vh;
     overflow-y: auto;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     position: relative;
@@ -629,15 +630,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 12px;
+    padding-bottom: 6px;
 }
 
 .popup-header h3 {
-    font-size: 1.25rem;
-    color: #1a1a1a;
+    font-size: 0.9rem;
+    color: #6b7280;
     margin: 0;
+    font-weight: 500;
 }
 
 .close-popup {
@@ -657,30 +659,51 @@
 
 .popup-image {
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 .popup-image img {
     max-width: 100%;
-    max-height: 500px;
+    max-height: 65vh;
     object-fit: contain;
     border-radius: 8px;
     border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    display: block;
+    margin: 0 auto;
 }
 
 .popup-question {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #374151;
-    margin-bottom: 16px;
-    line-height: 1.5;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+/* Text-only question box in modal - no fixed height, let content determine size */
+.popup-question .text-only-question-box {
+    min-height: 200px;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 60px !important;
+    box-sizing: border-box;
+    margin: 0 0 8px 0 !important;
+}
+
+/* Remove bottom margin from popup-question when it contains a text-only box */
+.popup-question:has(.text-only-question-box) {
+    margin-bottom: 0;
 }
 
 .popup-correction {
     background-color: #ecfdf5;
     border: 1px solid #10b981;
     border-radius: 8px;
-    padding: 12px;
-    margin-top: 16px;
+    padding: 10px;
+    margin-top: 8px;
 }
 
 .correction-text {
@@ -691,11 +714,11 @@
 /* Student response styling in popup */
 .popup-student-response {
     border-radius: 8px;
-    padding: 12px;
-    margin-top: 16px;
+    padding: 10px;
+    margin-top: 8px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .popup-student-response .response-number {
@@ -817,8 +840,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 20px;
-    padding-top: 16px;
+    margin-top: 12px;
+    padding-top: 10px;
     border-top: 1px solid #e5e7eb;
 }
 
@@ -1450,4 +1473,36 @@ body.dark-mode .close-modal {
 
 body.dark-mode .close-modal:hover {
     background: rgba(30, 41, 59, 1);
+}
+
+/* Dark mode question popup */
+body.dark-mode .popup-content {
+    background-color: #1e293b;
+    border-color: #374151;
+}
+
+body.dark-mode .popup-header {
+    border-bottom-color: #374151;
+}
+
+body.dark-mode .popup-header h3 {
+    color: #94a3b8;
+}
+
+body.dark-mode .popup-image img {
+    background-color: #1e293b;
+    border-color: #374151;
+}
+
+body.dark-mode .popup-question {
+    color: #e2e8f0;
+}
+
+body.dark-mode .close-popup {
+    color: #9ca3af;
+}
+
+body.dark-mode .close-popup:hover {
+    background-color: #374151;
+    color: #e2e8f0;
 }

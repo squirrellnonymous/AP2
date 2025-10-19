@@ -740,6 +740,50 @@ Create a print stylesheet that formats practice lecture exams to look like real 
 
 # Known Bugs
 
+## Answer Inputs Not Disabled After Practical Submission
+
+**Status:** Not yet fixed
+**Location:** Practice practicals (e.g., `unit2-part2-practical.html`, `unit1-practical.html`)
+
+### Description
+After submitting and grading a practice practical, students can still type into the answer input fields. The inputs should be disabled/locked after submission to prevent confusion and accidental edits.
+
+### Current Behavior
+- Student submits practical and receives grading/results
+- Answer input fields remain editable
+- Student can type new answers into graded fields
+- No visual indication that the practical has been submitted and shouldn't be edited
+- Could cause confusion about whether changes will be re-graded
+
+### Expected Behavior
+- After clicking "Submit Practical", all answer input fields should become read-only/disabled
+- Inputs should have visual styling indicating they are locked (e.g., grayed out, different background)
+- Students should not be able to modify their answers after submission
+- Clear visual distinction between "taking the quiz" and "reviewing results" states
+
+### Technical Considerations
+- Add `readonly` or `disabled` attribute to all answer inputs after submission
+- Update CSS to show locked state (already exists: `.answer-item input[readonly]` styling)
+- May need to disable both regular answer inputs and extra credit inputs
+- Consider whether students should be able to "retake" the practical (clear answers and start fresh)
+
+### Possible Solutions
+1. **Simple readonly**: Set `readonly` attribute on all inputs during `submitPractical()` function
+2. **Full disable**: Set `disabled` attribute (prevents focus entirely)
+3. **Add "Retake" button**: Allow students to clear all answers and start over if desired
+
+### User Impact
+- **Priority**: Medium - Not breaking functionality but creates confusion
+- **Frequency**: Happens on every practical submission
+- **User Experience**: Confusing - unclear whether editing answers will re-grade or if changes are lost
+
+### Location in Code
+- Main submission logic likely in practical HTML files (`unit2-part2-practical.html`, etc.)
+- Look for `submitPractical()` or similar function
+- Answer inputs have class `.answer-item input` and names like `answer1`, `answer2`, etc.
+
+---
+
 ## Light/Dark Mode Button Covers Page Title
 
 **Status:** Not yet fixed
@@ -782,20 +826,122 @@ The theme lab file used for previewing text-only question themes is not mobile r
 
 ## Results Modal Shows Text-Only Questions Larger Than Image Questions
 
-**Status:** Not yet fixed
-**Location:** Practice practicals - answer review modal (`js/question-modal.js`)
+**Status:** Not yet fixed - ACTIVELY BUGGY AND FRUSTRATING
+**Location:** Practice practicals - answer review modal (`js/question-modal.js`, `css/practical.css`)
 
 ### Description
-When reviewing answers after submitting a practical, the popup modal displays text-only questions at a much larger size than image-based questions, creating an inconsistent and jarring user experience.
+When reviewing answers after submitting a practical, the popup modal displays text-only questions at a MUCH larger size than image-based questions, creating an inconsistent and jarring user experience. This has been attempted multiple times with no success.
 
 ### Current Behavior
-- Text-only questions appear significantly larger in the modal
-- Image-based questions display at normal/expected size
-- Size inconsistency makes navigation between different question types feel unpolished
+- Text-only questions appear **absolutely massive** in the modal compared to image questions
+- Image-based questions display at normal/expected size (512px container)
+- Size inconsistency makes navigation between different question types extremely jarring and unpolished
+- Very frustrating user experience
 
 ### Expected Behavior
 - Both text-only and image-based questions should display at similar, consistent sizes in the modal
 - Smooth visual experience when navigating between question types
+- Text-only box should match the visual height of the image container (512px)
+
+### Technical Details
+**Current CSS (css/practical.css):**
+- `.popup-image`: 512px height + 16px margin-bottom (line 662-663)
+- `.popup-question .text-only-question-box`: 512px height with various layout properties (lines 685-700)
+- Image questions have TWO elements: `.popup-image` + `.popup-question` (with question text)
+- Text-only questions have ONE element: `.popup-question` containing the box
+
+### Attempted Fixes (All Failed)
+1. **Set text-only box to 512px height** - Still appears much larger than image questions
+2. **Added margin-bottom to text-only box and removed from parent** - No improvement
+3. **Used `:has()` selector to remove margin from parent container** - Still broken
+4. **Multiple CSS adjustments to padding, box-sizing, display properties** - Nothing works
+
+### Root Cause (Unknown)
+- The text-only question box continues to render much larger despite having the same explicit height
+- Something about the layout structure or CSS cascade is causing the size discrepancy
+- May be related to flexbox, box-sizing, or some other layout property interfering
+- Extremely difficult to debug - images are MUCH smaller than you'd expect for 512px containers
+
+### Next Steps to Try
+- Use browser dev tools to inspect actual computed heights of both question types
+- Check if there are conflicting CSS rules or inherited properties
+- Consider using `max-height` or `min-height` constraints
+- Try wrapping text-only questions in a container that matches image question structure
+- Test with simplified CSS to isolate the issue
+- May need to restructure the modal HTML for text-only questions entirely
+
+### Proposed Solution: Background Images with Text Overlay
+
+**Status:** Planned - architectural refactor to eliminate text-only vs image question distinction
+
+Instead of fighting CSS to make text-only boxes match image dimensions, refactor text-only questions to use background images (1024x768) with text overlaid on top. This would:
+
+**Benefits:**
+- ✅ **Perfect size consistency** - Every question becomes an image-based question (same dimensions)
+- ✅ **Single code path** - No special handling needed for text-only vs image questions
+- ✅ **Visual interest** - Cool backgrounds instead of plain colored boxes
+- ✅ **Easier theming** - Just swap background images instead of managing CSS theme classes
+- ✅ **Simpler CSS** - Eliminates complex height-matching logic
+- ✅ **Better UX** - Visual variety helps with memory retention
+- ✅ **Solves the bug completely** - No more size inconsistencies in modal
+
+**Implementation Approach:**
+
+1. **Create background images** (1024x768):
+   - `images/backgrounds/blue-gradient.jpg`
+   - `images/backgrounds/purple-gradient.jpg`
+   - `images/backgrounds/teal-gradient.jpg`
+   - `images/backgrounds/warm-gradient.jpg`
+   - `images/backgrounds/notebook-paper.jpg`
+   - `images/backgrounds/chalkboard.jpg`
+
+2. **Update YAML format:**
+   ```yaml
+   # Old text-only format
+   - id: 42
+     question: "What is the mitral valve also known as?"
+     answer: ["bicuspid valve"]
+     theme: "blue-gradient"
+
+   # New background-image format
+   - id: 42
+     image: "backgrounds/blue-gradient.jpg"
+     question: "What is the mitral valve also known as?"
+     answer: ["bicuspid valve"]
+     textOverlay: true  # Flag to overlay question text on image
+   ```
+
+3. **CSS for text overlay:**
+   ```css
+   .question-text-overlay {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     color: white;
+     font-size: 2rem;
+     text-align: center;
+     padding: 40px;
+     max-width: 800px;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+   }
+   ```
+
+4. **JavaScript updates:**
+   - Detect `textOverlay: true` flag in question data
+   - Render image normally (same as current image questions)
+   - Add text overlay div positioned absolutely over the image
+   - Remove all text-only-specific rendering logic
+
+**Migration Plan:**
+1. Create background image assets
+2. Update JavaScript to support `textOverlay` flag
+3. Gradually migrate existing text-only questions in YAML files
+4. Remove old text-only theme CSS once migration complete
+5. Delete deprecated `.text-only-question-box` CSS rules
+
+**Implementation Priority:**
+Medium-High - Would solve a persistent, frustrating bug and improve overall UX
 
 ---
 
@@ -895,40 +1041,40 @@ question.gradingResult = {
 
 ## Practice Practical Images Flash Black During Navigation
 
-**Status:** Not yet fixed
+**Status:** ✅ Fixed
 **Location:** Practice practicals (e.g., `unit2-part2-practical.html`, `unit1-practical.html`)
+**Completed:** 2025-10-18
 
 ### Description
-When navigating between questions using arrow keys or Next button in the answer review modal, images briefly show a black/dark flash before loading, creating a jarring visual experience.
+When navigating between questions using arrow keys or Next button (both during quiz-taking and in the answer review modal), images briefly showed a black/dark flash before loading, creating a jarring visual experience.
 
-### Current Behavior
-- Black flash visible when pressing Right arrow or Next button to advance to next question
-- Flash occurs in the question review modal after submitting a practical
-- Similar to the flashcard image loading issue but in a different context
+### Root Causes
+1. **Main quiz images** - The `<img>` elements had no background color, so the dark body background showed through during image loading
+2. **Modal images** - Same issue, plus no preloading was happening for adjacent modal images
 
-### Possible Causes
-1. **No image preloading in modal** - Modal may not preload the next question's image
-2. **Missing background color** - Image container in modal might have no background-color set
-3. **Image loading timing** - Image src may be set before container is ready
-4. **CSS background** - Modal image container might default to dark/black background
+### Solution Implemented
 
-### Expected Behavior
-- Smooth transitions between questions with no black flash
-- Images should appear instantly or show neutral background during loading
-- Same smooth experience as flashcard navigation (after that fix)
+**1. Added background colors to image elements** - `css/practical.css`
+   - **Quiz images** (line 136): Added `background-color: #ffffff` to `.image-content img`
+   - **Modal images** (line 670): Added `background-color: #ffffff` to `.popup-image img`
+   - **Dark mode** (line 1471): Added `background-color: #1e293b` to `body.dark-mode .popup-image img`
 
-### Related Fix
-The flashcard image flash was fixed by:
-1. Adding white background to `.image-container`
-2. Removing setTimeout delay for preloaded images
-Similar approach may work for practice practical modal.
+**2. Added image preloading to modal** - `js/question-modal.js`
+   - Created `modalPreloadedImages` Map cache (line 6)
+   - Added `preloadModalImages()` function (lines 8-38) to preload previous and next images
+   - Called preloading at start of `showModalAtIndex()` (line 98)
+   - Ensures adjacent images are ready before user navigates
 
-### Reproduction
-1. Start any practice practical
-2. Answer some questions and submit
-3. Click on any answer to open review modal
-4. Press Right arrow or Next button to advance to next question
-5. Observe black flash before next image loads
+**3. Added comprehensive dark mode styles for modal** - `css/practical.css:1457-1487`
+   - Dark backgrounds for `.popup-content`, `.popup-header`
+   - Light text colors for `.popup-header h3`, `.popup-question`
+   - Proper contrast for close button and borders
+
+### Result
+- **Quiz navigation**: Smooth transitions with white background (or dark slate in dark mode) - no flash
+- **Modal navigation**: Instant image display with preloading + background color - no flash
+- Consistent experience across light and dark modes
+- Matches the flashcard image loading fix approach
 
 ---
 

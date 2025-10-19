@@ -3,6 +3,39 @@
 
 let currentModalIndex = 0;
 let modalQuestions = [];
+let modalPreloadedImages = new Map(); // Cache for modal preloaded images
+
+function preloadModalImages(currentIndex) {
+    // Preload previous image
+    if (currentIndex > 0) {
+        const prevQuestion = modalQuestions[currentIndex - 1];
+        if (prevQuestion && prevQuestion.imagePath) {
+            const imagePath = `images/${prevQuestion.imagePath}`;
+            if (!modalPreloadedImages.has(imagePath)) {
+                const img = new Image();
+                img.onload = () => {
+                    modalPreloadedImages.set(imagePath, img);
+                };
+                img.src = imagePath;
+            }
+        }
+    }
+
+    // Preload next image
+    if (currentIndex < modalQuestions.length - 1) {
+        const nextQuestion = modalQuestions[currentIndex + 1];
+        if (nextQuestion && nextQuestion.imagePath) {
+            const imagePath = `images/${nextQuestion.imagePath}`;
+            if (!modalPreloadedImages.has(imagePath)) {
+                const img = new Image();
+                img.onload = () => {
+                    modalPreloadedImages.set(imagePath, img);
+                };
+                img.src = imagePath;
+            }
+        }
+    }
+}
 
 function buildModalQuestionsList(questions, includeExtraCredit = false) {
     modalQuestions = [];
@@ -93,6 +126,9 @@ function showQuestionPopup(questionNum, questionText, correctAnswer, imagePath, 
 
 function showModalAtIndex(index) {
     if (index < 0 || index >= modalQuestions.length) return;
+
+    // Preload adjacent modal images for smooth navigation
+    preloadModalImages(index);
 
     // Remove any existing popup
     const existingPopup = document.querySelector('.question-popup');
