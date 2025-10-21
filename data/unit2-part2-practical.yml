@@ -746,6 +746,18 @@ questions:
     theme: "default"
     tags: ["blood-vessels", "vein", "blood-flow", "flashcards"]
 
+  - id: 134
+    question: "How would blood get from the heart to a hand?"
+    answer: ["one possible path: heart (left ventricle), aorta, left subclavian artery, left axillary artery, left brachial artery, left radial artery, left hand OR from the aorta, brachiocephalic trunk, right subclavian artery, ..."]
+    theme: "default"
+    tags: ["blood-vessels", "artery", "blood-flow", "flashcards"]
+
+  - id: 135
+    question: "How would blood get from the heart to a foot?"
+    answer: ["one possible path: heart (left ventricle), aorta, R/L common iliac artery, R/L external iliac artery, R/L femoral artery, R/L popliteal artery, R/L posterior tibial artery, R/L foot"]
+    theme: "default"
+    tags: ["blood-vessels", "artery", "blood-flow", "flashcards"]
+
   # ============================================================================
   # To Do: Go through all the lab activity questions, compare what's here to
   # what there and add missing questions. Would be nice to do with a friend and
