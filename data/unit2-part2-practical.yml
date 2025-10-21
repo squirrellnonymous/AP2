@@ -644,11 +644,113 @@ questions:
     theme: "blood"
     tags: ["blood-vessels", "lab-activities", "artery"]
 
+  - id: 117
+    question: "What deep veins drain the forearm?"
+    answer: ["radial and ulnar veins"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 118
+    question: "What vein receives blood from the arm via the subclavian vein?"
+    answer: ["brachiocephalic vein"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 119
+    question: "The vein that drains the dural sinuses of the brain is the ___________________."
+    answer: ["internal jugular vein"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 120
+    question: "What large vein carries nutrient-rich blood from the digestive organs to the liver for processing?"
+    answer: ["hepatic portal vein"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 121
+    question: "What vein drains the stomach walls?"
+    answer: ["gastric vein"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 122
+    question: "What three veins form/drain into the hepatic portal vein?"
+    answer: ["gastric vein, splenic vein, superior mesenteric vein"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 123
+    question: "What is the longest superficial vein in the body?"
+    answer: ["great saphenous vein"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 124
+    question: "What are the large veins in the arm draining into the axillary vein?"
+    answer: ["brachial veins"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 125
+    question: "What are the veins that drain blood from the pelvis?"
+    answer: ["internal iliac veins"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 126
+    question: "What is the vein that empties into the splenic vein from the descending and sigmoid colon and upper rectum?"
+    answer: ["inferior mesenteric vein"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 127
+    question: "What is the vein formed by the union of the brachial and basilic vein?"
+    answer: ["axillary vein"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 128
+    question: "The small saphenous and the popliteal veins join to become the _________________ vein."
+    answer: ["femoral vein"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 129
+    question: "What vein drains the liver?"
+    answer: ["hepatic vein"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 130
+    question: "What is the large superficial vein that drains the upper arm?"
+    answer: ["cephalic vein"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 131
+    question: "Vein in the arm commonly used for drawing blood?"
+    answer: ["median cubital vein"]
+    theme: "default"
+    tags: ["blood-vessels", "vein"]
+
+  - id: 132
+    question: "How would blood get from a hand back to the heart?"
+    answer: ["one possible path: R/L hand, R/L radial vein, R/L brachial vein, R/L axillary vein, R/L subclavian vein, R/L brachiocephalic vein, superior vena cava, heart (right atrium)"]
+    theme: "default"
+    tags: ["blood-vessels", "vein", "blood-flow", "flashcards"]
+
+  - id: 133
+    question: "How would blood get from the foot back to the heart?"
+    answer: ["one possible path: R/L foot, R/L great saphenous vein, external iliac vein, common iliac vein, inferior vena cava, heart (right atrium)"]
+    theme: "default"
+    tags: ["blood-vessels", "vein", "blood-flow", "flashcards"]
+
   # ============================================================================
-  # To Do: Go through all the lab activity questions, compare what's here to 
-  # what there and add missing questions. Would be nice to do with a friend and 
-  # then reading the questions and answers would serve as studying for both of 
-  # us. ..and we could make some nicer themes while we're at it ..or even add 
-  # images and memory aids. 
+  # To Do: Go through all the lab activity questions, compare what's here to
+  # what there and add missing questions. Would be nice to do with a friend and
+  # then reading the questions and answers would serve as studying for both of
+  # us. ..and we could make some nicer themes while we're at it ..or even add
+  # images and memory aids.
   # ============================================================================
   

@@ -322,7 +322,7 @@
         function renderPractical() {
             if (!practicalData) return;
 
-            // Filter out blank/placeholder questions and extra-credit questions for display
+            // Filter out blank/placeholder questions, extra-credit questions, and flashcard questions for display
             const validQuestions = practicalData.questions.filter(question => {
                 const hasQuestion = question.question && question.question.trim() !== '';
                 const hasAnswer = question.answer && (
@@ -331,7 +331,8 @@
                         : question.answer.trim() !== ''
                 );
                 const isNotExtraCredit = !question.tags || !question.tags.includes('extra-credit');
-                return hasQuestion && hasAnswer && isNotExtraCredit;
+                const isNotFlashcard = !question.tags || !question.tags.includes('flashcards');
+                return hasQuestion && hasAnswer && isNotExtraCredit && isNotFlashcard;
             });
 
             // Separate image and text-only questions
