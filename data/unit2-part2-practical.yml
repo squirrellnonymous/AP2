@@ -213,7 +213,7 @@ questions:
 
   - id: 29
     image: "practical-2-2/29.jpg"
-    question: "name the vessel: artery or vein?"
+    question: "artery or vein?"
     answer: ["vein"]
     definition: "Veins have thinner walls and larger lumens compared to arteries. They also have valves to prevent backflow of blood returning to the heart."
     tags: ["blood-vessels", "vein"]
@@ -564,7 +564,7 @@ questions:
     question: "What are two paired arteries serving the brain?"
     answer: ["vertebral and internal carotid arteries", "vertebral artery and internal carotid artery", "internal carotid artery and vertebral artery"]
     theme: "blood"
-    tags: ["blood-vessels", "lab-activities", "artery"]
+    tags: ["blood-vessels", "lab-activities", "artery", "flashcards"]
 
   - id: 104
     question: "what is the *largest* artery of the body?"
@@ -671,14 +671,14 @@ questions:
   - id: 121
     question: "What vein drains the stomach walls?"
     answer: ["gastric vein"]
-    theme: "default"
+    theme: "anatomy"
     tags: ["blood-vessels", "vein"]
 
   - id: 122
     question: "What three veins form/drain into the hepatic portal vein?"
     answer: ["gastric vein, splenic vein, superior mesenteric vein"]
     theme: "highlight"
-    tags: ["blood-vessels", "vein"]
+    tags: ["blood-vessels", "vein", "flashcards"]
 
   - id: 123
     question: "What is the longest superficial vein in the body?"
@@ -758,5 +758,22 @@ questions:
     theme: "blood"
     tags: ["blood-vessels", "artery", "blood-flow", "flashcards"]
 
+  - id: 136
+    question: "What type of capillaries have large windows/pores (found in endocrine glands and kidneys)?"
+    answer: ["fenestrated capillaries", "fenestrated"]
+    theme: "elegant"
+    tags: ["blood-vessels", "capillaries"]
 
-  
+  - id: 137
+    question: "What are the most common and least leaky type of capillaries?"
+    answer: ["continuous capillaries", "continuous"]
+    theme: "elegant"
+    tags: ["blood-vessels", "capillaries"]
+
+  - id: 138
+    question: "What type of capillaries have the largest openings in the capillary system and are found in the liver, spleen, and bone marrow?"
+    answer: ["sinusoid capillaries", "sinusoid"]
+    theme: "elegant"
+    tags: ["blood-vessels", "capillaries"]
+
+

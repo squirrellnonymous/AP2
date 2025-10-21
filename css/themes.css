@@ -5,7 +5,7 @@
     background-color: #f8fafc;
     color: #1e293b;
     border-color: #e2e8f0;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 /* YAML: theme: "blk-wht" */
@@ -13,7 +13,7 @@
     background-color: #1a202c;
     color: #f7fafc;
     border-color: #2d3748;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 /* YAML: theme: "elegant" */
@@ -21,7 +21,7 @@
     background: linear-gradient(90deg, #667eea 0%, #6c3c9d 100%, #b00606 100%);
     color: #ffffff;
     border-color: #4c51bf;
-    font-size: 1.6rem;
+    font-size: 2rem;
 }
 
 /* YAML: theme: "wbc" */
@@ -29,16 +29,16 @@
     background: linear-gradient(135deg, #8b70ec 0%, #2252c4 100%);
     color: #ffffff;
     border-color: #4c51bf;
-    font-size: 1.6rem;
+    font-size: 2rem;
 }
-    
+
 
 /* YAML: theme: "highlight" */
 .text-only-theme-highlight {
     background-color: #065f46;
     color: #ecfdf5;
     border-color: #059669;
-    font-size: 1.8rem;
+    font-size: 2rem;
 }
 
 /* YAML: theme: "blood" */
@@ -46,7 +46,7 @@
     background: linear-gradient(180deg, #90000c 0%, #65095a 100%);
     color: #ecfdf5;
     border-color: #2f0061;
-    font-size: 1.8rem;
+    font-size: 2rem;
 }
 
 /* YAML: theme: "emergency" */
@@ -54,7 +54,7 @@
     background-color: #dc2626;
     color: #ffffff;
     border-color: #991b1b;
-    font-size: 1.7rem;
+    font-size: 2rem;
 }
 
 /* YAML: theme: "anatomy" */
@@ -62,7 +62,7 @@
     background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
     color: #ffffff;
     border-color: #3730a3;
-    font-size: 1.6rem;
+    font-size: 2rem;
 }
 
 /* YAML: theme: "physiology" */
@@ -70,7 +70,7 @@
     background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
     color: #ffffff;
     border-color: #047857;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 /* YAML: theme: "pathology" */
@@ -78,7 +78,7 @@
     background: linear-gradient(135deg, #ec7093 0%, #ffae83 100%);
     color: #26053e;
     border-color: #e01c1c;
-    font-size: 1.6rem;
+    font-size: 2rem;
 }
 
 /* Base text-only question styling */
@@ -101,18 +101,18 @@
 /* Mobile responsive styles - scale down font size for longer text */
 @media (max-width: 768px) {
     .text-only-question-box {
-        font-size: clamp(1.2rem, 3vw, 2rem);
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
     }
 
     /* Override theme-specific font sizes on mobile with responsive scaling */
-    .text-only-theme-default { font-size: clamp(1.2rem, 3vw, 1.5rem) !important; }
-    .text-only-theme-blk-wht { font-size: clamp(1.2rem, 3vw, 1.5rem) !important; }
-    .text-only-theme-elegant { font-size: clamp(1.3rem, 3.2vw, 1.6rem) !important; }
-    .text-only-theme-wbc { font-size: clamp(1.3rem, 3.2vw, 1.6rem) !important; }
-    .text-only-theme-highlight { font-size: clamp(1.4rem, 3.5vw, 1.8rem) !important; }
-    .text-only-theme-blood { font-size: clamp(1.4rem, 3.5vw, 1.8rem) !important; }
-    .text-only-theme-emergency { font-size: clamp(1.3rem, 3.2vw, 1.7rem) !important; }
-    .text-only-theme-anatomy { font-size: clamp(1.3rem, 3.2vw, 1.6rem) !important; }
-    .text-only-theme-physiology { font-size: clamp(1.2rem, 3vw, 1.5rem) !important; }
-    .text-only-theme-pathology { font-size: clamp(1.3rem, 3.2vw, 1.6rem) !important; }
+    .text-only-theme-default { font-size: clamp(1.5rem, 4vw, 2.5rem) !important; }
+    .text-only-theme-blk-wht { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
+    .text-only-theme-elegant { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
+    .text-only-theme-wbc { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
+    .text-only-theme-highlight { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
+    .text-only-theme-blood { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
+    .text-only-theme-emergency { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
+    .text-only-theme-anatomy { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
+    .text-only-theme-physiology { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
+    .text-only-theme-pathology { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
 }
