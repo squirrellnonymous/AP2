@@ -1,32 +1,72 @@
 # Features and Bugs
 
-## Project Structure Notes
+## Quick Index
 
-### Active Files
-- **Practice Practicals**: Current upcoming practical is `unit2-part2-practical.html` (multiple practicals share the same logic/architecture)
-- **Flashcards**: Main flashcard system and deck builder
+### Feature Requests
+- Footer on All Pages with Project Information - Not yet implemented
+- Midi Quizzes - 10 Question Practice Format - Not yet implemented
+- Wider Input Boxes and Consistent Column Layout for Quizzes - Not yet implemented
+- Question Grouping for Practice Practicals - Not yet implemented
+- Pathway Validator: Improve Error Messages to Not Give Away Answers - Not yet implemented
+- Pathway Questions in Practice Practicals with Auto-Grading - Not yet implemented
+- Mini Quizzes for Lecture Exam Material - Not yet implemented
+- Fill-in-the-Blanks Flowchart Practice - Not yet implemented
+- Better Styling for Blank Answers in Answer Sheet - Not yet implemented
+- Refine Display of Correct Answers from Arrays in Quiz Results - Not yet implemented
+- Alphabetical Tag Ordering in Custom Flashcard Deck Builder - Not yet implemented
+- Refactor index.html JavaScript to External File - Not yet implemented
+- Load index.html Content from YAML Configuration - Not yet implemented
 
-### Legacy/Deprecated Files
-- **exam1-practice.html** and related `exam1-*` files: OLD implementations that should not be used or referenced. These are kept for historical reference only but are not actively maintained.
-- **flashcards-prototype.html**: OLD prototype version of flashcards. Use the main flashcard system instead.
+### Known Bugs
+- Pathway Quiz Corrections Still Give Away Answers - Not yet fixed
+- Answer Inputs Not Disabled After Practical Submission - Not yet fixed
+- Light/Dark Mode Button Covers Page Title - Not yet fixed
+- Theme Lab File Not Responsive and Doesn't Show Real Usage - Not yet fixed
+- Results Modal Shows Text-Only Questions Larger Than Image Questions - Not yet fixed - ACTIVELY BUGGY AND FRUSTRATING
+- Inconsistent "(blank)" Display in Answer Modal - Not yet fixed
 
 ---
 
-## What's Up Next
+# Feature Requests (Detailed)
 
-**Focus: Content Generation for Extra Credit Questions**
+## Footer on All Pages with Project Information
 
-The main priority is creating extra credit practice questions, particularly pathway questions. The standalone pathway quiz (`pathway-mini-quiz.html`) should be embedded into the practice practicals as extra credit questions so students can practice vessel pathways in the context of the full exam.
+**Status:** Not yet implemented
+**Location:** All HTML pages (consider adding to shared CSS/template)
 
-**Key Tasks:**
-- Generate additional pathway questions (more routes beyond the current 4)
-- Integrate pathway questions into practice practicals as extra credit
-- Consider other extra credit question types (anatomy identification, clinical scenarios, etc.)
-- Ensure pathway validation and grading works within the practical exam context
+### Description
+Add a consistent footer to all pages containing information about the project, such as who created it, what it's for, contact information, or other relevant details.
+
+### Expected Features
+- **Consistent placement** across all pages (practicals, quizzes, flashcards, exams)
+- **Minimal design** that doesn't distract from main content
+- **Responsive** - works on mobile and desktop
+- **Dark mode support**
+- Could include:
+  - Project purpose/description
+  - Author/creator information
+  - Contact or feedback information
+  - Link to documentation or help
+  - Version or last updated date
+  - Copyright or license information
+
+### Technical Considerations
+- Add footer HTML to all page templates
+- Create shared footer CSS in `css/shared.css` or similar
+- Consider using a template/include system to avoid duplicating footer code across all files
+- Should be sticky or fixed at bottom, or just flow naturally at end of page content
+- Ensure it doesn't interfere with existing layouts or navigation
+
+### Use Cases
+- Provides context about what the project is
+- Gives users a way to contact or provide feedback
+- Professional appearance with proper attribution
+- Helps distinguish this from official course materials if needed
+
+### Implementation Priority
+Low - Nice to have for polish and professionalism
 
 ---
-
-# Feature Requests
 
 ## Midi Quizzes - 10 Question Practice Format
 
@@ -196,89 +236,6 @@ Medium - Would improve user experience for multi-part questions but not blocking
 
 ---
 
-## Tag Balancing for Practice Practicals
-
-**Status:** Not yet implemented
-**Location:** Practice practicals (e.g., `unit2-part2-practical.html`, `unit1-practical.html`)
-
-### Description
-Add configurable tag balancing to practice practicals so that randomly selected questions can be automatically balanced across specified tag pairs (e.g., equal numbers of artery and vein questions).
-
-### Expected Features
-- **Configurable in YAML**: Enable/disable balancing and define which tag pairs to balance
-- **Flexible design**: Not hardcoded to specific tags - works for any tag pair defined in config
-- **Automatic balancing**: After randomly selecting questions, swap some out to achieve roughly 50/50 balance
-- **Allows variance**: Can be off-balance by one question (e.g., 20 arteries, 19 veins is acceptable)
-- **Preserves non-tagged questions**: Questions without either tag in the pair remain in the pool
-
-### Configuration Format
-In the YAML file (e.g., `unit2-part2-practical.yml`):
-```yaml
-balance_tags: true
-balanced_tag_pairs:
-  - ["artery", "vein"]
-```
-
-### How It Works
-1. Randomly select 40 questions from the full pool
-2. Count questions with each tag in the balanced pairs
-3. If imbalanced (e.g., 22 arteries, 13 veins), swap out extras for the underrepresented tag
-4. Final result: roughly equal distribution (allowing ±1 difference)
-
-### Use Cases
-- Ensure balanced practice between arteries and veins for vessel practicals
-- Future flexibility for other tag pair balancing (e.g., "anterior" vs "posterior")
-- Better represent real exam distributions
-- More comprehensive practice coverage
-
-### Technical Considerations
-- Parse `balance_tags` and `balanced_tag_pairs` from YAML config
-- Implement balancing algorithm after random selection
-- Track available questions by tag for swapping
-- Maintain randomness while achieving balance
-
-### Implementation Plan
-- **First implementation**: Balance "artery" and "vein" tags for `unit2-part2-practical.html`
-- Add config to `unit2-part2-practical.yml`
-- Test with existing vessel questions to ensure proper balancing
-- Once working, can be extended to other practicals as needed
-
----
-
-## Share Deck Button on Flashcard Results Screen
-
-**Status:** 🚧 In Progress
-**Location:** Flashcard results screen (`flashcards/flashcard-template.html`, `flashcards/flashcard-engine.js`)
-
-### Description
-When users finish a flashcard deck, they should see a "Share this deck" button that allows them to easily share the specific deck with classmates.
-
-### Implemented Features
-- "Share this deck" button added to results screen
-- Native share API integration for mobile devices (iOS/Android share sheet)
-- Clipboard fallback for desktop browsers
-- Visual feedback: Button shows "Link copied!" with green background for 2 seconds
-- Shares the full URL with all parameters (tags, source) so recipients get the exact same deck
-- Share message includes deck title
-
-### How It Works
-- **Mobile:** Opens native share sheet to share via messaging apps, social media, etc.
-- **Desktop:** Copies URL to clipboard and shows confirmation
-- Shared URL includes all query parameters for exact deck replication
-
-### Next Steps
-- Test on various mobile devices and browsers
-- Verify Open Graph preview images display correctly in share messages
-- Consider adding share analytics if needed
-
-### Use Cases
-- Share study decks with classmates
-- Send specific tag combinations to study groups
-- Quick way to distribute focused review sets
-- Help others access the same flashcard content
-
----
-
 ## Pathway Validator: Improve Error Messages to Not Give Away Answers
 
 **Status:** Not yet implemented
@@ -330,57 +287,6 @@ Error messages should:
 
 ### Implementation Priority
 Medium - Improves learning outcomes but doesn't block functionality
-
----
-
-## Pathway Quiz: Preserve Correct Answers on "Try Again"
-
-**Status:** ✅ Implemented
-**Location:** Pathway mini quiz (`pathway-mini-quiz.html`)
-**Completed:** 2025-10-24
-
-### Description
-When a student gets a pathway question wrong and clicks "Try Again", the input fields preserve the vessels that were correct, allowing them to fix only the part of the pathway where they made a mistake.
-
-### Implemented Features
-- Preserves all correctly validated vessels in their input fields (green styling, read-only)
-- Clears only the fields after the first error
-- Students can continue from where they went wrong
-- Auto-focuses cursor on the first editable field
-- Remove buttons hidden for preserved vessels
-- Full dark mode support for preserved inputs
-
-### Example Scenario
-**Student's Answer:**
-1. aorta ✓
-2. descending aorta ✓
-3. left common iliac artery ✓
-4. femoral artery ✗ (skipped left external iliac artery - error starts here)
-
-**After clicking "Try Again":**
-- Field 1: "aorta" (preserved, green)
-- Field 2: "descending aorta" (preserved, green)
-- Field 3: "left common iliac artery" (preserved, green)
-- Field 4: "" (cleared - this is where the error started)
-- Field 5+: "" (cleared - everything after error is cleared)
-- Student can now add "left external iliac artery" in field 4, then continue with femoral artery
-
-### Educational Benefits
-- **Productive failure**: Students learn from their mistakes without losing progress
-- **Scaffolding**: Correct portions provide a foundation to build on
-- **Reduced frustration**: Don't have to re-type vessels they got right
-- **Focus on the gap**: Attention directed to the specific missing/incorrect vessel
-- **Faster iteration**: Quick retry cycles lead to better learning
-
-### Technical Considerations
-- Track which vessels were validated as correct
-- Preserve correct input field values and styling
-- Clear fields starting from first error point
-- Maintain field focus on the first empty field for easy continuation
-- May need to track "corrected pathway" from validator for typos
-
-### Implementation Priority
-Medium - Significant UX improvement for learning, aligns with educational best practices
 
 ---
 
@@ -440,22 +346,6 @@ Add pathway questions to practice practicals that use the same intelligent valid
 
 ---
 
-## Update unit2-practical.html with Latest Refactoring
-
-**Status:** Not yet implemented
-**Location:** `unit2-practical.html`
-
-### Description
-Ensure `unit2-practical.html` is updated with the latest refactoring and improvements from `unit2-part2-practical.html`, including the shared modal system and other architectural improvements.
-
-### Technical Considerations
-- Apply shared modal system (`js/question-modal.js`)
-- Ensure consistent grading logic and keyboard navigation
-- Verify dark mode support
-- Check that all recent bug fixes are applied
-
----
-
 ## Mini Quizzes for Lecture Exam Material
 
 **Status:** Not yet implemented
@@ -488,37 +378,6 @@ Create a mini quiz builder similar to the existing practical mini quiz system, b
 
 ---
 
-## Timer for Practice Lecture Exams
-
-**Status:** Not yet implemented
-**Location:** Practice lecture exam features (mini quizzes, future flowchart practice)
-
-### Description
-Add an optional timer to practice exams to help students prepare for timed lecture exams and manage their pacing.
-
-### Expected Features
-- Optional timer that can be turned on/off
-- Configurable time limit (e.g., 1 minute per question, custom total time)
-- Visual countdown display
-- Warning when time is running low
-- Auto-submit option when time expires (or just notify)
-- Display time taken after completion for untimed practice
-- Save timing statistics to track improvement
-
-### Use Cases
-- Practice under real exam conditions
-- Learn to pace answers appropriately
-- Build confidence for timed exams
-- Track speed improvement over multiple attempts
-
-### Technical Considerations
-- Store timer preference in localStorage
-- Non-intrusive display (top corner or header)
-- Pause functionality for breaks
-- Mobile friendly display
-
----
-
 ## Fill-in-the-Blanks Flowchart Practice
 
 **Status:** Not yet implemented
@@ -545,75 +404,6 @@ Interactive flowchart practice where students fill in missing labels/terms on pr
 - Could use SVG overlays or labeled images
 - Similar grading system to practicals
 - YAML data format for flowchart definitions
-
----
-
-## Progress Tracking with Checkbox-Based Index Sorting
-
-**Status:** ✅ Implemented
-**Location:** `index.html`
-**Completed:** 2025-10-18
-
-### Description
-Progress tracking on the index page using checkboxes and localStorage. Students can mark completed units/resources, and the page automatically reorganizes to show uncompleted items first, followed by completed items at the bottom. This helps students focus on what's next while maintaining a sense of progress throughout the semester.
-
-### Implemented Features
-- **Checkbox for each section**: Each practical/exam/unit gets a green checkbox to mark as completed
-- **localStorage persistence**: Checkbox states saved across sessions using key `courseProgress`
-- **Automatic sorting**: Page reorganizes based on completion status
-  - Uncompleted items appear at top in logical course order
-  - Completed items move to bottom in logical course order
-  - Visual separator (hr line) between uncompleted and completed sections
-- **"Up Next" heading**: Appears dynamically above uncompleted sections once at least one item is checked off
-- **Clean minimal design**: No progress percentages or reset button - just focused tracking
-
-### Technical Implementation
-- Each section wrapped in `<section class="course-section">` with:
-  - Unique ID (e.g., `practical-1`, `exam-2`, `practical-3`)
-  - `data-order` attribute for course sequence (1, 2, 3, ...)
-  - Checkbox input with `accent-color: #10b981` for green checkmarks
-- JavaScript (`index.html` inline script):
-  - `loadProgress()` / `saveProgress()` handle localStorage operations
-  - `sortSections()` dynamically re-orders DOM based on completion
-  - `updateUpNextHeading()` shows/hides "Up Next:" heading
-  - `initializeCheckboxes()` loads saved state on page load
-- CSS styling:
-  - `.section-header` uses flexbox with `align-items: center` for proper checkbox/heading alignment
-  - `.section-header h2 { margin: 0; }` ensures vertical alignment works correctly
-  - Green checkboxes via `accent-color: #10b981`
-  - Full dark mode support for all progress tracking elements
-
-### localStorage Structure
-```javascript
-{
-  "courseProgress": {
-    "practical-1": true,
-    "practical-2": true,
-    "exam-2": true,
-    "practical-3": false,
-    "exam-3": false
-  }
-}
-```
-
-### Use Cases
-- Students see what's immediately relevant at the top
-- Motivating visual progress as semester advances
-- Clear indication of what to focus on next
-- Works across devices (if using same browser)
-- No backend or login required
-
-### Design Decisions
-- **No reset button**: Simpler interface, users can manually uncheck if needed
-- **No progress counter**: "Up Next:" heading is sufficient context
-- **No opacity on completed items**: Keeps all text readable and clear
-- **Green checkboxes**: Positive visual feedback for completion
-
-### Future Enhancements
-- "Show all" toggle to view full list in original order regardless of completion
-- Export/import progress (to share across browsers)
-- Completion dates/timestamps
-- Study streak tracking
 
 ---
 
@@ -692,105 +482,129 @@ When building a custom flashcard deck, the tags should be displayed in alphabeti
 - Tags appear in whatever order they're encountered in the data
 - No particular sorting applied
 
----
-
-## Better Background Color for Flashcards Review Page
-
-**Status:** ✅ Implemented
-**Location:** Flashcards review page
-**Completed:** 2025-10-11
-
-### Description
-The purple background on the flashcards review page is distracting and should be replaced with a more neutral gray color scheme.
-
-### Implemented Solution
-- Changed from purple gradient to solid dark blue-gray (`#374151`)
-- Swipe buttons changed from purple to indigo/blue-violet (`#5b68c4` to `#4338a8`)
-- Removed glowing shadow effects from buttons for cleaner appearance
-- Much less distracting, allows better focus on content
 
 ---
 
-## Custom Mini Quiz Builder
+## Refactor index.html JavaScript to External File
 
-**Status:** ✅ Implemented
-**Location:** `mini-quiz-builder.html`
-**Completed:** 2025-10-11
-
-### Description
-A system to dynamically generate mini quizzes (4 questions) from specific tags in the practical exam data.
-
-### Implemented Features
-- Tag selection interface with alphabetical/natural sorting
-- Dynamic question count display
-- 4-question quizzes randomly selected from chosen topics
-- "New Random Quiz" button to regenerate with same tags
-- "Change Topics" button to return to builder
-- Shareable URLs that auto-load specific tag combinations
-- Smart arrow key navigation (respects cursor position)
-- Enter key to advance to next question
-- Breadcrumb navigation (Home › Mini Quizzes)
-- Full dark mode support
-- Beautiful indigo/blue color scheme
-
-### Additional Improvements
-- Extracted tag selection styles to `shared.css` for reuse across flashcards and quiz builder
-- Consistent styling between all tag selection interfaces
-
----
-
-## Print CSS for Practice Lecture Exams
-
-**Status:** ✅ Implemented
-**Location:** `css/exam-print.css`, linked in `unit2-exam.html`
-**Completed:** 2025-10-14
+**Status:** Not yet implemented
+**Location:** `index.html`
 
 ### Description
-Create a print stylesheet that formats practice lecture exams to look like real exam papers, optimized for printing and completing by hand with pencil.
+The JavaScript code in index.html for progress tracking and section sorting is currently inline in the HTML file. This makes the file harder to read and maintain. The JavaScript should be moved to a separate `.js` file.
 
-### Expected Layout
-
-#### Multiple Choice Questions
-- Compact layout, approximately 10 questions per page
-- Clean, exam-like formatting matching actual exam appearance
-- Minimal spacing between questions to maximize page usage while keeping questions visually separate
-
-#### True/Make-True Questions
-- Each statement with a blank line before it
-- Student can write either "true" or the corrected word
-- Format: `__________ [statement with ***word*** highlighted]`
-
-#### Essay Questions - Low Points (< 10 points)
-- About 3 questions per page
-- Space provided below each question for handwritten answer
-- Appropriate spacing based on point value
-
-#### Essay Questions - High Points (≥ 10 points)
-- Full page dedicated to each high-point question
-- If essay includes an image:
-  - First page: Question text with image
-  - Second page: Full page of blank space for handwritten answer
-- If no image:
-  - Full page with question at top and remaining space for answer
+### Expected Changes
+- Move all `<script>` content from `index.html` to a new file (e.g., `js/index.js`)
+- Link the external script file in `index.html`
+- Ensure all functionality continues to work (localStorage, sorting, checkboxes)
+- Cleaner separation of concerns (HTML structure vs. JavaScript behavior)
 
 ### Technical Considerations
-- Create shared print CSS file (e.g., `css/exam-print.css`)
-- Use `@media print` queries
-- Hide unnecessary UI elements (navigation, buttons, dark mode toggle)
-- Optimize page breaks with `page-break-before`, `page-break-after`, `page-break-inside`
-- Ensure images print at appropriate sizes
-- Consider adding question numbering if not already present
-- Make sure true/make-true blank lines are visible when printed
+- Maintain all existing functionality (progress tracking, section sorting, "Up Next" heading)
+- Ensure proper loading order (script should load after DOM elements are ready)
+- Consider using `defer` or `DOMContentLoaded` event listener
+- Update any hardcoded references if needed
 
-### Use Cases
-- Print practice exams to simulate real exam conditions
-- Complete exams by hand to practice writing answers
-- Study without screen time
-- Take practice exams in different environments (library, study groups)
+### Implementation Priority
+Low - Code organization improvement, not affecting functionality
 
 ---
 
-# Known Bugs
+## Load index.html Content from YAML Configuration
+
+**Status:** Not yet implemented
+**Location:** `index.html`
+
+### Description
+The course sections (exams, practicals, flashcards) in index.html are currently hardcoded in the HTML. This content should be loaded from a YAML configuration file to make it easier to add, remove, or modify course sections without editing HTML.
+
+### Expected Changes
+- Create a YAML config file (e.g., `data/course-structure.yml`)
+- Define all course sections in YAML format
+- JavaScript loads YAML and dynamically generates section HTML
+- Remove hardcoded section HTML from index.html
+
+### YAML Structure Example
+```yaml
+sections:
+  - id: practical-1
+    order: 1
+    title: "Cells & Tissues"
+    links:
+      - text: "Practice Practical #1"
+        icon: "📋"
+        url: "unit1-practical.html"
+      - text: "Flashcards"
+        icon: "📚"
+        url: "unit1-flashcards.html"
+
+  - id: exam-2
+    order: 2
+    title: "Blood, Heart, and Blood Vessels"
+    links:
+      - text: "Exam 2 Practice Test"
+        icon: "📝"
+        url: "exam-template.html?exam=unit2-exam"
+      - text: "Practice Practical #2"
+        icon: "📋"
+        url: "unit2-practical.html"
+      - text: "Practice Practical #3"
+        icon: "📋"
+        url: "unit2-part2-practical.html"
+      - text: "Flashcards"
+        icon: "📚"
+        url: "unit2-flashcards.html"
+```
+
+### Benefits
+- Easier to maintain course structure
+- Add/remove/reorder sections without touching HTML
+- Consistent data format across the project
+- Could enable dynamic course configuration for different semesters
+- Simpler for non-technical users to update content
+
+### Technical Considerations
+- Use js-yaml library (already used elsewhere in project)
+- JavaScript generates section HTML on page load
+- Preserve existing progress tracking and sorting functionality
+- Ensure proper loading order (YAML loads before rendering)
+- Maintain current styling and layout
+
+### Implementation Priority
+Low-Medium - Improves maintainability but requires refactoring
+
+---
+
+# Known Bugs (Detailed)
+
+## Pathway Quiz Corrections Still Give Away Answers
+
+**Status:** Not yet fixed
+**Location:** Pathway validator (`js/pathway-validator.js`)
+
+### Description
+The error/correction messages in the pathway mini quiz still reveal too much information and give away the correct answers. While improvements have been made, further refinement is needed to provide helpful guidance without telling students exactly what vessel to add next.
+
+### Current Behavior
+- Messages still suggest specific vessels or reveal the correct path
+- Students can use the feedback to figure out answers without thinking through the anatomy
+- Reduces the learning opportunity
+- **Example:** If the last vessel is left off, the error says "Should end with: inferior vena cava OR heart OR right atrium" instead of something like "A vessel is missing, blood still hasn't made it to the heart"
+
+### Expected Behavior
+- Messages should indicate an error without revealing the specific vessel needed
+- Provide directional hints (e.g., "you're missing a vessel" rather than "you skipped the femoral artery")
+- Maintain educational value by requiring students to think through the pathway themselves
+
+### Technical Considerations
+- This is an iterative refinement process with lots of edge cases to test
+- Need to balance helpful feedback with not giving away answers
+- May require multiple rounds of testing and adjustment
+
+### Implementation Priority
+Medium - Improves learning outcomes significantly
+
+---
 
 ## Answer Inputs Not Disabled After Practical Submission
 
@@ -997,39 +811,6 @@ Medium-High - Would solve a persistent, frustrating bug and improve overall UX
 
 ---
 
-## Back Link Positioning in Flashcard Deck Review
-
-**Status:** ✅ Fixed
-**Location:** Flashcard deck review page
-**Completed:** 2025-10-11
-
-### Description
-The back/return link while reviewing a flashcard deck was misaligned due to full-width header breaking out of container.
-
-### Solution
-- Removed full-width viewport hack (`width: 100vw` with centering transform)
-- Changed header to stay within container bounds (max-width: 600px)
-- Removed negative side margins causing alignment issues
-- Back link now aligns properly with page content
-
----
-
-## Flashcards Show HTML Tags Instead of Rendering Them
-
-**Status:** ✅ Fixed
-**Location:** Flashcard display (`flashcards/flashcard-engine.js`)
-**Completed:** 2025-10-11
-
-### Description
-Flashcards were displaying raw HTML tags like `<strong>` in the text instead of rendering them as formatted HTML (e.g., bold text).
-
-### Solution
-- Changed `document.getElementById('term').textContent = card.term` to `.innerHTML` (line 347)
-- Added markdown conversion for term content: `**text**` → `<strong>text</strong>` (line 346)
-- Now both HTML tags and markdown bold syntax render properly on both front and back of cards
-
----
-
 ## Inconsistent "(blank)" Display in Answer Modal
 
 **Status:** Not yet fixed
@@ -1088,75 +869,5 @@ question.gradingResult = {
 4. Submit the practical
 5. Click on the blank answers in the results to open the review popup
 6. Observe that some show "(blank)" and others don't
-
----
-
-## Practice Practical Images Flash Black During Navigation
-
-**Status:** ✅ Fixed
-**Location:** Practice practicals (e.g., `unit2-part2-practical.html`, `unit1-practical.html`)
-**Completed:** 2025-10-18
-
-### Description
-When navigating between questions using arrow keys or Next button (both during quiz-taking and in the answer review modal), images briefly showed a black/dark flash before loading, creating a jarring visual experience.
-
-### Root Causes
-1. **Main quiz images** - The `<img>` elements had no background color, so the dark body background showed through during image loading
-2. **Modal images** - Same issue, plus no preloading was happening for adjacent modal images
-
-### Solution Implemented
-
-**1. Added background colors to image elements** - `css/practical.css`
-   - **Quiz images** (line 136): Added `background-color: #ffffff` to `.image-content img`
-   - **Modal images** (line 670): Added `background-color: #ffffff` to `.popup-image img`
-   - **Dark mode** (line 1471): Added `background-color: #1e293b` to `body.dark-mode .popup-image img`
-
-**2. Added image preloading to modal** - `js/question-modal.js`
-   - Created `modalPreloadedImages` Map cache (line 6)
-   - Added `preloadModalImages()` function (lines 8-38) to preload previous and next images
-   - Called preloading at start of `showModalAtIndex()` (line 98)
-   - Ensures adjacent images are ready before user navigates
-
-**3. Added comprehensive dark mode styles for modal** - `css/practical.css:1457-1487`
-   - Dark backgrounds for `.popup-content`, `.popup-header`
-   - Light text colors for `.popup-header h3`, `.popup-question`
-   - Proper contrast for close button and borders
-
-### Result
-- **Quiz navigation**: Smooth transitions with white background (or dark slate in dark mode) - no flash
-- **Modal navigation**: Instant image display with preloading + background color - no flash
-- Consistent experience across light and dark modes
-- Matches the flashcard image loading fix approach
-
----
-
-## Flashcard Images Flash Black Before Loading
-
-**Status:** ✅ Fixed
-**Location:** Flashcard review (`flashcards/flashcard-engine.js`, `flashcards/flashcard-styles.css`)
-**Completed:** 2025-10-18
-
-### Description
-When advancing to the next flashcard or flipping a card, images briefly showed a black/dark background flash before they finished loading, creating a jarring visual experience.
-
-### Root Causes Identified
-1. **Missing background color on `.image-container`** - The image container had no background-color set, so the dark gray body background (`#374151`) showed through during image transitions
-2. **Unnecessary setTimeout delay** - A 1ms delay before displaying preloaded images was causing a brief flash even when images were already cached
-
-### Solution Implemented
-1. **Added white background to image container** - `flashcards/flashcard-styles.css:272`
-   - Set `background-color: #ffffff` on `.image-container`
-   - Ensures white background shows during loading instead of dark page background
-
-2. **Removed setTimeout delay for preloaded images** - `flashcards/flashcard-engine.js:416-419`
-   - Changed from `setTimeout(() => { termImage.src = ... }, 1)` to immediate assignment
-   - Preloaded images now display instantly without any delay
-   - Images are already loaded in memory, so no delay is needed
-
-### Result
-- Smooth transitions between flashcards with no visible flash
-- Clean white background during any brief loading moments
-- Better user experience during card navigation
-- Preloading system now works as intended
 
 ---

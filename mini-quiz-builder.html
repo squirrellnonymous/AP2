@@ -485,7 +485,10 @@
         // Load and parse the YAML data
         async function loadPracticalData() {
             try {
-                const response = await fetch('data/unit2-part2-practical.yml');
+                // Get unit from URL parameter, default to unit2-part2-practical
+                const urlParams = new URLSearchParams(window.location.search);
+                const unit = urlParams.get('unit') || 'unit2-part2-practical';
+                const response = await fetch(`data/${unit}.yml`);
                 const yamlText = await response.text();
                 practicalData = jsyaml.load(yamlText);
 

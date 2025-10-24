@@ -1,0 +1,47 @@
+title: "Lecture Exam #3 - Practice"
+description: ""
+randomize: true
+maxQuestions: 36
+
+multipleChoice:
+  - question: "lung question"
+    options:
+      - "Epithelial tissue"
+      - "Nervous tissue"
+      - "Muscle tissue"
+      - "Connective tissue"
+    correct: 3
+    tags: ["unit-2", "blood"]
+
+ 
+trueMakeTrue:
+  - statement: "When hydrostatic pressure is greater than BCOP net ***reabsorption*** occurs."
+    isTrue: false
+    correctWord: ["filtration"]
+    points: 2.5
+    tags: ["unit-2", "blood-vessels", "capillary-exchange"]
+
+
+table:
+  - question: "Name three blood plasma proteins and list a function of each."
+    headers: ["Plasma Protein", "Function"]
+    answer: [
+      ["albumin", "osmotic pressure, hormone transport"],
+      ["globulins", "antibodies, immune response"],
+      ["fibrinogen", "blood clotting, coagulation"]
+    ]
+    points: 6
+    tags: ["unit-2", "blood", "plasma-proteins"]
+
+essay:
+  - question: "The drug Warfarin inhibits factor IX (factor 9). What clotting pathway is it inhibiting? What is the alternate pathway? Which pathway is faster."
+    answer: "Warfarin is inhibiting the intrinsic pathway. The alternate pathway is the extrinsic pathway. The extrinsic pathway is faster."
+    points: 3
+    tags: ["unit-2", "blood"]
+
+  - question: "Answer the following questions based on the Wigger's graph: <br>&nbsp;&nbsp;&nbsp;&nbsp; A) What is it called and what is happening? <br>&nbsp;&nbsp;&nbsp;&nbsp; B) What is happening at this point? What phase begins after this happens? <br>&nbsp;&nbsp;&nbsp;&nbsp; C) What is this point called? What does it represent (measure)?<br>&nbsp;&nbsp;&nbsp;&nbsp; D) What is this point called? When you subract it from the previous measurment what do you calculate? <br>&nbsp;&nbsp;&nbsp;&nbsp; E) What phase is represented by E, and which chamber is measured?"
+    image: "exam-2/wiggers2.jpg"
+    answer: "A. T wave - ventricular repolarization. </br> B. Atrioventricular valve closes, isovolumetric contraction begins. </br> C. End Diastolic Volume (EDV), the volume of blood at the end of ventricular filling (preload).</br> D. End Systolic Volume (ESV) which is the volume of blood at the end of ventricular ejection. </br>&nbsp;&nbsp;&nbsp;&nbsp;EDV - ESV = Stroke Volume (SV)</br> E. Isovolumetric relaxation, pressure in the left ventricle."
+    points: 12
+    tags: ["unit-2", "heart", "wiggers-diagram"]
+

@@ -1,0 +1,59 @@
+title: "Practice Practical #3 - Blood Vessels"
+description: "Blood Vessels"
+share_image: "practical4/00.jpg"
+allow_duplicate_answers: true
+balance_tags: true
+balanced_tag_pairs:
+  - ["artery", "vein"]
+
+# Upload your images to: /images/practical-2-2/
+# Name them: 01.jpg, 02.jpg, 03.jpg, etc.
+# Then update this YAML file with the correct answers
+#
+# ID NUMBERING SCHEME:
+# - Image questions: Start at id: 1 (01, 02, 03, etc.)
+# - Text-only questions: Start at id: 100 (100, 101, 102, etc.)
+
+questions:
+  - id: 1
+    image: "practical4/01.jpg"
+    question: "Name the lobe."
+    answer: ["superior lobe", "superior", "left superior lobe", "superior lobe of the left lung"]
+    definition: ""
+    tags: ["unit3", "respiratory", "lungs"]
+
+  - id: 2
+    image: "practical4/02.jpg"
+    question: "Name the lobe."
+    answer: ["inferior lobe", "inferior", "left inferior lobe", "inferior lobe of the left lung"]
+    definition: ""
+    tags: ["unit3", "respiratory", "lungs"]
+
+  - id: 3
+    image: "practical4/03.jpg"
+    question: "Name the structures."
+    answer: ["primary bronchi", "left and right primary bronchi"]
+    definition: ""
+    tags: ["unit3", "respiratory", "lungs"]
+
+  - id: 4
+    image: "practical4/04.jpg"
+    question: "Name the structure."
+    answer: ["trachea"]
+    definition: ""
+    tags: ["unit3", "respiratory", "lungs"]
+
+
+
+  # ============================================================================
+
+
+  # Text Only Questions (themed with colors)
+
+  - id: 100
+    question: "What type of epithelial tissue lines the trachea?"
+    answer: ["pseudostratified columnar epithelial cells", "pseudostratified columnar epithelium", "pseudostratified columnar epi", "pseudostratified columnar epithelial"]
+    definition: "Endothelial cells are a special type of epithelial cell."
+    theme: "pathology"
+    tags: ["unit3", "respiratory", "tissue"]
+
