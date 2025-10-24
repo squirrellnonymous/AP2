@@ -31,7 +31,63 @@ class FuzzyMatcher {
             ['proximal', 'distal'],
             ['medial', 'lateral'],
             ['superficial', 'deep'],
-            ['efferent', 'afferent']
+            ['efferent', 'afferent'],
+
+            // Vessel-specific anatomical terms that should NEVER be considered similar
+            ['radial', 'ulnar'],
+            ['radial', 'brachial'],
+            ['radial', 'axillary'],
+            ['radial', 'femoral'],
+            ['radial', 'tibial'],
+            ['radial', 'fibular'],
+            ['ulnar', 'brachial'],
+            ['ulnar', 'axillary'],
+            ['ulnar', 'femoral'],
+            ['ulnar', 'tibial'],
+            ['ulnar', 'fibular'],
+            ['brachial', 'axillary'],
+            ['brachial', 'femoral'],
+            ['brachial', 'tibial'],
+            ['brachial', 'fibular'],
+            ['axillary', 'femoral'],
+            ['axillary', 'tibial'],
+            ['axillary', 'fibular'],
+            ['femoral', 'popliteal'],
+            ['femoral', 'tibial'],
+            ['femoral', 'fibular'],
+            ['tibial', 'fibular'],
+            ['tibial', 'popliteal'],
+            ['fibular', 'popliteal'],
+
+            // Major vessel names
+            ['carotid', 'subclavian'],
+            ['carotid', 'jugular'],
+            ['carotid', 'vertebral'],
+            ['subclavian', 'jugular'],
+            ['subclavian', 'vertebral'],
+            ['jugular', 'vertebral'],
+
+            // Leg veins
+            ['saphenous', 'femoral'],
+            ['saphenous', 'popliteal'],
+            ['saphenous', 'tibial'],
+
+            // Arm veins
+            ['basilic', 'cephalic'],
+            ['basilic', 'cubital'],
+            ['cephalic', 'cubital'],
+
+            // Abdominal vessels
+            ['celiac', 'mesenteric'],
+            ['celiac', 'renal'],
+            ['mesenteric', 'renal'],
+            ['hepatic', 'splenic'],
+            ['hepatic', 'gastric'],
+            ['splenic', 'gastric'],
+
+            // Brain vessels
+            ['cerebral', 'cerebellar'],
+            ['basilar', 'cerebral']
         ];
     }
 

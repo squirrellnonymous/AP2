@@ -279,24 +279,76 @@ When users finish a flashcard deck, they should see a "Share this deck" button t
 
 ---
 
-## Pathway Quiz: Preserve Correct Answers on "Try Again"
+## Pathway Validator: Improve Error Messages to Not Give Away Answers
 
 **Status:** Not yet implemented
-**Location:** Pathway mini quiz (`pathway-mini-quiz.html`)
+**Location:** Pathway validator (`js/pathway-validator.js`)
 
 ### Description
-When a student gets a pathway question wrong and clicks "Try Again", the input fields should preserve the vessels that were correct, allowing them to fix only the part of the pathway where they made a mistake.
+When students enter an incorrect vessel in a pathway, the error messages should guide them without explicitly telling them the correct answer. Currently, error messages can reveal the next vessel in the pathway, which reduces the learning opportunity.
 
 ### Current Behavior
-- "Try Again" button clears all input fields
-- Student must re-enter the entire pathway from scratch
-- Even correct portions of the pathway are lost
+Error messages suggest specific vessels to try next:
+- "Try going through the [vessel name] next"
+- This tells students exactly what vessel to add, rather than letting them figure it out
 
 ### Expected Behavior
-- Preserve all correctly validated vessels in their input fields
-- Clear only the fields after the first error
-- Allow student to continue from where they went wrong
-- Student can see which part was correct and build from there
+Error messages should:
+- Indicate that the connection is invalid without revealing the answer
+- Provide directional/contextual hints (e.g., "You need another vessel to get to the destination")
+- For arterial pathways (away from heart): Don't suggest going backwards
+- For venous pathways (toward heart): Don't suggest going forward
+- Distinguish between different error types:
+  - **Wrong vessel entirely**: "That vessel doesn't connect to [current vessel]"
+  - **Skipped a vessel**: "You skipped a vessel between [current] and [next]" (without naming it)
+  - **Missing final vessel**: "You're close but haven't reached the destination yet"
+  - **Wrong vessel type**: "That's a vein, not an artery" (already implemented)
+
+### Example Scenarios
+
+**Arterial pathway (heart → left foot):**
+- Student enters: aorta → descending aorta → left common iliac → left external iliac → left femoral → left popliteal → (stops)
+- Current message: "Try going through the left posterior tibial artery next"
+- Better message: "You haven't reached the foot yet. You need at least one more vessel."
+
+**Venous pathway (right hand → heart):**
+- Student enters: right radial vein → right ulnar vein (wrong - skipped brachial)
+- Current message: "You skipped right brachial vein"
+- Better message: "There's a vessel between the radial vein and where you're going"
+
+### Educational Benefits
+- **Active learning**: Students must think through the pathway themselves
+- **Problem-solving**: Encourages anatomical reasoning rather than rote memorization
+- **Reduced cheating potential**: Can't just keep submitting until the error message tells you the answer
+- **Better retention**: Students who figure it out themselves remember it better
+
+### Technical Considerations
+- Modify error message generation in `pathway-validator.js` lines 357-389
+- Remove vessel name suggestions from error messages
+- Keep directional hints (artery vs vein, toward vs away from heart)
+- Consider adding a "Show Hint" button that students can optionally click for more specific guidance
+
+### Implementation Priority
+Medium - Improves learning outcomes but doesn't block functionality
+
+---
+
+## Pathway Quiz: Preserve Correct Answers on "Try Again"
+
+**Status:** ✅ Implemented
+**Location:** Pathway mini quiz (`pathway-mini-quiz.html`)
+**Completed:** 2025-10-24
+
+### Description
+When a student gets a pathway question wrong and clicks "Try Again", the input fields preserve the vessels that were correct, allowing them to fix only the part of the pathway where they made a mistake.
+
+### Implemented Features
+- Preserves all correctly validated vessels in their input fields (green styling, read-only)
+- Clears only the fields after the first error
+- Students can continue from where they went wrong
+- Auto-focuses cursor on the first editable field
+- Remove buttons hidden for preserved vessels
+- Full dark mode support for preserved inputs
 
 ### Example Scenario
 **Student's Answer:**

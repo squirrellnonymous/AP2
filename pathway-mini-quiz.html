@@ -255,6 +255,17 @@
             background-color: #0f172a;
             color: #cbd5e1;
         }
+
+        /* Preserved correct answers in "Try Again" mode */
+        .pathway-input[readonly] {
+            cursor: not-allowed;
+        }
+
+        body.dark-mode .pathway-input[readonly] {
+            background-color: #064e3b !important;
+            border-color: #10b981 !important;
+            color: #6ee7b7 !important;
+        }
     </style>
 </head>
 <body>
@@ -300,6 +311,7 @@
     <script src="js/pathway-validator.js"></script>
     <script>
         let currentQuestion = null;
+        let lastValidation = null;  // Store validation results for "Try Again"
 
         // Dark mode
         const darkModeToggle = document.getElementById('dark-mode-toggle');
@@ -438,6 +450,7 @@
                 currentQuestion.validEndVessels
             );
 
+            lastValidation = validation;  // Store for "Try Again"
             displayResults(pathway, validation);
         }
 
@@ -446,8 +459,10 @@
                 ? Math.round((validation.score / validation.maxScore) * 100)
                 : 0;
 
+            // Format score to 1 decimal place
+            const scoreDisplay = validation.score.toFixed(1);
             document.getElementById('score').textContent =
-                `Score: ${validation.score}/${validation.maxScore} (${percentage}%)`;
+                `Score: ${scoreDisplay}/2 pts (${percentage}%)`;
 
             // Build visual pathway with check/x/half marks
             let pathwayHTML = '';
@@ -558,16 +573,81 @@
 
         function tryAgain() {
             document.getElementById('results').classList.remove('show');
+
+            // IMPORTANT: Get the original pathway BEFORE clearing inputs
+            const originalPathway = getPathway();
+
+            // Now clear the inputs
             document.getElementById('pathway-inputs').innerHTML = '';
 
             // Show add and submit buttons again
             document.querySelector('.add-vessel-btn').style.display = 'inline-block';
             document.querySelector('.submit-btn').style.display = 'block';
 
-            addPathwayInput();
-            addPathwayInput();
-            addPathwayInput();
-            document.querySelector('.pathway-input').focus();
+            // If we have validation results, preserve correct vessels
+            if (lastValidation && lastValidation.feedback && lastValidation.feedback.length > 0) {
+                // Find the first error (invalid or partial)
+                let firstErrorIndex = -1;
+                for (let i = 0; i < lastValidation.feedback.length; i++) {
+                    const fb = lastValidation.feedback[i];
+                    if (fb.type.includes('invalid')) {
+                        firstErrorIndex = i;
+                        break;
+                    }
+                }
+
+                // If pathway was perfect or we didn't find an error, just clear everything
+                if (firstErrorIndex === -1) {
+                    addPathwayInput();
+                    addPathwayInput();
+                    addPathwayInput();
+                } else {
+                    // Add inputs for correct vessels (preserve them)
+                    for (let i = 0; i < firstErrorIndex; i++) {
+                        if (i < originalPathway.length) {
+                            const value = originalPathway[i];
+                            addPathwayInput(value);
+
+                            // Make the input look correct (green) and read-only
+                            const rows = document.querySelectorAll('.pathway-input-row');
+                            const row = rows[i];
+                            const input = row.querySelector('.pathway-input');
+                            const removeBtn = row.querySelector('.remove-vessel-btn');
+
+                            input.style.borderColor = '#27ae60';
+                            input.style.backgroundColor = '#d5f4e6';
+                            input.style.color = '#27ae60';
+                            input.readOnly = true;
+                            input.style.cursor = 'not-allowed';
+
+                            // Hide remove button for preserved vessels
+                            removeBtn.style.display = 'none';
+                        }
+                    }
+
+                    // Add one empty input for the student to fix the error
+                    addPathwayInput();
+
+                    // Add two more empty inputs
+                    addPathwayInput();
+                    addPathwayInput();
+                }
+
+                // Focus on the first editable input
+                const allInputs = document.querySelectorAll('.pathway-input');
+                for (let input of allInputs) {
+                    if (!input.readOnly) {
+                        input.focus();
+                        break;
+                    }
+                }
+            } else {
+                // No validation results, just start fresh
+                addPathwayInput();
+                addPathwayInput();
+                addPathwayInput();
+                document.querySelector('.pathway-input').focus();
+            }
         }
 
         window.addEventListener('DOMContentLoaded', init);

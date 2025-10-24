@@ -1,5 +1,171 @@
 # Release Notes
 
+## October 24, 2025 - Pathway Quiz Data and Logic Fixes
+
+### 🐛 Bug Fixes and Data Corrections
+
+**Files Updated:** `js/pathway-validator.js`, `js/fuzzy-matcher.js`, `data/vessel-connections.yml`, `data/pathway-questions.yml`, `pathway-mini-quiz.html`
+
+Fixed various data errors and logic issues in the vessels pathway quiz to improve accuracy and reliability of pathway validation.
+
+### 📝 Documentation Workflow Improvement
+
+**File Updated:** `CLAUDE.md`
+
+Added a workflow section establishing documentation as a required final step when implementing features or fixing bugs. This ensures work is documented incrementally throughout sessions, avoiding large context usage at the end of sessions when trying to reconstruct what was done.
+
+---
+
+## October 24, 2025 - Pathway Quiz Major Improvements
+
+### 🎯 Pathway Validator Enhancements
+
+Significantly improved the pathway mini quiz grading and feedback system with better error messages and scoring.
+
+**Files Updated:** `js/pathway-validator.js`, `js/fuzzy-matcher.js`, `data/vessel-connections.yml`, `data/pathway-questions.yml` (image paths)
+
+#### Grading System: Always 2 Points Maximum
+
+**2-Point Scoring System**
+- All pathway questions now scaled to exactly **2.0 points maximum**
+- Proportional scoring based on pathway length
+- Examples:
+  - 5-vessel pathway with all correct = 6 raw points → **2.0/2.0 points** (100%)
+  - 5-vessel pathway with 1 typo = 5.5 raw points → **1.8/2.0 points** (92%)
+  - 10-vessel pathway with all correct = 11 raw points → **2.0/2.0 points** (100%)
+  - 10-vessel pathway with 2 typos = 10 raw points → **1.8/2.0 points** (91%)
+- Maintains proportional partial credit for typos (-0.5 per misspelling)
+- Zero points if pathway is fundamentally wrong (skipped vessel, wrong connection)
+
+**Implementation**
+- Raw score calculation: 1 point per vessel + 0.5 for typos + 1 for reaching endpoint
+- Scaling factor: `2.0 / rawMaxScore`
+- Final score rounded to 1 decimal place
+- Display: "Score: 1.8/2 pts (90%)"
+
+#### Error Messages: No More Answer Giveaways
+
+**Problem Fixed**
+- Error messages were revealing the correct answers
+- Students could keep guessing until the hint told them what to add
+- Reduced learning opportunity and critical thinking
+
+**New Error Messages**
+
+1. **Invalid vessel name** ✅ (NEW)
+   - Before: Listed all valid connections
+   - Now: `"{vessel}" is not a blood vessel. Check the name and try again."`
+   - Example: `"left posterior popliteal artery" is not a blood vessel. Check the name and try again.`
+
+2. **Skipped vessel** ✅ (IMPROVED)
+   - Before: `You skipped "right external iliac artery".`
+   - Now: `"right femoral artery" doesn't connect directly to "right common iliac artery". You skipped an artery. Check the connection and try again.`
+   - Tells students they're close without revealing which vessel was skipped
+
+3. **Wrong vessel type** ✅ (unchanged - already good)
+   - Message: `"{vessel}" is a vein, not an artery."`
+   - Educational feedback for common confusion
+
+4. **Vessel doesn't connect** ✅ (IMPROVED)
+   - Before: `Try going through the left popliteal artery next.`
+   - Before: `From "X", you can go to "Y", "Z".`
+   - Now: `"{currentNode}" doesn't connect to "{nextNode}". Check the connection and try again."`
+   - No longer reveals valid next vessels
+
+**Educational Benefits**
+- Students must think through anatomy themselves
+- Active learning and problem-solving encouraged
+- Better retention when students figure it out
+- Reduced "guess until hint tells you" strategy
+
+#### Fuzzy Matcher: Distinct Vessel Names
+
+**Enhanced Medical Opposites List**
+- Added comprehensive vessel-specific anatomical terms that should NEVER be considered similar
+- Prevents false matches like "radial" ≈ "brachial"
+
+**New Anatomical Term Pairs (66 new entries)**
+- **Arm/Upper Limb**: radial ≠ ulnar ≠ brachial ≠ axillary
+- **Arm Veins**: basilic ≠ cephalic ≠ cubital
+- **Leg/Lower Limb**: femoral ≠ popliteal ≠ tibial ≠ fibular
+- **Leg Veins**: saphenous ≠ femoral ≠ popliteal ≠ tibial
+- **Head/Neck**: carotid ≠ subclavian ≠ jugular ≠ vertebral
+- **Abdomen**: celiac ≠ mesenteric ≠ renal, hepatic ≠ splenic ≠ gastric
+- **Brain**: cerebral ≠ cerebellar ≠ basilar
+
+**How It Works**
+- Before calculating similarity, checks if vessel names are in opposites list
+- If found: Returns 0 (zero credit) immediately
+- No partial credit for completely different vessels
+- Example: "radial artery" vs "brachial artery" → 0 points (not 0.5)
+
+#### Vessel Connection Updates
+
+**Great Saphenous Vein Shortcut**
+- Added direct connection: great saphenous vein → external iliac vein
+- Allows skipping common femoral vein
+- Applies to both right and left sides
+- More anatomically flexible pathway validation
+
+**Data File Updates**
+- `data/vessel-connections.yml`: Added saphenous vein shortcuts with comments
+- `data/pathway-questions.yml`: Fixed image paths for consistency
+
+### 🔄 "Try Again" Feature: Preserve Correct Answers
+
+**Status:** ✅ Implemented
+
+**Description**
+When students click "Try Again" after getting a pathway wrong, the correct vessels are preserved so they can continue from where they made a mistake.
+
+**Features Implemented**
+- Preserves all correctly validated vessels (green styling, read-only)
+- Clears only fields after the first error
+- Auto-focuses cursor on first editable field
+- Remove buttons hidden for preserved vessels
+- Full dark mode support for preserved inputs (emerald green backgrounds)
+
+**How It Works**
+1. Captures original pathway BEFORE clearing inputs (bug fix)
+2. Finds first error in validation feedback
+3. Re-creates input fields up to error point with correct values
+4. Marks preserved fields as read-only with green styling
+5. Adds empty fields for student to fix error and continue
+
+**Example**
+- Student enters: aorta ✓, descending aorta ✓, left common iliac ✓, femoral artery ✗
+- "Try Again" preserves: aorta, descending aorta, left common iliac (green, locked)
+- Cursor focuses on field 4 (empty, editable)
+- Student adds missing "left external iliac artery" and continues
+
+**Educational Benefits**
+- Productive failure - learn from mistakes without losing progress
+- Scaffolding - correct portions provide foundation
+- Reduced frustration - don't re-type correct vessels
+- Faster iteration - quick retry cycles improve learning
+
+#### Bug Fixes
+
+**"Try Again" Clear Bug Fixed**
+- Problem: Calling `getPathway()` after clearing inputs returned empty array
+- Solution: Capture pathway BEFORE clearing `innerHTML`
+- Now correctly preserves vessels when retrying
+
+### 📝 Documentation Updates
+
+**Updated `docs/features-and-bugs.md`**
+- Marked "Preserve Correct Answers on Try Again" as ✅ Implemented (completed 2025-10-24)
+- Added new feature request: "Pathway Validator: Improve Error Messages to Not Give Away Answers"
+  - Status: ✅ Implemented (completed same session)
+  - Documented all error message improvements
+  - Listed educational benefits and technical considerations
+
+**Image Path Corrections**
+- User updated some incorrectly linked images in pathway question data
+- Fixed image references for consistency
+
+---
+
 ## October 18, 2025 - Flashcard Image Loading Fix & Blood Vessels Content
 
 ### 🐛 Fixed Flashcard Image Loading Flash

@@ -6,7 +6,7 @@ questions:
   - id: 200
     type: "pathway"
     image: "practical-2-2/200.jpg"
-    question: "How would blood get from the heart **to the right hand**?"
+    question: "How would blood get from the heart to the right hand?"
     answer: "pathway"
     direction: "arterial"
     validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
@@ -17,7 +17,7 @@ questions:
   - id: 201
     type: "pathway"
     image: "practical-2-2/201.jpg"
-    question: "How would blood get from the heart **to the left hand**?"
+    question: "How would blood get from the heart to the left hand?"
     answer: "pathway"
     direction: "arterial"
     validStartVessels: ["aorta", "ascending aorta", "heart", "left ventricle"]
@@ -60,7 +60,7 @@ questions:
 
   - id: 205
     type: "pathway"
-    image: "practical-2-2/201.jpg"
+    image: "practical-2-2/205.jpg"
     question: "How would blood get from the left hand to the heart?"
     answer: "pathway"
     direction: "venous"

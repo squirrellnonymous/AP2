@@ -357,6 +357,7 @@ venous:
 
   "right great saphenous vein":
     - "right femoral vein"
+    - "right external iliac vein"  # shortcut (via common femoral vein)
 
   "right small saphenous vein":
     - "right popliteal vein"
@@ -383,6 +384,7 @@ venous:
 
   "left great saphenous vein":
     - "left femoral vein"
+    - "left external iliac vein"  # shortcut (via common femoral vein)
 
   "left small saphenous vein":
     - "left popliteal vein"

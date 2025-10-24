@@ -357,34 +357,29 @@ class PathwayValidator {
                 let message = '';
 
                 if (skippedVessel) {
-                    message = `You skipped "${skippedVessel}".`;
+                    // Don't reveal which vessel was skipped - make them figure it out
+                    const vesselType = treeType === 'arterial' ? 'artery' : 'vein';
+                    message = `"${nextNode}" doesn't connect directly to "${currentNode}". You skipped ${vesselType === 'artery' ? 'an artery' : 'a vein'}. Check the connection and try again.`;
                 } else {
-                    // Check if they might have confused artery/vein
+                    // Check if the vessel name is valid at all in either tree
                     const oppositeTree = treeType === 'arterial' ? 'venous' : 'arterial';
-                    if (this.isValidNode(nextNode, oppositeTree)) {
+                    const isValidInCurrentTree = this.isValidNode(nextNode, treeType);
+                    const isValidInOppositeTree = this.isValidNode(nextNode, oppositeTree);
+
+                    if (!isValidInCurrentTree && !isValidInOppositeTree) {
+                        // Vessel doesn't exist in either tree - probably a made-up or misspelled name
+                        message = `"${nextNode}" is not a blood vessel. Check the name and try again.`;
+                    } else if (isValidInOppositeTree) {
+                        // Check if they might have confused artery/vein
                         const vesselType = treeType === 'arterial' ? 'artery' : 'vein';
                         const wrongType = treeType === 'arterial' ? 'vein' : 'artery';
                         message = `"${nextNode}" is a ${wrongType}, not an ${vesselType}.`;
-                    } else if (currentConnections && currentConnections.length > 0 && validEndNodes.length > 0) {
-                        // Filter to only show vessels that lead to the target endpoints
-                        const vesselsTowardsTarget = currentConnections.filter(vessel =>
-                            this.canReachTarget(vessel, validEndNodes, treeType)
-                        );
-
-                        if (vesselsTowardsTarget.length > 0) {
-                            // Only show the first vessel that leads to target (the immediate next step)
-                            message = `The ${nextNode} doesn't connect directly to the ${currentNode}. Try going through the ${vesselsTowardsTarget[0]} next.`;
-                        } else {
-                            // Fallback: show all if none lead to target (shouldn't happen in valid pathway)
-                            const validOptions = currentConnections.join('", "');
-                            message = `"${nextNode}" doesn't connect to "${currentNode}". From "${currentNode}", you can go to "${validOptions}".`;
-                        }
                     } else if (currentConnections && currentConnections.length > 0) {
-                        // No target specified, show all options
-                        const validOptions = currentConnections.join('", "');
-                        message = `"${nextNode}" doesn't connect to "${currentNode}". From "${currentNode}", you can go to "${validOptions}".`;
+                        // Vessel doesn't connect - don't give away the answer
+                        message = `"${currentNode}" doesn't connect to "${nextNode}". Check the connection and try again.`;
                     } else {
-                        message = `"${nextNode}" does not connect to ${currentNode}.`;
+                        // Current vessel has no outgoing connections (is an endpoint)
+                        message = `"${currentNode}" doesn't connect to "${nextNode}". Check the connection and try again.`;
                     }
                 }
 
@@ -458,8 +453,13 @@ class PathwayValidator {
             }
         }
 
-        // Calculate max score (1 point per vessel + 1 for reaching valid endpoint)
-        results.maxScore = results.totalSteps + 1;
+        // Calculate raw max score (1 point per vessel + 1 for reaching valid endpoint)
+        const rawMaxScore = results.totalSteps + 1;
+
+        // Scale to 2 points maximum for pathway questions
+        const scalingFactor = 2.0 / rawMaxScore;
+        results.score = Math.round(results.score * scalingFactor * 10) / 10; // Round to 1 decimal place
+        results.maxScore = 2.0;
 
         return results;
     }
