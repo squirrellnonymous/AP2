@@ -1,5 +1,101 @@
 # Release Notes
 
+## October 25, 2025 - Code Refactoring: Shared Modules for DRY Principle
+
+### 🔧 Major Refactoring: Shared Question Logic Modules
+
+Completed **Step 2** of project streamlining by extracting shared code between mini quiz builder and practice practicals into reusable modules.
+
+**Files Created:**
+- `js/answer-checker.js` - Shared answer normalization and grading logic
+- `js/question-renderer.js` - Shared rendering utilities and helpers
+
+**Files Updated:**
+- `mini-quiz-builder.html` - Now uses shared modules
+- `practical-template.html` - Now uses shared modules
+
+#### New Shared Modules
+
+**`js/answer-checker.js`** - Answer Validation & Grading
+- `normalizeAnswer()` - Removes articles, handles plurals, converts Roman numerals
+- `getLevenshteinDistance()` - Calculates edit distance between strings
+- `getSimilarityScore()` - Determines similarity percentage for partial credit
+- `hasConflictingAnatomicalTerms()` - Detects opposite anatomical terms (left/right, etc.)
+- `checkAnswer()` - Main grading function with configurable partial credit threshold
+- `getResultType()` - Returns 'correct', 'partial', 'incorrect', or 'unanswered'
+
+**`js/question-renderer.js`** - Rendering Utilities
+- `getTextOnlyThemeClass()` - Returns theme class for text-only questions
+- `shuffleArray()` - Fisher-Yates shuffle algorithm
+- `renderQuestion()` - Renders image or text-only questions
+- `createAnswerItem()` - Creates answer sheet item elements
+- `updateNavigationButtons()` - Updates prev/next button states
+- `updateQuestionCounter()` - Updates question counter display
+- `highlightActiveAnswer()` - Highlights active answer in answer sheet
+- `handleArrowKeyNavigation()` - Smart arrow key navigation (cursor position aware)
+- `preloadImage()` - Preloads images for smoother navigation
+
+#### Benefits
+
+**DRY Principle Achieved**
+- ~200 lines of duplicated code eliminated
+- Single source of truth for answer checking logic
+- Consistent behavior across all quiz/practical features
+- Bug fixes apply to all tools automatically
+
+**Code Quality Improvements**
+- Modular, testable functions
+- Clear separation of concerns
+- Reusable across future features
+- Well-documented function signatures
+
+**UX Consistency**
+- Identical grading logic in mini quizzes and practicals
+- Same partial credit thresholds
+- Consistent keyboard navigation behavior
+- Matching visual feedback patterns
+
+#### UX Enhancement: Two-Column Answer Sheet
+
+Updated mini quiz builder to use the same two-column answer sheet layout as practice practicals:
+- Questions 1-2 in left column
+- Questions 3-4 in right column
+- Numbers read down first column, then second column
+- Consistent visual layout across all quiz tools
+
+#### Technical Implementation
+
+**Module Loading Strategy**
+- Modules loaded via `<script>` tags before main application code
+- Practical template uses dynamic script loading for dependency management
+- Functions available globally for easy use across tools
+
+**Backward Compatibility**
+- No breaking changes to existing functionality
+- All features continue to work as before
+- Improved code maintainability for future development
+
+#### Files Now Using Shared Modules
+
+**Mini Quiz Builder** (`mini-quiz-builder.html`)
+- Uses `js/answer-checker.js` for grading
+- Uses `js/question-renderer.js` for utilities
+- Uses `js/question-modal.js` for review modals (already shared)
+
+**Practice Practicals** (`practical-template.html`)
+- Uses `js/answer-checker.js` for grading (including extra credit)
+- Uses `js/question-renderer.js` for utilities
+- Uses `js/question-modal.js` for review modals (already shared)
+
+#### Next Steps
+
+**Step 3: Standardize Flashcard Decks** (docs/streamline.md)
+- Create single `flashcard-template.html` with URL parameters
+- Consolidate 4+ flashcard files into one template
+- Further reduce code duplication
+
+---
+
 ## October 24, 2025 - Pathway Quiz Data and Logic Fixes
 
 ### 🐛 Bug Fixes and Data Corrections

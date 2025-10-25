@@ -14,6 +14,9 @@ balanced_tag_pairs:
 # - Image questions: Start at id: 1 (01, 02, 03, etc.)
 # - Text-only questions: Start at id: 100 (100, 101, 102, etc.)
 
+  # ============================================================================
+  # Image Based Questions
+
 questions:
   - id: 1
     image: "practical4/01.jpg"
@@ -43,12 +46,37 @@ questions:
     definition: ""
     tags: ["unit3", "respiratory", "lungs"]
 
+  - id: 5
+    image: "practical4/05.jpg"
+    question: "What is the region?"
+    answer: ["pharynx"]
+    definition: ""
+    tags: ["unit3", "respiratory", "lab-packet-pg1"]
+
+  - id: 6
+    image: "practical4/06.jpg"
+    question: "Which part of the respiratory system is this in? (upper or lower?)"
+    answer: ["lower", "lower respiratory system"]
+    definition: "The larynx marks the beginning of the lower respiratory system."
+    tags: ["unit3", "respiratory", "lab-packet-pg1"]
+
+  - id: 7
+    image: "practical4/07.jpg"
+    question: "What are these two structures?"
+    answer: ["alveoli"]
+    definition: "Grape-like clusters where gas exchange occurs."
+    tags: ["unit3", "respiratory", "lab-packet-pg1"]
+
+  - id: 8
+    image: "practical4/08.jpg"
+    question: "What is the structure?"
+    answer: ["diaphragm"]
+    definition: "The major muscle of breathing."
+    tags: ["unit3", "respiratory", "lab-packet-pg1"]
 
 
   # ============================================================================
-
-
-  # Text Only Questions (themed with colors)
+  # Text Only Questions (separated to keep image numbers intuitive)
 
   - id: 100
     question: "What type of epithelial tissue lines the trachea?"

@@ -43,49 +43,71 @@ The project centers around 3 (actually 4) learning tools:
 
 ## **Streamlining Options**
 
-### **Step 1: Consolidate Templates**
+### **Step 1: Consolidate Templates** ✅ **COMPLETED (Oct 2025)**
 
 **Problem:** You have separate HTML files for every practical/exam/flashcard set
 - `unit1-practical.html`, `unit2-practical.html`, `unit2-part2-practical.html`, `unit3-practical4.html`
 
 **Solution:** Single `practical-template.html` that loads data based on URL parameter
 ```
-practical-template.html?unit=unit1
-practical-template.html?unit=unit2-part2
+practical-template.html?unit=unit1-practical
+practical-template.html?unit=unit2-part2-practical
 ```
+
+**Status: COMPLETED**
+- Created `practical-template.html` as universal template
+- Updated all index.html links to use URL parameters
+- Dynamically loads title and metadata from YAML files
+- Old individual practical files can be archived when ready
+
+**Implementation Details:**
+- Template uses URL parameter `?unit=` to specify YAML file
+- Page title and header updated from YAML `title` field
+- Defaults to `unit3-practical4` if no parameter provided
+- All existing practicals now use single template
 
 **Benefits:**
 - One file to maintain instead of 4+
 - Bug fixes apply everywhere instantly
 - Easier to add new units
 
-**Drawbacks:**
-- Requires refactoring all HTML files
-- URL parameters may be less intuitive than separate files
-
 ---
 
-### **Step 2: Share Code Between Mini Quiz and Practicals**
+### **Step 2: Share Code Between Mini Quiz and Practicals** ✅ **COMPLETED (Oct 25, 2025)**
 
 **Decision:** Mini quiz builder stays as separate tool (essential for weekly quiz prep), but should share code with practicals.
 
-**What to share:**
-- Core question logic and rendering
-- Styling (CSS)
-- Modal review system (already using `js/question-modal.js`)
-- Answer checking and feedback mechanisms
-- Tag filtering and question selection logic
+**Status: COMPLETED**
+- Mini quiz builder now uses URL parameters (`mini-quiz-builder.html?unit=unit3-practical4`)
+- Shares modal review system (`js/question-modal.js`) ✅
+- Shares CSS styling (`css/shared.css` for tags, buttons, etc.) ✅
+- Shares answer checking/normalization (`js/answer-checker.js`) ✅ NEW
+- Shares rendering utilities (`js/question-renderer.js`) ✅ NEW
+- Each tool maintains separate HTML file for dedicated workflow ✅
+
+**New Shared Modules Created:**
+- `js/answer-checker.js` - Answer normalization, Levenshtein distance, partial credit grading
+- `js/question-renderer.js` - Theme helpers, shuffle, navigation, preloading, arrow key handling
+
+**What is now shared:**
+- Core question logic and rendering ✅
+- Styling (CSS) ✅
+- Modal review system ✅ (`js/question-modal.js`)
+- Answer checking and feedback mechanisms ✅
+- Navigation and keyboard handling ✅
 
 **What stays different:**
-- Separate HTML file for dedicated workflow
-- UI optimized for quick 4-question practice
-- Different configuration/entry point
+- Separate HTML file for dedicated workflow ✅
+- UI optimized for quick 4-question practice ✅
+- Different configuration/entry point ✅
+- Two-column answer sheet layout (1-2 left, 3-4 right) ✅
 
 **Benefits:**
-- Maintains dedicated tool for weekly quiz prep
-- Eliminates code duplication
-- Bug fixes apply to both tools
-- Consistent UX between mini-quizzes and practicals
+- Maintains dedicated tool for weekly quiz prep ✅
+- Eliminates ~200 lines of code duplication ✅
+- Bug fixes apply to both tools automatically ✅
+- Consistent UX between mini-quizzes and practicals ✅
+- Single source of truth for grading logic ✅
 
 ---
 
