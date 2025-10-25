@@ -613,6 +613,11 @@
             const shuffled = shuffleArray(matchingQuestions);
             quizQuestions = shuffled.slice(0, 4);
 
+            // Update URL with selected tags (so reload regenerates quiz with same tags)
+            const tagsParam = Array.from(selectedTags).join(',');
+            const newUrl = `${window.location.pathname}?tags=${encodeURIComponent(tagsParam)}`;
+            window.history.replaceState({}, '', newUrl);
+
             // Hide builder, show quiz
             document.getElementById('quiz-builder').classList.add('quiz-hidden');
             document.getElementById('quiz-interface').classList.remove('quiz-hidden');
