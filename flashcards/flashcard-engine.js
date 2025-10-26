@@ -37,25 +37,12 @@ function getPracticalParams() {
     const source = urlParams.get('source');
     const returnUrl = urlParams.get('returnUrl');
 
-    // Update back link - prefer returnUrl if provided, otherwise use legacy source-based logic
+    // Update back link if returnUrl is provided
     const backLink = document.getElementById('back-link');
-    if (backLink) {
-        if (returnUrl) {
-            // Use the provided return URL
-            backLink.href = decodeURIComponent(returnUrl);
-        } else {
-            // Legacy fallback - use source-based logic
-            if (source === 'practical-2-2') {
-                backLink.href = '../unit2-part2-flashcards.html';
-            } else if (source === 'lecture-topics') {
-                backLink.href = '../unit2-lecture-flashcards.html';
-            } else if (source === 'practical-2') {
-                backLink.href = '../unit2-flashcards.html';
-            } else if (source === 'unit3-practical4') {
-                backLink.href = '../unit3-flashcards.html';
-            }
-        }
+    if (backLink && returnUrl) {
+        backLink.href = decodeURIComponent(returnUrl);
     }
+    // Otherwise keep default back link (Home)
 
     return {
         source: source,
