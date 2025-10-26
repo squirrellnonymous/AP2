@@ -1,0 +1,33 @@
+title: "Unit 3 Flashcard Decks"
+description: "Respiratory, Renal, and Acid/Base Study Decks"
+
+sections:
+  - name: "🫁 Respiratory System Flashcards"
+    decks:
+      - id: "respiratory-all"
+        title: "🫁 All Respiratory"
+        description: "Complete respiratory system deck - lungs, airways, gas exchange structures"
+        source: "unit3-practical4"
+        tags: ["respiratory"]
+
+      - id: "lungs"
+        title: "💨 Lungs"
+        description: "Lung anatomy and structures"
+        source: "unit3-practical4"
+        tags: ["lungs"]
+
+  - name: "🩺 Renal System Flashcards"
+    decks:
+      - id: "renal-all"
+        title: "🩺 All Renal"
+        description: "Complete renal system deck - kidneys, nephrons, filtration"
+        source: "unit3-practical4"
+        tags: ["renal"]
+
+  - name: "⚗️ Acid/Base Flashcards"
+    decks:
+      - id: "acid-base"
+        title: "⚗️ Acid/Base Balance"
+        description: "Acid-base physiology and regulation"
+        source: "unit3-practical4"
+        tags: ["acid-base"]

@@ -35,8 +35,8 @@ questions:
   - id: 3
     image: "practical4/03.jpg"
     question: "Name the structures."
-    answer: ["primary bronchi", "left and right primary bronchi"]
-    definition: ""
+    answer: ["main bronchi", "primary bronchi", "left and right primary bronchi", "left and right main bronchi"]
+    definition: "These are the \"main bronchi\" or \"primary bronchi\", ...you should know both names (main and primary)."
     tags: ["unit3", "respiratory", "lungs"]
 
   - id: 4
@@ -50,21 +50,21 @@ questions:
     image: "practical4/05.jpg"
     question: "What is the region?"
     answer: ["pharynx"]
-    definition: ""
+    definition: "The pharynx marks the bottom of the upper respiratory system"
     tags: ["unit3", "respiratory", "lab-packet-pg1"]
 
   - id: 6
     image: "practical4/06.jpg"
-    question: "Which part of the respiratory system is this in? (upper or lower?)"
-    answer: ["lower", "lower respiratory system"]
-    definition: "The larynx marks the beginning of the lower respiratory system."
+    question: "What is the region?"
+    answer: ["larynx"]
+    definition: "The larynx is the area at the top of the lower respiratory system. It contains your voicebox"
     tags: ["unit3", "respiratory", "lab-packet-pg1"]
 
   - id: 7
     image: "practical4/07.jpg"
     question: "What are these two structures?"
-    answer: ["alveoli"]
-    definition: "Grape-like clusters where gas exchange occurs."
+    answer: ["bronchioles"]
+    definition: ""
     tags: ["unit3", "respiratory", "lab-packet-pg1"]
 
   - id: 8
@@ -74,14 +74,81 @@ questions:
     definition: "The major muscle of breathing."
     tags: ["unit3", "respiratory", "lab-packet-pg1"]
 
+  - id: 9
+    image: "practical4/09.jpg"
+    question: "What are the three structures (plural)?"
+    answer: ["the nasal conchae", "nasal conchae", "conchae"]
+    definition: "The chonchae are the raised areas: the superior nasal choncha, the middle nasal concha, and the inferior nasal concha. Along with the nasal meatuses, they create turbulence that enables nasal breathing."
+    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+
+  - id: 10
+    image: "practical4/10.jpg"
+    question: "What is the structure? (note: ..pointing to the low area)"
+    answer: ["inferior nasal meatus"]
+    definition: "The low areas that accompany the nasal conchae that create turbulence that enables breathing."
+    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+
+  - id: 11
+    image: "practical4/11.jpg"
+    question: "What is the structure?"
+    answer: ["middle nasal concha"]
+    definition: ""
+    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+
+  - id: 12
+    image: "practical4/12.jpg"
+    question: "What specific region is this?"
+    answer: ["nasopharynx"]
+    definition: ""
+    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+
+  - id: 13
+    image: "practical4/13.jpg"
+    question: "What specific region is this?"
+    answer: ["oropharynx"]
+    definition: ""
+    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+
+  - id: 14
+    image: "practical4/14.jpg"
+    question: "What specific region is this?"
+    answer: ["laryngopharynx"]
+    definition: ""
+    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+
+  - id: 15
+    image: "practical4/15.jpg"
+    question: "What is the structure?"
+    answer: ["epiglottis"]
+    definition: "This important piece of cartilage covers your wind pipe (the trachea) when you swallow."
+    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+
+  - id: 16
+    image: "practical4/16.jpg"
+    question: "Where is this tissue found?"
+    answer: ["trachea"]
+    definition: "Pseudostratified columnar epithelial tissue lines the trachea."
+    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+
+
+
+# ================================================================================
+
+  #- id: ??
+    # image: "practical4/??.jpg"
+    # question: "What are these two structures?"
+    # answer: ["alveoli"]
+    # definition: "Grape-like clusters where gas exchange occurs."
+    # tags: ["unit3", "respiratory", "lab-packet-pg1"]
+
 
   # ============================================================================
   # Text Only Questions (separated to keep image numbers intuitive)
 
   - id: 100
     question: "What type of epithelial tissue lines the trachea?"
-    answer: ["pseudostratified columnar epithelial cells", "pseudostratified columnar epithelium", "pseudostratified columnar epi", "pseudostratified columnar epithelial"]
-    definition: "Endothelial cells are a special type of epithelial cell."
+    answer: ["pseudostratified columnar epi.", "pseudostratified columnar epithelial tissue", "pseudostratified columnar epithelium", "pseudostratified columnar epithelial"]
+    definition: "Pseudostratified columnar epithelial tissue has ciliated columnar cells that move particles and goblet cells that secrete mucous."
     theme: "pathology"
     tags: ["unit3", "respiratory", "tissue"]
 

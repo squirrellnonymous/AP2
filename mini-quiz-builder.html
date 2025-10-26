@@ -623,11 +623,15 @@
             document.getElementById('quiz-interface').classList.remove('quiz-hidden');
             document.getElementById('page-title').textContent = 'Mini Quiz';
 
-            // Update breadcrumbs
+            // Update breadcrumbs - preserve unit parameter if present
+            const urlParams = new URLSearchParams(window.location.search);
+            const unit = urlParams.get('unit');
+            const builderUrl = unit ? `mini-quiz-builder.html?unit=${encodeURIComponent(unit)}` : 'mini-quiz-builder.html';
+
             document.getElementById('breadcrumbs').innerHTML = `
                 <a href="index.html">Home</a>
                 <span class="separator">›</span>
-                <a href="mini-quiz-builder.html">Mini Quizzes</a>
+                <a href="${builderUrl}">Mini Quizzes</a>
             `;
 
             // Update share URL

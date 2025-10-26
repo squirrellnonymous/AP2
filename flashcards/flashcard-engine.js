@@ -35,16 +35,25 @@ function getFlashcardSet() {
 function getPracticalParams() {
     const urlParams = new URLSearchParams(window.location.search);
     const source = urlParams.get('source');
+    const returnUrl = urlParams.get('returnUrl');
 
-    // Update back link based on source
+    // Update back link - prefer returnUrl if provided, otherwise use legacy source-based logic
     const backLink = document.getElementById('back-link');
     if (backLink) {
-        if (source === 'practical-2-2') {
-            backLink.href = '../unit2-part2-flashcards.html';
-        } else if (source === 'lecture-topics') {
-            backLink.href = '../unit2-lecture-flashcards.html';
-        } else if (source === 'practical-2') {
-            backLink.href = '../unit2-flashcards.html';
+        if (returnUrl) {
+            // Use the provided return URL
+            backLink.href = decodeURIComponent(returnUrl);
+        } else {
+            // Legacy fallback - use source-based logic
+            if (source === 'practical-2-2') {
+                backLink.href = '../unit2-part2-flashcards.html';
+            } else if (source === 'lecture-topics') {
+                backLink.href = '../unit2-lecture-flashcards.html';
+            } else if (source === 'practical-2') {
+                backLink.href = '../unit2-flashcards.html';
+            } else if (source === 'unit3-practical4') {
+                backLink.href = '../unit3-flashcards.html';
+            }
         }
     }
 
@@ -288,6 +297,19 @@ async function loadFlashcards() {
 
         // Always shuffle on load
         shuffleCards();
+
+        // Preload first few images immediately to prevent flash on first card
+        for (let i = 0; i < Math.min(4, cards.length); i++) {
+            const card = cards[i];
+            if (card.image) {
+                const imagePath = `../images/${card.image}`;
+                const preloadImg = new Image();
+                preloadImg.onload = () => {
+                    preloadedImages.set(imagePath, preloadImg);
+                };
+                preloadImg.src = imagePath;
+            }
+        }
 
         // App already shown above, just hide progress
         const progressElement = document.getElementById('progress');
@@ -706,6 +728,12 @@ function swipeLeft() {
     cardElement.style.opacity = '0';
 
     setTimeout(() => {
+        // Set placeholder image FIRST to prevent flash of old image
+        const termImage = document.getElementById('term-image');
+        const loadingOverlay = document.getElementById('image-loading-overlay');
+        termImage.src = '../images/0.jpg';
+        loadingOverlay.style.display = 'block';
+
         // Reset position instantly, then advance to new card
         cardElement.style.transition = 'none';
         cardElement.style.transform = 'translateX(0) rotate(0deg)';
@@ -760,6 +788,12 @@ function swipeRight() {
     cardElement.style.opacity = '0';
 
     setTimeout(() => {
+        // Set placeholder image FIRST to prevent flash of old image
+        const termImage = document.getElementById('term-image');
+        const loadingOverlay = document.getElementById('image-loading-overlay');
+        termImage.src = '../images/0.jpg';
+        loadingOverlay.style.display = 'block';
+
         // Reset position instantly, then advance to new card
         cardElement.style.transition = 'none';
         cardElement.style.transform = 'translateX(0) rotate(0deg)';

@@ -1,0 +1,29 @@
+title: "Unit 2 Lecture Flashcard Decks"
+description: "Lecture Topics Study Decks"
+
+sections:
+  - name: "📚 Lecture Topics"
+    decks:
+      - id: "all-lecture"
+        title: "📝 All Lecture Topics"
+        description: "Complete set of flashcards covering blood, heart, and vessel lecture topics"
+        source: "lecture-topics"
+        tags: []
+
+      - id: "blood-lecture"
+        title: "🩸 Blood Topics"
+        description: "Plasma proteins, RBCs, blood types, clotting pathways"
+        source: "lecture-topics"
+        tags: ["blood"]
+
+      - id: "heart-lecture"
+        title: "🫀 Heart Topics"
+        description: "Cardiac cycle, electrophysiology, ECG, cardiac output"
+        source: "lecture-topics"
+        tags: ["heart"]
+
+      - id: "vessels-lecture"
+        title: "⭕️ Blood Vessel Topics"
+        description: "Capillary exchange, blood pressure, vasodilation/constriction"
+        source: "lecture-topics"
+        tags: ["vessels"]

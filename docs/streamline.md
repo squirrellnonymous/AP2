@@ -111,21 +111,45 @@ practical-template.html?unit=unit2-part2-practical
 
 ---
 
-### **Step 3: Standardize Flashcard Decks**
+### **Step 3: Standardize Flashcard Decks** ✅ **COMPLETED (Oct 25, 2025)**
 
-You have multiple flashcard HTML files:
+**Problem:** Multiple flashcard hub HTML files that are nearly identical:
 - `unit2-flashcards.html`
 - `unit2-part2-flashcards.html`
 - `unit2-lecture-flashcards.html`
 - `unit3-flashcards.html`
 
-**Solution:** Single `flashcard-template.html` with deck config loaded by URL parameter
+**Solution:** Single `flashcard-hub-template.html` with config loaded by URL parameter
 ```
-flashcard-template.html?deck=unit2-part2
+flashcard-hub-template.html?config=decks-config&source=unit2-practical&title=...&subtitle=...
+flashcard-hub-template.html?config=unit3-decks-config&source=unit3-practical4&title=...&subtitle=...
 ```
 
+**Status: COMPLETED**
+- Created `flashcard-hub-template.html` as universal flashcard hub
+- Updated all index.html links to use URL parameters
+- Dynamically loads deck configurations from YAML files
+- Dynamically loads page title and subtitle from URL parameters
+- Created config files for all flashcard hubs:
+  - `data/decks-config.yml` (Unit 2 practical flashcards)
+  - `data/lecture-decks-config.yml` (Unit 2 lecture flashcards)
+  - `data/practical-3-decks-config.yml` (Practical 3 blood vessels)
+  - `data/unit3-decks-config.yml` (Unit 3 respiratory/renal/acid-base)
+- Old individual flashcard hub files can be archived when ready
+
+**Implementation Details:**
+- Template uses URL parameters:
+  - `?config=` to specify which deck config YAML to load
+  - `?source=` to specify which YAML file for custom tag building
+  - `?title=` and `?subtitle=` for page headers
+- All deck definitions now in YAML config files
+- Unified dark mode and tag selection logic
+- Single codebase for all flashcard hubs
+
 **Benefits:**
-- One flashcard engine to maintain
-- Consistent UX across all decks
-- Easier to add new decks
+- One file to maintain instead of 4+
+- Bug fixes apply to all hubs instantly
+- Easier to add new flashcard collections
+- Consistent UX across all study modes
+- No code duplication
 
