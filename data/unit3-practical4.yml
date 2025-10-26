@@ -137,40 +137,40 @@ questions:
     definition: ""
     tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
 
-  # - id: 18
-  #   image: "practical4/18.jpg"
-  #   question: "What is the structure?"
-  #   answer: ["epiglottis"]
-  #   definition: ""
-  #   tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+  - id: 18
+    image: "practical4/18.jpg"
+    question: "What is the structure?"
+    answer: ["epiglottis"]
+    definition: ""
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
 
-  #- id: 19
-    # image: "practical4/19.jpg"
-    # question: "What is the structure?"
-    # answer: ["thyroid cartilage"]
-    # definition: ""
-    # tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+  - id: 19
+    image: "practical4/19.jpg"
+    question: "What is the structure?"
+    answer: ["thyroid cartilage"]
+    definition: ""
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
 
-  #- id: 20
-    # image: "practical4/20.jpg"
-    # question: "What is the structure?"
-    # answer: ["cricoid cartilage"]
-    # definition: ""
-    # tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+  - id: 20
+    image: "practical4/20.jpg"
+    question: "What is the structure?"
+    answer: ["cricoid cartilage"]
+    definition: ""
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
 
-  #- id: 21
-    # image: "practical4/21.jpg"
-    # question: "What is the structure?"
-    # answer: ["arytenoid cartilage"]
-    # definition: ""
-    # tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+  - id: 21
+    image: "practical4/21.jpg"
+    question: "What is the structure?"
+    answer: ["arytenoid cartilage"]
+    definition: ""
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
 
-  #- id: 22
-    # image: "practical4/22.jpg"
-    # question: "What is the structure?"
-    # answer: ["corniculate cartilage"]
-    # definition: ""
-    # tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+  - id: 22
+    image: "practical4/22.jpg"
+    question: "What is the structure?"
+    answer: ["corniculate cartilage"]
+    definition: ""
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
 
   #- id: 23
     # image: "practical4/23.jpg"
@@ -231,29 +231,15 @@ questions:
   #- id: 31
     # image: "practical4/31.jpg"
     # question: "What is the structure?"
-    # answer: ["superior lobe"]
-    # definition: ""
-    # tags: ["unit3", "respiratory", "resp-lab-packet-pg5"]
-
-  #- id: 32
-    # image: "practical4/32.jpg"
-    # question: "What is the structure?"
     # answer: ["middle lobe"]
     # definition: ""
     # tags: ["unit3", "respiratory", "resp-lab-packet-pg5"]
 
-  #- id: 33
-    # image: "practical4/33.jpg"
-    # question: "What is the structure?"
-    # answer: ["inferior lobe"]
-    # definition: ""
-    # tags: ["unit3", "respiratory", "resp-lab-packet-pg5"]
-
-  - id: 34
+  - id: 32
     image: "practical4/34.jpg"
     question: "What are the structures?"
     answer: ["alveoli"]
-    definition: "Grape-like clusters where gas exchange occurs."
+    definition: "Grape-like clusters where gas exchange occurs. Think of them as little bumpy balloons filled with alveolar air."
     tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
 
 
