@@ -451,9 +451,7 @@
                 sourceParam = 'unit3-practical4';
             }
 
-            // Get current page URL for the return link
-            const currentUrl = encodeURIComponent(window.location.href);
-            const url = `flashcards/flashcard-template.html?source=${sourceParam}&tags=${selectedTags.join(',')}&returnUrl=${currentUrl}`;
+            const url = `flashcards/flashcard-template.html?source=${sourceParam}&tags=${selectedTags.join(',')}`;
             window.location.href = url;
         });
 
@@ -561,11 +559,9 @@
         function createDeckHTML(deck) {
             const tagsString = deck.tags.join(',');
             const encodedTitle = encodeURIComponent(deck.title);
-            // Get current page URL for the return link
-            const currentUrl = encodeURIComponent(window.location.href);
             return `
                 <div class="deck-card">
-                    <a href="flashcards/flashcard-template.html?source=${deck.source}&tags=${tagsString}&title=${encodedTitle}&returnUrl=${currentUrl}" class="deck-link">
+                    <a href="flashcards/flashcard-template.html?source=${deck.source}&tags=${tagsString}&title=${encodedTitle}" class="deck-link">
                         <div class="deck-title">
                             ${deck.title}
                         </div>
@@ -577,7 +573,7 @@
                         </div>
                     </a>
                     <div class="quick-actions">
-                        <a href="flashcards/flashcard-template.html?source=${deck.source}&tags=${tagsString}&title=${encodedTitle}&returnUrl=${currentUrl}" class="action-btn primary">
+                        <a href="flashcards/flashcard-template.html?source=${deck.source}&tags=${tagsString}&title=${encodedTitle}" class="action-btn primary">
                             🚀 Start Review
                         </a>
                     </div>
