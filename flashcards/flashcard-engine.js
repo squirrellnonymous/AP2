@@ -37,12 +37,21 @@ function getPracticalParams() {
     const source = urlParams.get('source');
     const returnUrl = urlParams.get('returnUrl');
 
-    // Update back link if returnUrl is provided
+    // Update back link from returnUrl parameter or sessionStorage
     const backLink = document.getElementById('back-link');
-    if (backLink && returnUrl) {
-        backLink.href = decodeURIComponent(returnUrl);
+    if (backLink) {
+        if (returnUrl) {
+            // URL parameter takes precedence (for backwards compatibility)
+            backLink.href = decodeURIComponent(returnUrl);
+        } else {
+            // Check sessionStorage for return URL
+            const storedReturnUrl = sessionStorage.getItem('flashcardReturnUrl');
+            if (storedReturnUrl) {
+                backLink.href = storedReturnUrl;
+            }
+            // Otherwise keep default back link (Home)
+        }
     }
-    // Otherwise keep default back link (Home)
 
     return {
         source: source,

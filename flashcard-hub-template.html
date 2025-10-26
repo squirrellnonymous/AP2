@@ -451,6 +451,9 @@
                 sourceParam = 'unit3-practical4';
             }
 
+            // Store return URL in sessionStorage instead of URL parameter
+            sessionStorage.setItem('flashcardReturnUrl', window.location.href);
+
             const url = `flashcards/flashcard-template.html?source=${sourceParam}&tags=${selectedTags.join(',')}`;
             window.location.href = url;
         });
@@ -561,7 +564,7 @@
             const encodedTitle = encodeURIComponent(deck.title);
             return `
                 <div class="deck-card">
-                    <a href="flashcards/flashcard-template.html?source=${deck.source}&tags=${tagsString}&title=${encodedTitle}" class="deck-link">
+                    <a href="flashcards/flashcard-template.html?source=${deck.source}&tags=${tagsString}&title=${encodedTitle}" class="deck-link" onclick="sessionStorage.setItem('flashcardReturnUrl', window.location.href);">
                         <div class="deck-title">
                             ${deck.title}
                         </div>
@@ -573,7 +576,7 @@
                         </div>
                     </a>
                     <div class="quick-actions">
-                        <a href="flashcards/flashcard-template.html?source=${deck.source}&tags=${tagsString}&title=${encodedTitle}" class="action-btn primary">
+                        <a href="flashcards/flashcard-template.html?source=${deck.source}&tags=${tagsString}&title=${encodedTitle}" class="action-btn primary" onclick="sessionStorage.setItem('flashcardReturnUrl', window.location.href);">
                             🚀 Start Review
                         </a>
                     </div>
