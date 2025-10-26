@@ -401,12 +401,9 @@ function showCard() {
         termElement.classList.add('text-only-question-box', themeClass);
     }
 
-    // Immediately clear the previous image to prevent flash
+    // Get image element and overlay
     const termImage = document.getElementById('term-image');
     const loadingOverlay = document.getElementById('image-loading-overlay');
-    termImage.src = '../images/0.jpg';
-    termImage.alt = 'Loading...';
-    loadingOverlay.style.display = 'block';
 
     // Update content
     let termContent = card.term.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
@@ -424,18 +421,23 @@ function showCard() {
     document.getElementById('definition').innerHTML = definitionContent;
 
 
-    // Handle images - placeholder already set above
+    // Handle images
     if (card.image) {
         const imagePath = `../images/${card.image}`;
         termImage.classList.remove('hidden');
 
         // Check if image is already preloaded
         if (preloadedImages.has(imagePath)) {
-            // Use preloaded image immediately - no delay needed since image is already loaded
+            // Use preloaded image immediately - no placeholder flash needed
             termImage.src = preloadedImages.get(imagePath).src;
             termImage.alt = card.term;
             loadingOverlay.style.display = 'none'; // Hide loading overlay
         } else {
+            // Show placeholder and loading overlay while new image loads
+            termImage.src = '../images/0.jpg';
+            termImage.alt = 'Loading...';
+            loadingOverlay.style.display = 'block';
+
             // Create new image to load
             const newImg = new Image();
             newImg.onload = () => {
