@@ -51,77 +51,77 @@ questions:
     question: "What is the region?"
     answer: ["pharynx"]
     definition: "The pharynx marks the bottom of the upper respiratory system"
-    tags: ["unit3", "respiratory", "lab-packet-pg1"]
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
 
   - id: 6
     image: "practical4/06.jpg"
     question: "What is the region?"
     answer: ["larynx"]
     definition: "The larynx is the area at the top of the lower respiratory system. It contains your voicebox"
-    tags: ["unit3", "respiratory", "lab-packet-pg1"]
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
 
   - id: 7
     image: "practical4/07.jpg"
     question: "What are these two structures?"
     answer: ["bronchioles"]
     definition: ""
-    tags: ["unit3", "respiratory", "lab-packet-pg1"]
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
 
   - id: 8
     image: "practical4/08.jpg"
     question: "What is the structure?"
     answer: ["diaphragm"]
     definition: "The major muscle of breathing."
-    tags: ["unit3", "respiratory", "lab-packet-pg1"]
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
 
   - id: 9
     image: "practical4/09.jpg"
     question: "What are the three structures (plural)?"
     answer: ["the nasal conchae", "nasal conchae", "conchae", "superior, middle, and inferior nasal conchae"]
     definition: "The chonchae are the raised areas: the superior nasal choncha, the middle nasal concha, and the inferior nasal concha. Along with the nasal meatuses, they create turbulence that enables nasal breathing."
-    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
 
   - id: 10
     image: "practical4/10.jpg"
     question: "What is the structure? (note: ..pointing to the low area)"
     answer: ["inferior nasal meatus"]
     definition: "The low areas that accompany the nasal conchae that create turbulence that enables breathing."
-    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
 
   - id: 11
     image: "practical4/11.jpg"
     question: "What is the structure?"
     answer: ["middle nasal concha"]
     definition: ""
-    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
 
   - id: 12
     image: "practical4/12.jpg"
     question: "What specific region is this?"
     answer: ["nasopharynx"]
     definition: ""
-    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
 
   - id: 13
     image: "practical4/13.jpg"
     question: "What specific region is this?"
     answer: ["oropharynx"]
     definition: ""
-    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
 
   - id: 14
     image: "practical4/14.jpg"
     question: "What specific region is this?"
     answer: ["laryngopharynx"]
     definition: ""
-    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
 
   - id: 15
     image: "practical4/15.jpg"
     question: "What is the structure?"
     answer: ["epiglottis"]
     definition: "This important piece of cartilage covers your wind pipe (the trachea) when you swallow."
-    tags: ["unit3", "respiratory", "lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
 
   - id: 16
     image: "practical4/16.jpg"
@@ -135,7 +135,119 @@ questions:
     question: "What is the structure?"
     answer: ["hyoid bone"]
     definition: ""
-    tags: ["unit3", "respiratory", "lab-packet-pg3"]
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+
+  # - id: 18
+  #   image: "practical4/18.jpg"
+  #   question: "What is the structure?"
+  #   answer: ["epiglottis"]
+  #   definition: ""
+  #   tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+
+  #- id: 19
+    # image: "practical4/19.jpg"
+    # question: "What is the structure?"
+    # answer: ["thyroid cartilage"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+
+  #- id: 20
+    # image: "practical4/20.jpg"
+    # question: "What is the structure?"
+    # answer: ["cricoid cartilage"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+
+  #- id: 21
+    # image: "practical4/21.jpg"
+    # question: "What is the structure?"
+    # answer: ["arytenoid cartilage"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+
+  #- id: 22
+    # image: "practical4/22.jpg"
+    # question: "What is the structure?"
+    # answer: ["corniculate cartilage"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+
+  #- id: 23
+    # image: "practical4/23.jpg"
+    # question: "What is the structure?"
+    # answer: ["vestibular fold"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+
+  #- id: 24
+    # image: "practical4/24.jpg"
+    # question: "What is the structure?"
+    # answer: ["vocal fold"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+
+  #- id: 25
+    # image: "practical4/25.jpg"
+    # question: "What is the structure?"
+    # answer: ["epiglottis"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+
+  #- id: 26
+    # image: "practical4/26.jpg"
+    # question: "What is the structure?"
+    # answer: ["tracheal cartilage"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
+
+  #- id: 27
+    # image: "practical4/27.jpg"
+    # question: "What is the structure?"
+    # answer: ["carina"]
+    # definition: "The carina has special sensors that trigger the cough reflex when irritated."
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
+
+  #- id: 28
+    # image: "practical4/28.jpg"
+    # question: "What is the structure?"
+    # answer: ["main bronchus"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
+
+  #- id: 29
+    # image: "practical4/29.jpg"
+    # question: "What is the structure?"
+    # answer: ["lobar bronchus"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
+
+  #- id: 30
+    # image: "practical4/30.jpg"
+    # question: "What is the structure?"
+    # answer: ["segmental bronchus"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
+
+  #- id: 31
+    # image: "practical4/31.jpg"
+    # question: "What is the structure?"
+    # answer: ["superior lobe"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg5"]
+
+  #- id: 32
+    # image: "practical4/32.jpg"
+    # question: "What is the structure?"
+    # answer: ["middle lobe"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg5"]
+
+  #- id: 33
+    # image: "practical4/33.jpg"
+    # question: "What is the structure?"
+    # answer: ["inferior lobe"]
+    # definition: ""
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg5"]
 
 
 
@@ -146,7 +258,7 @@ questions:
     # question: "What are these two structures?"
     # answer: ["alveoli"]
     # definition: "Grape-like clusters where gas exchange occurs."
-    # tags: ["unit3", "respiratory", "lab-packet-pg1"]
+    # tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
 
 
   # ============================================================================

@@ -12,9 +12,9 @@ sections:
 
       - id: "lab-packet"
         title: "Lab Packet"
-        description: "Lab packet content from pages 1-3"
+        description: "Lab packet content from pages 1-5"
         source: "unit3-practical4"
-        tags: ["lab-packet-pg1", "lab-packet-pg2", "lab-packet-pg3"]
+        tags: ["resp-lab-packet-pg1", "resp-lab-packet-pg2", "resp-lab-packet-pg3", "resp-lab-packet-pg4", "resp-lab-packet-pg5"]
 
   - name: "🩺 Renal System Flashcards"
     decks:
