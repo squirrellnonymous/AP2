@@ -23,28 +23,28 @@ questions:
     question: "Name the lobe."
     answer: ["superior lobe", "superior", "left superior lobe", "superior lobe of the left lung"]
     definition: ""
-    tags: ["unit3", "respiratory", "lungs"]
+    tags: ["unit3", "respiratory", "lungs", "resp-lab-packet-pg5"]
 
   - id: 2
     image: "practical4/02.jpg"
     question: "Name the lobe."
     answer: ["inferior lobe", "inferior", "left inferior lobe", "inferior lobe of the left lung"]
     definition: ""
-    tags: ["unit3", "respiratory", "lungs"]
+    tags: ["unit3", "respiratory", "lungs", "resp-lab-packet-pg5"]
 
   - id: 3
     image: "practical4/03.jpg"
     question: "Name the structures."
     answer: ["main bronchi", "primary bronchi", "left and right primary bronchi", "left and right main bronchi"]
     definition: "These are the \"main bronchi\" or \"primary bronchi\", ...you should know both names (main and primary)."
-    tags: ["unit3", "respiratory", "lungs"]
+    tags: ["unit3", "respiratory", "lungs", "resp-lab-packet-pg5"]
 
   - id: 4
     image: "practical4/04.jpg"
     question: "Name the structure."
     answer: ["trachea"]
     definition: ""
-    tags: ["unit3", "respiratory", "lungs"]
+    tags: ["unit3", "respiratory", "lungs", "resp-lab-packet-pg5"]
 
   - id: 5
     image: "practical4/05.jpg"
@@ -72,7 +72,7 @@ questions:
     question: "What is the structure?"
     answer: ["diaphragm"]
     definition: "The major muscle of breathing."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
+    tags: ["unit3", "respiratory", "model", "lungs"]
 
   - id: 9
     image: "practical4/09.jpg"
@@ -249,16 +249,16 @@ questions:
     # definition: ""
     # tags: ["unit3", "respiratory", "resp-lab-packet-pg5"]
 
+  - id: 34
+    image: "practical4/34.jpg"
+    question: "What are the structures?"
+    answer: ["alveoli"]
+    definition: "Grape-like clusters where gas exchange occurs."
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
+
 
 
 # ================================================================================
-
-  #- id: ??
-    # image: "practical4/??.jpg"
-    # question: "What are these two structures?"
-    # answer: ["alveoli"]
-    # definition: "Grape-like clusters where gas exchange occurs."
-    # tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
 
 
   # ============================================================================

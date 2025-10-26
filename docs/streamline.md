@@ -131,7 +131,7 @@ flashcard-hub-template.html?config=unit3-decks-config&source=unit3-practical4&ti
 - Dynamically loads deck configurations from YAML files
 - Dynamically loads page title and subtitle from URL parameters
 - Created config files for all flashcard hubs:
-  - `data/decks-config.yml` (Unit 2 practical flashcards)
+  - `data/unit2-decks-config.yml` (Unit 2 practical flashcards)
   - `data/lecture-decks-config.yml` (Unit 2 lecture flashcards)
   - `data/practical-3-decks-config.yml` (Practical 3 blood vessels)
   - `data/unit3-decks-config.yml` (Unit 3 respiratory/renal/acid-base)

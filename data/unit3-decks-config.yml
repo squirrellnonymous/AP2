@@ -2,32 +2,32 @@ title: "Unit 3 Flashcard Decks"
 description: "Respiratory, Renal, and Acid/Base Study Decks"
 
 sections:
-  - name: "🫁 Respiratory System Flashcards"
+  - name: "Respiratory System Flashcards"
     decks:
       - id: "respiratory-all"
-        title: "🫁 All Respiratory"
+        title: "All Respiratory"
         description: "Complete respiratory system deck - lungs, airways, gas exchange structures"
         source: "unit3-practical4"
         tags: ["respiratory"]
 
-      - id: "lab-packet"
-        title: "Lab Packet"
-        description: "Lab packet content from pages 1-5"
-        source: "unit3-practical4"
-        tags: ["resp-lab-packet-pg1", "resp-lab-packet-pg2", "resp-lab-packet-pg3", "resp-lab-packet-pg4", "resp-lab-packet-pg5"]
+      # - id: "lab-packet"
+      #   title: "Lab Packet"
+      #   description: "Lab packet content from pages 1-5"
+      #   source: "unit3-practical4"
+      #   tags: ["resp-lab-packet-pg1", "resp-lab-packet-pg2", "resp-lab-packet-pg3", "resp-lab-packet-pg4", "resp-lab-packet-pg5"]
 
-  - name: "🩺 Renal System Flashcards"
-    decks:
-      - id: "renal-all"
-        title: "🩺 All Renal"
-        description: "Complete renal system deck - kidneys, nephrons, filtration"
-        source: "unit3-practical4"
-        tags: ["renal"]
+  # - name: "Renal System Flashcards"
+  #   decks:
+  #     - id: "renal-all"
+  #       title: "All Renal"
+  #       description: "Complete renal system deck - kidneys, nephrons, filtration"
+  #       source: "unit3-practical4"
+  #       tags: ["renal"]
 
-  - name: "⚗️ Acid/Base Flashcards"
-    decks:
-      - id: "acid-base"
-        title: "⚗️ Acid/Base Balance"
-        description: "Acid-base physiology and regulation"
-        source: "unit3-practical4"
-        tags: ["acid-base"]
+  # - name: "Acid/Base Flashcards"
+  #   decks:
+  #     - id: "acid-base"
+  #       title: "Acid/Base Balance"
+  #       description: "Acid-base physiology and regulation"
+  #       source: "unit3-practical4"
+  #       tags: ["acid-base"]

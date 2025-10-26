@@ -481,7 +481,7 @@
         // Load decks from config
         async function loadDecks() {
             try {
-                const response = await fetch('data/decks-config.yml');
+                const response = await fetch('data/unit2-decks-config.yml');
                 if (!response.ok) throw new Error(`Failed to load config: ${response.status}`);
 
                 const yamlText = await response.text();
