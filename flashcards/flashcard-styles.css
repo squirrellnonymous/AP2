@@ -185,6 +185,12 @@ h1 {
     overflow: hidden;
 }
 
+/* Ensure front face is completely hidden when flipped (fix for mobile Safari) */
+.flip-card.flipped .flip-card-front {
+    opacity: 0;
+    pointer-events: none;
+}
+
 .flip-card-front {
     background: white; /* Default white background for image cards */
 }
