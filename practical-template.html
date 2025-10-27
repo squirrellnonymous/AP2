@@ -338,40 +338,13 @@
                 countElement.textContent = `${totalQuestions} Questions`;
             }
 
-            // Generate answer sheet
-            const answersGrid = document.querySelector('.answers-grid');
-            answersGrid.innerHTML = ''; // Clear existing content
-
-            // Create two columns
-            const leftColumn = document.createElement('div');
-            const rightColumn = document.createElement('div');
-            leftColumn.className = 'answer-column';
-            rightColumn.className = 'answer-column';
-
-            for (let i = 1; i <= totalQuestions; i++) {
-                const answerItem = document.createElement('div');
-                answerItem.className = 'answer-item';
-                answerItem.innerHTML = `
-                    <button class="answer-number"
-                            onclick="goToImage(${i - 1})"
-                            tabindex="-1">${i}</button>
-                    <input type="text" name="answer${i}"
-                           readonly
-                           onclick="goToQuestionAndFocus(${i - 1})"
-                           tabindex="${i}" />
-                `;
-
-                // Distribute based on total questions
-                const midpoint = Math.ceil(totalQuestions / 2);
-                if (i <= midpoint) {
-                    leftColumn.appendChild(answerItem);
-                } else {
-                    rightColumn.appendChild(answerItem);
-                }
-            }
-
-            answersGrid.appendChild(leftColumn);
-            answersGrid.appendChild(rightColumn);
+            // Generate answer sheet using shared module
+            AnswerSheet.generate({
+                gridSelector: '.answers-grid',
+                totalQuestions: totalQuestions,
+                onNumberClick: goToImage,
+                onInputClick: goToQuestionAndFocus
+            });
 
             // Add extra credit section (randomly select only one if multiple exist)
             const allExtraCreditQuestions = practicalData.questions.filter(question => {
@@ -865,29 +838,34 @@
             const answerCheckerScript = document.createElement('script');
             answerCheckerScript.src = 'js/answer-checker.js';
             answerCheckerScript.onload = () => {
-                const answerGradingScript = document.createElement('script');
-                answerGradingScript.src = 'js/answer-grading.js';
-                answerGradingScript.onload = () => {
-                    const questionRendererScript = document.createElement('script');
-                    questionRendererScript.src = 'js/question-renderer.js';
-                    questionRendererScript.onload = () => {
-                        const pathwayScript = document.createElement('script');
-                        pathwayScript.src = 'js/pathway-validator.js';
-                        pathwayScript.onload = () => {
-                            const modalScript = document.createElement('script');
-                            modalScript.src = 'js/question-modal.js';
-                            modalScript.onload = async () => {
-                                // Load pathway connection trees
-                                await pathwayValidator.loadConnectionTrees();
-                                loadPractical();
+                const answerSheetScript = document.createElement('script');
+                answerSheetScript.src = 'js/answer-sheet.js';
+                answerSheetScript.onload = () => {
+                    const answerGradingScript = document.createElement('script');
+                    answerGradingScript.src = 'js/answer-grading.js';
+                    answerGradingScript.onload = () => {
+                        const questionRendererScript = document.createElement('script');
+                        questionRendererScript.src = 'js/question-renderer.js';
+                        questionRendererScript.onload = () => {
+                            const pathwayScript = document.createElement('script');
+                            pathwayScript.src = 'js/pathway-validator.js';
+                            pathwayScript.onload = () => {
+                                const modalScript = document.createElement('script');
+                                modalScript.src = 'js/question-modal.js';
+                                modalScript.onload = async () => {
+                                    // Load pathway connection trees
+                                    await pathwayValidator.loadConnectionTrees();
+                                    loadPractical();
+                                };
+                                document.head.appendChild(modalScript);
                             };
-                            document.head.appendChild(modalScript);
+                            document.head.appendChild(pathwayScript);
                         };
-                        document.head.appendChild(pathwayScript);
+                        document.head.appendChild(questionRendererScript);
                     };
-                    document.head.appendChild(questionRendererScript);
+                    document.head.appendChild(answerGradingScript);
                 };
-                document.head.appendChild(answerGradingScript);
+                document.head.appendChild(answerSheetScript);
             };
             document.head.appendChild(answerCheckerScript);
         };

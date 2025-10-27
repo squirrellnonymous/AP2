@@ -466,6 +466,7 @@
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <script src="js/theme-manager.js"></script>
     <script src="js/answer-checker.js"></script>
+    <script src="js/answer-sheet.js"></script>
     <script src="js/answer-grading.js"></script>
     <script src="js/question-renderer.js"></script>
     <script src="js/question-modal.js"></script>
@@ -670,39 +671,13 @@
         }
 
         function renderQuiz() {
-            // Generate answer sheet with two columns
-            const answersGrid = document.getElementById('answers-grid');
-            answersGrid.innerHTML = '';
-
-            // Create two columns
-            const leftColumn = document.createElement('div');
-            const rightColumn = document.createElement('div');
-            leftColumn.className = 'answer-column';
-            rightColumn.className = 'answer-column';
-
-            for (let i = 1; i <= 4; i++) {
-                const answerItem = document.createElement('div');
-                answerItem.className = 'answer-item';
-                answerItem.innerHTML = `
-                    <button class="answer-number"
-                            onclick="goToImage(${i - 1})"
-                            tabindex="-1">${i}</button>
-                    <input type="text" name="answer${i}"
-                           readonly
-                           onclick="goToQuestionAndFocus(${i - 1})"
-                           tabindex="${i}" />
-                `;
-
-                // First 2 questions in left column, last 2 in right column
-                if (i <= 2) {
-                    leftColumn.appendChild(answerItem);
-                } else {
-                    rightColumn.appendChild(answerItem);
-                }
-            }
-
-            answersGrid.appendChild(leftColumn);
-            answersGrid.appendChild(rightColumn);
+            // Generate answer sheet using shared module
+            AnswerSheet.generate({
+                gridSelector: '#answers-grid',
+                totalQuestions: 4,
+                onNumberClick: goToImage,
+                onInputClick: goToQuestionAndFocus
+            });
 
             // Show first question
             showImage(0);
