@@ -1,5 +1,106 @@
 # Release Notes
 
+## October 27, 2025 - Dynamic Font Sizing for Flashcard Questions
+
+### 🎨 Feature: Smart Font Sizing Based on Text Length
+
+Implemented dynamic font sizing for flashcard questions that automatically adjusts based on text length, making short questions prominent and ensuring long questions remain readable.
+
+**Files Updated:**
+- `flashcards/flashcard-engine.js` - Added dynamic font sizing logic for both text-only and text overlay questions
+- `css/themes.css` - Removed static font-size declarations to allow JavaScript control
+- `flashcards/flashcard-styles.css` - Increased container width temporarily (later reverted)
+
+#### Problem Solved
+
+**Inconsistent Text Sizing**
+- Short questions like "What is Boyle's Law?" were displayed at the same size as long questions
+- Medium-length questions had awkward line wrapping and narrow appearance
+- No visual hierarchy to emphasize punchy short questions
+- Static CSS couldn't adapt to varying question lengths
+
+#### Solution: JavaScript-Controlled Dynamic Font Sizing
+
+**Implementation Details**
+
+Both text-only questions (`.text-only-question-box`) and text overlay questions (`.question-text-overlay`) now use the same dynamic sizing logic:
+
+```javascript
+// Dynamic font sizing based on text length
+const textLength = card.term.length;
+if (textLength <= 25) {
+    element.style.setProperty('font-size', '3rem', 'important');    // Large for short questions
+} else if (textLength <= 45) {
+    element.style.setProperty('font-size', '2.5rem', 'important');  // Medium-large
+} else if (textLength <= 70) {
+    element.style.setProperty('font-size', '2.1rem', 'important');  // Medium for moderate length
+} else if (textLength <= 100) {
+    element.style.setProperty('font-size', '1.8rem', 'important');  // Smaller for longer questions
+} else {
+    element.style.setProperty('font-size', '1.5rem', 'important');  // Smallest for very long questions
+}
+```
+
+**Font Size Progression:**
+- **≤25 characters**: 3rem - Large and prominent (e.g., "What is Boyle's Law?" = 21 chars)
+- **26-45 characters**: 2.5rem - Still large and readable
+- **46-70 characters**: 2.1rem - Medium (e.g., "What is the purpose of the cilia and goblet cells in the trachea?" = 66 chars)
+- **71-100 characters**: 1.8rem - Slightly smaller but still comfortable
+- **>100 characters**: 1.5rem - Smallest size for very long questions
+
+#### CSS Changes Required
+
+**Removed Static Font Sizes**
+- Removed `font-size: 2rem` from all theme classes (`.text-only-theme-default`, `.text-only-theme-blk-wht`, etc.)
+- Removed `!important` overrides from mobile media queries that blocked JavaScript control
+- Cleaned up conflicting CSS that prevented dynamic sizing
+
+**Text Overlay Width Fix**
+- Changed `.question-text-overlay` from `max-width: 95%` to `width: 80%`
+- Fixed issue where absolutely positioned overlay was shrinking to ~300px instead of filling available space
+- Text now uses proper line width for better readability
+
+#### Technical Implementation
+
+**Two Code Paths Updated**
+1. **Text-only cards** (no image) - Lines 404-420 in `flashcard-engine.js`
+2. **Text overlay cards** (text on gradient images) - Lines 487-499 in `flashcard-engine.js`
+
+Both paths now use identical sizing logic to ensure consistency across all flashcard types.
+
+**CSS Specificity with `!important`**
+- JavaScript uses `element.style.setProperty('font-size', '3rem', 'important')` to override any remaining CSS
+- Ensures dynamic sizing works regardless of CSS cascade
+
+#### Benefits
+
+**Better Visual Hierarchy**
+- Short, punchy questions stand out prominently
+- Gradual size reduction feels natural and readable
+- Long questions still fit comfortably without feeling cramped
+
+**Improved Readability**
+- Medium-length questions now have appropriate line width (80% container width)
+- Better line breaks with more natural text flow
+- Consistent experience across text-only and text overlay questions
+
+**Smarter Adaptation**
+- Automatically handles any question length
+- No manual CSS tweaking needed per question
+- Works for both flashcard types (text-only and text overlay)
+
+#### Architecture Notes
+
+**Text Overlay vs Text-Only**
+- **Text overlay** (`textOverlay: true` in YAML): Text displayed over gradient background images using `.question-text-overlay` class
+- **Text-only** (no image): Text displayed in themed colored boxes using `.text-only-question-box` class
+- Both are actively used features with different visual styles but now share font sizing logic
+
+**Not Legacy Code**
+The text overlay feature is actively used for questions like Unit 3 flashcards (Boyle's Law, Dalton's Law, Henry's Law, etc.) where gradient backgrounds provide visual interest without distracting from the text.
+
+---
+
 ## October 27, 2025 - Flashcard Text Overlay Feature: Background Images for Text Questions
 
 ### 🎨 New Feature: Text Overlay Questions with Background Images

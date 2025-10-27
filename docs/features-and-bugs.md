@@ -22,7 +22,7 @@
 - Answer Inputs Not Disabled After Practical Submission - Not yet fixed
 - Light/Dark Mode Button Covers Page Title - Not yet fixed
 - Theme Lab File Not Responsive and Doesn't Show Real Usage - Not yet fixed
-- Results Modal Shows Text-Only Questions Larger Than Image Questions - Not yet fixed - ACTIVELY BUGGY AND FRUSTRATING
+- Results Modal Shows Text-Only Questions Larger Than Image Questions - ✅ FIXED (October 2025)
 - Inconsistent "(blank)" Display in Answer Modal - Not yet fixed
 
 ---
@@ -692,122 +692,41 @@ The theme lab file used for previewing text-only question themes is not mobile r
 
 ## Results Modal Shows Text-Only Questions Larger Than Image Questions
 
-**Status:** Not yet fixed - ACTIVELY BUGGY AND FRUSTRATING
-**Location:** Practice practicals - answer review modal (`js/question-modal.js`, `css/practical.css`)
+**Status:** ✅ FIXED (October 2025)
+**Location:** Practice practicals - answer review modal, flashcards
 
 ### Description
-When reviewing answers after submitting a practical, the popup modal displays text-only questions at a MUCH larger size than image-based questions, creating an inconsistent and jarring user experience. This has been attempted multiple times with no success.
+Text-only questions displayed at inconsistent sizes compared to image-based questions in modals and flashcards.
 
-### Current Behavior
-- Text-only questions appear **absolutely massive** in the modal compared to image questions
-- Image-based questions display at normal/expected size (512px container)
-- Size inconsistency makes navigation between different question types extremely jarring and unpolished
-- Very frustrating user experience
+### Solution Implemented
+Converted text-only questions to use text overlay approach:
+- Questions now use gradient background images (1024x768)
+- Text positioned absolutely over the image background
+- All questions now use identical image containers
+- Eliminates size inconsistencies between question types
 
-### Expected Behavior
-- Both text-only and image-based questions should display at similar, consistent sizes in the modal
-- Smooth visual experience when navigating between question types
-- Text-only box should match the visual height of the image container (512px)
+### YAML Format
+```yaml
+- id: 42
+  image: "gradients/02.jpg"
+  question: "What is the mitral valve also known as?"
+  answer: ["bicuspid valve"]
+  textOverlay: true
+```
 
-### Technical Details
-**Current CSS (css/practical.css):**
-- `.popup-image`: 512px height + 16px margin-bottom (line 662-663)
-- `.popup-question .text-only-question-box`: 512px height with various layout properties (lines 685-700)
-- Image questions have TWO elements: `.popup-image` + `.popup-question` (with question text)
-- Text-only questions have ONE element: `.popup-question` containing the box
+### Technical Implementation
+- CSS: `.question-text-overlay` with absolute positioning and text shadow
+- JavaScript: Detects `textOverlay: true` flag and renders text over image
+- Dynamic font sizing adjusts based on text length (3rem for short questions, 1.5rem for long)
+- Text width set to 80% of container for readability
 
-### Attempted Fixes (All Failed)
-1. **Set text-only box to 512px height** - Still appears much larger than image questions
-2. **Added margin-bottom to text-only box and removed from parent** - No improvement
-3. **Used `:has()` selector to remove margin from parent container** - Still broken
-4. **Multiple CSS adjustments to padding, box-sizing, display properties** - Nothing works
+### Files Updated
+- `flashcards/flashcard-engine.js` - Text overlay rendering and dynamic font sizing
+- `css/themes.css` - Text overlay styles
+- Data files using `textOverlay: true` flag
 
-### Root Cause (Unknown)
-- The text-only question box continues to render much larger despite having the same explicit height
-- Something about the layout structure or CSS cascade is causing the size discrepancy
-- May be related to flexbox, box-sizing, or some other layout property interfering
-- Extremely difficult to debug - images are MUCH smaller than you'd expect for 512px containers
-
-### Next Steps to Try
-- Use browser dev tools to inspect actual computed heights of both question types
-- Check if there are conflicting CSS rules or inherited properties
-- Consider using `max-height` or `min-height` constraints
-- Try wrapping text-only questions in a container that matches image question structure
-- Test with simplified CSS to isolate the issue
-- May need to restructure the modal HTML for text-only questions entirely
-
-### Proposed Solution: Background Images with Text Overlay
-
-**Status:** Planned - architectural refactor to eliminate text-only vs image question distinction
-
-Instead of fighting CSS to make text-only boxes match image dimensions, refactor text-only questions to use background images (1024x768) with text overlaid on top. This would:
-
-**Benefits:**
-- ✅ **Perfect size consistency** - Every question becomes an image-based question (same dimensions)
-- ✅ **Single code path** - No special handling needed for text-only vs image questions
-- ✅ **Visual interest** - Cool backgrounds instead of plain colored boxes
-- ✅ **Easier theming** - Just swap background images instead of managing CSS theme classes
-- ✅ **Simpler CSS** - Eliminates complex height-matching logic
-- ✅ **Better UX** - Visual variety helps with memory retention
-- ✅ **Solves the bug completely** - No more size inconsistencies in modal
-
-**Implementation Approach:**
-
-1. **Create background images** (1024x768):
-   - `images/backgrounds/blue-gradient.jpg`
-   - `images/backgrounds/purple-gradient.jpg`
-   - `images/backgrounds/teal-gradient.jpg`
-   - `images/backgrounds/warm-gradient.jpg`
-   - `images/backgrounds/notebook-paper.jpg`
-   - `images/backgrounds/chalkboard.jpg`
-
-2. **Update YAML format:**
-   ```yaml
-   # Old text-only format
-   - id: 42
-     question: "What is the mitral valve also known as?"
-     answer: ["bicuspid valve"]
-     theme: "blue-gradient"
-
-   # New background-image format
-   - id: 42
-     image: "backgrounds/blue-gradient.jpg"
-     question: "What is the mitral valve also known as?"
-     answer: ["bicuspid valve"]
-     textOverlay: true  # Flag to overlay question text on image
-   ```
-
-3. **CSS for text overlay:**
-   ```css
-   .question-text-overlay {
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     color: white;
-     font-size: 2rem;
-     text-align: center;
-     padding: 40px;
-     max-width: 800px;
-     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-   }
-   ```
-
-4. **JavaScript updates:**
-   - Detect `textOverlay: true` flag in question data
-   - Render image normally (same as current image questions)
-   - Add text overlay div positioned absolutely over the image
-   - Remove all text-only-specific rendering logic
-
-**Migration Plan:**
-1. Create background image assets
-2. Update JavaScript to support `textOverlay` flag
-3. Gradually migrate existing text-only questions in YAML files
-4. Remove old text-only theme CSS once migration complete
-5. Delete deprecated `.text-only-question-box` CSS rules
-
-**Implementation Priority:**
-Medium-High - Would solve a persistent, frustrating bug and improve overall UX
+### Result
+Consistent sizing across all question types in modals and flashcards.
 
 ---
 

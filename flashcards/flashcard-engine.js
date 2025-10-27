@@ -430,7 +430,7 @@ function showCard() {
     // Handle answer + definition or just definition
     let definitionContent = '';
     if (card.answer) {
-        definitionContent = `<strong>${card.answer}</strong><br>${card.definition}`;
+        definitionContent = `<strong>${card.answer}</strong>${card.definition}`;
     } else {
         definitionContent = card.definition;
     }
