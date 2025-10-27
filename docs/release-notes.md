@@ -1,5 +1,150 @@
 # Release Notes
 
+## October 27, 2025 - Flashcard Text Overlay Feature: Background Images for Text Questions
+
+### 🎨 New Feature: Text Overlay Questions with Background Images
+
+Implemented a new approach for text-only questions in flashcards that uses background images with overlaid text instead of CSS-themed colored boxes. This solves mobile layout issues and creates consistent sizing across all question types.
+
+**Files Updated:**
+- `css/themes.css` - Added text overlay styles
+- `flashcards/flashcard-styles.css` - Enhanced image container handling
+- `flashcards/flashcard-engine.js` - Added text overlay detection and rendering
+
+#### Problem Solved
+
+**Mobile Layout Issues**
+- Text-only questions had inconsistent sizing compared to image questions
+- Modal view showed text-only questions much larger than image questions
+- Complex CSS was needed to try to match sizes between different question types
+- Different code paths for rendering text vs image questions
+
+#### Solution: Background Images with Text Overlays
+
+**New YAML Format**
+```yaml
+# Old text-only format (still supported)
+- id: 42
+  question: "What is the mitral valve also known as?"
+  answer: ["bicuspid valve"]
+  theme: "blue-gradient"
+
+# New background image format with text overlay
+- id: 42
+  image: "practical4/101.jpg"  # gradient background image
+  question: "What is the mitral valve also known as?"
+  answer: ["bicuspid valve"]
+  textOverlay: true
+```
+
+#### Benefits
+
+**Perfect Size Consistency**
+- All questions now use the same image container (same dimensions)
+- No more size discrepancies between text and image questions
+- Single code path for rendering all question types
+- Simplified CSS without complex height-matching logic
+
+**Better Mobile Experience**
+- Text overlays scale responsively with `clamp()` sizing
+- Background images fill the card space properly
+- Text remains readable at all screen sizes
+- Consistent visual experience across devices
+
+**Visual Interest**
+- Gradient backgrounds are more engaging than plain colored boxes
+- Maintains visual variety with different gradient styles
+- Better memory retention through visual association
+- Professional, polished appearance
+
+**Simpler Code**
+- Eliminates complex text-only vs image question distinction in CSS
+- One rendering path handles all questions
+- Easier to maintain and debug
+- Future-proof architecture
+
+#### CSS Implementation
+
+**Text Overlay Styles** (`css/themes.css`)
+```css
+.question-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 40px;
+    max-width: 85%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    line-height: 1.4;
+}
+```
+
+**Mobile Responsive Sizing**
+```css
+@media (max-width: 768px) {
+    .question-text-overlay {
+        font-size: clamp(1.3rem, 4.5vw, 1.8rem);
+        padding: 20px;
+        max-width: 90%;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    }
+}
+```
+
+#### JavaScript Detection
+
+The flashcard engine now detects `textOverlay: true` in question data and automatically:
+1. Displays the background image
+2. Positions the question text as an overlay on the image
+3. Adds `has-text-overlay` class to image container for proper styling
+4. Handles loading states and preloading like regular image questions
+
+#### Backward Compatibility
+
+**Old format still works:**
+- Questions without `textOverlay` flag render normally
+- Text-only questions with `theme` field use colored box styling
+- No breaking changes to existing flashcard decks
+- Gradual migration path
+
+#### Creating Background Images
+
+**Gradient Images**
+- Same dimensions as practical images (1024x768 recommended)
+- Examples: `images/practical4/101.jpg` (teal-blue gradient), `images/practical4/102.jpg` (warm tan-orange gradient)
+- Can create various styles: gradients, patterns, subtle textures, notebook paper, chalkboard, etc.
+- Text overlay automatically handles contrast with text shadow
+
+#### Use Cases
+
+1. **Consistent flashcard sizing** - All questions look uniform in mobile and desktop views
+2. **Better modal experience** - Review modals show consistent sizes for all question types
+3. **Visual variety** - Different backgrounds help with memory association
+4. **Easier theming** - Just swap background images instead of managing CSS theme classes
+5. **Future flexibility** - Can use photos, patterns, or any visual background
+
+#### Migration Path
+
+1. Create gradient/background images at 1024x768 dimensions
+2. Update YAML files to add `image` path and `textOverlay: true` flag to text-only questions
+3. Remove old `theme` field (optional - still works if present)
+4. Test in flashcard view and modal review
+5. Once migrated, can remove deprecated text-only CSS classes
+
+#### Technical Notes
+
+- Text overlay uses absolute positioning within relative image container
+- Z-index ensures text appears above image
+- Text shadow provides contrast on any background
+- Responsive `clamp()` sizing ensures readability on all devices
+- Image preloading works identically to regular image questions
+
+---
+
 ## October 25, 2025 - Code Refactoring: Shared Modules for DRY Principle
 
 ### 🔧 Major Refactoring: Shared Question Logic Modules

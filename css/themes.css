@@ -5,7 +5,6 @@
     background-color: #f8fafc;
     color: #1e293b;
     border-color: #e2e8f0;
-    font-size: 2rem;
 }
 
 /* YAML: theme: "blk-wht" */
@@ -13,7 +12,6 @@
     background-color: #1a202c;
     color: #f7fafc;
     border-color: #2d3748;
-    font-size: 2rem;
 }
 
 /* YAML: theme: "elegant" */
@@ -21,7 +19,6 @@
     background: linear-gradient(90deg, #667eea 0%, #6c3c9d 100%, #b00606 100%);
     color: #ffffff;
     border-color: #4c51bf;
-    font-size: 2rem;
 }
 
 /* YAML: theme: "wbc" */
@@ -29,7 +26,6 @@
     background: linear-gradient(135deg, #8b70ec 0%, #2252c4 100%);
     color: #ffffff;
     border-color: #4c51bf;
-    font-size: 2rem;
 }
 
 
@@ -38,7 +34,6 @@
     background-color: #065f46;
     color: #ecfdf5;
     border-color: #059669;
-    font-size: 2rem;
 }
 
 /* YAML: theme: "blood" */
@@ -46,7 +41,6 @@
     background: linear-gradient(180deg, #90000c 0%, #65095a 100%);
     color: #ecfdf5;
     border-color: #2f0061;
-    font-size: 2rem;
 }
 
 /* YAML: theme: "emergency" */
@@ -54,7 +48,6 @@
     background-color: #dc2626;
     color: #ffffff;
     border-color: #991b1b;
-    font-size: 2rem;
 }
 
 /* YAML: theme: "anatomy" */
@@ -62,7 +55,6 @@
     background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
     color: #ffffff;
     border-color: #3730a3;
-    font-size: 2rem;
 }
 
 /* YAML: theme: "physiology" */
@@ -70,7 +62,6 @@
     background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
     color: #ffffff;
     border-color: #047857;
-    font-size: 2rem;
 }
 
 /* YAML: theme: "pathology" */
@@ -78,7 +69,6 @@
     background: linear-gradient(135deg, #ec7093 0%, #ffae83 100%);
     color: #26053e;
     border-color: #e01c1c;
-    font-size: 2rem;
 }
 
 /* Base text-only question styling */
@@ -87,7 +77,7 @@
     max-width: 600px;
     height: 500px;
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 0 40px;
     border-radius: 16px;
     text-align: center;
     font-weight: 600;
@@ -98,21 +88,39 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-/* Mobile responsive styles - scale down font size for longer text */
-@media (max-width: 768px) {
-    .text-only-question-box {
-        font-size: clamp(1.5rem, 4vw, 2.5rem);
-    }
+/* Text overlay styles for background images */
+.question-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 20px;
+    width: 80%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    line-height: 1.5;
+    z-index: 2;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
 
-    /* Override theme-specific font sizes on mobile with responsive scaling */
-    .text-only-theme-default { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
-    .text-only-theme-blk-wht { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
-    .text-only-theme-elegant { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
-    .text-only-theme-wbc { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
-    .text-only-theme-highlight { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
-    .text-only-theme-blood { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
-    .text-only-theme-emergency { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
-    .text-only-theme-anatomy { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
-    .text-only-theme-physiology { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
-    .text-only-theme-pathology { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
+/* Ensure image container is positioned for absolute overlay */
+.image-container.has-text-overlay {
+    position: relative;
+}
+
+/* Mobile responsive styles - font size now controlled by JavaScript */
+@media (max-width: 768px) {
+    /* Font sizing removed - now controlled dynamically by JavaScript based on text length */
+
+    /* Mobile text overlay sizing */
+    .question-text-overlay {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+        padding: 20px;
+        max-width: 90%;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    }
 }

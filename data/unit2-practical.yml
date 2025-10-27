@@ -347,7 +347,8 @@ questions:
     question: "What is the term that describes cardiac vasculature that provides *alternate&nbsp;routes* if a main artery is blocked?"
     answer: ["anastomoses"]
     definition: ""
-    theme: "elegant"
+    image: "gradients/01.jpg"
+    textOverlay: true
     tags: ["heart", "extra-credit"]
 
   - id: 50
@@ -495,56 +496,64 @@ questions:
     question: "What is the most abundant type of leukocyte?"
     answer: ["neutrophil"]
     definition: "Never (neutrophil) Let Monkeys Eat Bananas."
-    theme: "blood"
+    image: "gradients/02.jpg"
+    textOverlay: true
     tags: ["blood", "leukocytes"]
 
   - id: 72
     question: "What type of blood can a person with O- blood receive?"
     answer: ["O-", "only O-", "just O-", "type O-"]
     definition: "People with O- can only accept O- donor blood. Technically, they can have Rh positive O blood one time (the first time) but you would never risk that."
-    theme: "blood"
+    image: "gradients/03.jpg"
+    textOverlay: true
     tags: ["blood", "leukocytes"]
 
   - id: 73
     question: "Name a type of white blood cell that lacks granular cytoplasm."
     answer: ["lymphocyte", "monocyte"]
     definition: "Lymphocytes and macrophages lack granules... they are agranulocytes."
-    theme: "blood"
+    image: "gradients/04.jpg"
+    textOverlay: true
     tags: ["blood", "leukocytes"]
 
   - id: 74
     question: "Which white blood cell is the largest?"
     answer: ["monocyte"]
     definition: "Monocytes are the largest in the blood."
-    theme: "wbc"
+    image: "gradients/05.jpg"
+    textOverlay: true
     tags: ["blood", "leukocytes"]  
 
   - id: 75
     question: "Which leukocyte aids in the inflammation&nbsp;process?"
     answer: ["basophil"]
     definition: "Basophils release histamines that aid in the inflammatory response."
-    theme: "pathology"
+    image: "gradients/06.jpg"
+    textOverlay: true
     tags: ["blood", "leukocytes"]  
 
   - id: 76
     question: "Elevated levels of which leukocyte would indicate a parasitic infection or allergic reaction?"
     answer: ["eosinophil"]
     definition: "Eosinophils are involved in allergic reactions and attack parasitic worms (ewww)."
-    theme: "pathology"
+    image: "gradients/07.jpg"
+    textOverlay: true
     tags: ["blood", "leukocytes"]  
 
   - id: 77
     question: "What does the hematocrit measure?"
     answer: ["number of red blood cells", "red blood cell count", "erythrocyte count", "percentage of blood that is erythrocytes"]
     definition: ""
-    theme: "pathology"
+    image: "gradients/08.jpg"
+    textOverlay: true
     tags: ["blood", "hematocrit"]  
 
   - id: 78
     question: "Name one reason a female would have a lower hematocrit than a male would.</br>(1-2 word answer)"
     answer: ["menstruation", "testosterone", "body fat", "adipose tissue", "women have more body fat"]
     definition: ""
-    theme: "blood"
+    image: "gradients/01.jpg"
+    textOverlay: true
     tags: ["blood", "hematocrit"]
 
   - id: 79
@@ -558,28 +567,32 @@ questions:
     question: "What is the structure in cardiac muscle tissue that stores calcium?"
     answer: ["sarcoplasmic reticulum"]
     definition: ""
-    theme: "pathology"
+    image: "gradients/02.jpg"
+    textOverlay: true
     tags: ["heart", "tissue"]
 
   - id: 81
     question: "What is the structure in cardiac muscle tissue that allows ions to pass between cells for rapid communication?"
     answer: ["gap junction"]
     definition: ""
-    theme: "pathology"
+    image: "gradients/03.jpg"
+    textOverlay: true
     tags: ["heart", "tissue"]
 
   - id: 82
     question: "What is the connection in cardiac muscle tissue that has both gap junctions and desmosomes?"
     answer: ["intercalated disc"]
     definition: ""
-    theme: "pathology"
+    image: "gradients/04.jpg"
+    textOverlay: true
     tags: ["heart", "tissue"]
 
   - id: 83
     question: "Which blood vessel is known as the \"widow maker\""
     answer: ["anterior interventricular artery"]
     definition: "if you have a heart attack in this artery you will suffer a lot of damage to the myocardium"
-    theme: "pathology"
+    image: "gradients/05.jpg"
+    textOverlay: true
     tags: ["heart", "coronary circulation", "extra-credit"]
 
   - id: 84
@@ -598,7 +611,8 @@ questions:
     question: "If a person has edema in their uppperbody and extremities due to a damaged AV valve, which valve is it? (right or left)"
     answer: ["right", "right AV valve", "right atrioventricular valve", "tricuspid"]
     definition: ""
-    theme: "pathology"
+    image: "gradients/06.jpg"
+    textOverlay: true
     tags: ["heart", "edema"]
 
   - id: 87

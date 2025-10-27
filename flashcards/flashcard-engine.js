@@ -237,7 +237,8 @@ async function loadFlashcards() {
                     definition: q.definition || "",
                     breakdown: q.breakdown || "",
                     example: "",
-                    theme: q.theme || null
+                    theme: q.theme || null,
+                    textOverlay: q.textOverlay || false
                 }))
             };
 
@@ -399,15 +400,32 @@ function showCard() {
     if (!card.image) {
         const themeClass = getTextOnlyThemeClass(card.theme);
         termElement.classList.add('text-only-question-box', themeClass);
+
+        // Dynamic font sizing based on text length (gradual progression for longer text)
+        const textLength = card.term.length;
+        if (textLength <= 25) {
+            termElement.style.setProperty('font-size', '3rem', 'important');    // Large for short questions
+        } else if (textLength <= 45) {
+            termElement.style.setProperty('font-size', '2.5rem', 'important');  // Medium-large
+        } else if (textLength <= 70) {
+            termElement.style.setProperty('font-size', '2.1rem', 'important');  // Medium for moderate length
+        } else if (textLength <= 100) {
+            termElement.style.setProperty('font-size', '1.8rem', 'important');  // A bit smaller for longer questions
+        } else {
+            termElement.style.setProperty('font-size', '1.5rem', 'important');  // Smallest for very long questions
+        }
+    } else {
+        // Clear any custom font size for image cards
+        termElement.style.fontSize = '';
     }
 
     // Get image element and overlay
     const termImage = document.getElementById('term-image');
     const loadingOverlay = document.getElementById('image-loading-overlay');
+    const imageContainer = document.querySelector('.image-container');
 
     // Update content
     let termContent = card.term.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
-    document.getElementById('term').innerHTML = termContent;
 
     // Handle answer + definition or just definition
     let definitionContent = '';
@@ -450,9 +468,67 @@ function showCard() {
             };
             newImg.src = imagePath;
         }
+
+        // Handle text overlay vs regular image card
+        if (card.textOverlay === true) {
+            // Text overlay card: show text on top of image
+            imageContainer.classList.add('has-text-overlay');
+
+            // Create or update overlay element
+            let overlay = imageContainer.querySelector('.question-text-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'question-text-overlay';
+                imageContainer.appendChild(overlay);
+            }
+            overlay.innerHTML = termContent;
+            overlay.style.display = ''; // Ensure overlay is visible for new card
+
+            // Adjust font size based on text length (same logic as text-only cards)
+            const textLength = card.term.length;
+            if (textLength <= 25) {
+                overlay.style.setProperty('font-size', '3rem', 'important');    // Large for short questions
+            } else if (textLength <= 45) {
+                overlay.style.setProperty('font-size', '2.5rem', 'important');  // Medium-large
+            } else if (textLength <= 70) {
+                overlay.style.setProperty('font-size', '2.1rem', 'important');  // Medium for moderate length
+            } else if (textLength <= 100) {
+                overlay.style.setProperty('font-size', '1.8rem', 'important');  // A bit smaller for longer questions
+            } else {
+                overlay.style.setProperty('font-size', '1.5rem', 'important');  // Smallest for very long questions
+            }
+
+            // Hide the term element below
+            termElement.style.display = 'none';
+        } else {
+            // Regular image card: show text below image
+            imageContainer.classList.remove('has-text-overlay');
+
+            // Remove overlay if it exists
+            const overlay = imageContainer.querySelector('.question-text-overlay');
+            if (overlay) {
+                overlay.remove();
+            }
+
+            // Show term element with text
+            termElement.style.display = '';
+            termElement.innerHTML = termContent;
+        }
     } else {
+        // No image: text-only card
         termImage.classList.add('hidden');
-        loadingOverlay.style.display = 'none'; // Hide loading overlay for cards without images
+        imageContainer.classList.remove('has-text-overlay');
+        loadingOverlay.style.display = 'none';
+
+        // Remove overlay if it exists
+        const overlay = imageContainer.querySelector('.question-text-overlay');
+        if (overlay) {
+            overlay.remove();
+        }
+
+        // Show term element
+        termElement.style.display = '';
+        termElement.innerHTML = termContent;
     }
 
     // Preload next few images in background
@@ -508,10 +584,21 @@ function updateNavigationButtons() {
 
 // Flip card (term <-> definition)
 function flipCard() {
+    const imageContainer = document.querySelector('.image-container');
+    const overlay = imageContainer ? imageContainer.querySelector('.question-text-overlay') : null;
+
     if (!showingDefinition) {
         // Flip to show definition
         cardElement.classList.add('flipped');
         showingDefinition = true;
+
+        // Hide text overlay after flip animation completes (0.6s transition)
+        // This prevents the "wink" effect where text disappears before card flips
+        if (overlay) {
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 300); // Hide halfway through the 0.6s flip animation
+        }
 
         // Enable swipe options after flip
         enableSwipeButtons();
@@ -519,6 +606,11 @@ function flipCard() {
         // Flip back to show term
         cardElement.classList.remove('flipped');
         showingDefinition = false;
+
+        // Show text overlay immediately when flipping back to front
+        if (overlay) {
+            overlay.style.display = '';
+        }
     }
 
     // Update navigation buttons

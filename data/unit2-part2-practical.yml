@@ -544,236 +544,275 @@ questions:
     question: "What type of cells form the walls of capillaries?"
     answer: ["endothelial cells", "endothelial"]
     definition: "Endothelial cells are a special type of epithelial cell."
-    theme: "pathology"
+    image: "gradients/01.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "capillaries"]
 
   - id: 101
     question: "Which artery is the *longest&nbsp;artery* in the body?"
     answer: ["femoral artery", "femoral"]
     definition: "It's the femoral!"
-    theme: "blood"
+    image: "gradients/02.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "artery"]
 
   - id: 102
     question: "what two arteries are formed by the division of the brachiocephalic trunk?"
     answer: ["Right subclavian artery and right common carotid artery", "right common carotid artery and Right subclavian artery"]
-    theme: "default"
+    image: "gradients/03.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 103
     question: "What are two paired arteries serving the brain?"
     answer: ["vertebral and internal carotid arteries", "vertebral artery and internal carotid artery", "internal carotid artery and vertebral artery"]
-    theme: "blood"
+    image: "gradients/04.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery", "flashcards"]
 
   - id: 104
     question: "what is the *largest* artery of the body?"
     answer: ["aorta"]
-    theme: "blk-wht"
+    image: "gradients/05.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 105
     question: "What is the major artery serving the arm and generally used to determine blood pressure?"
     answer: ["brachial artery"]
-    theme: "blood"
+    image: "gradients/06.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 106
     question: "What is the artery that supplies the last half of the large intestine?"
     answer: ["inferior mesenteric artery"]
-    theme: "blood"
+    image: "gradients/07.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 107
     question: "What artery supplies the pelvis?"
     answer: ["internal iliac artery"]
-    theme: "blood"
+    image: "gradients/08.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 108
     question: "What is the artery that supplies the small intestine and the proximal large intestine?"
     answer: ["superior mesenteric artery"]
-    theme: "blood"
+    image: "gradients/01.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 109
     question: "The terminal branches of the descending aorta?"
     answer: ["common iliac arteries"]
-    theme: "blood"
+    image: "gradients/02.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 110
     question: "What is the arterial trunk that has three major branches that supply the liver, spleen, and stomach?"
     answer: ["celiac trunk"]
-    theme: "blood"
+    image: "gradients/03.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 111
     question: "What is the artery generally used to feel the pulse at the wrist?"
     answer: ["radial artery"]
-    theme: "blood"
+    image: "gradients/04.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 112
     question: "What is the first vessel to branch from the aortic arch?"
     answer: ["brachiocephalic trunk"]
-    theme: "blood"
+    image: "gradients/05.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 113
     question: "What is the artery that supplies the liver?"
     answer: ["hepatic artery", "hepatic artery proper"]
-    theme: "blood"
+    image: "gradients/06.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 114
     question: "What is the artery that supplies the stomach and lower esophagus?"
     answer: ["gastric artery"]
-    theme: "blk-wht"
+    image: "gradients/07.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 115
     question: "what major artery serves the external structures of the skull?"
     answer: ["external carotid artery"]
-    theme: "blood"
+    image: "gradients/08.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 116
     question: "What is the artery that supplies the spleen?"
     answer: ["splenic artery"]
-    theme: "blood"
+    image: "gradients/01.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "lab-activities", "artery"]
 
   - id: 117
     question: "What deep veins drain the forearm?"
     answer: ["radial and ulnar veins"]
-    theme: "default"
+    image: "gradients/02.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 118
     question: "What vein receives blood from the arm via the subclavian vein?"
     answer: ["brachiocephalic vein"]
-    theme: "highlight"
+    image: "gradients/03.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 119
     question: "The vein that drains the dural sinuses of the brain is the ___________________."
     answer: ["internal jugular vein"]
-    theme: "default"
+    image: "gradients/04.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 120
     question: "What large vein carries nutrient-rich blood from the digestive organs to the liver for processing?"
     answer: ["hepatic portal vein"]
-    theme: "blood"
+    image: "gradients/05.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 121
     question: "What vein drains the stomach walls?"
     answer: ["gastric vein"]
-    theme: "anatomy"
+    image: "gradients/06.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 122
     question: "What three veins form/drain into the hepatic portal vein?"
     answer: ["gastric vein, splenic vein, superior mesenteric vein"]
-    theme: "highlight"
+    image: "gradients/07.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein", "flashcards"]
 
   - id: 123
     question: "What is the longest superficial vein in the body?"
     answer: ["great saphenous vein"]
-    theme: "highlight"
+    image: "gradients/08.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 124
     question: "What are the large veins in the arm draining into the axillary vein?"
     answer: ["brachial veins"]
-    theme: "anatomy"
+    image: "gradients/01.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 125
     question: "What are the veins that drain blood from the pelvis?"
     answer: ["internal iliac veins"]
-    theme: "anatomy"
+    image: "gradients/02.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 126
     question: "What is the vein that empties into the splenic vein from the descending and sigmoid colon and upper rectum?"
     answer: ["inferior mesenteric vein"]
-    theme: "anatomy"
+    image: "gradients/03.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 127
     question: "What is the vein formed by the union of the brachial and basilic vein?"
     answer: ["axillary vein"]
-    theme: "elegant"
+    image: "gradients/04.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 128
     question: "The small saphenous and the popliteal veins join to become the _________________ vein."
     answer: ["femoral vein"]
-    theme: "blood"
+    image: "gradients/05.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 129
     question: "What vein drains the liver?"
     answer: ["hepatic vein"]
-    theme: "blk-wht"
+    image: "gradients/06.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 130
     question: "What is the large superficial vein that drains the upper arm?"
     answer: ["cephalic vein"]
-    theme: "anatomy"
+    image: "gradients/07.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 131
     question: "Vein in the arm commonly used for drawing blood?"
     answer: ["median cubital vein"]
-    theme: "highlight"
+    image: "gradients/08.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein"]
 
   - id: 132
     question: "How would blood get from a hand back to the heart?"
     answer: ["one possible path: R/L hand, R/L radial vein, R/L brachial vein, R/L axillary vein, R/L subclavian vein, R/L brachiocephalic vein, superior vena cava, heart (right atrium)"]
-    theme: "anatomy"
+    image: "gradients/01.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein", "blood-flow", "flashcards"]
 
   - id: 133
     question: "How would blood get from the foot back to the heart?"
     answer: ["one possible path: R/L foot, R/L great saphenous vein, external iliac vein, common iliac vein, inferior vena cava, heart (right atrium)"]
-    theme: "anatomy"
+    image: "gradients/02.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "vein", "blood-flow", "flashcards"]
 
   - id: 134
     question: "How would blood get from the heart to a hand?"
     answer: ["one possible path: heart (left ventricle), aorta, left subclavian artery, left axillary artery, left brachial artery, left radial artery, left hand OR from the aorta, brachiocephalic trunk, right subclavian artery, ..."]
-    theme: "blood"
+    image: "gradients/03.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "artery", "blood-flow", "flashcards"]
 
   - id: 135
     question: "How would blood get from the heart to a foot?"
     answer: ["one possible path: heart (left ventricle), aorta, R/L common iliac artery, R/L external iliac artery, R/L femoral artery, R/L popliteal artery, R/L posterior tibial artery, R/L foot"]
-    theme: "blood"
+    image: "gradients/04.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "artery", "blood-flow", "flashcards"]
 
   - id: 136
     question: "What type of capillaries have large windows/pores (found in endocrine glands and kidneys)?"
     answer: ["fenestrated capillaries", "fenestrated"]
-    theme: "elegant"
+    image: "gradients/05.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "capillaries"]
 
   - id: 137
     question: "What are the most common and least leaky type of capillaries?"
     answer: ["continuous capillaries", "continuous"]
-    theme: "elegant"
+    image: "gradients/06.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "capillaries"]
 
   - id: 138
     question: "What type of capillaries have the largest openings in the capillary system and are found in the liver, spleen, and bone marrow?"
     answer: ["sinusoid capillaries", "sinusoid"]
-    theme: "elegant"
+    image: "gradients/07.jpg"
+    textOverlay: true
     tags: ["blood-vessels", "capillaries"]
 
 
