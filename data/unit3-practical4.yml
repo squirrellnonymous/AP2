@@ -1,10 +1,9 @@
-title: "Practice Practical #3 - Blood Vessels"
-description: "Blood Vessels"
+title: "Practice Practical #4 - Respiratory, Urinary, and Acid/Base"
+description: "Respiratory, Urinary, and Acid/Base"
 share_image: "practical4/00.jpg"
 allow_duplicate_answers: true
 balance_tags: true
-balanced_tag_pairs:
-  - ["artery", "vein"]
+balanced_tag_pairs: false
 
 # Upload your images to: /images/practical-2-2/
 # Name them: 01.jpg, 02.jpg, 03.jpg, etc.
@@ -57,7 +56,7 @@ questions:
     image: "practical4/06.jpg"
     question: "What is the region?"
     answer: ["larynx"]
-    definition: "The larynx is the area at the top of the lower respiratory system. It contains your voicebox"
+    definition: "The larynx is the area at the top of the lower respiratory system. It is also known as the voice box and contains your vocal cords"
     tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
 
   - id: 7
@@ -78,7 +77,7 @@ questions:
     image: "practical4/09.jpg"
     question: "What are the three structures (plural)?"
     answer: ["the nasal conchae", "nasal conchae", "conchae", "superior, middle, and inferior nasal conchae"]
-    definition: "The chonchae are the raised areas: the superior nasal choncha, the middle nasal concha, and the inferior nasal concha. Along with the nasal meatuses, they create turbulence that enables nasal breathing."
+    definition: "The conchae are the raised areas: the superior nasal concha, the middle nasal concha, and the inferior nasal concha. Along with the nasal meatuses, they create turbulence that enables nasal breathing."
     tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
 
   - id: 10
@@ -218,7 +217,7 @@ questions:
     image: "practical4/29.jpg"
     question: "What is the structure?"
     answer: ["lobar bronchus", "secondary bronchus"]
-    definition: "The lobar (or secondary) bronchi come off of the two primary (or main) bronchi. The progression is main, lobar (or secondary), segmental (tertiary), bronchiole, respiratory bronchilole, then alveoli at the ends."
+    definition: "The lobar (or secondary) bronchi come off of the two primary (or main) bronchi. The progression is main, lobar (or secondary), segmental (tertiary), bronchiole, respiratory bronchiole, then alveoli at the ends."
     tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
 
   - id: 30
@@ -281,7 +280,7 @@ questions:
     image: "practical4/38.jpg"
     question: "What is the structure?"
     answer: ["pulmonary arteriole"]
-    definition: "Pulmonary arterioles carries deoxygenated blood from the right ventricle. Shown as **blue** in diagrams."
+    definition: "Pulmonary arterioles carry deoxygenated blood from the right ventricle. Shown as **blue** in diagrams."
     tags: ["unit3", "respiratory", "resp-lab-packet-pg6"]
 
   - id: 39
@@ -302,7 +301,7 @@ questions:
     image: "practical4/41.jpg"
     question: "Name the structure.</br>hint: just one little alcove"
     answer: ["alveolus"]
-    definition: "A singular alveolus. Plural is alveoli. Alveolus is the Latin term that translates to 'small cavity' or 'little hollow'"
+    definition: "A singular alveolus. Plural is alveoli. Alveolus is the Latin term that translates to 'little hollow' or 'small sac'"
     tags: ["unit3", "respiratory", "resp-lab-packet-pg6"]
 
   - id: 42
@@ -392,7 +391,7 @@ questions:
   - id: 102
     question: "What is Dalton's Law?"
     answer: ["Each gas in a mixture exerts its own partial pressure."]
-    definition: "...and the partial pressures of gasses in a mixture add up to the total pressure. So the partial pressure of O₂, CO₂, and N₂ don't influence each other."
+    definition: "...and the partial pressures of gases in a mixture add up to the total pressure. So the partial pressure of O₂, CO₂, and N₂ don't influence each other."
     theme: "pathology"
     tags: ["unit3", "respiratory","lecture", "flashcards"]
 
