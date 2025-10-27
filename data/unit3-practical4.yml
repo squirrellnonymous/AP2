@@ -382,3 +382,26 @@ questions:
     theme: "pathology"
     tags: ["unit3", "respiratory", "tissue"]
 
+  - id: 101
+    question: "What is Boyle's Law?"
+    answer: ["volume and pressure have an inverse relationship"]
+    definition: "lungs expand, pressure goes down, air comes in."
+    theme: "pathology"
+    tags: ["unit3", "respiratory","lecture", "flashcards"]
+
+  - id: 102
+    question: "What is Dalton's Law?"
+    answer: ["Each gas in a mixture exerts its own partial pressure."]
+    definition: "...and the partial pressures of gasses in a mixture add up to the total pressure. So the partial pressure of O₂, CO₂, and N₂ don't influence each other."
+    theme: "pathology"
+    tags: ["unit3", "respiratory","lecture", "flashcards"]
+
+  - id: 103
+    question: "What is Henry's Law?"
+    answer: ["Gas is absorbed into a liquid based on the partial pressure of the gas above it."]
+    definition: "This plays out when blood coming into the lungs is relatively deoxygenated and can pick up O₂ from the alveolar air."
+    theme: "pathology"
+    tags: ["unit3", "respiratory","lecture", "flashcards"]
+
+
+
