@@ -367,6 +367,41 @@ questions:
     definition: "The primary muscle of breathing. Contracts and flattens during inspiration, creating negative pressure that draws air into the lungs."
     tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
 
+  - id: 51
+    image: "practical4/51.jpg"
+    question: "What is the tissue?"
+    answer: ["normal alveolar tissue", "alveoli"]
+    definition: "Normal alveolar tissue has c shaped elements (the alveoli)."
+    tags: ["unit3", "respiratory", "tissue", "microscope", "histology"]
+
+  - id: 52
+    image: "practical4/52.jpg"
+    question: "What condition is shown in this tissue sample?"
+    answer: ["emphysema"]
+    definition: "Emphysema is the destruction of alveolar walls, creating abnormally large air spaces. This reduces surface area for gas exchange and makes it difficult to exhale completely."
+    tags: ["unit3", "respiratory", "tissue", "microscope", "histology"]
+
+  - id: 53
+    image: "practical4/53.jpg"
+    question: "What condition is shown in this tissue sample?"
+    answer: ["lung cancer"]
+    definition: "Lung cancer shows abnormal, rapidly dividing cells that form masses and destroy normal lung tissue architecture."
+    tags: ["unit3", "respiratory", "tissue", "microscope", "histology"]
+
+  - id: 54
+    image: "practical4/54.jpg"
+    question: "What condition is shown in this tissue sample?"
+    answer: ["tuberculosis"]
+    definition: "Tuberculosis is a bacterial infection that forms granulomas (nodules of immune cells) in the lungs, visible as distinct inflammatory lesions in tissue."
+    tags: ["unit3", "respiratory", "tissue", "microscope", "histology"]
+
+  - id: 55
+    image: "practical4/55.jpg"
+    question: "What condition is shown in this tissue sample?"
+    answer: ["anthracosis"]
+    definition: "Anthracosis (black lung disease) is caused by coal dust inhalation, showing dark carbon deposits accumulated in lung tissue."
+    tags: ["unit3", "respiratory", "tissue", "microscope", "histology"]
+
 
 # ================================================================================
 
@@ -413,6 +448,14 @@ questions:
     definition: "...like smoke (but too much smoke ruins the tissue)"
     textOverlay: true
     tags: ["unit3", "respiratory","lab-activity-question", "flashcards"]
+
+  - id: 105
+    image: "gradients/05.jpg"
+    question: "What type of epithelium covers the alveoli?"
+    answer: ["simple squamous epithelial tissue", "simple squamous epi"]
+    definition: "Thin, flat cells for rapid gas diffusion."
+    textOverlay: true
+    tags: ["unit3", "respiratory","lab-activity-question"]
 
 
     
