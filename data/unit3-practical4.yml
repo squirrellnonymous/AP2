@@ -216,7 +216,7 @@ questions:
   - id: 29
     image: "practical4/29.jpg"
     question: "What is the structure?"
-    answer: ["lobar bronchus", "secondary bronchus"]
+    answer: ["left lobar bronchus", "lobar bronchus", "secondary bronchus", "left secondary bronchus"]
     definition: "The lobar (or secondary) bronchi come off of the two primary (or main) bronchi. The progression is main, lobar (or secondary), segmental (tertiary), bronchiole, respiratory bronchiole, then alveoli at the ends."
     tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
 
@@ -230,7 +230,7 @@ questions:
   - id: 31
     image: "practical4/31.jpg"
     question: "What is the structure?"
-    answer: ["middle lobe"]
+    answer: [right middle lobe"]
     definition: ""
     tags: ["unit3", "respiratory", "resp-lab-packet-pg5"]
 
@@ -376,7 +376,7 @@ questions:
 
   - id: 100
     question: "What type of epithelial tissue lines the trachea?"
-    answer: ["pseudostratified columnar epi.", "pseudostratified columnar epithelial tissue", "pseudostratified columnar epithelium", "pseudostratified columnar epithelial"]
+    answer: ["pseudostratified columnar epi.", "pseudostratified columnar epi", "pseudostratified columnar epithelial tissue", "pseudostratified columnar epithelium", "pseudostratified columnar epithelial"]
     definition: "Pseudostratified columnar epithelial tissue has ciliated columnar cells that move particles and goblet cells that secrete mucous."
     theme: "pathology"
     tags: ["unit3", "respiratory", "tissue"]

@@ -208,7 +208,7 @@ function showModalAtIndex(index) {
     if (modalQuestion.imagePath) {
         questionDisplaySection = `
             <div class="popup-image">
-                <img src="images/${modalQuestion.imagePath}" alt="Question ${modalQuestion.questionNum} image" />
+                <img src="images/${modalQuestion.imagePath}" alt="Labeled anatomical structure" />
             </div>
             <div class="popup-question">${modalQuestion.questionText}</div>
         `;
