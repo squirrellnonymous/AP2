@@ -333,40 +333,40 @@ questions:
     definition: "Tiny blood vessels surrounding the alveoli where gas exchange occurs. Oxygen diffuses from alveoli into capillaries, while CO₂ diffuses out."
     tags: ["unit3", "respiratory", "resp-lab-packet-pg7", "alveoli"]
 
-  # - id: 46
-  #   image: "practical4/46.jpg"
-  #   question: "What is the muscle?"
-  #   answer: ["sternocleidomastoid"]
-  #   definition: ""
-  #   tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
+  - id: 46
+    image: "practical4/46.jpg"
+    question: "What is the muscle?"
+    answer: ["sternocleidomastoid"]
+    definition: "Accessory muscle of inspiration. Elevates the sternum during forced inhalation (like during exercise or respiratory distress)."
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
 
-  # - id: 47
-  #   image: "practical4/47.jpg"
-  #   question: "What is the muscle?"
-  #   answer: ["internal intercostals"]
-  #   definition: ""
-  #   tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
+  - id: 47
+    image: "practical4/47.jpg"
+    question: "What is the muscle?"
+    answer: ["internal intercostals"]
+    definition: "Muscles of forced exhalation. They depress the ribs, decreasing thoracic volume to push air out during active expiration."
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
 
-  # - id: 48
-  #   image: "practical4/48.jpg"
-  #   question: "What is the muscle?"
-  #   answer: ["pectoralis minor"]
-  #   definition: ""
-  #   tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
+  - id: 48
+    image: "practical4/48.jpg"
+    question: "What is the muscle?"
+    answer: ["pectoralis minor"]
+    definition: "Accessory muscle of inspiration. Elevates ribs 3-5 during forced inhalation when the shoulder is stabilized."
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
 
-  # - id: 49
-  #   image: "practical4/49.jpg"
-  #   question: "What is the muscle?"
-  #   answer: ["external intercostals"]
-  #   definition: ""
-  #   tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
+  - id: 49
+    image: "practical4/49.jpg"
+    question: "What is the muscle?"
+    answer: ["external intercostals"]
+    definition: "Primary muscles of inspiration. They elevate the ribs, expanding the thoracic cavity during normal breathing."
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
 
-  # - id: 50
-  #   image: "practical4/50.jpg"
-  #   question: "What is the muscle?"
-  #   answer: ["diaphragm"]
-  #   definition: ""
-  #   tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
+  - id: 50
+    image: "practical4/50.jpg"
+    question: "What is the muscle?"
+    answer: ["diaphragm"]
+    definition: "The primary muscle of breathing. Contracts and flattens during inspiration, creating negative pressure that draws air into the lungs."
+    tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
 
 
 # ================================================================================
