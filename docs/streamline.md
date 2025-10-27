@@ -153,3 +153,72 @@ flashcard-hub-template.html?config=unit3-decks-config&source=unit3-practical4&ti
 - Consistent UX across all study modes
 - No code duplication
 
+---
+
+### **Step 4: Extract Remaining Duplicated Logic** ⚠️ **NEXT STEP - IN PROGRESS**
+
+**Problem:** Even after creating shared modules, significant code duplication remains between `practical-template.html` and `mini-quiz-builder.html`.
+
+**Current Status (Oct 26, 2025):**
+- Created `filterValidQuestions()` in `js/question-renderer.js` ✅
+- Both templates now share question filtering logic ✅
+- Identified 8 major categories of remaining duplication
+- **Dark Mode Logic** extracted to `js/theme-manager.js` ✅
+
+**Remaining Duplications to Extract:**
+
+#### **High Priority (Significant duplication):**
+1. **Dark Mode Logic** ✅ **COMPLETED (Oct 26, 2025)**
+   - Extracted `getPreferredTheme()`, `applyTheme()`, theme toggle handlers
+   - Created: `js/theme-manager.js` with `ThemeManager.init()` method
+   - Both templates now use shared theme manager (~40 lines eliminated)
+
+2. **Answer Grading/Display Logic** ✅ **COMPLETED (Oct 26, 2025)**
+   - Extracted all answer grading, scoring, and display replacement logic
+   - Created: `js/answer-grading.js` with `AnswerGrading` module
+   - Provides: `gradeQuestions()`, `gradeExtraCredit()`, `displayFinalScore()`, `clearHighlighting()`
+   - Practical template: Full features (partial credit, blank warnings, extra credit with 2x points)
+   - Mini quiz: Simplified mode (no partial credit, no blank warnings, no extra credit)
+   - Both templates now use shared grading system (~250 lines eliminated)
+   - Single source of truth for answer display creation and visual feedback
+
+3. **Answer Sheet Generation** (Nearly identical)
+   - Two-column grid layout with numbered buttons
+   - Lines 341-374 (practical), Lines 662-695 (mini-quiz)
+   - Should extract to: `js/answer-sheet.js`
+
+#### **Medium Priority (Moderate duplication):**
+4. **Navigation Functions** (Similar with variations)
+   - `goToImage()`, `goToQuestionAndFocus()`, `previousImage()`, `nextImage()`
+   - Lines 538-685 (practical), Lines 749-778 (mini-quiz)
+   - Should extract to: `js/navigation.js`
+
+5. **Image Display Logic** (Very similar structure)
+   - Shows question image or text-only question
+   - Updates inline inputs, navigation buttons, highlights
+   - Lines 432-514 (practical), Lines 703-747 (mini-quiz)
+   - Could extend: `js/question-renderer.js`
+
+6. **Utility Functions** (Identical small helpers)
+   - `scrollToAnswerSheet()`, `handleEnterKey()`, `syncAnswer()`
+   - Lines 380-408 (practical), Lines 780-798 (mini-quiz)
+   - Should extract to: `js/ui-helpers.js`
+
+#### **Low Priority (Small utilities):**
+7. **Full Image Modal** (Only in practical, could be shared)
+   - Shows full-size images on mobile
+   - Lines 410-440 (practical)
+   - Should extract to: `js/image-modal.js`
+
+8. **Arrow Key Navigation Setup** (Identical event listener)
+   - Both use shared `handleArrowKeyNavigation()` but duplicate setup
+   - Lines 481-490 (practical), Lines 963-978 (mini-quiz)
+   - Could auto-initialize in navigation module
+
+**Benefits of Completing This Step:**
+- Eliminate ~500+ lines of duplicated code
+- Single source of truth for all core quiz/practical behaviors
+- Easier maintenance and bug fixes
+- Consistent UX across all tools
+- Cleaner, more modular codebase
+

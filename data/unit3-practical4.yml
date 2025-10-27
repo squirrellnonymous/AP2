@@ -20,7 +20,7 @@ questions:
   - id: 1
     image: "practical4/01.jpg"
     question: "Name the lobe."
-    answer: ["superior lobe", "superior", "left superior lobe", "superior lobe of the left lung"]
+    answer: ["left superior lobe", "superior lobe of the left lung"]
     definition: ""
     tags: ["unit3", "respiratory", "lungs", "resp-lab-packet-pg5"]
 
@@ -195,7 +195,7 @@ questions:
   - id: 26
     image: "practical4/26.jpg"
     question: "What is the structure?"
-    answer: ["tracheal cartilage"]
+    answer: ["tracheal cartilages"]
     definition: ""
     tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
 
@@ -209,7 +209,7 @@ questions:
   - id: 28
     image: "practical4/28.jpg"
     question: "What is the structure?"
-    answer: ["main bronchus"]
+    answer: ["right main bronchus", "right primary bronchus"]
     definition: ""
     tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
 
@@ -342,7 +342,7 @@ questions:
   - id: 47
     image: "practical4/47.jpg"
     question: "What is the muscle?"
-    answer: ["internal intercostals"]
+    answer: ["internal intercostals", "internal intercostal muscles"]
     definition: "Muscles of forced exhalation. They depress the ribs, decreasing thoracic volume to push air out during active expiration."
     tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
 

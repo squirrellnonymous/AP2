@@ -266,17 +266,7 @@
             if (!practicalData) return;
 
             // Filter out blank/placeholder questions, extra-credit questions, and flashcard questions for display
-            const validQuestions = practicalData.questions.filter(question => {
-                const hasQuestion = question.question && question.question.trim() !== '';
-                const hasAnswer = question.answer && (
-                    Array.isArray(question.answer)
-                        ? question.answer.some(ans => ans && ans.trim() !== '')
-                        : question.answer.trim() !== ''
-                );
-                const isNotExtraCredit = !question.tags || !question.tags.includes('extra-credit');
-                const isNotFlashcard = !question.tags || !question.tags.includes('flashcards');
-                return hasQuestion && hasAnswer && isNotExtraCredit && isNotFlashcard;
-            });
+            const validQuestions = filterValidQuestions(practicalData.questions);
 
             // Separate image and text-only questions
             let imageQuestions = validQuestions.filter(q => q.image);
@@ -700,255 +690,48 @@
             // Build modal questions list for review (includes extra credit)
             buildModalQuestionsList(practicalData.validQuestions, true);
 
-            // Collect answers
-            const answers = {};
-            let blankCount = 0;
-            const blankQuestions = [];
-
-            const availableQuestions = practicalData.validQuestions.length;
-
-            for (let i = 1; i <= availableQuestions; i++) {
-                const input = document.querySelector(`input[name="answer${i}"]`);
-                const answer = input ? input.value.trim() : '';
-                answers[i] = answer;
-
-                if (answer === '') {
-                    blankCount++;
-                    blankQuestions.push(i);
-                }
-            }
-
-            // Warn about blank answers
-            if (blankCount > 0) {
-                const message = blankCount === 1
-                    ? `You have 1 blank answer (Question ${blankQuestions[0]}). Are you sure you want to submit?`
-                    : `You have ${blankCount} blank answers (Questions ${blankQuestions.slice(0, 5).join(', ')}${blankCount > 5 ? '...' : ''}). Are you sure you want to submit?`;
-
-                if (!confirm(message)) {
-                    return;
-                }
-            }
-
-            // Filter out blank/placeholder questions
-            const validQuestions = practicalData.questions.filter(question => {
-                const hasQuestion = question.question && question.question.trim() !== '';
-                const hasAnswer = question.answer && (
-                    Array.isArray(question.answer)
-                        ? question.answer.some(ans => ans && ans.trim() !== '')
-                        : question.answer.trim() !== ''
-                );
-                return hasQuestion && hasAnswer;
+            // Grade regular questions using shared module
+            const result = AnswerGrading.gradeQuestions({
+                questions: practicalData.validQuestions,
+                answerInputPrefix: 'answer',
+                circleSelector: '.answer-number',
+                showPartialCredit: true,
+                warnBlanks: true,
+                onQuestionClick: showQuestionPopup
             });
 
-            // Score and update answer sheet
-            let score = 0;
-            let total = practicalData.validQuestions.length;
+            // User cancelled submission
+            if (!result) return;
 
-            practicalData.validQuestions.forEach((question, index) => {
-                const questionNum = index + 1;
-                const studentAnswer = answers[questionNum] || '';
-                const correctAnswer = question.answer || '';
-                const input = document.querySelector(`input[name="answer${questionNum}"]`);
-                const circle = document.querySelectorAll('.answer-number')[index];
-
-                // Skip blank/placeholder questions for scoring
-                const hasValidQuestion = question.question && question.question.trim() !== '';
-                const hasValidAnswer = question.answer && (
-                    Array.isArray(question.answer)
-                        ? question.answer.some(ans => ans && ans.trim() !== '')
-                        : question.answer.trim() !== ''
-                );
-
-                if (!hasValidQuestion || !hasValidAnswer) {
-                    // Just mark as disabled but don't score
-                    if (circle) {
-                        circle.classList.add('disabled');
-                        if (input) {
-                            const displayDiv = document.createElement('div');
-                            displayDiv.className = 'answer-display disabled';
-                            displayDiv.innerHTML = '<span class="placeholder-text">Placeholder</span>';
-                            input.parentNode.replaceChild(displayDiv, input);
-                        }
-                    }
-                    return; // Skip scoring for this question
-                }
-
-                // Use shared answer checking logic
-                const answerResult = checkAnswer(studentAnswer, correctAnswer);
-
-                // Store grading results on the question object for later retrieval
-                question.gradingResult = {
-                    studentAnswer: studentAnswer,
-                    resultType: answerResult.isCorrect ? 'correct' :
-                               answerResult.isPartial ? 'partial' :
-                               (studentAnswer && studentAnswer.trim() !== '') ? 'incorrect' : 'unanswered'
-                };
-
-                if (circle) {
-                    score += answerResult.points; // Add points (0, 0.5, or 1)
-
-                    if (answerResult.isCorrect) {
-                        circle.classList.add('result-correct');
-                        // Convert to display element
-                        if (input) {
-                            const displayDiv = document.createElement('div');
-                            displayDiv.className = 'answer-display correct';
-                            displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span>`;
-                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, studentAnswer, 'correct');
-                            displayDiv.style.cursor = 'pointer';
-                            input.parentNode.replaceChild(displayDiv, input);
-                        }
-                    } else if (answerResult.isPartial) {
-                        circle.classList.add('result-partial');
-                        // Convert to display element with partial credit indicator
-                        if (input) {
-                            const displayAnswer = Array.isArray(correctAnswer)
-                                ? correctAnswer.join(' OR ')
-                                : correctAnswer;
-
-                            const displayDiv = document.createElement('div');
-                            displayDiv.className = 'answer-display partial';
-                            displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span><span class="partial-indicator">(0.5)</span>`;
-                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, studentAnswer, 'partial');
-                            displayDiv.style.cursor = 'pointer';
-                            displayDiv.title = 'Click to see question and correction - Partial credit for close answer';
-                            input.parentNode.replaceChild(displayDiv, input);
-                        }
-                    } else if (studentAnswer) {
-                        circle.classList.add('result-incorrect');
-                        // Convert to display element with correction
-                        if (input) {
-                            const displayAnswer = Array.isArray(correctAnswer)
-                                ? correctAnswer.join(' OR ')
-                                : correctAnswer;
-
-                            const displayDiv = document.createElement('div');
-                            displayDiv.className = 'answer-display incorrect';
-                            displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span>`;
-                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, studentAnswer, 'incorrect');
-                            displayDiv.style.cursor = 'pointer';
-                            displayDiv.title = 'Click to see question and correction';
-                            input.parentNode.replaceChild(displayDiv, input);
-                        }
-                    } else {
-                        circle.classList.add('result-unanswered');
-                        // Show correct answer for unanswered
-                        if (input) {
-                            const displayAnswer = Array.isArray(correctAnswer)
-                                ? correctAnswer.join(' OR ')
-                                : correctAnswer;
-                            const displayDiv = document.createElement('div');
-                            displayDiv.className = 'answer-display unanswered';
-                            displayDiv.innerHTML = `<span class="correct-answer">${displayAnswer}</span>`;
-                            displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, '', 'unanswered');
-                            displayDiv.style.cursor = 'pointer';
-                            input.parentNode.replaceChild(displayDiv, input);
-                        }
-                    }
-                }
-            });
-
-            // Score extra credit questions
+            let { score, total } = result;
             let extraCreditScore = 0;
+
+            // Grade extra credit questions if present
             if (practicalData.extraCreditQuestions && practicalData.extraCreditQuestions.length > 0) {
-                practicalData.extraCreditQuestions.forEach((question, index) => {
-                    const input = document.querySelector(`input[name="extra-credit-${index}"]`);
-                    const button = document.querySelectorAll('.extra-credit-button')[index];
-                    const studentAnswer = input ? input.value.trim() : '';
-                    const correctAnswer = question.answer || '';
-
-                    // Use shared answer checking logic (with slightly higher threshold for extra credit)
-                    const answerResult = checkAnswer(studentAnswer, correctAnswer, 0.8);
-
-                    // Store grading results on the question object for later retrieval
-                    question.gradingResult = {
-                        studentAnswer: studentAnswer,
-                        resultType: answerResult.isCorrect ? 'correct' :
-                                   answerResult.isPartial ? 'partial' :
-                                   (studentAnswer && studentAnswer.trim() !== '') ? 'incorrect' : 'unanswered'
-                    };
-
-                    // Apply visual feedback to extra credit
-                    if (answerResult.isCorrect) {
-                        button.classList.add('result-correct');
-                        if (input) {
-                            const displayDiv = document.createElement('div');
-                            displayDiv.className = 'answer-display correct';
-                            displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span> <span class="checkmark">✓</span>`;
-                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, correctAnswer, question.image, studentAnswer, 'correct');
-                            displayDiv.style.cursor = 'pointer';
-                            displayDiv.title = 'Click to see question and your answer';
-                            input.parentNode.replaceChild(displayDiv, input);
-                        }
-                    } else if (answerResult.isPartial) {
-                        button.classList.add('result-partial');
-                        if (input) {
-                            const displayAnswer = Array.isArray(correctAnswer)
-                                ? correctAnswer.join(' OR ')
-                                : correctAnswer;
-                            const displayDiv = document.createElement('div');
-                            displayDiv.className = 'answer-display partial';
-                            displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span> <span class="partial-credit">½</span><br><small class="correct-answer">Correct: ${displayAnswer}</small>`;
-                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, correctAnswer, question.image, studentAnswer, 'partial');
-                            displayDiv.style.cursor = 'pointer';
-                            displayDiv.title = 'Click to see question and correction';
-                            input.parentNode.replaceChild(displayDiv, input);
-                        }
-                    } else if (studentAnswer) {
-                        button.classList.add('result-incorrect');
-                        if (input) {
-                            const displayAnswer = Array.isArray(correctAnswer)
-                                ? correctAnswer.join(' OR ')
-                                : correctAnswer;
-                            const displayDiv = document.createElement('div');
-                            displayDiv.className = 'answer-display incorrect';
-                            displayDiv.innerHTML = `<span class="student-answer incorrect">${studentAnswer}</span> <span class="cross">✗</span><br><small class="correct-answer">Correct: ${displayAnswer}</small>`;
-                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, correctAnswer, question.image, studentAnswer, 'incorrect');
-                            displayDiv.style.cursor = 'pointer';
-                            displayDiv.title = 'Click to see question and correction';
-                            input.parentNode.replaceChild(displayDiv, input);
-                        }
-                    } else {
-                        button.classList.add('result-unanswered');
-                        if (input) {
-                            const displayAnswer = Array.isArray(correctAnswer)
-                                ? correctAnswer.join(' OR ')
-                                : correctAnswer;
-                            const displayDiv = document.createElement('div');
-                            displayDiv.className = 'answer-display unanswered';
-                            displayDiv.innerHTML = `<span class="correct-answer">${displayAnswer}</span>`;
-                            displayDiv.onclick = () => showQuestionPopup('EC', question.question, correctAnswer, question.image, '', 'unanswered');
-                            displayDiv.style.cursor = 'pointer';
-                            input.parentNode.replaceChild(displayDiv, input);
-                        }
-                    }
-
-                    // Add extra credit points (worth 2 points instead of 1)
-                    if (answerResult.isCorrect) {
-                        extraCreditScore += 2; // Full extra credit
-                    } else if (answerResult.isPartial) {
-                        extraCreditScore += 1; // Partial extra credit
-                    }
+                const ecResult = AnswerGrading.gradeExtraCredit({
+                    questions: practicalData.extraCreditQuestions,
+                    answerInputPrefix: 'extra-credit-',
+                    buttonSelector: '.extra-credit-button',
+                    correctPoints: 2,
+                    partialPoints: 1,
+                    threshold: 0.8,
+                    onQuestionClick: showQuestionPopup
                 });
-            }
 
-            const totalWithEC = score + extraCreditScore;
-            const totalPercentage = total > 0 ? Math.round((totalWithEC / total) * 100) : 0;
-            const basePercentage = total > 0 ? Math.round((score / total) * 100) : 0;
+                extraCreditScore = ecResult.score;
+            }
 
             // Clear all answer sheet highlighting
-            document.querySelectorAll('.answer-number').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelectorAll('.extra-credit-button').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            AnswerGrading.clearHighlighting('.answer-number', '.extra-credit-button');
 
-            document.getElementById('final-score').innerHTML = extraCreditScore > 0
-                ? `<strong>Final Score: ${score}+${extraCreditScore}/${total} (${totalPercentage}%)</strong>`
-                : `<strong>Final Score: ${score}/${total} (${basePercentage}%)</strong>`;
-            document.getElementById('final-score').style.display = 'block';
-            document.querySelector('.submit-button').style.display = 'none';
+            // Display final score
+            AnswerGrading.displayFinalScore({
+                score,
+                total,
+                extraCreditScore,
+                scoreElementId: 'final-score',
+                submitButtonSelector: '.submit-button'
+            });
         }
 
         function syncAnswer() {
@@ -1063,50 +846,17 @@
             });
         });
 
-        // Dark mode functionality
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        const toggleIcon = document.querySelector('.toggle-icon');
-        const body = document.body;
+        // Dark mode functionality (now provided by js/theme-manager.js)
+        // Will be initialized after loading the theme manager module
 
-        // Function to get preferred theme
-        function getPreferredTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                return savedTheme;
-            }
-            // Check system preference
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-
-        // Function to apply theme
-        function applyTheme(theme) {
-            if (theme === 'dark') {
-                body.classList.add('dark-mode');
-                toggleIcon.textContent = '☀️';
-            } else {
-                body.classList.remove('dark-mode');
-                toggleIcon.textContent = '🌙';
-            }
-        }
-
-        // Apply initial theme
-        const currentTheme = getPreferredTheme();
-        applyTheme(currentTheme);
-
-        // Listen for system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            // Only auto-switch if user hasn't set a preference
-            if (!localStorage.getItem('theme')) {
-                applyTheme(e.matches ? 'dark' : 'light');
-            }
-        });
-
-        // Toggle dark mode
-        darkModeToggle.addEventListener('click', () => {
-            const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
-            applyTheme(newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
+        // Load theme manager first (no dependencies)
+        const themeScript = document.createElement('script');
+        themeScript.src = 'js/theme-manager.js';
+        themeScript.onload = () => {
+            // Initialize theme manager
+            ThemeManager.init();
+        };
+        document.head.appendChild(themeScript);
 
         // Load YAML parser, shared modules, pathway validator, and question modal module
         const yamlScript = document.createElement('script');
@@ -1115,24 +865,29 @@
             const answerCheckerScript = document.createElement('script');
             answerCheckerScript.src = 'js/answer-checker.js';
             answerCheckerScript.onload = () => {
-                const questionRendererScript = document.createElement('script');
-                questionRendererScript.src = 'js/question-renderer.js';
-                questionRendererScript.onload = () => {
-                    const pathwayScript = document.createElement('script');
-                    pathwayScript.src = 'js/pathway-validator.js';
-                    pathwayScript.onload = () => {
-                        const modalScript = document.createElement('script');
-                        modalScript.src = 'js/question-modal.js';
-                        modalScript.onload = async () => {
-                            // Load pathway connection trees
-                            await pathwayValidator.loadConnectionTrees();
-                            loadPractical();
+                const answerGradingScript = document.createElement('script');
+                answerGradingScript.src = 'js/answer-grading.js';
+                answerGradingScript.onload = () => {
+                    const questionRendererScript = document.createElement('script');
+                    questionRendererScript.src = 'js/question-renderer.js';
+                    questionRendererScript.onload = () => {
+                        const pathwayScript = document.createElement('script');
+                        pathwayScript.src = 'js/pathway-validator.js';
+                        pathwayScript.onload = () => {
+                            const modalScript = document.createElement('script');
+                            modalScript.src = 'js/question-modal.js';
+                            modalScript.onload = async () => {
+                                // Load pathway connection trees
+                                await pathwayValidator.loadConnectionTrees();
+                                loadPractical();
+                            };
+                            document.head.appendChild(modalScript);
                         };
-                        document.head.appendChild(modalScript);
+                        document.head.appendChild(pathwayScript);
                     };
-                    document.head.appendChild(pathwayScript);
+                    document.head.appendChild(questionRendererScript);
                 };
-                document.head.appendChild(questionRendererScript);
+                document.head.appendChild(answerGradingScript);
             };
             document.head.appendChild(answerCheckerScript);
         };

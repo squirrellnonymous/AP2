@@ -175,3 +175,29 @@ function preloadImage(imagePath, cache) {
     };
     img.src = `images/${imagePath}`;
 }
+
+/**
+ * Filter questions to only include valid ones for practical/quiz display
+ * Excludes: blank questions, flashcards, extra credit
+ * @param {Array} questions - Array of question objects
+ * @returns {Array} Filtered array of valid questions
+ */
+function filterValidQuestions(questions) {
+    return questions.filter(question => {
+        // Must have valid question text
+        const hasQuestion = question.question && question.question.trim() !== '';
+
+        // Must have valid answer(s)
+        const hasAnswer = question.answer && (
+            Array.isArray(question.answer)
+                ? question.answer.some(ans => ans && ans.trim() !== '')
+                : question.answer.trim() !== ''
+        );
+
+        // Exclude flashcards and extra credit
+        const isNotFlashcard = !question.tags || !question.tags.includes('flashcards');
+        const isNotExtraCredit = !question.tags || !question.tags.includes('extra-credit');
+
+        return hasQuestion && hasAnswer && isNotFlashcard && isNotExtraCredit;
+    });
+}

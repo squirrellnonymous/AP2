@@ -464,7 +464,9 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script src="js/theme-manager.js"></script>
     <script src="js/answer-checker.js"></script>
+    <script src="js/answer-grading.js"></script>
     <script src="js/question-renderer.js"></script>
     <script src="js/question-modal.js"></script>
     <script>
@@ -473,6 +475,7 @@
         let quizQuestions = [];
         let currentImageIndex = 0;
         let availableTags = [];
+        let originalUnit = null; // Store the unit parameter from page load
 
         // Check URL parameters for shared quiz
         function getUrlTags() {
@@ -490,6 +493,7 @@
                 // Get unit from URL parameter, default to unit2-part2-practical
                 const urlParams = new URLSearchParams(window.location.search);
                 const unit = urlParams.get('unit') || 'unit2-part2-practical';
+                originalUnit = unit; // Save for later use in breadcrumbs
                 const response = await fetch(`data/${unit}.yml`);
                 const yamlText = await response.text();
                 practicalData = jsyaml.load(yamlText);
@@ -572,10 +576,10 @@
                 return;
             }
 
-            // Count questions that match selected tags
-            const matchingQuestions = practicalData.questions.filter(q => {
-                if (!q.tags || !Array.isArray(q.tags)) return false;
-                return q.tags.some(tag => selectedTags.has(tag));
+            // Count questions that match selected tags, using shared validation
+            const validQuestions = filterValidQuestions(practicalData.questions);
+            const matchingQuestions = validQuestions.filter(q => {
+                return q.tags && q.tags.some(tag => selectedTags.has(tag));
             });
 
             const count = matchingQuestions.length;
@@ -595,27 +599,22 @@
         // shuffleArray is now provided by js/question-renderer.js
 
         function startQuiz() {
-            // Filter questions by selected tags
-            const matchingQuestions = practicalData.questions.filter(q => {
-                if (!q.tags || !Array.isArray(q.tags)) return false;
-                // Question must be valid (has text and answer)
-                const hasQuestion = q.question && q.question.trim() !== '';
-                const hasAnswer = q.answer && (
-                    Array.isArray(q.answer)
-                        ? q.answer.some(ans => ans && ans.trim() !== '')
-                        : q.answer.trim() !== ''
-                );
-                const matchesTags = q.tags.some(tag => selectedTags.has(tag));
-                return hasQuestion && hasAnswer && matchesTags;
+            // Filter questions by selected tags, using shared validation
+            const validQuestions = filterValidQuestions(practicalData.questions);
+            const matchingQuestions = validQuestions.filter(q => {
+                return q.tags && q.tags.some(tag => selectedTags.has(tag));
             });
 
             // Randomly select 4 questions
             const shuffled = shuffleArray(matchingQuestions);
             quizQuestions = shuffled.slice(0, 4);
 
-            // Update URL with selected tags (so reload regenerates quiz with same tags)
+            // Update URL with selected tags AND unit (so reload regenerates quiz with same tags and unit)
             const tagsParam = Array.from(selectedTags).join(',');
-            const newUrl = `${window.location.pathname}?tags=${encodeURIComponent(tagsParam)}`;
+            const unitParam = originalUnit && originalUnit !== 'unit2-part2-practical'
+                ? `&unit=${encodeURIComponent(originalUnit)}`
+                : '';
+            const newUrl = `${window.location.pathname}?tags=${encodeURIComponent(tagsParam)}${unitParam}`;
             window.history.replaceState({}, '', newUrl);
 
             // Hide builder, show quiz
@@ -623,10 +622,10 @@
             document.getElementById('quiz-interface').classList.remove('quiz-hidden');
             document.getElementById('page-title').textContent = 'Mini Quiz';
 
-            // Update breadcrumbs - preserve unit parameter if present
-            const urlParams = new URLSearchParams(window.location.search);
-            const unit = urlParams.get('unit');
-            const builderUrl = unit ? `mini-quiz-builder.html?unit=${encodeURIComponent(unit)}` : 'mini-quiz-builder.html';
+            // Update breadcrumbs - use original unit parameter from page load
+            const builderUrl = originalUnit && originalUnit !== 'unit2-part2-practical'
+                ? `mini-quiz-builder.html?unit=${encodeURIComponent(originalUnit)}`
+                : 'mini-quiz-builder.html';
 
             document.getElementById('breadcrumbs').innerHTML = `
                 <a href="index.html">Home</a>
@@ -643,8 +642,11 @@
 
         function updateShareUrl() {
             const tagsParam = Array.from(selectedTags).join(',');
+            const unitParam = originalUnit && originalUnit !== 'unit2-part2-practical'
+                ? `&unit=${encodeURIComponent(originalUnit)}`
+                : '';
             const baseUrl = window.location.origin + window.location.pathname;
-            const shareUrl = `${baseUrl}?tags=${encodeURIComponent(tagsParam)}`;
+            const shareUrl = `${baseUrl}?tags=${encodeURIComponent(tagsParam)}${unitParam}`;
             document.getElementById('share-url-input').value = shareUrl;
         }
 
@@ -808,17 +810,10 @@
         // normalizeAnswer is now provided by js/answer-checker.js
 
         function regenerateQuiz() {
-            // Filter questions by selected tags (reuse same tags)
-            const matchingQuestions = practicalData.questions.filter(q => {
-                if (!q.tags || !Array.isArray(q.tags)) return false;
-                const hasQuestion = q.question && q.question.trim() !== '';
-                const hasAnswer = q.answer && (
-                    Array.isArray(q.answer)
-                        ? q.answer.some(ans => ans && ans.trim() !== '')
-                        : q.answer.trim() !== ''
-                );
-                const matchesTags = q.tags.some(tag => selectedTags.has(tag));
-                return hasQuestion && hasAnswer && matchesTags;
+            // Filter questions by selected tags (reuse same tags), using shared validation
+            const validQuestions = filterValidQuestions(practicalData.questions);
+            const matchingQuestions = validQuestions.filter(q => {
+                return q.tags && q.tags.some(tag => selectedTags.has(tag));
             });
 
             // Randomly select 4 new questions
@@ -837,79 +832,48 @@
         }
 
         function submitQuiz() {
-            let score = 0;
-
             // Build modal questions list for review
             buildModalQuestionsList(quizQuestions, false);
 
-            quizQuestions.forEach((question, index) => {
-                const questionNum = index + 1;
-                const input = document.querySelector(`input[name="answer${questionNum}"]`);
-                const circle = document.querySelectorAll('.answer-number')[index];
-                const studentAnswer = input ? input.value.trim() : '';
-                const correctAnswer = question.answer || '';
-
-                // Use shared answer checking logic
-                const answerResult = checkAnswer(studentAnswer, correctAnswer);
-                const resultType = getResultType(answerResult, studentAnswer);
-
-                // Store grading results on the question object
-                question.gradingResult = {
-                    studentAnswer: studentAnswer,
-                    resultType: resultType
-                };
-
-                if (answerResult.isCorrect) {
-                    score++;
-                    circle.classList.add('result-correct');
-                    const displayDiv = document.createElement('div');
-                    displayDiv.className = 'answer-display correct';
-                    displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span>`;
-                    displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, studentAnswer, 'correct');
-                    displayDiv.style.cursor = 'pointer';
-                    input.parentNode.replaceChild(displayDiv, input);
-                } else if (studentAnswer) {
-                    circle.classList.add('result-incorrect');
-                    const displayDiv = document.createElement('div');
-                    displayDiv.className = 'answer-display incorrect';
-                    displayDiv.innerHTML = `<span class="student-answer">${studentAnswer}</span>`;
-                    displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, studentAnswer, 'incorrect');
-                    displayDiv.style.cursor = 'pointer';
-                    displayDiv.title = 'Click to see question and correction';
-                    input.parentNode.replaceChild(displayDiv, input);
-                } else {
-                    circle.classList.add('result-unanswered');
-                    const displayAnswer = Array.isArray(correctAnswer)
-                        ? correctAnswer[0]  // Show only first answer
-                        : correctAnswer;
-                    const displayDiv = document.createElement('div');
-                    displayDiv.className = 'answer-display unanswered';
-                    displayDiv.innerHTML = `<span class="correct-answer" style="color: #999;">(${displayAnswer})</span>`;
-                    displayDiv.onclick = () => showQuestionPopup(questionNum, question.question, correctAnswer, question.image, '', 'unanswered');
-                    displayDiv.style.cursor = 'pointer';
-                    input.parentNode.replaceChild(displayDiv, input);
-                }
+            // Grade questions using shared module (no partial credit for mini quizzes)
+            const result = AnswerGrading.gradeQuestions({
+                questions: quizQuestions,
+                answerInputPrefix: 'answer',
+                circleSelector: '.answer-number',
+                showPartialCredit: false, // Mini quizzes don't show partial credit
+                warnBlanks: false,
+                onQuestionClick: showQuestionPopup
             });
 
-            const percentage = Math.round((score / 4) * 100);
-            document.getElementById('final-score').innerHTML = `<strong>Score: ${score}/4 (${percentage}%)</strong>`;
-            document.getElementById('final-score').style.display = 'block';
-            document.querySelector('.submit-button').style.display = 'none';
+            // User cancelled submission (won't happen with warnBlanks: false)
+            if (!result) return;
+
+            const { score, total } = result;
+
+            // Display final score (no extra credit in mini quizzes)
+            AnswerGrading.displayFinalScore({
+                score,
+                total,
+                extraCreditScore: 0,
+                scoreElementId: 'final-score',
+                submitButtonSelector: '.submit-button'
+            });
 
             // Show quiz actions in the share section
             document.getElementById('quiz-actions').style.display = 'flex';
 
             // Clear highlighting
-            document.querySelectorAll('.answer-number').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            AnswerGrading.clearHighlighting('.answer-number');
         }
 
         function shareQuiz() {
-            // Generate shareable URL with selected tags
+            // Generate shareable URL with selected tags and unit
             const tagsParam = Array.from(selectedTags).join(',');
+            const unitParam = originalUnit && originalUnit !== 'unit2-part2-practical'
+                ? `&unit=${encodeURIComponent(originalUnit)}`
+                : '';
             const baseUrl = window.location.origin + window.location.pathname;
-            const shareUrl = `${baseUrl}?tags=${encodeURIComponent(tagsParam)}`;
+            const shareUrl = `${baseUrl}?tags=${encodeURIComponent(tagsParam)}${unitParam}`;
 
             // Create modal
             const modal = document.createElement('div');
@@ -992,43 +956,8 @@
             });
         });
 
-        // Dark mode functionality
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        const toggleIcon = document.querySelector('.toggle-icon');
-        const body = document.body;
-
-        function getPreferredTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                return savedTheme;
-            }
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-
-        function applyTheme(theme) {
-            if (theme === 'dark') {
-                body.classList.add('dark-mode');
-                toggleIcon.textContent = '☀️';
-            } else {
-                body.classList.remove('dark-mode');
-                toggleIcon.textContent = '🌙';
-            }
-        }
-
-        const currentTheme = getPreferredTheme();
-        applyTheme(currentTheme);
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (!localStorage.getItem('theme')) {
-                applyTheme(e.matches ? 'dark' : 'light');
-            }
-        });
-
-        darkModeToggle.addEventListener('click', () => {
-            const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
-            applyTheme(newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
+        // Dark mode functionality (now provided by js/theme-manager.js)
+        ThemeManager.init();
 
         // Initialize
         loadPracticalData();
