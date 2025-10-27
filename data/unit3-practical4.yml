@@ -154,7 +154,7 @@ questions:
     image: "practical4/20.jpg"
     question: "What is the structure?"
     answer: ["cricoid cartilage"]
-    definition: ""
+    definition: "Cricoid means 'ring' in Greek. This piece of cartilage forms a full ring and provides support for the airway and the larynx"
     tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
 
   - id: 21
