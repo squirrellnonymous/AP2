@@ -209,7 +209,7 @@ questions:
   - id: 28
     image: "practical4/28.jpg"
     question: "What is the structure?"
-    answer: ["right main bronchus", "right primary bronchus"]
+    answer: ["right main bronchus", "right primary bronchus", "right main (primary) bronchus", "right primary (main) bronchus"]
     definition: ""
     tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
 
@@ -230,7 +230,7 @@ questions:
   - id: 31
     image: "practical4/31.jpg"
     question: "What is the structure?"
-    answer: [right middle lobe"]
+    answer: ["right middle lobe"]
     definition: ""
     tags: ["unit3", "respiratory", "resp-lab-packet-pg5"]
 
