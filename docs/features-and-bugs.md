@@ -18,7 +18,7 @@
 - Load index.html Content from YAML Configuration - Not yet implemented
 
 ### Known Bugs
-- Flashcard Image Flash During Flip Animation on Mobile - Not yet fixed
+- Flashcard Image Flash During Flip Animation on Mobile - ✅ FIXED (October 2025)
 - Pathway Quiz Corrections Still Give Away Answers - Not yet fixed
 - Answer Inputs Not Disabled After Practical Submission - Not yet fixed
 - Light/Dark Mode Button Covers Page Title - Not yet fixed
@@ -794,7 +794,7 @@ question.gradingResult = {
 
 ## Flashcard Image Flash During Flip Animation on Mobile
 
-**Status:** Not yet fixed
+**Status:** ✅ FIXED (October 2025)
 **Location:** Flashcards (`flashcards/flashcard-engine.js`, `flashcards/flashcard-styles.css`)
 
 ### Description
@@ -802,7 +802,18 @@ When using flashcards on mobile (phone), there are visual glitches during the fl
 
 **User Report (Oct 2025):** Image disappears too fast before the flip animation completes. The "squished" rotation animation that should occur during the flip appears to have been lost during refactoring - the card content changes instantly rather than smoothly rotating/flipping.
 
-### Primary Issue: Image Flash Before Flip Completes
+### Solution Implemented
+Fixed the flip animation by:
+1. **Delayed text overlay timing** - Text overlays now wait 300ms before appearing when flipping back to front
+2. **Z-index control** - Added dynamic z-index switching to ensure the correct face stays visible during rotation
+3. **Removed opacity interference** - Let natural CSS 3D transforms and backface-visibility handle the rotation
+
+### Technical Changes
+- `flashcard-engine.js` lines 610-616: Added setTimeout to delay text overlay display when flipping back to front
+- `flashcard-styles.css` lines 188-215: Added z-index rules to keep back face on top when flipped, front face on top when not flipped
+- Result: Smooth 3D flip animation visible on mobile with no image flash
+
+### Primary Issue: Image Flash Before Flip Completes (FIXED)
 **Symptom:** When flipping from back to front, the image (which should only be visible on the front) appears for a split second before the flip animation begins.
 
 **Current Behavior:**

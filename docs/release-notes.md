@@ -1,5 +1,36 @@
 # Release Notes
 
+## October 27, 2025 - Fixed Flashcard Flip Animation on Mobile
+
+### 🐛 Bug Fix: Smooth Flip Animation Without Image Flash
+
+Fixed visual glitches in the flashcard flip animation on mobile devices. The card now smoothly rotates with the full 3D "squished" effect visible, and images no longer flash before the animation completes.
+
+**Files Updated:**
+- `flashcards/flashcard-engine.js` lines 610-616 - Added 300ms delay for text overlay appearance
+- `flashcards/flashcard-styles.css` lines 188-215 - Added z-index control for proper face layering
+
+#### Problem
+- When flipping from back to front on mobile, the image would flash into view before the rotation animation started
+- The 3D rotation animation appeared to disappear or card content would change instantly
+- Text overlays appeared immediately, breaking the flip illusion
+
+#### Root Cause
+Mobile Safari has inconsistent handling of CSS `backface-visibility`, causing front face content to show through during rotation. Text overlays were being displayed immediately when the flip began, before the card rotated into view.
+
+#### Solution
+1. **Delayed text overlay timing** - Text overlays now wait 300ms before appearing when flipping back to front (halfway through the 0.6s rotation)
+2. **Z-index layering** - Front face has `z-index: 2` by default, back face gets `z-index: 2` when flipped, ensuring correct face stays visible
+3. **Removed opacity interference** - Let natural CSS 3D transforms handle the animation instead of opacity fades
+
+#### Result
+- Smooth 3D flip animation visible throughout
+- No image flash when flipping back to front
+- Text overlays appear at the right moment
+- Works reliably on iOS Safari and Android Chrome
+
+---
+
 ## October 27, 2025 - Dynamic Font Sizing for Flashcard Questions
 
 ### 🎨 Feature: Smart Font Sizing Based on Text Length
