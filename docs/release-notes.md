@@ -1,6 +1,67 @@
 # Release Notes
 
-## October 27, 2025 - Fixed Flashcard Flip Animation on Mobile
+## October 27, 2025 (Evening) - Fixed Text Overlay Pop-In During Flip Animation
+
+### 🐛 Bug Fix: Text Overlay Now Visible Throughout Flip Animation
+
+Fixed a glitchy behavior where text overlays on flashcards (like "Henry's Law") would pop into visibility after the flip animation instead of being visible throughout the rotation. The text now feels physically present on the card during the entire flip.
+
+**File Updated:**
+- `flashcards/flashcard-engine.js` lines 605-614 - Removed 300ms delay for text overlay appearance
+
+#### Problem
+- When flipping from back to front on text-overlay cards, the question text was not immediately visible
+- Text would "pop in" after the flip animation completed (at 300ms)
+- This created a jarring effect where the text felt like it was being added after the flip rather than being physically present on the card
+- Front-to-back flips looked good, but back-to-front flips looked wrong
+
+#### Root Cause
+The previous fix (see October 27 morning entry) added a 300ms delay before showing the text overlay when flipping back to front. This delay was intended to prevent text from showing through during rotation, but it created a worse problem: the text appeared to "pop in" rather than rotate smoothly with the card.
+
+#### Solution
+**Trust CSS backface-visibility** - Remove the manual 300ms delay and let CSS handle the visibility:
+1. Show the text overlay immediately before removing the 'flipped' class
+2. The CSS `backface-visibility: hidden` property on `.flip-card-front` ensures the overlay is hidden when the card is rotated away (180deg)
+3. As the card rotates from 180deg back to 0deg, the overlay naturally becomes visible with the front face
+4. No manual timing delays needed - the browser handles it correctly
+
+#### Code Change
+```javascript
+// OLD CODE (with delay):
+} else {
+    // Flip back to show term
+    cardElement.classList.remove('flipped');
+    showingDefinition = false;
+
+    if (overlay) {
+        setTimeout(() => {
+            overlay.style.display = '';
+        }, 300); // Show halfway through animation
+    }
+}
+
+// NEW CODE (immediate):
+} else {
+    // Flip back to show term
+    // Show text overlay BEFORE flipping so it's visible during rotation
+    if (overlay) {
+        overlay.style.display = '';
+    }
+
+    cardElement.classList.remove('flipped');
+    showingDefinition = false;
+}
+```
+
+#### Result
+- Text overlays are now visible throughout the flip animation
+- Text feels physically present on the card, not added after the fact
+- Smooth rotation with text squishing/unsquishing naturally
+- Matches the good behavior of front-to-back flips
+
+---
+
+## October 27, 2025 (Morning) - Fixed Flashcard Flip Animation on Mobile
 
 ### 🐛 Bug Fix: Smooth Flip Animation Without Image Flash
 

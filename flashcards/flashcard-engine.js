@@ -604,16 +604,13 @@ function flipCard() {
         enableSwipeButtons();
     } else {
         // Flip back to show term
+        // Show text overlay BEFORE flipping so it's visible during the rotation
+        if (overlay) {
+            overlay.style.display = '';
+        }
+
         cardElement.classList.remove('flipped');
         showingDefinition = false;
-
-        // Show text overlay after flip animation completes (0.6s transition)
-        // This prevents the overlay from appearing before the card rotates into view
-        if (overlay) {
-            setTimeout(() => {
-                overlay.style.display = '';
-            }, 300); // Show halfway through the 0.6s flip animation
-        }
     }
 
     // Update navigation buttons
