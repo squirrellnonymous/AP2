@@ -3,6 +3,7 @@
 ## Quick Index
 
 ### Feature Requests
+- Comprehensive Style Library System for Flashcards - Not yet implemented
 - Footer on All Pages with Project Information - Not yet implemented
 - Midi Quizzes - 10 Question Practice Format - Not yet implemented
 - Wider Input Boxes and Consistent Column Layout for Quizzes - Not yet implemented
@@ -29,6 +30,199 @@
 ---
 
 # Feature Requests (Detailed)
+
+## Comprehensive Style Library System for Flashcards
+
+**Status:** Not yet implemented
+**Priority:** Low (nice-to-have for future content creation workflow)
+**Location:** YAML files, CSS themes, flashcard engine
+
+### Vision
+
+Create a comprehensive styling system for flashcards that gives total control over the appearance of both front and back of cards, with a reusable style library that can be referenced by simple shortcuts. This will enable non-technical contributors to create beautifully styled flashcards by browsing available styles or customizing existing ones.
+
+### Current State
+
+**What Works:**
+- Text-only cards support theme shortcuts (e.g., `theme: "blk-wht"`) in YAML
+- Text overlay cards show white text over background images with dark shadows
+- Dynamic font sizing based on text length
+- Basic color/gradient themes defined in `css/themes.css`
+
+**Limitations:**
+- Text overlay cards have hardcoded white text and can't use dark text on light backgrounds
+- No per-card control over text color, shadow style, or background properties
+- No unified style system across text-only and text-overlay cards
+- Themes are scattered between CSS and hardcoded in JavaScript
+- No visual preview/browsing of available styles
+
+### Desired Features
+
+#### 1. **Total Styling Control Per Card**
+
+Allow complete customization of both front and back of flashcards via YAML:
+
+```yaml
+# Example: Full custom styling
+- id: 103
+  question: "What is Henry's Law?"
+  image: "gradients/02.jpg"
+  textOverlay: true
+  style:
+    front:
+      textColor: "#1a202c"
+      textShadow: "light"
+      backgroundColor: "#f8fafc"  # For text-only cards
+      fontWeight: "600"
+    back:
+      backgroundColor: "#ffffff"
+      textColor: "#374151"
+```
+
+#### 2. **Style Library with Shortcuts**
+
+Create a library of pre-defined, reusable styles referenced by simple names:
+
+```yaml
+# Example: Using style library shortcuts
+- id: 103
+  question: "What is Henry's Law?"
+  image: "gradients/02.jpg"
+  textOverlay: true
+  stylePreset: "light-elegant"  # References pre-built style
+
+- id: 104
+  question: "What is Dalton's Law?"
+  image: "gradients/03.jpg"
+  textOverlay: true
+  stylePreset: "dark-bold"  # Different pre-built style
+```
+
+Style library could be defined in YAML or JSON:
+```yaml
+# styles-library.yml
+stylePresets:
+  light-elegant:
+    front:
+      textColor: "#1a202c"
+      textShadow: "1px 1px 3px rgba(255,255,255,0.8)"
+      fontWeight: "500"
+    back:
+      backgroundColor: "#ffffff"
+
+  dark-bold:
+    front:
+      textColor: "#ffffff"
+      textShadow: "2px 2px 8px rgba(0,0,0,0.7)"
+      fontWeight: "700"
+    back:
+      backgroundColor: "#1a202c"
+      textColor: "#f7fafc"
+```
+
+#### 3. **Style Browser Interface** (Long-term)
+
+Visual interface for non-technical users to:
+- **Browse available styles** - See previews of all style presets
+- **Select a style** - Click to apply to current card
+- **Modify existing styles** - Adjust colors, shadows, fonts with visual controls
+- **Save custom styles** - Add new presets to the library
+- **Share styles** - Export/import style definitions
+
+#### 4. **Unified Theme System**
+
+Consolidate styling across all card types:
+- Text-only cards (no image)
+- Text overlay cards (text over background image)
+- Image cards (image with text below)
+- Back side styling
+
+All should use the same style property syntax and library system.
+
+#### 5. **Non-Coder Workflow** (Future)
+
+Enable contributors without coding knowledge to:
+1. Open flashcard builder interface
+2. Browse style library with live previews
+3. Select a style preset or customize one
+4. Preview their card with the selected style
+5. Save to YAML automatically with correct syntax
+
+### Technical Implementation Considerations
+
+**Files Involved:**
+- `css/themes.css` - Style definitions
+- `flashcards/flashcard-engine.js` - Style application logic
+- YAML data files - Style references
+- New: `styles-library.yml` or similar - Centralized style library
+- New: Style browser UI (optional, future)
+
+**Backward Compatibility:**
+- Existing `theme: "blk-wht"` syntax should continue working
+- Migrate existing themes to new library format
+- Default styles for cards without explicit styling
+
+**Style Properties to Support:**
+- Text: color, shadow, weight, size (already dynamic), alignment
+- Background: color, gradient, opacity
+- Border: color, width, style
+- Spacing: padding, margins
+- Effects: shadows, blur, overlays
+
+### Use Cases
+
+**Scenario 1: Simple Quick Styling**
+```yaml
+- id: 105
+  question: "Define osmosis"
+  stylePreset: "clean-minimal"  # One line = styled card
+```
+
+**Scenario 2: Texture Backgrounds**
+```yaml
+- id: 106
+  question: "What is Boyle's Law?"
+  image: "textures/marble-light.jpg"
+  textOverlay: true
+  stylePreset: "dark-text-serif"  # Dark text works on light marble
+```
+
+**Scenario 3: Custom One-Off**
+```yaml
+- id: 107
+  question: "Emergency concept"
+  stylePreset: "emergency-red"
+  styleOverrides:
+    front:
+      textColor: "#ffeb3b"  # Override just the text color
+```
+
+### Benefits
+
+1. **Content Creators** - Easier to create visually consistent, beautiful cards
+2. **Non-Technical Contributors** - Can style cards without touching CSS
+3. **Maintainability** - Centralized style definitions, easier to update
+4. **Consistency** - Reusable styles ensure visual coherence across deck
+5. **Flexibility** - Total control when needed, quick presets when not
+6. **Collaboration** - Style library can grow with community contributions
+
+### Next Steps
+
+1. **Design style property schema** - Finalize what properties are controllable
+2. **Create style library format** - YAML/JSON structure for style definitions
+3. **Update JavaScript** - Apply styles from YAML to cards dynamically
+4. **Migrate existing themes** - Convert current themes to new library
+5. **Build style browser** (optional, future) - Visual interface for non-coders
+6. **Documentation** - Guide for creating and using styles
+
+### Notes
+
+- Details not yet finalized - this is a vision/direction document
+- Implementation approach to be determined based on actual usage patterns
+- May evolve as we understand what level of control is actually needed
+- Consider starting simple and expanding based on real needs
+
+---
 
 ## Footer on All Pages with Project Information
 

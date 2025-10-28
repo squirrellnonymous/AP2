@@ -403,6 +403,9 @@ questions:
     tags: ["unit3", "respiratory", "tissue", "microscope", "histology"]
 
 
+  
+
+
 # ================================================================================
 
 
@@ -410,7 +413,7 @@ questions:
   # Text Only Questions (separated to keep image numbers intuitive)
 
   - id: 100
-    image: "gradients/01.jpg"
+    image: "gradients/04.jpg"
     question: "What type of epithelial tissue lines the trachea?"
     answer: ["pseudostratified columnar epi.", "pseudostratified columnar epi", "pseudostratified columnar epithelial tissue", "pseudostratified columnar epithelium", "pseudostratified columnar epithelial"]
     definition: "Pseudostratified columnar epithelial tissue has ciliated columnar cells that move particles and goblet cells that secrete mucous."
@@ -418,7 +421,7 @@ questions:
     tags: ["unit3", "respiratory", "tissue"]
 
   - id: 101
-    image: "gradients/02.jpg"
+    image: "gradients/13.jpg"
     question: "What is Boyle's Law?"
     answer: ["volume and pressure have an inverse relationship"]
     definition: "lungs expand, pressure goes down, air comes in."
@@ -426,7 +429,7 @@ questions:
     tags: ["unit3", "respiratory","lecture", "flashcards"]
 
   - id: 102
-    image: "gradients/01.jpg"
+    image: "gradients/10.jpg"
     question: "What is Dalton's Law?"
     answer: ["Each gas in a mixture exerts its own partial pressure."]
     definition: "...and the partial pressures of gases in a mixture add up to the total pressure. So the partial pressure of O₂, CO₂, and N₂ don't influence each other."
@@ -434,7 +437,7 @@ questions:
     tags: ["unit3", "respiratory","lecture", "flashcards"]
 
   - id: 103
-    image: "gradients/02.jpg"
+    image: "gradients/09.jpg"
     question: "What is Henry's Law?"
     answer: ["Gas is absorbed into a liquid based on the partial pressure of the gas above it."]
     definition: "This plays out when blood coming into the lungs is relatively deoxygenated and can pick up O₂ from the alveolar air."
@@ -442,7 +445,7 @@ questions:
     tags: ["unit3", "respiratory","lecture", "flashcards"]
 
   - id: 104
-    image: "gradients/02.jpg"
+    image: "gradients/11.jpg"
     question: "What is the purpose of the cilia and goblet cells in the trachea?"
     answer: ["to filter out dust, pathogens, and any other particles"]
     definition: "...like smoke (but too much smoke ruins the tissue)"
@@ -450,7 +453,7 @@ questions:
     tags: ["unit3", "respiratory","lab-activity-question", "flashcards"]
 
   - id: 105
-    image: "gradients/05.jpg"
+    image: "gradients/14.jpg"
     question: "What type of epithelium covers the alveoli?"
     answer: ["simple squamous epithelial tissue", "simple squamous epi"]
     definition: "Thin, flat cells for rapid gas diffusion."
