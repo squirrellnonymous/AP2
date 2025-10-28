@@ -40,14 +40,47 @@ function renderQuestion(question, imageElement, questionTextElement) {
     // Clear current image immediately
     imageElement.src = '';
 
+    // Get the image container element
+    const imageContainer = imageElement.closest('.image-container');
+
     if (question.image) {
         // Image-based question
         const imagePath = `images/${question.image}`;
         imageElement.src = imagePath;
         imageElement.style.display = 'block';
-        questionTextElement.innerHTML = question.question || '';
+
+        // Check if this is a text-overlay question
+        if (question.textOverlay) {
+            // Add class to image container for positioning
+            if (imageContainer) {
+                imageContainer.classList.add('has-text-overlay');
+            }
+            // Wrap question text in overlay div
+            questionTextElement.innerHTML = `<div class="question-text-overlay">${question.question || ''}</div>`;
+
+            // Add or update spacer element to maintain layout
+            let spacer = imageContainer.querySelector('.text-overlay-spacer');
+            if (!spacer) {
+                spacer = document.createElement('div');
+                spacer.className = 'text-overlay-spacer';
+                questionTextElement.parentNode.insertBefore(spacer, questionTextElement.nextSibling);
+            }
+        } else {
+            // Regular image question
+            if (imageContainer) {
+                imageContainer.classList.remove('has-text-overlay');
+            }
+            // Remove spacer if it exists
+            const spacer = imageContainer.querySelector('.text-overlay-spacer');
+            if (spacer) spacer.remove();
+
+            questionTextElement.innerHTML = question.question || '';
+        }
     } else {
         // Text-only question
+        if (imageContainer) {
+            imageContainer.classList.remove('has-text-overlay');
+        }
         imageElement.style.display = 'none';
         const themeClass = getTextOnlyThemeClass(question.theme);
         questionTextElement.innerHTML = `

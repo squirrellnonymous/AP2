@@ -155,6 +155,37 @@
     margin-top: 0;
 }
 
+/* Make image-content the positioning context for text overlays */
+.image-container.has-text-overlay .image-content {
+    position: relative;
+}
+
+/* Make question-text cover the image area for overlay positioning */
+.image-container.has-text-overlay .question-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 450px; /* Image height */
+    margin: 0;
+    pointer-events: none;
+}
+
+/* Spacer to maintain layout flow for text overlay questions - exactly match .question-text */
+.text-overlay-spacer {
+    margin-top: 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: transparent; /* Make text invisible */
+    user-select: none;
+}
+
+/* Add a line of text to establish natural height - use longest typical question to match spacing */
+.text-overlay-spacer::after {
+    content: 'Placeholder'; /* Actual text to establish real line height */
+}
+
+
 .inline-answer {
     display: flex;
     align-items: center;

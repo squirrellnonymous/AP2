@@ -26,6 +26,7 @@
 - Theme Lab File Not Responsive and Doesn't Show Real Usage - Not yet fixed
 - Results Modal Shows Text-Only Questions Larger Than Image Questions - ✅ FIXED (October 2025)
 - Inconsistent "(blank)" Display in Answer Modal - Not yet fixed
+- Text Overlay Questions Spacing Mismatch in Mini Quiz Builder - Not yet fixed
 
 ---
 
@@ -1148,5 +1149,167 @@ Ensure the back face stays visually "on top" during the flip-back animation usin
 
 ### Implementation Priority
 Medium - Affects mobile UX significantly and mobile is a primary use case for flashcards
+
+---
+
+## Text Overlay Questions Spacing Mismatch in Mini Quiz Builder
+
+**Status:** Not yet fixed
+**Location:** Mini quiz builder (`mini-quiz-builder.html`), Practice practicals
+**Date Identified:** October 2025
+
+### Description
+When displaying text-overlay questions (questions with `textOverlay: true` that show text centered on a background image), there's a slight spacing mismatch that causes the answer box to "jump" vertically when navigating between text-overlay questions and regular image-based questions.
+
+### Current Behavior
+- Text-overlay questions display correctly with text centered on the image
+- However, the spacing below the image doesn't match the spacing used by regular image-based questions
+- When navigating from a regular image question (with text below the image) to a text-overlay question (with text on the image), the answer box jumps down slightly
+- This creates a jarring visual experience during navigation
+
+### Expected Behavior
+- The answer box should remain at the same vertical position when navigating between all question types
+- Spacing should be consistent whether text appears below the image or overlaid on it
+- Smooth navigation with no visual "jumps"
+
+### Root Cause Analysis
+
+**The Problem:**
+Text-overlay questions position the question text absolutely over the image. This removes the text from the document flow, so no space is reserved where the text would normally appear (below the image). Regular image questions have text that flows naturally below the image, taking up vertical space.
+
+**Visual Comparison:**
+```
+Regular Image Question:          Text Overlay Question:
+┌─────────────────┐             ┌─────────────────┐
+│                 │             │   Question      │  ← Text positioned absolutely
+│     Image       │             │   Text Here     │     over the image
+│                 │             │                 │
+└─────────────────┘             └─────────────────┘
+Question text here              (no text here - absolute positioned)
+↓ Answer box                    ↓ Answer box (jumps up due to missing space)
+```
+
+### Attempted Solutions (All Failed)
+
+**Strategy: Add a spacer element to maintain layout flow**
+
+The approach was to insert a placeholder element that reserves the same vertical space that question text normally occupies, so the answer box stays in the same position.
+
+**Attempt 1: CSS ::after pseudo-element with fixed height**
+- Added `.text-overlay-spacer::after` with `height: 2.5rem`
+- **Result:** Space was too large, answer box jumped down instead of staying level
+
+**Attempt 2: CSS ::after with zero-width space character (`\200B`)**
+- Used zero-width space to establish line height naturally
+- **Result:** No visible space created, didn't work at all
+
+**Attempt 3: CSS ::after with invisible text character**
+- Used single character 'X' with `visibility: hidden`
+- **Result:** Still too much or too little space, not matching exactly
+
+**Attempt 4: CSS ::after with transparent text**
+- Used text "Placeholder" with `color: transparent`
+- Matched font-size (1.1rem), font-weight (500), margin-top (12px)
+- **Result:** Still didn't match - answer box still jumping slightly
+
+**Why Attempts Failed:**
+The approaches all tried to replicate the dimensions of `.question-text` but couldn't account for:
+- Browser default line-height calculations
+- Sub-pixel rendering differences
+- Exact box model of the actual text element with its specific content
+- Possible inherited styles or browser quirks
+
+### Better Solution Approaches
+
+**Option 1: Use actual text content as spacer**
+Instead of trying to fake the height with invisible characters or empty space:
+- Insert the actual question text into the spacer element
+- Make it invisible with `visibility: hidden` or `color: transparent`
+- This guarantees exact height match since it's the same content with same styles
+- **Pros:** Should match exactly, uses browser's natural text rendering
+- **Cons:** Duplicates question text in the DOM (once in overlay, once in spacer)
+
+**Option 2: Keep question-text in flow but visually position overlay**
+- Don't remove `.question-text` from document flow
+- Keep it in its normal position below image (invisible)
+- Position the text overlay absolutely, but relative to the image container, not the question-text
+- **Pros:** Natural spacing preserved, no need for spacer tricks
+- **Cons:** Requires restructuring the HTML/CSS positioning context
+
+**Option 3: Use JavaScript to measure and match**
+- After rendering, measure the actual height of `.question-text` on a regular question
+- Programmatically set the spacer height to match exactly
+- **Pros:** Guaranteed pixel-perfect match
+- **Cons:** Adds JavaScript complexity, may cause flash/reflow
+
+**Option 4: Fixed height for all question areas**
+- Set a fixed height for the area where question text appears (both below and on images)
+- All questions reserve the same vertical space whether text is used or not
+- **Pros:** Simple, consistent, no jumps ever
+- **Cons:** Wastes vertical space on text-overlay questions, may not look as clean
+
+### Recommended Next Steps
+
+1. **Try Option 2** (restructure positioning context)
+   - This is the most architecturally sound solution
+   - Keeps natural document flow while achieving the overlay effect
+   - May require refactoring CSS but results in cleaner code
+
+2. **If Option 2 is too complex, try Option 1** (duplicate actual text)
+   - Quick fix that should work reliably
+   - Trade-off: DOM duplication vs. clean code
+
+3. **If all else fails, use Option 4** (fixed height)
+   - Guaranteed to work, simple implementation
+   - Trade-off: some wasted space vs. perfect alignment
+
+### Files Involved
+- `mini-quiz-builder.html` (lines 688-732) - Question rendering logic
+- `js/question-renderer.js` (lines 37-80) - Shared question rendering
+- `css/practical.css` (lines 146-186) - Question text and spacer styles
+- `css/themes.css` (lines 91-113) - Text overlay positioning styles
+
+### Technical Implementation Notes
+
+**Current Code Structure:**
+```javascript
+// When textOverlay is true:
+imageContainer.classList.add('has-text-overlay');
+questionTextElement.innerHTML = `<div class="question-text-overlay">${question.question}</div>`;
+
+// Spacer added to maintain layout:
+let spacer = document.createElement('div');
+spacer.className = 'text-overlay-spacer';
+questionTextElement.parentNode.insertBefore(spacer, questionTextElement.nextSibling);
+```
+
+**Current CSS:**
+```css
+.image-container.has-text-overlay .question-text {
+    position: absolute;  /* Removes from flow */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 450px;
+    margin: 0;
+    pointer-events: none;
+}
+
+.text-overlay-spacer {
+    margin-top: 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: transparent;
+}
+```
+
+### User Impact
+- **Severity:** Low - Visual annoyance but doesn't break functionality
+- **Frequency:** Occurs on every navigation to/from text-overlay questions
+- **User Experience:** Minor jarring effect, slightly unprofessional appearance
+- **Platforms Affected:** All platforms (desktop and mobile)
+
+### Implementation Priority
+Low-Medium - Quality of life improvement, not critical but noticeable
 
 ---
