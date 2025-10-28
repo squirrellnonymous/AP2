@@ -607,9 +607,12 @@ function flipCard() {
         cardElement.classList.remove('flipped');
         showingDefinition = false;
 
-        // Show text overlay immediately when flipping back to front
+        // Show text overlay after flip animation completes (0.6s transition)
+        // This prevents the overlay from appearing before the card rotates into view
         if (overlay) {
-            overlay.style.display = '';
+            setTimeout(() => {
+                overlay.style.display = '';
+            }, 300); // Show halfway through the 0.6s flip animation
         }
     }
 

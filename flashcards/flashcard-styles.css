@@ -185,21 +185,9 @@ h1 {
     overflow: hidden;
 }
 
-/* Ensure front face is completely hidden when flipped (fix for mobile Safari) */
-.flip-card.flipped .flip-card-front {
-    opacity: 0;
-    pointer-events: none;
-}
-
 .flip-card-front {
     background: white; /* Default white background for image cards */
-}
-
-.flip-card-back {
-    background: white;
-}
-
-.flip-card-front {
+    z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -208,11 +196,22 @@ h1 {
 }
 
 .flip-card-back {
+    background: white;
     transform: rotateY(180deg);
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+/* When flipped, back face should be on top */
+.flip-card.flipped .flip-card-back {
+    z-index: 2;
+}
+
+.flip-card.flipped .flip-card-front {
+    z-index: 1;
 }
 
 /* Definition styling */

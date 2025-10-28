@@ -18,6 +18,7 @@
 - Load index.html Content from YAML Configuration - Not yet implemented
 
 ### Known Bugs
+- Flashcard Image Flash During Flip Animation on Mobile - Not yet fixed
 - Pathway Quiz Corrections Still Give Away Answers - Not yet fixed
 - Answer Inputs Not Disabled After Practical Submission - Not yet fixed
 - Light/Dark Mode Button Covers Page Title - Not yet fixed
@@ -788,5 +789,159 @@ question.gradingResult = {
 4. Submit the practical
 5. Click on the blank answers in the results to open the review popup
 6. Observe that some show "(blank)" and others don't
+
+---
+
+## Flashcard Image Flash During Flip Animation on Mobile
+
+**Status:** Not yet fixed
+**Location:** Flashcards (`flashcards/flashcard-engine.js`, `flashcards/flashcard-styles.css`)
+
+### Description
+When using flashcards on mobile (phone), there are visual glitches during the flip animation, particularly when flipping from the back (definition side) to the front (image/question side).
+
+**User Report (Oct 2025):** Image disappears too fast before the flip animation completes. The "squished" rotation animation that should occur during the flip appears to have been lost during refactoring - the card content changes instantly rather than smoothly rotating/flipping.
+
+### Primary Issue: Image Flash Before Flip Completes
+**Symptom:** When flipping from back to front, the image (which should only be visible on the front) appears for a split second before the flip animation begins.
+
+**Current Behavior:**
+1. User is viewing the back of the card (showing definition)
+2. User taps/clicks to flip back to the front
+3. **BUG:** Image from the front face flashes into view immediately
+4. Flip animation then begins and completes
+5. Front of card displays properly
+
+**Expected Behavior:**
+1. User is viewing the back of the card
+2. User taps/clicks to flip
+3. Flip animation begins immediately with no image flash
+4. Front face becomes visible only as the card rotates
+5. Image appears smoothly as part of the flip
+
+### Technical Analysis
+
+**Root Cause:**
+The issue is in the `flipCard()` function (`flashcard-engine.js` lines 586-618) and CSS styling:
+
+```javascript
+// Flip back to show term
+cardElement.classList.remove('flipped');
+showingDefinition = false;
+
+// Show text overlay immediately when flipping back to front
+if (overlay) {
+    overlay.style.display = '';
+}
+```
+
+When `flipped` class is removed, the CSS rule that hides the front face is immediately removed:
+```css
+/* flashcard-styles.css lines 188-192 */
+.flip-card.flipped .flip-card-front {
+    opacity: 0;
+    pointer-events: none;
+}
+```
+
+The front face becomes visible (opacity: 1) **instantly**, but the CSS transform animation takes 0.6 seconds to complete. This creates a mismatch where the content is visible before the visual rotation is complete, causing the flash.
+
+**Related Code Locations:**
+- **Flip logic**: `flashcard-engine.js` lines 586-618 (`flipCard()`)
+- **CSS hiding rule**: `flashcard-styles.css` lines 188-192
+- **Flip animation**: `flashcard-styles.css` lines 162-173
+- **Text overlay timing**: `flashcard-engine.js` lines 595-613
+
+### Additional Potential Issues Found
+
+**1. Text Overlay "Wink" Effect**
+The code addresses a "wink" effect for text overlays:
+```javascript
+// Hide text overlay after flip animation completes (0.6s transition)
+// This prevents the "wink" effect where text disappears before card flips
+if (overlay) {
+    setTimeout(() => {
+        overlay.style.display = 'none';
+    }, 300); // Hide halfway through the 0.6s flip animation
+}
+```
+
+This suggests there's already awareness of timing issues between content visibility and animation.
+
+**2. Image Preloading Flash**
+When advancing to a new card with `swipeLeft()` or `swipeRight()`, there's logic to prevent image flashing:
+```javascript
+setTimeout(() => {
+    // Set placeholder image FIRST to prevent flash of old image
+    const termImage = document.getElementById('term-image');
+    const loadingOverlay = document.getElementById('image-loading-overlay');
+    termImage.src = '../images/0.jpg';
+    loadingOverlay.style.display = 'block';
+    ...
+}, 400);
+```
+
+However, this only addresses flashing during card transitions, not during flip animations.
+
+**3. Mobile Safari Specific Behavior**
+The CSS includes a comment about Mobile Safari requiring specific fixes:
+```css
+/* Ensure front face is completely hidden when flipped (fix for mobile Safari) */
+```
+
+Mobile browsers (especially Safari) handle CSS 3D transforms and backface-visibility differently than desktop, which likely contributes to these issues.
+
+### Proposed Solutions
+
+**Option 1: Delay Opacity Change**
+Coordinate the opacity change with the flip animation by using CSS transitions on opacity that match the rotation duration:
+
+```css
+.flip-card-front {
+    transition: opacity 0.6s, transform 0.6s;
+}
+
+.flip-card.flipped .flip-card-front {
+    opacity: 0;
+    transition-delay: 0s; /* Fade out immediately when flipping to back */
+}
+
+.flip-card:not(.flipped) .flip-card-front {
+    opacity: 1;
+    transition-delay: 0.3s; /* Delay fade-in until halfway through flip back */
+}
+```
+
+**Option 2: JavaScript-Controlled Timing**
+Add a class that controls visibility separately from the flip state:
+```javascript
+cardElement.classList.add('hiding-front');
+setTimeout(() => {
+    cardElement.classList.remove('flipped');
+}, 50);
+setTimeout(() => {
+    cardElement.classList.remove('hiding-front');
+}, 300);
+```
+
+**Option 3: Force Z-Index During Animation**
+Ensure the back face stays visually "on top" during the flip-back animation using z-index manipulation.
+
+### Testing Requirements
+- Test on iOS Safari (iPhone)
+- Test on Android Chrome
+- Test on various screen sizes
+- Test rapid flipping (flip forward then immediately flip back)
+- Test with both image cards and text-only cards
+- Test with text overlay cards
+
+### User Impact
+- **Severity:** Medium - Doesn't break functionality but creates jarring visual experience
+- **Frequency:** Occurs every time user flips from back to front on mobile
+- **User Experience:** Distracting and unprofessional, breaks the smooth interaction pattern
+- **Platforms Affected:** Primarily mobile (especially iOS Safari)
+
+### Implementation Priority
+Medium - Affects mobile UX significantly and mobile is a primary use case for flashcards
 
 ---
