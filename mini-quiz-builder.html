@@ -693,55 +693,9 @@
 
             const imageElement = document.getElementById('current-image');
             const questionTextElement = document.getElementById('current-question-text');
-            const imageContainer = imageElement.closest('.image-container');
-            imageElement.src = '';
 
-            if (question.image) {
-                // Image-based question
-                const imagePath = `images/${question.image}`;
-                imageElement.src = imagePath;
-                imageElement.style.display = 'block';
-
-                // Check if this is a text-overlay question
-                if (question.textOverlay) {
-                    // Add class to image container for positioning
-                    if (imageContainer) {
-                        imageContainer.classList.add('has-text-overlay');
-                    }
-                    // Wrap question text in overlay div
-                    questionTextElement.innerHTML = `<div class="question-text-overlay">${question.question || ''}</div>`;
-
-                    // Add or update spacer element to maintain layout
-                    let spacer = imageContainer.querySelector('.text-overlay-spacer');
-                    if (!spacer) {
-                        spacer = document.createElement('div');
-                        spacer.className = 'text-overlay-spacer';
-                        questionTextElement.parentNode.insertBefore(spacer, questionTextElement.nextSibling);
-                    }
-                } else {
-                    // Regular image question
-                    if (imageContainer) {
-                        imageContainer.classList.remove('has-text-overlay');
-                    }
-                    // Remove spacer if it exists
-                    const spacer = imageContainer.querySelector('.text-overlay-spacer');
-                    if (spacer) spacer.remove();
-
-                    questionTextElement.innerHTML = question.question || '';
-                }
-            } else {
-                // Text-only question
-                if (imageContainer) {
-                    imageContainer.classList.remove('has-text-overlay');
-                }
-                imageElement.style.display = 'none';
-                const themeClass = getTextOnlyThemeClass(question.theme);
-                questionTextElement.innerHTML = `
-                    <div class="text-only-question-box ${themeClass}">
-                        ${question.question || ''}
-                    </div>&nbsp;
-                `;
-            }
+            // Use shared rendering module (DRY - Don't Repeat Yourself)
+            renderQuestion(question, imageElement, questionTextElement);
 
             // Update inline answer elements
             const inlineNumber = document.getElementById('inline-question-number');

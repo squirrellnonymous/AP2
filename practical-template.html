@@ -414,35 +414,22 @@
 
             // Clear the current image immediately to prevent old image showing
             const imageElement = document.getElementById('current-image');
-            imageElement.src = '';
+            const questionTextElement = document.getElementById('current-question-text');
 
             if (question) {
-                if (question.image) {
-                    // Image-based question
-                    const imagePath = `images/${question.image}`;
-                    imageElement.src = imagePath;
-                    imageElement.style.display = 'block';
-                    document.getElementById('current-question-text').innerHTML = question.question || '';
+                // Use shared rendering module (DRY - Don't Repeat Yourself)
+                renderQuestion(question, imageElement, questionTextElement);
 
-                    // Add click handler for full-size view on mobile
+                // Add click handler for full-size view on image-based questions
+                if (question.image) {
+                    const imagePath = `images/${question.image}`;
                     imageElement.onclick = () => showFullImageModal(imagePath);
                     imageElement.style.cursor = 'pointer';
                     imageElement.title = 'Click to view full size';
                 } else {
-                    // Text-only question - replace image with themed text box
-                    imageElement.style.display = 'none';
                     imageElement.onclick = null;
                     imageElement.style.cursor = 'default';
                     imageElement.title = '';
-
-                    // Get theme class
-                    const themeClass = getTextOnlyThemeClass(question.theme);
-
-                    document.getElementById('current-question-text').innerHTML = `
-                        <div class="text-only-question-box ${themeClass}">
-                            ${question.question || ''}
-                        </div>&nbsp;
-                    `;
                 }
 
                 // Update inline answer elements
@@ -526,34 +513,21 @@
 
             // Update main image or text
             const imageElement = document.getElementById('current-image');
-            imageElement.src = '';
+            const questionTextElement = document.getElementById('current-question-text');
 
+            // Use shared rendering module (DRY - Don't Repeat Yourself)
+            renderQuestion(question, imageElement, questionTextElement);
+
+            // Add click handler for full-size view on image-based questions
             if (question.image) {
-                // Image-based extra credit question
                 const imagePath = `images/${question.image}`;
-                imageElement.src = imagePath;
-                imageElement.style.display = 'block';
-                document.getElementById('current-question-text').innerHTML = question.question || 'Extra Credit Question';
-
-                // Add click handler for full-size view on mobile
                 imageElement.onclick = () => showFullImageModal(imagePath);
                 imageElement.style.cursor = 'pointer';
                 imageElement.title = 'Click to view full size';
             } else {
-                // Text-only extra credit question
-                imageElement.style.display = 'none';
                 imageElement.onclick = null;
                 imageElement.style.cursor = 'default';
                 imageElement.title = '';
-
-                // Get theme class
-                const themeClass = getTextOnlyThemeClass(question.theme);
-
-                document.getElementById('current-question-text').innerHTML = `
-                    <div class="text-only-question-box ${themeClass}">
-                        ${question.question || 'Extra Credit Question'}
-                    </div>&nbsp;
-                `;
             }
 
             // Update image counter for extra credit
