@@ -22,49 +22,49 @@ questions:
     question: "Name the lobe."
     answer: ["left superior lobe", "superior lobe of the left lung"]
     definition: ""
-    tags: ["unit3", "respiratory", "lungs", "resp-lab-packet-pg5"]
+    tags: ["unit3", "respiratory", "lungs", "resp-pg5"]
 
   - id: 2
     image: "practical4/02.jpg"
     question: "Name the lobe."
     answer: ["inferior lobe", "inferior", "left inferior lobe", "inferior lobe of the left lung"]
     definition: ""
-    tags: ["unit3", "respiratory", "lungs", "resp-lab-packet-pg5"]
+    tags: ["unit3", "respiratory", "lungs", "resp-pg5"]
 
   - id: 3
     image: "practical4/03.jpg"
     question: "Name the structures."
     answer: ["main bronchi", "primary bronchi", "left and right primary bronchi", "left and right main bronchi"]
     definition: "These are the \"main bronchi\" or \"primary bronchi\", ...you should know both names (main and primary)."
-    tags: ["unit3", "respiratory", "lungs", "resp-lab-packet-pg5"]
+    tags: ["unit3", "respiratory", "lungs", "resp-pg5"]
 
   - id: 4
     image: "practical4/04.jpg"
     question: "Name the structure."
     answer: ["trachea"]
     definition: ""
-    tags: ["unit3", "respiratory", "lungs", "resp-lab-packet-pg5"]
+    tags: ["unit3", "respiratory", "lungs", "resp-pg5"]
 
   - id: 5
     image: "practical4/05.jpg"
     question: "What is the region?"
     answer: ["pharynx"]
     definition: "The pharynx marks the bottom of the upper respiratory system"
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
+    tags: ["unit3", "respiratory", "resp-pg1"]
 
   - id: 6
     image: "practical4/06.jpg"
     question: "What is the region?"
     answer: ["larynx"]
     definition: "The larynx is the area at the top of the lower respiratory system. It is also known as the voice box and contains your vocal cords"
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
+    tags: ["unit3", "respiratory", "resp-pg1"]
 
   - id: 7
     image: "practical4/07.jpg"
     question: "What are these two structures?"
     answer: ["respiratory bronchioles"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
+    tags: ["unit3", "respiratory", "resp-pg1"]
 
   - id: 8
     image: "practical4/08.jpg"
@@ -78,168 +78,168 @@ questions:
     question: "What are the three structures (plural)?"
     answer: ["the nasal conchae", "nasal conchae", "conchae", "superior, middle, and inferior nasal conchae"]
     definition: "The conchae are the raised areas: the superior nasal concha, the middle nasal concha, and the inferior nasal concha. Along with the nasal meatuses, they create turbulence that enables nasal breathing."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-pg2"]
 
   - id: 10
     image: "practical4/10.jpg"
-    question: "What is the structure? (note: ..pointing to the low area)"
+    question: "What is the structure? (low area)"
     answer: ["inferior nasal meatus"]
     definition: "The low areas that accompany the nasal conchae that create turbulence that enables breathing."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-pg2"]
 
   - id: 11
     image: "practical4/11.jpg"
     question: "What is the structure?"
     answer: ["middle nasal concha"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-pg2"]
 
   - id: 12
     image: "practical4/12.jpg"
     question: "What specific region is this?"
     answer: ["nasopharynx"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-pg2"]
 
   - id: 13
     image: "practical4/13.jpg"
     question: "What specific region is this?"
     answer: ["oropharynx"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-pg2"]
 
   - id: 14
     image: "practical4/14.jpg"
     question: "What specific region is this?"
     answer: ["laryngopharynx"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-pg2"]
 
   - id: 15
     image: "practical4/15.jpg"
     question: "What is the structure?"
     answer: ["epiglottis"]
     definition: "This important piece of cartilage covers your wind pipe (the trachea) when you swallow."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg2"]
+    tags: ["unit3", "respiratory", "resp-pg2"]
 
   - id: 16
     image: "practical4/16.jpg"
     question: "Where is this tissue found?"
     answer: ["trachea"]
     definition: "Pseudostratified columnar epithelial tissue lines the trachea."
-    tags: ["unit3", "respiratory", "tissue", "microscope"]
+    tags: ["unit3", "respiratory", "histology"]
 
   - id: 17
     image: "practical4/17.jpg"
     question: "What is the structure?"
     answer: ["hyoid bone"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+    tags: ["unit3", "respiratory", "resp-pg3"]
 
   - id: 18
     image: "practical4/18.jpg"
     question: "What is the structure?"
     answer: ["epiglottis"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+    tags: ["unit3", "respiratory", "resp-pg3"]
 
   - id: 19
     image: "practical4/19.jpg"
     question: "What is the structure?"
     answer: ["thyroid cartilage"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+    tags: ["unit3", "respiratory", "resp-pg3"]
 
   - id: 20
     image: "practical4/20.jpg"
     question: "What is the structure?"
     answer: ["cricoid cartilage"]
     definition: "Cricoid means 'ring' in Greek. This piece of cartilage forms a full ring and provides support for the airway and the larynx"
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+    tags: ["unit3", "respiratory", "resp-pg3"]
 
   - id: 21
     image: "practical4/21.jpg"
     question: "What is the structure?"
     answer: ["arytenoid cartilage"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+    tags: ["unit3", "respiratory", "resp-pg3"]
 
   - id: 22
     image: "practical4/22.jpg"
     question: "What is the structure?"
     answer: ["corniculate cartilage"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+    tags: ["unit3", "respiratory", "resp-pg3"]
 
   - id: 23
     image: "practical4/23.jpg"
     question: "What is the structure?"
     answer: ["vestibular fold"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+    tags: ["unit3", "respiratory", "resp-pg3"]
 
   - id: 24
     image: "practical4/24.jpg"
     question: "What is the structure?"
     answer: ["vocal fold"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+    tags: ["unit3", "respiratory", "resp-pg3"]
 
   - id: 25
     image: "practical4/25.jpg"
     question: "What is the structure?"
     answer: ["epiglottis"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg3"]
+    tags: ["unit3", "respiratory", "resp-pg3"]
 
   - id: 26
     image: "practical4/26.jpg"
     question: "What is the structure?"
     answer: ["tracheal cartilages"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
+    tags: ["unit3", "respiratory", "resp-pg4"]
 
   - id: 27
     image: "practical4/27.jpg"
     question: "What is the structure?"
     answer: ["carina"]
     definition: "The carina has special sensors that trigger the cough reflex when irritated."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
+    tags: ["unit3", "respiratory", "resp-pg4"]
 
   - id: 28
     image: "practical4/28.jpg"
     question: "What is the structure?"
     answer: ["right main bronchus", "right primary bronchus", "right main (primary) bronchus", "right primary (main) bronchus"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
+    tags: ["unit3", "respiratory", "resp-pg4"]
 
   - id: 29
     image: "practical4/29.jpg"
     question: "What is the structure?"
     answer: ["left lobar bronchus", "lobar bronchus", "secondary bronchus", "left secondary bronchus"]
     definition: "The lobar (or secondary) bronchi come off of the two primary (or main) bronchi. The progression is main, lobar (or secondary), segmental (tertiary), bronchiole, respiratory bronchiole, then alveoli at the ends."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
+    tags: ["unit3", "respiratory", "resp-pg4"]
 
   - id: 30
     image: "practical4/30.jpg"
     question: "What is the structure?"
     answer: ["segmental bronchus"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg4"]
+    tags: ["unit3", "respiratory", "resp-pg4"]
 
   - id: 31
     image: "practical4/31.jpg"
     question: "What is the structure?"
     answer: ["right middle lobe"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg5"]
+    tags: ["unit3", "respiratory", "resp-pg5"]
 
   - id: 32
     image: "practical4/32.jpg"
     question: "What are the structures?"
     answer: ["alveoli"]
     definition: "Grape-like clusters where gas exchange occurs. Think of them as little bumpy balloons filled with alveolar air."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg1"]
+    tags: ["unit3", "respiratory", "resp-pg1"]
 
   - id: 33
     image: "practical4/33.jpg"
@@ -260,147 +260,147 @@ questions:
     question: "What is the structure?"
     answer: ["alveolar sac"]
     definition: "The alveolar sac gets filled with alveolar air like the inside of a balloon"
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg6"]
+    tags: ["unit3", "respiratory", "resp-pg6"]
 
   - id: 36
     image: "practical4/36.jpg"
     question: "What is the structure?"
     answer: ["pulmonary artery"]
     definition: "The pulmonary artery carries deoxygenated (blue in diagrams) blood from the heart to the lungs."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg6"]
+    tags: ["unit3", "respiratory", "resp-pg6"]
 
   - id: 37
     image: "practical4/37.jpg"
     question: "What is the structure?"
     answer: ["pulmonary vein"]
     definition: "Pulmonary veins are red (the opposite of systemic veins) because they are carrying oxygenated, red blood back to the left atrium from the lungs."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg6"]
+    tags: ["unit3", "respiratory", "resp-pg6"]
 
   - id: 38
     image: "practical4/38.jpg"
     question: "What is the structure?"
     answer: ["pulmonary arteriole"]
     definition: "Pulmonary arterioles carry deoxygenated blood from the right ventricle. Shown as **blue** in diagrams."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg6"]
+    tags: ["unit3", "respiratory", "resp-pg6"]
 
   - id: 39
     image: "practical4/39.jpg"
     question: "What is the structure?"
     answer: ["bronchiole"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg6"]
+    tags: ["unit3", "respiratory", "resp-pg6"]
 
   - id: 40
     image: "practical4/40.jpg"
     question: "What is the structure?"
     answer: ["respiratory bronchiole"]
     definition: ""
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg6"]
+    tags: ["unit3", "respiratory", "resp-pg6"]
 
   - id: 41
     image: "practical4/41.jpg"
     question: "Name the structure.</br>hint: just one little alcove"
     answer: ["alveolus"]
     definition: "A singular alveolus. Plural is alveoli. Alveolus is the Latin term that translates to 'little hollow' or 'small sac'"
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg6"]
+    tags: ["unit3", "respiratory", "resp-pg6"]
 
   - id: 42
     image: "practical4/42.jpg"
     question: "What is the cell type?"
     answer: ["alveolar macrophage", "macrophage"]
     definition: "Immune cells that patrol the alveoli, engulfing and destroying pathogens, dust particles, and debris. They're the cleanup crew of the lungs."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg7", "alveoli"]
+    tags: ["unit3", "respiratory", "resp-pg7", "alveoli"]
 
   - id: 43
     image: "practical4/43.jpg"
     question: "What is the cell type?"
     answer: ["type I alveolar cell", "type I pneumocyte"]
     definition: "Thin, flat squamous cells that form the main gas exchange surface. They facilitate efficient diffusion of O₂ and CO₂."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg7", "alveoli"]
+    tags: ["unit3", "respiratory", "resp-pg7", "alveoli"]
 
   - id: 44
     image: "practical4/44.jpg"
     question: "What is the cell type?"
     answer: ["type II alveolar cell", "type II pneumocyte"]
     definition: "Cuboidal cells that secrete surfactant, a substance that reduces surface tension and prevents alveolar collapse during exhalation."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg7", "alveoli"]
+    tags: ["unit3", "respiratory", "resp-pg7", "alveoli"]
 
   - id: 45
     image: "practical4/45.jpg"
     question: "What is the structure?"
     answer: ["capillary"]
     definition: "Tiny blood vessels surrounding the alveoli where gas exchange occurs. Oxygen diffuses from alveoli into capillaries, while CO₂ diffuses out."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg7", "alveoli"]
+    tags: ["unit3", "respiratory", "resp-pg7", "alveoli"]
 
   - id: 46
     image: "practical4/46.jpg"
     question: "What is the muscle?"
     answer: ["sternocleidomastoid"]
     definition: "Accessory muscle of inspiration. Elevates the sternum during forced inhalation (like during exercise or respiratory distress)."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
+    tags: ["unit3", "respiratory", "resp-pg8", "muscle"]
 
   - id: 47
     image: "practical4/47.jpg"
     question: "What is the muscle?"
     answer: ["internal intercostals", "internal intercostal muscles"]
     definition: "Muscles of forced exhalation. They depress the ribs, decreasing thoracic volume to push air out during active expiration."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
+    tags: ["unit3", "respiratory", "resp-pg8", "muscle"]
 
   - id: 48
     image: "practical4/48.jpg"
     question: "What is the muscle?"
     answer: ["pectoralis minor"]
     definition: "Accessory muscle of inspiration. Elevates ribs 3-5 during forced inhalation when the shoulder is stabilized."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
+    tags: ["unit3", "respiratory", "resp-pg8", "muscle"]
 
   - id: 49
     image: "practical4/49.jpg"
     question: "What is the muscle?"
     answer: ["external intercostals"]
     definition: "Primary muscles of inspiration. They elevate the ribs, expanding the thoracic cavity during normal breathing."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
+    tags: ["unit3", "respiratory", "resp-pg8", "muscle"]
 
   - id: 50
     image: "practical4/50.jpg"
     question: "What is the muscle?"
     answer: ["diaphragm"]
     definition: "The primary muscle of breathing. Contracts and flattens during inspiration, creating negative pressure that draws air into the lungs."
-    tags: ["unit3", "respiratory", "resp-lab-packet-pg8", "muscle"]
+    tags: ["unit3", "respiratory", "resp-pg8", "muscle"]
 
   - id: 51
     image: "practical4/51.jpg"
     question: "What is the tissue?"
     answer: ["normal alveolar tissue", "alveoli"]
     definition: "Normal alveolar tissue has c shaped elements (the alveoli)."
-    tags: ["unit3", "respiratory", "tissue", "microscope", "histology"]
+    tags: ["unit3", "respiratory", "histology"]
 
   - id: 52
     image: "practical4/52.jpg"
     question: "What condition is shown in this tissue sample?"
     answer: ["emphysema"]
     definition: "Emphysema is the destruction of alveolar walls, creating abnormally large air spaces. This reduces surface area for gas exchange and makes it difficult to exhale completely."
-    tags: ["unit3", "respiratory", "tissue", "microscope", "histology"]
+    tags: ["unit3", "respiratory", "histology"]
 
   - id: 53
     image: "practical4/53.jpg"
     question: "What condition is shown in this tissue sample?"
     answer: ["lung cancer"]
     definition: "Lung cancer shows abnormal, rapidly dividing cells that form masses and destroy normal lung tissue architecture."
-    tags: ["unit3", "respiratory", "tissue", "microscope", "histology"]
+    tags: ["unit3", "respiratory", "histology"]
 
   - id: 54
     image: "practical4/54.jpg"
     question: "What condition is shown in this tissue sample?"
     answer: ["tuberculosis"]
     definition: "Tuberculosis is a bacterial infection that forms granulomas (nodules of immune cells) in the lungs, visible as distinct inflammatory lesions in tissue."
-    tags: ["unit3", "respiratory", "tissue", "microscope", "histology"]
+    tags: ["unit3", "respiratory", "histology"]
 
   - id: 55
     image: "practical4/55.jpg"
     question: "What condition is shown in this tissue sample?"
     answer: ["anthracosis"]
     definition: "Anthracosis (black lung disease) is caused by coal dust inhalation, showing dark carbon deposits accumulated in lung tissue."
-    tags: ["unit3", "respiratory", "tissue", "microscope", "histology"]
+    tags: ["unit3", "respiratory", "histology"]
 
 
   
@@ -418,7 +418,7 @@ questions:
     answer: ["pseudostratified columnar epi.", "pseudostratified columnar epi", "pseudostratified columnar epithelial tissue", "pseudostratified columnar epithelium", "pseudostratified columnar epithelial"]
     definition: "Pseudostratified columnar epithelial tissue has ciliated columnar cells that move particles and goblet cells that secrete mucous."
     textOverlay: true
-    tags: ["unit3", "respiratory", "tissue"]
+    tags: ["unit3", "respiratory", "lab-activity-question"]
 
   - id: 101
     image: "gradients/13.jpg"
@@ -426,7 +426,7 @@ questions:
     answer: ["volume and pressure have an inverse relationship"]
     definition: "lungs expand, pressure goes down, air comes in."
     textOverlay: true
-    tags: ["unit3", "respiratory","lecture", "flashcards"]
+    tags: ["unit3", "respiratory", "lecture", "flashcards"]
 
   - id: 102
     image: "gradients/10.jpg"
@@ -434,7 +434,7 @@ questions:
     answer: ["Each gas in a mixture exerts its own partial pressure."]
     definition: "...and the partial pressures of gases in a mixture add up to the total pressure. So the partial pressure of O₂, CO₂, and N₂ don't influence each other."
     textOverlay: true
-    tags: ["unit3", "respiratory","lecture", "flashcards"]
+    tags: ["unit3", "respiratory", "lecture", "flashcards"]
 
   - id: 103
     image: "gradients/09.jpg"
@@ -442,7 +442,7 @@ questions:
     answer: ["Gas is absorbed into a liquid based on the partial pressure of the gas above it."]
     definition: "This plays out when blood coming into the lungs is relatively deoxygenated and can pick up O₂ from the alveolar air."
     textOverlay: true
-    tags: ["unit3", "respiratory","lecture", "flashcards"]
+    tags: ["unit3", "respiratory", "lecture", "flashcards"]
 
   - id: 104
     image: "gradients/11.jpg"
@@ -450,7 +450,7 @@ questions:
     answer: ["to filter out dust, pathogens, and any other particles"]
     definition: "...like smoke (but too much smoke ruins the tissue)"
     textOverlay: true
-    tags: ["unit3", "respiratory","lab-activity-question", "flashcards"]
+    tags: ["unit3", "respiratory", "lab-activity-question", "flashcards"]
 
   - id: 105
     image: "gradients/14.jpg"
@@ -458,7 +458,7 @@ questions:
     answer: ["simple squamous epithelial tissue", "simple squamous epi"]
     definition: "Thin, flat cells for rapid gas diffusion."
     textOverlay: true
-    tags: ["unit3", "respiratory","lab-activity-question"]
+    tags: ["unit3", "respiratory", "lab-activity-question"]
 
 
     

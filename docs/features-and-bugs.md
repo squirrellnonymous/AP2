@@ -19,6 +19,7 @@
 - Load index.html Content from YAML Configuration - Not yet implemented
 
 ### Known Bugs
+- **Flashcard Flip Animation Regression - Regular Image Cards** - ❌ VOID - Firefox emulation artifact (October 28, 2025)
 - Flashcard Image Flash During Flip Animation on Mobile - ✅ FIXED (October 2025)
 - Pathway Quiz Corrections Still Give Away Answers - Not yet fixed
 - Answer Inputs Not Disabled After Practical Submission - Not yet fixed
@@ -772,6 +773,184 @@ Low-Medium - Improves maintainability but requires refactoring
 ---
 
 # Known Bugs (Detailed)
+
+## Flashcard Flip Animation Regression - Regular Image Cards
+
+**Status:** ❌ VOID - Not a real bug, Firefox/Safari emulation artifact
+**Date Reported:** October 28, 2025
+**Date Resolved:** October 28, 2025
+**Location:** `flashcards/flashcard-engine.js`, `flashcards/flashcard-styles.css`
+
+### Resolution
+
+This was **not a real regression**. The perceived glitches were artifacts of testing in Firefox desktop with mobile emulation, not actual issues on real mobile devices.
+
+**Root Cause:** Firefox desktop rendering of CSS 3D transforms differs significantly from actual mobile Safari/Chrome. Desktop browsers emulating mobile viewport sizes do not replicate the actual mobile rendering pipeline, particularly for `backface-visibility`, z-index layering, and hardware-accelerated 3D transforms.
+
+**Actual Status:** Flashcards work correctly on real mobile devices (iOS Safari, Android Chrome). The CSS z-index fix from October 27 is functioning as intended for the target platform.
+
+### Original Report (Void)
+
+Regular image flashcards (vessel photos with text below) appeared to show flip animation glitches where the image and/or text from the front side showed through during the flip from back to front when tested in Firefox desktop with mobile emulation.
+
+### Timeline of Regression
+
+**October 27, 2025 (late afternoon):**
+- Image cards worked correctly with smooth flip animations
+- CSS z-index fix (lines 188-215 in flashcard-styles.css) was handling flip visibility
+- Code only explicitly handled text overlay cards, regular images relied on CSS
+
+**October 28, 2025 (today):**
+- Attempted to add separate handling for regular image cards vs text overlay cards
+- Multiple attempted fixes using opacity manipulation
+- Each attempt made the glitching worse
+- Code now partially reverted but glitches remain
+
+### Current Behavior
+
+When flipping from back (definition) to front (image + text):
+- Image and/or text from the front side become visible before/during the flip animation
+- Content "shows through" the back side during rotation
+- Glitchy, unprofessional appearance
+- Similar to the original bug from October 27 morning before the CSS z-index fix
+
+### What Was Working Yesterday
+
+**Commit a4c1d28** ("fixed another glitch (maybe the last one?)")
+```javascript
+// Flip back to show term
+if (overlay) {
+    overlay.style.display = '';
+}
+cardElement.classList.remove('flipped');
+```
+
+This simple code worked because:
+- Text overlays were handled explicitly (show immediately)
+- Regular images relied on CSS z-index layering (lines 188-215)
+- No opacity manipulation
+
+### Suspected Root Cause
+
+**Theory:** When we added text overlay card support, something in the HTML structure or CSS cascade changed that broke the z-index fix for regular image cards.
+
+**What Changed:**
+1. Text overlay rendering adds `.has-text-overlay` class to image container
+2. Text overlay creates `.question-text-overlay` element with absolute positioning
+3. These changes may have altered the stacking context or CSS specificity in a way that broke the existing z-index fix for regular images
+
+**CSS z-index fix (still present in flashcard-styles.css lines 188-215):**
+```css
+.flip-card-front {
+    z-index: 2;  /* Front on top by default */
+}
+
+.flip-card-back {
+    z-index: 1;
+}
+
+.flip-card.flipped .flip-card-back {
+    z-index: 2;  /* Back on top when flipped */
+}
+
+.flip-card.flipped .flip-card-front {
+    z-index: 1;
+}
+```
+
+This CSS should prevent images from showing through, but it's not working.
+
+### Failed Fix Attempts (October 28, 2025)
+
+**Attempt 1: Hide/show image and text with opacity**
+- Set image and text to `opacity: 0` before flip
+- Show at 300ms (halfway through flip)
+- Result: Blank front face, then content pops in
+
+**Attempt 2: Show earlier (200ms delay)**
+- Result: Content still showed through during rotation
+
+**Attempt 3: Show after flip completes (600ms delay)**
+- Result: Long blank period on front face
+
+**Current State:**
+Code partially reverted to simple approach (only handle text overlays), but glitches persist.
+
+### What Works vs What Doesn't
+
+**✓ Text Overlay Cards (gradients with text like "Boyle's Law"):**
+- Show text immediately when flipping back
+- Smooth rotation, no pop-in effect
+- Working correctly
+
+**✗ Regular Image Cards (vessel photos with text below):**
+- Image and/or text showing through during flip
+- Glitchy appearance
+- Broken
+
+**✓ Text-Only Cards (no image):**
+- Appear to work correctly
+
+### Affected Files
+
+**JavaScript:**
+- `flashcards/flashcard-engine.js`
+  - Lines 609-624: `flipCard()` function - flip back to front logic
+  - Lines 442-538: `showCard()` function - card rendering
+
+**CSS:**
+- `flashcards/flashcard-styles.css`
+  - Lines 188-215: Z-index layering for flip faces
+  - Lines 91-140: Image container and text overlay styles
+
+**HTML:**
+- `flashcards/flashcard-template.html` - Flip card structure
+
+### Testing Requirements
+
+- Test on iOS Safari (primary use case - mobile)
+- Test on Android Chrome
+- Test on desktop browsers
+- Test regular image cards specifically (vessel photos)
+- Test text overlay cards (should continue working)
+- Test rapid flipping (back and forth repeatedly)
+
+### Debugging Approach Needed
+
+1. **Verify CSS z-index is actually being applied**
+   - Use browser dev tools to inspect computed z-index values during flip
+   - Check if stacking context is being created correctly
+
+2. **Check if text overlay changes broke CSS specificity**
+   - Compare DOM structure with/without `.has-text-overlay` class
+   - Verify z-index rules aren't being overridden
+
+3. **Consider browser-specific issues**
+   - Mobile Safari handles 3D transforms and backface-visibility differently
+   - May need mobile-specific fixes
+
+4. **Test in isolation**
+   - Create minimal test case with just flip animation
+   - Add back features one at a time to identify what breaks it
+
+### User Impact
+
+- **Priority:** HIGH
+- **Severity:** High - Creates unprofessional, glitchy user experience
+- **Frequency:** Every flip on regular image flashcards
+- **User Experience:** Frustrating, distracting, breaks immersion
+- **Platforms Affected:** All platforms, especially mobile (primary use case)
+- **Workaround:** None - flashcards are unusable for studying
+
+### Notes
+
+- This is a regression of the bug fixed on October 27, 2025
+- The original fix worked by relying on CSS z-index layering
+- Something changed when we added text overlay support that broke the CSS fix
+- Multiple attempts to fix with JavaScript opacity manipulation made it worse
+- Need to understand WHY the CSS fix stopped working, not just add more JavaScript hacks
+
+---
 
 ## Pathway Quiz Corrections Still Give Away Answers
 

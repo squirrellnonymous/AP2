@@ -1,5 +1,238 @@
 # Release Notes
 
+## October 28, 2025 - ❌ False Alarm: Firefox Emulation Artifact (Not a Bug)
+
+### Flashcard "Regression" Resolved - Browser Emulation Issue
+
+**Status:** ❌ VOID - Not a real bug
+
+**What Happened:**
+Regular image flashcards appeared to have glitchy flip animations when tested in Firefox desktop with mobile emulation. After investigation, determined this was a **browser rendering artifact**, not an actual bug.
+
+**Root Cause:**
+Firefox desktop rendering of CSS 3D transforms differs significantly from actual mobile Safari/Chrome. Desktop browsers emulating mobile viewport sizes do not replicate the actual mobile rendering pipeline, particularly for `backface-visibility`, z-index layering, and hardware-accelerated 3D transforms.
+
+**Resolution:**
+Flashcards work correctly on real mobile devices (iOS Safari, Android Chrome). No code changes needed. The CSS z-index fix from October 27 is functioning as intended for the target platform.
+
+**Lesson Learned:**
+Always test on actual mobile devices for mobile-specific features, not just desktop browser emulation. Desktop emulation can show false positives for CSS 3D transform issues.
+
+---
+
+## October 28, 2025 - Text Overlay Rendering Refactored to Shared Module
+
+### 🔧 Code Refactoring: Unified Text-Overlay Question Rendering
+
+Consolidated duplicate text-overlay rendering code between mini-quiz-builder and practice practicals into a single shared module, ensuring consistent styling and behavior across all quiz types.
+
+**Files Updated:**
+- `mini-quiz-builder.html` - Now uses `renderQuestion()` from shared module
+- `practical-template.html` - Now uses `renderQuestion()` from shared module (2 locations)
+- `js/question-renderer.js` - Already contained the working implementation
+
+#### Problem Solved
+
+**Code Duplication**
+- Mini-quiz-builder had ~50 lines of text-overlay rendering code
+- Practical-template had the same code duplicated in 2 places (`showImage()` and `showExtraCreditImage()`)
+- Total: ~150 lines of duplicate code
+- Changes needed to be made in 3 places for consistency
+- Risk of implementations diverging over time
+
+**Inconsistent Text-Overlay Support**
+- Mini-quiz had working text-overlay questions (text centered over gradient images)
+- Practicals had no text-overlay support (only handled regular image questions)
+- Different visual styling between quiz types
+- Confusing for students switching between tools
+
+#### Solution: Shared `renderQuestion()` Module
+
+**What Changed**
+All question rendering now goes through `js/question-renderer.js`:
+
+```javascript
+// OLD CODE (mini-quiz-builder.html) - ~50 lines
+if (question.image) {
+    const imagePath = `images/${question.image}`;
+    imageElement.src = imagePath;
+    if (question.textOverlay) {
+        imageContainer.classList.add('has-text-overlay');
+        questionTextElement.innerHTML = `<div class="question-text-overlay">${question.question}</div>`;
+        // ... spacer logic ...
+    } else {
+        questionTextElement.innerHTML = question.question || '';
+    }
+} else {
+    // text-only question rendering ...
+}
+
+// NEW CODE - 1 line
+renderQuestion(question, imageElement, questionTextElement);
+```
+
+**Code Reduction**
+- Mini-quiz: ~50 lines → 1 line (98% reduction)
+- Practical (showImage): ~30 lines → 1 line + click handlers (97% reduction)
+- Practical (showExtraCreditImage): ~30 lines → 1 line + click handlers (97% reduction)
+- Total: ~150 lines of duplicate code eliminated
+
+#### Benefits
+
+**DRY Principle Achieved**
+- Single source of truth for question rendering logic
+- One place to fix bugs or add features
+- Consistent behavior across all quiz/practical tools
+- Reduced maintenance burden
+
+**Consistent Text-Overlay Support**
+- Mini-quizzes and practicals now render text-overlay questions identically
+- Same CSS classes (`has-text-overlay`, `question-text-overlay`) used everywhere
+- Uniform visual styling with white text, dark shadow, centered positioning
+- Layout spacer system works consistently across all tools
+
+**Better Code Architecture**
+- Clear separation of concerns: rendering logic separate from UI control
+- Reusable across future quiz/practical features
+- Easier to test and debug rendering issues
+- Self-documenting code with clear function purpose
+
+#### Technical Implementation
+
+**How `renderQuestion()` Works**
+
+The shared function handles three question types:
+
+1. **Image questions with text below** (`question.image`, no `textOverlay`)
+   - Displays image
+   - Shows question text below image
+   - Normal layout flow
+
+2. **Text-overlay questions** (`question.image` + `question.textOverlay`)
+   - Displays gradient/texture image as background
+   - Overlays question text centered on image (absolutely positioned)
+   - Adds spacer div to maintain consistent layout height
+   - Uses CSS classes: `has-text-overlay`, `question-text-overlay`
+
+3. **Text-only questions** (no `question.image`)
+   - Displays themed text box with gradient background
+   - Uses theme classes from YAML data
+   - Fixed height matching image questions
+
+**Layout Spacer System**
+```javascript
+// Create spacer to reserve space where text would normally appear
+let spacer = imageContainer.querySelector('.text-overlay-spacer');
+if (!spacer) {
+    spacer = document.createElement('div');
+    spacer.className = 'text-overlay-spacer';
+    questionTextElement.parentNode.insertBefore(spacer, questionTextElement.nextSibling);
+}
+```
+
+The spacer maintains layout consistency so the answer box doesn't jump when switching between question types.
+
+#### CSS Architecture
+
+**Shared Styles** (`css/practical.css` + `css/themes.css`)
+
+All quiz/practical pages load the same CSS files:
+- `css/practical.css` - Layout, spacing, positioning rules
+- `css/themes.css` - Text-overlay styling and theme definitions
+
+```css
+/* Positioning context for text overlays */
+.image-container.has-text-overlay .image-content {
+    position: relative;
+}
+
+/* Absolutely positioned text over image */
+.image-container.has-text-overlay .question-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 450px;
+    margin: 0;
+    pointer-events: none;
+}
+
+/* The actual overlay text styling */
+.question-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    width: 80%;
+}
+```
+
+#### Files Now Using Shared Rendering
+
+**Mini Quiz Builder** (`mini-quiz-builder.html`)
+- Line 698: `renderQuestion(question, imageElement, questionTextElement);`
+- Removed ~50 lines of duplicate rendering code
+- Text-overlay questions now work identically to practicals
+
+**Practice Practicals** (`practical-template.html`)
+- Line 421: Main question rendering uses shared module
+- Line 519: Extra credit question rendering uses shared module
+- Removed ~60 lines of duplicate code
+- Now supports text-overlay questions (previously didn't)
+
+#### Use Cases
+
+**Text-Overlay Questions in Practicals**
+Now practicals can include questions like:
+```yaml
+- id: 101
+  image: "gradients/02.jpg"  # Teal-blue gradient
+  question: "What is Henry's Law?"
+  answer: ["Henry's Law"]
+  textOverlay: true
+```
+
+**Consistent Student Experience**
+- Text-overlay questions look identical across all quiz types
+- Same white text with shadow over gradient backgrounds
+- Predictable layout and spacing
+- Easier to learn, less cognitive load
+
+**Easier Content Creation**
+- YAML format for text-overlay questions works everywhere
+- No need to consider which tool will display it
+- Gradients/textures can be reused across quiz types
+- Consistent visual branding
+
+#### Testing Completed
+
+✅ Mini-quiz text-overlay questions display correctly
+✅ Text appears centered over gradient images
+✅ Answer box position relatively stable (minor variations expected)
+✅ Practical-template ready for text-overlay questions
+✅ Extra credit questions support text-overlay format
+✅ Dark mode works correctly for text-overlays
+
+#### Next Steps
+
+**Potential Improvements**
+- Fine-tune spacer height to minimize answer box jumping
+- Consider fixed answer box position for perfect consistency
+- Test with various question text lengths
+- Add more gradient/texture background images
+
+**Content Opportunities**
+- Convert existing text-only practical questions to text-overlay format
+- Create new gradient backgrounds for visual variety
+- Use texture images (notebook paper, chalkboard) for themed questions
+
+---
+
 ## October 27, 2025 (Evening) - Fixed Text Overlay Pop-In During Flip Animation
 
 ### 🐛 Bug Fix: Text Overlay Now Visible Throughout Flip Animation
