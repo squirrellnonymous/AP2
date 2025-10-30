@@ -1,0 +1,35 @@
+title: "Unit 3 Mini Quiz Shortcuts"
+description: "Pre-built mini quiz configurations for Respiratory, Renal, and Acid/Base"
+
+sections:
+  - name: "Respiratory Mini Quizzes"
+    quizzes:
+      - id: "resp-alveoli-muscles"
+        title: "Alveoli, Gas Exchange & Respiratory Muscles"
+        description: "Pages 6-8 plus histology - alveolar structures, cell types, and muscles of breathing"
+        tags: ["resp-pg6", "resp-pg7", "resp-pg8", "histology"]
+        unit: "unit3-practical4"
+
+      - id: "resp-upper"
+        title: "Upper Respiratory System"
+        description: "Pages 1-3 - pharynx, larynx, nasal structures, and cartilages"
+        tags: ["resp-pg1", "resp-pg2", "resp-pg3"]
+        unit: "unit3-practical4"
+
+      - id: "resp-airways"
+        title: "Airways & Lung Anatomy"
+        description: "Pages 4-5 - bronchi, lobes, and bronchial tree structures"
+        tags: ["resp-pg4", "resp-pg5"]
+        unit: "unit3-practical4"
+
+      - id: "resp-histology"
+        title: "Respiratory Histology"
+        description: "Tissue samples - normal alveoli, emphysema, lung cancer, tuberculosis, anthracosis"
+        tags: ["histology"]
+        unit: "unit3-practical4"
+
+      - id: "resp-comprehensive"
+        title: "Comprehensive Respiratory"
+        description: "All respiratory system structures - complete review"
+        tags: ["respiratory"]
+        unit: "unit3-practical4"

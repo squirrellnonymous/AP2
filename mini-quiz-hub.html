@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Mini Quizzes</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <style>
+        body {
+            background: #f8fafc !important;
+            background-image: linear-gradient(135deg, rgba(139, 92, 246, 0.02) 0%, rgba(99, 102, 241, 0.02) 100%) !important;
+            color: #374151 !important;
+        }
+
+        .container {
+            margin-top: 0 !important;
+        }
+
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .quiz-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .quiz-card:hover {
+            border-color: #cbd5e1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .quiz-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quiz-description {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .quiz-stats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0;
+            font-size: 0.825rem;
+        }
+
+        .question-count {
+            background: #f1f5f9;
+            color: #64748b;
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .quiz-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            width: 100%;
+            height: 100%;
+        }
+
+        .section-header {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #374151;
+            margin: 20px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .section-header:first-child {
+            margin-top: 8px;
+        }
+
+        .custom-builder {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            margin: 32px 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .custom-builder h3 {
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .custom-builder p {
+            color: #6b7280;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .build-btn {
+            background: transparent;
+            color: #4f46e5;
+            border: 2px solid #4f46e5;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 20px;
+        }
+
+        .build-btn:hover {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .build-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background: #0f172a !important;
+            background-image: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(99, 102, 241, 0.03) 100%) !important;
+            color: #cbd5e1 !important;
+        }
+
+        body.dark-mode .quiz-card {
+            background: #1e293b;
+            border-color: #334155;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode .quiz-card:hover {
+            border-color: #475569;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .quiz-title {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .quiz-description {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .question-count {
+            background: #334155;
+            color: #94a3b8;
+            border-color: #475569;
+        }
+
+        body.dark-mode .section-header {
+            color: #e2e8f0;
+            border-bottom-color: #334155;
+        }
+
+        body.dark-mode .custom-builder {
+            background: #1e293b;
+            border-color: #334155;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode .custom-builder h3 {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .custom-builder p {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .build-btn {
+            color: #a5b4fc;
+            border-color: #a5b4fc;
+        }
+
+        body.dark-mode .build-btn:hover {
+            background: #a5b4fc;
+            color: #1e293b;
+        }
+
+        @media (max-width: 640px) {
+            .quiz-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon">🌙</span>
+    </button>
+
+    <div class="header">
+        <div class="header-content">
+            <a href="index.html" class="home-link">← Home</a>
+            <div class="header-center">
+                <h1 id="page-header">Mini Quizzes</h1>
+                <div class="progress" id="page-subtitle">Quick practice with random questions</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic quiz sections will be loaded here -->
+    <div id="quizzes-container"></div>
+
+    <div class="container">
+        <div class="custom-builder">
+            <h3>🎯 Build Custom Quiz</h3>
+            <p>Pick your own topics to create a personalized 4-question mini quiz</p>
+
+            <div class="tag-selector" id="tag-selector">
+                <!-- Tags will be loaded dynamically -->
+            </div>
+
+            <button id="build-custom" class="build-btn" disabled>
+                Build Quiz
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const configFile = urlParams.get('config') || 'unit3-mini-quiz-config';
+        const unitFile = urlParams.get('unit') || 'unit3-practical4';
+        const pageTitle = urlParams.get('title') || 'Mini Quizzes';
+        const pageSubtitle = urlParams.get('subtitle') || 'Quick practice with random questions';
+
+        // Update page metadata
+        document.getElementById('page-title').textContent = pageTitle;
+        document.getElementById('page-header').textContent = pageTitle;
+        document.getElementById('page-subtitle').textContent = pageSubtitle;
+
+        // Dark mode functionality
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const toggleIcon = document.querySelector('.toggle-icon');
+        const body = document.body;
+
+        function getPreferredTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                return savedTheme;
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                toggleIcon.textContent = '☀️';
+            } else {
+                body.classList.remove('dark-mode');
+                toggleIcon.textContent = '🌙';
+            }
+        }
+
+        const currentTheme = getPreferredTheme();
+        applyTheme(currentTheme);
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+
+        darkModeToggle.addEventListener('click', () => {
+            const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Custom quiz builder functionality
+        const buildButton = document.getElementById('build-custom');
+        let selectedTags = [];
+
+        // Load all available tags from the YAML data
+        async function loadAvailableTags() {
+            try {
+                const response = await fetch(`data/${unitFile}.yml`);
+                const yamlText = await response.text();
+                const practicalData = jsyaml.load(yamlText);
+
+                // Extract all unique tags from questions
+                const allTags = new Set();
+                practicalData.questions.forEach(question => {
+                    if (question.tags && Array.isArray(question.tags)) {
+                        question.tags.forEach(tag => allTags.add(tag));
+                    }
+                });
+
+                // Convert to array and sort (natural sort for alphanumeric)
+                const sortedTags = Array.from(allTags).sort((a, b) => {
+                    return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+                });
+
+                // Create tag display names
+                const tagDisplayNames = {
+                    'respiratory': 'Respiratory',
+                    'resp-pg1': 'Page 1',
+                    'resp-pg2': 'Page 2',
+                    'resp-pg3': 'Page 3',
+                    'resp-pg4': 'Page 4',
+                    'resp-pg5': 'Page 5',
+                    'resp-pg6': 'Page 6',
+                    'resp-pg7': 'Page 7',
+                    'resp-pg8': 'Page 8',
+                    'histology': 'Histology',
+                    'model': '3D Model',
+                    'lungs': 'Lungs',
+                    'alveoli': 'Alveoli',
+                    'muscle': 'Muscles',
+                    'renal': 'Renal',
+                    'acid-base': 'Acid/Base',
+                    'lecture': 'Lecture',
+                    'flashcards': 'Flashcards'
+                };
+
+                // Render tag chips, excluding meta tags
+                const tagSelector = document.getElementById('tag-selector');
+                const excludedTags = ['unit3', 'unit-3', 'practical-4'];
+                tagSelector.innerHTML = sortedTags
+                    .filter(tag => !excludedTags.includes(tag))
+                    .map(tag => {
+                        const displayName = tagDisplayNames[tag] || tag.charAt(0).toUpperCase() + tag.slice(1);
+                        return `<div class="tag-chip" data-tag="${tag}">${displayName}</div>`;
+                    }).join('');
+
+                // Add event listeners to the new tag chips
+                setupTagEventListeners();
+
+            } catch (error) {
+                console.error('Error loading tags:', error);
+            }
+        }
+
+        function setupTagEventListeners() {
+            const tagChips = document.querySelectorAll('.tag-chip');
+
+            tagChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const tag = chip.dataset.tag;
+
+                    if (chip.classList.contains('selected')) {
+                        chip.classList.remove('selected');
+                        selectedTags = selectedTags.filter(t => t !== tag);
+                    } else {
+                        chip.classList.add('selected');
+                        selectedTags.push(tag);
+                    }
+
+                    if (selectedTags.length === 0) {
+                        buildButton.textContent = 'Build Quiz';
+                        buildButton.disabled = true;
+                    } else if (selectedTags.length === 1) {
+                        buildButton.textContent = 'Build Quiz (1 topic)';
+                        buildButton.disabled = false;
+                    } else {
+                        buildButton.textContent = `Build Quiz (${selectedTags.length} topics)`;
+                        buildButton.disabled = false;
+                    }
+                });
+            });
+        }
+
+        buildButton.addEventListener('click', () => {
+            if (selectedTags.length === 0) {
+                alert('Please select at least one topic!');
+                return;
+            }
+
+            const url = `mini-quiz-builder.html?unit=${unitFile}&tags=${selectedTags.join(',')}`;
+            window.location.href = url;
+        });
+
+        // Dynamic question count calculation
+        async function loadQuestionCounts() {
+            const questionCountElements = document.querySelectorAll('.question-count[data-tags]');
+
+            for (const element of questionCountElements) {
+                const tags = element.dataset.tags ? element.dataset.tags.split(',').map(tag => tag.trim()) : [];
+                const unit = element.dataset.unit || unitFile;
+
+                try {
+                    const count = await calculateQuestionCount(unit, tags);
+                    element.textContent = `${count} question${count !== 1 ? 's' : ''}`;
+                    element.style.opacity = '1';
+                } catch (error) {
+                    console.error('Error calculating question count for', unit, tags, error);
+                    element.textContent = 'Error';
+                    element.style.opacity = '1';
+                }
+            }
+        }
+
+        async function calculateQuestionCount(unit, tags) {
+            const fetchUrl = `data/${unit}.yml`;
+
+            const response = await fetch(fetchUrl);
+            if (!response.ok) {
+                throw new Error(`Fetch failed: ${response.status} ${response.statusText}`);
+            }
+
+            const yamlText = await response.text();
+
+            if (typeof jsyaml === 'undefined') {
+                throw new Error('js-yaml library not loaded');
+            }
+
+            const practicalData = jsyaml.load(yamlText);
+
+            // Filter questions by tags if specified
+            let filteredQuestions = practicalData.questions;
+            if (tags && tags.length > 0 && tags[0] !== '') {
+                filteredQuestions = practicalData.questions.filter(question => {
+                    if (!question.tags || question.tags.length === 0) return false;
+                    return tags.some(tag => question.tags.includes(tag));
+                });
+            }
+
+            return filteredQuestions.length;
+        }
+
+        // Load quizzes from config
+        async function loadQuizzes() {
+            try {
+                const response = await fetch(`data/${configFile}.yml`);
+                if (!response.ok) throw new Error(`Failed to load config: ${response.status}`);
+
+                const yamlText = await response.text();
+                const config = jsyaml.load(yamlText);
+
+                renderQuizzes(config);
+                await loadQuestionCounts();
+            } catch (error) {
+                console.error('Error loading quiz config:', error);
+            }
+        }
+
+        function renderQuizzes(config) {
+            const container = document.getElementById('quizzes-container');
+
+            config.sections.forEach(section => {
+                const sectionHTML = `
+                    <div class="container">
+                        <div class="section-header">${section.name}</div>
+                        <div class="quiz-grid">
+                            ${section.quizzes.map(quiz => createQuizHTML(quiz)).join('')}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += sectionHTML;
+            });
+        }
+
+        function createQuizHTML(quiz) {
+            const tagsString = quiz.tags.join(',');
+            const unit = quiz.unit || unitFile;
+            return `
+                <div class="quiz-card">
+                    <a href="mini-quiz-builder.html?unit=${unit}&tags=${tagsString}" class="quiz-link">
+                        <div class="quiz-title">
+                            ${quiz.title}
+                        </div>
+                        <div class="quiz-description">
+                            ${quiz.description}
+                        </div>
+                        <div class="quiz-stats">
+                            <span class="question-count" data-unit="${unit}" data-tags="${tagsString}" style="opacity: 0;">Loading...</span>
+                        </div>
+                    </a>
+                </div>
+            `;
+        }
+
+        // Load quizzes, question counts, and tags when page loads
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadQuizzes();
+            await loadAvailableTags();
+        });
+    </script>
+</body>
+</html>
