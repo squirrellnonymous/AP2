@@ -4,44 +4,323 @@ randomize: true
 maxQuestions: 36
 
 multipleChoice:
-  - question: "lung question"
+  - question: "As you move from primary bronchi toward the respiratory bronchioles, what happens?"
     options:
-      - "Epithelial tissue"
-      - "Nervous tissue"
-      - "Muscle tissue"
-      - "Connective tissue"
-    correct: 3
-    tags: ["unit-2", "blood"]
+      - "There is less smooth muscle"
+      - "There is less cartilage"
+      - "There is less pseudostratified columnar"
+      - "Both A and C"
+      - "Both B and C"
+    correct: 4
+    explanation: "As airways get smaller, cartilage decreases (gone by bronchioles) and epithelium transitions from pseudostratified columnar to simple cuboidal/squamous. Smooth muscle actually increases proportionally."
+    tags: ["unit-3", "respiratory"]
 
- 
+  - question: "Loop diuretics directly __________ and therefore _________ urine production."
+    options:
+      - "Inhibit aquaporins; increase"
+      - "Inhibit aquaporins; decrease"
+      - "Inhibit Na/K/Cl symporter; increase"
+      - "Inhibit Na/K/Cl symporter; decrease"
+    correct: 2
+    explanation: "Loop diuretics block the Na/K/Cl symporter in the loop of Henle, preventing salt reabsorption. This keeps water in the tubule, increasing urine output."
+    tags: ["unit-3", "urinary", "diuretics"]
+
+  - question: "Which of the following situations would increase GFR?"
+    options:
+      - "Granular cells release renin"
+      - "Release of epinephrine"
+      - "Myogenic mechanism causes vasoconstriction of afferent arteriole"
+    correct: 0
+    explanation: "Renin activates RAAS, leading to angiotensin II which constricts the efferent arteriole more than the afferent, maintaining/increasing GFR. Epinephrine and myogenic vasoconstriction of afferent arteriole would decrease GFR."
+    tags: ["unit-3", "urinary", "GFR"]
+
+  - question: "Which statement below is true?"
+    options:
+      - "Most water gain comes from catabolism"
+      - "When a person drinks a lot of water, cells will lose water"
+      - "The greatest volume of water is located in intracellular compartments"
+      - "Water intake and thirst stop once blood osmolarity is lowered back to normal"
+      - "All of the above"
+    correct: 2
+    explanation: "About 2/3 of body water is intracellular. Most water gain comes from drinking (not catabolism). Drinking water dilutes blood, causing cells to gain water (not lose it). Thirst stops before osmolarity fully normalizes."
+    tags: ["unit-3", "fluid-balance"]
+
+  - question: "Most CO2 is in the bloodstream"
+    options:
+      - "As a Gas"
+      - "Held by hemoglobin"
+      - "As Carbonic acid"
+    correct: 2
+    explanation: "About 70% of CO2 is converted to carbonic acid (H2CO3) and bicarbonate (HCO3-) by carbonic anhydrase. ~23% binds hemoglobin, ~7% dissolves as gas."
+    tags: ["unit-3", "respiratory", "gas-transport"]
+
+  - question: "Which of the following hormones works to increase water reabsorption in the collecting duct?"
+    options:
+      - "Antidiuretic hormone"
+      - "Aldosterone"
+      - "Angiotensin II"
+      - "Epinephrine"
+      - "All of the above"
+    correct: 0
+    explanation: "ADH (vasopressin) inserts aquaporins into collecting duct cells, allowing water reabsorption. Aldosterone affects Na+ reabsorption (DCT), not direct water reabsorption in collecting duct."
+    tags: ["unit-3", "urinary", "hormones"]
+
+  - question: "Which of the following is not reabsorbed by the proximal convoluted tubule?"
+    options:
+      - "Potassium ions"
+      - "Hydrogen ions"
+      - "Sodium ions"
+      - "Amino acids"
+      - "Glucose"
+    correct: 1
+    explanation: "Hydrogen ions are SECRETED (not reabsorbed) by the PCT to help regulate blood pH. The PCT reabsorbs sodium, potassium, glucose, amino acids, and other nutrients, but it actively secretes H+ ions into the tubule to maintain acid-base balance."
+    tags: ["unit-3", "urinary", "PCT"]
+
+  - question: "During the Bohr shift, which factor would decrease the affinity of oxygen by hemoglobin?"
+    options:
+      - "Decreased temperature"
+      - "Decreased CO2"
+      - "Decreased pH"
+    correct: 2
+    explanation: "Decreased pH (more acidic) causes hemoglobin to release O2 more easily. This happens in active tissues with high CO2/H+ levels, facilitating oxygen delivery where needed."
+    tags: ["unit-3", "respiratory", "bohr-shift"]
+
+  - question: "An increase in _________ will slow down gas exchange between the blood and alveolar air?"
+    options:
+      - "membrane thickness"
+      - "alveolar surface area"
+      - "respiratory rate"
+      - "oxygen solubility"
+    correct: 0
+    explanation: "Thicker membranes (like in pulmonary edema or fibrosis) increase diffusion distance, slowing gas exchange. Increased surface area, respiratory rate, and solubility would all speed it up."
+    tags: ["unit-3", "respiratory", "gas-exchange"]
+
+  - question: "Chronic hypoventilation will result in"
+    options:
+      - "Respiratory alkalosis"
+      - "Respiratory acidosis"
+      - "No change"
+    correct: 1
+    explanation: "Hypoventilation = not breathing enough → CO2 builds up → carbonic acid increases → pH drops → acidosis. Hyperventilation would cause alkalosis."
+    tags: ["unit-3", "respiratory", "acid-base"]
+
+  - question: "In the RAAS system, Angiotensin II"
+    options:
+      - "Is converted from Angiotensin I with the aid of ACE"
+      - "Decreases the feeling of thirst"
+      - "Promotes Na and water secretion in the PCT"
+      - "Promotes widespread vasodilation"
+    correct: 0
+    explanation: "ACE (angiotensin converting enzyme) converts angiotensin I to angiotensin II. Ang II increases thirst, promotes Na+ reabsorption (not secretion), and causes vasoconstriction (not vasodilation)."
+    tags: ["unit-3", "urinary", "RAAS"]
+
+  - question: "Sodium"
+    options:
+      - "Is responsible for repolarization of cells during an action potential"
+      - "The major cation in the intracellular fluid"
+      - "Is reabsorbed less when atrial natriuretic peptides are released"
+    correct: 2
+    explanation: "ANP (atrial natriuretic peptide) inhibits Na+ reabsorption to decrease blood volume/pressure. K+ (not Na+) repolarizes cells, and K+ (not Na+) is the major intracellular cation."
+    tags: ["unit-3", "electrolytes"]
+
+  - question: "During expiration, ________ pressure is higher than ___________ pressure."
+    options:
+      - "Intrapulmonary; atmospheric"
+      - "Atmospheric; intrapulmonary"
+      - "Intrapleural; intrapulmonary"
+    correct: 0
+    explanation: "During expiration, air flows OUT of lungs because intrapulmonary pressure becomes higher than atmospheric pressure. Air always flows from high to low pressure."
+    tags: ["unit-3", "respiratory", "pressures"]
+
+  - question: "Some tumors secrete a large amount of ADH, which would result in which type of fluid disturbance?"
+    options:
+      - "Hypervolemia"
+      - "Hypovolemia"
+      - "Hypotonic hydration"
+      - "Dehydration"
+    correct: 2
+    explanation: "Excess ADH causes excessive water reabsorption, diluting body fluids (hypotonic = too much water relative to solutes). This is called SIADH (syndrome of inappropriate ADH)."
+    tags: ["unit-3", "fluid-balance", "ADH"]
+
+  - question: "How is alveolar air different than inspired air?"
+    options:
+      - "Alveolar air has a higher PCO2 than inspired air."
+      - "Alveolar air has a higher PO2 than inspired air."
+      - "Alveolar air has a lower PH2O than inhaled air."
+      - "All of the above"
+    correct: 0
+    explanation: "Alveolar air has higher CO2 (from tissue respiration), lower O2 (being absorbed), and higher water vapor (from humidification) compared to inspired atmospheric air."
+    tags: ["unit-3", "respiratory"]
+
+  - question: "How do the kidneys compensate respiratory acidosis?"
+    options:
+      - "By secreting more bicarbonate ions"
+      - "By secreting more hydrogen ions"
+      - "By secreting more sodium ions"
+    correct: 1
+    explanation: "To compensate for respiratory acidosis (too much CO2/H+), kidneys secrete MORE H+ into urine and reabsorb MORE bicarbonate to buffer the blood pH back up."
+    tags: ["unit-3", "acid-base", "urinary"]
+
+  - question: "Surfactant"
+    options:
+      - "Is produced by Type I alveolar cells"
+      - "Helps to reduce surface tension"
+      - "Helps to bronchoconstrict"
+      - "All of the above"
+    correct: 1
+    explanation: "Surfactant is produced by Type II alveolar cells (not Type I) and reduces surface tension to prevent alveolar collapse. It does not affect bronchodilation/constriction."
+    tags: ["unit-3", "respiratory", "surfactant"]
+
+  - question: "In the PCT, which of the following is not a way Na+ moves?"
+    options:
+      - "Na+/glucose symport"
+      - "Na+/H+ symport"
+      - "Na+/K+ pump"
+      - "Na+/bicarb symport"
+    correct: 1
+    explanation: "Na+/H+ is an ANTIport (exchanger), not a symport. Na+ goes in while H+ goes out in opposite directions. The others (glucose, bicarb) move in the same direction as Na+ (symport)."
+    tags: ["unit-3", "urinary", "PCT"]
+
+  - question: "Nitrogen has _______ partial pressure and __________ solubility, which is why it is not found in high concentrations in the blood stream."
+    options:
+      - "High; High"
+      - "High; Low"
+      - "Low; Low"
+      - "Low; High"
+    correct: 1
+    explanation: "N2 makes up ~78% of air (high partial pressure) but is very inert with low solubility in blood. Only O2 and CO2 dissolve/transport well enough to be physiologically relevant."
+    tags: ["unit-3", "respiratory", "gas-exchange"]
+
+  - question: "Which of the following hormones decrease blood pressure?"
+    options:
+      - "Angiotensin II"
+      - "Atrial natriuretic peptides"
+      - "Epinephrine"
+      - "Aldosterone"
+    correct: 1
+    explanation: "ANP is released when atria are stretched (high blood volume/pressure) and causes Na+/water loss to decrease blood volume and pressure. The others all increase blood pressure."
+    tags: ["unit-3", "fluid-balance", "hormones"]
+
+  - question: "The urge to breathe again while holding your breath largely comes from"
+    options:
+      - "Build up of carbon dioxide"
+      - "Decrease in oxygen"
+      - "Both equally"
+    correct: 0
+    explanation: "Central chemoreceptors are most sensitive to CO2/H+ changes. The urge to breathe is primarily driven by CO2 buildup, not O2 decrease (peripheral chemoreceptors respond to low O2 but less urgently)."
+    tags: ["unit-3", "respiratory", "control"]
+
+  - question: "Sensible water loss includes"
+    options:
+      - "Loss through skin evaporation"
+      - "Breath"
+      - "Feces"
+      - "All of the above"
+    correct: 2
+    explanation: "Sensible = measurable/visible water loss (urine, feces, sweat). Insensible = unmeasurable loss through skin evaporation and breath. Feces is the only sensible loss listed."
+    tags: ["unit-3", "fluid-balance"]
+
+  - question: "Hyperkalemia (mild) will"
+    options:
+      - "Make cells more excitable"
+      - "Make cells less excitable"
+    correct: 0
+    explanation: "High extracellular K+ makes resting membrane potential less negative (closer to threshold), so cells fire more easily. Severe hyperkalemia can actually prevent firing by inactivating Na+ channels."
+    tags: ["unit-3", "electrolytes"]
+
+  - question: "According to the figure, where would most vitamins, glucose, and amino acids be reabsorbed?"
+    image: "practical4/nephron-diagram.jpg"
+    options:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+    correct: 0
+    explanation: "A = PCT (proximal convoluted tubule), where 65% of filtrate and almost ALL nutrients (glucose, amino acids, vitamins) are reabsorbed. The PCT does the bulk of reabsorption work."
+    tags: ["unit-3", "urinary", "nephron"]
+
+  - question: "According to the figure, fluid in section D would be _______ compared to blood."
+    image: "practical4/nephron-diagram.jpg"
+    options:
+      - "Hyper-osmotic"
+      - "Hypo-osmotic"
+      - "Iso-osmotic"
+    correct: 0
+    explanation: "D = loop of Henle (descending limb). Water leaves here, concentrating the filtrate to become hyper-osmotic (more concentrated than blood) as it descends deeper into the medulla."
+    tags: ["unit-3", "urinary", "nephron"]
+
+  - question: "According to the figure, where would most nitrogenous waste be secreted?"
+    image: "practical4/nephron-diagram.jpg"
+    options:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+    correct: 2
+    explanation: "C = DCT (distal convoluted tubule). While PCT also secretes waste, the DCT is the primary site for secreting drugs, toxins, and excess K+/H+ ions into the filtrate for elimination."
+    tags: ["unit-3", "urinary", "nephron"]
+
+  - question: "According to the figure, where is the last place water reabsorption could take place?"
+    image: "practical4/nephron-diagram.jpg"
+    options:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+    correct: 4
+    explanation: "E = collecting duct, the final opportunity for water reabsorption. ADH controls aquaporin insertion here to fine-tune final urine concentration based on body needs."
+    tags: ["unit-3", "urinary", "nephron"]
+
+
 trueMakeTrue:
-  - statement: "When hydrostatic pressure is greater than BCOP net ***reabsorption*** occurs."
-    isTrue: false
-    correctWord: ["filtration"]
+  - statement: "During the countercurrent multiplier, if less salt is reabsorbed, then ***less*** water will be reabsorbed."
+    isTrue: true
+    correctWord: []
     points: 2.5
-    tags: ["unit-2", "blood-vessels", "capillary-exchange"]
+    tags: ["unit-3", "urinary", "countercurrent"]
+
+  - statement: "Most tissue in the conducting zone of the respiratory system is made from ***simple squamous*** epithelium."
+    isTrue: false
+    correctWord: ["pseudostratified columnar"]
+    points: 2.5
+    tags: ["unit-3", "respiratory", "histology"]
+
+  - statement: "The amount of air inspired and expired during normal breathing is known as ***vital capacity***."
+    isTrue: false
+    correctWord: ["tidal volume"]
+    points: 2.5
+    tags: ["unit-3", "respiratory", "lung-volumes"]
+
+  - statement: "Bringing substances back into the bloodstream from the nephron is known as ***reabsorption***."
+    isTrue: true
+    correctWord: []
+    points: 2.5
+    tags: ["unit-3", "urinary", "processes"]
 
 
-table:
-  - question: "Name three blood plasma proteins and list a function of each."
-    headers: ["Plasma Protein", "Function"]
-    answer: [
-      ["albumin", "osmotic pressure, hormone transport"],
-      ["globulins", "antibodies, immune response"],
-      ["fibrinogen", "blood clotting, coagulation"]
-    ]
-    points: 6
-    tags: ["unit-2", "blood", "plasma-proteins"]
+# table:
+#   - question: "Name three blood plasma proteins and list a function of each."
+#     headers: ["Plasma Protein", "Function"]
+#     answer: [
+#       ["albumin", "osmotic pressure, hormone transport"],
+#       ["globulins", "antibodies, immune response"],
+#       ["fibrinogen", "blood clotting, coagulation"] 
+#     ]
+#     points: 6
+#     tags: ["unit-2", "blood", "plasma-proteins"]
 
-essay:
-  - question: "The drug Warfarin inhibits factor IX (factor 9). What clotting pathway is it inhibiting? What is the alternate pathway? Which pathway is faster."
-    answer: "Warfarin is inhibiting the intrinsic pathway. The alternate pathway is the extrinsic pathway. The extrinsic pathway is faster."
-    points: 3
-    tags: ["unit-2", "blood"]
+# essay:
+#   - question: "The drug Warfarin inhibits factor IX (factor 9). What clotting pathway is it inhibiting? What is the alternate pathway? Which pathway is faster."
+#     answer: "Warfarin is inhibiting the intrinsic pathway. The alternate pathway is the extrinsic pathway. The extrinsic pathway is faster."
+#     points: 3
+#     tags: ["unit-2", "blood"]
 
-  - question: "Answer the following questions based on the Wigger's graph: <br>&nbsp;&nbsp;&nbsp;&nbsp; A) What is it called and what is happening? <br>&nbsp;&nbsp;&nbsp;&nbsp; B) What is happening at this point? What phase begins after this happens? <br>&nbsp;&nbsp;&nbsp;&nbsp; C) What is this point called? What does it represent (measure)?<br>&nbsp;&nbsp;&nbsp;&nbsp; D) What is this point called? When you subract it from the previous measurment what do you calculate? <br>&nbsp;&nbsp;&nbsp;&nbsp; E) What phase is represented by E, and which chamber is measured?"
-    image: "exam-2/wiggers2.jpg"
-    answer: "A. T wave - ventricular repolarization. </br> B. Atrioventricular valve closes, isovolumetric contraction begins. </br> C. End Diastolic Volume (EDV), the volume of blood at the end of ventricular filling (preload).</br> D. End Systolic Volume (ESV) which is the volume of blood at the end of ventricular ejection. </br>&nbsp;&nbsp;&nbsp;&nbsp;EDV - ESV = Stroke Volume (SV)</br> E. Isovolumetric relaxation, pressure in the left ventricle."
-    points: 12
-    tags: ["unit-2", "heart", "wiggers-diagram"]
+#   - question: "Answer the following questions based on the Wigger's graph: <br>&nbsp;&nbsp;&nbsp;&nbsp; A) What is it called and what is happening? <br>&nbsp;&nbsp;&nbsp;&nbsp; B) What is happening at this point? What phase begins after this happens? <br>&nbsp;&nbsp;&nbsp;&nbsp; C) What is this point called? What does it represent (measure)?<br>&nbsp;&nbsp;&nbsp;&nbsp; D) What is this point called? When you subract it from the previous measurment what do you calculate? <br>&nbsp;&nbsp;&nbsp;&nbsp; E) What phase is represented by E, and which chamber is measured?"
+#     image: "exam-2/wiggers2.jpg"
+#     answer: "A. T wave - ventricular repolarization. </br> B. Atrioventricular valve closes, isovolumetric contraction begins. </br> C. End Diastolic Volume (EDV), the volume of blood at the end of ventricular filling (preload).</br> D. End Systolic Volume (ESV) which is the volume of blood at the end of ventricular ejection. </br>&nbsp;&nbsp;&nbsp;&nbsp;EDV - ESV = Stroke Volume (SV)</br> E. Isovolumetric relaxation, pressure in the left ventricle."
+#     points: 12
+#     tags: ["unit-2", "heart", "wiggers-diagram"]
 

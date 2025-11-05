@@ -108,6 +108,26 @@
     color: #ef4444;
 }
 
+.feedback-text.partial {
+    color: #f59e0b;
+}
+
+/* True/Make True answer field styling */
+input.correct {
+    border-color: #10b981 !important;
+    background-color: #ecfdf5 !important;
+}
+
+input.incorrect {
+    border-color: #ef4444 !important;
+    background-color: #fef2f2 !important;
+}
+
+input.partial {
+    border-color: #f59e0b !important;
+    background-color: #fef3c7 !important;
+}
+
 /* Essay Section */
 .essay-section {
     margin-top: 24px;
@@ -543,10 +563,29 @@
 }
 
 .question-image img {
-    max-width: 100%;
+    max-width: 400px;
+    width: 100%;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Grouped questions (sharing same image) */
+.question-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grouped-question-item {
+    padding: 16px;
+    border-left: 3px solid #e5e7eb;
+    background-color: #f9fafb;
+    border-radius: 4px;
+}
+
+.grouped-question-item:not(:last-child) {
+    margin-bottom: 8px;
 }
 
 /* Mobile Responsive */
