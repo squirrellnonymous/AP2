@@ -246,8 +246,8 @@ multipleChoice:
       - "Hyper-osmotic"
       - "Hypo-osmotic"
       - "Iso-osmotic"
-    correct: 0
-    explanation: "D = loop of Henle (descending limb). Water leaves here, concentrating the filtrate to become hyper-osmotic (more concentrated than blood) as it descends deeper into the medulla."
+    correct: 1
+    explanation: "D = DCT (distal convoluted tubule). The ascending limb of the loop of Henle pumps out salt but is impermeable to water, so fluid entering the DCT is dilute (hypo-osmotic) compared to blood."
     tags: ["unit-3", "urinary", "nephron"]
 
   - question: "According to the figure, where would most nitrogenous waste be secreted?"
@@ -258,8 +258,8 @@ multipleChoice:
       - "C"
       - "D"
       - "E"
-    correct: 2
-    explanation: "C = DCT (distal convoluted tubule). While PCT also secretes waste, the DCT is the primary site for secreting drugs, toxins, and excess K+/H+ ions into the filtrate for elimination."
+    correct: 0
+    explanation: "A = PCT (proximal convoluted tubule). The PCT is the primary site for secretion of nitrogenous wastes (urea, uric acid, creatinine), drugs, and toxins from the blood into the filtrate."
     tags: ["unit-3", "urinary", "nephron"]
 
   - question: "According to the figure, where is the last place water reabsorption could take place?"

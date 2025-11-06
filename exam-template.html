@@ -723,26 +723,29 @@
                         mcScore++;
                         // Show explanation for correct answer if it exists
                         if (question.explanation) {
-                            const questionCard = allOptions[0].closest('.question-card');
-                            if (!questionCard.querySelector('.explanation')) {
+                            // Find the appropriate container (grouped-question-item or question-card)
+                            const groupedItem = allOptions[0].closest('.grouped-question-item');
+                            const container = groupedItem || allOptions[0].closest('.question-card');
+                            if (container && !container.querySelector('.explanation')) {
                                 const explanationDiv = document.createElement('div');
                                 explanationDiv.className = 'explanation correct-explanation';
                                 explanationDiv.style.cssText = 'margin-top: 16px; padding: 12px; background: #d1fae5; border-left: 4px solid #10b981; color: #065f46; font-size: 0.9rem; line-height: 1.5; border-radius: 4px;';
                                 explanationDiv.innerHTML = `<strong>✓ Explanation:</strong> ${question.explanation}`;
-                                questionCard.appendChild(explanationDiv);
+                                container.appendChild(explanationDiv);
                             }
                         }
                     } else {
                         // Show explanation for incorrect answer if it exists
                         if (question.explanation) {
-                            const questionCard = allOptions[0].closest('.question-card');
-                            // Check if explanation already exists to avoid duplicates
-                            if (!questionCard.querySelector('.explanation')) {
+                            // Find the appropriate container (grouped-question-item or question-card)
+                            const groupedItem = allOptions[0].closest('.grouped-question-item');
+                            const container = groupedItem || allOptions[0].closest('.question-card');
+                            if (container && !container.querySelector('.explanation')) {
                                 const explanationDiv = document.createElement('div');
                                 explanationDiv.className = 'explanation incorrect-explanation';
                                 explanationDiv.style.cssText = 'margin-top: 16px; padding: 12px; background: #fcf2f2; border-left: 4px solid #fdafaf; color: #991b1b; font-size: 0.9rem; line-height: 1.5; border-radius: 4px;';
                                 explanationDiv.innerHTML = `<strong>Explanation:</strong> ${question.explanation}`;
-                                questionCard.appendChild(explanationDiv);
+                                container.appendChild(explanationDiv);
                             }
                         }
                     }
@@ -752,14 +755,15 @@
 
                     // Show explanation for unanswered question if it exists
                     if (question.explanation) {
-                        const questionCard = allOptions[0].closest('.question-card');
-                        // Check if explanation already exists to avoid duplicates
-                        if (!questionCard.querySelector('.explanation')) {
+                        // Find the appropriate container (grouped-question-item or question-card)
+                        const groupedItem = allOptions[0].closest('.grouped-question-item');
+                        const container = groupedItem || allOptions[0].closest('.question-card');
+                        if (container && !container.querySelector('.explanation')) {
                             const explanationDiv = document.createElement('div');
                             explanationDiv.className = 'explanation incorrect-explanation';
                             explanationDiv.style.cssText = 'margin-top: 16px; padding: 12px; background: #fcf2f2; border-left: 4px solid #fdafaf; color: #991b1b; font-size: 0.9rem; line-height: 1.5; border-radius: 4px;';
                             explanationDiv.innerHTML = `<strong>Explanation:</strong> ${question.explanation}`;
-                            questionCard.appendChild(explanationDiv);
+                            container.appendChild(explanationDiv);
                         }
                     }
                 }
