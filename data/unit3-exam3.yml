@@ -300,6 +300,32 @@ trueMakeTrue:
     points: 2.5
     tags: ["unit-3", "urinary", "processes"]
 
+  - statement: "The ***cortical*** nephron has a very long loop of Henle that is positioned mostly within the renal medulla."
+    isTrue: false
+    correctWord: ["juxtamedullary"]
+    points: 2.5
+    tags: ["unit-3", "urinary", "nephron"]
+
+  - statement: "Type II alveolar cells produce ***mucus*** that reduces the surface tension of water."
+    isTrue: false
+    correctWord: ["surfactant"]
+    points: 2.5
+    tags: ["unit-3", "respiratory", "alveolus"]
+
+  - statement: "The rate and depth of automatic breathing is contolled by the ***medulla oblongata***."
+    isTrue: false
+    correctWord: ["pons"]
+    points: 2.5
+    tags: ["unit-3", "respiratory", "breathing"]
+
+  - statement: "The **efferent** arteriole is constricted by the myogenic mechanism to reduce glomerular flow rate (GFR)."
+    isTrue: false
+    correctWord: ["afferent"]
+    points: 2.5
+    tags: ["unit-3", "urinary", "GFR"]
+
+  
+
 
 # table:
 #   - question: "Name three blood plasma proteins and list a function of each."
@@ -312,11 +338,16 @@ trueMakeTrue:
 #     points: 6
 #     tags: ["unit-2", "blood", "plasma-proteins"]
 
-# essay:
-#   - question: "The drug Warfarin inhibits factor IX (factor 9). What clotting pathway is it inhibiting? What is the alternate pathway? Which pathway is faster."
-#     answer: "Warfarin is inhibiting the intrinsic pathway. The alternate pathway is the extrinsic pathway. The extrinsic pathway is faster."
-#     points: 3
-#     tags: ["unit-2", "blood"]
+essay:
+  - question: "Name three functions of the kidneys (other than the production of urine)."
+    answer: "The kidney has several functions in addition to just making urine including: water conservation, the kidneys filter the blood, regulate blood pressure, regulate electrolyte balance, regulate blood volume, rid the body of waste products (hydrogen ions, urea, amonia...), regulate blood pH, ...and if you didn't catch it... water conservation."
+    points: 3
+    tags: ["unit-3", "urinary"]
+
+  - question: "List the three hormones of the the R____-A_____-A______-System (RAAS). Which organs are involved what hormones or precurssors does the organ secrete? Describe how these hormones interact and the end effect on blood pressure."
+    answer: "Renin, angiotensin (I and II), and aldosterone are the three hormones. Angiotensigen is secreted by the liver, renin is secreted by the macula densa in the kidney as a response to high sodium levels that indicate low blood pressure, **renin** converts angiotensigen to angiotensin I, the lungs secrete ACE that converte aniotensin I to angiotensin II, **angiotensin II** causes widespread vasoconstriction, thirst and drinking, and stimulates the adrenal cortex to release aldosterone, **aldosterone** increases sodium reabsorption and water follows to get reabsorbed. This increases blood volume. Overall, the effect is an increase in blood pressure."
+    points: 6
+    tags: ["unit-3", "urinary"]
 
 #   - question: "Answer the following questions based on the Wigger's graph: <br>&nbsp;&nbsp;&nbsp;&nbsp; A) What is it called and what is happening? <br>&nbsp;&nbsp;&nbsp;&nbsp; B) What is happening at this point? What phase begins after this happens? <br>&nbsp;&nbsp;&nbsp;&nbsp; C) What is this point called? What does it represent (measure)?<br>&nbsp;&nbsp;&nbsp;&nbsp; D) What is this point called? When you subract it from the previous measurment what do you calculate? <br>&nbsp;&nbsp;&nbsp;&nbsp; E) What phase is represented by E, and which chamber is measured?"
 #     image: "exam-2/wiggers2.jpg"
