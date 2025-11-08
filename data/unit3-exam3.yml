@@ -45,7 +45,7 @@ multipleChoice:
     explanation: "About 2/3 of body water is intracellular. Most water gain comes from drinking (not catabolism). Drinking water dilutes blood, causing cells to gain water (not lose it). Thirst stops before osmolarity fully normalizes."
     tags: ["unit-3", "fluid-balance"]
 
-  - question: "Most CO2 is in the bloodstream"
+  - question: "Most CO₂ is in the bloodstream"
     options:
       - "As a Gas"
       - "Held by hemoglobin"
@@ -79,13 +79,13 @@ multipleChoice:
   - question: "During the Bohr shift, which factor would decrease the affinity of oxygen by hemoglobin?"
     options:
       - "Decreased temperature"
-      - "Decreased CO2"
+      - "Decreased CO₂"
       - "Decreased pH"
     correct: 2
     explanation: "Decreased pH (more acidic) causes hemoglobin to release O2 more easily. This happens in active tissues with high CO2/H+ levels, facilitating oxygen delivery where needed."
     tags: ["unit-3", "respiratory", "bohr-shift"]
 
-  - question: "An increase in _________ will slow down gas exchange between the blood and alveolar air?"
+  - question: "An **increase** in _________ will slow down gas exchange between the blood and alveolar air?"
     options:
       - "membrane thickness"
       - "alveolar surface area"
@@ -93,6 +93,17 @@ multipleChoice:
       - "oxygen solubility"
     correct: 0
     explanation: "Thicker membranes (like in pulmonary edema or fibrosis) increase diffusion distance, slowing gas exchange. Increased surface area, respiratory rate, and solubility would all speed it up."
+    tags: ["unit-3", "respiratory", "gas-exchange"]
+
+  - question: "A **decrease** in _________ will slow down gas exchange between the blood and **alveolar oxygen**?"
+    options:
+      - "atmospheric pressure"
+      - "alveolar surface area"
+      - "respiratory rate"
+      - "oxygen concentration"
+      - "all of the above"
+    correct: 0
+    explanation: "All of these would slow down gas exchange between alveolar O₂ and blood O₂"
     tags: ["unit-3", "respiratory", "gas-exchange"]
 
   - question: "Chronic hypoventilation will result in"
@@ -318,25 +329,34 @@ trueMakeTrue:
     points: 2.5
     tags: ["unit-3", "respiratory", "breathing"]
 
-  - statement: "The **efferent** arteriole is constricted by the myogenic mechanism to reduce glomerular flow rate (GFR)."
+  # - statement: "The ***efferent*** arteriole is constricted by the myogenic mechanism to reduce glomerular flow rate (GFR)."
+  #   isTrue: false
+  #   correctWord: ["afferent"]
+  #   points: 2.5
+  #   tags: ["unit-3", "urinary", "GFR"]
+
+  - statement: "The ***distal*** convoluted tubule is where most nutrients (including glucose and amino acids) are reabsorbed"
     isTrue: false
-    correctWord: ["afferent"]
+    correctWord: ["proximal"]
     points: 2.5
-    tags: ["unit-3", "urinary", "GFR"]
+    tags: ["unit-3", "urinary", "nephron"]
 
   
 
 
-# table:
-#   - question: "Name three blood plasma proteins and list a function of each."
-#     headers: ["Plasma Protein", "Function"]
-#     answer: [
-#       ["albumin", "osmotic pressure, hormone transport"],
-#       ["globulins", "antibodies, immune response"],
-#       ["fibrinogen", "blood clotting, coagulation"] 
-#     ]
-#     points: 6
-#     tags: ["unit-2", "blood", "plasma-proteins"]
+table:
+  - question: "For each hormone/mechanism, indicate whether it would increase or decrease GFR."
+    headers: ["Hormone/Mechanism", "GFR (increase or decrease?)"]
+    prefilledColumn: 0
+    answer: [
+      ["myogenic mechanism (constriction of the afferent arteriole)", "decrease"],
+      ["granular cells stop releasing renin", "decrease"],
+      ["RAAS", "increase"],
+      ["Atrial Natriuretic Hormone", "increase"],
+      ["Epinephrine", "decrease"]
+    ]
+    points: 5
+    tags: ["unit-3", "urinary", "GFR"]
 
 essay:
   - question: "Name three functions of the kidneys (other than the production of urine)."

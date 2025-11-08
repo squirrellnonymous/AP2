@@ -339,7 +339,16 @@
                         for (let row = 0; row < numRows; row++) {
                             tableHTML += '<tr>';
                             headers.forEach((header, col) => {
-                                tableHTML += `<td><input type="text" name="table${index}-${row}-${col}" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="handleTableNavigation(event, ${index}, ${row}, ${col}, ${numRows}, ${headers.length})" /></td>`;
+                                // Check if this column should be pre-filled
+                                const prefilledCol = item.prefilledColumn !== undefined ? item.prefilledColumn : -1;
+                                const isPrefilled = col === prefilledCol;
+                                const prefilledValue = isPrefilled && item.answer && item.answer[row] ? (Array.isArray(item.answer[row]) ? item.answer[row][col] : '') : '';
+
+                                if (isPrefilled) {
+                                    tableHTML += `<td style="width: 60%;"><div style="padding: 8px;">${prefilledValue}</div></td>`;
+                                } else {
+                                    tableHTML += `<td><input type="text" name="table${index}-${row}-${col}" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="handleTableNavigation(event, ${index}, ${row}, ${col}, ${numRows}, ${headers.length})" /></td>`;
+                                }
                             });
                             tableHTML += '</tr>';
                         }
@@ -369,7 +378,6 @@
                                     <input type="number" class="points-input" name="table-points-${index}" min="0" max="${item.points}" value="0">
                                     <span class="points-label">/ ${item.points} points</span>
                                 </div>
-                                <textarea class="table-notes" name="table-notes-${index}" placeholder="Notes for yourself (optional)..."></textarea>
                             </div>
                         `;
 
@@ -402,7 +410,6 @@
                                     <input type="number" class="points-input" name="essay-points-${index}" min="0" max="${item.points}" value="0">
                                     <span class="points-label">/ ${item.points} points</span>
                                 </div>
-                                <textarea class="essay-notes" name="essay-notes-${index}" placeholder="Notes for yourself (optional)..."></textarea>
                             </div>
                         `;
 
