@@ -102,7 +102,7 @@ multipleChoice:
       - "respiratory rate"
       - "oxygen concentration"
       - "all of the above"
-    correct: 0
+    correct: 4
     explanation: "All of these would slow down gas exchange between alveolar O₂ and blood O₂"
     tags: ["unit-3", "respiratory", "gas-exchange"]
 
