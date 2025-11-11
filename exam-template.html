@@ -62,8 +62,6 @@
             <div id="final-score" class="score" style="display: none; margin-top: 16px;"></div>
         </div>
 
-        <a href="index.html" class="back-link">← Back to Home</a>
-
         <!-- Print-only answer key -->
         <div id="answer-key" class="answer-key">
             <h1 class="answer-key-title">Answer Key</h1>
@@ -147,14 +145,23 @@
 
                 // Convert grouped questions into units (each group or single question is one unit)
                 const questionUnits = [];
+                const maxQuestionsPerImage = 3; // Limit questions per image to avoid too much scrolling
+
                 imageGroups.forEach(group => {
-                    questionUnits.push(group); // Push entire group as one unit
+                    // Shuffle questions within each image group
+                    const shuffledGroup = group.sort(() => 0.5 - Math.random());
+
+                    // Split large groups into chunks of maxQuestionsPerImage
+                    for (let i = 0; i < shuffledGroup.length; i += maxQuestionsPerImage) {
+                        const chunk = shuffledGroup.slice(i, i + maxQuestionsPerImage);
+                        questionUnits.push(chunk);
+                    }
                 });
                 noImageQuestions.forEach(q => {
                     questionUnits.push([q]); // Push single questions as one-item arrays
                 });
 
-                // Shuffle the units
+                // Shuffle the units (groups stay together but move around)
                 const shuffledUnits = questionUnits.sort(() => 0.5 - Math.random());
 
                 // Flatten and take up to maxQuestions
@@ -314,9 +321,29 @@
 
                 let questionCounter = 1;
 
-                // Render table questions first
+                // Combine table and essay questions, then sort by points (ascending)
+                const combinedQuestions = [];
+
                 if (quizData.table && quizData.table.length > 0) {
                     quizData.table.forEach((item, index) => {
+                        combinedQuestions.push({ type: 'table', data: item, originalIndex: index });
+                    });
+                }
+
+                if (quizData.essay && quizData.essay.length > 0) {
+                    quizData.essay.forEach((item, index) => {
+                        combinedQuestions.push({ type: 'essay', data: item, originalIndex: index });
+                    });
+                }
+
+                // Sort by points (ascending - smallest first, largest last)
+                combinedQuestions.sort((a, b) => (a.data.points || 1) - (b.data.points || 1));
+
+                // Render all questions in sorted order
+                combinedQuestions.forEach(({ type, data, originalIndex }) => {
+                    if (type === 'table') {
+                        const item = data;
+                        const index = originalIndex;
                         const tableCard = document.createElement('div');
                         tableCard.className = 'table-card';
 
@@ -336,18 +363,39 @@
                                     <tbody>
                         `;
 
+                        // Calculate column widths based on which is prefilled
+                        const prefilledCol = item.prefilledColumn !== undefined ? item.prefilledColumn : -1;
+                        const numCols = headers.length;
+                        let colWidths = [];
+
+                        if (prefilledCol >= 0) {
+                            // If there's a prefilled column, give it more space
+                            // For 2 columns: 60/40, for 5 columns: 30% for prefilled, rest split evenly
+                            if (numCols === 2) {
+                                colWidths = prefilledCol === 0 ? ['60%', '40%'] : ['40%', '60%'];
+                            } else {
+                                const prefilledWidth = 30;
+                                const remainingWidth = (100 - prefilledWidth) / (numCols - 1);
+                                colWidths = headers.map((_, idx) =>
+                                    idx === prefilledCol ? `${prefilledWidth}%` : `${remainingWidth}%`
+                                );
+                            }
+                        } else {
+                            // No prefilled column, distribute evenly
+                            const evenWidth = 100 / numCols;
+                            colWidths = headers.map(() => `${evenWidth}%`);
+                        }
+
                         for (let row = 0; row < numRows; row++) {
                             tableHTML += '<tr>';
                             headers.forEach((header, col) => {
-                                // Check if this column should be pre-filled
-                                const prefilledCol = item.prefilledColumn !== undefined ? item.prefilledColumn : -1;
                                 const isPrefilled = col === prefilledCol;
                                 const prefilledValue = isPrefilled && item.answer && item.answer[row] ? (Array.isArray(item.answer[row]) ? item.answer[row][col] : '') : '';
 
                                 if (isPrefilled) {
-                                    tableHTML += `<td style="width: 60%;"><div style="padding: 8px;">${prefilledValue}</div></td>`;
+                                    tableHTML += `<td style="width: ${colWidths[col]};"><div style="padding: 8px;">${prefilledValue}</div></td>`;
                                 } else {
-                                    tableHTML += `<td><input type="text" name="table${index}-${row}-${col}" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="handleTableNavigation(event, ${index}, ${row}, ${col}, ${numRows}, ${headers.length})" /></td>`;
+                                    tableHTML += `<td style="width: ${colWidths[col]};"><textarea name="table${index}-${row}-${col}" rows="1" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="handleTableNavigation(event, ${index}, ${row}, ${col}, ${numRows}, ${headers.length})" oninput="autoGrowTextarea(this)"></textarea></td>`;
                                 }
                             });
                             tableHTML += '</tr>';
@@ -384,12 +432,9 @@
                         tableCard.innerHTML = tableHTML;
                         essayContainer.appendChild(tableCard);
                         questionCounter++;
-                    });
-                }
-
-                // Render essay questions after table questions
-                if (quizData.essay && quizData.essay.length > 0) {
-                    quizData.essay.forEach((item, index) => {
+                    } else if (type === 'essay') {
+                        const item = data;
+                        const index = originalIndex;
                         const essayCard = document.createElement('div');
                         essayCard.className = 'essay-card';
 
@@ -415,8 +460,8 @@
 
                         essayContainer.appendChild(essayCard);
                         questionCounter++;
-                    });
-                }
+                    }
+                });
             }
 
             // Add click handlers to option labels for better UX
@@ -434,6 +479,13 @@
                     this.classList.add('selected');
                 });
             });
+        }
+
+        function autoGrowTextarea(textarea) {
+            // Reset height to auto to get the correct scrollHeight
+            textarea.style.height = 'auto';
+            // Set height to scrollHeight to fit content
+            textarea.style.height = textarea.scrollHeight + 'px';
         }
 
         function handleTableNavigation(event, tableIndex, currentRow, currentCol, totalRows, totalCols) {
@@ -475,7 +527,7 @@
                 }
 
                 // Move to the next cell in the table
-                const nextInput = document.querySelector(`input[name="table${tableIndex}-${nextRow}-${nextCol}"]`);
+                const nextInput = document.querySelector(`textarea[name="table${tableIndex}-${nextRow}-${nextCol}"]`);
                 if (nextInput) {
                     nextInput.focus();
                 }
@@ -667,7 +719,7 @@
 
                     for (let row = 0; row < numRows; row++) {
                         for (let col = 0; col < headers.length; col++) {
-                            const input = document.querySelector(`input[name="table${index}-${row}-${col}"]`);
+                            const input = document.querySelector(`textarea[name="table${index}-${row}-${col}"]`);
                             if (input && input.value.trim()) {
                                 hasAnyInput = true;
                                 break;
@@ -858,7 +910,7 @@
                     const gradingElement = document.getElementById(`table-grading-${index}`);
 
                     // Make table inputs read-only
-                    const tableInputs = document.querySelectorAll(`input[name^="table${index}-"]`);
+                    const tableInputs = document.querySelectorAll(`textarea[name^="table${index}-"]`);
                     tableInputs.forEach(input => {
                         input.readOnly = true;
                     });
@@ -901,8 +953,8 @@
             const percentage = Math.round((totalScore / gradedPoints) * 100);
 
             let scoreDisplay;
-            if (quizData.essay && quizData.essay.length > 0) {
-                scoreDisplay = `ACTION REQUIRED<br>Review and self-evaluate your essay responses before calculating your score.`;
+            if ((quizData.essay && quizData.essay.length > 0) || (quizData.table && quizData.table.length > 0)) {
+                scoreDisplay = `ACTION REQUIRED<br>Review and self-evaluate your table/essay responses before calculating your score.`;
                 document.getElementById('calculate-final-score').style.display = 'block';
             } else {
                 scoreDisplay = `Score: ${totalScore}/${gradedPoints} (${percentage}%)`;
@@ -917,7 +969,7 @@
             });
 
             // Disable all inputs after submission
-            document.querySelectorAll('input[type="radio"], input[type="text"], textarea').forEach(input => {
+            document.querySelectorAll('input[type="radio"], textarea').forEach(input => {
                 input.disabled = true;
             });
 
@@ -931,26 +983,46 @@
         }
 
         function calculateFinalScore() {
-            if (!quizData || !quizData.essay) return;
+            if (!quizData) return;
 
             let essayScore = 0;
             let essayMaxPoints = 0;
+            let tableScore = 0;
+            let tableMaxPoints = 0;
             let incompleteGrading = false;
 
-            quizData.essay.forEach((item, index) => {
-                essayMaxPoints += item.points;
-                const pointsInput = document.querySelector(`input[name="essay-points-${index}"]`);
+            // Calculate essay scores
+            if (quizData.essay) {
+                quizData.essay.forEach((item, index) => {
+                    essayMaxPoints += item.points;
+                    const pointsInput = document.querySelector(`input[name="essay-points-${index}"]`);
 
-                if (pointsInput && pointsInput.value !== '') {
-                    const points = parseInt(pointsInput.value) || 0;
-                    essayScore += Math.min(Math.max(points, 0), item.points); // Clamp between 0 and max points
-                } else {
-                    incompleteGrading = true;
-                }
-            });
+                    if (pointsInput && pointsInput.value !== '') {
+                        const points = parseInt(pointsInput.value) || 0;
+                        essayScore += Math.min(Math.max(points, 0), item.points); // Clamp between 0 and max points
+                    } else {
+                        incompleteGrading = true;
+                    }
+                });
+            }
+
+            // Calculate table scores
+            if (quizData.table) {
+                quizData.table.forEach((item, index) => {
+                    tableMaxPoints += item.points;
+                    const pointsInput = document.querySelector(`input[name="table-points-${index}"]`);
+
+                    if (pointsInput && pointsInput.value !== '') {
+                        const points = parseInt(pointsInput.value) || 0;
+                        tableScore += Math.min(Math.max(points, 0), item.points); // Clamp between 0 and max points
+                    } else {
+                        incompleteGrading = true;
+                    }
+                });
+            }
 
             if (incompleteGrading) {
-                alert('Please enter points for all essay questions before calculating final score.');
+                alert('Please enter points for all table and essay questions before calculating final score.');
                 return;
             }
 
@@ -988,12 +1060,20 @@
 
             // Calculate final totals
             const tmtMaxPoints = tmtQuestions.reduce((sum, item) => sum + (item.points || 1), 0);
-            const totalScore = mcScore + tmtScore + essayScore;
-            const maxScore = questions.length + tmtMaxPoints + essayMaxPoints;
+            const totalScore = mcScore + tmtScore + tableScore + essayScore;
+            const maxScore = questions.length + tmtMaxPoints + tableMaxPoints + essayMaxPoints;
             const finalPercentage = Math.round((totalScore / maxScore) * 100);
 
             let finalScoreDisplay = `Final Score: ${totalScore}/${maxScore} (${finalPercentage}%)`;
-            finalScoreDisplay += `<br><small>Multiple Choice: ${mcScore}/${questions.length} | True/Make True: ${tmtScore}/${tmtMaxPoints} | Essays: ${essayScore}/${essayMaxPoints}</small>`;
+
+            // Build breakdown string
+            let breakdown = `<br><small>Multiple Choice: ${mcScore}/${questions.length}`;
+            if (tmtMaxPoints > 0) breakdown += ` | True/Make True: ${tmtScore}/${tmtMaxPoints}`;
+            if (tableMaxPoints > 0) breakdown += ` | Tables: ${tableScore}/${tableMaxPoints}`;
+            if (essayMaxPoints > 0) breakdown += ` | Essays: ${essayScore}/${essayMaxPoints}`;
+            breakdown += `</small>`;
+
+            finalScoreDisplay += breakdown;
 
             document.getElementById('final-score').innerHTML = finalScoreDisplay;
             document.getElementById('final-score').style.display = 'block';

@@ -1,7 +1,7 @@
 title: "Lecture Exam #3 - Practice"
 description: ""
 randomize: true
-maxQuestions: 36
+maxQuestions: 60
 
 multipleChoice:
   - question: "As you move from primary bronchi toward the respiratory bronchioles, what happens?"
@@ -239,6 +239,125 @@ multipleChoice:
     explanation: "High extracellular K+ makes resting membrane potential less negative (closer to threshold), so cells fire more easily. Severe hyperkalemia can actually prevent firing by inactivating Na+ channels."
     tags: ["unit-3", "electrolytes"]
 
+  - question: "If you wanted to increase GFR, which situation below would do that?"
+    options:
+      - "Constrict afferent arteriole, dialate efferent arteriole"
+      - "Constrict efferent arteriole, dialate afferent arteriole"
+      - "Constrict both"
+      - "Dilate both"
+    correct: 1
+    explanation: "this was a concept check"
+    tags: ["unit-3", "GFR"]
+
+  - question: "Which of the following would lower GFR?"
+    options:
+      - "Constriction of the afferent arteriole"
+      - "Tubuloglomerular feedback (granular cells stop releasing renin, afferent arteriole constricts)"
+      - "The release of epinephrine"
+      - "All of the above"
+    correct: 3
+    explanation: "straight from a slide"
+    tags: ["unit-3", "GFR"]
+
+  - question: "Would ACE inhibitors increase or decrease urine output?"
+    options:
+      - "increase"
+      - "decrease"
+    correct: 0
+    explanation: "Inhibition of ACE, less Angiotensin II, so less Aldosterone to stimulate the kidneys to reabsorb Na+, less water reabsorbed that would have followed the Na+, ... more urine. Increased urine output."
+    tags: ["unit-3", "urinary", "RAAS"]
+
+  - question: "During exercise, will EPI constrict or dilate afferent arterioles?"
+    options:
+      - "Constrict"
+      - "Dilate"
+    correct: 0
+    explanation: "straight from a slide"
+    tags: ["unit-3", "GFR"]
+
+  - question: "How does atrial natriuretic hormone affect GFR?"
+    options:
+      - "Raises GFR"
+      - "Lowers GFR"
+      - "Maintains GFR"
+    correct: 0
+    explanation: "straight from a slide"
+    tags: ["unit-3", "GFR"]
+
+  - question: "How would increased Na+ reabsorption affect the pH of urine?"
+    options:
+      - "Increase"
+      - "Decrease"
+      - "No impact"
+    correct: 1
+    explanation: "straight from a slide"
+    tags: ["unit-3", "GFR"]
+
+  - question: "Drinking alcohol will:"
+    options:
+      - "Inhibit the release of ADH"
+      - "Increase GFR"
+      - "Decrease urinary output"
+      - "All of the above"
+    correct: 0
+    explanation: "straight from a slide"
+    tags: ["unit-3", "ADH", "alcohol"]
+
+  - question: "Drinking caffeinated beverages will:"
+    options:
+      - "Inhibit the release of ADH"
+      - "Increase GFR"
+      - "Decrease urinary output"
+      - "All of the above"
+    correct: 1
+    explanation: "straight from a slide"
+    tags: ["unit-3", "ADH", "caffeine"]
+
+  - question: "Which of the following would not cause anuria"
+    options:
+      - "Hypertension"
+      - "Dehydration"
+      - "Circulatory shock"
+    correct: 0
+    explanation: "straight from a slide"
+    tags: ["unit-3", "hydration"]
+
+  - question: "Which of the following would cause polyuria"
+    options:
+      - "Hypotension"
+      - "Intense Exercise"
+      - "Diabetes insipidus"
+    correct: 2
+    explanation: "..."
+    tags: ["unit-3", "ADH", "diabetes"]
+
+  - question: "If a solute that is reabsorbed by kidney tubules will have a renal clearance __________ than GFR"
+    options:
+      - "Less than"
+      - "Greater than"
+    correct: 0
+    explanation: "for a given solute: renal clearance = filtration + secreation - reabsorption"
+    tags: ["unit-3", "renal clearance"]
+
+  - question: "What would you expect the renal clearance of glucose to be in a healthy individual"
+    options:
+      - "0%"
+      - "20%"
+      - "80%"
+      - "100%"
+    correct: 0
+    explanation: "for a given solute: renal clearance = filtration + secreation - reabsorption. For glucose, we should expect complete reabsorption."
+    tags: ["unit-3", "ADH", "urine"]
+
+  - question: "Release of ADH will result in ___________ urine compared to the blood."
+    options:
+      - "hyperosmotic"
+      - "iso-osmotic"
+      - "hypo-osmotic"
+    correct: 0
+    explanation: "straight from a slide: ...very salty, low water urine."
+    tags: ["unit-3", "renal-clearance"]
+
   - question: "According to the figure, where would most vitamins, glucose, and amino acids be reabsorbed?"
     image: "practical4/nephron-diagram.jpg"
     options:
@@ -285,6 +404,157 @@ multipleChoice:
     explanation: "E = collecting duct, the final opportunity for water reabsorption. ADH controls aquaporin insertion here to fine-tune final urine concentration based on body needs."
     tags: ["unit-3", "urinary", "nephron"]
 
+  - question: "Which disturbance would increase blood volume and decrease blood osmolarity."
+    options:
+      - "Hypervolemia"
+      - "Hypovolemia"
+      - "Hypotonic Hydration"
+      - "Dehydration"
+    correct: 2
+    explanation: "concept check, straight from a slide"
+    tags: ["unit-3", "hydration"]
+
+  - question: "A person with emphysema will have _________ urine pH compared to a person without it."
+    options:
+      - "lower"
+      - "higher"
+      - "the same"
+    correct: 0
+    explanation: "concept check, straight from a slide"
+    tags: ["unit-3", "hydration"]
+
+  - question: "Which of the following would cause metabolic acidosis?"
+    options:
+      - "Hyperventilation"
+      - "Severe diarrhea"
+      - "Excessive vomiting"
+      - "Eating antacids like candy"
+    correct: 1
+    explanation: "Severe diarrhea causes loss of bicarbonate (HCO3-) from the intestines, leading to metabolic acidosis. The other options cause alkalosis or respiratory issues."
+    tags: ["unit-3", "acid-base"]
+
+  - question: "A patient has blood pH of 7.30, PCO2 of 50 mmHg (above the normal range), and HCO3- of 24 mEq/L (within normal limits). This indicates:"
+    options:
+      - "Respiratory acidosis"
+      - "Respiratory alkalosis"
+      - "Metabolic acidosis"
+      - "Metabolic alkalosis"
+    correct: 0
+    explanation: "Low pH (acidosis) + high PCO2 = respiratory acidosis. The HCO3- is normal, indicating the kidneys haven't compensated yet (also, you can ignore it because none of the choices mention compensation). High CO2 is the primary problem."
+    tags: ["unit-3", "acid-base"]
+
+  # Additional questions - uncomment to use
+
+  - question: "Blast from the past: The zona glomerulosa of the adrenal cortex produces:"
+    options:
+      - "Cortisol"
+      - "Aldosterone"
+      - "Androgens"
+      - "Epinephrine"
+    correct: 1
+    explanation: "Zona glomerulosa produces aldosterone (salt/mineral regulation). Zona fasciculata makes cortisol (sugar/stress). Zona reticularis makes androgens (sex). Medulla makes epinephrine. Aldosterone works on the kidneys to increase NaCl reabsorption in the DCT, then water follows. This results in increased blood pressure due to increased blood volume"
+    tags: ["unit-3", "hormones", "adrenal"]
+
+  - question: "What effect does hyperventilation have on blood pH?"
+    options:
+      - "Increases pH (alkalosis)"
+      - "Decreases pH (acidosis)"
+      - "No effect on pH"
+    correct: 0
+    explanation: "Hyperventilation blows off excess CO2, reducing carbonic acid in blood, which raises pH causing respiratory alkalosis. This is why breathing into a paper bag helps - it increases CO2 to normalize pH."
+    tags: ["unit-3", "respiratory", "acid-base"]
+
+  - question: "Aldosterone increases sodium reabsorption in the"
+    options:
+      - "Proximal convoluted tubule"
+      - "Loop of Henle"
+      - "Distal convoluted tubule"
+      - "Glomerulus"
+    correct: 2
+    explanation: "Aldosterone acts on principal cells in the DCT (and collecting duct...?) to increase Na+ reabsorption (and K+ secretion). The PCT reabsorbs Na+ but isn't controlled by aldosterone."
+    tags: ["unit-3", "urinary", "hormones"]
+
+  - question: "The countercurrent multiplier system in the nephron"
+    options:
+      - "Occurs in the loop of Henle"
+      - "Creates a concentration gradient in the medulla"
+      - "Allows production of concentrated urine"
+      - "All of the above"
+    correct: 3
+    explanation: "The loop of Henle creates a countercurrent multiplier where the ascending limb pumps out salt (but not water) to make the medulla very salty. This gradient allows the collecting duct to reabsorb water when ADH is present."
+    tags: ["unit-3", "urinary", "countercurrent"]
+
+  - question: "During exercise, what happens to blood flow to the kidneys?"
+    options:
+      - "Increases significantly"
+      - "Decreases due to sympathetic vasoconstriction"
+      - "Stays the same"
+    correct: 1
+    explanation: "During exercise, sympathetic stimulation causes vasoconstriction of afferent arterioles, reducing renal blood flow and GFR. Blood is redirected to skeletal muscles and heart. This is why you shouldn't drink too much before running!"
+    tags: ["unit-3", "urinary", "exercise"]
+
+  # Spirometry/Lung Volume Questions - converted from essay question
+  - question: "According to the figure, what letter represents inspiratory reserve volume (IRV)?"
+    image: "practical4/respiratory-volumes-blank.jpg"
+    options:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+    correct: 0
+    explanation: "A = Inspiratory Reserve Volume (IRV), the additional air you can forcefully inhale beyond a normal tidal volume breath."
+    tags: ["unit-3", "respiratory", "spirometry"]
+
+  - question: "According to the figure, what letter represents tidal volume (TV)?"
+    image: "practical4/respiratory-volumes-blank.jpg"
+    options:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+    correct: 1
+    explanation: "B = Tidal Volume (TV), the amount of air inspired and expired during normal, quiet breathing (~500 mL at rest)."
+    tags: ["unit-3", "respiratory", "spirometry"]
+
+  - question: "According to the figure, what letter represents expiratory reserve volume (ERV)?"
+    image: "practical4/respiratory-volumes-blank.jpg"
+    options:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+    correct: 2
+    explanation: "C = Expiratory Reserve Volume (ERV), the additional air you can forcefully exhale beyond a normal tidal volume breath."
+    tags: ["unit-3", "respiratory", "spirometry"]
+
+  - question: "According to the figure, what letter represents residulal volume (RV)?"
+    image: "practical4/respiratory-volumes-blank.jpg"
+    options:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+
+    correct: 3
+    explanation: "D = Residual Volume (RV), the air remaining in lungs after maximal exhalation. Cannot be measured by spirometry (requires body plethysmography)."
+    tags: ["unit-3", "respiratory", "spirometry"]
+
+  - question: "According to the figure, what letter represents vital capacity (VC)??"
+    image: "practical4/respiratory-volumes-blank.jpg"
+    options:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+    correct: 4
+    explanation: "E = Vital Capacity (VC), the maximum amount of air that can be exhaled after maximum inhalation. VC = IRV + TV + ERV."
+    tags: ["unit-3", "respiratory", "spirometry"]
+
 
 trueMakeTrue:
   - statement: "During the countercurrent multiplier, if less salt is reabsorbed, then ***less*** water will be reabsorbed."
@@ -323,26 +593,64 @@ trueMakeTrue:
     points: 2.5
     tags: ["unit-3", "respiratory", "alveolus"]
 
-  - statement: "The rate and depth of automatic breathing is contolled by the ***medulla oblongata***."
-    isTrue: false
-    correctWord: ["pons"]
+  - statement: "Hyperventilation will lower levels of CO2 and ***carbonic acid*** in the blood"
+    isTrue: true
+    correctWord: [""]
     points: 2.5
     tags: ["unit-3", "respiratory", "breathing"]
 
-  # - statement: "The ***efferent*** arteriole is constricted by the myogenic mechanism to reduce glomerular flow rate (GFR)."
-  #   isTrue: false
-  #   correctWord: ["afferent"]
-  #   points: 2.5
-  #   tags: ["unit-3", "urinary", "GFR"]
-
-  - statement: "The ***distal*** convoluted tubule is where most nutrients (including glucose and amino acids) are reabsorbed"
+  - statement: "The collecting duct's permeability to water is controlled by the number of ***sodium channels*** in the membrane."
     isTrue: false
-    correctWord: ["proximal"]
+    correctWord: ["aquaporins"]
     points: 2.5
     tags: ["unit-3", "urinary", "nephron"]
 
-  
+  # Additional True/Make True questions - uncomment to use
+  # - statement: "The ***ascending*** limb of the loop of Henle is permeable to water but not to salt."
+  #   isTrue: false
+  #   correctWord: [descending]
+  #   points: 2.5
+  #   tags: ["unit-3", "urinary", "loop-of-henle"]
 
+  # - statement: "In metabolic acidosis, the kidneys compensate by secreting more ***bicarbonate*** ions."
+  #   isTrue: false
+  #   correctWord: ["hydrogen", "H+"]
+  #   points: 2.5
+  #   tags: ["unit-3", "acid-base", "urinary"]
+
+  - statement: "The majority of oxygen in the blood is transported bound to ***hemoglobin***."
+    isTrue: true
+    correctWord: []
+    points: 2.5
+    tags: ["unit-3", "respiratory", "gas-transport"]
+
+  - statement: "The majority of carbon dioxide in the blood is transported as ***disolved gas***."
+    isTrue: false
+    correctWord: ["carbonic acid", "H2CO3"]
+    points: 2.5
+    tags: ["unit-3", "respiratory", "gas-transport"]
+
+
+
+essay:
+
+  - question: "Name three functions of the kidneys (other than the production of urine)."
+    answer: "The kidney has several functions in addition to just making urine including: water conservation, the kidneys filter the blood, regulate blood pressure, regulate electrolyte balance, regulate blood volume, rid the body of waste products (hydrogen ions, urea, amonia...), regulate blood pH, ...and if you didn't catch it... water conservation."
+    points: 3
+    tags: ["unit-3", "urinary"]
+
+  - question: "What are the labeled measurements A-E. Spell out the full name (not just the abbreviation)"
+    image: "practical4/respiratory-volumes-blank.jpg"
+    answer: "A. Inspiratory Reserve Volume (IRV) </br>B. Tidal Volume (TV) </br>C. Expiratory Reserve Volume (ERV)</br>D. Residual Volume (RV) </br>E. Vital Capacity (VC)"
+    points: 5
+    tags: ["unit-3", "respiratory", "spirometer"]
+
+  - question: "You have just landed in Cusco, Peru where the altitude is 11,000 ft (3,350 m) above sea level and the overall atmospheric pressure is 524 mmHg (compared to 760 mmHg at sea level). Your otherwise healthy companion who lives at sea level is having a hard time catching her breath and has become very irritable and is complaining of a headache. Why is it hard for her to breathe? Explain this using Dalton's and Henry's Laws."
+    answer: "Since the overall pressure is lower the partial pressure of O2 in the air is lower (so is the pp of CO2 and N2). The gradient between the partial pressure of O2 in her blood has become weaker relative to the alveolar pressure (which is infuenced by the pp of O2 in the air). It's hard for her to breath because she isn't absorbing enough O2 into her blood to be able to fully oxygenate her blood and she is suffering from hypoxia. Ideally you can travel to a lower altitude where the pressure gradient will be stronger and she can acclimate to the altitude by producing more red blood cells and oxygenate her tissues. Dalton's Law explains why the partial pressure went down when the overall pressure went down because the totat pressure is the sum of the partial pressures. Henry's law explains why it's making it harder to absorb O2 into solution now that it has a lower partial pressure. The solubility and the partial pressure determine the amount to which a gas will go into solution and the partial pressure is lower."
+    points: 6
+    tags: ["unit-3", "respiratory", "gas-laws"]
+
+  
 
 table:
   - question: "For each hormone/mechanism, indicate whether it would increase or decrease GFR."
@@ -358,35 +666,18 @@ table:
     points: 5
     tags: ["unit-3", "urinary", "GFR"]
 
-# table:
-#   - question: "Complete the table below. For blood pressure and urine volume indicate if it increases or decreases."
-#     headers: ["Hormone", "Renal Target", "Diret Effects (Renal)", "BP", "Urine Vol."]
-#     prefilledColumn: 0
-#     answer: [
-#       ["Aldosterone", "Distal Convoluted Tubule", "..."],
-#       ["Antidiuretic Hormone", "..."],
-#       ["Angiotensin II"],
-#       ["Atrial Natriuretic Hormone", "..."],
-#       ["Epinephrine", "..."]
-#     ]
-#     points: 5
-#     tags: ["unit-3", "urinary", "GFR"]
-
-essay:
-  - question: "What are the labeled measurements A-E. Spell out the full name (not just the abbreviation)"
-    image: "practical4/respiratory-volumes-blank.jpg"
-    answer: "A. Inspiratory Reserve Volume (IRV) </br>B. Tidal Volume (TV) </br>C. Expiratory Reserve Volume (ERV)</br>D. Residual Volume (RV) </br>E. Vital Capacity (VC)"
-    points: 5
-    tags: ["unit-3", "respiratory", "spirometer"]
-
-  - question: "Name three functions of the kidneys (other than the production of urine)."
-    answer: "The kidney has several functions in addition to just making urine including: water conservation, the kidneys filter the blood, regulate blood pressure, regulate electrolyte balance, regulate blood volume, rid the body of waste products (hydrogen ions, urea, amonia...), regulate blood pH, ...and if you didn't catch it... water conservation."
-    points: 3
-    tags: ["unit-3", "urinary"]
-
-
-
-
+  - question: "Complete the table below. For blood pressure and urine volume indicate if it increases or decreases."
+    headers: ["Hormone", "Renal Target", "Diret Effects (Renal)", "BP", "Urine Vol."]
+    prefilledColumn: 0
+    answer: [
+      ["Aldosterone", "Distal Convoluted Tubule", "Increased Na+ Reabsorbtion, Increased Water Reabsorption (follows sodium)", "Increases", "Decreases"],
+      ["Antidiuretic Hormone", "Collecting Duct", "Increased Water Reabsorption via aquaporins", "Increases", "Decreases"],
+      ["Angiotensin II", "Efferent Arteriole, Proximal Convoluted Tubule", "Constricts Efferent, increased Na+ reabsorption in PCT", "Increases", "Decreases"],
+      ["Atrial Natriuretic Hormone", "Afferent Arteriole, Efferent Arteriole, Tubules", "Dilates afferent, Constricts efferent, blocks Na+Cl- reabsorption", "Decreases BP", "Increases"],
+      ["Epinephrine", "Afferent Arteriole", "Constricts Afferent", "Increases BP via systemic vasoconstriction", "Decreases"]
+    ]
+    points: 10
+    tags: ["unit-3", "urinary", "hormones"]
 
 
 

@@ -693,10 +693,7 @@ input.partial {
     border-right: 1px solid #d1d5db;
 }
 
-.answer-table th:first-child,
-.answer-table td:first-child {
-    width: 25%;
-}
+/* Column widths are now set dynamically in JS based on content */
 
 .answer-table th:last-child {
     border-right: none;
@@ -716,20 +713,25 @@ input.partial {
     border-bottom: none;
 }
 
-.answer-table input {
+.answer-table textarea {
     width: 100%;
     border: none;
     padding: 8px 0;
     font-size: 0.875rem;
+    font-family: inherit;
     background: transparent;
+    resize: none;
+    overflow: hidden;
+    min-height: 1.5em;
+    line-height: 1.5;
 }
 
-.answer-table input:focus {
+.answer-table textarea:focus {
     outline: none;
     background: transparent;
 }
 
-.answer-table input[readonly] {
+.answer-table textarea[readonly] {
     background: transparent;
     cursor: default;
     color: #6b7280;
@@ -770,10 +772,6 @@ input.partial {
     border-right: 1px solid #d1d5db;
 }
 
-.sample-answer-table th:first-child {
-    width: 25%;
-}
-
 .sample-answer-table th:last-child {
     border-right: none;
 }
@@ -783,10 +781,6 @@ input.partial {
     border-bottom: 1px solid #e5e7eb;
     border-right: 1px solid #e5e7eb;
     color: #374151;
-}
-
-.sample-answer-table td:first-child {
-    width: 25%;
 }
 
 .sample-answer-table td:last-child {
