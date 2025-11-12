@@ -480,6 +480,20 @@ questions:
     definition: "this is where remaining fitrate is collected after going through the nephron and the last place for water reabsorption based on ADH level."
     tags: ["unit3", "urinary", "nephron"]
 
+  - id: 67
+    image: "practical4/67.jpg"
+    question: "What is the red vessel labeled R?"
+    answer: ["interlobar artery"]
+    definition: "bloodflow in the kidney: blood arrived from a segmental artery, **this is an interlobar artery**, next is the arcuate artery, then it will go to a cortical radiate artery, then afferent arteriole, glomerulus, efferent ... etc."
+    tags: ["unit3", "urinary", "kidney"]
+
+  - id: 68
+    image: "practical4/68.jpg"
+    question: "What is the blue vessel labeled B?"
+    answer: ["arcuate vein"]
+    definition: "bloodflow in the kidney: ... blood arrived from a cortical radiate vein, **this is an arcuate vein**, next is an interlobar vein, then it will drain into the renal vein ... on it's way back to the heart."
+    tags: ["unit3", "urinary", "kidney"]
+
 
 
 # ================================================================================
