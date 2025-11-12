@@ -185,12 +185,13 @@ questions:
     definition: ""
     tags: ["unit3", "respiratory", "resp-pg3"]
 
-  - id: 25
-    image: "practical4/25.jpg"
-    question: "What is the structure?"
-    answer: ["epiglottis"]
-    definition: ""
-    tags: ["unit3", "respiratory", "resp-pg3"]
+  # - id: 25
+  #   image: "practical4/25.jpg"
+  #   question: "What is the structure?"
+  #   answer: ["epiglottis"]
+  #   definition: ""
+  #   tags: ["unit3", "respiratory", "resp-pg3"]
+  # commented out: she will never ask this on this image
 
   - id: 26
     image: "practical4/26.jpg"
@@ -223,7 +224,7 @@ questions:
   - id: 30
     image: "practical4/30.jpg"
     question: "What is the structure?"
-    answer: ["segmental bronchus"]
+    answer: ["left segmental bronchus", "left tertiary bronchus", "tertiary bronchus", "segmental bronchus"]
     definition: ""
     tags: ["unit3", "respiratory", "resp-pg4"]
 

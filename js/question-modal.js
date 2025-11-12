@@ -206,12 +206,24 @@ function showModalAtIndex(index) {
     // For text-only questions, apply theme styling
     let questionDisplaySection = '';
     if (modalQuestion.imagePath) {
-        questionDisplaySection = `
-            <div class="popup-image">
-                <img src="images/${modalQuestion.imagePath}" alt="Labeled anatomical structure" />
-            </div>
-            <div class="popup-question">${modalQuestion.questionText}</div>
-        `;
+        // Check if this is a text-overlay question
+        if (modalQuestion.question.textOverlay) {
+            // Text overlay question - show image with text overlaid
+            questionDisplaySection = `
+                <div class="popup-image popup-image-with-overlay">
+                    <img src="images/${modalQuestion.imagePath}" alt="Labeled anatomical structure" />
+                    <div class="popup-question-overlay">${modalQuestion.questionText}</div>
+                </div>
+            `;
+        } else {
+            // Regular image question
+            questionDisplaySection = `
+                <div class="popup-image">
+                    <img src="images/${modalQuestion.imagePath}" alt="Labeled anatomical structure" />
+                </div>
+                <div class="popup-question">${modalQuestion.questionText}</div>
+            `;
+        }
     } else {
         // Text-only question - apply theme
         const themeClass = getTextOnlyThemeClass(modalQuestion.question.theme);

@@ -172,15 +172,15 @@ multipleChoice:
     explanation: "To compensate for respiratory acidosis (too much CO2/H+), kidneys secrete MORE H+ into urine and reabsorb MORE bicarbonate to buffer the blood pH back up."
     tags: ["unit-3", "acid-base", "urinary"]
 
-  - question: "Surfactant"
-    options:
-      - "Is produced by Type I alveolar cells"
-      - "Helps to reduce surface tension"
-      - "Helps to bronchoconstrict"
-      - "All of the above"
-    correct: 1
-    explanation: "Surfactant is produced by Type II alveolar cells (not Type I) and reduces surface tension to prevent alveolar collapse. It does not affect bronchodilation/constriction."
-    tags: ["unit-3", "respiratory", "surfactant"]
+  # - question: "Surfactant"
+  #   options:
+  #     - "Is produced by Type I alveolar cells"
+  #     - "Helps to reduce surface tension"
+  #     - "Helps to bronchoconstrict"
+  #     - "All of the above"
+  #   correct: 1
+  #   explanation: "Surfactant is produced by Type II alveolar cells (not Type I) and reduces surface tension to prevent alveolar collapse. It does not affect bronchodilation/constriction."
+  #   tags: ["unit-3", "respiratory", "surfactant"]
 
   - question: "In the PCT, which of the following is not a way Na+ moves?"
     options:
