@@ -66,12 +66,12 @@ questions:
     definition: ""
     tags: ["unit3", "respiratory", "resp-pg1"]
 
-  - id: 8
-    image: "practical4/08.jpg"
-    question: "What is the structure?"
-    answer: ["diaphragm"]
-    definition: "The major muscle of breathing."
-    tags: ["unit3", "respiratory", "model", "lungs"]
+  # - id: 8
+  #   image: "practical4/08.jpg"
+  #   question: "What is the structure?"
+  #   answer: ["diaphragm"]
+  #   definition: "The major muscle of breathing."
+  #   tags: ["unit3", "respiratory", "model", "lungs"]
 
   - id: 9
     image: "practical4/09.jpg"
@@ -391,7 +391,7 @@ questions:
 
   - id: 54
     image: "practical4/54.jpg"
-    question: "What condition is shown in this tissue sample?"
+    question: "What is the respiratory condition?"
     answer: ["tuberculosis"]
     definition: "Tuberculosis is a bacterial infection that forms granulomas (nodules of immune cells) in the lungs, visible as distinct inflammatory lesions in tissue."
     tags: ["unit3", "respiratory", "histology"]
@@ -402,6 +402,57 @@ questions:
     answer: ["anthracosis"]
     definition: "Anthracosis (black lung disease) is caused by coal dust inhalation, showing dark carbon deposits accumulated in lung tissue."
     tags: ["unit3", "respiratory", "histology"]
+
+  - id: 56
+    image: "practical4/56.jpg"
+    question: "What is the structure?"
+    answer: ["alveolar sac"]
+    definition: "That's just what it is."
+    tags: ["unit3", "respiratory", "alveolar"]
+
+  - id: 57
+    image: "practical4/57.jpg"
+    question: "What is the blue vessel?"
+    answer: ["cortical radiate vein"]
+    definition: "That's the only answer"
+    tags: ["unit3", "urinary", "kidney"]
+
+  - id: 58
+    image: "practical4/58.jpg"
+    question: "What is the structure labeled A?"
+    answer: ["renal pyramid"]
+    definition: "this is where the loops of Henle of the juxtamedullary nephrons dip into."
+    tags: ["unit3", "urinary", "kidney"]
+
+  - id: 59
+    image: "practical4/59.jpg"
+    question: "What is the structure at the end of the pointer?"
+    answer: ["glomerulus"]
+    definition: "this is where the blood is turned into filtrate. Bowman's capsule surrounds it and collects the filtrate."
+    tags: ["unit3", "urinary", "kidney"]
+
+  - id: 60
+    image: "practical4/60.jpg"
+    question: "What is the structure?"
+    answer: ["urinary bladder"]
+    definition: "this is where the urine goes for storage until a convenient time to urinate."
+    tags: ["unit3", "urinary", "kidney"]
+
+  - id: 61
+    image: "practical4/61.jpg"
+    question: "What is the structure?"
+    answer: ["afferent arteriole"]
+    definition: "Afferent (arriving) arteriole is always **larger** than the efferent (exiting) arteriole. Important in regulating glomerular flow rate (GFR), for instance, EPI constricts the afferent arteriole to reduce GFR"
+    tags: ["unit3", "urinary", "nephron"]
+
+  - id: 63
+    image: "practical4/63.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["distal convoluted tubule"]
+    definition: "the DCT is farthest (distal) from the glomerulus as the nephron filtrate flows. Nephron: Bowman's capsule, PCT, descending loop of Henle, ascending loop of Henle, **DCT** (end of the nephron) ...then the collecting duct"
+    tags: ["unit3", "urinary", "nephron"]
+
+
 
 
 
