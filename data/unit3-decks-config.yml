@@ -2,6 +2,15 @@ title: "Unit 3 Flashcard Decks"
 description: "Respiratory, Renal, and Acid/Base Study Decks"
 
 sections:
+
+  - name: "Unit 3"
+    decks:
+      - id: "acid-base"
+        title: "Unit 3: Respiratory and Urinary (all)"
+        description: "all the cards in this unit"
+        source: "unit3-practical4"
+        tags: ["unit3"]
+
   - name: "Respiratory System Flashcards"
     decks:
       - id: "respiratory-all"
@@ -16,18 +25,12 @@ sections:
       #   source: "unit3-practical4"
       #   tags: ["resp-lab-packet-pg1", "resp-lab-packet-pg2", "resp-lab-packet-pg3", "resp-lab-packet-pg4", "resp-lab-packet-pg5"]
 
-  # - name: "Renal System Flashcards"
-  #   decks:
-  #     - id: "renal-all"
-  #       title: "All Renal"
-  #       description: "Complete renal system deck - kidneys, nephrons, filtration"
-  #       source: "unit3-practical4"
-  #       tags: ["renal"]
+  - name: "Urinary System Flashcards"
+    decks:
+      - id: "renal-all"
+        title: "All Urinary System Cards"
+        description: "Complete renal system deck - kidneys, nephrons, filtration"
+        source: "unit3-practical4"
+        tags: ["urinary"]
 
-  # - name: "Acid/Base Flashcards"
-  #   decks:
-  #     - id: "acid-base"
-  #       title: "Acid/Base Balance"
-  #       description: "Acid-base physiology and regulation"
-  #       source: "unit3-practical4"
-  #       tags: ["acid-base"]
+
