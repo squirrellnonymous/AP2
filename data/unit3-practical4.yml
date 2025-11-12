@@ -459,7 +459,26 @@ questions:
     definition: "the DCT is farthest (distal) from the glomerulus as the nephron filtrate flows. Nephron: Bowman's capsule, PCT, descending loop of Henle, ascending loop of Henle, **DCT** (end of the nephron) ...then the collecting duct"
     tags: ["unit3", "urinary", "nephron"]
 
+  - id: 64
+    image: "practical4/64.jpg"
+    question: "What is the blue vessel labeled x?"
+    answer: ["renal vein", "left renal vein"]
+    definition: "left renal vein ...taking partially deoxygenated and mostly filtered blood to the IVC and then the heart"
+    tags: ["unit3", "urinary", "kidney"]
 
+  - id: 65
+    image: "practical4/65.jpg"
+    question: "What is the area labeled z?"
+    answer: ["major calyx"]
+    definition: "close to the renal pelvis but still the major calyx ... kinda confusing? you're not alone."
+    tags: ["unit3", "urinary", "kidney"]
+
+  - id: 66
+    image: "practical4/66.jpg"
+    question: "What is the area labeled y?"
+    answer: ["collecting duct"]
+    definition: "this is where remaining fitrate is collected after going through the nephron and the last place for water reabsorption based on ADH level."
+    tags: ["unit3", "urinary", "nephron"]
 
 
 
