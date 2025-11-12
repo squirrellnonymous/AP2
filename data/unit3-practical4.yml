@@ -445,6 +445,13 @@ questions:
     definition: "Afferent (arriving) arteriole is always **larger** than the efferent (exiting) arteriole. Important in regulating glomerular flow rate (GFR), for instance, EPI constricts the afferent arteriole to reduce GFR"
     tags: ["unit3", "urinary", "nephron"]
 
+  - id: 62
+    image: "practical4/62.jpg"
+    question: "What is the space?"
+    answer: ["Bowman's Capsule"]
+    definition: "...where filtration occurs, surrounds the glomerulus."
+    tags: ["unit3", "urinary", "nephron"]
+
   - id: 63
     image: "practical4/63.jpg"
     question: "What is the structure labeled x?"

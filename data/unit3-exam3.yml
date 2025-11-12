@@ -593,11 +593,11 @@ trueMakeTrue:
     points: 2.5
     tags: ["unit-3", "respiratory", "alveolus"]
 
-  - statement: "Hyperventilation will lower levels of CO2 and ***carbonic acid*** in the blood"
-    isTrue: true
-    correctWord: [""]
-    points: 2.5
-    tags: ["unit-3", "respiratory", "breathing"]
+  # - statement: "Hyperventilation will lower levels of CO2 and ***carbonic acid*** in the blood"
+  #   isTrue: true
+  #   correctWord: [""]
+  #   points: 2.5
+  #   tags: ["unit-3", "respiratory", "breathing"]
 
   - statement: "The collecting duct's permeability to water is controlled by the number of ***sodium channels*** in the membrane."
     isTrue: false
