@@ -245,14 +245,14 @@ questions:
   - id: 33
     image: "practical4/33.jpg"
     question: "What is the structure?"
-    answer: ["segmental bronchi", "tertiary bronchi", "tertiary or segmental bronchi", "segmental/tertiary bronchi"]
+    answer: ["left segmental bronchi", "left tertiary bronchi", "left tertiary or segmental bronchi", "left segmental/tertiary bronchi"]
     definition: ""
     tags: ["unit3", "respiratory", "model"]
 
   - id: 34
     image: "practical4/34.jpg"
     question: "What is the structure?"
-    answer: ["lobar bronchi", "secondary bronchi", "lobar or secondary bronchi", "lobar/secondary bronchi"]
+    answer: ["left lobar bronchi", "left secondary bronchi", "left lobar or secondary bronchi", "left lobar/secondary bronchi", "left secondary/lobar bronchi"]
     definition: ""
     tags: ["unit3", "respiratory", "model"]
 
@@ -546,6 +546,12 @@ questions:
     image: "practical4/77.jpg"
     question: "What is the structure labeled x?"
     answer: ["urinary bladder"]
+    tags: ["unit3", "urinary"]
+
+  - id: 78
+    image: "practical4/78.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["external urethral sphincter"]
     tags: ["unit3", "urinary"]
 
 
