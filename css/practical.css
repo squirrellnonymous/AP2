@@ -716,13 +716,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
     text-align: center;
     padding: 20px;
-    width: 80%;
+    width: 85%;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-    line-height: 1.5;
+    line-height: 1.6;
     z-index: 2;
 }
 

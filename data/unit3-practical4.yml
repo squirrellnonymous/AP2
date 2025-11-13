@@ -494,6 +494,60 @@ questions:
     definition: "bloodflow in the kidney: ... blood arrived from a cortical radiate vein, **this is an arcuate vein**, next is an interlobar vein, then it will drain into the renal vein ... on it's way back to the heart."
     tags: ["unit3", "urinary", "kidney"]
 
+  - id: 69
+    image: "practical4/69.jpg"
+    question: "What is the red vessel labeled R?"
+    answer: ["cortical radiate artery"]
+    tags: ["unit3", "urinary", "kidney"]
+
+  - id: 70
+    image: "practical4/70.jpg"
+    question: "What is the blue vessel labeled B?"
+    answer: ["pulmonary artery"]
+    tags: ["unit3", "respiratory"]
+
+  - id: 71
+    image: "practical4/71.jpg"
+    question: "What is the red vessel labeled R?"
+    answer: ["pulmonary vein"]
+    tags: ["unit3", "respiratory"]
+
+  - id: 72
+    image: "practical4/72.jpg"
+    question: "What is the area labeled/pinned X?"
+    answer: ["renal pelvis"]
+    tags: ["unit3", "urinary", "kidney"]
+
+  - id: 73
+    image: "practical4/73.jpg"
+    question: "What is the structure labeled/pinned Y?"
+    answer: ["renal papilla"]
+    tags: ["unit3", "urinary", "kidney"]
+
+  - id: 74
+    image: "practical4/74.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["external urethral sphincter"]
+    tags: ["unit3", "urinary"]
+
+  - id: 75
+    image: "practical4/75.jpg"
+    question: "What is the structure labeled Y?"
+    answer: ["spongy urethra"]
+    tags: ["unit3", "urinary"]
+
+  - id: 76
+    image: "practical4/76.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["detrusor muscle"]
+    tags: ["unit3", "urinary"]
+
+  - id: 77
+    image: "practical4/77.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["urinary bladder"]
+    tags: ["unit3", "urinary"]
+
 
 
 # ================================================================================
@@ -549,6 +603,14 @@ questions:
     definition: "Thin, flat cells for rapid gas diffusion."
     textOverlay: true
     tags: ["unit3", "respiratory", "lab-activity-question"]
+
+  - id: 106
+    image: "gradients/12.jpg"
+    question: "A patient with COPD has the following blood gas results: pH 7.32, PaCO₂ 58 mmHg, HCO₃⁻ 29 mEq/L. What is the acid-base imbalance?"
+    answer: ["respiratory acidosis with partial compensation", "respiratory acidosis, partial compensation", "partially compensated respiratory acidosis"]
+    definition: "Low pH (acidosis) + high CO₂ (respiratory cause) + elevated HCO₃⁻ (kidneys compensating by retaining bicarbonate). Partial compensation because pH hasn't returned to normal range yet."
+    textOverlay: true
+    tags: ["unit3", "respiratory", "acid-base", "lecture"]
 
 
 
