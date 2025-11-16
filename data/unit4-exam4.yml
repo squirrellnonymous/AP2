@@ -49,10 +49,10 @@ essay:
     points: 2.5
     tags: ["unit-4", "digestive"]
 
-  - question: "?"
-    answer: ""
-    points: 2.5
-    tags: ["unit-4", "digestive"]
+  # - question: "?"
+  #   answer: ""
+  #   points: 2.5
+  #   tags: ["unit-4", "digestive"]
 
   # - question: "Sample essay question with an image. What are the labeled structures A-C?"
   #   image: "practical5/sample-diagram.jpg"
