@@ -14,15 +14,56 @@ multipleChoice:
     explanation: "Ingestion is bringing it into the alimentary canal (still outside the body). Propulsion moves it through the alimentary canal. Secretion is putting things into the alimentary canal (e.g. mucous, enzymes). **Absorption is the process of bringing things from the digestive tract into the blood (from ouside the body into the body)**."
     tags: ["unit-4", "digestive", "digestion"]
 
-  # - question: "Sample question about reproductive system"
-  #   options:
-  #     - "Option A"
-  #     - "Option B"
-  #     - "Option C"
-  #     - "Option D"
-  #   correct: 1
-  #   explanation: "Explanation for the correct answer."
-  #   tags: ["unit-4", "reproductive"]
+  - question: "Why is the alimentary canal technically considered 'outside' the body?"
+    options:
+      - "Because it contains bacteria and foreign substances"
+      - "Because nutrients must be absorbed into the blood to enter the body"
+      - "Because it has its own nervous system (enteric)"
+      - "Because it is made of epithelial tissue"
+    correct: 1
+    explanation: "The alimentary canal is a continuous tube from mouth to anus. Food inside this tube hasn't entered the body yet. **Absorption** is the process that brings nutrients from the digestive tract into the blood - that's when they actually enter the body."
+    tags: ["unit-4", "digestive", "digestion"]
+
+  - question: "Which type of epithelium lines the oral cavity and anus?"
+    options:
+      - "Simple columnar epithelium"
+      - "Simple squamous epithelium"
+      - "Non-keratinized stratified squamous epithelium"
+      - "Keratinized stratified squamous epithelium"
+    correct: 2
+    explanation: "The oral cavity and anus are both lined with **non-keratinized stratified squamous epithelium**. This tissue constantly regenerates to handle abrasion, but isn't waterproof (non-keratinized). Everything in between is mostly simple columnar."
+    tags: ["unit-4", "digestive", "anatomy"]
+
+  - question: "Which type of saliva is produced continuously by the sympathetic nervous system?"
+    options:
+      - "Serous fluid"
+      - "Mucous saliva"
+      - "Amylase"
+      - "Lingual lipase"
+    correct: 1
+    explanation: "**Mucous saliva** is continuously released by the sympathetic system all the time. Serous fluid (watery, enzyme-rich) is secreted by the parasympathetic system specifically when eating. This is why antihistamines (which block parasympathetic activity) cause dry, sticky mouth."
+    tags: ["unit-4", "digestive", "nervous-system"]
+
+  - question: "Which of the following is NOT a function of the stomach?"
+    options:
+      - "Nutrient absorption"
+      - "Mechanical digestion through churning"
+      - "Chemical digestion with pepsin and HCl"
+      - "Storage of food"
+    correct: 0
+    explanation: "The stomach does NOT absorb nutrients (though it does absorb some water and alcohol). Its main functions are **storage** (expands to 2 liters), **mechanical digestion** (churning with 3 muscle layers), and **chemical digestion** (pepsin, HCl, gastric lipase). Nutrient absorption happens in the small intestine."
+    tags: ["unit-4", "digestive", "stomach"]
+
+  - question: "Which cells in the stomach produce hydrochloric acid and intrinsic factor?"
+    options:
+      - "Chief cells"
+      - "Parietal cells"
+      - "Mucous cells"
+      - "Enteroendocrine cells"
+    correct: 1
+    explanation: "**Parietal cells** secrete both HCl and intrinsic factor. Chief cells produce pepsinogen and gastric lipase. Mucous cells produce protective alkaline mucus. Enteroendocrine cells release gastrin hormone."
+    tags: ["unit-4", "digestive", "stomach", "cells"]
+
 
 trueMakeTrue:
 
@@ -54,7 +95,7 @@ trueMakeTrue:
     points: 2.5
     tags: ["unit-4", "digestive", "nervous-system"]
 
-  - statement: "Acinar cells in salivary glands produce ***hyaluronic*** fluid that contains enzymes."
+  - statement: "Acinar cells in salivary glands produce ***colloidal*** fluid that contains enzymes."
     isTrue: false
     correctWord: ["serous"]
     points: 2.5
@@ -65,7 +106,7 @@ trueMakeTrue:
     points: 2.5
     tags: ["unit-4", "digestive", "digestion"]
 
-  - statement: "The physiological term for swallowing is ***diastole***."
+  - statement: "The physiological term for swallowing is ***reflux***."
     isTrue: true
     correctWord: "deglutition"
     points: 2.5
@@ -110,6 +151,11 @@ essay:
   #   answer: ""
   # - question: 
   #   answer: ""
+
+  - question: "Explain why gastric bypass patients require vitamin B12 injections. Include in your answer: (1) which cells produce intrinsic factor, (2) what intrinsic factor does, and (3) why reducing stomach size creates this problem."
+    answer: "Parietal cells in the stomach produce intrinsic factor. Intrinsic factor binds to vitamin B12 in the stomach and allows it to be absorbed later in the small intestine. Gastric bypass surgery dramatically reduces stomach size, which decreases the number of parietal cells available to produce intrinsic factor. Without enough intrinsic factor, patients cannot absorb vitamin B12 from food. Since B12 is essential for red blood cell production, patients must receive B12 injections that bypass the digestive system entirely and go directly into the bloodstream."
+    points: 5
+    tags: ["unit-4", "digestive", "stomach"]
 
 
   #   points: 2.5
