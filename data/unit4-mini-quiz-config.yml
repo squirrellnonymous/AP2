@@ -1,0 +1,45 @@
+title: "Exam5/Practical4 Mini Quizzes"
+description: "Pre-built mini quiz configurations for Digestive, Reproductive, and Fetal Development"
+
+sections:
+  - name: "Digestive System Mini Quizzes"
+    quizzes:
+      - id: "digestive"
+        title: "Digestive System"
+        description: "Mouth, pharynx, esophagus, and stomach structures... "
+        tags: ["digestive"]
+        unit: "unit4-practical5"
+
+  #     - id: "digestive-comprehensive"
+  #       title: "Comprehensive Digestive System"
+  #       description: "All digestive system structures - complete review"
+  #       tags: ["digestive"]
+  #       unit: "unit4-practical5"
+
+  # - name: "Reproductive System Mini Quizzes"
+  #   quizzes:
+  #     - id: "reproductive-male"
+  #       title: "Male Reproductive System"
+  #       description: "Male reproductive structures and organs"
+  #       tags: ["reproductive-male"]
+  #       unit: "unit4-practical5"
+
+  #     - id: "reproductive-female"
+  #       title: "Female Reproductive System"
+  #       description: "Female reproductive structures and organs"
+  #       tags: ["reproductive-female"]
+  #       unit: "unit4-practical5"
+
+  #     - id: "reproductive-comprehensive"
+  #       title: "Comprehensive Reproductive System"
+  #       description: "All reproductive system structures - complete review"
+  #       tags: ["reproductive"]
+  #       unit: "unit4-practical5"
+
+  # - name: "Fetal Development Mini Quizzes"
+  #   quizzes:
+  #     - id: "fetal-development"
+  #       title: "Fetal Development"
+  #       description: "Fetal structures and development stages"
+  #       tags: ["fetal"]
+  #       unit: "unit4-practical5"

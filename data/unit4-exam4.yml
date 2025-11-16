@@ -1,0 +1,73 @@
+title: "Lecture Exam #4 - Practice"
+description: ""
+randomize: true
+maxQuestions: 60
+
+multipleChoice:
+  - question: "Bringing nutrients into the body is the process of ________."
+    options:
+      - "Ingestion"
+      - "Propulsion"
+      - "Secretion"
+      - "Absorption"
+    correct: 3
+    explanation: "Ingestion is bringing it into the alimentary canal (still outside the body). Propulsion moves it through the alimentary canal. Secretion is putting things into the alimentary canal (e.g. mucous, enzymes). **Absorption is the process of bringing things from the digestive tract into the blood (from ouside the body into the body)**."
+    tags: ["unit-4", "digestive", "digestion"]
+
+  # - question: "Sample question about reproductive system"
+  #   options:
+  #     - "Option A"
+  #     - "Option B"
+  #     - "Option C"
+  #     - "Option D"
+  #   correct: 1
+  #   explanation: "Explanation for the correct answer."
+  #   tags: ["unit-4", "reproductive"]
+
+trueMakeTrue:
+
+  - statement: "The process of moving a ***chyme*** of food through the alimentary canal is known as propulsion."
+    isTrue: false
+    correctWord: ["bolus"]
+    points: 2.5
+    tags: ["unit-4", "digestive", "digestion"]
+
+## WORD LIST:
+# acinar cells
+# serous fluid
+# acetylcholine
+# parasympathetic
+# esophagus
+# stratified squamous epithelium
+# cuboidal epithelium
+# 
+
+essay:
+
+  - question: "Which autonomic nervous system does taking antihistamines work on and what would be the side effect of these drugs to the oral cavity?"
+    answer: "Works on the parasympathetic. Blocks release of Ach, which triggers acinar cells to release serous fluid, so the side effect is dry mouth."
+    points: 2.5
+    tags: ["unit-4", "digestive"]
+
+  - question: "?"
+    answer: ""
+    points: 2.5
+    tags: ["unit-4", "digestive"]
+
+  # - question: "Sample essay question with an image. What are the labeled structures A-C?"
+  #   image: "practical5/sample-diagram.jpg"
+  #   answer: "A. Sample structure 1 </br>B. Sample structure 2 </br>C. Sample structure 3"
+  #   points: 3
+  #   tags: ["unit-4", "digestive"]
+
+# table:
+#   - question: "Complete the table below for digestive enzymes."
+#     headers: ["Enzyme", "Source Organ", "Function"]
+#     prefilledColumn: 0
+#     answer: [
+#       ["Sample Enzyme 1", "Sample Organ", "Sample Function"],
+#       ["Sample Enzyme 2", "Sample Organ", "Sample Function"],
+#       ["Sample Enzyme 3", "Sample Organ", "Sample Function"]
+#     ]
+#     tags: ["unit-4", "digestive"]
+

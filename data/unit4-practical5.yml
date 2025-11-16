@@ -1,0 +1,34 @@
+title: "Practice Practical #5 - Digestive, Reproductive, and Fetal Development"
+description: "Digestive, Reproductive, and Fetal Development"
+share_image: "practical5/00.jpg"
+allow_duplicate_answers: true
+balance_tags: true
+balanced_tag_pairs: false
+
+# Upload your images to: /images/practical5/
+# Name them: 01.jpg, 02.jpg, 03.jpg, etc.
+# Then update this YAML file with the correct answers
+#
+# ID NUMBERING SCHEME:
+# - Image questions: Start at id: 1 (01, 02, 03, etc.)
+# - Text-only questions: Start at id: 100 (100, 101, 102, etc.)
+
+  # ============================================================================
+  # Image Based Questions
+
+questions:
+  - id: 1
+    image: "practical5/01.jpg"
+    question: "Name the structure."
+    answer: ["sample structure"]
+    definition: ""
+    tags: ["unit4", "digestive", "digestive-pg1"]
+
+  # ============================================================================
+  # Text-Only Questions (No Images)
+
+  - id: 100
+    question: "What is the function of this structure?"
+    answer: ["sample function", "sample answer"]
+    definition: "Sample definition explaining the concept."
+    tags: ["unit4", "digestive", "text-only"]
