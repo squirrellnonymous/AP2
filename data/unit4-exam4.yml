@@ -38,6 +38,39 @@ trueMakeTrue:
     points: 2.5
     tags: ["unit-4", "digestive", "digestion"]
 
+  - statement: "The ***esophagus*** is lined with non-keratinized stratified squamous epithelium to protect against abrasion."
+    isTrue: true
+    points: 2.5
+    tags: ["unit-4", "digestive", "anatomy"]
+
+  - statement: "The ***sympathetic*** nervous system stimulates digestive activity."
+    isTrue: false
+    correctWord: ["parasympathetic"]
+    points: 2.5
+    tags: ["unit-4", "digestive", "nervous-system"]
+
+  - statement: "***Acetylcholine*** is the neurotransmitter released by the parasympathetic nervous system to stimulate digestion."
+    isTrue: true
+    points: 2.5
+    tags: ["unit-4", "digestive", "nervous-system"]
+
+  - statement: "Acinar cells in salivary glands produce ***hyaluronic*** fluid that contains enzymes."
+    isTrue: false
+    correctWord: ["serous"]
+    points: 2.5
+    tags: ["unit-4", "digestive", "glands"]
+
+  - statement: "***Secretion*** is the process of releasing substances like enzymes and mucous into the alimentary canal."
+    isTrue: true
+    points: 2.5
+    tags: ["unit-4", "digestive", "digestion"]
+
+  - statement: "The physiological term for swallowing is ***diastole***."
+    isTrue: true
+    correctWord: "deglutition"
+    points: 2.5
+    tags: ["unit-4", "digestive", "process"]
+
 ## WORD LIST:
 # acinar cells
 # serous fluid
@@ -50,7 +83,7 @@ trueMakeTrue:
 # ingestion
 # propulsion
 # secretion
-#
+# deglutition
 
 essay:
 

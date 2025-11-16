@@ -160,6 +160,21 @@ input.partial {
     margin-top: 24px;
 }
 
+/* Points Awarded Display (after grading) */
+.points-awarded-display {
+    font-size: 1.125rem;
+    color: #059669;
+    padding: 12px;
+    background: #d1fae5;
+    border-radius: 6px;
+    border-left: 4px solid #059669;
+}
+
+.points-awarded-display strong {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
 .essay-card {
     /* Extends card-base from shared.css */
 }

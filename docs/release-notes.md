@@ -1,5 +1,183 @@
 # Release Notes
 
+## November 16, 2025 - Optional Essays & Modal Grading System
+
+### 🎯 Major Feature: Optional Essay Questions with Interactive Grading
+
+Completely redesigned the essay/table self-grading experience in exam-template.html, making essay questions optional and implementing an intuitive modal-based grading workflow.
+
+**Files Updated:** `exam-template.html`, `css/quiz.css`, `data/unit4-exam4.yml`
+
+#### Optional Essay Questions
+
+**Student Choice**
+- Essay and table questions are now completely optional
+- Students can skip essays without penalty
+- Blank essays are automatically excluded from final grade calculation
+- No warning prompts for unanswered essays
+- Clear instructions: "Practice essay questions. Any questions left blank will not be graded."
+
+**Smart Grading Logic**
+- Only attempted essays appear in grading workflow
+- Unanswered essays excluded from max score denominator
+- Final score accurately reflects only completed work
+- Example: If student attempts 1 of 2 essays worth 3 points each, final score is out of (MC + TMT + 3) instead of (MC + TMT + 6)
+
+#### Modal-Based Grading System
+
+**Sequential Review Workflow**
+- After submission, modal opens automatically for essay/table grading
+- One question at a time - focused, less overwhelming
+- Questions sorted by point value (easiest first)
+- Clean interface showing:
+  - Question text with point value
+  - Student's answer
+  - Sample answer (highlighted in green)
+  - Grading interface
+
+**Navigation Features**
+- Position indicator: "1 of 3"
+- Previous/Next buttons for navigation
+- "Finish Grading" button on last question
+- Keyboard shortcuts:
+  - Number keys (0-9) for quick point selection
+  - Enter to advance to next question
+  - Arrow keys for Previous/Next navigation
+- Can navigate back to revise grades
+
+**Visual Design**
+- Full-screen modal with dark overlay
+- Scrollable content for longer answers
+- Professional styling with proper spacing
+- Question separated from answers with visual hierarchy
+- Sample answers highlighted with green background
+
+#### Button-Based Grading Interface
+
+**Quick-Click Grading**
+- Replaced number input with button grid
+- One click to assign points - much faster than typing
+- Smart labels adapt to question point value:
+  - **2 points:** Wrong, Partial, Perfect
+  - **3 points:** Wrong, Partial, Good, Perfect
+  - **4 points:** Wrong, Poor, Partial, Good, Perfect
+  - **5 points:** Wrong, Poor, Fair, Good, Great, Perfect
+
+**Visual Feedback**
+- Selected button highlights in orange
+- Hover effects with subtle lift animation
+- Clear point values shown on each button
+- Yellow background section to draw attention
+- Centered "How did your answer compare?" prompt
+
+**Keyboard Shortcuts**
+- Press 0-3 (or 0-5 for larger questions) to select points
+- Enter advances to next question after selection
+- Extremely fast workflow for keyboard users
+- Perfect for quick self-grading
+
+#### Markdown Support for Explanations
+
+**Supported Formatting**
+- **Bold text:** `**text**` or `__text__`
+- *Italic text:* `*text*` or `_text_`
+- `Inline code:` `` `code` ``
+- Links: `[text](url)`
+
+**Styling Integration**
+- Bold text appears with proper font-weight
+- Italic text displays correctly
+- Code snippets shown with monospace font and background
+- Links are underlined and clickable
+- All markdown adapts to explanation box color (green/red)
+
+**Example Usage**
+```yaml
+explanation: "Ingestion is bringing it into the alimentary canal (still outside the body). **Absorption is the process of bringing things from the digestive tract into the blood (from outside the body into the body)**."
+```
+The `**Absorption...**` portion renders as bold text in the explanation.
+
+#### Implementation Details
+
+**Modal System**
+- JavaScript-based grading modal similar to question-modal.js pattern
+- Manages grading state with Map data structure
+- Tracks current position and scores
+- Builds list of attempted essays/tables on submit
+- Auto-calculates final score when modal closes
+
+**Grading Score Storage**
+- `gradingScores` Map stores points for each question
+- Scores persist when navigating between questions
+- Hidden input field syncs with button selections
+- Scores validated and clamped to max points
+
+**Grade Calculation**
+- `autoCalculateFinalScore()` function called after grading
+- Recalculates MC and TMT scores from form data
+- Adds essay/table scores from grading modal
+- Computes percentage and breakdown by section
+- Updates main score display with complete results
+
+#### CSS Architecture
+
+**Modal Styles** (`css/quiz.css`)
+- `.grading-modal` - Full-screen overlay with dark background
+- `.grading-modal-content` - Centered white card, max 800px wide
+- `.grading-buttons-grid` - Responsive grid layout for point buttons
+- `.grading-option-btn` - Individual button styling with hover/selected states
+- Mobile responsive with adjusted padding and layout
+
+**Color Scheme**
+- Yellow/amber theme for grading section (attention-grabbing)
+- Orange selected state for buttons
+- Green backgrounds for sample answers
+- Clean white modal on dark overlay
+
+#### Educational Benefits
+
+**Reduced Pressure**
+- Essays are practice questions, not required
+- Students can focus on learning without stress
+- Encourages experimentation with answers
+- Skipping difficult questions doesn't hurt score
+
+**Better Self-Assessment**
+- One question at a time improves focus
+- Direct comparison with sample answer
+- Quick grading reduces decision fatigue
+- Immediate feedback on understanding
+
+**Faster Workflow**
+- Button clicks faster than typing numbers
+- Keyboard shortcuts for power users
+- No scrolling to find next essay
+- Linear workflow from start to finish
+
+#### Technical Notes
+
+**Table Question Support**
+- Modal works identically for table questions
+- Displays student table vs sample table side-by-side
+- Same grading button interface
+- Both essays and tables intermixed in modal sequence
+
+**Backward Compatibility**
+- Old "Calculate Final Score" button removed
+- Previous inline grading UI replaced entirely
+- No breaking changes to YAML format
+- Works with existing exam data files
+
+#### Use Cases
+
+1. **Optional essay practice** - Skip hard questions, focus on achievable goals
+2. **Quick self-grading** - Review and grade in under 30 seconds
+3. **Multiple attempts** - Try essay, see sample, try again in future practice
+4. **Focused learning** - One question at a time prevents overwhelm
+5. **Keyboard efficiency** - Grade entire exam without touching mouse
+
+---
+
 ## October 28, 2025 - ❌ False Alarm: Firefox Emulation Artifact (Not a Bug)
 
 ### Flashcard "Regression" Resolved - Browser Emulation Issue

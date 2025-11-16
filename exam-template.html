@@ -1357,8 +1357,74 @@
                 modal.remove();
             }
 
+            // Show essay/table answers inline on the page
+            showEssayReviewInline();
+
             // Calculate final score with the graded essays/tables
             autoCalculateFinalScore();
+        }
+
+        function showEssayReviewInline() {
+            // Display all graded essays and tables inline on the page
+            gradingItems.forEach((item, index) => {
+                const points = gradingScores.get(index) || 0;
+
+                if (item.type === 'essay') {
+                    const textarea = document.querySelector(`textarea[name="essay${item.originalIndex}"]`);
+                    const answerElement = document.getElementById(`essay-answer-${item.originalIndex}`);
+                    const gradingElement = document.getElementById(`essay-grading-${item.originalIndex}`);
+
+                    // Style the student's answer
+                    if (textarea) {
+                        textarea.readOnly = true;
+                        textarea.style.minHeight = 'auto';
+                        textarea.style.height = Math.max(textarea.scrollHeight, 120) + 'px';
+                        textarea.style.backgroundColor = '#f8fafc';
+                        textarea.style.cursor = 'default';
+                    }
+
+                    // Show sample answer
+                    if (answerElement) {
+                        answerElement.style.display = 'block';
+                    }
+
+                    // Show points awarded (replace input with static display)
+                    if (gradingElement) {
+                        gradingElement.innerHTML = `
+                            <h4>Points Awarded:</h4>
+                            <div class="points-awarded-display">
+                                <strong>${points} / ${item.data.points}</strong> points
+                            </div>
+                        `;
+                        gradingElement.style.display = 'block';
+                    }
+                } else if (item.type === 'table') {
+                    const answerElement = document.getElementById(`table-answer-${item.originalIndex}`);
+                    const gradingElement = document.getElementById(`table-grading-${item.originalIndex}`);
+
+                    // Make table inputs read-only
+                    const tableInputs = document.querySelectorAll(`textarea[name^="table${item.originalIndex}-"]`);
+                    tableInputs.forEach(input => {
+                        input.readOnly = true;
+                    });
+
+                    // Show sample answer
+                    if (answerElement) {
+                        answerElement.style.display = 'block';
+                    }
+
+                    // Show points awarded (replace input with static display)
+                    if (gradingElement) {
+                        gradingElement.innerHTML = `
+                            <h4>Points Awarded:</h4>
+                            <div class="points-awarded-display">
+                                <strong>${points} / ${item.data.points}</strong> points
+                            </div>
+                        `;
+                        gradingElement.style.display = 'block';
+                    }
+                }
+            });
         }
 
         function autoCalculateFinalScore() {
