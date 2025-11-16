@@ -67,7 +67,7 @@ multipleChoice:
 
 trueMakeTrue:
 
-  - statement: "The process of moving a ***glob*** of food through the alimentary canal is known as propulsion."
+  - statement: "The process of moving a ***vacuole*** of food through the alimentary canal is known as propulsion."
     isTrue: false
     correctWord: ["bolus"]
     points: 2.5
@@ -135,7 +135,7 @@ essay:
     tags: ["unit-4", "digestive", "activity-question"]
 
 ## Activity sheet questions
-  # - question: "Explain why a proton pump (H+) inhibitor, such as Prilosec, relieves the symptoms of acidreflux?"
+  # - question: "Explain why a proton pump (H+) inhibitor, such as Prilosec, relieves the symptoms of acid reflux?"
   #   answer: ""
   # - question: "Will antihistamines make a stomachache worse or better? Why?"
   #   answer: ""
@@ -145,7 +145,6 @@ essay:
   #   answer: ""
   # - question: "NSAIDS suppress prostaglandin synthesis. Prostaglandins normally stimulate the secretion of mucus and bicarbonate. Explain why using NSAIDS could increase the chances of getting a peptic ulcer."
   #   answer: ""
-  # - question: 
   # - question: 
   #   answer: ""
   # - question: 
