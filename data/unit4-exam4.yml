@@ -26,9 +26,15 @@ multipleChoice:
 
 trueMakeTrue:
 
-  - statement: "The process of moving a ***chyme*** of food through the alimentary canal is known as propulsion."
+  - statement: "The process of moving a ***glob*** of food through the alimentary canal is known as propulsion."
     isTrue: false
     correctWord: ["bolus"]
+    points: 2.5
+    tags: ["unit-4", "digestive", "digestion"]
+
+  - statement: "The enzyme in saliva that is responsible for breaking down carbs is ***carbonase***."
+    isTrue: false
+    correctWord: ["amylase"]
     points: 2.5
     tags: ["unit-4", "digestive", "digestion"]
 
@@ -40,19 +46,41 @@ trueMakeTrue:
 # esophagus
 # stratified squamous epithelium
 # cuboidal epithelium
-# 
+# alimentary
+# ingestion
+# propulsion
+# secretion
+#
 
 essay:
 
   - question: "Which autonomic nervous system does taking antihistamines work on and what would be the side effect of these drugs to the oral cavity?"
     answer: "Works on the parasympathetic. Blocks release of Ach, which triggers acinar cells to release serous fluid, so the side effect is dry mouth."
-    points: 2.5
-    tags: ["unit-4", "digestive"]
+    points: 3
+    tags: ["unit-4", "digestive", "activity-question"]
 
-  # - question: "?"
+## Activity sheet questions
+  # - question: "Explain why a proton pump (H+) inhibitor, such as Prilosec, relieves the symptoms of acidreflux?"
   #   answer: ""
+  # - question: "Will antihistamines make a stomachache worse or better? Why?"
+  #   answer: ""
+  # - question: "Why do you get more easily drunk on an empty stomach?"
+  #   answer: ""
+  # - question: "Why don’t the cells of the stomach lining get broken down by the HCl?"
+  #   answer: ""
+  # - question: "NSAIDS suppress prostaglandin synthesis. Prostaglandins normally stimulate the secretion of mucus and bicarbonate. Explain why using NSAIDS could increase the chances of getting a peptic ulcer."
+  #   answer: ""
+  # - question: 
+  # - question: 
+  #   answer: ""
+  # - question: 
+  #   answer: ""
+  # - question: 
+  #   answer: ""
+
+
   #   points: 2.5
-  #   tags: ["unit-4", "digestive"]
+  #   tags: ["unit-4", "digestive", "activity-question"]
 
   # - question: "Sample essay question with an image. What are the labeled structures A-C?"
   #   image: "practical5/sample-diagram.jpg"

@@ -21,6 +21,33 @@
     text-wrap: pretty;
 }
 
+/* Explanation markdown styling */
+.explanation strong {
+    font-weight: 700;
+}
+
+.explanation em {
+    font-style: italic;
+}
+
+.explanation code {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 0.85em;
+}
+
+.explanation a {
+    text-decoration: underline;
+    color: inherit;
+    font-weight: 600;
+}
+
+.explanation a:hover {
+    opacity: 0.8;
+}
+
 /* Multiple Choice Options */
 .options {
     display: flex;
@@ -861,4 +888,286 @@ input.partial {
 
 .answer-key {
     display: none;
+}
+
+/* Grading Modal */
+.grading-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.grading-modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 32px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.grading-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.grading-header h3 {
+    font-size: 1.5rem;
+    color: #111827;
+    margin: 0;
+}
+
+.grading-position {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.grading-image {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.grading-image img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.grading-question {
+    margin-bottom: 20px;
+    padding: 16px;
+    background: #f9fafb;
+    border-radius: 8px;
+    border-left: 4px solid #6366f1;
+}
+
+.grading-question strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #374151;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.grading-question p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #111827;
+}
+
+.grading-your-answer,
+.grading-sample-answer {
+    margin-bottom: 20px;
+}
+
+.grading-your-answer strong,
+.grading-sample-answer strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #374151;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.grading-answer-box {
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #1e293b;
+    white-space: pre-wrap;
+}
+
+.grading-answer-box.grading-sample {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+}
+
+.grading-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 0.95rem;
+}
+
+.grading-table th {
+    background: #f3f4f6;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.grading-table td {
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    color: #1f2937;
+}
+
+.grading-table em {
+    color: #9ca3af;
+}
+
+.grading-sample-table {
+    background: #ecfdf5;
+}
+
+.grading-sample-table th {
+    background: #d1fae5;
+}
+
+.grading-points-section {
+    margin: 24px 0;
+    padding: 24px;
+    background: #fffbeb;
+    border-radius: 8px;
+    border: 2px solid #fbbf24;
+}
+
+.grading-label {
+    display: block;
+    margin-bottom: 16px;
+    font-weight: 600;
+    color: #78350f;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.grading-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+}
+
+.grading-option-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 12px;
+    background: white;
+    border: 2px solid #d97706;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.grading-option-btn:hover {
+    background: #fef3c7;
+    border-color: #92400e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.grading-option-btn.selected {
+    background: #f59e0b;
+    border-color: #92400e;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+.grading-option-btn.selected:hover {
+    background: #d97706;
+    transform: translateY(-2px);
+}
+
+.grading-btn-label {
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-bottom: 4px;
+}
+
+.grading-btn-points {
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.grading-option-btn.selected .grading-btn-points {
+    opacity: 1;
+}
+
+.grading-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 2px solid #e5e7eb;
+}
+
+.grading-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.grading-prev {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.grading-prev:hover:not(:disabled) {
+    background: #e5e7eb;
+}
+
+.grading-prev:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.grading-next {
+    background: #6366f1;
+    color: white;
+    margin-left: auto;
+}
+
+.grading-next:hover {
+    background: #4f46e5;
+}
+
+@media (max-width: 640px) {
+    .grading-modal-content {
+        padding: 20px;
+    }
+
+    .grading-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .grading-buttons {
+        flex-direction: column;
+    }
+
+    .grading-next {
+        margin-left: 0;
+    }
 }
