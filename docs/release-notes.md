@@ -168,6 +168,57 @@ The `**Absorption...**` portion renders as bold text in the explanation.
 - No breaking changes to YAML format
 - Works with existing exam data files
 
+#### Inline Essay Review After Grading
+
+**Post-Grading Display**
+- After modal closes, all attempted essays/tables display on the page
+- Similar to how MC questions show answers inline after submission
+- Students can scroll through entire exam to review everything
+
+**What's Displayed**
+- Student's answer (read-only, light background)
+- Sample answer (green highlighted box)
+- Points awarded (green display box showing "X / Y points")
+- Consistent with MC question review format
+
+**Benefits**
+- Complete exam review in one scrollable page
+- No need to reopen modals or click buttons
+- Can reference all questions and answers together
+- Print-friendly format for offline review
+
+#### Content Templates Created
+
+**Multiple Choice Questions (8 total)**
+- Alimentary canal "outside the body" concept
+- Epithelial tissue types in digestive system
+- Saliva types (sympathetic vs parasympathetic)
+- Stomach functions (nutrient absorption misconception)
+- Stomach cell types (parietal, chief, mucous, enteroendocrine)
+- Gastric bypass and vitamin B12 absorption
+- Proton pump inhibitors mechanism
+- Alcohol absorption on empty stomach
+
+**True/Make-True Questions (7 total)**
+- Esophagus epithelium (true statement)
+- Sympathetic vs parasympathetic digestion
+- Acetylcholine neurotransmitter (true statement)
+- Serous vs mucous fluid in acinar cells
+- Ingestion vs absorption distinction
+- Secretion process (true statement)
+- Deglutition (swallowing) terminology
+
+**Essay Questions (1 total)**
+- Gastric bypass, intrinsic factor, and B12 injections (5 points)
+- Multi-part question testing mechanism understanding
+- Includes: cell types, intrinsic factor function, clinical application
+
+**Source Material**
+- Questions created from digestive system lecture transcript
+- Focus on understanding vs memorization
+- Include clinical applications (medications, surgery)
+- Explanations use markdown for emphasis
+
 #### Use Cases
 
 1. **Optional essay practice** - Skip hard questions, focus on achievable goals
@@ -175,6 +226,7 @@ The `**Absorption...**` portion renders as bold text in the explanation.
 3. **Multiple attempts** - Try essay, see sample, try again in future practice
 4. **Focused learning** - One question at a time prevents overwhelm
 5. **Keyboard efficiency** - Grade entire exam without touching mouse
+6. **Complete review** - Scroll through all answers after grading (inline display)
 
 ---
 

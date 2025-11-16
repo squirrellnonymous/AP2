@@ -90,8 +90,9 @@ trueMakeTrue:
     points: 2.5
     tags: ["unit-4", "digestive", "nervous-system"]
 
-  - statement: "***Acetylcholine*** is the neurotransmitter released by the parasympathetic nervous system to stimulate digestion."
-    isTrue: true
+  - statement: "***Epinephrine*** is the neurotransmitter released by the parasympathetic nervous system to stimulate digestion."
+    isTrue: false
+    correctWord: ["acetylcholine"]
     points: 2.5
     tags: ["unit-4", "digestive", "nervous-system"]
 
