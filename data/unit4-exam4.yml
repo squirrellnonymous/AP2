@@ -144,7 +144,7 @@ essay:
   #   answer: ""
   # - question: "Why don’t the cells of the stomach lining get broken down by the HCl?"
   #   answer: ""
-  # - question: "NSAIDS suppress prostaglandin synthesis. Prostaglandins normally stimulate the secretion of mucus and bicarbonate. Explain why using NSAIDS could increase the chances of getting a peptic ulcer."
+  # - question: "NSAIDs suppress prostaglandin synthesis. Prostaglandins normally stimulate the secretion of mucus and bicarbonate. Explain why using NSAIDs could increase the chances of getting a peptic ulcer."
   #   answer: ""
   # - question: 
   #   answer: ""
@@ -153,10 +153,10 @@ essay:
   # - question: 
   #   answer: ""
 
-  - question: "Explain why gastric bypass patients require vitamin B12 injections. Include in your answer: (1) which cells produce intrinsic factor, (2) what intrinsic factor does, and (3) why reducing stomach size creates this problem."
+  - question: "Explain why gastric bypass patients need vitamin injections. Explain what's going on with these patients. Include in your answer: (a.) which vitamin they need, (b.)which cells are involved and what those cells produce, and (c.) why reducing stomach size creates this problem."
     answer: "Parietal cells in the stomach produce intrinsic factor. Intrinsic factor binds to vitamin B12 in the stomach and allows it to be absorbed later in the small intestine. Gastric bypass surgery dramatically reduces stomach size, which decreases the number of parietal cells available to produce intrinsic factor. Without enough intrinsic factor, patients cannot absorb vitamin B12 from food. Since B12 is essential for red blood cell production, patients must receive B12 injections that bypass the digestive system entirely and go directly into the bloodstream."
-    points: 5
-    tags: ["unit-4", "digestive", "stomach"]
+    points: 9
+    tags: ["unit-4", "digestive", "stomach", "vitamins"]
 
 
   #   points: 2.5
