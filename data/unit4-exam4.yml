@@ -79,8 +79,9 @@ trueMakeTrue:
     points: 2.5
     tags: ["unit-4", "digestive", "digestion"]
 
-  - statement: "The ***esophagus*** is lined with non-keratinized stratified squamous epithelium to protect against abrasion."
-    isTrue: true
+  - statement: "The small intestine is lined with ***non-keratinized stratified squamous*** epithelium to protect against abrasion."
+    isTrue: false
+    correctWord: ["simple columnar"]
     points: 2.5
     tags: ["unit-4", "digestive", "anatomy"]
 
@@ -108,8 +109,8 @@ trueMakeTrue:
     tags: ["unit-4", "digestive", "digestion"]
 
   - statement: "The physiological term for swallowing is ***reflux***."
-    isTrue: true
-    correctWord: "deglutition"
+    isTrue: false
+    correctWord: ["deglutition"]
     points: 2.5
     tags: ["unit-4", "digestive", "process"]
 
