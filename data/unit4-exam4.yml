@@ -24,7 +24,7 @@ multipleChoice:
     explanation: "The alimentary canal is a continuous tube from mouth to anus. Food inside this tube hasn't entered the body yet. **Absorption** is the process that brings nutrients from the digestive tract into the blood - that's when they actually enter the body."
     tags: ["unit-4", "digestive", "digestion"]
 
-  - question: "Which type of epithelium lines the oral cavity and anus?"
+  - question: "Which type of epithelium lines the oral cavity?"
     options:
       - "Simple columnar epithelium"
       - "Simple squamous epithelium"
@@ -108,7 +108,7 @@ trueMakeTrue:
     tags: ["unit-4", "digestive", "digestion"]
 
   - statement: "The physiological term for swallowing is ***reflux***."
-    isTrue: true
+    isTrue: false
     correctWord: "deglutition"
     points: 2.5
     tags: ["unit-4", "digestive", "process"]
@@ -129,8 +129,8 @@ trueMakeTrue:
 
 essay:
 
-  - question: "Which autonomic nervous system does taking antihistamines work on and what would be the side effect of these drugs to the oral cavity?"
-    answer: "Works on the parasympathetic. Blocks release of Ach, which triggers acinar cells to release serous fluid, so the side effect is dry mouth."
+  - question: "How do antihistamines affect the autonomic nervous system, and what side effect does this cause in the oral cavity?"
+    answer: "Antihistamines block the parasympathetic nervous system by blocking the release of acetylcholine (Ach). Ach usually triggers acinar cells to release serous fluid (the liquidy part of saliva). The side effect is dry mouth."
     points: 3
     tags: ["unit-4", "digestive", "activity-question"]
 
