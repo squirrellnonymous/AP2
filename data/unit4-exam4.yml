@@ -109,8 +109,8 @@ trueMakeTrue:
     tags: ["unit-4", "digestive", "digestion"]
 
   - statement: "The physiological term for swallowing is ***reflux***."
-    isTrue: true
-    correctWord: "deglutition"
+    isTrue: false
+    correctWord: ["deglutition"]
     points: 2.5
     tags: ["unit-4", "digestive", "process"]
 
