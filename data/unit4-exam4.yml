@@ -79,7 +79,7 @@ trueMakeTrue:
     points: 2.5
     tags: ["unit-4", "digestive", "digestion"]
 
-  - statement: "The small intestine is lined with ***non-keratinized stratified squamous*** epithelium to protect against abrasion."
+  - statement: "The small intestine is lined with ***non-keratinized stratified squamous*** epithelium for nutrient absorption."
     isTrue: false
     correctWord: ["simple columnar"]
     points: 2.5
