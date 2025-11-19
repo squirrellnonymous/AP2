@@ -19,12 +19,19 @@ balanced_tag_pairs: false
   # Image Based Questions
 
 questions:
-  # - id: 1
-  #   image: "practical5/01.jpg"
+  # - id: 0
+  #   image: "practical5/00.jpg"
   #   question: "What is a baby cat?"
   #   answer: ["a kitten", "kitten"]
-  #   definition: ""
+  #   definition: "This is sample yml data that can be copied and adapted for questions with images. Hang in there, baby!"
   #   tags: ["unit4", "sample", "kitten"]
+
+  - id: 1
+    image: "practical5/01.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["parotid salivary gland"]
+    definition: "The largest salivary gland, located near the ear. Produces serous (watery) saliva rich in amylase to begin starch digestion."
+    tags: ["unit4", "digestive", "salivary-gland"]
 
   - id: 2
     image: "practical5/02.jpg"
@@ -72,8 +79,50 @@ questions:
     image: "practical5/8.jpg"
     question: "Where is this tissue found?"
     answer: ["salivary gland"]
-    definition: "Salivary glands produce saliva containing enzymes (like amylase) to begin chemical digestion of carbohydrates in the mouth."
+    definition: "Salivary glands produce saliva containing enzymes (like amylase) to begin chemical digestion of carbohydrates in the mouth. Greek: 'para' = near and 'otid' = ear."
     tags: ["unit4", "digestive", "salivary-gland"]
+
+  - id: 9
+    image: "practical5/9.jpg"
+    question: "Name the structure labeled x."
+    answer: ["dentin"]
+    definition: "Hard tissue forming the bulk of a tooth, located beneath the enamel. Contains microscopic tubules and is less mineralized than enamel."
+    tags: ["unit4", "digestive", "tooth"]
+
+  - id: 10
+    image: "practical5/10.jpg"
+    question: "What kind of tooth am I?"
+    answer: ["incisor"]
+    definition: "Front teeth with a chisel-shaped crown used for cutting and biting food. Humans have 8 incisors (4 upper, 4 lower)."
+    tags: ["unit4", "digestive", "tooth"]
+
+  - id: 11
+    image: "practical5/11.jpg"
+    question: "What kind of tooth?"
+    answer: ["canine"]
+    definition: "Pointed teeth located next to the incisors, used for tearing and gripping food. Humans have 4 canines (also called cuspids)."
+    tags: ["unit4", "digestive", "tooth"]
+
+  - id: 12
+    image: "practical5/12.jpg"
+    question: "What kind of tooth?"
+    answer: ["premolar"]
+    definition: "Teeth located between canines and molars, used for crushing and grinding food. Humans have 8 premolars (also called bicuspids)."
+    tags: ["unit4", "digestive", "tooth"]
+
+  - id: 13
+    image: "practical5/13.jpg"
+    question: "What kind of tooth?"
+    answer: ["molar"]
+    definition: "Large back teeth with broad, flat surfaces for grinding and crushing food. Adults have up to 12 molars, including wisdom teeth."
+    tags: ["unit4", "digestive", "tooth"]
+
+  - id: 14
+    image: "practical5/14.jpg"
+    question: "What is the structure?"
+    answer: ["lacteal"]
+    definition: "Lymphatic capillary in the center of each intestinal villus that absorbs dietary fats. Named for its milky appearance when filled with fat (chyle). Shown in green because it's part of the lymphatic system."
+    tags: ["unit4", "digestive", "small-intestine"]
 
   # ============================================================================
   # Text-Only Questions (No Images)
