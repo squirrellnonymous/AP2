@@ -12,6 +12,10 @@
 function normalizeAnswer(answer) {
     let normalized = answer.toLowerCase().trim();
 
+    // Normalize common medical term variations
+    normalized = normalized.replace(/\bepithelial tissue\b/g, 'epithelium');
+    normalized = normalized.replace(/\bepi\b/g, 'epithelium');
+
     // Remove leading articles
     if (normalized.startsWith('the ')) {
         normalized = normalized.substring(4);

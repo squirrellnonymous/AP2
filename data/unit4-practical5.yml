@@ -47,6 +47,34 @@ questions:
     definition: "The dome-shaped upper portion of the stomach. It stores undigested food and gas (air expelled when you burp) from swallowing."
     tags: ["unit4", "digestive", "stomach"]
 
+  - id: 5
+    image: "practical5/5.jpg"
+    question: "What is the layer labeled x?"
+    answer: ["oblique muscle layer"]
+    definition: "The innermost layer of smooth muscle in the stomach wall, unique to the stomach. It aids in churning and mechanical digestion."
+    tags: ["unit4", "digestive", "stomach"]
+
+  - id: 6
+    image: "practical5/6.jpg"
+    question: "Where is this tissue found?"
+    answer: ["stomach"]
+    definition: "Stomach tissue is characterized by gastric pits, mucus-secreting cells, and specialized glands that produce digestive enzymes and hydrochloric acid."
+    tags: ["unit4", "digestive", "stomach"]
+
+  - id: 7
+    image: "practical5/7.jpg"
+    question: "What type of tissue is this?"
+    answer: ["nonkeratinized stratified squamous epithelium", "nonkeratinized stratified squamous epi"]
+    definition: "This tissue lines the esophagus and protects against abrasion from food. It remains moist unlike keratinized epithelium found on skin."
+    tags: ["unit4", "digestive", "esophagus"]
+
+  - id: 8
+    image: "practical5/8.jpg"
+    question: "Where is this tissue found?"
+    answer: ["salivary gland"]
+    definition: "Salivary glands produce saliva containing enzymes (like amylase) to begin chemical digestion of carbohydrates in the mouth."
+    tags: ["unit4", "digestive", "salivary-gland"]
+
   # ============================================================================
   # Text-Only Questions (No Images)
 
