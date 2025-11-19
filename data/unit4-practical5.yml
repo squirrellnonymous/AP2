@@ -1,6 +1,8 @@
-title: "Practice Practical #5 - Digestive, Reproductive, and Fetal Development"
+title: "Practice Practical #5 - Digestive & Reproductive"
 description: "Digestive, Reproductive, and Fetal Development"
 share_image: "practical5/00.jpg"
+layout: "portrait"
+max_questions: 60
 allow_duplicate_answers: true
 balance_tags: true
 balanced_tag_pairs: false
@@ -17,18 +19,39 @@ balanced_tag_pairs: false
   # Image Based Questions
 
 questions:
-  - id: 1
-    image: "practical5/01.jpg"
-    question: "Name the structure."
-    answer: ["sample structure"]
-    definition: ""
-    tags: ["unit4", "digestive", "digestive-pg1"]
+  # - id: 1
+  #   image: "practical5/01.jpg"
+  #   question: "What is a baby cat?"
+  #   answer: ["a kitten", "kitten"]
+  #   definition: ""
+  #   tags: ["unit4", "sample", "kitten"]
+
+  - id: 2
+    image: "practical5/02.jpg"
+    question: "What is the structure?"
+    answer: ["rugae", "gastric rugae"]
+    definition: "Folds in the stomach lining that allow the stomach to expand when filled with food."
+    tags: ["unit4", "digestive", "stomach"]
+
+  - id: 3
+    image: "practical5/3.jpg"
+    question: "What is the region?"
+    answer: ["cardia"]
+    definition: "The region of the stomach where it joins the esophagus (nearest the heart)."
+    tags: ["unit4", "digestive", "stomach"]
+
+  - id: 4
+    image: "practical5/4.jpg"
+    question: "What is the region?"
+    answer: ["fundus"]
+    definition: "The dome-shaped upper portion of the stomach. It stores undigested food and gas (air expelled when you burp) from swallowing."
+    tags: ["unit4", "digestive", "stomach"]
 
   # ============================================================================
   # Text-Only Questions (No Images)
 
-  - id: 100
-    question: "What is the function of this structure?"
-    answer: ["sample function", "sample answer"]
-    definition: "Sample definition explaining the concept."
-    tags: ["unit4", "digestive", "text-only"]
+  # - id: 100
+  #   question: "What is the function of this structure?"
+  #   answer: ["sample function", "sample answer"]
+  #   definition: "Sample definition explaining the concept."
+  #   tags: ["unit4", "digestive", "text-only"]

@@ -1564,3 +1564,30 @@ body.dark-mode .popup-question-overlay {
     color: white;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
 }
+
+/* Portrait Layout Styles */
+body.portrait-layout .image-content {
+    max-width: 400px;
+}
+
+body.portrait-layout .image-content img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    max-height: 593px;
+    object-fit: contain;
+}
+
+body.portrait-layout .image-content .text-only-question-box {
+    height: 593px !important;
+    max-width: 400px;
+}
+
+body.portrait-layout .image-container.has-text-overlay .question-text {
+    height: 593px;
+}
+
+/* Remove border in dark mode for portrait layout */
+body.dark-mode.portrait-layout .image-content img {
+    border: none;
+}

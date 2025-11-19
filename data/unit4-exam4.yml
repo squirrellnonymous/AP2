@@ -153,7 +153,7 @@ essay:
   # - question: 
   #   answer: ""
 
-  - question: "Explain why gastric bypass patients need vitamin injections. Explain what's going on with these patients. Include in your answer: (a.) which vitamin they need, (b.)which cells are involved and what those cells produce, and (c.) why reducing stomach size creates this problem."
+  - question: "Explain why gastric bypass patients need vitamin injections. What's going on with these patients? Include in your answer: (a.) which vitamin they need, (b.) which cells are missing and what those cells usually produce, and (c.) why reducing stomach size creates this problem."
     answer: "Parietal cells in the stomach produce intrinsic factor. Intrinsic factor binds to vitamin B12 in the stomach and allows it to be absorbed later in the small intestine. Gastric bypass surgery dramatically reduces stomach size, which decreases the number of parietal cells available to produce intrinsic factor. Without enough intrinsic factor, patients cannot absorb vitamin B12 from food. Since B12 is essential for red blood cell production, patients must receive B12 injections that bypass the digestive system entirely and go directly into the bloodstream."
     points: 9
     tags: ["unit-4", "digestive", "stomach", "vitamins"]

@@ -240,6 +240,11 @@
                     document.getElementById('twitter-description')?.setAttribute('content', practicalData.description);
                 }
 
+                // Apply layout class if specified in YAML
+                if (practicalData.layout === 'portrait') {
+                    document.body.classList.add('portrait-layout');
+                }
+
                 // Shuffle the questions
                 if (practicalData && practicalData.questions) {
                     practicalData.questions = shuffleArray(practicalData.questions);
@@ -282,10 +287,13 @@
             // Smart selection with limited and distributed text-only questions
             let selectedQuestions = [];
 
-            if (validQuestions.length > 40) {
-                // Target 40 questions total, with text-only limited to max 12.5% (5 out of 40)
-                const targetTotal = 40;
-                const maxTextOnly = Math.min(textOnlyQuestions.length, 5);
+            // Get max questions from YAML config (default to 40)
+            const maxQuestions = practicalData.max_questions || 40;
+
+            if (validQuestions.length > maxQuestions) {
+                // Target questions based on config, with text-only limited to max 12.5%
+                const targetTotal = maxQuestions;
+                const maxTextOnly = Math.min(textOnlyQuestions.length, Math.floor(maxQuestions * 0.125));
 
                 // Calculate how many image questions we can get
                 const availableImageQuestions = imageQuestions.length;
@@ -345,6 +353,9 @@
                 onNumberClick: goToImage,
                 onInputClick: goToQuestionAndFocus
             });
+
+            // Get the answers grid element for extra credit
+            const answersGrid = document.querySelector('.answers-grid');
 
             // Add extra credit section (randomly select only one if multiple exist)
             const allExtraCreditQuestions = practicalData.questions.filter(question => {

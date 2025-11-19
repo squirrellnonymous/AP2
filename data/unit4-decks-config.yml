@@ -6,43 +6,43 @@ sections:
   - name: "Unit 4"
     decks:
       - id: "unit4-all"
-        title: "Unit 4: Digestive, Reproductive, and Fetal Development (all)"
+        title: "Unit 4: Digestive & Reproductive"
         description: "All the cards in this unit"
         source: "unit4-practical5"
         tags: ["unit4"]
 
-  - name: "Digestive System Flashcards"
-    decks:
-      - id: "digestive-all"
-        title: "All Digestive System"
-        description: "Complete digestive system deck - organs, accessory structures, functions"
-        source: "unit4-practical5"
-        tags: ["digestive"]
+  # - name: "Digestive System Flashcards"
+  #   decks:
+  #     - id: "digestive-all"
+  #       title: "All Digestive System"
+  #       description: "Complete digestive system deck - organs, accessory structures, functions"
+  #       source: "unit4-practical5"
+  #       tags: ["digestive"]
 
-  - name: "Reproductive System Flashcards"
-    decks:
-      - id: "reproductive-all"
-        title: "All Reproductive System"
-        description: "Complete reproductive system deck - male and female structures"
-        source: "unit4-practical5"
-        tags: ["reproductive"]
+  # - name: "Reproductive System Flashcards"
+  #   decks:
+  #     - id: "reproductive-all"
+  #       title: "All Reproductive System"
+  #       description: "Complete reproductive system deck - male and female structures"
+  #       source: "unit4-practical5"
+  #       tags: ["reproductive"]
 
-      - id: "reproductive-male"
-        title: "Male Reproductive System"
-        description: "Male reproductive structures and organs"
-        source: "unit4-practical5"
-        tags: ["reproductive-male"]
+  #     - id: "reproductive-male"
+  #       title: "Male Reproductive System"
+  #       description: "Male reproductive structures and organs"
+  #       source: "unit4-practical5"
+  #       tags: ["reproductive-male"]
 
-      - id: "reproductive-female"
-        title: "Female Reproductive System"
-        description: "Female reproductive structures and organs"
-        source: "unit4-practical5"
-        tags: ["reproductive-female"]
+  #     - id: "reproductive-female"
+  #       title: "Female Reproductive System"
+  #       description: "Female reproductive structures and organs"
+  #       source: "unit4-practical5"
+  #       tags: ["reproductive-female"]
 
-  - name: "Fetal Development Flashcards"
-    decks:
-      - id: "fetal-development"
-        title: "Fetal Development"
-        description: "Fetal structures and development stages"
-        source: "unit4-practical5"
-        tags: ["fetal"]
+  # - name: "Fetal Development Flashcards"
+  #   decks:
+  #     - id: "fetal-development"
+  #       title: "Fetal Development"
+  #       description: "Fetal structures and development stages"
+  #       source: "unit4-practical5"
+  #       tags: ["fetal"]
