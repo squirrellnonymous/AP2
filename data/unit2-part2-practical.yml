@@ -676,7 +676,7 @@ questions:
     tags: ["blood-vessels", "vein"]
 
   - id: 119
-    question: "The vein that drains the dural sinuses of the brain is the ___________________."
+    question: "The vein that drains the dural sinuses of the brain is the _____."
     answer: ["internal jugular vein"]
     image: "gradients/04.jpg"
     textOverlay: true
@@ -739,7 +739,7 @@ questions:
     tags: ["blood-vessels", "vein"]
 
   - id: 128
-    question: "The small saphenous and the popliteal veins join to become the _________________ vein."
+    question: "The small saphenous and the popliteal veins join to become the _______ vein."
     answer: ["femoral vein"]
     image: "gradients/05.jpg"
     textOverlay: true
@@ -766,33 +766,33 @@ questions:
     textOverlay: true
     tags: ["blood-vessels", "vein"]
 
-  - id: 132
-    question: "How would blood get from a hand back to the heart?"
-    answer: ["one possible path: R/L hand, R/L radial vein, R/L brachial vein, R/L axillary vein, R/L subclavian vein, R/L brachiocephalic vein, superior vena cava, heart (right atrium)"]
-    image: "gradients/01.jpg"
-    textOverlay: true
-    tags: ["blood-vessels", "vein", "blood-flow", "flashcards"]
+  # - id: 132
+  #   question: "How would blood get from a hand back to the heart?"
+  #   answer: ["one possible path: R/L hand, R/L radial vein, R/L brachial vein, R/L axillary vein, R/L subclavian vein, R/L brachiocephalic vein, superior vena cava, heart (right atrium)"]
+  #   image: "gradients/01.jpg"
+  #   textOverlay: true
+  #   tags: ["blood-vessels", "vein", "blood-flow", "flashcards"]
 
-  - id: 133
-    question: "How would blood get from the foot back to the heart?"
-    answer: ["one possible path: R/L foot, R/L great saphenous vein, external iliac vein, common iliac vein, inferior vena cava, heart (right atrium)"]
-    image: "gradients/02.jpg"
-    textOverlay: true
-    tags: ["blood-vessels", "vein", "blood-flow", "flashcards"]
+  # - id: 133
+  #   question: "How would blood get from the foot back to the heart?"
+  #   answer: ["one possible path: R/L foot, R/L great saphenous vein, external iliac vein, common iliac vein, inferior vena cava, heart (right atrium)"]
+  #   image: "gradients/02.jpg"
+  #   textOverlay: true
+  #   tags: ["blood-vessels", "vein", "blood-flow", "flashcards"]
 
-  - id: 134
-    question: "How would blood get from the heart to a hand?"
-    answer: ["one possible path: heart (left ventricle), aorta, left subclavian artery, left axillary artery, left brachial artery, left radial artery, left hand OR from the aorta, brachiocephalic trunk, right subclavian artery, ..."]
-    image: "gradients/03.jpg"
-    textOverlay: true
-    tags: ["blood-vessels", "artery", "blood-flow", "flashcards"]
+  # - id: 134
+  #   question: "How would blood get from the heart to a hand?"
+  #   answer: ["one possible path: heart (left ventricle), aorta, left subclavian artery, left axillary artery, left brachial artery, left radial artery, left hand OR from the aorta, brachiocephalic trunk, right subclavian artery, ..."]
+  #   image: "gradients/03.jpg"
+  #   textOverlay: true
+  #   tags: ["blood-vessels", "artery", "blood-flow", "flashcards"]
 
-  - id: 135
-    question: "How would blood get from the heart to a foot?"
-    answer: ["one possible path: heart (left ventricle), aorta, R/L common iliac artery, R/L external iliac artery, R/L femoral artery, R/L popliteal artery, R/L posterior tibial artery, R/L foot"]
-    image: "gradients/04.jpg"
-    textOverlay: true
-    tags: ["blood-vessels", "artery", "blood-flow", "flashcards"]
+  # - id: 135
+  #   question: "How would blood get from the heart to a foot?"
+  #   answer: ["one possible path: heart (left ventricle), aorta, R/L common iliac artery, R/L external iliac artery, R/L femoral artery, R/L popliteal artery, R/L posterior tibial artery, R/L foot"]
+  #   image: "gradients/04.jpg"
+  #   textOverlay: true
+  #   tags: ["blood-vessels", "artery", "blood-flow", "flashcards"]
 
   - id: 136
     question: "What type of capillaries have large windows/pores (found in endocrine glands and kidneys)?"

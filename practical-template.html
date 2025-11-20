@@ -104,8 +104,8 @@
             const uniqueQuestions = [];
             answerGroups.forEach(group => {
                 // Prefer image questions over text-only when there's a choice
-                const imageQs = group.filter(q => q.image);
-                const textQs = group.filter(q => !q.image);
+                const imageQs = group.filter(q => !q.textOverlay);
+                const textQs = group.filter(q => q.textOverlay === true);
 
                 if (imageQs.length > 0) {
                     // Randomly select one image question from this group
@@ -120,8 +120,8 @@
 
             // Separate back into image and text-only
             return {
-                imageQuestions: uniqueQuestions.filter(q => q.image),
-                textOnlyQuestions: uniqueQuestions.filter(q => !q.image)
+                imageQuestions: uniqueQuestions.filter(q => !q.textOverlay),
+                textOnlyQuestions: uniqueQuestions.filter(q => q.textOverlay === true)
             };
         }
 
@@ -274,8 +274,8 @@
             const validQuestions = filterValidQuestions(practicalData.questions);
 
             // Separate image and text-only questions
-            let imageQuestions = validQuestions.filter(q => q.image);
-            let textOnlyQuestions = validQuestions.filter(q => !q.image);
+            let imageQuestions = validQuestions.filter(q => !q.textOverlay);
+            let textOnlyQuestions = validQuestions.filter(q => q.textOverlay === true);
 
             // Remove questions with duplicate answers (unless disabled in config)
             if (!practicalData.allow_duplicate_answers) {
