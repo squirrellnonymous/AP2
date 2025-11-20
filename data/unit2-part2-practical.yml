@@ -676,7 +676,7 @@ questions:
     tags: ["blood-vessels", "vein"]
 
   - id: 119
-    question: "The vein that drains the dural sinuses of the brain is the _____."
+    question: "The vein that drains the dural sinuses of the brain is the _________."
     answer: ["internal jugular vein"]
     image: "gradients/04.jpg"
     textOverlay: true
@@ -739,7 +739,7 @@ questions:
     tags: ["blood-vessels", "vein"]
 
   - id: 128
-    question: "The small saphenous and the popliteal veins join to become the _______ vein."
+    question: "The small saphenous and the popliteal veins join to become the ____________ vein."
     answer: ["femoral vein"]
     image: "gradients/05.jpg"
     textOverlay: true
