@@ -15,6 +15,7 @@ function normalizeAnswer(answer) {
     // Normalize common medical term variations
     normalized = normalized.replace(/\bepithelial tissue\b/g, 'epithelium');
     normalized = normalized.replace(/\bepi\b/g, 'epithelium');
+    normalized = normalized.replace(/\bnon-keratinized\b/g, 'nonkeratinized');
 
     // Remove leading articles
     if (normalized.startsWith('the ')) {

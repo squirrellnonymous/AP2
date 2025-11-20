@@ -766,6 +766,8 @@ questions:
     textOverlay: true
     tags: ["blood-vessels", "vein"]
 
+  ## pathway questions were removed because they had display issues and there is the pathway quiz instead
+  
   # - id: 132
   #   question: "How would blood get from a hand back to the heart?"
   #   answer: ["one possible path: R/L hand, R/L radial vein, R/L brachial vein, R/L axillary vein, R/L subclavian vein, R/L brachiocephalic vein, superior vena cava, heart (right atrium)"]

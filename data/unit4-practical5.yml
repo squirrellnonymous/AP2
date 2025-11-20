@@ -71,7 +71,7 @@ questions:
   - id: 7
     image: "practical5/7.jpg"
     question: "What type of tissue is this?"
-    answer: ["nonkeratinized stratified squamous epithelium", "nonkeratinized stratified squamous epi"]
+    answer: ["nonkeratinized stratified squamous epithelium"]
     definition: "This tissue lines the esophagus and protects against abrasion from food. It remains moist unlike keratinized epithelium found on skin."
     tags: ["unit4", "digestive", "esophagus"]
 
