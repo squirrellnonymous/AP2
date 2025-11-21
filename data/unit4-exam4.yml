@@ -2,6 +2,7 @@ title: "Lecture Exam #4 - Practice"
 description: ""
 randomize: true
 maxQuestions: 26
+maxTrueMakeTrueQuestions: 10
 
 multipleChoice:
   - question: "Bringing nutrients into the body is the process of ________."

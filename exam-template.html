@@ -77,6 +77,7 @@
     <script>
         let quizData = null;
         let selectedQuestions = null;
+        let selectedTMT = null;
 
         // Simple markdown parser for explanations
         function parseMarkdown(text) {
@@ -203,6 +204,13 @@
                 selectedQuestions = allQuestions;
             }
 
+            // Update the Multiple Choice header with point value
+            const mcHeader = document.querySelector('.scantron-section h2');
+            if (mcHeader) {
+                const totalMCPoints = selectedQuestions.length * 2;
+                mcHeader.textContent = `Part I: Multiple Choice (${totalMCPoints} pts)`;
+            }
+
             // Group questions by image for better presentation
             let currentImage = null;
             let questionGroup = null;
@@ -299,7 +307,17 @@
                 instructions.innerHTML = 'If the statement is true, write "True". If false, write the word that makes it true. (2.5 pts each)';
                 tmtContainer.appendChild(instructions);
 
-                quizData.trueMakeTrue.forEach((item, index) => {
+                // Select and optionally limit TMT questions
+                selectedTMT = [...quizData.trueMakeTrue];
+                const shouldRandomize = quizData.randomize !== false;
+                const maxTMT = quizData.maxTrueMakeTrueQuestions || selectedTMT.length;
+
+                if (shouldRandomize && selectedTMT.length > maxTMT) {
+                    // Shuffle and limit
+                    selectedTMT = selectedTMT.sort(() => Math.random() - 0.5).slice(0, maxTMT);
+                }
+
+                selectedTMT.forEach((item, index) => {
                     const tmtCard = document.createElement('div');
                     tmtCard.className = 'true-make-true-card';
 
@@ -624,9 +642,9 @@
             }
 
             // True/Make True answers
-            if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) {
+            if (selectedTMT && selectedTMT.length > 0) {
                 keyHTML += '<div class="answer-key-section"><h2>True/Make True</h2>';
-                quizData.trueMakeTrue.forEach((item, index) => {
+                selectedTMT.forEach((item, index) => {
                     let answer;
                     if (item.isTrue) {
                         answer = 'True';
@@ -677,13 +695,13 @@
 
         function updateProgress() {
             const mcCount = selectedQuestions ? selectedQuestions.length : 0;
-            const tmtCount = quizData.trueMakeTrue ? quizData.trueMakeTrue.length : 0;
+            const tmtCount = selectedTMT ? selectedTMT.length : 0;
             const tableCount = quizData.table ? quizData.table.length : 0;
             const essayCount = quizData.essay ? quizData.essay.length : 0;
 
             // Calculate total points
-            const mcPoints = mcCount; // 1 point each
-            const tmtPoints = quizData.trueMakeTrue ? quizData.trueMakeTrue.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
+            const mcPoints = mcCount * 2; // 2 points each
+            const tmtPoints = selectedTMT ? selectedTMT.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
             const tablePoints = quizData.table ? quizData.table.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
             const essayPoints = quizData.essay ? quizData.essay.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
             const totalPoints = mcPoints + tmtPoints + tablePoints + essayPoints;
@@ -723,8 +741,8 @@
             });
 
             // Count blank true/make true
-            if (quizData.trueMakeTrue) {
-                quizData.trueMakeTrue.forEach((item, index) => {
+            if (selectedTMT) {
+                selectedTMT.forEach((item, index) => {
                     const input = document.querySelector(`input[name="tmt${index}"]`);
                     if (!input || !input.value.trim()) blankTMT++;
                 });
@@ -848,8 +866,8 @@
             });
 
             // Check True/Make True questions
-            if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) {
-                quizData.trueMakeTrue.forEach((item, index) => {
+            if (selectedTMT && selectedTMT.length > 0) {
+                selectedTMT.forEach((item, index) => {
                     const input = document.querySelector(`input[name="tmt${index}"]`);
                     const feedbackElement = document.getElementById(`tmt-feedback-${index}`);
 
@@ -951,8 +969,8 @@
             }
 
             // Calculate total score (only MC and TMT are graded automatically)
-            const tmtMaxPoints = quizData.trueMakeTrue ? quizData.trueMakeTrue.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
-            const gradedPoints = questions.length + tmtMaxPoints;
+            const tmtMaxPoints = selectedTMT ? selectedTMT.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
+            const gradedPoints = questions.length * 2 + tmtMaxPoints;
             const totalScore = mcScore + tmtScore;
             const percentage = Math.round((totalScore / gradedPoints) * 100);
 
@@ -984,13 +1002,13 @@
             let scoreDisplay;
             if (hasAttemptedEssays || hasAttemptedTables) {
                 scoreDisplay = `Score: ${totalScore}/${gradedPoints} (${percentage}%)`;
-                if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) {
+                if (selectedTMT && selectedTMT.length > 0) {
                     scoreDisplay += `<br><small>Multiple Choice: ${mcScore}/${questions.length * 2}<br>True/Make True: ${tmtScore}/${tmtMaxPoints}</small>`;
                 }
                 scoreDisplay += `<br><br><small style="color: #6b7280;">Opening grading modal for essay/table questions...</small>`;
             } else {
                 scoreDisplay = `Score: ${totalScore}/${gradedPoints} (${percentage}%)`;
-                if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) {
+                if (selectedTMT && selectedTMT.length > 0) {
                     scoreDisplay += `<br><small>Multiple Choice: ${mcScore}/${questions.length * 2}<br>True/Make True: ${tmtScore}/${tmtMaxPoints}</small>`;
                 }
             }
@@ -1454,7 +1472,7 @@
 
             // Get existing MC and TMT scores
             const questions = selectedQuestions || [];
-            const tmtQuestions = quizData.trueMakeTrue || [];
+            const tmtQuestions = selectedTMT || [];
 
             let mcScore = 0, tmtScore = 0;
 
