@@ -186,6 +186,20 @@ input.partial {
     color: #1a1a1a;
 }
 
+.essay-image {
+    margin: 16px 0;
+    text-align: center;
+}
+
+.essay-image img {
+    max-width: 500px;
+    max-height: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 .essay-textarea {
     width: 100%;
     min-height: 120px;
@@ -599,17 +613,26 @@ input.partial {
 }
 
 /* Question Images (for MC questions with images) */
+.question-card:has(.question-image) {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
 .question-image {
-    margin: 12px 0;
+    flex-shrink: 0;
+    order: 2;
     text-align: center;
 }
 
 .question-image img {
-    max-width: 400px;
-    width: 100%;
+    max-width: 500px;
+    max-height: 500px;
+    width: auto;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    object-fit: contain;
 }
 
 /* Grouped questions (sharing same image) */
@@ -617,6 +640,28 @@ input.partial {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex: 1;
+    order: 1;
+}
+
+/* Stack image above questions on narrow viewports */
+@media (max-width: 768px) {
+    .question-card:has(.question-image) {
+        flex-direction: column;
+    }
+
+    .question-image {
+        order: 1;
+    }
+
+    .question-group {
+        order: 2;
+    }
+
+    .question-image img {
+        max-width: 100%;
+        max-height: 400px;
+    }
 }
 
 .grouped-question-item {

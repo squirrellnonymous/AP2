@@ -270,6 +270,12 @@
         page-break-after: always;
     }
 
+    /* Extra credit questions get their own page */
+    .essay-card:has(.question-number[data-number="EC"]),
+    .table-card:has(.question-number[data-number="EC"]) {
+        page-break-before: always;
+    }
+
     /* If essay has image, question + image on first page, space on second */
     .essay-card:has(.essay-image) {
         page-break-before: always;
@@ -299,6 +305,12 @@
         margin-bottom: 16pt !important;
         color: black !important;
         line-height: 1.4 !important;
+    }
+
+    .essay-card .question-number[data-points]::after {
+        content: " (" attr(data-points) " points)";
+        font-size: 11pt !important;
+        font-weight: normal !important;
     }
 
     .essay-image {
@@ -345,6 +357,12 @@
         margin-bottom: 12pt !important;
         color: black !important;
         page-break-after: avoid;
+    }
+
+    .table-card .question-number[data-points]::after {
+        content: " (" attr(data-points) " points)";
+        font-size: 11pt !important;
+        font-weight: normal !important;
     }
 
     .table-answer-container {

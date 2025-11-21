@@ -416,7 +416,7 @@
                         const numRows = item.answer ? item.answer.length : 3;
 
                         let tableHTML = `
-                            <div class="question-number" data-number="${isExtraCredit ? 'EC' : questionCounter}">${questionLabel} (${item.points} points)</div>
+                            <div class="question-number" data-number="${isExtraCredit ? 'EC' : questionCounter}" data-points="${item.points}">${questionLabel} (${item.points} points)</div>
                             <div class="table-question">${item.question}</div>
                             <div class="table-answer-container">
                                 <table class="answer-table">
@@ -515,7 +515,7 @@
                         const imageHTML = item.image ? `<div class="essay-image"><img src="images/${item.image}" alt="${questionLabel} diagram" /></div>` : '';
 
                         essayCard.innerHTML = `
-                            <div class="question-number" data-number="${isExtraCredit ? 'EC' : questionCounter}">${questionLabel} (${item.points} points)</div>
+                            <div class="question-number" data-number="${isExtraCredit ? 'EC' : questionCounter}" data-points="${item.points}">${questionLabel} (${item.points} points)</div>
                             ${imageHTML}
                             <div class="essay-question">${item.question}</div>
                             <textarea class="essay-textarea" name="essay${index}" placeholder="Write your answer here..." autocomplete="off" data-1p-ignore autocorrect="off" spellcheck="true"></textarea>
