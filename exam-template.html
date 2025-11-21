@@ -798,7 +798,7 @@
                     });
 
                     if (answer === correctAnswer) {
-                        mcScore++;
+                        mcScore += 2;
                         // Show explanation for correct answer if it exists
                         if (question.explanation) {
                             // Find the appropriate container (grouped-question-item or question-card)
@@ -985,13 +985,13 @@
             if (hasAttemptedEssays || hasAttemptedTables) {
                 scoreDisplay = `Score: ${totalScore}/${gradedPoints} (${percentage}%)`;
                 if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) {
-                    scoreDisplay += `<br><small>Multiple Choice: ${mcScore}/${questions.length}<br>True/Make True: ${tmtScore}/${tmtMaxPoints}</small>`;
+                    scoreDisplay += `<br><small>Multiple Choice: ${mcScore}/${questions.length * 2}<br>True/Make True: ${tmtScore}/${tmtMaxPoints}</small>`;
                 }
                 scoreDisplay += `<br><br><small style="color: #6b7280;">Opening grading modal for essay/table questions...</small>`;
             } else {
                 scoreDisplay = `Score: ${totalScore}/${gradedPoints} (${percentage}%)`;
                 if (quizData.trueMakeTrue && quizData.trueMakeTrue.length > 0) {
-                    scoreDisplay += `<br><small>Multiple Choice: ${mcScore}/${questions.length}<br>True/Make True: ${tmtScore}/${tmtMaxPoints}</small>`;
+                    scoreDisplay += `<br><small>Multiple Choice: ${mcScore}/${questions.length * 2}<br>True/Make True: ${tmtScore}/${tmtMaxPoints}</small>`;
                 }
             }
 
@@ -1462,7 +1462,7 @@
             questions.forEach((question, index) => {
                 const selected = document.querySelector(`input[name="q${index}"]:checked`);
                 if (selected && parseInt(selected.value) === question.correct) {
-                    mcScore++;
+                    mcScore += 2;
                 }
             });
 
@@ -1487,13 +1487,13 @@
             // Calculate final totals
             const tmtMaxPoints = tmtQuestions.reduce((sum, item) => sum + (item.points || 1), 0);
             const totalScore = mcScore + tmtScore + tableScore + essayScore;
-            const maxScore = questions.length + tmtMaxPoints + tableMaxPoints + essayMaxPoints;
+            const maxScore = questions.length * 2 + tmtMaxPoints + tableMaxPoints + essayMaxPoints;
             const finalPercentage = Math.round((totalScore / maxScore) * 100);
 
             let finalScoreDisplay = `Final Score: ${totalScore}/${maxScore} (${finalPercentage}%)`;
 
             // Build breakdown string
-            let breakdown = `<br><small>Multiple Choice: ${mcScore}/${questions.length}`;
+            let breakdown = `<br><small>Multiple Choice: ${mcScore}/${questions.length * 2}`;
             if (tmtMaxPoints > 0) breakdown += ` | True/Make True: ${tmtScore}/${tmtMaxPoints}`;
             if (tableMaxPoints > 0) breakdown += ` | Tables: ${tableScore}/${tableMaxPoints}`;
             if (essayMaxPoints > 0) breakdown += ` | Essays: ${essayScore}/${essayMaxPoints}`;
