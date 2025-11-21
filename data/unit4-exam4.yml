@@ -413,8 +413,18 @@ essay:
     points: 3
     tags: ["unit-4", "digestive", "activity-question"]
 
+  - question: "Explain why a proton pump (H+) inhibitor, such as Prilosec, relieves the symptoms of acid reflux?"
+    answer: "Proton pump inhibitors block the H+/K+ ATPase pumps in parietal cells, which prevents them from secreting H+ ions (hydrochloric acid) into the stomach. With less acid in the stomach, there's less acidic content that can reflux back up into the esophagus, relieving the burning sensation and damage caused by acid reflux."
+    points: 3
+    tags: ["unit-4", "digestive", "activity-question"]
+
+  - question: "Why do you get more easily drunk on an empty stomach?"
+    answer: "On an empty stomach, alcohol is absorbed faster for two reasons: (1) Some alcohol gets absorbed directly through the stomach lining (more than usual since it's the only thing there), and (2) alcohol enters the small intestine faster because there's no food to slow gastric emptying. Since most alcohol absorption happens in the small intestine, reaching it quickly means the alcohol enters your bloodstream faster, making you feel drunk sooner and more intensely."
+    points: 3
+    tags: ["unit-4", "digestive", "activity-question"]
+
 ## Activity sheet questions
-  # - question: "Explain why a proton pump (H+) inhibitor, such as Prilosec, relieves the symptoms of acid reflux?"
+
   #   answer: ""
   # - question: "Will antihistamines make a stomachache worse or better? Why?"
   #   answer: ""
@@ -439,13 +449,21 @@ essay:
 
   #   points: 2.5
   #   tags: ["unit-4", "digestive", "activity-question"]
-
   # - question: "Sample essay question with an image. What are the labeled structures A-C?"
   #   image: "practical5/sample-diagram.jpg"
   #   answer: "A. Sample structure 1 </br>B. Sample structure 2 </br>C. Sample structure 3"
   #   points: 3
   #   tags: ["unit-4", "digestive"]
 
+  - question: "You just ate a burger and drank a milkshake. </br>Three parts: </br>a. explain what happens to the sugar </br>b. explain what happens to the fat </br>c. explain what happens to the protein. </br>Include for each: </br> - where and how do these macromolecules get broken down</br> - where and how do they get absorbed into the body</br> - include digestive enzymes </br> - what organ secretes each relevant enzyme</br> - where in the digestive system each enzyme does its job</br> - where and how absorption occurs"
+    answer: "<strong>A. SUGARS (Carbohydrates):</strong></br></br><strong>Oral Cavity:</strong> Salivary amylase (from salivary glands) begins breaking down starches into smaller polysaccharides and maltose.</br></br><strong>Stomach:</strong> Salivary amylase is deactivated by stomach acid. No carbohydrate digestion occurs here.</br></br><strong>Small Intestine:</strong> Pancreatic amylase (from pancreas) continues breaking down polysaccharides into disaccharides (maltose, lactose, sucrose). Then brush border enzymes (maltase, lactase, sucrase - produced by intestinal cells) break disaccharides into monosaccharides (glucose, fructose, galactose).</br></br><strong>Absorption:</strong> Monosaccharides are absorbed through the microvilli in the small intestine via active transport and facilitated diffusion, entering the bloodstream through capillaries in the villi.</br></br><strong>B. FATS (Lipids):</strong></br></br><strong>Oral Cavity:</strong> Minimal digestion by lingual lipase (from salivary glands).</br></br><strong>Stomach:</strong> Gastric lipase (from chief cells) begins some fat digestion, but most fat leaves the stomach unchanged.</br></br><strong>Small Intestine:</strong> Bile (produced by liver, stored in gallbladder) emulsifies large fat droplets into smaller droplets. Pancreatic lipase (from pancreas) breaks triglycerides into fatty acids and monoglycerides.</br></br><strong>Absorption:</strong> Fatty acids and monoglycerides are packaged into micelles (with bile salts), then absorbed through intestinal cell membranes. Inside the cells, they're reassembled into triglycerides and packaged into chylomicrons, which enter the lymphatic system (lacteals) before reaching the bloodstream.</br></br><strong>C. PROTEINS:</strong></br></br><strong>Oral Cavity:</strong> No protein digestion occurs here.</br></br><strong>Stomach:</strong> HCl (from parietal cells) denatures proteins and activates pepsinogen into pepsin. Pepsin (from chief cells as pepsinogen) breaks proteins into smaller polypeptides.</br></br><strong>Small Intestine:</strong> Pancreatic enzymes (from pancreas): Trypsin, chymotrypsin, and carboxypeptidase break polypeptides into smaller peptides and amino acids. Brush border enzymes (dipeptidase - produced by intestinal cells) break dipeptides into individual amino acids.</br></br><strong>Absorption:</strong> Amino acids are absorbed through the microvilli in the small intestine via active transport, entering the bloodstream through capillaries in the villi."
+    points: 12
+    tags: ["unit-4", "digestive", "nutrients"]
+
+  - question: "EXTRA CREDIT: The digestive system produces powerful enzymes and acid that can break down food, yet the system doesn't digest itself. Explain at least THREE different mechanisms that prevent the digestive tract from being damaged by its own secretions."
+    answer: "The digestive system uses multiple protective mechanisms: (1) **Zymogens** - Protein-digesting enzymes are secreted as inactive precursors (like pepsinogen and trypsinogen) and only activated when needed, preventing them from digesting the organs that produce them. (2) **Mucus secretion** - Goblet cells secrete a thick mucus layer that coats the stomach and intestinal lining, creating a physical barrier between digestive enzymes/acid and the epithelial cells. (3) **Bicarbonate neutralization** - The stomach and pancreas secrete bicarbonate (HCO3-) which neutralizes acid, especially important in the duodenum where pancreatic bicarbonate protects the small intestine from acidic chyme. (4) **Tight junctions** - Epithelial cells are connected by tight junctions that prevent acid and enzymes from leaking between cells to the underlying tissue. (5) **Rapid cell turnover** - The stomach and intestinal lining is replaced every 3-5 days, so any damaged cells are quickly shed and replaced."
+    points: 5
+    tags: ["unit-4", "digestive", "extra-credit", "synthesis"]
 
 
 table:
@@ -456,7 +474,7 @@ table:
       ["Insulin", "High blood glucose (after eating)", "Promotes glucose uptake by cells; converts glucose to glycogen", "Less hungry (promotes satiety)", "Stores glycogen"],
       ["Glucagon", "Low blood glucose (fasting/between meals)", "Breaks down glycogen to glucose; releases glucose into blood", "More hungry", "Breaks down glycogen"]
     ]
-    points: 10
+    points: 4
     tags: ["unit-4", "endocrine", "pancreas", "hormones"]
 
   - question: "Indicate if the nutrient is digested or not in the following locations."
@@ -468,9 +486,5 @@ table:
       ["Fats", "Minimal (lingual lipase)", "Yes (pancreatic lipase, bile)", "No"],
       ["Nucleic acids", "No", "Yes (pancreatic nucleases)", "No"]
     ]
-    points: 12
+    points: 4
     tags: ["unit-4", "digestive", "enzymes", "nutrients"]
-
-### notes from lecture 3:
-# macromolecules essay questions ...
-# 

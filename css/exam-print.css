@@ -76,11 +76,28 @@
         margin-bottom: 4pt;
     }
 
+    /* MC questions: inline number with question text */
+    .question-card .question-number,
+    .grouped-question-item .question-number {
+        display: inline !important;
+        margin-bottom: 0 !important;
+        margin-right: 0 !important;
+        font-size: 0 !important;
+        font-weight: bold !important;
+    }
+
+    .question-card .question-number::before,
+    .grouped-question-item .question-number::before {
+        content: attr(data-number) ". " !important;
+        font-size: 10.5pt !important;
+    }
+
     .question-text {
-        font-size: 10.5pt;
-        margin-bottom: 6pt;
-        line-height: 1.3;
-        color: black;
+        display: inline !important;
+        font-size: 10.5pt !important;
+        margin-bottom: 6pt !important;
+        line-height: 1.3 !important;
+        color: black !important;
     }
 
     .options {
@@ -123,9 +140,11 @@
     }
 
     .question-image img {
-        max-width: 90%;
-        max-height: 300pt;
+        max-width: 50%;
+        max-height: 200pt;
         height: auto;
+        width: auto;
+        object-fit: contain;
     }
 
     /* ===========================================
@@ -245,6 +264,12 @@
         min-height: 500pt;
     }
 
+    /* Large point questions (9+ points) get their own page */
+    .essay-card.large-points,
+    .table-card.large-points {
+        page-break-after: always;
+    }
+
     /* If essay has image, question + image on first page, space on second */
     .essay-card:has(.essay-image) {
         page-break-before: always;
@@ -254,12 +279,26 @@
         page-break-after: always;
     }
 
+    .essay-card .question-number {
+        display: inline !important;
+        margin-bottom: 0 !important;
+        margin-right: 0 !important;
+        font-size: 0 !important;
+        font-weight: bold !important;
+    }
+
+    .essay-card .question-number::before {
+        content: attr(data-number) ". " !important;
+        font-size: 11pt !important;
+    }
+
     .essay-question {
-        font-size: 11pt;
-        font-weight: normal;
-        margin-bottom: 16pt;
-        color: black;
-        line-height: 1.4;
+        display: inline !important;
+        font-size: 11pt !important;
+        font-weight: normal !important;
+        margin-bottom: 16pt !important;
+        color: black !important;
+        line-height: 1.4 !important;
     }
 
     .essay-image {
@@ -286,10 +325,30 @@
         background: white;
     }
 
+    .table-card .question-number {
+        display: inline !important;
+        margin-bottom: 0 !important;
+        margin-right: 0 !important;
+        font-size: 0 !important;
+        font-weight: bold !important;
+        page-break-after: avoid;
+    }
+
+    .table-card .question-number::before {
+        content: attr(data-number) ". " !important;
+        font-size: 11pt !important;
+    }
+
     .table-question {
-        font-size: 11pt;
-        margin-bottom: 12pt;
-        color: black;
+        display: inline !important;
+        font-size: 11pt !important;
+        margin-bottom: 12pt !important;
+        color: black !important;
+        page-break-after: avoid;
+    }
+
+    .table-answer-container {
+        page-break-before: avoid;
     }
 
     .answer-table {
@@ -297,6 +356,16 @@
         border-collapse: collapse;
         border: 1pt solid black;
         margin-bottom: 16pt;
+        page-break-inside: avoid;
+    }
+
+    .answer-table thead {
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+
+    .answer-table tbody {
+        page-break-inside: avoid;
     }
 
     .answer-table th {
@@ -312,6 +381,10 @@
         padding: 8pt;
         border: 1pt solid black;
         min-height: 30pt;
+    }
+
+    .answer-table tr {
+        page-break-inside: avoid;
     }
 
     .answer-table textarea {
@@ -513,16 +586,41 @@
         color: black;
     }
 
+    .answer-key-question-block {
+        page-break-inside: avoid;
+        margin-bottom: 16pt;
+    }
+
     .answer-key-item {
         font-size: 10.5pt;
         margin-bottom: 6pt;
         color: black;
         line-height: 1.4;
+        page-break-after: avoid;
     }
 
     .answer-key-table {
         margin: 8pt 0 12pt 20pt;
         font-size: 10pt;
+        page-break-inside: avoid;
+        page-break-before: avoid;
+    }
+
+    .answer-key-table table {
+        page-break-inside: avoid;
+    }
+
+    .answer-key-table thead {
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+
+    .answer-key-table tbody {
+        page-break-inside: avoid;
+    }
+
+    .answer-key-table tr {
+        page-break-inside: avoid;
     }
 
     .answer-key-row {

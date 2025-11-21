@@ -635,19 +635,32 @@ input.partial {
     .header-content {
         flex-direction: column;
         gap: 8px;
-        padding: 0 16px;
+        align-items: center;
     }
 
     .home-link {
-        position: static;
-        align-self: flex-start;
-        margin-bottom: 4px;
+        font-size: 0.85rem;
+        padding: 6px;
+        order: -1;
+        align-self: center;
+    }
+
+    .header-center {
+        order: 0;
+    }
+
+    .header-center h1 {
+        font-size: 1.25rem;
+    }
+
+    .header-center .progress {
+        font-size: 0.75rem;
     }
 
     .share-button {
-        align-self: flex-end;
-        font-size: 0.8rem;
-        padding: 6px 12px;
+        padding: 6px;
+        font-size: 1rem;
+        order: 1;
     }
 
     .question-card, .true-make-true-card, .definition-question, .question {
@@ -1193,33 +1206,70 @@ input.partial {
     }
 }
 
-/* Share button styling */
-.share-button {
-    background: transparent;
-    color: #4f46e5;
-    border: 2px solid #4f46e5;
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.875rem;
+/* Header layout */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.home-link {
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 8px;
+    border-radius: 6px;
     transition: all 0.2s ease;
     white-space: nowrap;
 }
 
+.home-link:hover {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.header-center {
+    flex: 1;
+    text-align: center;
+    min-width: 0;
+}
+
+body.dark-mode .home-link {
+    color: #9ca3af;
+}
+
+body.dark-mode .home-link:hover {
+    background: #374151;
+    color: #d1d5db;
+}
+
+/* Share button styling */
+.share-button {
+    flex: 0 0 auto;
+    background: transparent;
+    color: #6b7280;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .share-button:hover {
-    background: #4f46e5;
-    color: white;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+    background: #f3f4f6;
+    color: #374151;
 }
 
 body.dark-mode .share-button {
-    color: #a5b4fc;
-    border-color: #a5b4fc;
+    color: #9ca3af;
 }
 
 body.dark-mode .share-button:hover {
-    background: #a5b4fc;
-    color: #1e293b;
+    background: #374151;
+    color: #d1d5db;
 }

@@ -6,6 +6,7 @@
     <title id="page-title">Practice Test</title>
     <link rel="stylesheet" href="css/quiz.css">
     <link rel="stylesheet" href="css/exam-print.css" media="print">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="header">
@@ -16,7 +17,11 @@
                 <div class="progress" id="progress">Loading...</div>
             </div>
             <button id="share-button" class="share-button" onclick="shareExam()" title="Share this exam">
-                📤 Share
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                    <polyline points="16 6 12 2 8 6"></polyline>
+                    <line x1="12" y1="2" x2="12" y2="15"></line>
+                </svg>
             </button>
         </div>
     </div>
@@ -222,7 +227,7 @@
                     const questionItem = document.createElement('div');
                     questionItem.className = 'grouped-question-item';
                     questionItem.innerHTML = `
-                        <div class="question-number">Question ${index + 1}</div>
+                        <div class="question-number" data-number="${index + 1}">Question ${index + 1}</div>
                         <div class="question-text">${question.question}</div>
                         <div class="options">
                             ${question.options.map((option, optionIndex) => `
@@ -252,7 +257,7 @@
                         const questionItem = document.createElement('div');
                         questionItem.className = 'grouped-question-item';
                         questionItem.innerHTML = `
-                            <div class="question-number">Question ${index + 1}</div>
+                            <div class="question-number" data-number="${index + 1}">Question ${index + 1}</div>
                             <div class="question-text">${question.question}</div>
                             <div class="options">
                                 ${question.options.map((option, optionIndex) => `
@@ -271,7 +276,7 @@
                         questionGroup = null;
 
                         questionCard.innerHTML = `
-                            <div class="question-number">Question ${index + 1}</div>
+                            <div class="question-number" data-number="${index + 1}">Question ${index + 1}</div>
                             <div class="question-text">${question.question}</div>
                             <div class="options">
                                 ${question.options.map((option, optionIndex) => `
@@ -324,8 +329,9 @@
                     // Process statement to highlight bold/italic words
                     let processedStatement = item.statement.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
 
+                    const tmtQuestionNumber = selectedQuestions.length + index + 1;
                     tmtCard.innerHTML = `
-                        <div class="question-number">Statement ${index + 1} (${item.points || 1} points)</div>
+                        <div class="question-number" data-number="${tmtQuestionNumber}">Statement ${tmtQuestionNumber} (${item.points || 1} points)</div>
                         <div class="statement-container">
                             <input type="text" class="answer-input" name="tmt${index}" placeholder="Your answer..." autocomplete="off" data-1p-ignore autocorrect="off" autocapitalize="none" spellcheck="false">
                             <div class="statement-text">${processedStatement}</div>
@@ -357,10 +363,15 @@
                 instructions.innerHTML = 'Practice essay questions. Any questions left blank will not be graded.';
                 essayContainer.appendChild(instructions);
 
-                let questionCounter = 1;
+                // Start counter after MC and TMT questions
+                let questionCounter = selectedQuestions.length + 1;
+                if (selectedTMT && selectedTMT.length > 0) {
+                    questionCounter += selectedTMT.length;
+                }
 
-                // Combine table and essay questions, then sort by points (ascending)
+                // Combine table and essay questions, separating extra credit
                 const combinedQuestions = [];
+                const extraCreditQuestions = [];
 
                 if (quizData.table && quizData.table.length > 0) {
                     quizData.table.forEach((item, index) => {
@@ -370,12 +381,20 @@
 
                 if (quizData.essay && quizData.essay.length > 0) {
                     quizData.essay.forEach((item, index) => {
-                        combinedQuestions.push({ type: 'essay', data: item, originalIndex: index });
+                        // Check if it's extra credit
+                        if (item.tags && item.tags.includes('extra-credit')) {
+                            extraCreditQuestions.push({ type: 'essay', data: item, originalIndex: index });
+                        } else {
+                            combinedQuestions.push({ type: 'essay', data: item, originalIndex: index });
+                        }
                     });
                 }
 
-                // Sort by points (ascending - smallest first, largest last)
+                // Sort regular questions by points (ascending - smallest first, largest last)
                 combinedQuestions.sort((a, b) => (a.data.points || 1) - (b.data.points || 1));
+
+                // Add extra credit questions at the end
+                combinedQuestions.push(...extraCreditQuestions);
 
                 // Render all questions in sorted order
                 combinedQuestions.forEach(({ type, data, originalIndex }) => {
@@ -384,12 +403,20 @@
                         const index = originalIndex;
                         const tableCard = document.createElement('div');
                         tableCard.className = 'table-card';
+                        // Add class for large point questions (9+ points)
+                        if ((item.points || 1) >= 9) {
+                            tableCard.classList.add('large-points');
+                        }
+
+                        // Check if this is extra credit
+                        const isExtraCredit = item.tags && item.tags.includes('extra-credit');
+                        const questionLabel = isExtraCredit ? 'Extra Credit' : `Question ${questionCounter}`;
 
                         const headers = item.headers || ['Column 1', 'Column 2'];
                         const numRows = item.answer ? item.answer.length : 3;
 
                         let tableHTML = `
-                            <div class="question-number">Question ${questionCounter} (${item.points} points)</div>
+                            <div class="question-number" data-number="${isExtraCredit ? 'EC' : questionCounter}">${questionLabel} (${item.points} points)</div>
                             <div class="table-question">${item.question}</div>
                             <div class="table-answer-container">
                                 <table class="answer-table">
@@ -469,17 +496,26 @@
 
                         tableCard.innerHTML = tableHTML;
                         essayContainer.appendChild(tableCard);
-                        questionCounter++;
+                        if (!isExtraCredit) {
+                            questionCounter++;
+                        }
                     } else if (type === 'essay') {
                         const item = data;
                         const index = originalIndex;
                         const essayCard = document.createElement('div');
                         essayCard.className = 'essay-card';
+                        // Add class for large point questions (9+ points)
+                        if ((item.points || 1) >= 9) {
+                            essayCard.classList.add('large-points');
+                        }
 
-                        const imageHTML = item.image ? `<div class="essay-image"><img src="images/${item.image}" alt="Question ${questionCounter} diagram" /></div>` : '';
+                        // Check if this is extra credit
+                        const isExtraCredit = item.tags && item.tags.includes('extra-credit');
+                        const questionLabel = isExtraCredit ? 'Extra Credit' : `Question ${questionCounter}`;
+                        const imageHTML = item.image ? `<div class="essay-image"><img src="images/${item.image}" alt="${questionLabel} diagram" /></div>` : '';
 
                         essayCard.innerHTML = `
-                            <div class="question-number">Question ${questionCounter} (${item.points} points)</div>
+                            <div class="question-number" data-number="${isExtraCredit ? 'EC' : questionCounter}">${questionLabel} (${item.points} points)</div>
                             ${imageHTML}
                             <div class="essay-question">${item.question}</div>
                             <textarea class="essay-textarea" name="essay${index}" placeholder="Write your answer here..." autocomplete="off" data-1p-ignore autocorrect="off" spellcheck="true"></textarea>
@@ -497,7 +533,9 @@
                         `;
 
                         essayContainer.appendChild(essayCard);
-                        questionCounter++;
+                        if (!isExtraCredit) {
+                            questionCounter++;
+                        }
                     }
                 });
             }
@@ -643,6 +681,7 @@
 
             // True/Make True answers
             if (selectedTMT && selectedTMT.length > 0) {
+                const tmtStartNumber = selectedQuestions.length + 1;
                 keyHTML += '<div class="answer-key-section"><h2>True/Make True</h2>';
                 selectedTMT.forEach((item, index) => {
                     let answer;
@@ -652,40 +691,84 @@
                         const correctWords = Array.isArray(item.correctWord) ? item.correctWord : [item.correctWord];
                         answer = correctWords[0]; // Show first correct answer
                     }
-                    keyHTML += `<div class="answer-key-item">${index + 1}. ${answer}</div>`;
+                    keyHTML += `<div class="answer-key-item">${tmtStartNumber + index}. ${answer}</div>`;
                 });
                 keyHTML += '</div>';
             }
 
-            // Table answers
+            // Table and Essay answers (combined and sorted like in the main display)
+            const combinedAnswers = [];
+            let answerCounter = selectedQuestions.length + 1;
+            if (selectedTMT && selectedTMT.length > 0) {
+                answerCounter += selectedTMT.length;
+            }
+
+            // Collect table questions
             if (quizData.table && quizData.table.length > 0) {
-                keyHTML += '<div class="answer-key-section"><h2>Table Questions</h2>';
                 quizData.table.forEach((item, index) => {
-                    keyHTML += `<div class="answer-key-item"><strong>Question ${index + 1}:</strong> ${item.question}</div>`;
-                    if (item.answer && Array.isArray(item.answer)) {
-                        keyHTML += '<div class="answer-key-table">';
-                        item.answer.forEach((row, rowIdx) => {
-                            if (Array.isArray(row)) {
-                                keyHTML += `<div class="answer-key-row">${row.join(' | ')}</div>`;
-                            } else {
-                                keyHTML += `<div class="answer-key-row">${row}</div>`;
-                            }
-                        });
-                        keyHTML += '</div>';
-                    }
+                    const isExtraCredit = item.tags && item.tags.includes('extra-credit');
+                    combinedAnswers.push({ type: 'table', data: item, index, isExtraCredit, points: item.points || 1 });
                 });
-                keyHTML += '</div>';
             }
 
-            // Essay answers
+            // Collect essay questions
             if (quizData.essay && quizData.essay.length > 0) {
-                const questionOffset = (quizData.table ? quizData.table.length : 0);
-                keyHTML += '<div class="answer-key-section"><h2>Essay/Short Answer</h2>';
                 quizData.essay.forEach((item, index) => {
-                    keyHTML += `<div class="answer-key-item">
-                        <strong>Question ${index + 1 + questionOffset}:</strong> ${item.question}
-                    </div>`;
-                    keyHTML += `<div class="answer-key-essay">${item.answer}</div>`;
+                    const isExtraCredit = item.tags && item.tags.includes('extra-credit');
+                    combinedAnswers.push({ type: 'essay', data: item, index, isExtraCredit, points: item.points || 1 });
+                });
+            }
+
+            // Sort by points (ascending), extra credit goes last
+            combinedAnswers.sort((a, b) => {
+                if (a.isExtraCredit && !b.isExtraCredit) return 1;
+                if (!a.isExtraCredit && b.isExtraCredit) return -1;
+                return a.points - b.points;
+            });
+
+            // Render combined table/essay answers
+            if (combinedAnswers.length > 0) {
+                keyHTML += '<div class="answer-key-section"><h2>Table/Essay Questions</h2>';
+                combinedAnswers.forEach(({ type, data, index, isExtraCredit }) => {
+                    const questionLabel = isExtraCredit ? 'Extra Credit' : `Question ${answerCounter}`;
+
+                    if (type === 'table') {
+                        keyHTML += '<div class="answer-key-question-block">';
+                        keyHTML += `<div class="answer-key-item"><strong>${questionLabel}:</strong> ${data.question}</div>`;
+                        if (data.answer && Array.isArray(data.answer)) {
+                            const headers = data.headers || ['Column 1', 'Column 2'];
+                            keyHTML += '<div class="answer-key-table">';
+                            keyHTML += '<table style="width: 100%; border-collapse: collapse; margin: 8px 0;">';
+                            keyHTML += '<thead><tr>';
+                            headers.forEach(header => {
+                                keyHTML += `<th style="border: 1px solid #ddd; padding: 8px; background-color: #f3f4f6; text-align: left;">${header}</th>`;
+                            });
+                            keyHTML += '</tr></thead><tbody>';
+                            data.answer.forEach((row, rowIdx) => {
+                                keyHTML += '<tr>';
+                                if (Array.isArray(row)) {
+                                    row.forEach(cell => {
+                                        keyHTML += `<td style="border: 1px solid #ddd; padding: 8px;">${cell}</td>`;
+                                    });
+                                } else {
+                                    keyHTML += `<td colspan="${headers.length}" style="border: 1px solid #ddd; padding: 8px;">${row}</td>`;
+                                }
+                                keyHTML += '</tr>';
+                            });
+                            keyHTML += '</tbody></table>';
+                            keyHTML += '</div>';
+                        }
+                        keyHTML += '</div>';
+                    } else if (type === 'essay') {
+                        keyHTML += `<div class="answer-key-item">
+                            <strong>${questionLabel}:</strong> ${data.question}
+                        </div>`;
+                        keyHTML += `<div class="answer-key-essay">${data.answer}</div>`;
+                    }
+
+                    if (!isExtraCredit) {
+                        answerCounter++;
+                    }
                 });
                 keyHTML += '</div>';
             }
@@ -697,13 +780,21 @@
             const mcCount = selectedQuestions ? selectedQuestions.length : 0;
             const tmtCount = selectedTMT ? selectedTMT.length : 0;
             const tableCount = quizData.table ? quizData.table.length : 0;
-            const essayCount = quizData.essay ? quizData.essay.length : 0;
 
-            // Calculate total points
+            // Separate regular essays from extra credit
+            const allEssays = quizData.essay || [];
+            const regularEssays = allEssays.filter(q => !q.tags || !q.tags.includes('extra-credit'));
+            const extraCreditEssays = allEssays.filter(q => q.tags && q.tags.includes('extra-credit'));
+
+            const essayCount = regularEssays.length;
+            const extraCreditCount = extraCreditEssays.length;
+
+            // Calculate total points (excluding extra credit)
             const mcPoints = mcCount * 2; // 2 points each
             const tmtPoints = selectedTMT ? selectedTMT.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
             const tablePoints = quizData.table ? quizData.table.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
-            const essayPoints = quizData.essay ? quizData.essay.reduce((sum, item) => sum + (item.points || 1), 0) : 0;
+            const essayPoints = regularEssays.reduce((sum, item) => sum + (item.points || 1), 0);
+            const extraCreditPoints = extraCreditEssays.reduce((sum, item) => sum + (item.points || 1), 0);
             const totalPoints = mcPoints + tmtPoints + tablePoints + essayPoints;
 
             let sections = [];
@@ -719,8 +810,11 @@
                 const combinedPoints = tablePoints + essayPoints;
                 sections.push(`${combinedCount} Short/Long Answer (${combinedPoints} pts)`);
             }
+            if (extraCreditCount > 0) {
+                sections.push(`${extraCreditCount} Extra Credit (${extraCreditPoints} pts)`);
+            }
 
-            const progressText = `${totalPoints} Points<br>${sections.join('<br>')}`;
+            const progressText = `<strong>${totalPoints} Points</strong><br>${sections.join('<br>')}`;
             document.getElementById('progress').innerHTML = progressText;
         }
 
@@ -1524,28 +1618,52 @@
         }
 
         // Share exam function
-        function shareExam() {
+        async function shareExam() {
             const currentUrl = window.location.href;
+            const examTitle = document.getElementById('quiz-title').textContent;
 
-            // Copy to clipboard
-            navigator.clipboard.writeText(currentUrl).then(() => {
+            // Try native share on mobile devices
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: examTitle,
+                        url: currentUrl
+                    });
+                    return;
+                } catch (err) {
+                    // User cancelled or share failed, fall back to clipboard
+                    if (err.name === 'AbortError') return; // User cancelled, do nothing
+                }
+            }
+
+            // Fallback: Copy to clipboard (desktop)
+            try {
+                await navigator.clipboard.writeText(currentUrl);
                 const shareBtn = document.getElementById('share-button');
-                const originalText = shareBtn.innerHTML;
+                const originalHTML = shareBtn.innerHTML;
+                const originalBg = shareBtn.style.background;
+                const originalColor = shareBtn.style.color;
+                const originalPadding = shareBtn.style.padding;
 
-                shareBtn.innerHTML = '✓ Copied!';
-                shareBtn.style.background = '#10b981';
-                shareBtn.style.borderColor = '#10b981';
+                // Show success feedback
+                shareBtn.innerHTML = 'Link copied!';
+                shareBtn.style.background = '#818cf8';
                 shareBtn.style.color = 'white';
+                shareBtn.style.padding = '8px 12px';
+                shareBtn.style.fontSize = '0.875rem';
+                shareBtn.style.whiteSpace = 'nowrap';
 
                 setTimeout(() => {
-                    shareBtn.innerHTML = originalText;
-                    shareBtn.style.background = '';
-                    shareBtn.style.borderColor = '';
-                    shareBtn.style.color = '';
+                    shareBtn.innerHTML = originalHTML;
+                    shareBtn.style.background = originalBg;
+                    shareBtn.style.color = originalColor;
+                    shareBtn.style.padding = originalPadding;
+                    shareBtn.style.fontSize = '';
+                    shareBtn.style.whiteSpace = '';
                 }, 2000);
-            }).catch(err => {
+            } catch (err) {
                 alert('Failed to copy URL. Please copy manually: ' + currentUrl);
-            });
+            }
         }
 
         // Load quiz when page loads
