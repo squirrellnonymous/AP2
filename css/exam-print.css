@@ -313,6 +313,12 @@
         font-weight: normal !important;
     }
 
+    .essay-card .question-number[data-points="1"]::after {
+        content: " (1 point)";
+        font-size: 11pt !important;
+        font-weight: normal !important;
+    }
+
     .essay-image {
         margin: 16pt 0;
         text-align: center;
@@ -361,6 +367,12 @@
 
     .table-card .question-number[data-points]::after {
         content: " (" attr(data-points) " points)";
+        font-size: 11pt !important;
+        font-weight: normal !important;
+    }
+
+    .table-card .question-number[data-points="1"]::after {
+        content: " (1 point)";
         font-size: 11pt !important;
         font-weight: normal !important;
     }

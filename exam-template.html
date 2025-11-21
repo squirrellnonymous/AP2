@@ -16,13 +16,31 @@
                 <h1 id="quiz-title">Practice Test</h1>
                 <div class="progress" id="progress">Loading...</div>
             </div>
-            <button id="share-button" class="share-button" onclick="shareExam()" title="Share this exam">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                    <polyline points="16 6 12 2 8 6"></polyline>
-                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                </svg>
-            </button>
+            <div class="header-buttons">
+                <button id="dark-mode-toggle" class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle dark mode">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button id="share-button" class="share-button" onclick="shareExam()" title="Share this exam">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                        <polyline points="16 6 12 2 8 6"></polyline>
+                        <line x1="12" y1="2" x2="12" y2="15"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -227,13 +245,13 @@
                     const questionItem = document.createElement('div');
                     questionItem.className = 'grouped-question-item';
                     questionItem.innerHTML = `
-                        <div class="question-number" data-number="${index + 1}">Question ${index + 1}</div>
+                        <div class="question-number" data-number="${index + 1}">${index + 1}. (2 points)</div>
                         <div class="question-text">${question.question}</div>
                         <div class="options">
                             ${question.options.map((option, optionIndex) => `
                                 <label class="option">
-                                    <input type="radio" name="q${index}" value="${optionIndex}">
-                                    <span class="option-text">${String.fromCharCode(97 + optionIndex)}) ${option}</span>
+                                    <input type="radio" name="q${index}" value="${optionIndex}" data-letter="${String.fromCharCode(97 + optionIndex)}">
+                                    <span class="option-text">${option}</span>
                                 </label>
                             `).join('')}
                         </div>
@@ -257,13 +275,13 @@
                         const questionItem = document.createElement('div');
                         questionItem.className = 'grouped-question-item';
                         questionItem.innerHTML = `
-                            <div class="question-number" data-number="${index + 1}">Question ${index + 1}</div>
+                            <div class="question-number" data-number="${index + 1}">${index + 1}. (2 points)</div>
                             <div class="question-text">${question.question}</div>
                             <div class="options">
                                 ${question.options.map((option, optionIndex) => `
                                     <label class="option">
-                                        <input type="radio" name="q${index}" value="${optionIndex}">
-                                        <span class="option-text">${String.fromCharCode(97 + optionIndex)}) ${option}</span>
+                                        <input type="radio" name="q${index}" value="${optionIndex}" data-letter="${String.fromCharCode(97 + optionIndex)}">
+                                        <span class="option-text">${option}</span>
                                     </label>
                                 `).join('')}
                             </div>
@@ -276,13 +294,13 @@
                         questionGroup = null;
 
                         questionCard.innerHTML = `
-                            <div class="question-number" data-number="${index + 1}">Question ${index + 1}</div>
+                            <div class="question-number" data-number="${index + 1}">${index + 1}. (2 points)</div>
                             <div class="question-text">${question.question}</div>
                             <div class="options">
                                 ${question.options.map((option, optionIndex) => `
                                     <label class="option">
-                                        <input type="radio" name="q${index}" value="${optionIndex}">
-                                        <span class="option-text">${String.fromCharCode(97 + optionIndex)}) ${option}</span>
+                                        <input type="radio" name="q${index}" value="${optionIndex}" data-letter="${String.fromCharCode(97 + optionIndex)}">
+                                        <span class="option-text">${option}</span>
                                     </label>
                                 `).join('')}
                             </div>
@@ -309,7 +327,7 @@
                 instructions.style.marginBottom = '20px';
                 instructions.style.color = '#6b7280';
                 instructions.style.fontSize = '0.9rem';
-                instructions.innerHTML = 'If the statement is true, write "True". If false, write the word that makes it true. (2.5 pts each)';
+                instructions.innerHTML = 'If the statement is true, write "True". If false, write the word that makes it true.';
                 tmtContainer.appendChild(instructions);
 
                 // Select and optionally limit TMT questions
@@ -330,8 +348,10 @@
                     let processedStatement = item.statement.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
 
                     const tmtQuestionNumber = selectedQuestions.length + index + 1;
+                    const tmtPoints = item.points || 1;
+                    const tmtPointsLabel = tmtPoints === 1 ? 'point' : 'points';
                     tmtCard.innerHTML = `
-                        <div class="question-number" data-number="${tmtQuestionNumber}">Statement ${tmtQuestionNumber} (${item.points || 1} points)</div>
+                        <div class="question-number" data-number="${tmtQuestionNumber}">${tmtQuestionNumber}. (${tmtPoints} ${tmtPointsLabel})</div>
                         <div class="statement-container">
                             <input type="text" class="answer-input" name="tmt${index}" placeholder="Your answer..." autocomplete="off" data-1p-ignore autocorrect="off" autocapitalize="none" spellcheck="false">
                             <div class="statement-text">${processedStatement}</div>
@@ -410,13 +430,14 @@
 
                         // Check if this is extra credit
                         const isExtraCredit = item.tags && item.tags.includes('extra-credit');
-                        const questionLabel = isExtraCredit ? 'Extra Credit' : `Question ${questionCounter}`;
+                        const questionLabel = isExtraCredit ? 'Extra Credit' : `${questionCounter}.`;
+                        const pointsLabel = item.points === 1 ? 'point' : 'points';
 
                         const headers = item.headers || ['Column 1', 'Column 2'];
                         const numRows = item.answer ? item.answer.length : 3;
 
                         let tableHTML = `
-                            <div class="question-number" data-number="${isExtraCredit ? 'EC' : questionCounter}" data-points="${item.points}">${questionLabel} (${item.points} points)</div>
+                            <div class="question-number" data-number="${isExtraCredit ? 'EC' : questionCounter}" data-points="${item.points}">${questionLabel} (${item.points} ${pointsLabel})</div>
                             <div class="table-question">${item.question}</div>
                             <div class="table-answer-container">
                                 <table class="answer-table">
@@ -511,11 +532,12 @@
 
                         // Check if this is extra credit
                         const isExtraCredit = item.tags && item.tags.includes('extra-credit');
-                        const questionLabel = isExtraCredit ? 'Extra Credit' : `Question ${questionCounter}`;
+                        const questionLabel = isExtraCredit ? 'Extra Credit' : `${questionCounter}.`;
+                        const pointsLabel = item.points === 1 ? 'point' : 'points';
                         const imageHTML = item.image ? `<div class="essay-image"><img src="images/${item.image}" alt="${questionLabel} diagram" /></div>` : '';
 
                         essayCard.innerHTML = `
-                            <div class="question-number" data-number="${isExtraCredit ? 'EC' : questionCounter}" data-points="${item.points}">${questionLabel} (${item.points} points)</div>
+                            <div class="question-number" data-number="${isExtraCredit ? 'EC' : questionCounter}" data-points="${item.points}">${questionLabel} (${item.points} ${pointsLabel})</div>
                             ${imageHTML}
                             <div class="essay-question">${item.question}</div>
                             <textarea class="essay-textarea" name="essay${index}" placeholder="Write your answer here..." autocomplete="off" data-1p-ignore autocorrect="off" spellcheck="true"></textarea>
@@ -1640,34 +1662,38 @@
             try {
                 await navigator.clipboard.writeText(currentUrl);
                 const shareBtn = document.getElementById('share-button');
-                const originalHTML = shareBtn.innerHTML;
-                const originalBg = shareBtn.style.background;
-                const originalColor = shareBtn.style.color;
-                const originalPadding = shareBtn.style.padding;
 
-                // Show success feedback
-                shareBtn.innerHTML = 'Link copied!';
-                shareBtn.style.background = '#818cf8';
-                shareBtn.style.color = 'white';
-                shareBtn.style.padding = '8px 12px';
-                shareBtn.style.fontSize = '0.875rem';
-                shareBtn.style.whiteSpace = 'nowrap';
+                // Brief purple flash to indicate success
+                shareBtn.style.background = '#a78bfa';
 
                 setTimeout(() => {
-                    shareBtn.innerHTML = originalHTML;
-                    shareBtn.style.background = originalBg;
-                    shareBtn.style.color = originalColor;
-                    shareBtn.style.padding = originalPadding;
-                    shareBtn.style.fontSize = '';
-                    shareBtn.style.whiteSpace = '';
-                }, 2000);
+                    shareBtn.style.background = '';
+                }, 300);
             } catch (err) {
                 alert('Failed to copy URL. Please copy manually: ' + currentUrl);
             }
         }
 
+        // Dark mode toggle
+        function toggleDarkMode() {
+            const body = document.body;
+            const isDark = body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+        }
+
+        // Load dark mode preference
+        function loadDarkMode() {
+            const darkMode = localStorage.getItem('darkMode');
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        }
+
         // Load quiz when page loads
-        document.addEventListener('DOMContentLoaded', loadQuizData);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDarkMode();
+            loadQuizData();
+        });
     </script>
 </body>
 </html>

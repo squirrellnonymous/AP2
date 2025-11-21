@@ -108,10 +108,10 @@ multipleChoice:
 
   - question: "Which of these is in pancreatic juice?"
     options:
+      - "Pancreatic amylase"
       - "Trypsinogen"
       - "Chymotrypsinogen"
       - "Procarboxypeptidase"
-      - "Pancreatic amylase"
       - "all of these"
       - "a, b, and c only"
     correct: 4
@@ -143,10 +143,10 @@ multipleChoice:
     options:
       - "Proteins"
       - "Lipids"
-      - "Nothing"
       - "Nucleic acids"
       - "Carbohydrates"
-    correct: 2
+      - "Nothing"
+    correct: 4
     explanation: "**Nothing** is broken down by procarboxypeptidase. The 'pro-' prefix indicates it's an inactive enzyme precursor (zymogen). Procarboxypeptidase must first be activated into carboxypeptidase (by trypsin) before it can digest proteins. This is why zymogens are important - they prevent the pancreas from digesting itself."
     tags: ["unit-4", "digestive", "enzymes", "zymogens"]
 
@@ -424,7 +424,6 @@ essay:
     tags: ["unit-4", "digestive", "activity-question"]
 
 ## Activity sheet questions
-
   #   answer: ""
   # - question: "Will antihistamines make a stomachache worse or better? Why?"
   #   answer: ""
