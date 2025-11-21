@@ -1,0 +1,38 @@
+title: "HESI Exam Prep"
+description: "HESI exam preparation flashcards and practice questions"
+share_image: "hesi/00.jpg"
+allow_duplicate_answers: true
+
+# HESI Exam Preparation Questions
+# Organize by topic areas as needed
+
+questions:
+  # Example question structure - delete and replace with your content
+  - id: 1
+    question: "Sample HESI question?"
+    answer: ["sample answer"]
+    definition: "Explanation or additional context here."
+    tags: ["hesi", "topic-area"]
+
+  # Add your HESI questions below
+  # Use tags to organize by subject area (pharmacology, med-surg, fundamentals, etc.)
+
+  # Example categories you might use:
+  # - hesi, pharmacology
+  # - hesi, med-surg
+  # - hesi, fundamentals
+  # - hesi, maternity
+  # - hesi, pediatrics
+  # - hesi, mental-health
+  # - hesi, anatomy
+  # - hesi, dosage-calc
+  # - hesi, critical-thinking
+
+  # Text-only questions can use gradient backgrounds
+  # - id: 100
+  #   question: "What is the therapeutic range for digoxin?"
+  #   answer: ["0.5-2.0 ng/mL"]
+  #   definition: "Levels above 2.0 ng/mL indicate toxicity."
+  #   image: "gradients/01.jpg"
+  #   textOverlay: true
+  #   tags: ["hesi", "pharmacology", "flashcards"]

@@ -15,6 +15,9 @@
                 <h1 id="quiz-title">Practice Test</h1>
                 <div class="progress" id="progress">Loading...</div>
             </div>
+            <button id="share-button" class="share-button" onclick="shareExam()" title="Share this exam">
+                📤 Share
+            </button>
         </div>
     </div>
 
@@ -1500,6 +1503,31 @@
 
             // Update the main score display
             document.getElementById('score').innerHTML = finalScoreDisplay;
+        }
+
+        // Share exam function
+        function shareExam() {
+            const currentUrl = window.location.href;
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(currentUrl).then(() => {
+                const shareBtn = document.getElementById('share-button');
+                const originalText = shareBtn.innerHTML;
+
+                shareBtn.innerHTML = '✓ Copied!';
+                shareBtn.style.background = '#10b981';
+                shareBtn.style.borderColor = '#10b981';
+                shareBtn.style.color = 'white';
+
+                setTimeout(() => {
+                    shareBtn.innerHTML = originalText;
+                    shareBtn.style.background = '';
+                    shareBtn.style.borderColor = '';
+                    shareBtn.style.color = '';
+                }, 2000);
+            }).catch(err => {
+                alert('Failed to copy URL. Please copy manually: ' + currentUrl);
+            });
         }
 
         // Load quiz when page loads

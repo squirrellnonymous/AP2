@@ -1,0 +1,68 @@
+title: "HESI Flashcard Decks"
+description: "HESI Exam Preparation Study Decks"
+
+sections:
+
+  - name: "All HESI Topics"
+    decks:
+      - id: "hesi-all"
+        title: "All HESI Cards"
+        description: "Complete HESI exam prep deck"
+        source: "hesi"
+        tags: ["hesi"]
+
+  # Uncomment and customize sections as you build your HESI content
+
+  # - name: "Pharmacology"
+  #   decks:
+  #     - id: "hesi-pharmacology"
+  #       title: "HESI Pharmacology"
+  #       description: "Drug classifications, actions, and nursing considerations"
+  #       source: "hesi"
+  #       tags: ["hesi", "pharmacology"]
+
+  # - name: "Medical-Surgical"
+  #   decks:
+  #     - id: "hesi-med-surg"
+  #       title: "HESI Med-Surg"
+  #       description: "Medical-surgical nursing concepts"
+  #       source: "hesi"
+  #       tags: ["hesi", "med-surg"]
+
+  # - name: "Fundamentals"
+  #   decks:
+  #     - id: "hesi-fundamentals"
+  #       title: "HESI Fundamentals"
+  #       description: "Nursing fundamentals and basic care"
+  #       source: "hesi"
+  #       tags: ["hesi", "fundamentals"]
+
+  # - name: "Maternity & Pediatrics"
+  #   decks:
+  #     - id: "hesi-maternity"
+  #       title: "HESI Maternity"
+  #       description: "Maternal and newborn care"
+  #       source: "hesi"
+  #       tags: ["hesi", "maternity"]
+  #
+  #     - id: "hesi-pediatrics"
+  #       title: "HESI Pediatrics"
+  #       description: "Pediatric nursing care"
+  #       source: "hesi"
+  #       tags: ["hesi", "pediatrics"]
+
+  # - name: "Mental Health"
+  #   decks:
+  #     - id: "hesi-mental-health"
+  #       title: "HESI Mental Health"
+  #       description: "Psychiatric nursing concepts"
+  #       source: "hesi"
+  #       tags: ["hesi", "mental-health"]
+
+  # - name: "Critical Thinking & Dosage Calculations"
+  #   decks:
+  #     - id: "hesi-dosage-calc"
+  #       title: "HESI Dosage Calculations"
+  #       description: "Drug calculations and conversions"
+  #       source: "hesi"
+  #       tags: ["hesi", "dosage-calc"]

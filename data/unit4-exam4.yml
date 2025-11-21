@@ -46,11 +46,11 @@ multipleChoice:
 
   - question: "Which of the following is NOT a function of the stomach?"
     options:
-      - "Nutrient absorption"
       - "Mechanical digestion through churning"
       - "Chemical digestion with pepsin and HCl"
+      - "Nutrient absorption"
       - "Storage of food"
-    correct: 0
+    correct: 2
     explanation: "The stomach does NOT absorb nutrients (though it does absorb some water and alcohol). Its main functions are **storage** (expands to 2 liters), **mechanical digestion** (churning with 3 muscle layers), and **chemical digestion** (pepsin, HCl, gastric lipase). Nutrient absorption happens in the small intestine."
     tags: ["unit-4", "digestive", "stomach"]
 
@@ -64,55 +64,329 @@ multipleChoice:
     explanation: "**Parietal cells** secrete both HCl and intrinsic factor. Chief cells produce pepsinogen and gastric lipase. Mucous cells produce protective alkaline mucus. Enteroendocrine cells release gastrin hormone."
     tags: ["unit-4", "digestive", "stomach", "cells"]
 
+  - question: "Where is the most vitamin B12 absorbed?"
+    options:
+      - "Large intestine"
+      - "Duodenum"
+      - "Ileum"
+      - "Stomach"
+      - "Jejunum"
+    correct: 2
+    explanation: "Vitamin B12 is absorbed in the **ileum** (the last section of the small intestine). Intrinsic factor (produced by parietal cells in the stomach) binds to B12 in the stomach, and this complex travels to the ileum where it's absorbed into the bloodstream. This is why gastric bypass patients need B12 injections - they have fewer parietal cells producing intrinsic factor."
+    tags: ["unit-4", "digestive", "absorption", "vitamins"]
+
+  - question: "What type of digestion is 'segmentation'?"
+    options:
+      - "Movement"
+      - "Mechanical"
+      - "Chemical"
+      - "Propulsion"
+    correct: 1
+    explanation: "**Segmentation** is a type of **mechanical digestion** that occurs in the small intestine. It involves rhythmic contractions of circular muscles that mix chyme with digestive enzymes, physically breaking down food particles. This is different from chemical digestion (enzymatic breakdown) and propulsion (moving food along the tract)."
+    tags: ["unit-4", "digestive", "digestion", "small-intestine"]
+
+  - question: "Peristalsis is a form of _______."
+    options:
+      - "Secretion"
+      - "Propulsion"
+      - "Mechanical digestion"
+      - "Absorption"
+    correct: 1
+    explanation: "**Peristalsis** is a form of **propulsion** - the process of moving food through the digestive tract. It consists of wave-like contractions of smooth muscle (circular and longitudinal layers) that push the bolus/chyme forward through the alimentary canal. Segmentation mixes food, but peristalsis moves it."
+    tags: ["unit-4", "digestive", "digestion", "motility"]
+
+  - question: "What is something that the pancreas does NOT do?"
+    options:
+      - "Secretion of digestive enzymes"
+      - "Release of hormones"
+      - "Production of bicarbonate"
+      - "Storage of food"
+    correct: 3
+    explanation: "The pancreas does NOT **store food** - that's the stomach's job. The pancreas is both an exocrine gland (secretes digestive enzymes like amylase, lipase, and proteases into the duodenum) and an endocrine gland (releases hormones like insulin and glucagon into the bloodstream). It also produces bicarbonate to neutralize stomach acid."
+    tags: ["unit-4", "digestive", "pancreas"]
+
+  - question: "Which of these is in pancreatic juice?"
+    options:
+      - "Trypsinogen"
+      - "Chymotrypsinogen"
+      - "Procarboxypeptidase"
+      - "Pancreatic amylase"
+      - "all of these"
+      - "a, b, and c only"
+    correct: 4
+    explanation: "**All of these** are found in pancreatic juice. Trypsinogen, chymotrypsinogen, and procarboxypeptidase are all inactive enzyme precursors (zymogens) that digest proteins. They're secreted in inactive form to prevent the pancreas from digesting itself. Once in the small intestine, they're activated: trypsinogen → trypsin, chymotrypsinogen → chymotrypsin, and procarboxypeptidase → carboxypeptidase."
+    tags: ["unit-4", "digestive", "pancreas", "enzymes"]
+
+  - question: "Which enzyme activates trypsinogen into trypsin?"
+    options:
+      - "Pepsin"
+      - "Enteropeptidase"
+      - "Chymotrypsin"
+      - "Carboxypeptidase"
+    correct: 1
+    explanation: "**Enteropeptidase** (also called enterokinase) is secreted by intestinal cells and activates trypsinogen into trypsin. This is the critical first step - once trypsin is activated, it then activates other pancreatic enzyme precursors like chymotrypsinogen and procarboxypeptidase in a cascade reaction."
+    tags: ["unit-4", "digestive", "enzymes", "small-intestine"]
+
+  - question: "What breaks down proteins?"
+    options:
+      - "Trypsin"
+      - "Chymotrypsin"
+      - "Carboxypeptidase"
+      - "All of these"
+    correct: 3
+    explanation: "**All of these** break down proteins. Trypsin, chymotrypsin, and carboxypeptidase are proteases (protein-digesting enzymes) that work in the small intestine. They're the activated forms of the zymogens (trypsinogen, chymotrypsinogen, procarboxypeptidase) secreted by the pancreas. Together, they break proteins down into smaller peptides and amino acids for absorption."
+    tags: ["unit-4", "digestive", "enzymes", "proteins"]
+
+  - question: "What is broken down by procarboxypeptidase?"
+    options:
+      - "Proteins"
+      - "Lipids"
+      - "Nothing"
+      - "Nucleic acids"
+      - "Carbohydrates"
+    correct: 2
+    explanation: "**Nothing** is broken down by procarboxypeptidase. The 'pro-' prefix indicates it's an inactive enzyme precursor (zymogen). Procarboxypeptidase must first be activated into carboxypeptidase (by trypsin) before it can digest proteins. This is why zymogens are important - they prevent the pancreas from digesting itself."
+    tags: ["unit-4", "digestive", "enzymes", "zymogens"]
+
+  - question: "What does dipeptidase do?"
+    options:
+      - "Breaks down carbohydrates into monosaccharides"
+      - "Activates pancreatic enzymes"
+      - "Emulsifies fats for digestion"
+      - "Finishes the breakdown of proteins into amino acids"
+    correct: 3
+    explanation: "Dipeptidase **finishes the breakdown of proteins into amino acids**. It's a brush border enzyme (located on the microvilli of the small intestine) that breaks dipeptides (two amino acids joined together) into individual amino acids. This is the final step of protein digestion - after trypsin, chymotrypsin, and carboxypeptidase break proteins down into small peptides, dipeptidase completes the job."
+    tags: ["unit-4", "digestive", "enzymes", "brush-border"]
+
+  - question: "What is the monomer of proteins?"
+    options:
+      - "Fatty acids"
+      - "Amino acids"
+      - "Peptides"
+      - "Monosaccharides"
+    correct: 1
+    explanation: "**Amino acids** are the monomers (building blocks) of proteins. When amino acids link together, they form peptides (2-50 amino acids) and polypeptides/proteins (50+ amino acids). Fatty acids are the building blocks of lipids, and monosaccharides are the building blocks of carbohydrates."
+    tags: ["unit-4", "biochemistry", "proteins"]
+
+  - question: "What do maltase, lactase, and sucrase have in common?"
+    options:
+      - "They are pancreatic enzymes that begin carbohydrate digestion"
+      - "They are brush border enzymes that finish the breakdown of disaccharides into monosaccharides"
+      - "They are stomach enzymes that digest complex carbohydrates"
+      - "They are salivary enzymes that break down starches"
+    correct: 1
+    explanation: "Maltase, lactase, and sucrase are **brush border enzymes** (located on the microvilli of the small intestine) that **complete carbohydrate digestion**. They break disaccharides into monosaccharides: maltase breaks maltose into glucose, lactase breaks lactose into glucose + galactose, and sucrase breaks sucrose into glucose + fructose. This is the final step - they're the 'finishers' of sugar digestion."
+    tags: ["unit-4", "digestive", "enzymes", "brush-border", "carbohydrates"]
+
+  - question: "Where would you most likely find maltase, lactase, and sucrase?"
+    options:
+      - "In the pancreas"
+      - "In the stomach lining"
+      - "In the small intestine"
+      - "In the saliva"
+    correct: 2
+    explanation: "These enzymes are located **on the brush border** - the microvilli of the small intestine. Unlike pancreatic enzymes that are secreted into the intestinal lumen, brush border enzymes are attached to the surface of intestinal cells. This is where the final digestion of disaccharides happens, right before absorption."
+    tags: ["unit-4", "digestive", "enzymes", "brush-border", "anatomy"]
+
+  - question: "Secretin is a hormone secreted by the _______ that stimulates the release of _______."
+    options:
+      - "stomach, gastric acid"
+      - "small intestine, pancreatic juices"
+      - "pancreas, insulin"
+      - "liver, bile"
+    correct: 1
+    explanation: "**Secretin** is a hormone secreted by the **small intestine** (specifically S cells in the duodenum) in response to acidic chyme from the stomach. It stimulates the pancreas to release **pancreatic juices** (bicarbonate-rich fluid) to neutralize stomach acid. This protects the small intestine from acid damage and creates the proper pH for digestive enzymes to work."
+    tags: ["unit-4", "digestive", "hormones", "small-intestine", "pancreas"]
+
+  - question: "Which organ, if partially removed, would cause the most problems for a person?"
+    options:
+      - "Large intestine"
+      - "Stomach"
+      - "Pancreas"
+      - "Small intestine"
+    correct: 2
+    explanation: "The **pancreas** would cause the most problems if partially removed because it has both exocrine and endocrine functions. Loss of exocrine function means decreased digestive enzyme production (affecting protein, fat, and carbohydrate digestion). Loss of endocrine function means impaired insulin and glucagon production, leading to difficulty regulating blood sugar (diabetes). The other organs can be partially removed with less severe consequences - the large intestine can be shortened, the stomach can be reduced (gastric bypass), and even portions of the small intestine can be removed with compensation."
+    tags: ["unit-4", "digestive", "clinical", "pancreas"]
+
+# LIVER & BILE QUESTIONS:
+
+  - question: "Which of the following is NOT a function of the liver?"
+    options:
+      - "Vitamin storage"
+      - "Detoxification"
+      - "Glycogen storage"
+      - "Production of digestive enzymes"
+    correct: 3
+    explanation: "The liver performs many functions including **vitamin storage** (A, D, E, K, B12), **detoxification** of drugs and toxins, and **glycogen storage** for blood glucose regulation. However, the liver does NOT produce digestive enzymes - that's the pancreas's job (amylase, lipase, proteases)."
+    tags: ["unit-4", "digestive", "liver"]
+
+  - question: "The hepatic portal vein carries blood from the _______ to the _______."
+    options:
+      - "digestive organs, liver"
+      - "liver, heart"
+      - "heart, liver"
+      - "liver, digestive organs"
+    correct: 0
+    explanation: "The **hepatic portal vein** carries nutrient-rich blood from the digestive organs (stomach, intestines, spleen, pancreas) to the liver for processing. This allows the liver to regulate nutrient levels, store vitamins and glycogen, and detoxify substances before blood enters general circulation."
+    tags: ["unit-4", "digestive", "liver", "circulation"]
+
+  - question: "Bile contains which of the following?"
+    options:
+      - "Bilirubin"
+      - "Bile salts"
+      - "Digestive enzymes"
+      - "Both a and b"
+      - "Both b and c"
+    correct: 3
+    explanation: "Bile contains **both bilirubin and bile salts**. Bilirubin is a waste product from broken-down red blood cells (gives bile its yellow-green color). Bile salts emulsify fats to aid digestion. Bile does NOT contain digestive enzymes - it's not enzymatic, just helps with fat breakdown."
+    tags: ["unit-4", "digestive", "liver", "bile"]
+
+  - question: "What is the primary function of bile?"
+    options:
+      - "Digest proteins"
+      - "Emulsification of fats"
+      - "Neutralize stomach acid"
+      - "Absorb vitamins"
+    correct: 1
+    explanation: "The primary function of bile is **emulsification of fats** - breaking large fat droplets into smaller droplets. This increases surface area for pancreatic lipase to work on. Bile salts act like detergent, allowing fats to mix with water and be digested/absorbed."
+    tags: ["unit-4", "digestive", "bile", "lipids"]
+
+  - question: "Where is bile produced and where is it stored?"
+    options:
+      - "Produced in gallbladder, stored in liver"
+      - "Produced and stored in liver"
+      - "Produced in liver, stored in gallbladder"
+      - "Produced and stored in gallbladder"
+    correct: 2
+    explanation: "Bile is **produced in the liver** by hepatocytes and **stored/concentrated in the gallbladder**. When you eat fatty foods, CCK signals the gallbladder to contract and release bile into the duodenum via the bile duct."
+    tags: ["unit-4", "digestive", "liver", "gallbladder", "bile"]
+
+  - question: "Which hormone stimulates the gallbladder to release bile?"
+    options:
+      - "Secretin"
+      - "Gastrin"
+      - "CCK (Cholecystokinin)"
+      - "Insulin"
+    correct: 2
+    explanation: "**CCK (Cholecystokinin)** is released by the small intestine in response to fats and proteins. It stimulates the gallbladder to contract and release bile, and also stimulates the pancreas to release digestive enzymes. Secretin stimulates bicarbonate release, not bile."
+    tags: ["unit-4", "digestive", "hormones", "gallbladder"]
+
+  - question: "What characterizes 'ideal' stool?"
+    options:
+      - "Continuous log that sinks"
+      - "Hard pellets that sink"
+      - "Loose and floats"
+      - "Dark with black specks"
+    correct: 0
+    explanation: "Ideal stool is a **continuous log that sinks** - smooth, soft, and easy to pass. Hard pellets indicate constipation. Floating stool can indicate excess fat (malabsorption). Ribbon-like stool can indicate obstruction."
+    tags: ["unit-4", "digestive", "large-intestine", "clinical"]
+
+
 
 trueMakeTrue:
+
+  - statement: "***Haustral*** movements are wave-like movements that propel feces through the large intestine."
+    isTrue: false
+    correctWord: ["mass"]
+    points: 1
+    tags: ["unit-4", "digestive", "large-intestine", "motility"]
+
+  - statement: "Fiber stimulates ***smooth muscle*** cells to produce mucus in the large intestine."
+    isTrue: false
+    correctWord: ["goblet"]
+    points: 1
+    tags: ["unit-4", "digestive", "large-intestine", "cells"]
+
+  - statement: "In rabbits and other coprophagic animals, bacterial fermentation occurs in the ***transverse colon***, located after the small intestine."
+    isTrue: false
+    correctWord: ["cecum"]
+    points: 1
+    tags: ["unit-4", "digestive", "large-intestine", "comparative"]
 
   - statement: "The process of moving a ***vacuole*** of food through the alimentary canal is known as propulsion."
     isTrue: false
     correctWord: ["bolus"]
-    points: 2.5
+    points: 1
     tags: ["unit-4", "digestive", "digestion"]
 
   - statement: "The enzyme in saliva that is responsible for breaking down carbs is ***carbonase***."
     isTrue: false
     correctWord: ["amylase"]
-    points: 2.5
+    points: 1
     tags: ["unit-4", "digestive", "digestion"]
 
   - statement: "The small intestine is lined with ***non-keratinized stratified squamous*** epithelium for nutrient absorption."
     isTrue: false
     correctWord: ["simple columnar"]
-    points: 2.5
+    points: 1
     tags: ["unit-4", "digestive", "anatomy"]
 
   - statement: "The ***sympathetic*** nervous system stimulates digestive activity."
     isTrue: false
     correctWord: ["parasympathetic"]
-    points: 2.5
+    points: 1
     tags: ["unit-4", "digestive", "nervous-system"]
 
   - statement: "***Epinephrine*** is the neurotransmitter released by the parasympathetic nervous system to stimulate digestion."
     isTrue: false
     correctWord: ["acetylcholine"]
-    points: 2.5
+    points: 1
     tags: ["unit-4", "digestive", "nervous-system"]
 
   - statement: "Acinar cells in salivary glands produce ***colloidal*** fluid that contains enzymes."
     isTrue: false
     correctWord: ["serous"]
-    points: 2.5
+    points: 1
     tags: ["unit-4", "digestive", "glands"]
 
   - statement: "***Secretion*** is the process of releasing substances like enzymes and mucous into the alimentary canal."
     isTrue: true
-    points: 2.5
+    points: 1
     tags: ["unit-4", "digestive", "digestion"]
 
   - statement: "The physiological term for swallowing is ***reflux***."
     isTrue: false
     correctWord: ["deglutition"]
-    points: 2.5
+    points: 1
     tags: ["unit-4", "digestive", "process"]
+
+  ## Digestive System Diagram Questions - Image-based MC with labeled A-E
+
+  - question: "Where would nutrient absorption occur?"
+    image: "exam4/digestive-system-diagram.jpg"
+    options:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+    correct: 3
+    explanation: "Small intestine is the ONLY place you absorb nutrients. You absorb water, alcohol, and vitamins in other places but nutrients only come into the body in the small intestine"
+    tags: ["unit-4", "digestive", "absorption", "anatomy"]
+
+  - question: "Where would you find the lowest pH?"
+    image: "exam4/digestive-system-diagram.jpg"
+    options:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+    correct: 2
+    explanation: "The **small intestine** (labeled C) is where most protein breakdown occurs. While the stomach (B) begins protein digestion with pepsin, the majority happens in the small intestine with trypsin, chymotrypsin, carboxypeptidase, and dipeptidase."
+    tags: ["unit-4", "digestive", "proteins", "enzymes"]
+
+  # - question: "Where is most water absorbed?"
+  #   image: "exam4/digestive-system-diagram.jpg"
+  #   options:
+  #     - "A"
+  #     - "B"
+  #     - "C"
+  #     - "D"
+  #     - "E"
+  #   correct: 3
+  #   explanation: "The **large intestine** (labeled D) is where most water is absorbed from indigestible food residue. The large intestine absorbs water and electrolytes, forming solid feces from liquid chyme. About 90% of water absorption actually happens in the small intestine, but the large intestine is critical for final water recovery."
+  #   tags: ["unit-4", "digestive", "absorption", "large-intestine"]
 
 ## WORD LIST:
 # acinar cells
@@ -168,14 +442,31 @@ essay:
   #   points: 3
   #   tags: ["unit-4", "digestive"]
 
-# table:
-#   - question: "Complete the table below for digestive enzymes."
-#     headers: ["Enzyme", "Source Organ", "Function"]
-#     prefilledColumn: 0
-#     answer: [
-#       ["Sample Enzyme 1", "Sample Organ", "Sample Function"],
-#       ["Sample Enzyme 2", "Sample Organ", "Sample Function"],
-#       ["Sample Enzyme 3", "Sample Organ", "Sample Function"]
-#     ]
-#     tags: ["unit-4", "digestive"]
 
+
+table:
+  - question: "Complete the table below about the endocrine functions of the pancreas."
+    headers: ["Hormone", "Stimulated by", "Responds by", "Less/more hungry?", "Stores/breaks down glycogen?"]
+    prefilledColumn: 0
+    answer: [
+      ["Insulin", "High blood glucose (after eating)", "Promotes glucose uptake by cells; converts glucose to glycogen", "Less hungry (promotes satiety)", "Stores glycogen"],
+      ["Glucagon", "Low blood glucose (fasting/between meals)", "Breaks down glycogen to glucose; releases glucose into blood", "More hungry", "Breaks down glycogen"]
+    ]
+    points: 10
+    tags: ["unit-4", "endocrine", "pancreas", "hormones"]
+
+  - question: "Indicate if the nutrient is digested or not in the following locations."
+    headers: ["Nutrient", "Oral Cavity", "Small Intestine", "Large Intestine"]
+    prefilledColumn: 0
+    answer: [
+      ["Carbohydrates", "Yes (salivary amylase)", "Yes (pancreatic amylase, brush border enzymes)", "No"],
+      ["Proteins", "No", "Yes (trypsin, chymotrypsin, carboxypeptidase, dipeptidase)", "No"],
+      ["Fats", "Minimal (lingual lipase)", "Yes (pancreatic lipase, bile)", "No"],
+      ["Nucleic acids", "No", "Yes (pancreatic nucleases)", "No"]
+    ]
+    points: 12
+    tags: ["unit-4", "digestive", "enzymes", "nutrients"]
+
+### notes from lecture 3:
+# macromolecules essay questions ...
+# 
