@@ -1,5 +1,236 @@
 # Release Notes
 
+## November 20, 2025 - Unit 4 Exam Build-Out & System Improvements
+
+### 🎯 Major Content Addition: Exam 4 Digestive System Questions
+
+Extensively built out the Unit 4 exam with comprehensive coverage of digestive system topics including enzymes, hormones, liver function, bile, and large intestine.
+
+**Files Updated:** `data/unit4-exam4.yml`, `exam-template.html`, `css/quiz.css`, `practical-template.html`, `js/answer-checker.js`, `data/hesi.yml`, `data/hesi-decks-config.yml`, `index.html`
+
+#### Exam Content Added
+
+**Multiple Choice Questions (22 total)**
+- Vitamin B12 absorption location (ileum)
+- Mechanical vs chemical digestion (segmentation)
+- Peristalsis and propulsion
+- Pancreas functions and secretions
+- Pancreatic juice contents (zymogens)
+- Enzyme activation cascade (enteropeptidase, trypsinogen)
+- Protein digestion enzymes (trypsin, chymotrypsin, carboxypeptidase, dipeptidase)
+- Zymogen function (procarboxypeptidase)
+- Protein monomers (amino acids)
+- Brush border enzymes (maltase, lactase, sucrase)
+- Secretin hormone (small intestine, pancreatic juices)
+- Organ removal consequences (pancreas)
+- Liver functions
+- Hepatic portal vein route
+- Bile contents and functions
+- Bile production and storage (liver/gallbladder)
+- CCK/cholecystokinin hormone
+- Ideal stool characteristics
+- Nutrient absorption location (with diagram)
+- Liver and bile metabolism questions
+- Large intestine anatomy and function
+
+**True/Make-True Questions (3 total)**
+- Haustral contractions vs mass movements
+- Goblet cells produce mucus
+- Cecum fermentation in coprophagic animals (rabbits)
+
+**Table Questions (2 total)**
+- Pancreatic endocrine functions
+  - Headers: Hormone, Stimulated by, Responds by, Less/more hungry?, Stores/breaks down glycogen?
+  - Rows: Insulin and Glucagon
+  - 10 points total
+- Nutrient digestion by location
+  - Headers: Nutrient, Oral Cavity, Small Intestine, Large Intestine
+  - Rows: Carbohydrates, Proteins, Fats, Nucleic Acids
+  - Students indicate if digestion occurs in each region
+
+**Answer Distribution**
+- Reshuffled options to prevent all answers being "A"
+- Correct answers distributed across positions B, C, D
+- Improved question balance and variety
+
+#### System Improvements
+
+**Text-Only Question Filter Fix** (`practical-template.html`)
+- **Problem:** Text-only question limit (5 max, 12.5%) wasn't working
+- **Root Cause:** Code checked for `!q.image` but all questions had images (including gradients for text-overlay questions)
+- **Solution:** Changed filtering logic to check for `textOverlay` property
+- **Lines Updated:** 107-108, 123-124, 277-278
+
+```javascript
+// Before
+let imageQuestions = validQuestions.filter(q => q.image);
+let textOnlyQuestions = validQuestions.filter(q => !q.image);
+
+// After
+let imageQuestions = validQuestions.filter(q => !q.textOverlay);
+let textOnlyQuestions = validQuestions.filter(q => q.textOverlay === true);
+```
+
+**Answer Normalization Enhancement** (`js/answer-checker.js`)
+- Added "non-keratinized = nonkeratinized" normalization
+- Handles hyphenated vs non-hyphenated medical terminology
+- Students can use either variant and receive full credit
+- Line 18: `normalized = normalized.replace(/\bnon-keratinized\b/g, 'nonkeratinized');`
+
+**Share Button Feature** (`exam-template.html`, `css/quiz.css`)
+- Added share button to exam header for easy URL sharing
+- Copies current URL to clipboard with visual feedback
+- Button changes to "✓ Copied!" with green background
+- Resets after 2 seconds
+- Fallback alert if clipboard API unavailable
+
+**Share Button Styling** (`css/quiz.css` lines 1190-1219)
+```css
+.share-button {
+    background: transparent;
+    color: #4f46e5;
+    border: 2px solid #4f46e5;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.share-button:hover {
+    background: #4f46e5;
+    color: white;
+    transform: translateY(-1px);
+}
+```
+
+**Share Function** (`exam-template.html` lines 1508-1531)
+```javascript
+function shareExam() {
+    const currentUrl = window.location.href;
+
+    navigator.clipboard.writeText(currentUrl).then(() => {
+        const shareBtn = document.getElementById('share-button');
+        shareBtn.innerHTML = '✓ Copied!';
+        shareBtn.style.background = '#10b981';
+
+        setTimeout(() => {
+            shareBtn.innerHTML = originalText;
+            shareBtn.style.background = '';
+        }, 2000);
+    }).catch(err => {
+        alert('Failed to copy URL. Please copy manually: ' + currentUrl);
+    });
+}
+```
+
+#### HESI Exam Prep Section
+
+**New Files Created**
+- `data/hesi.yml` - Data file for HESI exam preparation flashcards
+- `data/hesi-decks-config.yml` - Deck configuration with sections for:
+  - All HESI Topics
+  - Pharmacology (commented)
+  - Medical-Surgical (commented)
+  - Fundamentals (commented)
+  - Maternity & Pediatrics (commented)
+  - Mental Health (commented)
+  - Critical Thinking & Dosage Calculations (commented)
+
+**Index Page Update** (`index.html`)
+- Added HESI section as data-order="7" below Unit 4
+- Links to flashcard hub with HESI configuration
+- Checkbox tracking for completion status
+- Integrated with existing progress tracking system
+
+#### Content Quality Improvements
+
+**Terminology Refinements**
+- Changed "pancreatic bicarbonate" → "pancreatic juices" (clearer for students)
+- Updated coprophagy question: "large intestine" → "transverse colon" (more specific)
+- Consistent use of anatomical terminology throughout
+
+**Explanations Added**
+- Detailed explanations for enzyme activation cascade
+- Brush border enzymes finisher role explained
+- Hormone feedback loops (insulin/glucagon)
+- Bile emulsification vs digestion distinction
+- Hepatic portal system function
+
+**Image-Based Questions**
+- Created questions using digestive-system-diagram.jpg
+- Labeled A-E for different anatomical structures
+- Nutrient absorption location question active
+- Additional diagram questions commented for future use
+
+#### Commented Question Templates
+
+Created extensive commented question templates in proper YAML syntax for future content:
+- 7 liver & bile multiple choice questions
+- 3 large intestine multiple choice questions
+- 3 true/make-true questions
+- 1 coprophagy essay question
+
+**Example Template Format**
+```yaml
+# - question: "Which of the following is NOT a function of the liver?"
+#   options:
+#     - "Detoxification of drugs and toxins"
+#     - "Production of bile"
+#     - "Production of digestive enzymes"
+#     - "Storage of glycogen and vitamins"
+#   correct: 2
+#   explanation: "The liver does NOT produce digestive enzymes..."
+#   tags: ["unit-4", "digestive", "liver"]
+```
+
+#### Technical Implementation
+
+**YAML Structure Consistency**
+- All questions follow standardized format
+- Consistent tagging: unit-4, digestive, organs, enzymes, hormones
+- Point values specified for table questions
+- Proper nesting for table headers and answers
+
+**Question Type Diversity**
+- Multiple choice for concept testing
+- True/Make-True for precise terminology
+- Table questions for comparative understanding
+- Essay questions for synthesis (commented)
+
+#### Educational Benefits
+
+**Comprehensive Coverage**
+- Enzyme activation cascade (enteropeptidase → trypsin)
+- Zymogen concept (inactive enzyme precursors)
+- Brush border "finisher" enzymes concept
+- Hormonal regulation (secretin, CCK, insulin, glucagon)
+- Liver functions (not including enzyme production)
+- Bile enterohepatic circulation
+- Large intestine anatomy and bacterial fermentation
+
+**Clinical Applications**
+- Pancreas removal consequences
+- Vitamin B12 absorption location
+- Coprophagy in rabbits (comparative anatomy)
+- Ideal stool characteristics
+
+**Reduced Guessing**
+- Answer distribution across all positions
+- Plausible distractors for each question
+- "All of these" options for comprehensive concepts
+
+#### Use Cases
+
+1. **Comprehensive exam practice** - 23+ questions covering major digestive topics
+2. **Share practice exams** - Copy URL to share with classmates
+3. **Targeted study** - Filter by tags (enzymes, hormones, liver, etc.)
+4. **Self-assessment** - Immediate feedback with explanations
+5. **HESI prep** - New section for nursing exam preparation flashcards
+6. **Consistent validation** - Fixed text-overlay detection across all practicals
+
+---
+
 ## November 16, 2025 - Optional Essays & Modal Grading System
 
 ### 🎯 Major Feature: Optional Essay Questions with Interactive Grading

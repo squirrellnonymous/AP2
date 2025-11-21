@@ -284,7 +284,7 @@ multipleChoice:
   ## Digestive System Diagram Questions - Image-based MC with labeled A-E
 
   - question: "Where would nutrient absorption occur?"
-    image: "exam4/digestive-system-diagram.jpg"
+    image: "practical5/digestive-system-diagram.jpg"
     options:
       - "A"
       - "B"
@@ -296,7 +296,7 @@ multipleChoice:
     tags: ["unit-4", "digestive", "absorption", "anatomy"]
 
   - question: "Where would you find the lowest pH?"
-    image: "exam4/digestive-system-diagram.jpg"
+    image: "practical5/digestive-system-diagram.jpg"
     options:
       - "A"
       - "B"
@@ -308,7 +308,7 @@ multipleChoice:
     tags: ["unit-4", "digestive", "proteins", "enzymes"]
 
   # - question: "Where is most water absorbed?"
-  #   image: "exam4/digestive-system-diagram.jpg"
+  #   image: "practical5/digestive-system-diagram.jpg"
   #   options:
   #     - "A"
   #     - "B"
