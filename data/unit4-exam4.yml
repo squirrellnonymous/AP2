@@ -134,6 +134,7 @@ multipleChoice:
       - "Chymotrypsin"
       - "Carboxypeptidase"
       - "All of these"
+      - "None of these"
     correct: 3
     explanation: "**All of these** break down proteins. Trypsin, chymotrypsin, and carboxypeptidase are proteases (protein-digesting enzymes) that work in the small intestine. They're the activated forms of the zymogens (trypsinogen, chymotrypsinogen, procarboxypeptidase) secreted by the pancreas. Together, they break proteins down into smaller peptides and amino acids for absorption."
     tags: ["unit-4", "digestive", "enzymes", "proteins"]
@@ -154,7 +155,7 @@ multipleChoice:
       - "Breaks down carbohydrates into monosaccharides"
       - "Activates pancreatic enzymes"
       - "Emulsifies fats for digestion"
-      - "Finishes the breakdown of proteins into amino acids"
+      - "Breaksdown proteins into amino acids"
     correct: 3
     explanation: "Dipeptidase **finishes the breakdown of proteins into amino acids**. It's a brush border enzyme (located on the microvilli of the small intestine) that breaks dipeptides (two amino acids joined together) into individual amino acids. This is the final step of protein digestion - after trypsin, chymotrypsin, and carboxypeptidase break proteins down into small peptides, dipeptidase completes the job."
     tags: ["unit-4", "digestive", "enzymes", "brush-border"]
@@ -172,7 +173,7 @@ multipleChoice:
   - question: "What do maltase, lactase, and sucrase have in common?"
     options:
       - "They are pancreatic enzymes that begin carbohydrate digestion"
-      - "They are brush border enzymes that finish the breakdown of disaccharides into monosaccharides"
+      - "They are brush border enzymes that breakdown of carbohydrates"
       - "They are stomach enzymes that digest complex carbohydrates"
       - "They are salivary enzymes that break down starches"
     correct: 1
@@ -233,12 +234,12 @@ multipleChoice:
 
   - question: "Bile contains which of the following?"
     options:
+      - "Digestive enzymes"
       - "Bilirubin"
       - "Bile salts"
-      - "Digestive enzymes"
       - "Both a and b"
       - "Both b and c"
-    correct: 3
+    correct: 4
     explanation: "Bile contains **both bilirubin and bile salts**. Bilirubin is a waste product from broken-down red blood cells (gives bile its yellow-green color). Bile salts emulsify fats to aid digestion. Bile does NOT contain digestive enzymes - it's not enzymatic, just helps with fat breakdown."
     tags: ["unit-4", "digestive", "liver", "bile"]
 
