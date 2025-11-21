@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/quiz.css">
     <link rel="stylesheet" href="css/exam-print.css" media="print">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap">
 </head>
 <body>
     <div class="header">
@@ -760,20 +761,20 @@
                         if (data.answer && Array.isArray(data.answer)) {
                             const headers = data.headers || ['Column 1', 'Column 2'];
                             keyHTML += '<div class="answer-key-table">';
-                            keyHTML += '<table style="width: 100%; border-collapse: collapse; margin: 8px 0;">';
+                            keyHTML += '<table>';
                             keyHTML += '<thead><tr>';
                             headers.forEach(header => {
-                                keyHTML += `<th style="border: 1px solid #ddd; padding: 8px; background-color: #f3f4f6; text-align: left;">${header}</th>`;
+                                keyHTML += `<th>${header}</th>`;
                             });
                             keyHTML += '</tr></thead><tbody>';
                             data.answer.forEach((row, rowIdx) => {
                                 keyHTML += '<tr>';
                                 if (Array.isArray(row)) {
                                     row.forEach(cell => {
-                                        keyHTML += `<td style="border: 1px solid #ddd; padding: 8px;">${cell}</td>`;
+                                        keyHTML += `<td>${cell}</td>`;
                                     });
                                 } else {
-                                    keyHTML += `<td colspan="${headers.length}" style="border: 1px solid #ddd; padding: 8px;">${row}</td>`;
+                                    keyHTML += `<td colspan="${headers.length}">${row}</td>`;
                                 }
                                 keyHTML += '</tr>';
                             });
@@ -1038,15 +1039,16 @@
                         } else if (isPartial) {
                             input.classList.add('partial');
                             const correctWords = Array.isArray(item.correctWord) ? item.correctWord : [item.correctWord];
-                            feedbackElement.innerHTML = `<span style="color: #f59e0b;">Partial credit (typo).</span> <span style="color: #10b981;">Correct: ${correctWords.join(' or ')}</span>`;
+                            feedbackElement.innerHTML = `<span class="feedback-partial-text">Partial credit (spelling).</span> <span class="feedback-correct-text">Correct: ${correctWords.join(' or ')}</span>`;
                             feedbackElement.className = 'feedback-text partial';
                         } else {
                             input.classList.add('incorrect');
+                            const pointsLabel = (item.points || 1) === 1 ? 'pt' : 'pts';
                             if (item.isTrue) {
-                                feedbackElement.innerHTML = '<span style="color: #ef4444;">Incorrect.</span> <span style="color: #10b981;">True</span>';
+                                feedbackElement.innerHTML = `<span class="feedback-incorrect-text">Incorrect (0 ${pointsLabel}).</span> <span class="feedback-correct-text">True</span>`;
                             } else {
                                 const correctWords = Array.isArray(item.correctWord) ? item.correctWord : [item.correctWord];
-                                feedbackElement.innerHTML = `<span style="color: #ef4444;">Incorrect.</span> <span style="color: #10b981;">${correctWords.join(' or ')}</span>`;
+                                feedbackElement.innerHTML = `<span class="feedback-incorrect-text">Incorrect (0 ${pointsLabel}).</span> <span class="feedback-correct-text">${correctWords.join(' or ')}</span>`;
                             }
                             feedbackElement.className = 'feedback-text';
                         }
@@ -1056,9 +1058,25 @@
                 });
             }
 
-            // Show table answers and grading interface
+            // Show table answers and grading interface (only for attempted tables)
             if (quizData.table && quizData.table.length > 0) {
                 quizData.table.forEach((item, index) => {
+                    // Check if table was attempted
+                    const headers = item.headers || ['Column 1', 'Column 2'];
+                    const numRows = item.answer ? item.answer.length : 3;
+                    let hasAnyInput = false;
+
+                    for (let row = 0; row < numRows; row++) {
+                        for (let col = 0; col < headers.length; col++) {
+                            const input = document.querySelector(`textarea[name="table${index}-${row}-${col}"]`);
+                            if (input && input.value.trim()) {
+                                hasAnyInput = true;
+                                break;
+                            }
+                        }
+                        if (hasAnyInput) break;
+                    }
+
                     const answerElement = document.getElementById(`table-answer-${index}`);
                     const gradingElement = document.getElementById(`table-grading-${index}`);
 
@@ -1068,9 +1086,11 @@
                         input.readOnly = true;
                     });
 
-                    // Show correct answers and grading interface
-                    if (answerElement) answerElement.style.display = 'block';
-                    if (gradingElement) gradingElement.style.display = 'block';
+                    // Only show correct answers and grading interface if the table was attempted
+                    if (hasAnyInput) {
+                        if (answerElement) answerElement.style.display = 'block';
+                        if (gradingElement) gradingElement.style.display = 'block';
+                    }
                 });
             }
 

@@ -151,10 +151,22 @@
 }
 
 /* Answer input uses shared styles */
+.answer-input {
+    font-family: 'Kalam', cursive;
+}
+
+.answer-input:focus::placeholder {
+    opacity: 0;
+}
 
 .statement-text {
     font-size: 1rem;
     line-height: 1.5;
+}
+
+.statement-text strong em,
+.statement-text em strong {
+    text-decoration: underline;
 }
 
 .feedback-text {
@@ -179,16 +191,19 @@
 input.correct {
     border-color: #10b981 !important;
     background-color: #ecfdf5 !important;
+    color: #065f46 !important;
 }
 
 input.incorrect {
     border-color: #ef4444 !important;
     background-color: #fef2f2 !important;
+    color: #991b1b !important;
 }
 
 input.partial {
     border-color: #f59e0b !important;
     background-color: #fef3c7 !important;
+    color: #78350f !important;
 }
 
 /* Essay Section */
@@ -243,7 +258,7 @@ input.partial {
     border: 1.5px solid #e5e7eb;
     border-radius: 8px;
     font-size: 1rem;
-    font-family: inherit;
+    font-family: 'Kalam', cursive;
     line-height: 1.5;
     resize: vertical;
     transition: border-color 0.2s ease;
@@ -253,6 +268,10 @@ input.partial {
     border-color: #6366f1;
     outline: none;
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.essay-textarea:focus::placeholder {
+    opacity: 0;
 }
 
 .essay-answer {
@@ -858,7 +877,7 @@ input.partial {
     border: none;
     padding: 8px 0;
     font-size: 0.875rem;
-    font-family: inherit;
+    font-family: 'Kalam', cursive;
     background: transparent;
     resize: none;
     overflow: hidden;
@@ -869,6 +888,10 @@ input.partial {
 .answer-table textarea:focus {
     outline: none;
     background: transparent;
+}
+
+.answer-table textarea:focus::placeholder {
+    opacity: 0;
 }
 
 .answer-table textarea[readonly] {
@@ -1001,6 +1024,39 @@ input.partial {
 
 .answer-key {
     display: none;
+}
+
+/* Answer key table styling */
+.answer-key-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+}
+
+.answer-key-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    background-color: #f3f4f6;
+    text-align: left;
+    color: #374151;
+}
+
+.answer-key-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    color: #1f2937;
+}
+
+/* Dark mode answer key tables */
+body.dark-mode .answer-key-table th {
+    background-color: #374151;
+    border-color: #4b5563;
+    color: #e5e7eb;
+}
+
+body.dark-mode .answer-key-table td {
+    border-color: #4b5563;
+    color: #d1d5db;
 }
 
 /* Grading Modal */
@@ -1551,18 +1607,21 @@ body.dark-mode .answer-input:focus {
 }
 
 body.dark-mode .answer-input.correct {
-    background: #064e3b;
-    border-color: #10b981;
+    background: #ecfdf5 !important;
+    border-color: #10b981 !important;
+    color: #065f46 !important;
 }
 
 body.dark-mode .answer-input.incorrect {
-    background: #7f1d1d;
-    border-color: #ef4444;
+    background: #fef2f2 !important;
+    border-color: #ef4444 !important;
+    color: #991b1b !important;
 }
 
 body.dark-mode .answer-input.partial {
-    background: #78350f;
-    border-color: #f59e0b;
+    background: #fef3c7 !important;
+    border-color: #f59e0b !important;
+    color: #78350f !important;
 }
 
 /* Grouped question items dark mode */
@@ -1599,13 +1658,13 @@ body.dark-mode .answer-table td {
 }
 
 body.dark-mode .answer-table textarea {
-    background: #374151;
+    background: transparent;
     color: #e5e7eb;
     border-color: #4b5563;
 }
 
 body.dark-mode .answer-table textarea:focus {
-    background: #1f2937;
+    background: transparent;
     border-color: #818cf8;
 }
 
@@ -1646,12 +1705,13 @@ body.dark-mode .submit-button:disabled {
 
 /* Results dark mode */
 body.dark-mode .results {
-    background: #1f2937;
+    background: #1f2937 !important;
     border-color: #374151;
 }
 
 body.dark-mode .score {
-    color: #e5e7eb;
+    background: #1f2937 !important;
+    color: #e5e7eb !important;
 }
 
 /* Answer displays dark mode */
@@ -1693,6 +1753,33 @@ body.dark-mode .feedback-text {
 
 body.dark-mode .feedback-text.correct {
     color: #34d399;
+}
+
+/* Feedback span colors */
+.feedback-correct-text {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.feedback-incorrect-text {
+    color: #ef4444;
+}
+
+.feedback-partial-text {
+    color: #f59e0b;
+}
+
+/* Dark mode feedback spans */
+body.dark-mode .feedback-correct-text {
+    color: #34d399;
+}
+
+body.dark-mode .feedback-incorrect-text {
+    color: #fca5a5;
+}
+
+body.dark-mode .feedback-partial-text {
+    color: #fbbf24;
 }
 
 /* Section titles dark mode */
