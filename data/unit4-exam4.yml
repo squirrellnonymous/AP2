@@ -281,6 +281,44 @@ multipleChoice:
     explanation: "Ideal stool is a **continuous log that sinks** - smooth, soft, and easy to pass. Hard pellets indicate constipation. Floating stool can indicate excess fat (malabsorption). Ribbon-like stool can indicate obstruction."
     tags: ["unit-4", "digestive", "large-intestine", "clinical"]
 
+  ## Digestive System Diagram Questions - Image-based MC with labeled A-E
+
+  - question: "Where would nutrient absorption occur?"
+    image: "exam4/digestive-system-diagram.jpg"
+    options:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+    correct: 3
+    explanation: "Small intestine is the ONLY place you absorb nutrients. You absorb water, alcohol, and vitamins in other places but nutrients only come into the body in the small intestine"
+    tags: ["unit-4", "digestive", "absorption", "anatomy"]
+
+  - question: "Where would you find the lowest pH?"
+    image: "exam4/digestive-system-diagram.jpg"
+    options:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+    correct: 2
+    explanation: "lowest pH = most acidic. This is the stomach where the pH can get as low as 2 due to hydrochloric acid."
+    tags: ["unit-4", "digestive", "proteins", "enzymes"]
+
+  # - question: "Where is most water absorbed?"
+  #   image: "exam4/digestive-system-diagram.jpg"
+  #   options:
+  #     - "A"
+  #     - "B"
+  #     - "C"
+  #     - "D"
+  #     - "E"
+  #   correct: 3
+  #   explanation: "The **large intestine** (labeled D) is where most water is absorbed from indigestible food residue. The large intestine absorbs water and electrolytes, forming solid feces from liquid chyme. About 90% of water absorption actually happens in the small intestine, but the large intestine is critical for final water recovery."
+  #   tags: ["unit-4", "digestive", "absorption", "large-intestine"]
+
 
 
 trueMakeTrue:
@@ -350,43 +388,7 @@ trueMakeTrue:
     points: 1
     tags: ["unit-4", "digestive", "process"]
 
-  ## Digestive System Diagram Questions - Image-based MC with labeled A-E
 
-  - question: "Where would nutrient absorption occur?"
-    image: "exam4/digestive-system-diagram.jpg"
-    options:
-      - "A"
-      - "B"
-      - "C"
-      - "D"
-      - "E"
-    correct: 3
-    explanation: "Small intestine is the ONLY place you absorb nutrients. You absorb water, alcohol, and vitamins in other places but nutrients only come into the body in the small intestine"
-    tags: ["unit-4", "digestive", "absorption", "anatomy"]
-
-  - question: "Where would you find the lowest pH?"
-    image: "exam4/digestive-system-diagram.jpg"
-    options:
-      - "A"
-      - "B"
-      - "C"
-      - "D"
-      - "E"
-    correct: 2
-    explanation: "The **small intestine** (labeled C) is where most protein breakdown occurs. While the stomach (B) begins protein digestion with pepsin, the majority happens in the small intestine with trypsin, chymotrypsin, carboxypeptidase, and dipeptidase."
-    tags: ["unit-4", "digestive", "proteins", "enzymes"]
-
-  # - question: "Where is most water absorbed?"
-  #   image: "exam4/digestive-system-diagram.jpg"
-  #   options:
-  #     - "A"
-  #     - "B"
-  #     - "C"
-  #     - "D"
-  #     - "E"
-  #   correct: 3
-  #   explanation: "The **large intestine** (labeled D) is where most water is absorbed from indigestible food residue. The large intestine absorbs water and electrolytes, forming solid feces from liquid chyme. About 90% of water absorption actually happens in the small intestine, but the large intestine is critical for final water recovery."
-  #   tags: ["unit-4", "digestive", "absorption", "large-intestine"]
 
 ## WORD LIST:
 # acinar cells
