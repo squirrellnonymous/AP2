@@ -1,0 +1,310 @@
+title: "2024 Practice Exam #4"
+description: ""
+randomize: true
+maxQuestions: 27
+maxTrueMakeTrueQuestions: 4
+
+multipleChoice:
+  - question: "Which of the following would be absorbed by the small intestine and into the bloodstream?"
+    options:
+      - "DNA"
+      - "Amino acid"
+      - "Glycogen"
+      - "Chylomicron"
+    correct: 1
+    explanation: "Only monomers (the smallest building blocks) can be absorbed through the small intestine into the bloodstream. **Amino acids** are the monomers of proteins and can be absorbed directly. DNA and glycogen must be broken down further, and chylomicrons are too large - they enter the lymphatic system (lacteals) instead."
+    tags: ["unit-4", "digestive", "absorption"]
+
+  - question: "The surgical removal of the prostate gland would likely"
+    options:
+      - "cause sterility because sperm would not be produced"
+      - "cause sterility because sperm would not be able to exit the body"
+      - "reduce the volume of semen"
+      - "reduce the level of pre-ejaculate"
+    correct: 2
+    explanation: "The prostate gland contributes about 30% of semen volume by secreting a milky, alkaline fluid. Removing it would **reduce the volume of semen** but would not cause sterility - sperm are produced in the testes and can still exit through the urethra. The bulbourethral glands produce pre-ejaculate, not the prostate."
+    tags: ["unit-4", "reproductive", "male", "anatomy"]
+
+  - question: "Which of the following enzymes functions at the lowest pH?"
+    options:
+      - "Salivary amylase"
+      - "Pancreatic amylase"
+      - "Trypsin"
+      - "Pepsin"
+      - "Dipeptidase"
+    correct: 3
+    explanation: "**Pepsin** functions at the lowest pH (around pH 2) in the highly acidic stomach environment. It's specifically designed to work in acidic conditions. All the other enzymes work in neutral to slightly alkaline environments - salivary amylase in the mouth (pH 6.8), pancreatic enzymes in the small intestine (pH 7-8)."
+    tags: ["unit-4", "digestive", "enzymes", "pH"]
+
+  - question: "In ovulation, a ___________ is expelled and has __________ meiosis II."
+    options:
+      - "Primary oocyte; started"
+      - "Primary oocyte; completed"
+      - "Secondary oocyte; started"
+      - "Secondary oocyte; completed"
+    correct: 2
+    explanation: "During ovulation, a **secondary oocyte** is released from the ovary. It has **started** meiosis II but arrests in metaphase II. Meiosis II will only be completed if fertilization occurs. The primary oocyte completes meiosis I just before ovulation to become a secondary oocyte."
+    tags: ["unit-4", "reproductive", "female", "ovulation"]
+
+  - question: "During the cephalic phase, which of the following does not promote the secretion of H+ ions?"
+    options:
+      - "Somatostatin"
+      - "Gastrin"
+      - "Histamine"
+      - "Vagus nerve"
+    correct: 0
+    explanation: "**Somatostatin** actually inhibits (does not promote) the secretion of H+ ions. It's a regulatory hormone that puts the brakes on gastric acid secretion. Gastrin, histamine, and the vagus nerve all stimulate parietal cells to release H+ ions into the stomach."
+    tags: ["unit-4", "digestive", "stomach", "hormones"]
+
+  - question: "One dominant follicle in the ovary will upregulate receptors for FSH, LH, and estrogen to become the ________ follicle."
+    options:
+      - "Primary"
+      - "Secondary"
+      - "Graafian"
+      - "Corpus luteum"
+    correct: 2
+    explanation: "The dominant follicle becomes the **Graafian follicle** (also called mature/tertiary follicle) by upregulating receptors for FSH, LH, and estrogen. This makes it more responsive to hormones and allows it to outcompete other follicles. The Graafian follicle is the one that will ovulate. The corpus luteum forms after ovulation, not before."
+    tags: ["unit-4", "reproductive", "female", "ovarian-cycle"]
+
+  - question: "Procarboxypeptidase breaks down __________."
+    options:
+      - "Fats"
+      - "Sugars"
+      - "Proteins"
+      - "DNA"
+      - "Nothing"
+    correct: 4
+    explanation: "**Nothing** is broken down by procarboxypeptidase because it's an inactive enzyme precursor (zymogen). The 'pro-' prefix indicates it's inactive. It must first be activated by trypsin to become carboxypeptidase before it can digest proteins. This prevents the pancreas from digesting itself."
+    tags: ["unit-4", "digestive", "enzymes", "zymogens"]
+
+  - question: "Which of the following is NOT mechanical digestion?"
+    options:
+      - "Mastication"
+      - "Peristalsis"
+      - "Segmentation"
+      - "Gastric churning"
+    correct: 1
+    explanation: "**Peristalsis** is NOT mechanical digestion - it's propulsion (moving food through the digestive tract). Mechanical digestion physically breaks down food: mastication (chewing), segmentation (mixing in small intestine), and gastric churning (mixing in stomach) all break food into smaller pieces, but peristalsis just moves it along."
+    tags: ["unit-4", "digestive", "digestion", "motility"]
+
+  - question: "Which of the following is not a function of Sertoli cells?"
+    options:
+      - "Create blood-testis barrier"
+      - "Secrete androgen-binding protein"
+      - "Secrete testosterone"
+      - "Phagocytize damaged spermatogenic cells"
+    correct: 2
+    explanation: "Sertoli cells do NOT **secrete testosterone** - that's the job of Leydig cells (interstitial cells) located between the seminiferous tubules. Sertoli cells do create the blood-testis barrier, secrete androgen-binding protein (to concentrate testosterone locally), and phagocytize damaged developing sperm cells."
+    tags: ["unit-4", "reproductive", "male", "cells"]
+
+  - question: "Which of the these is not released from the brush border?"
+    options:
+      - "Nuclease"
+      - "Lactase"
+      - "Dipeptidase"
+      - "Enteropeptidase"
+    correct: 0
+    explanation: "**Nuclease** is NOT released from the brush border - it's secreted by the pancreas. Brush border enzymes (lactase, dipeptidase, enteropeptidase) are attached to the microvilli of the small intestine and complete the final stages of digestion right before absorption."
+    tags: ["unit-4", "digestive", "enzymes", "brush-border"]
+
+  - question: "At birth, females have _______ in their ovaries."
+    options:
+      - "Primary oocytes"
+      - "Secondary oocytes"
+      - "Polar bodies"
+      - "Graafian follicles"
+    correct: 0
+    explanation: "At birth, females have about 1-2 million **primary oocytes** arrested in prophase I of meiosis. These remain dormant until puberty, when FSH stimulates them to continue development. Secondary oocytes are only produced after puberty during each menstrual cycle, and Graafian follicles develop during the follicular phase."
+    tags: ["unit-4", "reproductive", "female", "development"]
+
+  - question: "Bile salts are reabsorbed back into the body in the ___________."
+    options:
+      - "Gall bladder"
+      - "Liver"
+      - "Jejunum"
+      - "Ileum"
+    correct: 3
+    explanation: "Bile salts are reabsorbed in the **ileum** (the last section of the small intestine) through a process called enterohepatic circulation. After helping with fat digestion, about 95% of bile salts are recycled back to the liver via the hepatic portal vein to be reused. This recycling is very efficient and reduces the need for the liver to synthesize new bile salts."
+    tags: ["unit-4", "digestive", "bile", "absorption"]
+
+  - question: "Gastrin is made by _________ in the stomach and works to _______ enzyme production."
+    options:
+      - "Parietal cells; stimulate"
+      - "Parietal cells; inhibit"
+      - "Enteroendocrine cells; stimulate"
+      - "Enteroendocrine cells; inhibit"
+    correct: 2
+    explanation: "Gastrin is produced by **enteroendocrine cells** (G cells) in the stomach lining and works to **stimulate** enzyme and acid production. It stimulates parietal cells to secrete HCl and stimulates chief cells to release pepsinogen and gastric lipase. It's released in response to food in the stomach."
+    tags: ["unit-4", "digestive", "stomach", "hormones"]
+
+  - question: "High levels of progesterone will have __________ feedback on LH and FSH."
+    options:
+      - "Positive"
+      - "Negative"
+    correct: 1
+    explanation: "High levels of progesterone have **negative feedback** on LH and FSH, suppressing their release from the pituitary. This is why progesterone (produced by the corpus luteum) prevents new follicles from developing during the luteal phase. Only estrogen can have positive feedback (at high levels during the late follicular phase, triggering the LH surge)."
+    tags: ["unit-4", "reproductive", "female", "hormones", "feedback"]
+
+  - question: "Sperm cells get energy to power their movement from __________, which is contributed by the __________."
+    options:
+      - "prostaglandins; prostate gland"
+      - "prostaglandins; seminiferous gland"
+      - "fructose; bulbourethral gland"
+      - "fructose; seminal vesicles"
+    correct: 3
+    explanation: "Sperm get energy from **fructose** (a sugar) that is contributed by the **seminal vesicles**. The seminal vesicles contribute about 60% of semen volume and provide fructose as fuel for sperm motility. Prostaglandins (also from seminal vesicles) help with sperm mobility and stimulate uterine contractions, but don't provide energy."
+    tags: ["unit-4", "reproductive", "male", "physiology"]
+
+  - question: "Which enzyme would break down the smallest particles?"
+    options:
+      - "Chymotrypsin"
+      - "Dipeptidase"
+      - "Pepsin"
+      - "Gastric lipase"
+      - "Amylase"
+    correct: 1
+    explanation: "**Dipeptidase** breaks down the smallest particles - it's the final enzyme in protein digestion that breaks dipeptides (2 amino acids) into individual amino acids. It works at the brush border and produces the smallest digestible units. Pepsin, trypsin, and chymotrypsin break larger proteins into peptides, but dipeptidase finishes the job."
+    tags: ["unit-4", "digestive", "enzymes", "proteins"]
+
+  - question: "Which of the following events occur in spermiogenesis?"
+    options:
+      - "The completion of meiosis"
+      - "Reduction of cytoplasm"
+      - "A reduction in chromosome numbers"
+      - "Making of spermatids"
+    correct: 1
+    explanation: "**Reduction of cytoplasm** occurs during spermiogenesis. Spermiogenesis is the process where spermatids (which are already made and already haploid) transform into mature sperm. This involves streamlining the cell by reducing cytoplasm, forming the acrosome, growing a flagellum, and condensing the nucleus. Meiosis and chromosome reduction happen before spermiogenesis, during spermatogenesis."
+    tags: ["unit-4", "reproductive", "male", "spermatogenesis"]
+
+  - question: "A baby is born without the ability to make parietal cells. This baby would not be able to ________."
+    options:
+      - "emulsify fats"
+      - "denature (unfold) milk proteins"
+      - "digest lactose"
+      - "absorb glucose and galactose"
+    correct: 1
+    explanation: "Without parietal cells, the baby cannot produce HCl (hydrochloric acid). HCl is needed to **denature (unfold) proteins** including milk proteins, making them accessible to digestive enzymes. While the baby would have other digestive problems, the most direct consequence is inability to denature proteins. Fat emulsification requires bile (from liver), lactose digestion requires lactase (brush border), and glucose/galactose absorption happens in the small intestine."
+    tags: ["unit-4", "digestive", "stomach", "clinical"]
+
+  - question: "The proliferative phase of the uterine cycle is mostly stimulated by which hormone?"
+    options:
+      - "Progesterone"
+      - "LH"
+      - "Estrogen"
+      - "FSH"
+    correct: 2
+    explanation: "The proliferative phase is stimulated by **estrogen**. During this phase, rising estrogen levels (from developing follicles) cause the endometrium to thicken and rebuild after menstruation. Progesterone dominates during the secretory phase, making the endometrium more glandular and ready for implantation."
+    tags: ["unit-4", "reproductive", "female", "uterine-cycle"]
+
+  - question: "Which of the following is the correct pathway of sperm cells from their formation to ejaculation?"
+    options:
+      - "Seminiferous tubule, epididymis, urethra, ejaculatory duct, vas deferens"
+      - "Seminiferous tubule, epididymis, ejaculatory duct, vas deferens, urethra"
+      - "Seminiferous tubule, epididymis, vas deferens, ejaculatory duct, urethra"
+      - "Seminiferous tubule, epididymis, ejaculatory duct, urethra, vas deferens"
+    correct: 2
+    explanation: "The correct pathway is: **Seminiferous tubule → epididymis → vas deferens → ejaculatory duct → urethra**. Sperm are made in seminiferous tubules, mature in the epididymis, travel through the vas deferens during ejaculation, pass through the ejaculatory duct (where seminal vesicle fluid is added), and exit via the urethra."
+    tags: ["unit-4", "reproductive", "male", "anatomy"]
+
+  - question: "The acini cells (exocrine) produce which of the following?"
+    options:
+      - "Trypsinogen"
+      - "Pepsinogen"
+      - "Insulin"
+      - "Enteropeptidase"
+    correct: 0
+    explanation: "Acini cells (also called acinar cells) in the pancreas produce **trypsinogen** and other pancreatic enzyme precursors (chymotrypsinogen, procarboxypeptidase, pancreatic amylase, pancreatic lipase). Pepsinogen is produced by chief cells in the stomach. Insulin is produced by beta cells in the pancreatic islets (endocrine). Enteropeptidase is produced by intestinal cells."
+    tags: ["unit-4", "digestive", "pancreas", "cells"]
+
+  - question: "After meiosis I is complete, _______ are produced and they are _______."
+    options:
+      - "Primary spermatocytes; haploid"
+      - "Primary spermatocytes; diploid"
+      - "Secondary spermatocytes; haploid"
+      - "Secondary spermatocytes; diploid"
+    correct: 2
+    explanation: "After meiosis I, **secondary spermatocytes** are produced and they are **haploid** (23 chromosomes, but each chromosome still has 2 sister chromatids). Primary spermatocytes (diploid, 46 chromosomes) undergo meiosis I to produce two secondary spermatocytes. Then meiosis II separates the sister chromatids to produce four haploid spermatids."
+    tags: ["unit-4", "reproductive", "male", "spermatogenesis", "meiosis"]
+
+  - question: "Which of the following would NOT be involved with lipid digestion?"
+    options:
+      - "Lingual lipase"
+      - "Pancreatic amylase"
+      - "Bile salts"
+    correct: 1
+    explanation: "**Pancreatic amylase** digests carbohydrates (starches), not lipids. Lingual lipase (from the tongue) and gastric lipase begin fat digestion. Pancreatic lipase is the main fat-digesting enzyme. Bile salts emulsify fats. But amylase breaks down carbohydrates into sugars and has nothing to do with lipid digestion."
+    tags: ["unit-4", "digestive", "enzymes", "lipids"]
+
+  - question: "Intrinsic factor is used to absorb ______ in the __________."
+    options:
+      - "Vit B12; stomach"
+      - "Vit B12; small intestines"
+      - "Vit K; stomach"
+      - "Vit K; small intestines"
+    correct: 1
+    explanation: "Intrinsic factor (produced by parietal cells in the stomach) binds to **Vitamin B12** and allows it to be absorbed in the **small intestine** (specifically the ileum). Without intrinsic factor, B12 cannot be absorbed, leading to pernicious anemia. Vitamin K is produced by gut bacteria and absorbed in the large intestine."
+    tags: ["unit-4", "digestive", "vitamins", "absorption"]
+
+  - question: "Proteins are chemically digested in which parts of the GI tract?"
+    options:
+      - "Oral cavity, stomach, and small intestine"
+      - "Stomach and small intestine"
+      - "Oral cavity and small intestine"
+      - "Stomach, small intestine, and large intestine"
+    correct: 1
+    explanation: "Protein digestion occurs in the **stomach and small intestine**. In the stomach, pepsin breaks proteins into polypeptides. In the small intestine, pancreatic enzymes (trypsin, chymotrypsin, carboxypeptidase) and brush border enzymes (dipeptidase) complete the breakdown to amino acids. No protein digestion occurs in the oral cavity or large intestine."
+    tags: ["unit-4", "digestive", "proteins", "digestion"]
+
+  - question: "Which of the following is not true about lipid digestion?"
+    options:
+      - "Packaged lipids known as micelles enter lacteals"
+      - "Bile salts are used to emulsify fat droplets"
+      - "Lipids start their chemical digestion in the oral cavity"
+      - "The pancreas and gallbladder both produce secretions important for lipid digestion"
+    correct: 0
+    explanation: "**Micelles do NOT enter lacteals** - this is false. Micelles are temporary transport vehicles made of bile salts that help deliver fatty acids and monoglycerides to intestinal cells. Inside the cells, lipids are repackaged into chylomicrons, which then enter the lacteals. Micelles themselves stay in the intestinal lumen. All other statements are true."
+    tags: ["unit-4", "digestive", "lipids", "absorption"]
+
+  - question: "The menstrual phase is triggered by"
+    options:
+      - "The loss of progesterone"
+      - "The spike of progesterone"
+      - "The loss of LH"
+      - "The spike of LH"
+    correct: 0
+    explanation: "The menstrual phase (shedding of the endometrium) is triggered by **the loss of progesterone**. When the corpus luteum degenerates (because there's no pregnancy), progesterone levels drop dramatically. This causes the blood vessels in the endometrium to constrict, depriving it of oxygen and nutrients, leading to tissue breakdown and menstruation."
+    tags: ["unit-4", "reproductive", "female", "menstrual-cycle"]
+
+trueMakeTrue:
+
+  - statement: "The corpus luteum produces ***estrogen***."
+    isTrue: false
+    correctWord: ["progesterone"]
+    points: 1
+    tags: ["unit-4", "reproductive", "female", "hormones"]
+
+  - statement: "Erection is controlled by the ***sympathetic*** nervous system."
+    isTrue: false
+    correctWord: ["parasympathetic"]
+    points: 1
+    tags: ["unit-4", "reproductive", "male", "nervous-system"]
+
+  - statement: "The anus is made up of ***simple columnar*** epithelial tissue."
+    isTrue: false
+    correctWord: ["non-keratinized stratified squamous", "stratified squamous"]
+    points: 1
+    tags: ["unit-4", "digestive", "anatomy"]
+
+  - statement: "Antihistamines work to ***increase*** the release of H+ ions in the stomach."
+    isTrue: false
+    correctWord: ["decrease"]
+    points: 1
+    tags: ["unit-4", "digestive", "stomach", "pharmacology"]
+
+essay:
+
+  - question: "Use the chart below to answer the following questions.</br>a) Name the phase labeled A. What hormone is primarily responsible for this phase?</br>b) Name the phase labeled B. Is this part of the uterine or ovarian cycle?</br>c) Name the hormone labeled C."
+    image: "practical5/female-repro-cycle.jpg"
+    answer: "a) Follicular phase. FSH (Follicle Stimulating Hormone) is primarily responsible for this phase.</br>b) Menstruation. This is part of the uterine cycle.</br>c) Progesterone"
+    points: 6
+    tags: ["unit-4", "reproductive", "female", "cycles", "diagram"]
