@@ -124,6 +124,34 @@ questions:
     definition: "Lymphatic capillary in the center of each intestinal villus that absorbs dietary fats. Named for its milky appearance when filled with fat (chyle). Shown in green because it's part of the lymphatic system."
     tags: ["unit4", "digestive", "small-intestine"]
 
+  - id: 15
+    image: "practical5/15.jpg"
+    question: "What is the structure?"
+    answer: ["cystic duct"]
+    definition: "The duct that connects the gallbladder to the common bile duct, allowing bile to flow to and from the gallbladder for storage."
+    tags: ["unit4", "digestive", "bile-duct"]
+
+  - id: 16
+    image: "practical5/16.jpg"
+    question: "Name the green structure indicated by the pointer."
+    answer: ["common hepatic duct"]
+    definition: "The duct formed by the union of the right and left hepatic ducts from the liver. It joins with the cystic duct to form the common bile duct."
+    tags: ["unit4", "digestive", "bile-duct"]
+
+  - id: 21
+    image: "practical5/21.jpg"
+    question: "What is the layer?"
+    answer: ["circular muscle layer"]
+    definition: "The middle layer of smooth muscle in the digestive tract wall that contracts to narrow the lumen, working with the longitudinal layer to produce peristaltic waves."
+    tags: ["unit4", "digestive"]
+
+  - id: 22
+    image: "practical5/22.jpg"
+    question: "Name the dark structure on the fetal pig."
+    answer: ["ovary"]
+    definition: "The female gonad that produces eggs (ova) and hormones like estrogen and progesterone. In fetal pigs, ovaries appear as small, dark structures."
+    tags: ["unit4", "reproductive"]
+
   # ============================================================================
   # Text-Only Questions (No Images)
 
@@ -132,3 +160,9 @@ questions:
   #   answer: ["sample function", "sample answer"]
   #   definition: "Sample definition explaining the concept."
   #   tags: ["unit4", "digestive", "text-only"]
+
+  - id: 100
+    question: "What structure secretes progesterone?"
+    answer: ["corpus luteum"]
+    definition: "The corpus luteum ('yellow body') is the temporary endocrine structure that forms from the ruptured follicle after ovulation. It secretes progesterone to maintain the uterine lining for potential pregnancy."
+    tags: ["unit4", "reproductive", "text-only"]
