@@ -180,6 +180,20 @@ questions:
     definition: "The female gonad that produces eggs (ova) and hormones like estrogen and progesterone. In fetal pigs, ovaries appear as small, dark structures."
     tags: ["unit4", "reproductive"]
 
+  - id: 23
+    image: "practical5/23.jpg"
+    question: "What is the structure?"
+    answer: ["fallopian tube", "uterine tube"]
+    definition: "The tube that transports the egg from the ovary to the uterus. Fertilization typically occurs in the fallopian tube. Also called the uterine tube or oviduct."
+    tags: ["unit4", "reproductive"]
+
+  - id: 24
+    image: "practical5/24.jpg"
+    question: "What is the structure?"
+    answer: ["ileocecal valve"]
+    definition: "The valve between the ileum (small intestine) and the cecum (large intestine). It controls the flow of material from the small intestine to the large intestine and prevents backflow."
+    tags: ["unit4", "digestive", "large-intestine"]
+
   # ============================================================================
   # Text-Only Questions (No Images)
 
