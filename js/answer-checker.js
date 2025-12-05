@@ -17,6 +17,17 @@ function normalizeAnswer(answer) {
     normalized = normalized.replace(/\bepi\b/g, 'epithelium');
     normalized = normalized.replace(/\bnon-keratinized\b/g, 'nonkeratinized');
 
+    // Normalize tissue type word order for stratified squamous epithelium
+    // "nonkeratinized stratified squamous" → "stratified squamous nonkeratinized"
+    // "stratified squamous nonkeratinized epithelium" → "stratified squamous nonkeratinized epithelium"
+    if (normalized.includes('stratified') && normalized.includes('squamous') && normalized.includes('nonkeratinized')) {
+        // Extract epithelium suffix if present
+        const hasEpithelium = normalized.includes('epithelium');
+        // Standardize to: "stratified squamous nonkeratinized epithelium"
+        normalized = normalized.replace(/\b(nonkeratinized\s+)?stratified\s+squamous\s+(nonkeratinized\s+)?(epithelium)?/g,
+                                       'stratified squamous nonkeratinized' + (hasEpithelium ? ' epithelium' : ''));
+    }
+
     // Remove leading articles
     if (normalized.startsWith('the ')) {
         normalized = normalized.substring(4);

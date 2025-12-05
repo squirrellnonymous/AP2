@@ -196,8 +196,8 @@ questions:
 
   - id: 25
     image: "practical5/25.jpg"
-    question: "What are the two green structures?"
-    answer: ["hepatic portal ducts"]
+    question: "What are the two green vessels?"
+    answer: ["hepatic ducts"]
     definition: "Bile duct branches found in the portal triads of the liver. They collect bile produced by liver cells and transport it toward the common hepatic duct. The green color indicates bile content."
     tags: ["unit4", "digestive", "liver", "bile-duct"]
 
