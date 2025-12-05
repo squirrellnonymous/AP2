@@ -36,7 +36,7 @@ questions:
   - id: 2
     image: "practical5/02.jpg"
     question: "What is the structure?"
-    answer: ["rugae", "gastric rugae"]
+    answer: ["gastric rugae"]
     definition: "Folds in the stomach lining that allow the stomach to expand when filled with food."
     tags: ["unit4", "digestive", "stomach"]
 
@@ -137,6 +137,34 @@ questions:
     answer: ["common hepatic duct"]
     definition: "The duct formed by the union of the right and left hepatic ducts from the liver. It joins with the cystic duct to form the common bile duct."
     tags: ["unit4", "digestive", "bile-duct"]
+
+  - id: 17
+    image: "practical5/17.jpg"
+    question: "What is the structure?"
+    answer: ["cystic duct"]
+    definition: "The duct that connects the gallbladder to the common bile duct, allowing bile to flow to and from the gallbladder for storage."
+    tags: ["unit4", "digestive", "bile-duct"]
+
+  - id: 18
+    image: "practical5/18.jpg"
+    question: "What is the structure?"
+    answer: ["bile duct", "common bile duct"]
+    definition: "The duct formed by the union of the common hepatic duct and cystic duct. It carries bile from the liver and gallbladder to the duodenum for fat digestion."
+    tags: ["unit4", "digestive", "bile-duct"]
+
+  - id: 19
+    image: "practical5/19.jpg"
+    question: "What is the opening?"
+    answer: ["pancreatic duct", "main pancreatic duct"]
+    definition: "The main duct of the pancreas that carries pancreatic enzymes and bicarbonate to the duodenum. It typically joins with the common bile duct before entering the small intestine."
+    tags: ["unit4", "digestive", "pancreas"]
+
+  - id: 20
+    image: "practical5/20.jpg"
+    question: "What is the structure at the end of the pointer?"
+    answer: ["internal anal sphincter"]
+    definition: "The smooth muscle sphincter at the lower end of the rectum that controls defecation. It is involuntary (not under conscious control), unlike the external anal sphincter."
+    tags: ["unit4", "digestive", "rectum"]
 
   - id: 21
     image: "practical5/21.jpg"
