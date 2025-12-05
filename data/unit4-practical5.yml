@@ -208,14 +208,24 @@ questions:
     definition: "A small sac that stores and concentrates bile produced by the liver. It releases bile into the small intestine when needed for fat digestion."
     tags: ["unit4", "digestive", "gallbladder"]
 
+  - id: 28
+    image: "practical5/28.jpg"
+    question: "What is the tissue?"
+    answer: ["seminiferous tubules"]
+    definition: "Coiled tubules in the testes where sperm are produced. Lined with spermatogenic cells at various stages of development."
+    tags: ["unit4", "reproductive", "male"]
+
   # ============================================================================
-  # Text-Only Questions (No Images)
+  # Text-Overlay Questions (no images, just pretty gradient backgrounds)
 
   # - id: 100
-  #   question: "What is the function of this structure?"
-  #   answer: ["sample function", "sample answer"]
-  #   definition: "Sample definition explaining the concept."
-  #   tags: ["unit4", "digestive", "text-only"]
+  #   image: "gradients/03p.jpg"
+  #   question: "what is a baby cat called?"
+  #   answer: ["kitten"]
+  #   definition: "The baby cat is a kitten."
+  #   textOverlay: true
+  #   tags: ["sample", "kitten", "text-only"]
+
 
   # MOBILE-FIRST DESIGN NOTE:
   # This practical uses portrait layout (400px × 593px) for a mobile-first experience.
@@ -229,3 +239,139 @@ questions:
     definition: "The corpus luteum ('yellow body') is the temporary endocrine structure that forms from the ruptured follicle after ovulation. It secretes progesterone to maintain the uterine lining for potential pregnancy."
     textOverlay: true
     tags: ["unit4", "reproductive", "text-only"]
+
+  - id: 101
+    image: "gradients/02p.jpg"
+    question: "Secretes mucus into the vagina"
+    answer: ["greater vestibular gland"]
+    definition: "Also called Bartholin's glands, these paired glands secrete mucus for lubrication during sexual arousal."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "female", "text-only"]
+
+  - id: 102
+    image: "gradients/03p.jpg"
+    question: "Inner mucosal lining of uterus"
+    answer: ["endometrium"]
+    definition: "The inner lining of the uterus that thickens during the menstrual cycle and is shed during menstruation. Site of embryo implantation."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "female", "text-only"]
+
+  - id: 103
+    image: "gradients/04p.jpg"
+    question: "Fingerlike projections of the uterine tube near the ovary that accepts the egg"
+    answer: ["fimbriae"]
+    definition: "Fringe-like projections at the end of the fallopian tube that sweep the released egg into the uterine tube."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "female", "text-only"]
+
+  - id: 104
+    image: "gradients/05p.jpg"
+    question: "Smooth muscle that contracts with force during childbirth"
+    answer: ["myometrium"]
+    definition: "The thick middle layer of smooth muscle in the uterine wall. Contractions during labor push the baby out."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "female", "text-only"]
+
+  - id: 105
+    image: "gradients/02p.jpg"
+    question: "Process by which a secondary oocyte is released from the ovary"
+    answer: ["ovulation"]
+    definition: "The release of a mature egg from the ovarian follicle, typically occurring around day 14 of the menstrual cycle."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "female", "text-only"]
+
+  - id: 106
+    image: "gradients/03p.jpg"
+    question: "Secrete estrogens"
+    answer: ["thecal and granulosa cells", "granulosa and thecal cells", "thecal cells and granulosa cells"]
+    definition: "Cells in the ovarian follicle that work together to produce estrogen. Granulosa cells convert androgens from thecal cells into estrogen."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "female", "hormones", "text-only"]
+
+  - id: 107
+    image: "gradients/04p.jpg"
+    question: "Secretes mucus into the urethra"
+    answer: ["urethral gland"]
+    definition: "Small glands along the urethra that secrete mucus for lubrication and protection."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "female", "text-only"]
+
+  - id: 108
+    image: "gradients/05p.jpg"
+    question: "Makes about 30% of seminal fluid (Sugars, acids, anticoagulants)"
+    answer: ["prostate gland"]
+    definition: "Walnut-sized gland that contributes milky fluid containing enzymes, citric acid, and PSA to semen."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "male", "text-only"]
+
+  - id: 109
+    image: "gradients/02p.jpg"
+    question: "Common tube for urine and semen"
+    answer: ["urethra"]
+    definition: "In males, the urethra serves dual purpose: transporting urine from the bladder and semen during ejaculation."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "male", "text-only"]
+
+  - id: 110
+    image: "gradients/03p.jpg"
+    question: "Located within spermatic cord and delivers sperm"
+    answer: ["ductus deferens", "vas deferens"]
+    definition: "Muscular tube that transports sperm from the epididymis to the ejaculatory duct. Cut during vasectomy."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "male", "text-only"]
+
+  - id: 111
+    image: "gradients/04p.jpg"
+    question: "Nurse cells that maintain blood-testes barrier, promote making of spermatocytes and spermatogonia, secretion of ABP and inhibin"
+    answer: ["sertoli cells"]
+    definition: "Specialized cells in seminiferous tubules that nourish developing sperm and create the blood-testis barrier to protect developing gametes."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "male", "hormones", "text-only"]
+
+  - id: 112
+    image: "gradients/05p.jpg"
+    question: "Produce male hormones"
+    answer: ["leydig cells", "interstitial cells"]
+    definition: "Cells located between seminiferous tubules that produce testosterone in response to luteinizing hormone (LH)."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "male", "hormones", "text-only"]
+
+  - id: 113
+    image: "gradients/02p.jpg"
+    question: "Location of spermatogenesis"
+    answer: ["seminiferous tubules"]
+    definition: "Coiled tubules in the testes where sperm are produced through meiosis and spermiogenesis."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "male", "text-only"]
+
+  - id: 114
+    image: "gradients/03p.jpg"
+    question: "Contains sperm and secretions from accessory glands"
+    answer: ["semen"]
+    definition: "Mixture of sperm and fluids from seminal vesicles, prostate gland, and bulbourethral glands. Typical volume is 2-5 mL per ejaculation."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "male", "text-only"]
+
+  - id: 115
+    image: "gradients/04p.jpg"
+    question: "Paired glands that secrete alkaline, slippery secretions before ejaculation"
+    answer: ["bulbourethral glands", "cowper's glands"]
+    definition: "Pea-sized glands that secrete pre-ejaculatory fluid to neutralize acidic urine in the urethra and provide lubrication."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "male", "text-only"]
+
+  - id: 116
+    image: "gradients/05p.jpg"
+    question: "Site of sperm maturation"
+    answer: ["epididymis"]
+    definition: "Coiled tube on the posterior surface of each testis where sperm mature and gain motility. Takes about 20 days."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "male", "text-only"]
+
+  - id: 117
+    image: "gradients/02p.jpg"
+    question: "Makes about 60% of seminal fluid (Sugars, prostaglandins, enzymes)"
+    answer: ["seminal vesicles"]
+    definition: "Paired glands that contribute fructose-rich alkaline fluid to nourish sperm and enhance motility."
+    textOverlay: true
+    tags: ["unit4", "reproductive", "male", "text-only"]
