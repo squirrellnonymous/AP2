@@ -210,10 +210,24 @@ questions:
 
   - id: 28
     image: "practical5/28.jpg"
-    question: "What is the tissue?"
+    question: "What are the structures shown in the tissue?"
     answer: ["seminiferous tubules"]
     definition: "Coiled tubules in the testes where sperm are produced. Lined with spermatogenic cells at various stages of development."
     tags: ["unit4", "reproductive", "male"]
+
+  - id: 30
+    image: "practical5/30.jpg"
+    question: "What is the pink layer labeled x?"
+    answer: ["muscularis mucosa", "muscularis mucosae"]
+    definition: "Thin layer of smooth muscle in the mucosa of the digestive tract. Helps move the mucosa and aids in secretion. Located between the lamina propria and submucosa."
+    tags: ["unit4", "digestive"]
+
+  - id: 31
+    image: "practical5/31.jpg"
+    question: "What is the gray structure labeled x?"
+    answer: ["lamina propria"]
+    definition: "Connective tissue layer of the mucosa that supports the epithelium and contains blood vessels, lymphatic vessels, and immune cells."
+    tags: ["unit4", "digestive"]
 
   # ============================================================================
   # Text-Overlay Questions (no images, just pretty gradient backgrounds)
@@ -250,7 +264,7 @@ questions:
 
   - id: 102
     image: "gradients/03p.jpg"
-    question: "Inner mucosal lining of uterus"
+    question: "What is the inner mucosal lining of uterus called?"
     answer: ["endometrium"]
     definition: "The inner lining of the uterus that thickens during the menstrual cycle and is shed during menstruation. Site of embryo implantation."
     textOverlay: true
@@ -282,7 +296,7 @@ questions:
 
   - id: 106
     image: "gradients/03p.jpg"
-    question: "Secrete estrogens"
+    question: "What cell(s) secrete estrogen?"
     answer: ["thecal and granulosa cells", "granulosa and thecal cells", "thecal cells and granulosa cells"]
     definition: "Cells in the ovarian follicle that work together to produce estrogen. Granulosa cells convert androgens from thecal cells into estrogen."
     textOverlay: true
@@ -290,7 +304,7 @@ questions:
 
   - id: 107
     image: "gradients/04p.jpg"
-    question: "Secretes mucus into the urethra"
+    question: "What structure that secretes mucus into the urethra?"
     answer: ["urethral gland"]
     definition: "Small glands along the urethra that secrete mucus for lubrication and protection."
     textOverlay: true
@@ -330,8 +344,8 @@ questions:
 
   - id: 112
     image: "gradients/05p.jpg"
-    question: "Produce male hormones"
-    answer: ["leydig cells", "interstitial cells"]
+    question: "Which cells in the testes produce testosterone"
+    answer: ["leydig cells"]
     definition: "Cells located between seminiferous tubules that produce testosterone in response to luteinizing hormone (LH)."
     textOverlay: true
     tags: ["unit4", "reproductive", "male", "hormones", "text-only"]
