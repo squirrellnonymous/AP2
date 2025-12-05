@@ -203,7 +203,7 @@ questions:
 
   - id: 26
     image: "practical5/26.jpg"
-    question: "What's the function of this structure?"
+    question: "What is the structure?"
     answer: ["gallbladder"]
     definition: "A small sac that stores and concentrates bile produced by the liver. It releases bile into the small intestine when needed for fat digestion."
     tags: ["unit4", "digestive", "gallbladder"]
@@ -337,7 +337,7 @@ questions:
   - id: 111
     image: "gradients/04p.jpg"
     question: "Nurse cells that maintain blood-testes barrier, promote making of spermatocytes and spermatogonia, secretion of ABP and inhibin"
-    answer: ["sertoli cells"]
+    answer: ["Sertoli cells"]
     definition: "Specialized cells in seminiferous tubules that nourish developing sperm and create the blood-testis barrier to protect developing gametes."
     textOverlay: true
     tags: ["unit4", "reproductive", "male", "hormones", "text-only"]
