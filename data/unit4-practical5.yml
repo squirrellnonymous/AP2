@@ -194,6 +194,20 @@ questions:
     definition: "The valve between the ileum (small intestine) and the cecum (large intestine). It controls the flow of material from the small intestine to the large intestine and prevents backflow."
     tags: ["unit4", "digestive", "large-intestine"]
 
+  - id: 25
+    image: "practical5/25.jpg"
+    question: "What are the two green structures?"
+    answer: ["hepatic portal ducts"]
+    definition: "Bile duct branches found in the portal triads of the liver. They collect bile produced by liver cells and transport it toward the common hepatic duct. The green color indicates bile content."
+    tags: ["unit4", "digestive", "liver", "bile-duct"]
+
+  - id: 26
+    image: "practical5/26.jpg"
+    question: "What's the function of this structure?"
+    answer: ["gallbladder"]
+    definition: "A small sac that stores and concentrates bile produced by the liver. It releases bile into the small intestine when needed for fat digestion."
+    tags: ["unit4", "digestive", "gallbladder"]
+
   # ============================================================================
   # Text-Only Questions (No Images)
 
@@ -203,8 +217,15 @@ questions:
   #   definition: "Sample definition explaining the concept."
   #   tags: ["unit4", "digestive", "text-only"]
 
+  # MOBILE-FIRST DESIGN NOTE:
+  # This practical uses portrait layout (400px × 593px) for a mobile-first experience.
+  # For text overlay questions, use portrait gradients: 01p.jpg, 02p.jpg, 03p.jpg, 04p.jpg, 05p.jpg
+  # These are sized specifically for the portrait layout (400 × 593) instead of standard gradients (700 × 450)
+
   - id: 100
+    image: "gradients/01p.jpg"
     question: "What structure secretes progesterone?"
     answer: ["corpus luteum"]
     definition: "The corpus luteum ('yellow body') is the temporary endocrine structure that forms from the ruptured follicle after ovulation. It secretes progesterone to maintain the uterine lining for potential pregnancy."
+    textOverlay: true
     tags: ["unit4", "reproductive", "text-only"]
