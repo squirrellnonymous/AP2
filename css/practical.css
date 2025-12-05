@@ -4,6 +4,14 @@
 /* Import handwriting font */
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap');
 
+/*
+ * CACHE BUSTING NOTE:
+ * When you commit changes to this CSS file, the pre-commit hook (.husky/pre-commit)
+ * automatically updates the version parameter in practical-template.html
+ * (e.g., practical.css?v=1735950000) to force browsers to fetch the updated CSS.
+ * No manual version bumping needed!
+ */
+
 /* Submit button styling for navigation */
 .nav-submit {
     background-color: #10b981;

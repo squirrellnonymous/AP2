@@ -11,3 +11,24 @@ if echo "$STAGED_FILES" | grep -qE "^data/.*\.(yml|yaml)$"; then
 else
   echo "✅ No data YAML files changed - skipping validation"
 fi
+
+# Auto-update CSS cache busting version if CSS files changed
+if echo "$STAGED_FILES" | grep -qE "^css/.*\.css$"; then
+  echo "🎨 CSS files changed - updating cache busting version..."
+
+  # Generate version number from current timestamp
+  VERSION=$(date +%s)
+
+  # Update practical-template.html
+  if [ -f "practical-template.html" ]; then
+    sed -i '' -E "s/(practical\.css\?v=)[0-9]+/\1$VERSION/" practical-template.html
+    sed -i '' -E "s/(themes\.css\?v=)[0-9]+/\1$VERSION/" practical-template.html
+    git add practical-template.html
+    echo "✅ Updated practical-template.html with version $VERSION"
+  fi
+
+  # Update any other HTML files that use versioned CSS (add more as needed)
+  # Example: exam-template.html, quiz-template.html, etc.
+else
+  echo "✅ No CSS files changed - skipping cache busting update"
+fi

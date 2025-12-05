@@ -1,5 +1,63 @@
 # Release Notes
 
+## December 4, 2025 - Practical 5 Mobile-First Design & Cache Busting
+
+### 🎯 Mobile-First Portrait Layout for Practical 5
+
+Implemented mobile-first design for Unit 4 Practical 5 using portrait layout (400px × 593px) for consistent viewing across all devices.
+
+**Files Updated:** `data/unit4-practical5.yml`, `css/practical.css`, `practical-template.html`, `images/gradients/01p.jpg-05p.jpg`
+
+#### New Features
+
+**Portrait Gradient Images**
+- Created portrait-specific gradient backgrounds (01p.jpg through 05p.jpg) sized at 400 × 593 pixels
+- Standard gradients are 700 × 450, but portrait practicals need custom dimensions
+- Use these for text overlay questions in mobile-first practicals
+
+**Modal Text Sizing Fix**
+- Increased font size for text-only questions in review modal from inherited size to 1.5rem
+- Added explicit line-height: 1.6 for better readability
+- CSS: `.popup-question .text-only-question-box { font-size: 1.5rem; line-height: 1.6; }`
+
+**Cache Busting for CSS Updates**
+- Added version parameters to CSS file links in practical-template.html
+- Format: `<link rel="stylesheet" href="css/practical.css?v=1735950000">`
+- Use timestamp-based version numbers (e.g., v=1735950000) for immediate cache invalidation
+- **Automated via git hook:** Pre-commit hook automatically updates version when CSS files change
+  - Detects staged CSS files in `css/` directory
+  - Generates new timestamp version on each commit
+  - Updates HTML templates and auto-stages them
+  - See `.husky/pre-commit` lines 15-34
+- GitHub Pages CDN can cache files for 10-20 minutes, version parameters ensure users get fresh CSS immediately
+
+#### YAML Structure for Mobile-First Practicals
+
+```yaml
+layout: "portrait"  # Enables mobile-first 400px width
+
+# Text overlay questions use portrait gradients
+- id: 100
+  image: "gradients/01p.jpg"  # Portrait gradient (400 × 593)
+  question: "What structure secretes progesterone?"
+  answer: ["corpus luteum"]
+  textOverlay: true
+  tags: ["unit4", "reproductive", "text-only"]
+```
+
+### 📝 Content Added to Practical 5
+
+Added 12 new image-based questions (IDs 15-26) covering digestive and reproductive systems:
+- Cystic duct, common hepatic duct, bile duct anatomy
+- Pancreatic duct and internal anal sphincter
+- Circular muscle layer of digestive tract
+- Ovary, fallopian tube identification on fetal pig
+- Ileocecal valve, hepatic portal ducts
+- Gallbladder function
+
+Added 1 text-only question:
+- Corpus luteum and progesterone secretion
+
 ## November 20, 2025 - Unit 4 Exam Build-Out & System Improvements
 
 ### 🎯 Major Content Addition: Exam 4 Digestive System Questions
