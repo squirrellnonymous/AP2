@@ -606,6 +606,13 @@ h1 {
         padding: 0;
     }
 
+    /* Portrait layout gradients fill width on mobile */
+    body.portrait-layout .image-container.has-text-overlay .term-image {
+        width: 100%;
+        max-width: none;
+        height: auto;
+    }
+
     .term-image {
         /* Mobile image sizing: fills white space while cropping sides only */
         height: 420px;           /* Fixed height to fill card space */
