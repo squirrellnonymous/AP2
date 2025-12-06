@@ -1597,9 +1597,8 @@ body.portrait-layout .image-container.has-text-overlay .question-text {
     height: 760px;
 }
 
-/* Adjust text overlay vertical position for portrait layout */
 body.portrait-layout .question-text-overlay {
-    top: 45%;
+    top: 30%;
 }
 
 /* Remove border in dark mode for portrait layout */
