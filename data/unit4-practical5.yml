@@ -208,6 +208,13 @@ questions:
     definition: "A small sac that stores and concentrates bile produced by the liver. It releases bile into the small intestine when needed for fat digestion."
     tags: ["unit4", "digestive", "gallbladder"]
 
+  - id: 27
+    image: "practical5/27.jpg"
+    question: "What is the structure?"
+    answer: ["epiglottis"]
+    definition: "A flap of elastic cartilage covered with mucosa that covers the larynx during swallowing to prevent food from entering the airway."
+    tags: ["unit4", "digestive", "fetal-pig"]
+
   - id: 28
     image: "practical5/28.jpg"
     question: "What are the structures shown in the tissue?"
@@ -227,6 +234,48 @@ questions:
     question: "What is the gray structure labeled x?"
     answer: ["lamina propria"]
     definition: "Connective tissue layer of the mucosa that supports the epithelium and contains blood vessels, lymphatic vessels, and immune cells."
+    tags: ["unit4", "digestive"]
+
+  - id: 32
+    image: "practical5/32.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["cystic duct"]
+    definition: "The duct that connects the gallbladder to the common bile duct, allowing bile to flow to and from the gallbladder for storage."
+    tags: ["unit4", "digestive", "bile-duct"]
+
+  - id: 33
+    image: "practical5/33.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["bile duct", "common bile duct"]
+    definition: "The duct formed by the union of the common hepatic duct and cystic duct. It carries bile from the liver and gallbladder to the duodenum for fat digestion."
+    tags: ["unit4", "digestive", "bile-duct"]
+
+  - id: 34
+    image: "practical5/34.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["pyloric sphincter"]
+    definition: "A muscular valve at the junction between the stomach and the duodenum (small intestine). It controls the release of chyme from the stomach into the small intestine."
+    tags: ["unit4", "digestive", "stomach"]
+
+  - id: 35
+    image: "practical5/35.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["taenia coli", "tenia coli"]
+    definition: "One of three longitudinal bands of smooth muscle in the colon. These bands pucker the colon into pouches (haustra) and aid in peristalsis."
+    tags: ["unit4", "digestive", "large-intestine"]
+
+  - id: 36
+    image: "practical5/36.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["haustrum", "haustra"]
+    definition: "Pouches or sacculations in the wall of the colon formed by the contraction of the taenia coli. They give the colon its segmented appearance and increase surface area."
+    tags: ["unit4", "digestive", "large-intestine"]
+
+  - id: 38
+    image: "practical5/38.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["serosa"]
+    definition: "The outermost layer of the digestive tract wall, made of visceral peritoneum. It's a smooth, slippery membrane that reduces friction as organs move against each other."
     tags: ["unit4", "digestive"]
 
   # ============================================================================
