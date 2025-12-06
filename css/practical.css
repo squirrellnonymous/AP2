@@ -1577,24 +1577,29 @@ body.dark-mode .popup-question-overlay {
 
 /* Portrait Layout Styles */
 body.portrait-layout .image-content {
-    max-width: 400px;
+    max-width: 512px;
 }
 
 body.portrait-layout .image-content img {
     width: 100%;
-    max-width: 400px;
+    max-width: 512px;
     height: auto;
-    max-height: 593px;
+    max-height: 760px;
     object-fit: contain;
 }
 
 body.portrait-layout .image-content .text-only-question-box {
-    height: 593px !important;
-    max-width: 400px;
+    height: 760px !important;
+    max-width: 512px;
 }
 
 body.portrait-layout .image-container.has-text-overlay .question-text {
-    height: 593px;
+    height: 760px;
+}
+
+/* Adjust text overlay vertical position for portrait layout */
+body.portrait-layout .question-text-overlay {
+    top: 45%;
 }
 
 /* Remove border in dark mode for portrait layout */
