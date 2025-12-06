@@ -227,10 +227,28 @@ function showModalAtIndex(index) {
     } else {
         // Text-only question - apply theme
         const themeClass = getTextOnlyThemeClass(modalQuestion.question.theme);
+
+        // Calculate responsive font size based on question length
+        const textLength = modalQuestion.questionText.length;
+        let fontSize;
+        if (textLength <= 20) {
+            fontSize = '2rem';
+        } else if (textLength <= 30) {
+            fontSize = '1.8rem';
+        } else if (textLength <= 45) {
+            fontSize = '1.5rem';
+        } else if (textLength <= 70) {
+            fontSize = '1.3rem';
+        } else if (textLength <= 100) {
+            fontSize = '1.1rem';
+        } else {
+            fontSize = '1rem';
+        }
+
         questionDisplaySection = `
             <div class="popup-question">
                 <div class="text-only-question-box ${themeClass}">
-                    ${modalQuestion.questionText}
+                    <span class="text-content" style="font-size: ${fontSize};">${modalQuestion.questionText}</span>
                 </div>
             </div>
         `;

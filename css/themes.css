@@ -77,15 +77,58 @@
     max-width: 600px;
     height: 500px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 20px;
     border-radius: 16px;
     text-align: center;
     font-weight: 600;
     line-height: 1.6;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+/* Ensure text content within the box is centered */
+.text-only-question-box > * {
+    min-width: 0;
+    max-width: 100%;
+    text-align: center;
+}
+
+/* Explicit styling for text content wrapper */
+.text-only-question-box .text-content {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    text-align-last: center;
+    font-size: 1.5rem;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: manual;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    white-space: normal;
+}
+
+/* Portrait layout adjustments for narrower cards */
+body.portrait-layout .text-only-question-box {
+    max-width: 400px;
+    padding: 0 10px;
+}
+
+body.portrait-layout .text-only-question-box .text-content {
+    padding: 0 5px;
+    font-size: clamp(1rem, 4vw, 2.8rem);
+    max-width: 100%;
+    word-break: break-all;
+    overflow-wrap: anywhere;
 }
 
 /* Text overlay styles for background images */

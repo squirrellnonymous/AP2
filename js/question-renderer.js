@@ -83,9 +83,27 @@ function renderQuestion(question, imageElement, questionTextElement) {
         }
         imageElement.style.display = 'none';
         const themeClass = getTextOnlyThemeClass(question.theme);
+
+        // Calculate responsive font size based on question length
+        const textLength = (question.question || '').length;
+        let fontSize;
+        if (textLength <= 20) {
+            fontSize = '2rem';
+        } else if (textLength <= 30) {
+            fontSize = '1.8rem';
+        } else if (textLength <= 45) {
+            fontSize = '1.5rem';
+        } else if (textLength <= 70) {
+            fontSize = '1.3rem';
+        } else if (textLength <= 100) {
+            fontSize = '1.1rem';
+        } else {
+            fontSize = '1rem';
+        }
+
         questionTextElement.innerHTML = `
             <div class="text-only-question-box ${themeClass}">
-                ${question.question || ''}
+                <span class="text-content" style="font-size: ${fontSize};">${question.question || ''}</span>
             </div>&nbsp;
         `;
     }

@@ -197,6 +197,11 @@ async function loadFlashcards() {
             const yamlText = await response.text();
             const practicalData = jsyaml.load(yamlText);
 
+            // Apply portrait layout class if specified in YAML
+            if (practicalData.layout === 'portrait') {
+                document.body.classList.add('portrait-layout');
+            }
+
             // Filter questions by tags if specified
             let filteredQuestions = practicalData.questions;
             if (practicalParams.tags && practicalParams.tags.length > 0 && practicalParams.tags[0] !== '') {
@@ -403,16 +408,25 @@ function showCard() {
 
         // Dynamic font sizing based on text length (gradual progression for longer text)
         const textLength = card.term.length;
-        if (textLength <= 25) {
-            termElement.style.setProperty('font-size', '3rem', 'important');    // Large for short questions
-        } else if (textLength <= 45) {
-            termElement.style.setProperty('font-size', '2.5rem', 'important');  // Medium-large
-        } else if (textLength <= 70) {
-            termElement.style.setProperty('font-size', '2.1rem', 'important');  // Medium for moderate length
-        } else if (textLength <= 100) {
-            termElement.style.setProperty('font-size', '1.8rem', 'important');  // A bit smaller for longer questions
+
+        // Check for long words that might overflow
+        const words = card.term.split(/\s+/);
+        const longestWord = words.reduce((max, word) => word.length > max.length ? word : max, '');
+
+        // If longest word is very long, treat the whole text as if it's longer
+        // Use 4x multiplier for more aggressive size reduction
+        const effectiveLength = Math.max(textLength, longestWord.length * 4);
+
+        if (effectiveLength <= 20) {
+            termElement.style.setProperty('font-size', '2.8rem', 'important');    // Large for short questions
+        } else if (effectiveLength <= 30) {
+            termElement.style.setProperty('font-size', '2.3rem', 'important');  // Medium-large
+        } else if (effectiveLength <= 45) {
+            termElement.style.setProperty('font-size', '2rem', 'important');  // Medium for moderate length
+        } else if (effectiveLength <= 70) {
+            termElement.style.setProperty('font-size', '1.7rem', 'important');  // A bit smaller for longer questions
         } else {
-            termElement.style.setProperty('font-size', '1.5rem', 'important');  // Smallest for very long questions
+            termElement.style.setProperty('font-size', '1.5rem', 'important');  // Minimum readable size for long questions
         }
     } else {
         // Clear any custom font size for image cards
@@ -486,16 +500,25 @@ function showCard() {
 
             // Adjust font size based on text length (same logic as text-only cards)
             const textLength = card.term.length;
-            if (textLength <= 25) {
-                overlay.style.setProperty('font-size', '3rem', 'important');    // Large for short questions
-            } else if (textLength <= 45) {
-                overlay.style.setProperty('font-size', '2.5rem', 'important');  // Medium-large
-            } else if (textLength <= 70) {
-                overlay.style.setProperty('font-size', '2.1rem', 'important');  // Medium for moderate length
-            } else if (textLength <= 100) {
-                overlay.style.setProperty('font-size', '1.8rem', 'important');  // A bit smaller for longer questions
+
+            // Check for long words that might overflow
+            const words = card.term.split(/\s+/);
+            const longestWord = words.reduce((max, word) => word.length > max.length ? word : max, '');
+
+            // If longest word is very long, treat the whole text as if it's longer
+            // Use 4x multiplier for more aggressive size reduction
+            const effectiveLength = Math.max(textLength, longestWord.length * 4);
+
+            if (effectiveLength <= 20) {
+                overlay.style.setProperty('font-size', '2.8rem', 'important');    // Large for short questions
+            } else if (effectiveLength <= 30) {
+                overlay.style.setProperty('font-size', '2.3rem', 'important');  // Medium-large
+            } else if (effectiveLength <= 45) {
+                overlay.style.setProperty('font-size', '2rem', 'important');  // Medium for moderate length
+            } else if (effectiveLength <= 70) {
+                overlay.style.setProperty('font-size', '1.7rem', 'important');  // A bit smaller for longer questions
             } else {
-                overlay.style.setProperty('font-size', '1.5rem', 'important');  // Smallest for very long questions
+                overlay.style.setProperty('font-size', '1.5rem', 'important');  // Minimum readable size for long questions
             }
 
             // Hide the term element below
@@ -512,7 +535,7 @@ function showCard() {
 
             // Show term element with text
             termElement.style.display = '';
-            termElement.innerHTML = termContent;
+            termElement.innerHTML = `<span class="text-content">${termContent}</span>`;
         }
     } else {
         // No image: text-only card
@@ -528,7 +551,7 @@ function showCard() {
 
         // Show term element
         termElement.style.display = '';
-        termElement.innerHTML = termContent;
+        termElement.innerHTML = `<span class="text-content">${termContent}</span>`;
     }
 
     // Preload next few images in background

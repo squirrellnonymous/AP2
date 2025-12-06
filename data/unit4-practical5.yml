@@ -222,6 +222,13 @@ questions:
     definition: "Coiled tubules in the testes where sperm are produced. Lined with spermatogenic cells at various stages of development."
     tags: ["unit4", "reproductive", "male"]
 
+  - id: 29
+    image: "practical5/29.jpg"
+    question: "What is the structure at the end of the pointer?"
+    answer: ["corpus cavernosum"]
+    definition: "One of two columns of erectile tissue in the penis that fill with blood during arousal to produce an erection. Located dorsally (on top)."
+    tags: ["unit4", "reproductive", "male"]
+
   - id: 30
     image: "practical5/30.jpg"
     question: "What is the pink layer labeled x?"
@@ -267,7 +274,14 @@ questions:
   - id: 36
     image: "practical5/36.jpg"
     question: "What is the structure labeled x?"
-    answer: ["haustrum", "haustra"]
+    answer: ["cecum"]
+    definition: "greatly reduced in humans, cecal digestors like rabbits have a large cecum where plant matter is digested by gut flora and later they consume their feces to harvest the nutrients"
+    tags: ["unit4", "digestive", "large-intestine"]
+
+  - id: 37
+    image: "practical5/37.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["haustrum"]
     definition: "Pouches or sacculations in the wall of the colon formed by the contraction of the taenia coli. They give the colon its segmented appearance and increase surface area."
     tags: ["unit4", "digestive", "large-intestine"]
 
@@ -277,6 +291,27 @@ questions:
     answer: ["serosa"]
     definition: "The outermost layer of the digestive tract wall, made of visceral peritoneum. It's a smooth, slippery membrane that reduces friction as organs move against each other."
     tags: ["unit4", "digestive"]
+
+  - id: 39
+    image: "practical5/39.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["raphe"]
+    definition: "A visible seam or ridge running along the midline of the scrotum and perineum. It forms during embryonic development when the two sides fuse together."
+    tags: ["unit4", "reproductive", "male"]
+
+  - id: 40
+    image: "practical5/40.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["spermatic cord"]
+    definition: "A bundle of structures that passes through the inguinal canal to the testes. Contains the ductus deferens, blood vessels, nerves, and lymphatics."
+    tags: ["unit4", "reproductive", "male"]
+
+  - id: 41
+    image: "practical5/41.jpg"
+    question: "What are the blue vessels labeled x?"
+    answer: ["pampiniform plexus"]
+    definition: "A network of veins in the spermatic cord that surrounds the testicular artery. It acts as a heat exchanger to cool arterial blood before it reaches the testes, helping maintain optimal temperature for sperm production."
+    tags: ["unit4", "reproductive", "male"]
 
   # ============================================================================
   # Text-Overlay Questions (no images, just pretty gradient backgrounds)
@@ -394,7 +429,7 @@ questions:
   - id: 112
     image: "gradients/05p.jpg"
     question: "Which cells in the testes produce testosterone"
-    answer: ["leydig cells"]
+    answer: ["Leydig cells"]
     definition: "Cells located between seminiferous tubules that produce testosterone in response to luteinizing hormone (LH)."
     textOverlay: true
     tags: ["unit4", "reproductive", "male", "hormones", "text-only"]

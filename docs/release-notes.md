@@ -1,5 +1,126 @@
 # Release Notes
 
+## December 6, 2025 - Text Overflow & Centering Fix for Flashcards
+
+### 🔧 Fixed Text Overflow and Centering Issues
+
+Resolved critical text overflow and horizontal centering problems in flashcard text-only questions, particularly affecting long words like "spermatogenesis" and "anticoagulants".
+
+**Files Updated:** `css/themes.css`, `flashcards/flashcard-engine.js`, `js/question-renderer.js`, `js/question-modal.js`
+
+#### Root Cause Analysis
+
+**Three primary issues identified:**
+1. **Flexbox min-width gotcha:** Flex items default to `min-width: auto`, preventing them from shrinking below content size - this blocked word-breaking
+2. **Portrait layout not applied:** Flashcard template wasn't reading `layout: "portrait"` from YAML, so portrait-specific CSS never activated
+3. **Font size too large for long words:** Single long words at large font sizes couldn't fit on one line even with word-breaking
+
+#### CSS Fixes (`css/themes.css`)
+
+**Critical Flexbox Fix:**
+```css
+.text-only-question-box {
+    min-width: 0;  /* Allow flex container to shrink below content */
+}
+
+.text-only-question-box > * {
+    min-width: 0;  /* Allow flex children to shrink */
+    max-width: 100%;
+}
+
+.text-only-question-box .text-content {
+    min-width: 0;  /* Critical for text wrapping */
+    word-break: break-all;  /* Aggressive breaking for long words */
+}
+```
+
+**Why it works:** Flexbox's default `min-width: auto` prevents elements from shrinking below their content width. Setting `min-width: 0` allows the browser to apply word-breaking properties.
+
+**Word-Breaking Properties:**
+- `overflow-wrap: break-word` - Breaks words at appropriate points
+- `word-wrap: break-word` - Legacy browser support
+- `word-break: break-all` - Forces breaking at any character for very long words
+- `hyphens: auto` - Adds hyphens when words break
+
+**Text Centering:**
+- Changed from `display: inline-block` to `display: block` with `width: 100%`
+- Ensures text fills container width for proper centering
+
+#### JavaScript Fixes
+
+**Smart Font Sizing Based on Longest Word (`flashcards/flashcard-engine.js`):**
+```javascript
+// Find longest word in text
+const words = card.term.split(/\s+/);
+const longestWord = words.reduce((max, word) => word.length > max.length ? word : max, '');
+
+// Calculate effective length (longest word × 4)
+const effectiveLength = Math.max(textLength, longestWord.length * 4);
+
+// Use effectiveLength instead of textLength for font size calculation
+```
+
+**Example:** "Site of sperm maturation" (24 total chars)
+- Longest word: "spermatogenesis" (15 chars)
+- Effective length: max(24, 15 × 4) = **60**
+- Font size: **1.7rem** (for 46-70 effective length) instead of 2.3rem
+
+**Portrait Layout Detection:**
+```javascript
+// Apply portrait layout class if specified in YAML
+if (practicalData.layout === 'portrait') {
+    document.body.classList.add('portrait-layout');
+}
+```
+
+**Text Content Wrapping:**
+- Wrapped all text content in `<span class="text-content">` for consistent styling
+- Applied in flashcard-engine.js, question-renderer.js, and question-modal.js
+
+#### Font Size Tiers (Updated)
+
+With longest word detection:
+- ≤20 effective chars: 2.8rem
+- 21-30 effective chars: 2.3rem
+- 31-45 effective chars: 2rem
+- 46-70 effective chars: 1.7rem
+- 71+ effective chars: 1.5rem (minimum for readability)
+
+#### Portrait Layout Enhancements
+
+```css
+body.portrait-layout .text-only-question-box {
+    max-width: 400px;
+    padding: 0 10px;  /* Reduced from 20px */
+}
+
+body.portrait-layout .text-only-question-box .text-content {
+    padding: 0 5px;
+    font-size: clamp(1rem, 4vw, 2.8rem);  /* Responsive sizing */
+}
+```
+
+**Total padding reduction:** From 120px to 30px (60px container + 20px text-content → 20px container + 10px text-content)
+
+#### Technical Learnings
+
+**Flexbox and Word-Breaking Interaction:**
+- Word-breaking properties (`overflow-wrap`, `word-break`) only work when the element has a defined maximum width
+- Flex items with `min-width: auto` (default) won't shrink, blocking word-breaking even if properties are set
+- Setting `min-width: 0` is the critical fix that enables word-breaking in flex containers
+
+**Property Priority:**
+- `word-break: break-all` is most aggressive (breaks anywhere)
+- `overflow-wrap: break-word` is gentler (breaks only when necessary)
+- Use `break-all` for narrow containers, `break-word` for normal layouts
+
+**Dynamic Font Sizing Strategy:**
+- Counting total characters isn't enough - one long word can overflow
+- Multiplying longest word length by 3-4x creates effective length that accounts for single-word overflow
+- Prevents overflow while keeping shorter words at readable sizes
+
+---
+
 ## December 4, 2025 - Practical 5 Mobile-First Design & Cache Busting
 
 ### 🎯 Mobile-First Portrait Layout for Practical 5
