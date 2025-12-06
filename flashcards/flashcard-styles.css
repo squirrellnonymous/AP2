@@ -217,7 +217,7 @@ h1 {
 /* Definition styling */
 .flip-card-back .definition {
     font-size: 1rem;
-    color: #7c3aed;
+    color: #374151;
     line-height: 1.6;
     text-align: center;
 }
@@ -229,7 +229,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 15px;
 }
 
@@ -240,9 +240,9 @@ h1 {
 
 /* Term styles for image cards only */
 .term:not(.text-only-question-box) {
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    color: #7c3aed;
+    color: #1a1a1a;
 }
 
 /* Remove card padding and background when displaying text-only questions */
@@ -269,13 +269,17 @@ h1 {
 /* Image container for positioning overlay */
 .image-container {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    max-height: 400px;
+    height: 400px;
     width: 100%;
     background-color: #ffffff; /* White background to prevent dark flash during image loading */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    flex-shrink: 0; /* Prevent image from shrinking when text below is longer */
+    border-radius: 8px; /* Rounded corners for images */
 }
 
 /* Image container with text overlay */
@@ -347,7 +351,7 @@ h1 {
     display: block;
     margin-bottom: 10px;
     margin-top: 20px;
-    color: #7c3aed;
+    color: #1a1a1a;
 }
 
 
