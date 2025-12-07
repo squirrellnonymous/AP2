@@ -274,8 +274,8 @@ questions:
 
   - id: 35
     image: "practical5/35.jpg"
-    question: "What is the structure labeled x?"
-    answer: ["taenia coli", "tenia coli"]
+    question: "What is the band labeled x?"
+    answer: ["taenia coli"]
     definition: "One of three longitudinal bands of smooth muscle in the colon. These bands pucker the colon into pouches (haustra) and aid in peristalsis."
     tags: ["unit4", "digestive", "large-intestine"]
 
@@ -524,12 +524,40 @@ questions:
     definition: "One of two pea-sized glands (also called Bartholin's glands) located on either side of the vaginal opening. They secrete mucus for lubrication during sexual arousal."
     tags: ["unit4", "reproductive", "female"]
 
+  - id: 70
+    image: "practical5/70.jpg"
+    question: "What is the lobe?"
+    answer: ["caudate lobe"]
+    definition: "One of the four lobes of the liver, located on the posterior (back) surface. It's positioned between the inferior vena cava and the fissure for the ligamentum venosum."
+    tags: ["unit4", "digestive", "liver"]
+
   - id: 73
     image: "practical5/73.jpg"
     question: "What is the structure labeled x?"
     answer: ["greater omentum"]
     definition: "A large, apron-like fold of peritoneum that hangs down from the greater curvature of the stomach and drapes over the intestines. It stores fat, provides immune protection, and helps limit the spread of infections in the abdomen."
     tags: ["unit4", "digestive"]
+
+  - id: 74
+    image: "practical5/74.jpg"
+    question: "What is the lobe?"
+    answer: ["quadrate lobe"]
+    definition: "One of the four lobes of the liver, located on the inferior (underside) surface. It's positioned between the gallbladder and the fissure for the ligamentum teres (round ligament)."
+    tags: ["unit4", "digestive", "liver"]
+
+  - id: 75
+    image: "practical5/75.jpg"
+    question: "What is the lobe?"
+    answer: ["left lobe", "left lobe of the liver", "left"]
+    definition: "One of the two main lobes of the liver, smaller than the right lobe. It's separated from the right lobe by the falciform ligament on the anterior surface."
+    tags: ["unit4", "digestive", "liver"]
+
+  - id: 76
+    image: "practical5/76.jpg"
+    question: "What is the structure?"
+    answer: ["round ligament"]
+    definition: "Also called the ligamentum teres, this is the fibrous remnant of the fetal umbilical vein. It runs from the umbilicus to the liver and is found in the free edge of the falciform ligament."
+    tags: ["unit4", "digestive", "liver"]
 
   # ============================================================================
   # Text-Overlay Questions (no images, just pretty gradient backgrounds)
