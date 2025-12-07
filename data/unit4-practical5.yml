@@ -475,6 +475,27 @@ questions:
     definition: "Follicle cells that surround and nourish the developing oocyte. They produce estrogen (working with thecal cells) and form the corona radiata after ovulation. Part of the follicular structure in the ovary."
     tags: ["unit4", "reproductive", "female", "ovary", "tissue"]
 
+  - id: 67
+    image: "practical5/67.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["mons pubis"]
+    definition: "The rounded mound of fatty tissue over the pubic symphysis in females. It becomes covered with pubic hair after puberty and provides cushioning during intercourse."
+    tags: ["unit4", "reproductive", "female"]
+
+  - id: 68
+    image: "practical5/68.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["labium minus"]
+    definition: "One of the inner folds of skin in the female external genitalia. Note: This is SINGULAR - 'labium minus' refers to one fold, while 'labia minora' is plural (refers to both folds together)."
+    tags: ["unit4", "reproductive", "female"]
+
+  - id: 69
+    image: "practical5/69.jpg"
+    question: "What is the small blue structure labeled x on the diagram?"
+    answer: ["greater vestibular gland"]
+    definition: "One of two pea-sized glands (also called Bartholin's glands) located on either side of the vaginal opening. They secrete mucus for lubrication during sexual arousal."
+    tags: ["unit4", "reproductive", "female"]
+
   # ============================================================================
   # Text-Overlay Questions (no images, just pretty gradient backgrounds)
 
