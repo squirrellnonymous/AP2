@@ -1,5 +1,84 @@
 # Release Notes
 
+## December 6, 2025 (Part 2) - Portrait Layout Updates for Unit 4 Practical 5
+
+### 📐 Gradient Image Resize & Portrait Layout Refinements
+
+Updated gradient images and CSS for Unit 4 Practical 5 (Digestive & Reproductive) to match photo image dimensions and improve mobile display.
+
+**Files Updated:** `images/gradients/01p-05p.jpg`, `css/practical.css`, `flashcards/flashcard-styles.css`
+
+#### Changes Made
+
+**Gradient Image Resize:**
+- Resized portrait gradient images from 400 × 593 to 512 × 760 pixels
+- Now matches photo image dimensions for consistent display
+- Simplifies CSS - one set of dimensions instead of two
+
+**Practical CSS Updates:**
+```css
+/* Portrait layout dimensions updated to match 512×760 images */
+body.portrait-layout .image-content {
+    max-width: 512px;
+}
+
+body.portrait-layout .image-content img {
+    max-height: 760px;
+}
+
+body.portrait-layout .image-container.has-text-overlay .question-text {
+    height: 760px;
+}
+
+/* Text overlay vertical positioning adjustment for portrait layout */
+body.portrait-layout .question-text-overlay {
+    top: 30%;  /* Adjusted from default 50% to account for container height */
+}
+```
+
+**Flashcards Mobile Portrait Layout:**
+```css
+@media (max-width: 640px) {
+    /* Portrait layout gradients fill width on mobile */
+    body.portrait-layout .image-container.has-text-overlay .term-image {
+        width: 100%;
+        max-width: none;
+        height: auto;
+    }
+}
+```
+
+#### Known Issues & Future Improvements
+
+**Text Overlay Centering Inconsistency:**
+- Flashcards and practicals use different rendering approaches for text overlays
+- Flashcards: Direct child of `.image-container` with flex centering (properly centered)
+- Practicals: Nested in `.question-text` container with absolute positioning + transform
+- Current workaround: Using `top: 30%` instead of `top: 50%` for portrait layout practical
+- **Better solution needed:** Unify the rendering structure or make overlay container dynamically match image height
+
+**Structural Differences:**
+```
+Flashcards:                      Practicals:
+.image-container                 .image-container
+  ├─ img                           └─ .image-content (position: relative)
+  └─ .question-text-overlay             ├─ img
+                                         └─ .question-text (position: absolute, height: 760px)
+                                              └─ .question-text-overlay (top: 50%, transform: translate(-50%, -50%))
+```
+
+**Proposed Future Solution:**
+1. Unify rendering structure between flashcards and practicals
+2. Use CSS Grid or flex-based overlay instead of absolute positioning
+3. Make overlay container height dynamically match actual displayed image height (not fixed 760px)
+4. This would eliminate need for percentage hacks and work across all screen sizes
+
+**Why Current Approach is Suboptimal:**
+- Fixed 760px container height doesn't scale with image on smaller screens
+- Image may display at 500px tall but overlay container is 760px, so centering is off
+- Percentage adjustment (30%) is viewport-specific and may not work for all screen sizes
+- Inconsistent with flashcard implementation which uses proper centering
+
 ## December 6, 2025 - Text Overflow & Centering Fix for Flashcards
 
 ### 🔧 Fixed Text Overflow and Centering Issues

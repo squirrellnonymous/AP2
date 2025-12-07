@@ -3,6 +3,8 @@
 ## Quick Index
 
 ### Feature Requests
+- Unify Rendering Structure Between Flashcards and Practicals - Not yet implemented
+- Mobile-First Design for Anatomical Images - Not yet implemented
 - Comprehensive Style Library System for Flashcards - Not yet implemented
 - Footer on All Pages with Project Information - Not yet implemented
 - Midi Quizzes - 10 Question Practice Format - Not yet implemented
@@ -32,6 +34,89 @@
 ---
 
 # Feature Requests (Detailed)
+
+## Unify Rendering Structure Between Flashcards and Practicals
+
+**Status:** Not yet implemented
+**Priority:** Medium (architectural improvement for consistency and maintainability)
+**Location:** `question-renderer.js`, `flashcard-engine.js`, `practical-template.html`, `css/practical.css`, `flashcards/flashcard-styles.css`
+
+### Problem
+
+Flashcards and practicals currently use different rendering approaches for text overlay questions, leading to inconsistent behavior and CSS workarounds:
+
+**Flashcards Structure:**
+```
+.image-container (display: flex, align-items: center, justify-content: center)
+  ├─ img
+  └─ .question-text-overlay (centered via flex)
+```
+
+**Practicals Structure:**
+```
+.image-container
+  └─ .image-content (position: relative)
+       ├─ img
+       └─ .question-text (position: absolute, fixed height)
+            └─ .question-text-overlay (top: 50%, transform: translate(-50%, -50%))
+```
+
+**Current Issues:**
+- Text overlays don't center consistently between the two modes
+- Practicals use fixed-height containers (e.g., 760px) that don't scale with actual image size
+- Requires viewport-specific CSS hacks (e.g., `top: 30%` for portrait layout)
+- Same content displays differently depending on whether viewed as flashcard or practical
+- Students expect consistent presentation across both study modes
+
+### Proposed Solution
+
+1. **Unify the rendering structure** so both flashcards and practicals use the same HTML/CSS approach
+2. **Use flex-based centering** instead of absolute positioning + transform
+3. **Make overlay containers dynamically match actual displayed image dimensions** (not fixed heights)
+4. **Test thoroughly** to ensure existing content works in both modes
+
+### Benefits
+
+- Consistent visual presentation across flashcards and practicals
+- Eliminates need for viewport-specific CSS workarounds
+- Scales properly across all screen sizes
+- Easier to maintain (one approach instead of two)
+- Better user experience - content looks the same however students choose to study it
+
+## Mobile-First Design for Anatomical Images
+
+**Status:** Partially implemented (Unit 4 Practical 5 uses portrait layout)
+**Priority:** Medium (improves learning by showing complete anatomical structures)
+**Location:** Image files, YAML configuration, CSS portrait layout system
+
+### Problem
+
+Traditional landscape-oriented images (700 × 450) work well on desktop but can crop important anatomical structures on mobile devices:
+- Structures at edges get cut off
+- Important labels may not be visible
+- Students miss critical anatomical details when studying on phones
+
+### Current Solution (Unit 4 Practical 5)
+
+- Portrait-oriented images: 512 × 760 pixels (matching aspect ratio of mobile screens)
+- Gradient backgrounds: Also 512 × 760 for text overlay questions
+- `layout: "portrait"` in YAML applies special CSS
+- Works well on mobile but also displays properly on desktop (constrained width)
+
+### Proposed Expansion
+
+1. **Evaluate all existing practicals** for potential cropping issues on mobile
+2. **Redesign critical images as portrait-oriented** where anatomical structures extend horizontally
+3. **Standardize on mobile-first dimensions** for new content
+4. **Consider responsive image serving** - portrait for mobile, landscape for desktop
+5. **Document best practices** for creating anatomical images that work across devices
+
+### Benefits
+
+- Students can study effectively on any device
+- No important structures cropped or hidden
+- Better accessibility for mobile-first learners
+- Future-proofs content as mobile usage increases
 
 ## Comprehensive Style Library System for Flashcards
 

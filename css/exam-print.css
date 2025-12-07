@@ -476,8 +476,7 @@
 
     .cover-header {
         text-align: center;
-        margin-bottom: 60pt;
-        page-break-after: always;
+        margin-bottom: 40pt;
     }
 
     .cover-header h1 {
@@ -495,14 +494,16 @@
         margin: 0 auto;
     }
 
-    .name-field,
-    .date-field {
+    .name-field {
         margin-bottom: 24pt;
         font-size: 12pt;
     }
 
-    .name-field label,
-    .date-field label {
+    .date-field {
+        display: none !important;
+    }
+
+    .name-field label {
         color: black;
     }
 
