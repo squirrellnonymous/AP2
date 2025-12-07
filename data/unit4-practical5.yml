@@ -343,8 +343,8 @@ questions:
 
   - id: 46
     image: "practical5/46.jpg"
-    question: "Is this tissue normal? If not what is the condition?"
-    answer: ["cirrhosis", "liver cirrhosis", "cirrhosis of the liver"]
+    question: "What condition does this tissue show?"
+    answer: ["cirrhosis", "liver cirrhosis", "cirrhosis of the liver", "cirrhotic liver tissue", "cirrhotic liver", "cirrhotic tissue"]
     definition: "Cirrhosis is chronic liver scarring caused by long-term damage (from alcohol, hepatitis, or other causes). The normal liver architecture is disrupted and replaced with fibrous scar tissue, leading to liver dysfunction."
     tags: ["unit4", "digestive", "liver"]
 
@@ -361,6 +361,13 @@ questions:
     answer: ["jejunum", "small intestine"]
     definition: "The jejunum is the middle section of the small intestine, characterized by tall villi, prominent circular folds (plicae circulares), and fewer goblet cells than the ileum. It's the primary site of nutrient absorption."
     tags: ["unit4", "digestive", "small-intestine"]
+
+  - id: 49
+    image: "practical5/49.jpg"
+    question: "What's the structure labeled x?"
+    answer: ["scrotum"]
+    definition: "The external sac of skin and muscle that contains the testes. It regulates testicular temperature by contracting when cold and relaxing when warm, maintaining optimal temperature for sperm production (about 3°C below body temperature)."
+    tags: ["unit4", "reproductive", "male"]
 
   # ============================================================================
   # Text-Overlay Questions (no images, just pretty gradient backgrounds)
