@@ -419,6 +419,27 @@ questions:
     definition: "Finger-like projections at the end of the fallopian tube that sweep over the ovary. They create currents to capture the released egg during ovulation and guide it into the uterine tube."
     tags: ["unit4", "reproductive", "female"]
 
+  - id: 56
+    image: "practical5/56.jpg"
+    question: "What is the layer labeled x?"
+    answer: ["myometrium"]
+    definition: "The thick middle layer of smooth muscle in the uterine wall. It contracts rhythmically during labor to push the baby out and during menstruation to expel the endometrial lining."
+    tags: ["unit4", "reproductive", "female"]
+
+  - id: 57
+    image: "practical5/57.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["cervix"]
+    definition: "The lower, narrow portion of the uterus that extends into the vagina. It serves as a passageway for menstrual flow, sperm, and childbirth. The cervical opening (os) dilates during labor."
+    tags: ["unit4", "reproductive", "female"]
+
+  - id: 59
+    image: "practical5/59.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["corpus luteum"]
+    definition: "The temporary endocrine structure ('yellow body') that forms from the ruptured follicle after ovulation. It secretes progesterone to maintain the uterine lining for potential pregnancy. If pregnancy doesn't occur, it degenerates into the corpus albicans."
+    tags: ["unit4", "reproductive", "female", "ovary"]
+
   - id: 60
     image: "practical5/60.jpg"
     question: "What is the structure labeled x?"
@@ -447,6 +468,13 @@ questions:
     definition: "The enlarged, sensitive tip of the penis that is homologous to the glans clitoris in females. It contains numerous nerve endings and is covered by the foreskin (prepuce) in uncircumcised males."
     tags: ["unit4", "reproductive", "male"]
 
+  - id: 72
+    image: "practical5/72.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["ovarian ligament"]
+    definition: "A fibrous ligament that connects the ovary to the lateral wall of the uterus. It anchors the ovary in place and is enclosed within the broad ligament."
+    tags: ["unit4", "reproductive", "female"]
+
   - id: 63
     image: "practical5/63.jpg"
     question: "What is the structure labeled x?"
@@ -457,8 +485,8 @@ questions:
   - id: 64
     image: "practical5/64.jpg"
     question: "What is the structure labeled x?"
-    answer: ["corona radiata"]
-    definition: "The outer layer of granulosa cells that surround the oocyte after ovulation. These cells provide nutrients and protection to the egg. The name means 'radiating crown' due to its appearance."
+    answer: ["antrum"]
+    definition: "the antrum is a fluid filled space that nourishes the secondary oocyte if it becomes a fertiziled ovum. It is the characteristic sign that you are looking at a Graafian follicle."
     tags: ["unit4", "reproductive", "female", "ovary", "tissue"]
 
   - id: 65
@@ -495,6 +523,13 @@ questions:
     answer: ["greater vestibular gland"]
     definition: "One of two pea-sized glands (also called Bartholin's glands) located on either side of the vaginal opening. They secrete mucus for lubrication during sexual arousal."
     tags: ["unit4", "reproductive", "female"]
+
+  - id: 73
+    image: "practical5/73.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["greater omentum"]
+    definition: "A large, apron-like fold of peritoneum that hangs down from the greater curvature of the stomach and drapes over the intestines. It stores fat, provides immune protection, and helps limit the spread of infections in the abdomen."
+    tags: ["unit4", "digestive"]
 
   # ============================================================================
   # Text-Overlay Questions (no images, just pretty gradient backgrounds)
