@@ -74,21 +74,21 @@ questions:
     question: "Where is this tissue found?"
     answer: ["stomach"]
     definition: "Stomach tissue is characterized by gastric pits, mucus-secreting cells, and specialized glands that produce digestive enzymes and hydrochloric acid."
-    tags: ["unit4", "digestive", "stomach"]
+    tags: ["unit4", "digestive", "stomach", "tissue"]
 
   - id: 7
     image: "practical5/7.jpg"
     question: "What type of tissue is this?"
     answer: ["nonkeratinized stratified squamous epithelium"]
     definition: "This tissue lines the esophagus and protects against abrasion from food. It remains moist unlike keratinized epithelium found on skin."
-    tags: ["unit4", "digestive", "esophagus"]
+    tags: ["unit4", "digestive", "esophagus", "tissue"]
 
   - id: 8
     image: "practical5/8.jpg"
     question: "Where is this tissue found?"
     answer: ["salivary gland"]
     definition: "Salivary glands produce saliva containing enzymes (like amylase) to begin chemical digestion of carbohydrates in the mouth. Greek: 'para' = near and 'otid' = ear."
-    tags: ["unit4", "digestive", "salivary-gland"]
+    tags: ["unit4", "digestive", "salivary-gland", "tissue"]
 
   - id: 9
     image: "practical5/9.jpg"
@@ -228,14 +228,14 @@ questions:
     question: "What are the structures shown in the tissue?"
     answer: ["seminiferous tubules"]
     definition: "Coiled tubules in the testes where sperm are produced. Lined with spermatogenic cells at various stages of development."
-    tags: ["unit4", "reproductive", "male"]
+    tags: ["unit4", "reproductive", "male", "tissue"]
 
   - id: 29
     image: "practical5/29.jpg"
     question: "What is the structure at the end of the pointer?"
     answer: ["corpus cavernosum"]
     definition: "One of two columns of erectile tissue in the penis that fill with blood during arousal to produce an erection. Located dorsally (on top)."
-    tags: ["unit4", "reproductive", "male"]
+    tags: ["unit4", "reproductive", "male", "tissue"]
 
   - id: 30
     image: "practical5/30.jpg"
@@ -326,49 +326,49 @@ questions:
     question: "What is the type of follicle at the end of the pointer?"
     answer: ["Graafian follicle"]
     definition: "A mature ovarian follicle filled with fluid (antrum) that contains a secondary oocyte ready for ovulation. Also called a mature follicle or tertiary follicle."
-    tags: ["unit4", "reproductive", "female", "ovary"]
+    tags: ["unit4", "reproductive", "female", "ovary", "tissue"]
 
   - id: 43
     image: "practical5/43.jpg"
     question: "Where would this tissue be found?"
     answer: ["ovary"]
     definition: "Ovarian tissue contains follicles at various stages of development, including primordial, primary, secondary, and Graafian follicles. The tissue also shows the outer cortex and inner medulla regions."
-    tags: ["unit4", "reproductive", "female", "ovary"]
+    tags: ["unit4", "reproductive", "female", "ovary", "tissue"]
 
   - id: 44
     image: "practical5/44.jpg"
     question: "Where is this tissue found?"
     answer: ["pancreas"]
     definition: "Pancreatic tissue contains exocrine acinar cells that produce digestive enzymes and endocrine islets of Langerhans that secrete hormones like insulin and glucagon."
-    tags: ["unit4", "digestive", "pancreas"]
+    tags: ["unit4", "digestive", "pancreas", "tissue"]
 
   - id: 45
     image: "practical5/45.jpg"
     question: "What type of tissue is shown?"
     answer: ["normal liver tissue"]
     definition: "Normal liver tissue shows organized hepatocytes arranged in plates radiating from central veins, with sinusoids (blood channels) between them and portal triads at the corners."
-    tags: ["unit4", "digestive", "liver"]
+    tags: ["unit4", "digestive", "liver", "tissue"]
 
   - id: 46
     image: "practical5/46.jpg"
     question: "What condition does this tissue show?"
     answer: ["cirrhosis", "liver cirrhosis", "cirrhosis of the liver", "cirrhotic liver tissue", "cirrhotic liver", "cirrhotic tissue"]
     definition: "Cirrhosis is chronic liver scarring caused by long-term damage (from alcohol, hepatitis, or other causes). The normal liver architecture is disrupted and replaced with fibrous scar tissue, leading to liver dysfunction."
-    tags: ["unit4", "digestive", "liver"]
+    tags: ["unit4", "digestive", "liver", "tissue"]
 
   - id: 47
     image: "practical5/47.jpg"
     question: "Where is this tissue found?"
     answer: ["large intestine"]
     definition: "Large intestine tissue is characterized by abundant goblet cells that secrete mucus, deep intestinal crypts, and the absence of villi (unlike the small intestine). It functions primarily in water absorption."
-    tags: ["unit4", "digestive", "large-intestine"]
+    tags: ["unit4", "digestive", "large-intestine", "tissue"]
 
   - id: 48
     image: "practical5/48.jpg"
     question: "Where is this tissue found?"
     answer: ["jejunum", "small intestine"]
     definition: "The jejunum is the middle section of the small intestine, characterized by tall villi, prominent circular folds (plicae circulares), and fewer goblet cells than the ileum. It's the primary site of nutrient absorption."
-    tags: ["unit4", "digestive", "small-intestine"]
+    tags: ["unit4", "digestive", "small-intestine", "tissue"]
 
   - id: 49
     image: "practical5/49.jpg"
@@ -446,6 +446,34 @@ questions:
     answer: ["glans", "glans penis"]
     definition: "The enlarged, sensitive tip of the penis that is homologous to the glans clitoris in females. It contains numerous nerve endings and is covered by the foreskin (prepuce) in uncircumcised males."
     tags: ["unit4", "reproductive", "male"]
+
+  - id: 63
+    image: "practical5/63.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["corona radiata"]
+    definition: "The outer layer of granulosa cells that surround the oocyte after ovulation. These cells provide nutrients and protection to the egg. The name means 'radiating crown' due to its appearance."
+    tags: ["unit4", "reproductive", "female", "ovary", "tissue"]
+
+  - id: 64
+    image: "practical5/64.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["corona radiata"]
+    definition: "The outer layer of granulosa cells that surround the oocyte after ovulation. These cells provide nutrients and protection to the egg. The name means 'radiating crown' due to its appearance."
+    tags: ["unit4", "reproductive", "female", "ovary", "tissue"]
+
+  - id: 65
+    image: "practical5/65.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["secondary oocyte"]
+    definition: "The haploid cell produced after the first meiotic division of a primary oocyte. It is arrested in metaphase II and released during ovulation. If fertilized, it completes meiosis II to become a mature ovum."
+    tags: ["unit4", "reproductive", "female", "ovary", "tissue"]
+
+  - id: 66
+    image: "practical5/66.jpg"
+    question: "What type of cells are labeled x in the image?"
+    answer: ["granulosa cells"]
+    definition: "Follicle cells that surround and nourish the developing oocyte. They produce estrogen (working with thecal cells) and form the corona radiata after ovulation. Part of the follicular structure in the ovary."
+    tags: ["unit4", "reproductive", "female", "ovary", "tissue"]
 
   # ============================================================================
   # Text-Overlay Questions (no images, just pretty gradient backgrounds)
