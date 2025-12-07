@@ -401,8 +401,8 @@ questions:
   - id: 53
     image: "practical5/53.jpg"
     question: "What is the structure labeled x?"
-    answer: ["labium majora", "labium majus"]
-    definition: "One of the outer folds of skin in the female external genitalia. Note: This is SINGULAR - 'labium majus' or 'labium majora' refers to one fold, while 'labia majora' is plural (refers to both folds together)."
+    answer: ["labium majus"]
+    definition: "One of the outer folds of skin in the female external genitalia. Note: This is SINGULAR - 'labium majus' refers to one fold, while 'labia majora' is plural (refers to both folds together)."
     tags: ["unit4", "reproductive", "female"]
 
   - id: 54
