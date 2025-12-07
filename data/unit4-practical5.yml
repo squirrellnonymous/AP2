@@ -369,6 +369,48 @@ questions:
     definition: "The external sac of skin and muscle that contains the testes. It regulates testicular temperature by contracting when cold and relaxing when warm, maintaining optimal temperature for sperm production (about 3°C below body temperature)."
     tags: ["unit4", "reproductive", "male"]
 
+  - id: 50
+    image: "practical5/50.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["testis"]
+    definition: "The male gonad that produces sperm and testosterone. Note: This is the SINGULAR form - 'testis' refers to one, while 'testes' is plural (two). Since the image shows one structure, the correct answer is 'testis' not 'testes'."
+    tags: ["unit4", "reproductive", "male"]
+
+  - id: 51
+    image: "practical5/51.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["areola"]
+    definition: "The pigmented circular area surrounding the nipple of the breast. It contains sebaceous glands that secrete oil to lubricate the nipple during breastfeeding."
+    tags: ["unit4", "reproductive", "female"]
+
+  - id: 52
+    image: "practical5/52.jpg"
+    question: "What are the structures labeled x?"
+    answer: ["lactiferous ducts"]
+    definition: "Milk ducts in the breast that transport milk from the mammary glands to the nipple. During lactation, milk flows through these ducts when the baby nurses."
+    tags: ["unit4", "reproductive", "female"]
+
+  - id: 53
+    image: "practical5/53.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["labium majora", "labium majus"]
+    definition: "One of the outer folds of skin in the female external genitalia. Note: This is SINGULAR - 'labium majus' or 'labium majora' refers to one fold, while 'labia majora' is plural (refers to both folds together)."
+    tags: ["unit4", "reproductive", "female"]
+
+  - id: 54
+    image: "practical5/54.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["broad ligament"]
+    definition: "A wide fold of peritoneum that extends from both sides of the uterus to the lateral walls of the pelvis. It helps support and stabilize the uterus, fallopian tubes, and ovaries within the pelvic cavity."
+    tags: ["unit4", "reproductive", "female"]
+
+  - id: 55
+    image: "practical5/55.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["fimbriae"]
+    definition: "Finger-like projections at the end of the fallopian tube that sweep over the ovary. They create currents to capture the released egg during ovulation and guide it into the uterine tube."
+    tags: ["unit4", "reproductive", "female"]
+
   # ============================================================================
   # Text-Overlay Questions (no images, just pretty gradient backgrounds)
 
