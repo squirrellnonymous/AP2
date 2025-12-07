@@ -391,7 +391,7 @@
     <div id="quiz-builder" class="quiz-builder-container">
         <div class="builder-section">
             <h2>Select Topics</h2>
-            <p>Choose which topics you want to practice. The quiz will randomly select 4 questions from your chosen topics.</p>
+            <p id="quiz-description">Choose which topics you want to practice. The quiz will randomly select 4 questions from your chosen topics.</p>
 
             <div class="tag-selector" id="tag-selector">
                 <!-- Tags will be populated here -->
@@ -426,7 +426,7 @@
                         <button id="next-btn" class="nav-btn nav-next" onclick="nextImage()">Next ›</button>
                     </div>
                     <div class="image-counter">
-                        Question <span id="current-question">1</span> of 4
+                        Question <span id="current-question">1</span> of <span id="total-questions">4</span>
                     </div>
                 </div>
             </div>
@@ -477,6 +477,8 @@
         let currentImageIndex = 0;
         let availableTags = [];
         let originalUnit = null; // Store the unit parameter from page load
+        let questionCount = 4; // Default to 4, can be overridden by URL parameter
+        let preloadedImages = new Map(); // Cache for preloaded images
 
         // Check URL parameters for shared quiz
         function getUrlTags() {
@@ -495,6 +497,15 @@
                 const urlParams = new URLSearchParams(window.location.search);
                 const unit = urlParams.get('unit') || 'unit2-part2-practical';
                 originalUnit = unit; // Save for later use in breadcrumbs
+
+                // Get question count from URL parameter, default to 4
+                const countParam = urlParams.get('count');
+                if (countParam) {
+                    const parsedCount = parseInt(countParam, 10);
+                    if (!isNaN(parsedCount) && parsedCount > 0) {
+                        questionCount = parsedCount;
+                    }
+                }
                 const response = await fetch(`data/${unit}.yml`);
                 const yamlText = await response.text();
                 practicalData = jsyaml.load(yamlText);
@@ -511,6 +522,16 @@
                     // Natural sort for alphanumeric (e.g., vessels-8, vessels-9, vessels-10)
                     return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
                 });
+
+                // Apply layout class if specified in YAML
+                if (practicalData.layout === 'portrait') {
+                    document.body.classList.add('portrait-layout');
+                }
+
+                // Update quiz description with dynamic count
+                document.getElementById('quiz-description').textContent =
+                    `Choose which topics you want to practice. The quiz will randomly select ${questionCount} questions from your chosen topics.`;
+
                 renderTagSelection();
 
                 // Check if URL has tags parameter - auto-start quiz
@@ -588,8 +609,8 @@
             if (count === 0) {
                 countDisplay.textContent = 'No questions found for selected tags';
                 startBtn.disabled = true;
-            } else if (count < 4) {
-                countDisplay.innerHTML = `<strong>${count}</strong> questions available (need at least 4 for a quiz)`;
+            } else if (count < questionCount) {
+                countDisplay.innerHTML = `<strong>${count}</strong> questions available (need at least ${questionCount} for a quiz)`;
                 startBtn.disabled = true;
             } else {
                 countDisplay.innerHTML = `<strong>${count}</strong> questions available — ready to build quiz!`;
@@ -606,16 +627,17 @@
                 return q.tags && q.tags.some(tag => selectedTags.has(tag));
             });
 
-            // Randomly select 4 questions
+            // Randomly select questions based on questionCount
             const shuffled = shuffleArray(matchingQuestions);
-            quizQuestions = shuffled.slice(0, 4);
+            quizQuestions = shuffled.slice(0, questionCount);
 
-            // Update URL with selected tags AND unit (so reload regenerates quiz with same tags and unit)
+            // Update URL with selected tags, unit, and count (so reload regenerates quiz with same settings)
             const tagsParam = Array.from(selectedTags).join(',');
             const unitParam = originalUnit && originalUnit !== 'unit2-part2-practical'
                 ? `&unit=${encodeURIComponent(originalUnit)}`
                 : '';
-            const newUrl = `${window.location.pathname}?tags=${encodeURIComponent(tagsParam)}${unitParam}`;
+            const countParam = questionCount !== 4 ? `&count=${questionCount}` : '';
+            const newUrl = `${window.location.pathname}?tags=${encodeURIComponent(tagsParam)}${unitParam}${countParam}`;
             window.history.replaceState({}, '', newUrl);
 
             // Hide builder, show quiz
@@ -646,8 +668,9 @@
             const unitParam = originalUnit && originalUnit !== 'unit2-part2-practical'
                 ? `&unit=${encodeURIComponent(originalUnit)}`
                 : '';
+            const countParam = questionCount !== 4 ? `&count=${questionCount}` : '';
             const baseUrl = window.location.origin + window.location.pathname;
-            const shareUrl = `${baseUrl}?tags=${encodeURIComponent(tagsParam)}${unitParam}`;
+            const shareUrl = `${baseUrl}?tags=${encodeURIComponent(tagsParam)}${unitParam}${countParam}`;
             document.getElementById('share-url-input').value = shareUrl;
         }
 
@@ -671,10 +694,13 @@
         }
 
         function renderQuiz() {
+            // Update total questions display
+            document.getElementById('total-questions').textContent = questionCount;
+
             // Generate answer sheet using shared module
             AnswerSheet.generate({
                 gridSelector: '#answers-grid',
-                totalQuestions: 4,
+                totalQuestions: questionCount,
                 onNumberClick: goToImage,
                 onInputClick: goToQuestionAndFocus
             });
@@ -706,25 +732,50 @@
 
             // Update navigation buttons
             document.getElementById('prev-btn').disabled = index === 0;
-            document.getElementById('next-btn').disabled = index === 3;
+            document.getElementById('next-btn').disabled = index === questionCount - 1;
 
             // Update image counter
-            document.querySelector('.image-counter').innerHTML = `Question <span id="current-question">${index + 1}</span> of 4`;
+            document.querySelector('.image-counter').innerHTML = `Question <span id="current-question">${index + 1}</span> of <span id="total-questions">${questionCount}</span>`;
 
             // Update answer sheet highlighting
             document.querySelectorAll('.answer-number').forEach((btn, i) => {
                 btn.classList.toggle('active', i === index);
             });
+
+            // Preload adjacent images
+            preloadAdjacentImages(index);
+        }
+
+        // preloadImage is provided by js/question-renderer.js
+
+        function preloadAdjacentImages(currentIndex) {
+            if (!quizQuestions || quizQuestions.length === 0) return;
+
+            // Preload previous image
+            if (currentIndex > 0) {
+                const prevQuestion = quizQuestions[currentIndex - 1];
+                if (prevQuestion && prevQuestion.image) {
+                    preloadImage(prevQuestion.image, preloadedImages);
+                }
+            }
+
+            // Preload next image
+            if (currentIndex < quizQuestions.length - 1) {
+                const nextQuestion = quizQuestions[currentIndex + 1];
+                if (nextQuestion && nextQuestion.image) {
+                    preloadImage(nextQuestion.image, preloadedImages);
+                }
+            }
         }
 
         function goToImage(index) {
-            if (index >= 0 && index < 4) {
+            if (index >= 0 && index < questionCount) {
                 showImage(index);
             }
         }
 
         function goToQuestionAndFocus(index) {
-            if (index >= 0 && index < 4) {
+            if (index >= 0 && index < questionCount) {
                 showImage(index);
                 document.querySelector('.image-container').scrollIntoView({ behavior: 'smooth' });
                 setTimeout(() => {
@@ -740,7 +791,7 @@
         }
 
         function nextImage() {
-            if (currentImageIndex < 3) {
+            if (currentImageIndex < questionCount - 1) {
                 showImage(currentImageIndex + 1);
             }
             setTimeout(() => {
@@ -777,9 +828,9 @@
                 return q.tags && q.tags.some(tag => selectedTags.has(tag));
             });
 
-            // Randomly select 4 new questions
+            // Randomly select new questions based on questionCount
             const shuffled = shuffleArray(matchingQuestions);
-            quizQuestions = shuffled.slice(0, 4);
+            quizQuestions = shuffled.slice(0, questionCount);
 
             // Reset the interface
             document.getElementById('final-score').style.display = 'none';
@@ -828,13 +879,14 @@
         }
 
         function shareQuiz() {
-            // Generate shareable URL with selected tags and unit
+            // Generate shareable URL with selected tags, unit, and count
             const tagsParam = Array.from(selectedTags).join(',');
             const unitParam = originalUnit && originalUnit !== 'unit2-part2-practical'
                 ? `&unit=${encodeURIComponent(originalUnit)}`
                 : '';
+            const countParam = questionCount !== 4 ? `&count=${questionCount}` : '';
             const baseUrl = window.location.origin + window.location.pathname;
-            const shareUrl = `${baseUrl}?tags=${encodeURIComponent(tagsParam)}${unitParam}`;
+            const shareUrl = `${baseUrl}?tags=${encodeURIComponent(tagsParam)}${unitParam}${countParam}`;
 
             // Create modal
             const modal = document.createElement('div');

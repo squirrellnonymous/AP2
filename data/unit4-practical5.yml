@@ -440,6 +440,13 @@ questions:
     definition: "The external, highly sensitive tip of the clitoris, homologous to the glans penis in males. It contains numerous nerve endings and is covered by the clitoral hood (prepuce)."
     tags: ["unit4", "reproductive", "female"]
 
+  - id: 71
+    image: "practical5/71.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["glans", "glans penis"]
+    definition: "The enlarged, sensitive tip of the penis that is homologous to the glans clitoris in females. It contains numerous nerve endings and is covered by the foreskin (prepuce) in uncircumcised males."
+    tags: ["unit4", "reproductive", "male"]
+
   # ============================================================================
   # Text-Overlay Questions (no images, just pretty gradient backgrounds)
 
