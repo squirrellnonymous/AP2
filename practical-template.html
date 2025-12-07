@@ -666,11 +666,14 @@
 
             // Grade extra credit questions if present
             if (practicalData.extraCreditQuestions && practicalData.extraCreditQuestions.length > 0) {
+                // Check if extra credit has custom point value (defaults to 2)
+                const extraCreditPoints = practicalData.extraCreditQuestions[0]?.points || 2;
+
                 const ecResult = AnswerGrading.gradeExtraCredit({
                     questions: practicalData.extraCreditQuestions,
                     answerInputPrefix: 'extra-credit-',
                     buttonSelector: '.extra-credit-button',
-                    correctPoints: 2,
+                    correctPoints: extraCreditPoints,
                     partialPoints: 1,
                     threshold: 0.8,
                     onQuestionClick: showQuestionPopup

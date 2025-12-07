@@ -26,6 +26,14 @@ questions:
   #   definition: "This is sample yml data that can be copied and adapted for questions with images. Hang in there, baby!"
   #   tags: ["unit4", "sample", "kitten"]
 
+  - id: 0
+    image: "practical5/00.jpg"
+    question: "What is a baby cat?"
+    answer: ["a kitten", "kitten"]
+    definition: "This is sample yml data that can be copied and adapted for questions with images. Hang in there, baby!"
+    points: 3
+    tags: ["unit4", "extra-credit"]
+
   - id: 1
     image: "practical5/01.jpg"
     question: "What is the structure labeled x?"

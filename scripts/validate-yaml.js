@@ -99,7 +99,7 @@ function validateYamlFile(filePath) {
             const questionNum = question.id || (index + 1);
 
             // Check required fields
-            if (!question.id) {
+            if (question.id === undefined || question.id === null) {
                 issues.push(`Question ${index + 1}: Missing id field`);
             }
 
