@@ -419,6 +419,27 @@ questions:
     definition: "Finger-like projections at the end of the fallopian tube that sweep over the ovary. They create currents to capture the released egg during ovulation and guide it into the uterine tube."
     tags: ["unit4", "reproductive", "female"]
 
+  - id: 60
+    image: "practical5/60.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["bulbourethral gland", "Cowper's gland"]
+    definition: "One of two pea-sized glands in the male reproductive system that secrete alkaline pre-ejaculatory fluid to neutralize acidic urine in the urethra and provide lubrication. Also called Cowper's glands."
+    tags: ["unit4", "reproductive", "male"]
+
+  - id: 61
+    image: "practical5/61.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["glans clitoris", "glans clittoris"]
+    definition: "The external, highly sensitive tip of the clitoris, homologous to the glans penis in males. It contains numerous nerve endings and is covered by the clitoral hood (prepuce)."
+    tags: ["unit4", "reproductive", "female"]
+
+  - id: 62
+    image: "practical5/62.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["glans clitoris", "glans clittoris"]
+    definition: "The external, highly sensitive tip of the clitoris, homologous to the glans penis in males. It contains numerous nerve endings and is covered by the clitoral hood (prepuce)."
+    tags: ["unit4", "reproductive", "female"]
+
   # ============================================================================
   # Text-Overlay Questions (no images, just pretty gradient backgrounds)
 
