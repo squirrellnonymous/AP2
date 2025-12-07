@@ -110,7 +110,11 @@ function hasConflictingAnatomicalTerms(studentAnswer, correctAnswer) {
         ['atrial', 'ventricular'],
         ['systemic', 'pulmonary'],
         ['artery', 'vein'],
-        ['ascending', 'descending']
+        ['ascending', 'descending'],
+        ['testis', 'testes'],
+        ['labium', 'labia'],
+        ['majus', 'majora'],
+        ['minus', 'minora']
     ];
 
     for (const [term1, term2] of conflictingPairs) {

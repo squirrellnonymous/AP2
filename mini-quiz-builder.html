@@ -847,12 +847,12 @@
             // Build modal questions list for review
             buildModalQuestionsList(quizQuestions, false);
 
-            // Grade questions using shared module (no partial credit for mini quizzes)
+            // Grade questions using shared module (same grading as practicals)
             const result = AnswerGrading.gradeQuestions({
                 questions: quizQuestions,
                 answerInputPrefix: 'answer',
                 circleSelector: '.answer-number',
-                showPartialCredit: false, // Mini quizzes don't show partial credit
+                showPartialCredit: true, // Mini quizzes use same grading as practicals
                 warnBlanks: false,
                 onQuestionClick: showQuestionPopup
             });
