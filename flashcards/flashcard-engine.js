@@ -113,8 +113,6 @@ function generateDeckTitle(tags, cardCount) {
         'heart-lp-4': 'Heart Anatomy - Lab Practical 4',
         'heart-lp-5': 'Advanced Heart & Circulation',
         'heart-layers': 'Heart Layers & Tissues',
-        'tissue': 'Heart Tissues & Layers',
-        'membranes': 'Heart Membranes',
         'formed-elements': 'Blood & Formed Elements',
         'platelets': 'Platelets',
         'blood-clotting': 'Blood Clotting',
