@@ -450,17 +450,17 @@ questions:
   - id: 61
     image: "practical5/61.jpg"
     question: "What is the structure labeled x?"
-    answer: ["glans clitoris", "glans clittoris"]
+    answer: ["glans clitoris", "glans clitoris"]
     definition: "The external, highly sensitive tip of the clitoris, homologous to the glans penis in males. It contains numerous nerve endings and is covered by the clitoral hood (prepuce)."
     tags: ["unit4", "reproductive", "female"]
 
   - id: 62
     image: "practical5/62.jpg"
     question: "What is the structure labeled x?"
-    answer: ["glans clitoris", "glans clittoris"]
+    answer: ["glans clitoris", "glans clitoris"]
     definition: "The external, highly sensitive tip of the clitoris, homologous to the glans penis in males. It contains numerous nerve endings and is covered by the clitoral hood (prepuce)."
     tags: ["unit4", "reproductive", "female"]
-
+ 
   - id: 71
     image: "practical5/71.jpg"
     question: "What is the structure labeled x?"
@@ -484,7 +484,7 @@ questions:
 
   - id: 64
     image: "practical5/64.jpg"
-    question: "What is the structure labeled x?"
+    question: "What is the area labeled x?"
     answer: ["antrum"]
     definition: "the antrum is a fluid filled space that nourishes the secondary oocyte if it becomes a fertiziled ovum. It is the characteristic sign that you are looking at a Graafian follicle."
     tags: ["unit4", "reproductive", "female", "ovary", "tissue"]
