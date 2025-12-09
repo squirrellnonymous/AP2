@@ -573,6 +573,13 @@ questions:
     definition: "A thin layer of smooth muscle in the wall of the scrotum that wrinkles the scrotal skin when it contracts in response to cold. This helps regulate testicular temperature by reducing surface area and bringing the testes closer to the body."
     tags: ["unit4", "reproductive", "male"]
 
+  - id: 80
+    image: "practical5/80.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["cremaster muscle"]
+    definition: "A skeletal muscle that surrounds the spermatic cord and testes. It contracts to elevate the testes closer to the body in response to cold, arousal, or the cremaster reflex, helping regulate testicular temperature and protect the testes."
+    tags: ["unit4", "reproductive", "male"]
+
   # ============================================================================
   # Text-Overlay Questions (no images, just pretty gradient backgrounds)
 
@@ -673,8 +680,8 @@ questions:
   - id: 110
     image: "gradients/03p.jpg"
     question: "Located within spermatic cord and delivers sperm"
-    answer: ["ductus deferens", "vas deferens"]
-    definition: "Muscular tube that transports sperm from the epididymis to the ejaculatory duct. Cut during vasectomy."
+    answer: ["vas deferens", "ductus deferens"]
+    definition: "Muscular tube that transports sperm from the epididymis to the ejaculatory duct. Cut during vasectomy (aka 'ductus defrens')"
     textOverlay: true
     tags: ["unit4", "reproductive", "male", "text-only"]
 

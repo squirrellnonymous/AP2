@@ -173,7 +173,7 @@ multipleChoice:
   - question: "What do maltase, lactase, and sucrase have in common?"
     options:
       - "They are pancreatic enzymes that begin carbohydrate digestion"
-      - "They are brush border enzymes that breakdown of carbohydrates"
+      - "They are brush border enzymes that breakdown carbohydrates"
       - "They are stomach enzymes that digest complex carbohydrates"
       - "They are salivary enzymes that break down starches"
     correct: 1
