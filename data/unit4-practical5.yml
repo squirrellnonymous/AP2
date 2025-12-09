@@ -559,6 +559,20 @@ questions:
     definition: "Also called the ligamentum teres, this is the fibrous remnant of the fetal umbilical vein. It runs from the umbilicus to the liver and is found in the free edge of the falciform ligament."
     tags: ["unit4", "digestive", "liver"]
 
+  - id: 78
+    image: "practical5/78.jpg"
+    question: "What part of the urethra is this (labeled x)?"
+    answer: ["membranous urethra"]
+    definition: "The short middle portion of the male urethra that passes through the urogenital diaphragm. It's the shortest and least expandable part of the urethra, located between the prostatic and spongy (penile) portions."
+    tags: ["unit4", "reproductive", "male"]
+
+  - id: 79
+    image: "practical5/79.jpg"
+    question: "What is the structure labeled x?"
+    answer: ["dartos muscle"]
+    definition: "A thin layer of smooth muscle in the wall of the scrotum that wrinkles the scrotal skin when it contracts in response to cold. This helps regulate testicular temperature by reducing surface area and bringing the testes closer to the body."
+    tags: ["unit4", "reproductive", "male"]
+
   # ============================================================================
   # Text-Overlay Questions (no images, just pretty gradient backgrounds)
 
