@@ -227,13 +227,12 @@ multipleChoice:
 
   - question: "If a male animal is castrated (testicles removed), what happens to FSH and LH levels?"
     options:
-      - "They fluctuate randomly"
-      - "They stay the same"
-      - "They decrease"
-      - "They rise"
-      
+      - "LH increases, FSH decreases"
+      - "LH decreases, LH increases"
+      - "LH increases, FSH increases"
+      - "LH decreases, FSH decreases"
     correct: 2
-    explanation: "FSH and LH levels **rise** because there's no negative feedback from testosterone and inhibin. Without testes, there are no Leydig cells producing testosterone and no Sertoli cells producing inhibin, so the anterior pituitary keeps releasing FSH and LH. However, it doesn't matter because there's no target tissue left."
+    explanation: "FSH and LH levels **both increase** because there's no negative feedback from testosterone and inhibin. Without testes, there are no Leydig cells producing testosterone and no Sertoli cells producing inhibin, so the anterior pituitary keeps releasing FSH and LH. However, it doesn't matter because there's no target tissue left."
     tags: ["unit-4", "reproduction", "male", "hormones", "feedback"]
 
   - question: "Which part of the autonomic nervous system controls erection?"
@@ -273,7 +272,7 @@ trueMakeTrue:
     points: 1
     tags: ["unit-4", "reproduction", "male", "anatomy"]
 
-  - statement: "The ***prostate*** gland produces 60% of seminal fluid, containing sugars and prostaglandins."
+  - statement: "The ***prostate gland*** produces 60% of seminal fluid, containing sugars and prostaglandins."
     isTrue: false
     correctWord: ["seminal vesicles"]
     points: 1
