@@ -395,8 +395,12 @@ essay:
 
 table:
   - question: "Placeholder"
-    headers: ["A", "B", "C"]
+    headers: ["", "A", "B"]
     prefilledColumn: 0
-    answer: ["sample", "sample", "sample"]
+    answer: [
+      ["1", "sample", "sample"],
+      ["2", "sample", "sample"],
+      ["3", "sample", "sample"]
+     ]
     points: 2
     tags: ["unit-4", "reproduction", "male"]
