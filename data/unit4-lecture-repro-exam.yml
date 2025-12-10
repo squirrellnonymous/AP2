@@ -1,8 +1,13 @@
-title: "Lecture Exam - ... & Male Reproduction"
+title: "Lecture Exam - Female & Male Reproduction"
 description: ""
 randomize: true
-maxQuestions: 32
+maxQuestions: 26
 maxTrueMakeTrueQuestions: 10
+tagBalance:
+  - tag: "female"
+    percentage: 60
+  - tag: "male"
+    percentage: 40
 
 multipleChoice:
   - question: "What is the primary advantage of sexual reproduction over asexual reproduction?"
@@ -15,27 +20,17 @@ multipleChoice:
     explanation: "Sexual reproduction creates **genetic diversity**, producing offspring that are very different from their parents. This allows offspring to potentially survive in environments that parents couldn't, which is why sexual reproduction has been so successful in animals."
     tags: ["unit-4", "reproduction", "evolution"]
 
-  # - question: "In mammals, which chromosomal combination typically results in a male?"
-  #   options:
-  #     - "XX"
-  #     - "XY"
-  #     - "XXY"
-  #     - "YY"
-  #   correct: 1
-  #   explanation: "In mammals, **XY** chromosomes typically result in a male. The mother contributes an X chromosome, and the father contributes either an X (resulting in XX female) or Y (resulting in XY male). Note: variations like XXY, XXX, or single X can also occur."
-  #   tags: ["unit-4", "reproduction", "genetics"]
+  - question: "Approximately how many nerve endings does the penis have?"
+    options:
+      - "5,000"
+      - "10,000"
+      - "25,000"
+      - "50,000"
+    correct: 2
+    explanation: "The penis has approximately **25,000 nerve endings**, making it a very sensitive area. This number is important to remember because it will be compared to nerve endings in female anatomy."
+    tags: ["unit-4", "reproduction", "male", "anatomy"]
 
-  # - question: "Approximately how many nerve endings does the penis have?"
-  #   options:
-  #     - "5,000"
-  #     - "10,000"
-  #     - "25,000"
-  #     - "50,000"
-  #   correct: 2
-  #   explanation: "The penis has approximately **25,000 nerve endings**, making it a very sensitive area. This number is important to remember because it will be compared to nerve endings in female anatomy."
-  #   tags: ["unit-4", "reproduction", "male", "anatomy"]
-
-  - question: "What percentage of an ejaculate is sperm?"
+  - question: "What percentage of ejaculate is sperm?"
     options:
       - "10%"
       - "30%"
@@ -84,26 +79,6 @@ multipleChoice:
     correct: 1
     explanation: "Only about **10% of sperm make it through the cervix** - that's the first gate. This is one reason why males need to produce so many sperm (20-750 million per ejaculate). Additionally, white blood cells flood the cervix and uterus within seconds to attack sperm, and the acidic vaginal pH (3.8-4.5) is hostile to sperm."
     tags: ["unit-4", "reproduction", "male", "physiology"]
-
-  # - question: "What is the pH range of the vagina?"
-  #   options:
-  #     - "1.0-2.0"
-  #     - "3.8-4.5"
-  #     - "7.0-7.4"
-  #     - "8.0-9.0"
-  #   correct: 1
-  #   explanation: "The vagina has a pH of **3.8-4.5**, making it acidic and a fairly hostile environment for sperm. This is why seminal fluid contains buffers (especially from the prostate) to protect sperm and why sperm need protection in seminal fluid with sugars and alkaline buffers."
-  #   tags: ["unit-4", "reproduction", "female", "physiology"]
-
-  # - question: "Where do sperm mature and get stored?"
-  #   options:
-  #     - "Seminiferous tubules"
-  #     - "Vas deferens"
-  #     - "Epididymis"
-  #     - "Prostate"
-  #   correct: 2
-  #   explanation: "Sperm mature and are stored in the **epididymis**. They can mature in about 12 days but can be stored for months if no ejaculation occurs. Sperm are made in the seminiferous tubules of the testes, then move to the epididymis for maturation and storage."
-  #   tags: ["unit-4", "reproduction", "male", "anatomy"]
 
   - question: "What do Sertoli cells produce that keeps testosterone concentrated near the testes?"
     options:
@@ -185,16 +160,6 @@ multipleChoice:
     explanation: "The acrosome **contains lysosomes (enzymes) to penetrate the egg**, specifically to get through the zona pellucida (egg's protective layer). This structure forms during spermiogenesis and is essential for fertilization."
     tags: ["unit-4", "reproduction", "male", "cell-biology"]
 
-  # - question: "Why is the midpiece of sperm packed with mitochondria?"
-  #   options:
-  #     - "To store genetic material"
-  #     - "To make ATP for tail movement"
-  #     - "To protect DNA from damage"
-  #     - "To help with fertilization"
-  #   correct: 1
-  #   explanation: "The midpiece is packed with mitochondria **to make ATP (energy) for tail movement**. Sperm need lots of energy to swim through the female reproductive tract to reach the egg. This midpiece forms during spermiogenesis."
-  #   tags: ["unit-4", "reproduction", "male", "cell-biology"]
-
   - question: "How long does it take to go from a Type B spermatogonium to a mature sperm?"
     options:
       - "7 days"
@@ -265,6 +230,356 @@ multipleChoice:
     explanation: "The corpus spongiosum doesn't engorge as much because **the urethra runs through it and needs to stay open** for sperm/semen to pass through during ejaculation. If it filled with too much blood, it would compress and close off the urethra, preventing ejaculation."
     tags: ["unit-4", "reproduction", "male", "anatomy", "physiology"]
 
+  - question: "When does oogenesis begin in females?"
+    options:
+      - "At birth"
+      - "At puberty"
+      - "Before birth"
+      - "During adolescence"
+    correct: 2
+    explanation: "Oogenesis begins **during embryonic development, before birth**. This is a major difference from males, where spermatogenesis begins at puberty. Females are born with about 2-4 million primary oocytes already formed."
+    tags: ["unit-4", "reproduction", "female", "oogenesis"]
+
+  - question: "Approximately how many primary oocytes are females born with?"
+    options:
+      - "400-500"
+      - "10,000-20,000"
+      - "2-4 million"
+      - "10 million"
+    correct: 2
+    explanation: "Females are born with about **2-4 million primary oocytes**. However, only 400-500 will ever fully mature and ovulate during a woman's lifetime (one egg per month from puberty to menopause)."
+    tags: ["unit-4", "reproduction", "female", "oogenesis"]
+
+  - question: "What is ovulated from the ovary during ovulation?"
+    options:
+      - "Primary oocyte"
+      - "Secondary oocyte"
+      - "Mature ovum"
+      - "Oogonium"
+    correct: 1
+    explanation: "A **secondary oocyte** is what actually ovulates and leaves the ovary. It has completed meiosis I but is arrested in metaphase II. It will only complete meiosis II if fertilization occurs."
+    tags: ["unit-4", "reproduction", "female", "ovulation"]
+
+  - question: "When does the secondary oocyte complete meiosis II?"
+    options:
+      - "Before ovulation"
+      - "During ovulation"
+      - "After fertilization"
+      - "During puberty"
+    correct: 2
+    explanation: "The secondary oocyte completes meiosis II **after fertilization**. When sperm penetrates the secondary oocyte, it triggers the completion of meiosis II, separating the sister chromatids and producing the second polar body and the mature ovum."
+    tags: ["unit-4", "reproduction", "female", "meiosis", "fertilization"]
+
+  - question: "Why do females make polar bodies instead of four eggs?"
+    options:
+      - "To produce more genetic diversity"
+      - "To speed up the process"
+      - "To get rid of extra DNA with the least amount of cytoplasm possible"
+      - "To prevent multiple pregnancies"
+    correct: 2
+    explanation: "Polar bodies allow females to **get rid of extra DNA with the least amount of cytoplasm possible**. The goal is to make one large egg with lots of cytoplasm (containing mitochondria, growth factors, hormones) that the embryo needs. The polar bodies contain the extra DNA but minimal cytoplasm, and eventually degenerate."
+    tags: ["unit-4", "reproduction", "female", "oogenesis", "polar-bodies"]
+
+  - question: "What is the correct order of follicle development?"
+    options:
+      - "Primary → Primordial → Secondary → Graafian"
+      - "Primordial → Primary → Secondary → Graafian"
+      - "Secondary → Primary → Graafian → Primordial"
+      - "Primordial → Secondary → Primary → Graafian"
+    correct: 1
+    explanation: "The correct order is **Primordial → Primary → Secondary → Graafian (tertiary)**. Primordial follicles are present before birth. Primary follicles have one layer of granulosa cells. Secondary follicles have many layers of granulosa cells and theca cells. The Graafian follicle is the mature follicle that will ovulate."
+    tags: ["unit-4", "reproduction", "female", "folliculogenesis"]
+
+  - question: "What do granulosa and theca cells produce?"
+    options:
+      - "Antibodies"
+      - "Hormones (estrogen and progesterone)"
+      - "Enzymes for digestion"
+      - "Mucus"
+    correct: 1
+    explanation: "Granulosa and theca cells are follicular cells that produce **hormones, specifically estrogen and progesterone**. These cells respond to FSH and LH and are essential for the ovarian cycle and hormone regulation."
+    tags: ["unit-4", "reproduction", "female", "hormones", "follicles"]
+
+  - question: "What becomes of the follicle after ovulation?"
+    options:
+      - "It degenerates immediately"
+      - "It becomes the corpus luteum"
+      - "It becomes another primary follicle"
+      - "It is absorbed by the ovary"
+    correct: 1
+    explanation: "After ovulation, the remaining follicle becomes the **corpus luteum**. The corpus luteum produces progesterone, which is important for the first few months of pregnancy. If pregnancy doesn't occur, it degenerates in about 10 days and becomes scar tissue (corpus albicans)."
+    tags: ["unit-4", "reproduction", "female", "ovarian-cycle"]
+
+  - question: "What is the fluid-filled space in a Graafian follicle called?"
+    options:
+      - "Lumen"
+      - "Antrum"
+      - "Vesicle"
+      - "Sinus"
+    correct: 1
+    explanation: "The fluid-filled space in a Graafian follicle is called the **antrum**. This fluid builds up pressure and will eventually burst during ovulation, releasing the secondary oocyte from the follicle."
+    tags: ["unit-4", "reproduction", "female", "follicles", "anatomy"]
+
+  - question: "Which phase of the ovarian cycle occurs from day 1 to day 14 (before ovulation)?"
+    options:
+      - "Luteal phase"
+      - "Follicular phase"
+      - "Secretory phase"
+      - "Menstrual phase"
+    correct: 1
+    explanation: "The **follicular phase** occurs from day 1 to day 14 (in a typical 28-day cycle). During this phase, FSH stimulates follicle growth and maturation. The follicular phase ends with the LH surge that triggers ovulation on day 14."
+    tags: ["unit-4", "reproduction", "female", "ovarian-cycle"]
+
+  - question: "What triggers ovulation on day 14?"
+    options:
+      - "Drop in progesterone"
+      - "Surge in LH and FSH"
+      - "Increase in GnRH only"
+      - "Drop in estrogen"
+    correct: 1
+    explanation: "Ovulation is triggered by a **surge in LH (and FSH)**. This surge occurs when estrogen levels are high and progesterone is low, creating positive feedback on the anterior pituitary to release large amounts of LH. The LH surge causes the Graafian follicle to release the secondary oocyte."
+    tags: ["unit-4", "reproduction", "female", "ovulation", "hormones"]
+
+  - question: "What characterizes the luteal phase of the ovarian cycle?"
+    options:
+      - "High estrogen, low progesterone"
+      - "High progesterone production by corpus luteum"
+      - "Rapid follicle growth"
+      - "Menstruation"
+    correct: 1
+    explanation: "The luteal phase (day 14-28) is characterized by **high progesterone production by the corpus luteum**. The corpus luteum forms from the remaining follicle after ovulation and produces progesterone to prepare the uterus for potential pregnancy."
+    tags: ["unit-4", "reproduction", "female", "ovarian-cycle", "hormones"]
+
+  - question: "Which phase of the uterine cycle involves shedding the endometrial lining?"
+    options:
+      - "Proliferative phase"
+      - "Secretory phase"
+      - "Menstrual phase"
+      - "Follicular phase"
+    correct: 2
+    explanation: "The **menstrual phase** involves shedding the endometrial lining. This is triggered by the drop in progesterone when the corpus luteum degenerates (if no pregnancy occurs). Humans are one of the few species that shed the lining rather than reabsorbing it."
+    tags: ["unit-4", "reproduction", "female", "uterine-cycle", "menstruation"]
+
+  - question: "What hormone is primarily responsible for the proliferative phase of the uterine cycle?"
+    options:
+      - "Progesterone"
+      - "LH"
+      - "Estrogen"
+      - "FSH"
+    correct: 2
+    explanation: "**Estrogen** is primarily responsible for the proliferative phase. Rising estrogen levels (from developing follicles) cause the endometrium to thicken and rebuild after menstruation, preparing it for potential implantation."
+    tags: ["unit-4", "reproduction", "female", "uterine-cycle", "hormones"]
+
+  - question: "What triggers menstruation?"
+    options:
+      - "Surge in estrogen"
+      - "Drop in progesterone"
+      - "Increase in LH"
+      - "Ovulation"
+    correct: 1
+    explanation: "Menstruation is triggered by the **drop in progesterone** (and estrogen). When the corpus luteum degenerates because there's no pregnancy, progesterone levels plummet. This causes blood vessels in the endometrium to constrict, depriving tissue of oxygen and leading to shedding."
+    tags: ["unit-4", "reproduction", "female", "menstruation", "hormones"]
+
+  - question: "When estrogen is high and progesterone is low, what type of feedback occurs on LH and FSH?"
+    options:
+      - "Negative feedback"
+      - "Positive feedback"
+      - "No feedback"
+      - "Neutral feedback"
+    correct: 1
+    explanation: "When estrogen is high and progesterone is low (around day 12-14), there is **positive feedback** on LH and FSH. This positive feedback triggers the LH surge that causes ovulation. This is unique - most of the time, hormones have negative feedback."
+    tags: ["unit-4", "reproduction", "female", "hormones", "feedback"]
+
+  - question: "When progesterone is high and estrogen is low, what type of feedback occurs on LH and FSH?"
+    options:
+      - "Positive feedback"
+      - "Negative feedback"
+      - "No feedback"
+      - "Enhanced feedback"
+    correct: 1
+    explanation: "When progesterone is high and estrogen is low (during the luteal phase), there is **negative feedback** on LH and FSH. This suppresses their release from the anterior pituitary, preventing new follicles from developing. This is the basis for hormonal birth control."
+    tags: ["unit-4", "reproduction", "female", "hormones", "feedback"]
+
+  - question: "How do hormonal contraceptives (birth control) prevent pregnancy?"
+    options:
+      - "They kill sperm by increasing the body's immune response"
+      - "They create an acidic environment in the fallopian tubes"
+      - "They prevent ovulation by preventing the LH surge via negative feedback"
+      - "They prevent implantation of the ovum by increasing estrogen levels"
+    correct: 2
+    explanation: "Hormonal contraceptives work by **mimicking negative feedback to prevent the LH surge and ovulation**. They typically contain progesterone (and sometimes estrogen) to maintain high hormone levels that suppress FSH and LH release. No LH surge means no ovulation."
+    tags: ["unit-4", "reproduction", "female", "contraception", "hormones"]
+
+  - question: "Where does fertilization typically occur?"
+    options:
+      - "In the vaginal tube"
+      - "Inside the ovary"
+      - "A fallopian tube"
+      - "At the cervix"
+    correct: 2
+    explanation: "Fertilization typically occurs in the **fallopian tube**. After ovulation, the fimbriae sweep the egg into the fallopian tube where sperm can reach it. The zygote then travels to the uterus over several days, undergoing mitosis along the way."
+    tags: ["unit-4", "reproduction", "female", "fertilization"]
+
+  - question: "What is an ectopic pregnancy?"
+    options:
+      - "Pregnancy where a zygote implants in the uterus"
+      - "Two zygotes implanted in the uterus"
+      - "Pregnancy where the zygote implants in the fallopian tube"
+      - "Pregnancy where a non-fertilized oocyte implants in the uterus"
+    correct: 2
+    explanation: "An ectopic pregnancy occurs when **the zygote implants in the fallopian tube** (or other location outside the uterus). There is 0% chance the zygote will develop and survive. This is a medical emergency that must be treated because it can cause the fallopian tube to rupture."
+    tags: ["unit-4", "reproduction", "female", "clinical", "pregnancy"]
+
+  - question: "Approximately how many nerve endings does the clitoris have?"
+    options:
+      - "3,000"
+      - "8,000"
+      - "25,000"
+      - "50,000"
+    correct: 1
+    explanation: "The clitoris has approximately **8,000 nerve endings**, despite being very small. For comparison, the vagina has about 3,000 nerve endings. The clitoris is extremely important for sexual stimulation and orgasm - very few females orgasm from vaginal stimulation alone."
+    tags: ["unit-4", "reproduction", "female", "anatomy"]
+
+  - question: "What epithelial tissue lines the vagina after puberty?"
+    options:
+      - "Simple cuboidal"
+      - "Simple columnar"
+      - "Stratified squamous non-keratinized"
+      - "Keratinized stratified squamous"
+    correct: 2
+    explanation: "After puberty, the vagina is lined with **stratified squamous non-keratinized epithelium**. This tissue changes from simple cuboidal at birth through a process called metaplasia. Stratified squamous is protective and constantly regenerates to resist abrasion from intercourse, menstruation, and childbirth."
+    tags: ["unit-4", "reproduction", "female", "anatomy", "histology"]
+
+  - question: "What is the pH of the vagina?"
+    options:
+      - "Neutral (pH 7)"
+      - "Slightly alkaline (pH 8)"
+      - "Acidic (pH 3.8-4.5)"
+      - "Very acidic (pH 2)"
+    correct: 2
+    explanation: "The vagina has an **acidic pH of about 3.8-4.5** (sometimes as low as pH 4). This acidity is due to bacteria like Lactobacillus producing lactic acid, which is important for vaginal health and helps protect against infections."
+    tags: ["unit-4", "reproduction", "female", "physiology"]
+
+  - question: "What are mammary glands?"
+    options:
+      - "Fat tissue in breasts"
+      - "Modified sweat glands"
+      - "Lymph nodes in the chest"
+      - "Hormone-producing glands"
+    correct: 1
+    explanation: "Mammary glands are **modified sweat glands that produce milk**. They are only activated in lactating women. Breast tissue itself is primarily fatty tissue, but mammary glands develop and become functional during pregnancy and lactation."
+    tags: ["unit-4", "reproduction", "female", "anatomy"]
+
+  - question: "Which hormone stimulates milk production?"
+    options:
+      - "Oxytocin"
+      - "Prolactin"
+      - "Estrogen"
+      - "Progesterone"
+    correct: 1
+    explanation: "**Prolactin** stimulates milk production in the mammary glands. Oxytocin stimulates milk ejection (let-down reflex). Both hormones are important for breastfeeding."
+    tags: ["unit-4", "reproduction", "female", "hormones", "lactation"]
+
+  - question: "What is the SRY gene responsible for?"
+    options:
+      - "Producing secondary female sex characteristics"
+      - "Determining the development of ovaries in females"
+      - "Producing testis determining factor to make testes"
+      - "Triggering puberty in female XX individuals"
+    correct: 2
+    explanation: "The SRY gene (on the Y chromosome) is responsible for **producing testis determining factor (TDF)**. This protein triggers a cascade of genes that cause testes to develop and also creates androgen receptors for testosterone. Without a functional SRY gene, female structures develop regardless of having a Y chromosome."
+    tags: ["unit-4", "reproduction", "development", "genetics"]
+
+  - question: "What is Mullerian inhibiting factor (MIF)?"
+    options:
+      - "A hormone that promotes the development of female structures"
+      - "A substance that prevents the development of female structures"
+      - "An enzyme that breaks down testosterone during embryonic development"
+      - "A protein that triggers oogenesis in embryonic development"
+    correct: 1
+    explanation: "Mullerian inhibiting factor (MIF) is **produced by Sertoli cells and prevents female structures from developing**. Along with testosterone, MIF is essential for male development. It causes the Mullerian ducts (which would become fallopian tubes, uterus, and upper vagina) to degenerate."
+    tags: ["unit-4", "reproduction", "development", "hormones"]
+
+  - question: "What is androgen insensitivity syndrome?"
+    options:
+      - "When females produce too much testosterone and develop male characteristics"
+      - "When males cannot produce adequate testosterone"
+      - "When XY individuals lack testosterone receptors and develop female external appearance"
+      - "When testosterone converts to estrogen"
+    correct: 2
+    explanation: "Androgen insensitivity syndrome occurs when **XY individuals lack receptors for testosterone**. They produce testosterone but cannot respond to it. They don't develop ovaries or a uterus, but from an external perspective, they appear female. This shows that sex development is more complex than just XX or XY."
+    tags: ["unit-4", "reproduction", "development", "genetics", "clinical"]
+
+  - question: "What is the key event that occurs during Meiosis I?"
+    options:
+      - "Replication of DNA"
+      - "Separation of homologous chromosomes"
+      - "Separation of sister chromatids"
+      - "Formation of the nuclear envelope"
+    correct: 1
+    explanation: "In Meiosis I, **homologous chromosomes (one from mom, one from dad) are separated**. This is different from Meiosis II, where sister chromatids (identical copies) separate. After Meiosis I, cells become haploid because they no longer have homologous pairs."
+    tags: ["unit-4", "reproduction", "meiosis", "spermatogenesis", "oogenesis"]
+
+  - question: "After Meiosis I is complete, are the resulting cells haploid or diploid?"
+    options:
+      - "Diploid, because they still have duplicated chromosomes"
+      - "Haploid, because homologous pairs have been separated"
+      - "Diploid, because sister chromatids are still attached"
+      - "Neither, the ploidy doesn't change until Meiosis II"
+    correct: 1
+    explanation: "Even though the cells still have sister chromatids attached (appearing as duplicated chromosomes), they are **haploid because they no longer have homologous pairs**. The defining feature of diploid is having homologous pairs - one chromosome from mom and one from dad."
+    tags: ["unit-4", "reproduction", "meiosis", "cell-division"]
+
+  - question: "When does a secondary oocyte complete Meiosis II?"
+    options:
+      - "Before ovulation"
+      - "During ovulation"
+      - "Immediately after ovulation"
+      - "After fertilization by sperm"
+    correct: 3
+    explanation: "The secondary oocyte is arrested in metaphase II and will only complete Meiosis II **after fertilization** occurs. When sperm penetrates the secondary oocyte, it triggers completion of Meiosis II, separating the sister chromatids and producing the second polar body and mature ovum."
+    tags: ["unit-4", "reproduction", "female", "oogenesis", "meiosis", "fertilization"]
+
+  - question: "How many functional gametes result from one round of spermatogenesis versus oogenesis?"
+    options:
+      - "Both produce 4 functional gametes"
+      - "Spermatogenesis produces 4, oogenesis produces 1"
+      - "Spermatogenesis produces 2, oogenesis produces 2"
+      - "Both produce 1 functional gamete"
+    correct: 1
+    explanation: "**Spermatogenesis produces four haploid spermatids** that all mature into functional sperm. **Oogenesis produces one large functional egg** (ovum) and three small polar bodies that degenerate. This difference exists because eggs need lots of cytoplasm with mitochondria, growth factors, and hormones for embryo development."
+    tags: ["unit-4", "reproduction", "meiosis", "spermatogenesis", "oogenesis"]
+
+  - question: "At what stage is an oocyte when it is ovulated from the ovary?"
+    options:
+      - "Primary oocyte"
+      - "Secondary oocyte arrested in Metaphase II"
+      - "Mature ovum"
+      - "Oogonium"
+    correct: 1
+    explanation: "The **secondary oocyte** is what actually ovulates. It has completed Meiosis I but is arrested in Metaphase II of Meiosis II. It will only complete the second meiotic division if fertilization occurs."
+    tags: ["unit-4", "reproduction", "female", "ovulation", "oogenesis", "meiosis"]
+
+  - question: "What happens to polar bodies after they are formed?"
+    options:
+      - "They develop into additional eggs"
+      - "They are fertilized along with the egg"
+      - "They degenerate and are reabsorbed"
+      - "They form the placenta"
+    correct: 2
+    explanation: "Polar bodies contain the 'extra' DNA that must be removed during meiosis but have minimal cytoplasm. They **degenerate and are reabsorbed** because they cannot support embryonic development. Their purpose is to get rid of extra DNA with the least amount of cytoplasm possible."
+    tags: ["unit-4", "reproduction", "female", "oogenesis", "polar-bodies"]
+
+  - question: "When does oogenesis begin in females compared to when spermatogenesis begins in males?"
+    options:
+      - "Both begin at puberty"
+      - "Oogenesis begins before birth, spermatogenesis begins at puberty"
+      - "Both begin before birth"
+      - "Oogenesis begins at puberty, spermatogenesis begins before birth"
+    correct: 1
+    explanation: "This is a major difference between males and females. **Oogenesis begins during embryonic development before birth**, and females are born with about 2-4 million primary oocytes. **Spermatogenesis doesn't begin until puberty** in males."
+    tags: ["unit-4", "reproduction", "male", "female", "spermatogenesis", "oogenesis"]
+
 trueMakeTrue:
   - statement: "Sperm are produced in the seminiferous tubules and mature in the ***vas deferens***."
     isTrue: false
@@ -272,23 +587,17 @@ trueMakeTrue:
     points: 1
     tags: ["unit-4", "reproduction", "male", "anatomy"]
 
-  - statement: "The ***prostate gland*** produces 60% of seminal fluid, containing sugars and prostaglandins."
-    isTrue: false
-    correctWord: ["seminal vesicles"]
-    points: 1
-    tags: ["unit-4", "reproduction", "male", "anatomy"]
+  # - statement: "The ***prostate gland*** produces 60% of seminal fluid, containing sugars and prostaglandins."
+  #   isTrue: false
+  #   correctWord: ["seminal vesicles"]
+  #   points: 1
+  #   tags: ["unit-4", "reproduction", "male", "anatomy"]
 
   - statement: "***Leydig*** cells are also called nurse cells and provide support and nutrients to developing sperm."
     isTrue: false
     correctWord: ["Sertoli"]
     points: 1
     tags: ["unit-4", "reproduction", "male", "cells"]
-
-  # - statement: "In meiosis I, ***sister chromatids*** are separated, resulting in haploid cells."
-  #   isTrue: false
-  #   correctWord: ["homologous chromosomes", "homologous pairs", "homologs"]
-  #   points: 1
-  #   tags: ["unit-4", "reproduction", "meiosis"]
 
   - statement: "***Spermiogenesis*** is the process where stem cells undergo meiosis to produce four haploid spermatids."
     isTrue: false
@@ -314,11 +623,11 @@ trueMakeTrue:
     points: 1
     tags: ["unit-4", "reproduction", "male", "hormones"]
 
-  - statement: "Sertoli cells produce ***testosterone***, which keeps testosterone concentrated near the testes."
-    isTrue: false
-    correctWord: ["androgen binding protein", "ABP", "androgen binding hormone"]
-    points: 1
-    tags: ["unit-4", "reproduction", "male", "hormones"]
+  # - statement: "Sertoli cells produce ***testosterone***, which keeps testosterone concentrated near the testes."
+  #   isTrue: false
+  #   correctWord: ["androgen binding protein", "ABP", "androgen binding hormone"]
+  #   points: 1
+  #   tags: ["unit-4", "reproduction", "male", "hormones"]
 
   - statement: "***Sympathetic*** nervous system control causes vasodilation and erection."
     isTrue: false
@@ -326,53 +635,17 @@ trueMakeTrue:
     points: 1
     tags: ["unit-4", "reproduction", "male", "nervous-system"]
 
-  - statement: "Sperm need to develop at body temperature, which is about ***37°C***."
-    isTrue: false
-    correctWord: ["35°C", "35 degrees Celsius"]
-    points: 1
-    tags: ["unit-4", "reproduction", "male", "physiology"]
-
-  # - statement: "The testes-blood barrier prevents ***hormones*** from entering the seminiferous tubules."
-  #   isTrue: false
-  #   correctWord: ["immune cells", "blood", "antibodies"]
-  #   points: 1
-  #   tags: ["unit-4", "reproduction", "male", "immune"]
-
-  # - statement: "The vagina has a pH of about ***7.0***, which is neutral and ideal for sperm survival."
-  #   isTrue: false
-  #   correctWord: ["3.8-4.5", "4"]
-  #   points: 1
-  #   tags: ["unit-4", "reproduction", "female", "physiology"]
-
-  # - statement: "About ***50%*** of sperm typically make it through the cervix, the first gate of the female reproductive tract."
-  #   isTrue: false
-  #   correctWord: ["10%", "10 percent"]
-  #   points: 1
-  #   tags: ["unit-4", "reproduction", "physiology"]
-
-  # - statement: "It takes approximately ***30*** days to go from a Type B spermatogonium to a mature sperm."
-  #   isTrue: false
-  #   correctWord: ["70"]
-  #   points: 1
-  #   tags: ["unit-4", "reproduction", "male", "physiology"]
-
-  # - statement: "During spermiogenesis, cells form a tail, shed cytoplasm, and create a midpiece packed with ***ribosomes*** for energy production."
-  #   isTrue: false
-  #   correctWord: ["mitochondria"]
-  #   points: 1
-  #   tags: ["unit-4", "reproduction", "male", "spermiogenesis"]
-
   - statement: "The ***bulbourethral*** gland produces alkaline secretions that buffer pH and contain antimicrobial chemicals."
     isTrue: false
     correctWord: ["prostate"]
     points: 1
     tags: ["unit-4", "reproduction", "male", "anatomy"]
 
-  - statement: "Meiosis (I and II) produces ***two*** haploid non-identical cells from one diploid cell."
-    isTrue: false
-    correctWord: ["four"]
-    points: 1
-    tags: ["unit-4", "reproduction", "meiosis"]
+  # - statement: "Meiosis (I and II) produces ***two*** haploid non-identical cells from one diploid cell."
+  #   isTrue: false
+  #   correctWord: ["four"]
+  #   points: 1
+  #   tags: ["unit-4", "reproduction", "meiosis"]
 
   - statement: "The corpus spongiosum doesn't engorge with as much blood during erection because the ***testicular artery*** runs through it."
     isTrue: false
@@ -386,20 +659,213 @@ trueMakeTrue:
     points: 1
     tags: ["unit-4", "reproduction", "male", "pharmacology"]
 
+  - statement: "Oogenesis begins at ***puberty*** in females."
+    isTrue: false
+    correctWord: ["embryonic development", "before birth", "during embryonic development"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "oogenesis"]
+
+  - statement: "Females are born with approximately ***400-500*** primary oocytes."
+    isTrue: false
+    correctWord: ["2-4 million", "2 million", "4 million"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "oogenesis"]
+
+  - statement: "During ovulation, a ***primary*** oocyte is released from the ovary."
+    isTrue: false
+    correctWord: ["secondary"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "ovulation"]
+
+  - statement: "The secondary oocyte completes meiosis II ***before*** fertilization."
+    isTrue: false
+    correctWord: ["after"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "meiosis"]
+
+  - statement: "Polar bodies are made to get rid of extra DNA with the ***most*** amount of cytoplasm possible."
+    isTrue: false
+    correctWord: ["least"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "polar-bodies"]
+
+  - statement: "A primary follicle has ***many layers*** of granulosa cells."
+    isTrue: false
+    correctWord: ["one layer"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "follicles"]
+
+  - statement: "The ***antrum*** is the layer of cells surrounding the primary oocyte."
+    isTrue: false
+    correctWord: ["granulosa cells"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "follicles"]
+
+  - statement: "After ovulation, the remaining follicle becomes the ***corpus albicans***."
+    isTrue: false
+    correctWord: ["corpus luteum"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "ovarian-cycle"]
+
+  # - statement: "The follicular phase of the ovarian cycle occurs from day ***14-28***."
+  #   isTrue: false
+  #   correctWord: ["1-14", "day 1 to day 14"]
+  #   points: 1
+  #   tags: ["unit-4", "reproduction", "female", "ovarian-cycle"]
+
+  - statement: "***FSH*** surge triggers ovulation on day 14."
+    isTrue: false
+    correctWord: ["LH", "Luteinizing Hormone"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "ovulation", "hormones"]
+
+  - statement: "The ***secretory*** phase of the uterine cycle involves rebuilding the endometrium after menstruation."
+    isTrue: false
+    correctWord: ["proliferative"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "uterine-cycle"]
+
+  - statement: "***Estrogen*** is the primary hormone during the secretory phase of the uterine cycle."
+    isTrue: false
+    correctWord: ["Progesterone"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "uterine-cycle", "hormones"]
+
+  - statement: "Menstruation is triggered by a ***surge*** in progesterone."
+    isTrue: false
+    correctWord: ["drop", "loss", "decrease"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "menstruation"]
+
+  - statement: "High estrogen and low progesterone create ***negative*** feedback on LH and FSH."
+    isTrue: false
+    correctWord: ["positive"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "hormones", "feedback"]
+
+  - statement: "High progesterone and low estrogen create ***positive*** feedback on LH and FSH."
+    isTrue: false
+    correctWord: ["negative"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "hormones", "feedback"]
+
+  - statement: "Hormonal contraceptives prevent pregnancy by mimicking ***positive*** feedback to promote ovulation."
+    isTrue: false
+    correctWord: ["negative"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "contraception"]
+
+  - statement: "Fertilization typically occurs in the ***uterus***."
+    isTrue: false
+    correctWord: ["fallopian tube", "oviduct"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "fertilization"]
+
+  - statement: "An ectopic pregnancy in the fallopian tube has a ***50%*** chance of survival."
+    isTrue: false
+    correctWord: ["0%", "zero percent", "0 percent"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "clinical"]
+
+  # - statement: "The clitoris has approximately ***3,000*** nerve endings."
+  #   isTrue: false
+  #   correctWord: ["8,000", "8000"]
+  #   points: 1
+  #   tags: ["unit-4", "reproduction", "female", "anatomy"]
+
+  - statement: "The vagina is lined with ***simple cuboidal*** epithelium after puberty."
+    isTrue: false
+    correctWord: ["stratified squamous non-keratinized", "stratified squamous"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "anatomy"]
+
+  # - statement: "The vagina has a ***neutral*** pH of about 7."
+  #   isTrue: false
+  #   correctWord: ["acidic", "low", "4"]
+  #   points: 1
+  #   tags: ["unit-4", "reproduction", "female", "physiology"]
+
+  - statement: "***Oxytocin*** stimulates milk production in the mammary glands."
+    isTrue: false
+    correctWord: ["Prolactin"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "hormones", "lactation"]
+
+  - statement: "The SRY gene is located on the ***X*** chromosome."
+    isTrue: false
+    correctWord: ["Y"]
+    points: 1
+    tags: ["unit-4", "reproduction", "development", "genetics"]
+
+  - statement: "***Leydig*** cells produce Mullerian inhibiting factor to prevent female structures from developing."
+    isTrue: false
+    correctWord: ["Sertoli"]
+    points: 1
+    tags: ["unit-4", "reproduction", "development", "hormones"]
+
+  - statement: "The ***luteal*** phase occurs before ovulation in the ovarian cycle."
+    isTrue: false
+    correctWord: ["follicular"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "ovarian-cycle"]
+
+  - statement: "***Granulosa*** cells produce testosterone in the testes."
+    isTrue: false
+    correctWord: ["Leydig", "interstitial"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "hormones"]
+
+  - statement: "The corpus luteum produces ***estrogen*** as its primary hormone during the luteal phase."
+    isTrue: false
+    correctWord: ["progesterone"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "hormones"]
+
+  - statement: "In Meiosis II, the ***homologous chromosomes*** separate to produce haploid cells."
+    isTrue: false
+    correctWord: ["sister chromatids"]
+    points: 1
+    tags: ["unit-4", "reproduction", "meiosis", "cell-division"]
+
+  - statement: "A primary spermatocyte is ***haploid*** and ready to undergo Meiosis I."
+    isTrue: false
+    correctWord: ["diploid"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "spermatogenesis", "meiosis"]
+
+  - statement: "Oogenesis produces ***four*** functional eggs from one oogonium."
+    isTrue: false
+    correctWord: ["one", "1"]
+    points: 1
+    tags: ["unit-4", "reproduction", "female", "oogenesis"]
+
 essay:
-  - question: "Placeholder"
-    answer: "sample"
+  - question: "Describe the differnces between speratogenesis and spermiogenesis"
+    answer: "Spermatogenesis involves meiosis and results in 4 haploid spermatids in the seminiferous tubules. Spermiogenesis is the maturation (grow flagella, develop acrosome, form midpiece, shed cytoplasm) of sperm in the epididymis."
     points: 3
     tags: ["unit-4", "reproduction", "male"]
 
+  - question: "Describe the differnces homologous pairs and sister chromatids"
+    answer: "Homologous pairs are one from each of your parents, they will have different alleles of the same genes. Sister chromatids will have the same alleles of the same genes (plus some variation from crossover). Meiosis begins with a diploid that has homologous pairs. The homologous pairs replicate. In Meiosis I you get two haploid cells with sister chromatids. In Meiosis II you get haploid cells with single chromatids. e.g. in humans you get 23 single chromatids in each haploid daughter cell."
+    points: 3
+    tags: ["unit-4", "reproduction", "meiosis"]
+
+  - question: "Describe the differnces spermatogenesis and oogenesis"
+    answer: "1. spermatogenesis starts at puberty in males, oogenesis starts before birth in females. spermatogenesis results in 4 spermatids per type b spermatagonium, and oogenis results in one secondary oocyte and 2-3 polar bodies if it even proceeds. Meiosis II in oocytes only completes after fertilization, in males it completes shortly after the processs starts."
+    points: 3
+    tags: ["unit-4", "reproduction", "meiosis"]
+
 table:
-  - question: "Placeholder"
-    headers: ["", "A", "B"]
+  - question: "Name the hormones that are primarily responsible for the following events."
+    headers: ["Event", "Hormone (or drop off of hormone)"]
     prefilledColumn: 0
     answer: [
-      ["1", "sample", "sample"],
-      ["2", "sample", "sample"],
-      ["3", "sample", "sample"]
+      ["Ovulation", ["Luteinizing Hormone", "LH"]],
+      ["Secretory Phase of the Uterine Cycle", "Progesterone"],
+      ["Follicle Growth", ["Follicle Stimulating Hormone", "FSH"]],
+      ["Proliferative Phase of the Uterine Cycle", "Estrogen"],
+      ["Menstrual Phase of the Uterine Cycle (drop off of which hormone?)", "Progesterone"],
+      ["Trigger the Release of LH", "Estrogen"]
      ]
-    points: 2
-    tags: ["unit-4", "reproduction", "male"]
+    points: 6
+    tags: ["unit-4", "reproduction", "female"]

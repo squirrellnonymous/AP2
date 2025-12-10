@@ -283,6 +283,176 @@ multipleChoice:
     explanation: "Ideal stool is a **continuous log that sinks** - smooth, soft, and easy to pass. Hard pellets indicate constipation. Floating stool can indicate excess fat (malabsorption). Ribbon-like stool can indicate obstruction."
     tags: ["unit-4", "digestive", "large-intestine", "clinical"]
 
+  - question: "Why does the small intestine need so much surface area?"
+    options:
+      - "To secrete digestive enzymes"
+      - "To store partially digested food"
+      - "For nutrient absorption"
+      - "For mechanical digestion"
+    correct: 2
+    explanation: "The small intestine needs extensive surface area **for nutrient absorption**. The small intestine has three features that maximize surface area: circular folds (plicae circulares), villi (finger-like projections), and microvilli (on each epithelial cell forming the brush border). This creates about 200-250 square meters of surface area - roughly the size of a tennis court. The massive surface area allows efficient absorption of nutrients (amino acids, monosaccharides, fatty acids) into the bloodstream through the intestinal epithelium."
+    tags: ["unit-4", "digestive", "small-intestine", "absorption", "anatomy"]
+
+  - question: "How does the small intestine increase surface area?"
+    options:
+      - "Circular folds and villi"
+      - "Villi and microvilli"
+      - "Circular folds and microvilli"
+      - "Circular folds, villi, and microvilli"
+    correct: 3
+    explanation: "The small intestine uses **three structural modifications** to maximize surface area: (1) **Circular folds (plicae circulares)** - permanent ridges in the mucosa that force chyme to spiral through the intestine, (2) **Villi** - finger-like projections of the mucosa that extend into the lumen, and (3) **Microvilli** - tiny projections on the apical surface of each epithelial cell that form the brush border. Together, these three features increase surface area by about 600 times, creating roughly 200-250 square meters for nutrient absorption."
+    tags: ["unit-4", "digestive", "small-intestine", "absorption", "anatomy"]
+
+  - question: "Why does the stomach only release small amounts of chyme at a time into the small intestine?"
+    options:
+      - "To prevent the stomach from emptying too quickly and causing hunger"
+      - "To allow the liver to produce enough bile for fat digestion"
+      - "The small intestine needs time to neutralize acid and process nutrients"
+      - "To maximize protein digestion in the stomach before moving forward"
+    correct: 2
+    explanation: "The stomach releases chyme in small amounts (controlled by the pyloric sphincter) because **the small intestine needs time to neutralize acid and process nutrients**. The acidic chyme (pH ~2) must be neutralized by pancreatic bicarbonate in the duodenum to prevent damage to the intestinal lining and create the proper pH (7-8) for pancreatic enzymes to function. Additionally, digestive enzymes need time to break down nutrients, and the intestine can only absorb nutrients at a certain rate. Releasing too much chyme at once would overwhelm these processes."
+    tags: ["unit-4", "digestive", "stomach", "small-intestine", "regulation"]
+
+  - question: "Why is the small intestine so long (approximately 20 feet)?"
+    options:
+      - "To store large amounts of food between meals"
+      - "To allow enough time and space for digestion and absorption"
+      - "To produce sufficient digestive enzymes for all nutrients"
+      - "To prevent chyme from moving too quickly into the large intestine"
+    correct: 1
+    explanation: "The small intestine is approximately 20 feet (6 meters) long **to allow enough time and space for complete digestion and absorption**. Chyme moves slowly through the small intestine (3-5 hours), giving pancreatic and brush border enzymes time to fully break down carbohydrates, proteins, and fats into absorbable units. The length also provides extensive surface area for nutrient absorption - by the time chyme reaches the end of the ileum, approximately 90% of nutrients and water have been absorbed into the bloodstream."
+    tags: ["unit-4", "digestive", "small-intestine", "anatomy"]
+
+  - question: "Why are there so many layers of folds (circular folds, villi, microvilli) in the small intestine?"
+    options:
+      - "To slow down chyme movement and increase digestion time"
+      - "To provide structural support and prevent intestinal collapse"
+      - "Nutrients need surface contact with epithelial cells for absorption"
+      - "To secrete more digestive enzymes into the intestinal lumen"
+    correct: 2
+    explanation: "The multiple layers of folds exist because **nutrients need surface contact with epithelial cells for absorption to occur**. Absorption happens when nutrients (amino acids, monosaccharides, fatty acids) come into contact with the intestinal epithelium and are transported across the cell membrane into the bloodstream. The circular folds, villi, and microvilli dramatically increase the surface area available for this contact - creating about 200-250 square meters of absorptive surface. More surface area means more contact points, allowing efficient absorption of the massive amount of nutrients consumed daily."
+    tags: ["unit-4", "digestive", "small-intestine", "absorption", "anatomy"]
+
+  - question: "What is the significance of the microscopic anatomy of the small intestine (villi and microvilli)?"
+    options:
+      - "Production and secretion of digestive enzymes into the lumen"
+      - "Mechanical breakdown of large food particles through grinding"
+      - "Transport of nutrients from chyme into the bloodstream"
+      - "Neutralization of acidic chyme with bicarbonate secretions"
+    correct: 2
+    explanation: "The microscopic anatomy of the small intestine (villi and microvilli) is designed for **transporting nutrients from chyme into the bloodstream** - the process of absorption. Each villus contains a capillary network and a lacteal (lymphatic vessel). When nutrients contact the epithelial cells on the microvilli (brush border), they are absorbed through the cell membrane. Amino acids and monosaccharides enter the capillaries and go to the hepatic portal vein. Fatty acids are packaged into chylomicrons and enter the lacteals. This is where nutrients finally enter the body from the digestive tract."
+    tags: ["unit-4", "digestive", "small-intestine", "absorption", "anatomy"]
+
+  - question: "Why is the liver so important for digestion?"
+    options:
+      - "It produces all the digestive enzymes needed for nutrient breakdown"
+      - "It absorbs nutrients from the digestive tract into the bloodstream"
+      - "Fats cannot be digested efficiently without bile salts from the liver"
+      - "It neutralizes stomach acid before it enters the small intestine"
+    correct: 2
+    explanation: "The liver is critical for digestion because **fats cannot be digested efficiently without bile salts**. The liver produces bile containing bile salts, which emulsify large fat droplets into smaller droplets. This emulsification dramatically increases the surface area available for pancreatic lipase to break down triglycerides into fatty acids and monoglycerides. Without bile salts, dietary fats would remain in large droplets that lipase cannot effectively digest, leading to fat malabsorption and steatorrhea (fatty stools). The liver produces about 500-1000 mL of bile daily, which is stored and concentrated in the gallbladder."
+    tags: ["unit-4", "digestive", "liver", "bile", "lipids"]
+
+  - question: "Why is the gallbladder important for digestion?"
+    options:
+      - "It produces bile salts needed for emulsifying dietary fats"
+      - "It secretes pancreatic enzymes that break down all macronutrients"
+      - "Fat digestion is much slower and harder without the gallbladder"
+      - "It stores and releases proteins needed for nutrient absorption"
+    correct: 2
+    explanation: "The gallbladder is important because **fat digestion is much slower and harder without it**. While the liver continuously produces bile, the gallbladder stores and concentrates it (removing water to make it 5-10 times more concentrated). When you eat a fatty meal, CCK triggers the gallbladder to contract and release a large, concentrated dose of bile into the duodenum. Without a gallbladder (post-cholecystectomy), bile drips continuously into the intestine in dilute form instead of being released in concentrated bursts when needed. This means fat digestion still occurs, but less efficiently - especially for high-fat meals, which can cause digestive discomfort and diarrhea."
+    tags: ["unit-4", "digestive", "gallbladder", "bile", "lipids"]
+
+  - question: "Which of the following would NOT be absorbed directly into the blood capillaries from the small intestine?"
+    options:
+      - "Amino acids"
+      - "Glucose"
+      - "Chylomicrons"
+      - "Galactose"
+    correct: 2
+    explanation: "**Chylomicrons** do NOT enter blood capillaries directly - they are too large. Instead, chylomicrons (which contain repackaged triglycerides, cholesterol, and fat-soluble vitamins) enter the lacteals (lymphatic vessels) in the villi. They travel through the lymphatic system and eventually enter the bloodstream at the thoracic duct. In contrast, amino acids and monosaccharides (glucose, galactose) are absorbed directly into the capillaries and go to the hepatic portal vein."
+    tags: ["unit-4", "digestive", "absorption", "lipids"]
+
+  # - question: "Which enzyme works in an alkaline (basic) environment?"
+  #   options:
+  #     - "Pepsin"
+  #     - "Gastric lipase"
+  #     - "Trypsin"
+  #     - "Lingual lipase"
+  #   correct: 2
+  #   explanation: "**Trypsin** works in an alkaline environment (pH 7-8) in the small intestine. The pancreas secretes bicarbonate to neutralize acidic chyme, creating the alkaline conditions needed for pancreatic enzymes to function. Pepsin and gastric lipase work in the acidic stomach (pH 2), and lingual lipase works in the mouth (pH 6.8)."
+  #   tags: ["unit-4", "digestive", "enzymes", "pH"]
+
+  - question: "Which of the following IS a form of mechanical digestion?"
+    options:
+      - "Pepsin breaking down proteins"
+      - "Segmentation in the small intestine"
+      - "Amylase breaking down starches"
+      - "Bile emulsifying fats"
+    correct: 1
+    explanation: "**Segmentation** IS mechanical digestion - it involves rhythmic contractions of circular muscles in the small intestine that physically mix and break down food particles. Pepsin and amylase are chemical digestion (enzymatic breakdown). Bile emulsification is physical but not considered mechanical digestion - it's emulsification that prepares fats for chemical digestion by lipase."
+    tags: ["unit-4", "digestive", "digestion", "motility"]
+
+  - question: "Which of the following IS released from the brush border?"
+    options:
+      - "Pepsinogen"
+      - "Trypsinogen"
+      - "Lactase"
+      - "Pancreatic amylase"
+    correct: 2
+    explanation: "**Lactase** IS a brush border enzyme - it's attached to the microvilli of the small intestine and breaks lactose into glucose and galactose. Pepsinogen is secreted by chief cells in the stomach. Trypsinogen and pancreatic amylase are secreted by the pancreas into the intestinal lumen, not from the brush border."
+    tags: ["unit-4", "digestive", "enzymes", "brush-border"]
+
+  - question: "Where in the small intestine are bile salts reabsorbed for recycling?"
+    options:
+      - "Duodenum"
+      - "Jejunum"
+      - "Ileum"
+      - "They are not reabsorbed"
+    correct: 2
+    explanation: "Bile salts are reabsorbed in the **ileum** (the last section of the small intestine). About 95% of bile salts are recycled through enterohepatic circulation - they are reabsorbed in the ileum and transported back to the liver via the hepatic portal vein to be used again. This efficient recycling system means the liver doesn't need to constantly synthesize new bile salts."
+    tags: ["unit-4", "digestive", "bile", "absorption", "ileum"]
+
+  - question: "Which brush border enzyme breaks down the smallest protein fragments?"
+    options:
+      - "Pepsin"
+      - "Trypsin"
+      - "Chymotrypsin"
+      - "Dipeptidase"
+    correct: 3
+    explanation: "**Dipeptidase** breaks down the smallest protein fragments - dipeptides (2 amino acids joined together) - into individual amino acids. This is the final step of protein digestion. Pepsin, trypsin, and chymotrypsin break larger proteins and polypeptides into smaller peptides, but dipeptidase completes the job by producing absorbable amino acids."
+    tags: ["unit-4", "digestive", "enzymes", "proteins", "brush-border"]
+
+  - question: "Which of the following would be involved with carbohydrate digestion?"
+    options:
+      - "Lingual lipase"
+      - "Pepsin"
+      - "Pancreatic amylase"
+      - "Trypsin"
+    correct: 2
+    explanation: "**Pancreatic amylase** digests carbohydrates (specifically starches and glycogen) by breaking them down into disaccharides like maltose. Lingual lipase digests fats. Pepsin and trypsin digest proteins. Salivary amylase also digests carbohydrates in the mouth, but pancreatic amylase does the majority of starch digestion in the small intestine."
+    tags: ["unit-4", "digestive", "enzymes", "carbohydrates"]
+
+  - question: "Where does protein digestion begin?"
+    options:
+      - "Oral cavity"
+      - "Stomach"
+      - "Small intestine"
+      - "Large intestine"
+    correct: 1
+    explanation: "Protein digestion begins in the **stomach**. Pepsin (activated from pepsinogen by HCl) breaks proteins into smaller polypeptides. No protein digestion occurs in the oral cavity - saliva only contains amylase for carbohydrates. Protein digestion continues in the small intestine with pancreatic enzymes and is completed by brush border enzymes."
+    tags: ["unit-4", "digestive", "proteins", "stomach"]
+
+  - question: "Which statement about lipid digestion is TRUE?"
+    options:
+      - "Micelles enter the lacteals for transport"
+      - "Lipids are completely digested in the stomach"
+      - "Bile salts are used to emulsify fat droplets"
+      - "The large intestine produces enzymes for lipid digestion"
+    correct: 2
+    explanation: "**Bile salts ARE used to emulsify fat droplets** - this is true. Emulsification breaks large fat globules into smaller droplets, increasing surface area for pancreatic lipase to work. Micelles do NOT enter lacteals (they stay in the lumen and deliver fatty acids to cells; chylomicrons enter lacteals). Lipids are NOT completely digested in the stomach (most digestion occurs in the small intestine). The large intestine does NOT produce digestive enzymes."
+    tags: ["unit-4", "digestive", "lipids", "bile"]
+
   ## Digestive System Diagram Questions - Image-based MC with labeled A-E
 
   - question: "In the diagram, where would nutrient absorption occur?"
