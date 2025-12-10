@@ -25,15 +25,15 @@ multipleChoice:
   #   explanation: "In mammals, **XY** chromosomes typically result in a male. The mother contributes an X chromosome, and the father contributes either an X (resulting in XX female) or Y (resulting in XY male). Note: variations like XXY, XXX, or single X can also occur."
   #   tags: ["unit-4", "reproduction", "genetics"]
 
-  - question: "Approximately how many nerve endings does the penis have?"
-    options:
-      - "5,000"
-      - "10,000"
-      - "25,000"
-      - "50,000"
-    correct: 2
-    explanation: "The penis has approximately **25,000 nerve endings**, making it a very sensitive area. This number is important to remember because it will be compared to nerve endings in female anatomy."
-    tags: ["unit-4", "reproduction", "male", "anatomy"]
+  # - question: "Approximately how many nerve endings does the penis have?"
+  #   options:
+  #     - "5,000"
+  #     - "10,000"
+  #     - "25,000"
+  #     - "50,000"
+  #   correct: 2
+  #   explanation: "The penis has approximately **25,000 nerve endings**, making it a very sensitive area. This number is important to remember because it will be compared to nerve endings in female anatomy."
+  #   tags: ["unit-4", "reproduction", "male", "anatomy"]
 
   - question: "What percentage of an ejaculate is sperm?"
     options:
