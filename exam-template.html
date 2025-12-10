@@ -895,12 +895,11 @@
                 });
             }
 
-            // Show warning if there are blank answers (essays excluded - they're optional)
-            if (blankMC > 0 || blankTMT > 0 || blankTable > 0) {
+            // Show warning if there are blank answers (essays and tables excluded - they're optional)
+            if (blankMC > 0 || blankTMT > 0) {
                 let warningMessage = "You have unanswered questions:\n\n";
                 if (blankMC > 0) warningMessage += `• ${blankMC} Multiple Choice question${blankMC > 1 ? 's' : ''}\n`;
                 if (blankTMT > 0) warningMessage += `• ${blankTMT} True/Make True question${blankTMT > 1 ? 's' : ''}\n`;
-                if (blankTable > 0) warningMessage += `• ${blankTable} Table question${blankTable > 1 ? 's' : ''}\n`;
                 warningMessage += "\nDo you want to submit anyway?";
 
                 if (!confirm(warningMessage)) {

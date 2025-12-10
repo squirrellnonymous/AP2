@@ -1,0 +1,402 @@
+title: "Lecture Exam - ... & Male Reproduction"
+description: ""
+randomize: true
+maxQuestions: 32
+maxTrueMakeTrueQuestions: 10
+
+multipleChoice:
+  - question: "What is the primary advantage of sexual reproduction over asexual reproduction?"
+    options:
+      - "It requires less energy"
+      - "It produces more offspring"
+      - "It creates genetic diversity"
+      - "It allows reproduction without a partner"
+    correct: 2
+    explanation: "Sexual reproduction creates **genetic diversity**, producing offspring that are very different from their parents. This allows offspring to potentially survive in environments that parents couldn't, which is why sexual reproduction has been so successful in animals."
+    tags: ["unit-4", "reproduction", "evolution"]
+
+  # - question: "In mammals, which chromosomal combination typically results in a male?"
+  #   options:
+  #     - "XX"
+  #     - "XY"
+  #     - "XXY"
+  #     - "YY"
+  #   correct: 1
+  #   explanation: "In mammals, **XY** chromosomes typically result in a male. The mother contributes an X chromosome, and the father contributes either an X (resulting in XX female) or Y (resulting in XY male). Note: variations like XXY, XXX, or single X can also occur."
+  #   tags: ["unit-4", "reproduction", "genetics"]
+
+  - question: "Approximately how many nerve endings does the penis have?"
+    options:
+      - "5,000"
+      - "10,000"
+      - "25,000"
+      - "50,000"
+    correct: 2
+    explanation: "The penis has approximately **25,000 nerve endings**, making it a very sensitive area. This number is important to remember because it will be compared to nerve endings in female anatomy."
+    tags: ["unit-4", "reproduction", "male", "anatomy"]
+
+  - question: "What percentage of an ejaculate is sperm?"
+    options:
+      - "10%"
+      - "30%"
+      - "60%"
+      - "90%"
+    correct: 0
+    explanation: "Only **10% of ejaculate is sperm** (50-750 million sperm). The other 90% is seminal fluid: 60% from seminal vesicles and 30% from the prostate. This is why a vasectomy doesn't significantly change ejaculate volume."
+    tags: ["unit-4", "reproduction", "male", "physiology"]
+
+  - question: "Which gland produces 60% of the seminal fluid?"
+    options:
+      - "Prostate"
+      - "Seminal vesicles"
+      - "Bulbourethral glands"
+      - "Testes"
+    correct: 1
+    explanation: "The **seminal vesicles** produce 60% of seminal fluid. This fluid contains sugars (energy for sperm), prostaglandins (smooth muscle contraction), and coagulating proteins (to help semen stick to cervix/vaginal wall). The prostate contributes 30%, and sperm make up 10%."
+    tags: ["unit-4", "reproduction", "male", "anatomy"]
+
+  - question: "What is the primary function of the prostate gland's secretions?"
+    options:
+      - "Provide energy for sperm"
+      - "Buffer pH and provide antimicrobial chemicals"
+      - "Activate sperm motility"
+      - "Store sperm"
+    correct: 1
+    explanation: "The prostate secretions (30% of semen) **buffer pH** (very alkaline) to protect sperm from acidic environments and contain **antimicrobial chemicals**. They also contain clotting proteins and prostate-specific antigen (proteases that break down the clot after 20-30 minutes). The white milky color of semen comes from prostate secretions."
+    tags: ["unit-4", "reproduction", "male", "physiology"]
+
+  - question: "After a vasectomy, what happens to ejaculate composition?"
+    options:
+      - "No ejaculate is produced"
+      - "Volume decreases by half"
+      - "No sperm present, but volume remains nearly the same"
+      - "Only prostate secretions remain"
+    correct: 2
+    explanation: "After a vasectomy, there is **no sperm present, but ejaculate volume remains nearly the same** because sperm only makes up 10% of the total volume (2-5 mL). The seminal vesicles (60%) and prostate (30%) still function normally. Most people can't tell the difference in volume."
+    tags: ["unit-4", "reproduction", "male", "clinical"]
+
+  - question: "What percentage of sperm typically make it through the cervix?"
+    options:
+      - "1%"
+      - "10%"
+      - "50%"
+      - "90%"
+    correct: 1
+    explanation: "Only about **10% of sperm make it through the cervix** - that's the first gate. This is one reason why males need to produce so many sperm (20-750 million per ejaculate). Additionally, white blood cells flood the cervix and uterus within seconds to attack sperm, and the acidic vaginal pH (3.8-4.5) is hostile to sperm."
+    tags: ["unit-4", "reproduction", "male", "physiology"]
+
+  # - question: "What is the pH range of the vagina?"
+  #   options:
+  #     - "1.0-2.0"
+  #     - "3.8-4.5"
+  #     - "7.0-7.4"
+  #     - "8.0-9.0"
+  #   correct: 1
+  #   explanation: "The vagina has a pH of **3.8-4.5**, making it acidic and a fairly hostile environment for sperm. This is why seminal fluid contains buffers (especially from the prostate) to protect sperm and why sperm need protection in seminal fluid with sugars and alkaline buffers."
+  #   tags: ["unit-4", "reproduction", "female", "physiology"]
+
+  # - question: "Where do sperm mature and get stored?"
+  #   options:
+  #     - "Seminiferous tubules"
+  #     - "Vas deferens"
+  #     - "Epididymis"
+  #     - "Prostate"
+  #   correct: 2
+  #   explanation: "Sperm mature and are stored in the **epididymis**. They can mature in about 12 days but can be stored for months if no ejaculation occurs. Sperm are made in the seminiferous tubules of the testes, then move to the epididymis for maturation and storage."
+  #   tags: ["unit-4", "reproduction", "male", "anatomy"]
+
+  - question: "What do Sertoli cells produce that keeps testosterone concentrated near the testes?"
+    options:
+      - "Inhibin"
+      - "FSH"
+      - "Androgen binding protein"
+      - "Testosterone"
+    correct: 2
+    explanation: "Sertoli cells (nurse cells) produce **androgen binding protein (ABP)**, which keeps testosterone nearby in the testes area rather than letting it diffuse everywhere else. This is critical for sperm production. Some XY males who don't produce ABP won't develop typical male characteristics despite having testes and testosterone."
+    tags: ["unit-4", "reproduction", "male", "hormones"]
+
+  - question: "Why do the testes need to be separated from the blood by the testes-blood barrier?"
+    options:
+      - "To prevent ejaculating blood"
+      - "To prevent immune cells from attacking haploid sperm cells"
+      - "To keep sperm at the correct temperature"
+      - "To prevent testosterone from entering the bloodstream"
+    correct: 1
+    explanation: "The testes-blood barrier (created by Sertoli cells) **prevents immune cells from attacking haploid sperm cells**. Most body cells are diploid and have a specific 'dog tag' (antigen) that identifies them as 'self.' Haploid cells (with half the genetic material) have different antigens, so immune cells would attack them as foreign. This barrier prevents that, avoiding sterility."
+    tags: ["unit-4", "reproduction", "male", "immune", "physiology"]
+
+  - question: "What temperature do sperm need to develop properly?"
+    options:
+      - "37°C (body temperature)"
+      - "35°C (2 degrees cooler than body temperature)"
+      - "32°C (5 degrees cooler than body temperature)"
+      - "Temperature doesn't matter"
+    correct: 1
+    explanation: "Sperm need to develop at **35°C, which is 2 degrees cooler than body temperature (37°C)**. This is why testes hang outside the body - an 'imperfection' in design that makes them vulnerable. The cremaster muscle raises/lowers the testes based on temperature, and the countercurrent heat exchanger between the testicular artery and pampiniform plexus helps cool incoming blood."
+    tags: ["unit-4", "reproduction", "male", "physiology"]
+
+  - question: "In meiosis I, what gets separated?"
+    options:
+      - "Sister chromatids"
+      - "Homologous chromosomes"
+      - "DNA strands"
+      - "Cell membranes"
+    correct: 1
+    explanation: "In **meiosis I, homologous chromosomes (pairs) are separated**. One chromosome came from mom, one from dad - these pairs get separated. After meiosis I, cells are haploid (no longer have pairs). In meiosis II, sister chromatids (identical copies) separate."
+    tags: ["unit-4", "reproduction", "meiosis", "cell-division"]
+
+  - question: "After meiosis I, are cells haploid or diploid?"
+    options:
+      - "Diploid"
+      - "Haploid"
+      - "Triploid"
+      - "Neither - they haven't changed"
+    correct: 1
+    explanation: "After meiosis I, cells are **haploid** because the homologous chromosomes (pairs) have been separated. Even though sister chromatids are still attached (appearing as duplicated chromosomes), the cell no longer has homologous pairs, which is what defines diploid. Meiosis II then separates the sister chromatids."
+    tags: ["unit-4", "reproduction", "meiosis", "cell-division"]
+
+  - question: "What is the correct sequence of cells in spermatogenesis?"
+    options:
+      - "Primary spermatocyte → Type B spermatogonium → Secondary spermatocyte → Spermatid"
+      - "Type B spermatogonium → Primary spermatocyte → Secondary spermatocyte → Spermatid"
+      - "Spermatid → Secondary spermatocyte → Primary spermatocyte → Type B spermatogonium"
+      - "Type B spermatogonium → Secondary spermatocyte → Primary spermatocyte → Spermatid"
+    correct: 1
+    explanation: "**Type B spermatogonium → Primary spermatocyte (after DNA replication) → Secondary spermatocyte (after meiosis I) → Spermatid (after meiosis II)**. Type B spermatogonium is the stem cell, primary spermatocyte goes through meiosis I, secondary spermatocyte goes through meiosis II, resulting in four haploid spermatids."
+    tags: ["unit-4", "reproduction", "male", "spermatogenesis"]
+
+  - question: "Which process transforms spermatids into mature sperm?"
+    options:
+      - "Spermatogenesis"
+      - "Meiosis"
+      - "Spermiogenesis"
+      - "Mitosis"
+    correct: 2
+    explanation: "**Spermiogenesis** is the maturation process that transforms spermatids into mature sperm. This involves shedding excess cytoplasm (making them aerodynamic), forming the acrosome (with lysosomes to penetrate the egg), forming the midpiece (packed with mitochondria for ATP), and forming the tail. Spermatogenesis refers to meiosis (making spermatids)."
+    tags: ["unit-4", "reproduction", "male", "spermiogenesis"]
+
+  - question: "What is the function of the acrosome in sperm?"
+    options:
+      - "Provides energy for movement"
+      - "Contains lysosomes to penetrate the egg"
+      - "Stores genetic material"
+      - "Helps sperm swim faster"
+    correct: 1
+    explanation: "The acrosome **contains lysosomes (enzymes) to penetrate the egg**, specifically to get through the zona pellucida (egg's protective layer). This structure forms during spermiogenesis and is essential for fertilization."
+    tags: ["unit-4", "reproduction", "male", "cell-biology"]
+
+  # - question: "Why is the midpiece of sperm packed with mitochondria?"
+  #   options:
+  #     - "To store genetic material"
+  #     - "To make ATP for tail movement"
+  #     - "To protect DNA from damage"
+  #     - "To help with fertilization"
+  #   correct: 1
+  #   explanation: "The midpiece is packed with mitochondria **to make ATP (energy) for tail movement**. Sperm need lots of energy to swim through the female reproductive tract to reach the egg. This midpiece forms during spermiogenesis."
+  #   tags: ["unit-4", "reproduction", "male", "cell-biology"]
+
+  - question: "How long does it take to go from a Type B spermatogonium to a mature sperm?"
+    options:
+      - "7 days"
+      - "30 days"
+      - "70 days"
+      - "120 days"
+    correct: 2
+    explanation: "It takes approximately **70 days** to go from a Type B spermatogonium all the way to a mature sperm. Despite this long process, males produce about 400 million sperm per day - testes are sperm-making factories."
+    tags: ["unit-4", "reproduction", "male", "physiology"]
+
+  - question: "Which hormone is produced by Leydig cells?"
+    options:
+      - "Estrogen"
+      - "Progesterone"
+      - "Testosterone"
+      - "Inhibin"
+    correct: 2
+    explanation: "Leydig cells produce **testosterone** in response to LH (luteinizing hormone) from the anterior pituitary. This testosterone helps stimulate spermatogenesis and produces secondary sex characteristics (deeper voice, more hair, increased musculature)."
+    tags: ["unit-4", "reproduction", "male", "hormones"]
+
+  - question: "What hormone provides negative feedback to FSH?"
+    options:
+      - "Testosterone"
+      - "Inhibin"
+      - "Somatostatin"
+      - "Estrogen"
+    correct: 1
+    explanation: "Sertoli cells release **inhibin**, which provides negative feedback to FSH (follicle-stimulating hormone). This helps regulate sperm production. Sertoli cells also produce androgen binding protein to keep testosterone nearby and provide support/nutrients to developing sperm cells."
+    tags: ["unit-4", "reproduction", "male", "hormones"]
+
+  - question: "If a male animal is castrated (testicles removed), what happens to FSH and LH levels?"
+    options:
+      - "They fluctuate randomly"
+      - "They stay the same"
+      - "They decrease"
+      - "They rise"
+      
+    correct: 2
+    explanation: "FSH and LH levels **rise** because there's no negative feedback from testosterone and inhibin. Without testes, there are no Leydig cells producing testosterone and no Sertoli cells producing inhibin, so the anterior pituitary keeps releasing FSH and LH. However, it doesn't matter because there's no target tissue left."
+    tags: ["unit-4", "reproduction", "male", "hormones", "feedback"]
+
+  - question: "Which part of the autonomic nervous system controls erection?"
+    options:
+      - "Sympathetic"
+      - "Parasympathetic"
+      - "Somatic"
+      - "Neither - it's voluntary"
+    correct: 1
+    explanation: "**Parasympathetic** nervous system controls erection. It causes vasodilation (widening of blood vessels) in the corpora cavernosa and corpus spongiosum, allowing blood to fill these chambers. Nitric oxide is an important vasodilator in this process. Ejaculation, in contrast, is controlled by the sympathetic system."
+    tags: ["unit-4", "reproduction", "male", "nervous-system"]
+
+  - question: "How does Viagra work to help with erectile dysfunction?"
+    options:
+      - "Increases testosterone production"
+      - "Stimulates the parasympathetic nervous system"
+      - "Prevents breakdown of cyclic GMP, maintaining vasodilation"
+      - "Directly dilates blood vessels"
+    correct: 2
+    explanation: "Viagra **prevents the breakdown of cyclic GMP** by blocking phosphodiesterase (the enzyme that breaks it down). Cyclic GMP helps maintain vasodilation and erection. By preventing its breakdown, Viagra maintains the vasodilation needed for erection. This is why erections can last longer than 4 hours - the normal breakdown mechanism is blocked."
+    tags: ["unit-4", "reproduction", "male", "pharmacology"]
+
+  - question: "Why doesn't the corpus spongiosum engorge with as much blood as the corpora cavernosa during erection?"
+    options:
+      - "It's smaller in size"
+      - "It has fewer blood vessels"
+      - "The urethra needs to stay open"
+      - "It's controlled by a different nervous system"
+    correct: 2
+    explanation: "The corpus spongiosum doesn't engorge as much because **the urethra runs through it and needs to stay open** for sperm/semen to pass through during ejaculation. If it filled with too much blood, it would compress and close off the urethra, preventing ejaculation."
+    tags: ["unit-4", "reproduction", "male", "anatomy", "physiology"]
+
+trueMakeTrue:
+  - statement: "Sperm are produced in the seminiferous tubules and mature in the ***vas deferens***."
+    isTrue: false
+    correctWord: ["epididymis"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "anatomy"]
+
+  - statement: "The ***prostate*** gland produces 60% of seminal fluid, containing sugars and prostaglandins."
+    isTrue: false
+    correctWord: ["seminal vesicles"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "anatomy"]
+
+  - statement: "***Leydig*** cells are also called nurse cells and provide support and nutrients to developing sperm."
+    isTrue: false
+    correctWord: ["Sertoli"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "cells"]
+
+  # - statement: "In meiosis I, ***sister chromatids*** are separated, resulting in haploid cells."
+  #   isTrue: false
+  #   correctWord: ["homologous chromosomes", "homologous pairs", "homologs"]
+  #   points: 1
+  #   tags: ["unit-4", "reproduction", "meiosis"]
+
+  - statement: "***Spermiogenesis*** is the process where stem cells undergo meiosis to produce four haploid spermatids."
+    isTrue: false
+    correctWord: ["Spermatogenesis"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "spermatogenesis"]
+
+  - statement: "The acrosome contains ***mitochondria*** that help the sperm penetrate the zona pellucida of the egg."
+    isTrue: false
+    correctWord: ["lysosomes", "enzymes"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "cell-biology"]
+
+  - statement: "***Secondary*** spermatocytes are diploid cells that undergo meiosis I to produce haploid cells."
+    isTrue: false
+    correctWord: ["Primary"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "spermatogenesis"]
+
+  - statement: "LH (luteinizing hormone) stimulates ***Sertoli*** cells to produce testosterone."
+    isTrue: false
+    correctWord: ["Leydig"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "hormones"]
+
+  - statement: "Sertoli cells produce ***testosterone***, which keeps testosterone concentrated near the testes."
+    isTrue: false
+    correctWord: ["androgen binding protein", "ABP", "androgen binding hormone"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "hormones"]
+
+  - statement: "***Sympathetic*** nervous system control causes vasodilation and erection."
+    isTrue: false
+    correctWord: ["Parasympathetic"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "nervous-system"]
+
+  - statement: "Sperm need to develop at body temperature, which is about ***37°C***."
+    isTrue: false
+    correctWord: ["35°C", "35 degrees Celsius"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "physiology"]
+
+  # - statement: "The testes-blood barrier prevents ***hormones*** from entering the seminiferous tubules."
+  #   isTrue: false
+  #   correctWord: ["immune cells", "blood", "antibodies"]
+  #   points: 1
+  #   tags: ["unit-4", "reproduction", "male", "immune"]
+
+  # - statement: "The vagina has a pH of about ***7.0***, which is neutral and ideal for sperm survival."
+  #   isTrue: false
+  #   correctWord: ["3.8-4.5", "4"]
+  #   points: 1
+  #   tags: ["unit-4", "reproduction", "female", "physiology"]
+
+  # - statement: "About ***50%*** of sperm typically make it through the cervix, the first gate of the female reproductive tract."
+  #   isTrue: false
+  #   correctWord: ["10%", "10 percent"]
+  #   points: 1
+  #   tags: ["unit-4", "reproduction", "physiology"]
+
+  # - statement: "It takes approximately ***30*** days to go from a Type B spermatogonium to a mature sperm."
+  #   isTrue: false
+  #   correctWord: ["70"]
+  #   points: 1
+  #   tags: ["unit-4", "reproduction", "male", "physiology"]
+
+  # - statement: "During spermiogenesis, cells form a tail, shed cytoplasm, and create a midpiece packed with ***ribosomes*** for energy production."
+  #   isTrue: false
+  #   correctWord: ["mitochondria"]
+  #   points: 1
+  #   tags: ["unit-4", "reproduction", "male", "spermiogenesis"]
+
+  - statement: "The ***bulbourethral*** gland produces alkaline secretions that buffer pH and contain antimicrobial chemicals."
+    isTrue: false
+    correctWord: ["prostate"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "anatomy"]
+
+  - statement: "Meiosis (I and II) produces ***two*** haploid non-identical cells from one diploid cell."
+    isTrue: false
+    correctWord: ["four"]
+    points: 1
+    tags: ["unit-4", "reproduction", "meiosis"]
+
+  - statement: "The corpus spongiosum doesn't engorge with as much blood during erection because the ***testicular artery*** runs through it."
+    isTrue: false
+    correctWord: ["urethra"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "anatomy"]
+
+  - statement: "Viagra works by preventing the breakdown of ***nitric oxide***, which maintains vasodilation for erection."
+    isTrue: false
+    correctWord: ["cyclic GMP", "cGMP", "cyclicGMP"]
+    points: 1
+    tags: ["unit-4", "reproduction", "male", "pharmacology"]
+
+essay:
+  - question: ""
+    answer: ""
+    points: 3
+    tags: ["unit-4", "reproduction", "male"]
+
+table:
+  - question: ""
+    headers: ["", "", ""]
+    prefilledColumn: 0
+    answer: [ ]
+    points: 2
+    tags: ["unit-4", "reproduction", "male"]
