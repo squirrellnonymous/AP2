@@ -10,7 +10,7 @@ multipleChoice:
       - "It requires less energy"
       - "It produces more offspring"
       - "It creates genetic diversity"
-      - "It allows reproduction without a partner"
+      - "It prevents disease transmission"
     correct: 2
     explanation: "Sexual reproduction creates **genetic diversity**, producing offspring that are very different from their parents. This allows offspring to potentially survive in environments that parents couldn't, which is why sexual reproduction has been so successful in animals."
     tags: ["unit-4", "reproduction", "evolution"]
