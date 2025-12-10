@@ -388,15 +388,15 @@ trueMakeTrue:
     tags: ["unit-4", "reproduction", "male", "pharmacology"]
 
 essay:
-  - question: ""
-    answer: ""
+  - question: "Placeholder"
+    answer: "sample"
     points: 3
     tags: ["unit-4", "reproduction", "male"]
 
 table:
-  - question: ""
-    headers: ["", "", ""]
+  - question: "Placeholder"
+    headers: ["A", "B", "C"]
     prefilledColumn: 0
-    answer: [ ]
+    answer: ["sample", "sample", "sample"]
     points: 2
     tags: ["unit-4", "reproduction", "male"]
