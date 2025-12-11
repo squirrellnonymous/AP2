@@ -267,7 +267,7 @@ multipleChoice:
     options:
       - "Secretin"
       - "Gastrin"
-      - "CCK (Cholecystokinin)"
+      - "CCK"
       - "Insulin"
     correct: 2
     explanation: "**CCK (Cholecystokinin)** is released by the small intestine in response to fats and proteins. It stimulates the gallbladder to contract and release bile, and also stimulates the pancreas to release digestive enzymes. Secretin stimulates bicarbonate release, not bile."
