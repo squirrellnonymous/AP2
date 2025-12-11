@@ -200,6 +200,16 @@ multipleChoice:
     explanation: "FSH and LH levels **both increase** because there's no negative feedback from testosterone and inhibin. Without testes, there are no Leydig cells producing testosterone and no Sertoli cells producing inhibin, so the anterior pituitary keeps releasing FSH and LH. However, it doesn't matter because there's no target tissue left."
     tags: ["unit-4", "reproduction", "male", "hormones", "feedback"]
 
+  - question: "What is the correct pathway of sperm from the testes to the urethra?"
+    options:
+      - "Seminiferous tubule → epididymis → urethra → vas deferens → ejaculatory duct"
+      - "Seminiferous tubule → vas deferens → epididymis → ejaculatory duct → urethra"
+      - "Seminiferous tubule → epididymis → vas deferens → ejaculatory duct → urethra"
+      - "Seminiferous tubule → ejaculatory duct → epididymis → vas deferens → urethra"
+    correct: 2
+    explanation: "The correct pathway is: **Seminiferous tubule → epididymis → vas deferens → ejaculatory duct → urethra**. Sperm are produced in the seminiferous tubules, mature and are stored in the epididymis, travel through the vas deferens during ejaculation, pass through the ejaculatory duct (where seminal vesicle fluid is added), and exit the body via the urethra."
+    tags: ["unit-4", "reproduction", "male", "anatomy"]
+
   - question: "Which part of the autonomic nervous system controls erection?"
     options:
       - "Sympathetic"
